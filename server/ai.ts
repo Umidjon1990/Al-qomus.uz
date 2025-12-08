@@ -74,8 +74,8 @@ export async function batchTranslate(
 ): Promise<Array<{ id: number; translation: string }>> {
   const results: Array<{ id: number; translation: string }> = [];
 
-  // Process in batches of 5 to avoid rate limits
-  const batchSize = 5;
+  // Process in batches of 10 for faster processing
+  const batchSize = 10;
   for (let i = 0; i < entries.length; i += batchSize) {
     const batch = entries.slice(i, i + batchSize);
     const promises = batch.map(async (entry) => {

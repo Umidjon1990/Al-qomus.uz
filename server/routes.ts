@@ -145,9 +145,9 @@ export async function registerRoutes(
         });
       }
 
-      // Limit to 50 entries for testing
-      const BATCH_LIMIT = 50;
-      const limitedEntries = untranslated.slice(0, BATCH_LIMIT);
+      // Allow up to 1000 entries per batch
+      const BATCH_LIMIT = req.body.limit || 1000;
+      const limitedEntries = untranslated.slice(0, Math.min(BATCH_LIMIT, 1000));
       console.log(`Processing ${limitedEntries.length} of ${untranslated.length} entries`);
 
       // Prepare entries for translation
