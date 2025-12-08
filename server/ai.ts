@@ -14,34 +14,44 @@ export async function translateArabicToUzbek(
   arabicDefinition?: string
 ): Promise<string> {
   try {
-    const prompt = arabicDefinition
-      ? `You are a professional Arabic-Uzbek translator. Translate the following Arabic word and its definition into Uzbek. Provide a clear, concise Uzbek translation.
+    const systemPrompt = `Sen professional arabcha-o'zbekcha lug'at tarjimoni. Vazifang arabcha so'zlarni o'zbek tiliga tarjima qilish.
 
-Arabic Word: ${arabicWord}
-Arabic Definition: ${arabicDefinition}
+MUHIM QOIDALAR:
+1. FAQAT O'ZBEK LOTIN ALIFBOSIDA yoz (o', g', sh, ch, ng harflarini to'g'ri ishlat)
+2. Kirill alifbosidan MUTLAQO foydalanma
+3. Arabcha yoki inglizcha so'zlar qo'shma
+4. Lug'at uslubida qisqa va aniq tarjima ber
+5. Izohlar, qavslar, raqamlar qo'shma - faqat tarjimani yoz
+6. Agar bir nechta ma'no bo'lsa, vergul bilan ajrat
 
-Provide only the Uzbek translation, no explanations.`
-      : `You are a professional Arabic-Uzbek translator. Translate the following Arabic word into Uzbek:
+MISOL:
+Arabcha: كِتَاب → kitob
+Arabcha: مَدْرَسَة → maktab
+Arabcha: عَالِم → olim, bilimdon`;
 
-Arabic Word: ${arabicWord}
+    const userPrompt = arabicDefinition
+      ? `Arabcha so'z: ${arabicWord}
+Arabcha ta'rif: ${arabicDefinition}
 
-Provide only the Uzbek translation, no explanations.`;
+Faqat o'zbekcha tarjimani yoz:`
+      : `Arabcha so'z: ${arabicWord}
+
+Faqat o'zbekcha tarjimani yoz:`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content:
-            "You are an expert Arabic-Uzbek translator. Provide accurate, natural translations.",
+          content: systemPrompt,
         },
         {
           role: "user",
-          content: prompt,
+          content: userPrompt,
         },
       ],
-      temperature: 0.3,
-      max_tokens: 500,
+      temperature: 0.2,
+      max_tokens: 200,
     });
 
     return completion.choices[0]?.message?.content?.trim() || "";
