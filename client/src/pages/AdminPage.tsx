@@ -47,8 +47,14 @@ export default function AdminPage() {
   const [editingEntry, setEditingEntry] = React.useState<DictionaryEntry | null>(null);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [filter, setFilter] = React.useState<FilterType>('all');
+  const [visibleCount, setVisibleCount] = React.useState(100);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
+
+  // Reset visible count when filter changes
+  React.useEffect(() => {
+    setVisibleCount(100);
+  }, [filter]);
 
   // Fetch data
   const { data: entries = [], isLoading } = useQuery({
@@ -399,7 +405,7 @@ export default function AdminPage() {
                     if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
                     return true;
                   })
-                  .slice(0, 50)
+                  .slice(0, visibleCount)
                   .map((entry) => (
                   <TableRow key={entry.id}>
                     <TableCell className="font-arabic text-lg font-medium text-right" dir="rtl">{entry.arabic}</TableCell>
@@ -458,19 +464,31 @@ export default function AdminPage() {
               </TableBody>
             </Table>
           )}
-          {entries.filter(entry => {
+          {(() => {
+            const filteredEntries = entries.filter(entry => {
               if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
               if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
               return true;
-            }).length > 50 && (
-            <div className="p-4 text-center text-sm text-muted-foreground border-t">
-              va yana {entries.filter(entry => {
-                if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
-                if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
-                return true;
-              }).length - 50} ta so'z...
-            </div>
-          )}
+            });
+            const remaining = filteredEntries.length - visibleCount;
+            if (remaining > 0) {
+              return (
+                <div className="p-4 text-center border-t space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Ko'rsatilgan: {Math.min(visibleCount, filteredEntries.length)} / {filteredEntries.length}
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => setVisibleCount(prev => prev + 100)}
+                    data-testid="button-load-more"
+                  >
+                    Yana 100 ta yuklash ({remaining} ta qoldi)
+                  </Button>
+                </div>
+              );
+            }
+            return null;
+          })()}
         </div>
 
         {/* Edit Dialog */}
