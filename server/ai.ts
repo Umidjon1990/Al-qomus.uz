@@ -23,45 +23,51 @@ interface WordMetadata {
 function extractWordMetadata(arabicDefinition: string): WordMetadata {
   const def = arabicDefinition || '';
   
+  const isMasdar = /^[^:]+:.*مصدر/.test(def);
+  
   const verbIndicators = [
-    /يَ\w+/,
-    /فعل/,
-    /مصدر/,
+    /يَ\w+\s*،/,
+    /فعل\s+(ماضٍ|ماض|مضارع|أمر)/,
     /ماضٍ|ماض/,
     /مضارع/,
-    /أمر/,
-    /فاعل/,
-    /مفعول/,
+    /فهو\s+\w+/,
+    /والمفعول/,
   ];
   
   const nounIndicators = [
     /جمع/,
     /مفرد/,
-    /اسم/,
+    /اسم\b/,
     /مؤنث|مذكر/,
   ];
   
   const adjectiveIndicators = [
-    /صفة/,
+    /صفة مشبَّهة/,
+    /صفة\b/,
     /نعت/,
     /أفعل التفضيل/,
+    /اسم تفضيل/,
   ];
   
   let type: WordType = 'unknown';
   
-  const isVerb = verbIndicators.some(pattern => pattern.test(def));
-  const isNoun = nounIndicators.some(pattern => pattern.test(def));
-  const isAdjective = adjectiveIndicators.some(pattern => pattern.test(def));
-  
-  if (isVerb && !isNoun) type = 'verb';
-  else if (isNoun && !isVerb) type = 'noun';
-  else if (isAdjective) type = 'adjective';
-  else if (def.includes('حرف')) type = 'particle';
+  if (isMasdar) {
+    type = 'noun';
+  } else {
+    const isVerb = verbIndicators.some(pattern => pattern.test(def));
+    const isNoun = nounIndicators.some(pattern => pattern.test(def));
+    const isAdjective = adjectiveIndicators.some(pattern => pattern.test(def));
+    
+    if (isAdjective) type = 'adjective';
+    else if (isVerb && !isNoun) type = 'verb';
+    else if (isNoun) type = 'noun';
+    else if (def.includes('حرف')) type = 'particle';
+  }
   
   return {
     type,
     isPlural: /جمع/.test(def),
-    isMasdar: /مصدر/.test(def),
+    isMasdar,
     hasPastForm: /ماضٍ|ماض|فعل/.test(def),
     hasPresentForm: /يَ\w+|مضارع/.test(def),
     hasExamples: /:-/.test(def),
@@ -73,29 +79,50 @@ function buildProfessionalPrompt(metadata: WordMetadata): string {
   
   if (metadata.type === 'verb') {
     grammarInstructions = `
-SO'Z TURI: FE'L
-- Fe'lni o'zbek tilida MASDAR shaklida yoz (-moq qo'shimchasi bilan)
+SO'Z TURI: FE'L (harakat)
+- Fe'lni o'zbek tilida FE'L MASDARI shaklida yoz (-moq qo'shimchasi bilan)
 - Masalan: yozmoq, o'qimoq, bormoq, kelmoq
-- Agar bir nechta ma'no bo'lsa, vergul bilan ajrat
-- Misollar: كَتَبَ → yozmoq | ذَهَبَ → ketmoq | جَلَسَ → o'tirmoq`;
+- Misollar: كَتَبَ → yozmoq | ذَهَبَ → ketmoq | جَلَسَ → o'tirmoq | أَكَلَ → yemoq`;
   } else if (metadata.type === 'noun') {
-    grammarInstructions = `
+    if (metadata.isMasdar) {
+      grammarInstructions = `
+SO'Z TURI: MASDAR (fe'ldan yasalgan ot)
+- Bu arabcha MASDAR - ya'ni fe'ldan yasalgan OT
+- O'zbek tilida OT shaklida tarjima qil: -lik, -ish, -uv qo'shimchalari bilan
+- MUHIM: -moq qo'shimchasi ISHLATMA! Bu fe'l emas, ot!
+- Misollar: 
+  كِتَابَة (kitoba) → yozuv, yozish (ot!)
+  قِرَاءَة (qiroat) → o'qish (ot!)
+  تَعْلِيم (ta'lim) → o'rgatish, ta'lim (ot!)
+  بُخْل → xasislik (ot!)
+  صَبْر → sabr, sabrlik (ot!)
+  تَبْخِير → bug'latish (ot, -moq emas!)`;
+    } else {
+      grammarInstructions = `
 SO'Z TURI: OT
 - Otni BIRLIK shaklida yoz (jam' emas)
 - Agar ko'plik shakli berilgan bo'lsa ham, birlik shaklini yoz
-- Misollar: كُتُب → kitob | رِجَال → erkak | بُيُوت → uy`;
+- Misollar: كُتُب → kitob | رِجَال → erkak | بُيُوت → uy | كِتَاب → kitob`;
+    }
   } else if (metadata.type === 'adjective') {
     grammarInstructions = `
 SO'Z TURI: SIFAT
 - Sifatni oddiy shaklda yoz
-- Misollar: كَبِير → katta | صَغِير → kichik | جَمِيل → chiroyli`;
+- Misollar: كَبِير → katta | صَغِير → kichik | جَمِيل → chiroyli | بَخِيل → xasis`;
   } else {
     grammarInstructions = `
-SO'Z TURI: ANIQLANMAGAN
-- Arabcha ta'rifni diqqat bilan o'qib, so'z turini aniqla
-- Fe'l bo'lsa: -moq shaklida (yozmoq, o'qimoq)
-- Ot bo'lsa: birlik shaklida (kitob, qalam)
-- Sifat bo'lsa: oddiy shaklda (katta, yaxshi)`;
+SO'Z TURI: ANIQLANMAGAN - TAHLIL QILING
+- Arabcha ta'rifni diqqat bilan o'qib, so'z turini aniqla:
+
+1. Agar "مصدر" (masdar) deb yozilgan bo'lsa → bu OT, -lik/-ish shaklida tarjima qil
+   Masalan: بُخْل :مصدر → xasislik (ot!)
+   
+2. Agar "يَفعل" (hozirgi zamon) yoki "فعل ماض" bo'lsa → bu FE'L, -moq shaklida
+   Masalan: كَتَبَ يَكتُبُ → yozmoq (fe'l)
+   
+3. Agar "جمع" (jam') yoki "اسم" bo'lsa → bu OT, birlik shaklida
+   
+4. Agar "صفة" bo'lsa → bu SIFAT, oddiy shaklda`;
   }
 
   return `Sen professional arabcha-o'zbekcha LUG'AT tarjimoni. Vazifang arabcha so'zlarni O'ZBEK TILIGA grammatik jihatdan TO'G'RI tarjima qilish.
