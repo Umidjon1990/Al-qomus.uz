@@ -10,6 +10,23 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  // Get statistics (MUST be before /:id route)
+  app.get("/api/dictionary/stats", async (req, res) => {
+    try {
+      const allEntries = await storage.getDictionaryEntries();
+      const untranslated = await storage.getUntranslatedEntries();
+      
+      res.json({
+        total: allEntries.length,
+        translated: allEntries.length - untranslated.length,
+        pending: untranslated.length,
+      });
+    } catch (error) {
+      console.error("Error fetching stats:", error);
+      res.status(500).json({ error: "Statistika xatolik berdi" });
+    }
+  });
+
   // Get all dictionary entries (with optional search)
   app.get("/api/dictionary", async (req, res) => {
     try {
@@ -26,6 +43,9 @@ export async function registerRoutes(
   app.get("/api/dictionary/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Noto'g'ri ID" });
+      }
       const entry = await storage.getDictionaryEntry(id);
       if (!entry) {
         return res.status(404).json({ error: "So'z topilmadi" });
@@ -172,23 +192,6 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error in batch translation:", error);
       res.status(500).json({ error: "Batch tarjima xatolik berdi" });
-    }
-  });
-
-  // Get statistics
-  app.get("/api/dictionary/stats", async (req, res) => {
-    try {
-      const allEntries = await storage.getDictionaryEntries();
-      const untranslated = await storage.getUntranslatedEntries();
-      
-      res.json({
-        total: allEntries.length,
-        translated: allEntries.length - untranslated.length,
-        pending: untranslated.length,
-      });
-    } catch (error) {
-      console.error("Error fetching stats:", error);
-      res.status(500).json({ error: "Statistika xatolik berdi" });
     }
   });
 
