@@ -84,8 +84,18 @@ export class DatabaseStorage implements IStorage {
 
   async batchCreateDictionaryEntries(entries: InsertDictionaryEntry[]): Promise<DictionaryEntry[]> {
     if (entries.length === 0) return [];
-    const result = await db.insert(dictionaryEntries).values(entries).returning();
-    return result;
+    
+    // Insert in batches of 100 to avoid stack overflow
+    const BATCH_SIZE = 100;
+    const allResults: DictionaryEntry[] = [];
+    
+    for (let i = 0; i < entries.length; i += BATCH_SIZE) {
+      const batch = entries.slice(i, i + BATCH_SIZE);
+      const result = await db.insert(dictionaryEntries).values(batch).returning();
+      allResults.push(...result);
+    }
+    
+    return allResults;
   }
 
   async getUntranslatedEntries(): Promise<DictionaryEntry[]> {
