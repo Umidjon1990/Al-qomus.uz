@@ -1,17 +1,43 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import DictionaryPage from "@/pages/DictionaryPage";
 import AdminPage from "@/pages/AdminPage";
+import LoginPage from "@/pages/LoginPage";
 import NotFound from "@/pages/not-found";
+import { AuthProvider, useAuth } from "@/lib/auth";
+import { useEffect } from "react";
+
+// Protected Route Component
+function ProtectedRoute({ component: Component, adminOnly = false }: { component: React.ComponentType, adminOnly?: boolean }) {
+  const { user, isAdmin } = useAuth();
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (!user) {
+      setLocation("/login");
+    } else if (adminOnly && !isAdmin) {
+      setLocation("/");
+    }
+  }, [user, isAdmin, adminOnly, setLocation]);
+
+  if (!user || (adminOnly && !isAdmin)) {
+    return null; // or a loading spinner
+  }
+
+  return <Component />;
+}
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={DictionaryPage} />
-      <Route path="/admin" component={AdminPage} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/admin">
+        {() => <ProtectedRoute component={AdminPage} adminOnly={true} />}
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );
@@ -20,10 +46,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

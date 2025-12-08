@@ -1,12 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, X } from "lucide-react";
+import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/lib/auth";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = React.useState(false);
+  const { user, logout, isAdmin } = useAuth();
 
   const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
     const isActive = location === href;
@@ -34,8 +36,39 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <nav className="hidden md:flex items-center gap-8">
             <NavLink href="/">Lug'at</NavLink>
             <NavLink href="/about">Loyiha haqida</NavLink>
-            <NavLink href="/admin">Tahrirlovchi</NavLink>
-            <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90 text-white gap-2">
+            
+            {isAdmin && (
+              <NavLink href="/admin">
+                 <span className="flex items-center gap-1">
+                   <Edit3 className="h-3 w-3" />
+                   Tahrirlovchi
+                 </span>
+              </NavLink>
+            )}
+
+            <div className="h-4 w-px bg-border mx-2"></div>
+
+            {user ? (
+              <div className="flex items-center gap-4">
+                <span className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <User className="h-4 w-4" />
+                  {user.username}
+                </span>
+                <Button variant="ghost" size="sm" onClick={logout} className="text-muted-foreground hover:text-destructive">
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Chiqish
+                </Button>
+              </div>
+            ) : (
+              <Link href="/login">
+                <Button variant="ghost" size="sm" className="gap-2">
+                  <LogIn className="h-4 w-4" />
+                  Kirish
+                </Button>
+              </Link>
+            )}
+            
+            <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90 text-white gap-2 ml-2">
               <Search className="h-4 w-4" />
               Qidirish
             </Button>
@@ -57,10 +90,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                     Loyiha haqida
                   </Link>
-                  <Link href="/admin" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2">
-                    <Edit3 className="h-4 w-4" />
-                    Tahrirlovchi
-                  </Link>
+                  
+                  {isAdmin && (
+                    <Link href="/admin" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
+                      <Edit3 className="h-4 w-4" />
+                      Tahrirlovchi
+                    </Link>
+                  )}
+
+                  <div className="h-px bg-border my-2"></div>
+
+                  {user ? (
+                    <Button variant="ghost" className="justify-start px-0 text-lg font-medium text-destructive hover:text-destructive" onClick={() => {
+                      logout();
+                      setIsOpen(false);
+                    }}>
+                      <LogOut className="h-5 w-5 mr-2" />
+                      Chiqish ({user.username})
+                    </Button>
+                  ) : (
+                    <Link href="/login" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2">
+                      <LogIn className="h-5 w-5" />
+                      Kirish
+                    </Link>
+                  )}
                 </div>
               </SheetContent>
             </Sheet>
