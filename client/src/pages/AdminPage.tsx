@@ -21,13 +21,15 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { SAMPLE_DATA, DictionaryEntry } from "@/lib/mockData";
-import { Edit2, Plus, Save, Trash2, FileSpreadsheet } from "lucide-react";
+import { Edit2, Plus, Save, Trash2, FileSpreadsheet, Upload, AlertCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import * as XLSX from 'xlsx';
 
 export default function AdminPage() {
   const [entries, setEntries] = React.useState<DictionaryEntry[]>(SAMPLE_DATA);
   const [editingEntry, setEditingEntry] = React.useState<DictionaryEntry | null>(null);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   // Mock function to simulate saving to "database"
   const handleSave = (e: React.FormEvent) => {
@@ -39,7 +41,14 @@ export default function AdminPage() {
       const updatedEntries = entries.map(entry => 
         entry.id === editingEntry.id ? editingEntry : entry
       );
-      setEntries(updatedEntries);
+      
+      // If it's a new entry (id not found in current list), add it
+      if (!entries.find(e => e.id === editingEntry.id)) {
+        setEntries([editingEntry, ...entries]);
+      } else {
+        setEntries(updatedEntries);
+      }
+      
       setIsDialogOpen(false);
       toast({
         title: "Muvaffaqiyatli saqlandi",
@@ -49,30 +58,67 @@ export default function AdminPage() {
     }, 500);
   };
 
-  // Mock function to simulate Excel Import
-  const handleExcelImport = () => {
-    toast({
-      title: "Excel fayl yuklanmoqda...",
-      description: "Tizim Excel faylni o'qib, bazaga yozmoqda (Simulyatsiya)",
-    });
-    
-    setTimeout(() => {
-       const newMockEntry: DictionaryEntry = {
-          id: Math.random().toString(),
-          arabic: "جديد",
-          transliteration: "Jadid",
-          uzbek: "Yangi (Exceldan qo'shildi)",
-          type: "sifat",
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const bstr = evt.target?.result;
+        const wb = XLSX.read(bstr, { type: 'binary' });
+        const wsname = wb.SheetNames[0];
+        const ws = wb.Sheets[wsname];
+        const data = XLSX.utils.sheet_to_json(ws);
+
+        // Validate format
+        const isValidFormat = data.some((row: any) => 'word' in row && 'meaning' in row);
+        
+        if (!isValidFormat) {
+          toast({
+            variant: "destructive",
+            title: "Format noto'g'ri",
+            description: "Excel faylda 'word' va 'meaning' ustunlari bo'lishi kerak.",
+          });
+          return;
+        }
+
+        const newEntries: DictionaryEntry[] = data.map((row: any, index: number) => ({
+          id: `import-${Date.now()}-${index}`,
+          arabic: row.word || "",
+          // We put the Arabic meaning in 'uzbek' field temporarily so admin can translate it
+          uzbek: row.meaning || "", 
+          transliteration: "", // Auto-transliteration could go here
+          type: "aniqlanmagan",
           examples: [],
-          root: "j-d-d"
-       };
-       setEntries(prev => [newMockEntry, ...prev]);
-       toast({
-        title: "Import yakunlandi",
-        description: "154 ta yangi so'z qo'shildi",
-        variant: "default",
-      });
-    }, 1500);
+          root: ""
+        }));
+
+        setEntries(prev => [...newEntries, ...prev]);
+        
+        toast({
+          title: "Import muvaffaqiyatli",
+          description: `${newEntries.length} ta yangi so'z qo'shildi.`,
+          variant: "default",
+        });
+
+      } catch (error) {
+        console.error("Error reading file:", error);
+        toast({
+          variant: "destructive",
+          title: "Xatolik",
+          description: "Faylni o'qishda xatolik yuz berdi",
+        });
+      }
+      
+      // Reset input
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    };
+    reader.readAsBinaryString(file);
+  };
+
+  const triggerFileUpload = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -84,9 +130,16 @@ export default function AdminPage() {
             <p className="text-muted-foreground">Lug'at bazasini boshqarish va yangi so'zlar qo'shish</p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={handleExcelImport} className="gap-2">
-              <FileSpreadsheet className="h-4 w-4 text-green-600" />
-              Excel Import
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              className="hidden" 
+              accept=".xlsx, .xls"
+              onChange={handleFileUpload}
+            />
+            <Button variant="outline" onClick={triggerFileUpload} className="gap-2 border-primary/20 hover:bg-primary/5 text-primary">
+              <Upload className="h-4 w-4" />
+              Excel Yuklash
             </Button>
             <Button onClick={() => {
               setEditingEntry({
@@ -98,10 +151,19 @@ export default function AdminPage() {
                 transliteration: ""
               });
               setIsDialogOpen(true);
-            }} className="gap-2">
+            }} className="gap-2 bg-primary hover:bg-primary/90">
               <Plus className="h-4 w-4" />
               Yangi so'z
             </Button>
+          </div>
+        </div>
+
+        {/* Info Banner */}
+        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6 flex gap-3 items-start">
+          <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+          <div className="text-sm text-blue-800 dark:text-blue-300">
+            <p className="font-semibold mb-1">Excel import formati:</p>
+            <p>Faylda <b>word</b> (arabcha so'z) va <b>meaning</b> (ma'nosi) ustunlari bo'lishi shart.</p>
           </div>
         </div>
 
@@ -109,9 +171,9 @@ export default function AdminPage() {
           <Table>
             <TableHeader className="bg-muted/50">
               <TableRow>
-                <TableHead className="font-arabic text-right">Arabcha</TableHead>
+                <TableHead className="font-arabic text-right w-[200px]">Arabcha</TableHead>
                 <TableHead>Transliteratsiya</TableHead>
-                <TableHead>O'zbekcha</TableHead>
+                <TableHead className="w-[40%]">Ma'nosi (O'zbekcha/Arabcha)</TableHead>
                 <TableHead>Turi</TableHead>
                 <TableHead className="text-right">Amallar</TableHead>
               </TableRow>
@@ -119,33 +181,49 @@ export default function AdminPage() {
             <TableBody>
               {entries.map((entry) => (
                 <TableRow key={entry.id}>
-                  <TableCell className="font-arabic text-lg font-medium">{entry.arabic}</TableCell>
-                  <TableCell className="text-muted-foreground font-mono text-xs">{entry.transliteration}</TableCell>
-                  <TableCell className="font-medium">{entry.uzbek}</TableCell>
+                  <TableCell className="font-arabic text-lg font-medium text-right" dir="rtl">{entry.arabic}</TableCell>
+                  <TableCell className="text-muted-foreground font-mono text-xs">{entry.transliteration || "-"}</TableCell>
+                  <TableCell className="font-medium">
+                     <div className="line-clamp-2" title={entry.uzbek}>
+                       {entry.uzbek}
+                     </div>
+                  </TableCell>
                   <TableCell>
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary-foreground border border-secondary/20">
                       {entry.type}
                     </span>
                   </TableCell>
                   <TableCell className="text-right">
-                    <Button variant="ghost" size="icon" onClick={() => {
-                      setEditingEntry({...entry});
-                      setIsDialogOpen(true);
-                    }}>
-                      <Edit2 className="h-4 w-4 text-primary" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Trash2 className="h-4 w-4 text-destructive" />
-                    </Button>
+                    <div className="flex justify-end gap-1">
+                      <Button variant="ghost" size="icon" onClick={() => {
+                        setEditingEntry({...entry});
+                        setIsDialogOpen(true);
+                      }}>
+                        <Edit2 className="h-4 w-4 text-primary" />
+                      </Button>
+                      <Button variant="ghost" size="icon" onClick={() => {
+                        setEntries(entries.filter(e => e.id !== entry.id));
+                        toast({description: "So'z o'chirildi"});
+                      }}>
+                        <Trash2 className="h-4 w-4 text-destructive" />
+                      </Button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}
+              {entries.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
+                    Ma'lumotlar yo'q
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="sm:max-w-[500px]">
+          <DialogContent className="sm:max-w-[600px]">
             <DialogHeader>
               <DialogTitle>So'zni tahrirlash</DialogTitle>
               <DialogDescription>
@@ -171,15 +249,16 @@ export default function AdminPage() {
                     value={editingEntry.transliteration || ""}
                     onChange={(e) => setEditingEntry({...editingEntry, transliteration: e.target.value})}
                     className="col-span-3" 
+                    placeholder="Masalan: Kitab"
                   />
                 </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <label htmlFor="uzbek" className="text-right col-span-1 text-sm font-medium">O'zbekcha</label>
-                  <Input 
+                <div className="grid grid-cols-4 items-start gap-4">
+                  <label htmlFor="uzbek" className="text-right col-span-1 text-sm font-medium pt-2">Ma'nosi</label>
+                  <Textarea 
                     id="uzbek" 
                     value={editingEntry.uzbek}
                     onChange={(e) => setEditingEntry({...editingEntry, uzbek: e.target.value})}
-                    className="col-span-3" 
+                    className="col-span-3 min-h-[100px]" 
                   />
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
@@ -190,12 +269,6 @@ export default function AdminPage() {
                     onChange={(e) => setEditingEntry({...editingEntry, type: e.target.value})}
                     className="col-span-3" 
                   />
-                </div>
-                <div className="grid grid-cols-4 items-start gap-4">
-                  <label className="text-right col-span-1 text-sm font-medium pt-2">Misollar</label>
-                  <div className="col-span-3 space-y-2">
-                     <p className="text-xs text-muted-foreground">Misollar qo'shish hozircha o'chirilgan (Mockup)</p>
-                  </div>
                 </div>
                 <DialogFooter>
                   <Button type="submit" className="w-full">
