@@ -3,6 +3,7 @@ export interface DictionaryEntry {
   arabic: string;
   transliteration?: string;
   uzbek: string;
+  arabic_definition?: string; // New field for the Arabic explanation from Excel
   type: string; // noun, verb, etc.
   examples: { arabic: string; uzbek: string }[];
   root?: string; // o'zak
@@ -14,6 +15,7 @@ export const SAMPLE_DATA: DictionaryEntry[] = [
     arabic: "كِتَاب",
     transliteration: "Kitab",
     uzbek: "Kitob",
+    arabic_definition: "صحف مجمعة بين دفتين",
     type: "ot",
     root: "k-t-b",
     examples: [
@@ -26,6 +28,7 @@ export const SAMPLE_DATA: DictionaryEntry[] = [
     arabic: "سَلَام",
     transliteration: "Salam",
     uzbek: "Tinchlik, omonlik; Salom",
+    arabic_definition: "الأمان والعافية",
     type: "ot",
     root: "s-l-m",
     examples: [

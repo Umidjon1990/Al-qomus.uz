@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { DictionaryEntry } from "@/lib/mockData";
-import { Book, Globe, Copy, Share2 } from "lucide-react";
+import { Book, Globe, Copy, Share2, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +10,12 @@ import {
   CardTitle,
   CardDescription
 } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { toast } from "@/hooks/use-toast";
 
 interface ResultCardProps {
@@ -63,9 +69,22 @@ export function ResultCard({ entry, index }: ResultCardProps) {
           <div className="mb-6">
             <h3 className="text-xl font-semibold text-foreground mb-2 flex items-center gap-2">
               <Globe className="h-5 w-5 text-secondary" />
-              {entry.uzbek}
+              {entry.uzbek || <span className="text-muted-foreground italic text-sm">Tarjima qilinmagan</span>}
             </h3>
           </div>
+
+          {/* Arabic Definition (if available) */}
+          {entry.arabic_definition && (
+            <div className="mb-6 bg-amber-50 dark:bg-amber-900/10 p-3 rounded-md border border-amber-100 dark:border-amber-800/30">
+              <h4 className="text-xs font-semibold text-amber-700 dark:text-amber-500 uppercase tracking-wider mb-1 flex items-center gap-1">
+                <Info className="h-3 w-3" />
+                Arabcha izohi
+              </h4>
+              <p className="font-arabic text-right text-lg leading-relaxed text-foreground/90" dir="rtl">
+                {entry.arabic_definition}
+              </p>
+            </div>
+          )}
 
           {entry.examples.length > 0 && (
             <div className="space-y-3 bg-accent/30 p-4 rounded-lg border border-accent">

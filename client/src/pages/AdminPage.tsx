@@ -71,14 +71,15 @@ export default function AdminPage() {
         const ws = wb.Sheets[wsname];
         const data = XLSX.utils.sheet_to_json(ws);
 
-        // Validate format
-        const isValidFormat = data.some((row: any) => 'word' in row && 'meaning' in row);
+        // Analyze format
+        // We look for 'word' and 'meaning' based on user's file
+        const hasWord = data.some((row: any) => 'word' in row);
         
-        if (!isValidFormat) {
+        if (!hasWord) {
           toast({
             variant: "destructive",
             title: "Format noto'g'ri",
-            description: "Excel faylda 'word' va 'meaning' ustunlari bo'lishi kerak.",
+            description: "Excel faylda 'word' ustuni bo'lishi shart.",
           });
           return;
         }
@@ -86,9 +87,9 @@ export default function AdminPage() {
         const newEntries: DictionaryEntry[] = data.map((row: any, index: number) => ({
           id: `import-${Date.now()}-${index}`,
           arabic: row.word || "",
-          // We put the Arabic meaning in 'uzbek' field temporarily so admin can translate it
-          uzbek: row.meaning || "", 
-          transliteration: "", // Auto-transliteration could go here
+          arabic_definition: row.meaning || "", // Import meaning as Arabic Definition
+          uzbek: "", // Leave Uzbek empty for translation
+          transliteration: "", 
           type: "aniqlanmagan",
           examples: [],
           root: ""
@@ -98,7 +99,7 @@ export default function AdminPage() {
         
         toast({
           title: "Import muvaffaqiyatli",
-          description: `${newEntries.length} ta yangi so'z qo'shildi.`,
+          description: `${newEntries.length} ta yangi so'z qo'shildi. Endi ularni tarjima qilishingiz mumkin.`,
           variant: "default",
         });
 
@@ -111,7 +112,6 @@ export default function AdminPage() {
         });
       }
       
-      // Reset input
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
     reader.readAsBinaryString(file);
@@ -162,8 +162,9 @@ export default function AdminPage() {
         <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6 flex gap-3 items-start">
           <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
           <div className="text-sm text-blue-800 dark:text-blue-300">
-            <p className="font-semibold mb-1">Excel import formati:</p>
-            <p>Faylda <b>word</b> (arabcha so'z) va <b>meaning</b> (ma'nosi) ustunlari bo'lishi shart.</p>
+            <p className="font-semibold mb-1">QOMUS Excel Formati:</p>
+            <p>Tizim Excel fayldagi <b>word</b> ustunini arabcha so'z sifatida, <b>meaning</b> ustunini esa arabcha izoh sifatida qabul qiladi.</p>
+            <p className="mt-1">Siz importdan so'ng <b>O'zbekcha</b> tarjimani kiritishingiz kerak bo'ladi.</p>
           </div>
         </div>
 
@@ -171,9 +172,9 @@ export default function AdminPage() {
           <Table>
             <TableHeader className="bg-muted/50">
               <TableRow>
-                <TableHead className="font-arabic text-right w-[200px]">Arabcha</TableHead>
-                <TableHead>Transliteratsiya</TableHead>
-                <TableHead className="w-[40%]">Ma'nosi (O'zbekcha/Arabcha)</TableHead>
+                <TableHead className="font-arabic text-right w-[15%]">Arabcha</TableHead>
+                <TableHead className="w-[35%]">Arabcha Izohi</TableHead>
+                <TableHead className="w-[30%]">O'zbekcha Tarjimasi</TableHead>
                 <TableHead>Turi</TableHead>
                 <TableHead className="text-right">Amallar</TableHead>
               </TableRow>
@@ -182,10 +183,14 @@ export default function AdminPage() {
               {entries.map((entry) => (
                 <TableRow key={entry.id}>
                   <TableCell className="font-arabic text-lg font-medium text-right" dir="rtl">{entry.arabic}</TableCell>
-                  <TableCell className="text-muted-foreground font-mono text-xs">{entry.transliteration || "-"}</TableCell>
+                  <TableCell className="text-xs text-muted-foreground">
+                    <div className="line-clamp-2 font-arabic text-right" dir="rtl" title={entry.arabic_definition}>
+                      {entry.arabic_definition || "-"}
+                    </div>
+                  </TableCell>
                   <TableCell className="font-medium">
                      <div className="line-clamp-2" title={entry.uzbek}>
-                       {entry.uzbek}
+                       {entry.uzbek || <span className="text-amber-500 italic text-xs">Tarjima qilinmagan</span>}
                      </div>
                   </TableCell>
                   <TableCell>
@@ -223,7 +228,7 @@ export default function AdminPage() {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="sm:max-w-[600px]">
+          <DialogContent className="sm:max-w-[800px]">
             <DialogHeader>
               <DialogTitle>So'zni tahrirlash</DialogTitle>
               <DialogDescription>
@@ -231,47 +236,69 @@ export default function AdminPage() {
               </DialogDescription>
             </DialogHeader>
             {editingEntry && (
-              <form onSubmit={handleSave} className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <label htmlFor="arabic" className="text-right col-span-1 text-sm font-medium">Arabcha</label>
-                  <Input 
-                    id="arabic" 
-                    value={editingEntry.arabic}
-                    onChange={(e) => setEditingEntry({...editingEntry, arabic: e.target.value})}
-                    className="col-span-3 font-arabic text-right text-lg" 
-                    dir="rtl"
-                  />
+              <form onSubmit={handleSave} className="grid gap-6 py-4">
+                
+                {/* Word & Type Row */}
+                <div className="grid grid-cols-2 gap-4">
+                   <div className="space-y-2">
+                      <label htmlFor="arabic" className="text-sm font-medium">Arabcha so'z</label>
+                      <Input 
+                        id="arabic" 
+                        value={editingEntry.arabic}
+                        onChange={(e) => setEditingEntry({...editingEntry, arabic: e.target.value})}
+                        className="font-arabic text-right text-lg" 
+                        dir="rtl"
+                      />
+                   </div>
+                   <div className="space-y-2">
+                      <label htmlFor="type" className="text-sm font-medium">So'z turkumi</label>
+                      <Input 
+                        id="type" 
+                        value={editingEntry.type}
+                        onChange={(e) => setEditingEntry({...editingEntry, type: e.target.value})}
+                      />
+                   </div>
                 </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <label htmlFor="trans" className="text-right col-span-1 text-sm font-medium">Translit.</label>
+
+                {/* Arabic Definition (Reference) */}
+                <div className="space-y-2">
+                   <label htmlFor="arabic_def" className="text-sm font-medium flex justify-between">
+                     <span>Arabcha Izohi (Manba)</span>
+                     <span className="text-muted-foreground text-xs font-normal">O'zgartirish tavsiya etilmaydi</span>
+                   </label>
+                   <Textarea 
+                      id="arabic_def" 
+                      value={editingEntry.arabic_definition || ""}
+                      onChange={(e) => setEditingEntry({...editingEntry, arabic_definition: e.target.value})}
+                      className="font-arabic text-right min-h-[80px] bg-muted/20" 
+                      dir="rtl"
+                    />
+                </div>
+
+                {/* Uzbek Translation (Target) */}
+                <div className="space-y-2">
+                   <label htmlFor="uzbek" className="text-sm font-medium text-primary">O'zbekcha Tarjimasi</label>
+                   <Textarea 
+                      id="uzbek" 
+                      value={editingEntry.uzbek}
+                      onChange={(e) => setEditingEntry({...editingEntry, uzbek: e.target.value})}
+                      className="min-h-[100px] border-primary/30 focus-visible:ring-primary" 
+                      placeholder="Arabcha izohga asoslanib tarjima kiriting..."
+                    />
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="trans" className="text-sm font-medium">Transliteratsiya</label>
                   <Input 
                     id="trans" 
                     value={editingEntry.transliteration || ""}
                     onChange={(e) => setEditingEntry({...editingEntry, transliteration: e.target.value})}
-                    className="col-span-3" 
                     placeholder="Masalan: Kitab"
                   />
                 </div>
-                <div className="grid grid-cols-4 items-start gap-4">
-                  <label htmlFor="uzbek" className="text-right col-span-1 text-sm font-medium pt-2">Ma'nosi</label>
-                  <Textarea 
-                    id="uzbek" 
-                    value={editingEntry.uzbek}
-                    onChange={(e) => setEditingEntry({...editingEntry, uzbek: e.target.value})}
-                    className="col-span-3 min-h-[100px]" 
-                  />
-                </div>
-                 <div className="grid grid-cols-4 items-center gap-4">
-                  <label htmlFor="type" className="text-right col-span-1 text-sm font-medium">So'z turkumi</label>
-                  <Input 
-                    id="type" 
-                    value={editingEntry.type}
-                    onChange={(e) => setEditingEntry({...editingEntry, type: e.target.value})}
-                    className="col-span-3" 
-                  />
-                </div>
+
                 <DialogFooter>
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full sm:w-auto">
                     <Save className="mr-2 h-4 w-4" />
                     Saqlash
                   </Button>
