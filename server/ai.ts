@@ -21,19 +21,21 @@ QATIY QOIDALAR:
 2. TAQIQLANGAN: Kirill harflari (А Б В Г Д...), Arab harflari (ا ب ت...), "Uzbek Translation:" yoki boshqa prefiks
 3. Qisqa lug'at uslubida yoz - faqat so'zning ma'nosini ber
 4. Izoh, qavs, raqam, tire QOSHMA
+5. ISLOMIY ATAMALARNI SAQLASH: Alloh, Ibrohim, Muso, Iso, Muhammad, Iblis, Quron, solat, zakot, haj, ro'za kabi diniy atamalarni o'zbek islomiy uslubida yoz
 
 NAMUNA JAVOBLAR:
 kitob
-maktab
-olim, bilimdon
-suv
-ota
+Alloh
+Ibrohim
+payg'ambar
+masjid
+namoz
 
 XATO JAVOBLAR (BUNDAY YOZMA):
 ❌ Uzbek Translation: kitob
 ❌ Китоб
-❌ كتاب - kitob
-❌ Kitob: bu o'qish uchun...`;
+❌ xudo (Alloh bo'lishi kerak)
+❌ كتاب - kitob`;
 
     const userPrompt = arabicDefinition
       ? `Arabcha so'z: ${arabicWord}
