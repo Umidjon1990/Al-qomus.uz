@@ -41,9 +41,12 @@ import { Edit2, Plus, Save, Trash2, Upload, AlertCircle, Wand2, Loader2, Databas
 import { toast } from "@/hooks/use-toast";
 import * as XLSX from 'xlsx';
 
+type FilterType = 'all' | 'translated' | 'pending';
+
 export default function AdminPage() {
   const [editingEntry, setEditingEntry] = React.useState<DictionaryEntry | null>(null);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [filter, setFilter] = React.useState<FilterType>('all');
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
 
@@ -319,12 +322,41 @@ export default function AdminPage() {
 
         {/* Data Table */}
         <div className="bg-card rounded-lg border shadow-sm overflow-hidden">
-          <div className="p-4 border-b bg-muted/30 flex justify-between items-center">
+          <div className="p-4 border-b bg-muted/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <h3 className="font-semibold flex items-center gap-2">
               <FileText className="h-4 w-4" />
               So'zlar Ro'yxati
             </h3>
-            <Button size="sm" variant="outline" onClick={() => {
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex rounded-md border overflow-hidden">
+                <Button 
+                  size="sm" 
+                  variant={filter === 'all' ? 'default' : 'ghost'}
+                  className="rounded-none"
+                  onClick={() => setFilter('all')}
+                >
+                  Barchasi ({totalWords})
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant={filter === 'translated' ? 'default' : 'ghost'}
+                  className="rounded-none border-l"
+                  onClick={() => setFilter('translated')}
+                >
+                  <CheckCircle2 className="h-3 w-3 mr-1" />
+                  Tarjima qilingan ({translatedWords})
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant={filter === 'pending' ? 'default' : 'ghost'}
+                  className="rounded-none border-l"
+                  onClick={() => setFilter('pending')}
+                >
+                  <Clock className="h-3 w-3 mr-1" />
+                  Kutilmoqda ({pendingWords})
+                </Button>
+              </div>
+              <Button size="sm" variant="outline" onClick={() => {
                setEditingEntry({
                 id: 0,
                 arabic: "",
@@ -342,6 +374,7 @@ export default function AdminPage() {
               <Plus className="h-4 w-4 mr-1" />
               Yangi qo'shish
             </Button>
+            </div>
           </div>
           
           {isLoading ? (
@@ -360,7 +393,14 @@ export default function AdminPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {entries.slice(0, 50).map((entry) => (
+                {entries
+                  .filter(entry => {
+                    if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
+                    if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
+                    return true;
+                  })
+                  .slice(0, 50)
+                  .map((entry) => (
                   <TableRow key={entry.id}>
                     <TableCell className="font-arabic text-lg font-medium text-right" dir="rtl">{entry.arabic}</TableCell>
                     <TableCell className="text-xs text-muted-foreground">
@@ -403,20 +443,32 @@ export default function AdminPage() {
                     </TableCell>
                   </TableRow>
                 ))}
-                {entries.length === 0 && (
+                {entries.filter(entry => {
+                    if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
+                    if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
+                    return true;
+                  }).length === 0 && (
                   <TableRow>
                     <TableCell colSpan={5} className="text-center py-12 text-muted-foreground">
                       <Database className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                      <p>Baza bo'sh. Excel fayl yuklang.</p>
+                      <p>{filter === 'all' ? "Baza bo'sh. Excel fayl yuklang." : filter === 'translated' ? "Tarjima qilingan so'z yo'q." : "Kutilayotgan so'z yo'q."}</p>
                     </TableCell>
                   </TableRow>
                 )}
               </TableBody>
             </Table>
           )}
-          {entries.length > 50 && (
+          {entries.filter(entry => {
+              if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
+              if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
+              return true;
+            }).length > 50 && (
             <div className="p-4 text-center text-sm text-muted-foreground border-t">
-              va yana {entries.length - 50} ta so'z...
+              va yana {entries.filter(entry => {
+                if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
+                if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
+                return true;
+              }).length - 50} ta so'z...
             </div>
           )}
         </div>
