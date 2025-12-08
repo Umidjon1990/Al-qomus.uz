@@ -209,8 +209,12 @@ O'ZBEKCHA TARJIMA:`;
       .trim();
     
     return result;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Translation error:", error);
+    const errorCode = error?.code || error?.error?.code || '';
+    if (errorCode === 'content_filter' || error?.message?.includes('content management policy')) {
+      return "[taqiqlangan]";
+    }
     throw new Error("AI tarjima xatolik berdi");
   }
 }
