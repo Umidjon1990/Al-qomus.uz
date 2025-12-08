@@ -14,20 +14,26 @@ export async function translateArabicToUzbek(
   arabicDefinition?: string
 ): Promise<string> {
   try {
-    const systemPrompt = `Sen professional arabcha-o'zbekcha lug'at tarjimoni. Vazifang arabcha so'zlarni o'zbek tiliga tarjima qilish.
+    const systemPrompt = `Sen professional arabcha-o'zbekcha lug'at tarjimoni.
 
-MUHIM QOIDALAR:
-1. FAQAT O'ZBEK LOTIN ALIFBOSIDA yoz (o', g', sh, ch, ng harflarini to'g'ri ishlat)
-2. Kirill alifbosidan MUTLAQO foydalanma
-3. Arabcha yoki inglizcha so'zlar qo'shma
-4. Lug'at uslubida qisqa va aniq tarjima ber
-5. Izohlar, qavslar, raqamlar qo'shma - faqat tarjimani yoz
-6. Agar bir nechta ma'no bo'lsa, vergul bilan ajrat
+QATIY QOIDALAR:
+1. FAQAT LOTIN harflarida yoz: a b d e f g h i j k l m n o p q r s t u v x y z va o' g' sh ch ng
+2. TAQIQLANGAN: Kirill harflari (А Б В Г Д...), Arab harflari (ا ب ت...), "Uzbek Translation:" yoki boshqa prefiks
+3. Qisqa lug'at uslubida yoz - faqat so'zning ma'nosini ber
+4. Izoh, qavs, raqam, tire QOSHMA
 
-MISOL:
-Arabcha: كِتَاب → kitob
-Arabcha: مَدْرَسَة → maktab
-Arabcha: عَالِم → olim, bilimdon`;
+NAMUNA JAVOBLAR:
+kitob
+maktab
+olim, bilimdon
+suv
+ota
+
+XATO JAVOBLAR (BUNDAY YOZMA):
+❌ Uzbek Translation: kitob
+❌ Китоб
+❌ كتاب - kitob
+❌ Kitob: bu o'qish uchun...`;
 
     const userPrompt = arabicDefinition
       ? `Arabcha so'z: ${arabicWord}
