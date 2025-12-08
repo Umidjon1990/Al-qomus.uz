@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { DictionaryEntry } from "@/lib/mockData";
+import { DictionaryEntry } from "@/lib/api";
 import { Book, Globe, Copy, Share2, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,12 +10,6 @@ import {
   CardTitle,
   CardDescription
 } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { toast } from "@/hooks/use-toast";
 
 interface ResultCardProps {
@@ -32,6 +26,9 @@ export function ResultCard({ entry, index }: ResultCardProps) {
     });
   };
 
+  // Parse examples from JSON
+  const examples = entry.examplesJson ? JSON.parse(entry.examplesJson) : [];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -46,12 +43,14 @@ export function ResultCard({ entry, index }: ResultCardProps) {
                 <CardTitle className="text-4xl font-arabic text-primary leading-relaxed" dir="rtl">
                   {entry.arabic}
                 </CardTitle>
-                <span className="text-sm font-mono text-muted-foreground bg-background px-2 py-0.5 rounded border">
-                  {entry.root}
-                </span>
+                {entry.root && (
+                  <span className="text-sm font-mono text-muted-foreground bg-background px-2 py-0.5 rounded border">
+                    {entry.root}
+                  </span>
+                )}
               </div>
               <CardDescription className="text-lg font-medium text-foreground/80 flex items-center gap-2">
-                <span>{entry.transliteration}</span>
+                {entry.transliteration && <span>{entry.transliteration}</span>}
                 <span className="text-muted-foreground text-sm font-normal">• {entry.type}</span>
               </CardDescription>
             </div>
@@ -73,27 +72,26 @@ export function ResultCard({ entry, index }: ResultCardProps) {
             </h3>
           </div>
 
-          {/* Arabic Definition (if available) */}
-          {entry.arabic_definition && (
+          {entry.arabicDefinition && (
             <div className="mb-6 bg-amber-50 dark:bg-amber-900/10 p-3 rounded-md border border-amber-100 dark:border-amber-800/30">
               <h4 className="text-xs font-semibold text-amber-700 dark:text-amber-500 uppercase tracking-wider mb-1 flex items-center gap-1">
                 <Info className="h-3 w-3" />
                 Arabcha izohi
               </h4>
               <p className="font-arabic text-right text-lg leading-relaxed text-foreground/90" dir="rtl">
-                {entry.arabic_definition}
+                {entry.arabicDefinition}
               </p>
             </div>
           )}
 
-          {entry.examples.length > 0 && (
+          {examples.length > 0 && (
             <div className="space-y-3 bg-accent/30 p-4 rounded-lg border border-accent">
               <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider flex items-center gap-2">
                 <Book className="h-4 w-4" />
                 Misollar
               </h4>
               <div className="space-y-3">
-                {entry.examples.map((ex, idx) => (
+                {examples.map((ex: any, idx: number) => (
                   <div key={idx} className="grid md:grid-cols-2 gap-2 md:gap-8 text-sm md:text-base border-b border-border/50 last:border-0 pb-2 last:pb-0">
                     <p className="font-arabic text-right text-foreground/90 text-lg" dir="rtl">{ex.arabic}</p>
                     <p className="text-muted-foreground italic">{ex.uzbek}</p>
