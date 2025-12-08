@@ -132,33 +132,10 @@ export async function registerRoutes(
     }
   });
 
-  // AI Translation - Single entry
-  app.post("/api/dictionary/:id/translate", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
-      const entry = await storage.getDictionaryEntry(id);
-      
-      if (!entry) {
-        return res.status(404).json({ error: "So'z topilmadi" });
-      }
-
-      if (entry.uzbek && entry.uzbek.length > 0) {
-        return res.status(400).json({ error: "So'z allaqachon tarjima qilingan" });
-      }
-
-      const translation = await translateArabicToUzbek(entry.arabic, entry.arabicDefinition || undefined);
-      const updated = await storage.updateEntryTranslation(id, translation);
-
-      res.json(updated);
-    } catch (error) {
-      console.error("Error translating entry:", error);
-      res.status(500).json({ error: "Tarjima xatolik berdi" });
-    }
-  });
-
-  // AI Translation - Batch (all untranslated)
+  // AI Translation - Batch (MUST be before /:id route)
   app.post("/api/dictionary/batch-translate", async (req, res) => {
     try {
+      console.log("Starting batch translation...");
       const untranslated = await storage.getUntranslatedEntries();
       
       if (untranslated.length === 0) {
@@ -168,8 +145,13 @@ export async function registerRoutes(
         });
       }
 
+      // Limit to 50 entries for testing
+      const BATCH_LIMIT = 50;
+      const limitedEntries = untranslated.slice(0, BATCH_LIMIT);
+      console.log(`Processing ${limitedEntries.length} of ${untranslated.length} entries`);
+
       // Prepare entries for translation
-      const entriesToTranslate = untranslated.map(entry => ({
+      const entriesToTranslate = limitedEntries.map(entry => ({
         id: entry.id,
         arabic: entry.arabic,
         arabicDefinition: entry.arabicDefinition || undefined,
@@ -187,11 +169,39 @@ export async function registerRoutes(
 
       res.json({ 
         message: "Tarjima muvaffaqiyatli yakunlandi",
-        count: translations.length 
+        count: translations.length,
+        remaining: untranslated.length - translations.length
       });
     } catch (error) {
       console.error("Error in batch translation:", error);
       res.status(500).json({ error: "Batch tarjima xatolik berdi" });
+    }
+  });
+
+  // AI Translation - Single entry
+  app.post("/api/dictionary/:id/translate", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Noto'g'ri ID" });
+      }
+      const entry = await storage.getDictionaryEntry(id);
+      
+      if (!entry) {
+        return res.status(404).json({ error: "So'z topilmadi" });
+      }
+
+      if (entry.uzbek && entry.uzbek.length > 0) {
+        return res.status(400).json({ error: "So'z allaqachon tarjima qilingan" });
+      }
+
+      const translation = await translateArabicToUzbek(entry.arabic, entry.arabicDefinition || undefined);
+      const updated = await storage.updateEntryTranslation(id, translation);
+
+      res.json(updated);
+    } catch (error) {
+      console.error("Error translating entry:", error);
+      res.status(500).json({ error: "Tarjima xatolik berdi" });
     }
   });
 
