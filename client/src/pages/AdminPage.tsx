@@ -21,7 +21,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { SAMPLE_DATA, DictionaryEntry } from "@/lib/mockData";
-import { Edit2, Plus, Save, Trash2, FileSpreadsheet, Upload, AlertCircle } from "lucide-react";
+import { Edit2, Plus, Save, Trash2, FileSpreadsheet, Upload, AlertCircle, Wand2, Loader2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import * as XLSX from 'xlsx';
 
@@ -29,6 +29,7 @@ export default function AdminPage() {
   const [entries, setEntries] = React.useState<DictionaryEntry[]>(SAMPLE_DATA);
   const [editingEntry, setEditingEntry] = React.useState<DictionaryEntry | null>(null);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [isTranslating, setIsTranslating] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   // Mock function to simulate saving to "database"
@@ -72,7 +73,6 @@ export default function AdminPage() {
         const data = XLSX.utils.sheet_to_json(ws);
 
         // Analyze format
-        // We look for 'word' and 'meaning' based on user's file
         const hasWord = data.some((row: any) => 'word' in row);
         
         if (!hasWord) {
@@ -87,8 +87,8 @@ export default function AdminPage() {
         const newEntries: DictionaryEntry[] = data.map((row: any, index: number) => ({
           id: `import-${Date.now()}-${index}`,
           arabic: row.word || "",
-          arabic_definition: row.meaning || "", // Import meaning as Arabic Definition
-          uzbek: "", // Leave Uzbek empty for translation
+          arabic_definition: row.meaning || "", 
+          uzbek: "", 
           transliteration: "", 
           type: "aniqlanmagan",
           examples: [],
@@ -99,7 +99,7 @@ export default function AdminPage() {
         
         toast({
           title: "Import muvaffaqiyatli",
-          description: `${newEntries.length} ta yangi so'z qo'shildi. Endi ularni tarjima qilishingiz mumkin.`,
+          description: `${newEntries.length} ta yangi so'z qo'shildi.`,
           variant: "default",
         });
 
@@ -121,6 +121,53 @@ export default function AdminPage() {
     fileInputRef.current?.click();
   };
 
+  // Mock AI Translation
+  const handleAITranslate = () => {
+    const untranslatedCount = entries.filter(e => !e.uzbek).length;
+    if (untranslatedCount === 0) {
+      toast({ description: "Tarjima qilinmagan so'zlar yo'q." });
+      return;
+    }
+
+    setIsTranslating(true);
+    toast({
+      title: "AI Tarjima boshlandi...",
+      description: `${untranslatedCount} ta so'z tahlil qilinmoqda. Iltimos kuting.`,
+    });
+
+    // Simulate delay for AI processing
+    setTimeout(() => {
+      const updatedEntries = entries.map(entry => {
+        if (!entry.uzbek) {
+          // Simple mock logic to show "Intelligence"
+          // In a real app, this would call OpenAI API
+          let mockTranslation = "";
+          if (entry.arabic.includes("استمارة")) mockTranslation = "Anketa; ma'lumotnoma varaqasi";
+          else if (entry.arabic.includes("استوديو")) mockTranslation = "Studiya; tasvirga olish xonasi";
+          else if (entry.arabic.includes("الآن")) mockTranslation = "Hozir; ayni paytda";
+          else if (entry.arabic.includes("الله")) mockTranslation = "Alloh (Xudo)";
+          else if (entry.arabic.includes("كِتَاب")) mockTranslation = "Kitob";
+          else mockTranslation = "AI: " + (entry.arabic_definition ? entry.arabic_definition.substring(0, 30) + "..." : "Tarjima qilinmoqda...");
+          
+          return {
+            ...entry,
+            uzbek: mockTranslation,
+            type: "aniqlandi (AI)"
+          };
+        }
+        return entry;
+      });
+
+      setEntries(updatedEntries);
+      setIsTranslating(false);
+      toast({
+        title: "Tarjima yakunlandi",
+        description: "Barcha so'zlar AI yordamida tarjima qilindi.",
+        variant: "default",
+      });
+    }, 2500);
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
@@ -129,7 +176,7 @@ export default function AdminPage() {
             <h1 className="text-3xl font-bold font-serif text-primary">Tahrirlovchi Paneli</h1>
             <p className="text-muted-foreground">Lug'at bazasini boshqarish va yangi so'zlar qo'shish</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <input 
               type="file" 
               ref={fileInputRef} 
@@ -141,6 +188,17 @@ export default function AdminPage() {
               <Upload className="h-4 w-4" />
               Excel Yuklash
             </Button>
+            
+            <Button 
+              variant="secondary" 
+              onClick={handleAITranslate} 
+              disabled={isTranslating}
+              className="gap-2 bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-200"
+            >
+              {isTranslating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Wand2 className="h-4 w-4" />}
+              AI Tarjima
+            </Button>
+
             <Button onClick={() => {
               setEditingEntry({
                 id: Math.random().toString(),
@@ -162,9 +220,8 @@ export default function AdminPage() {
         <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6 flex gap-3 items-start">
           <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
           <div className="text-sm text-blue-800 dark:text-blue-300">
-            <p className="font-semibold mb-1">QOMUS Excel Formati:</p>
-            <p>Tizim Excel fayldagi <b>word</b> ustunini arabcha so'z sifatida, <b>meaning</b> ustunini esa arabcha izoh sifatida qabul qiladi.</p>
-            <p className="mt-1">Siz importdan so'ng <b>O'zbekcha</b> tarjimani kiritishingiz kerak bo'ladi.</p>
+             <p className="font-semibold mb-1">AI Yordamchi:</p>
+             <p>"AI Tarjima" tugmasi orqali yuklangan so'zlarning arabcha izohini tahlil qilib, avtomatik o'zbekcha tarjima yaratishingiz mumkin.</p>
           </div>
         </div>
 
@@ -277,7 +334,18 @@ export default function AdminPage() {
 
                 {/* Uzbek Translation (Target) */}
                 <div className="space-y-2">
-                   <label htmlFor="uzbek" className="text-sm font-medium text-primary">O'zbekcha Tarjimasi</label>
+                   <label htmlFor="uzbek" className="text-sm font-medium text-primary flex items-center gap-2">
+                     O'zbekcha Tarjimasi
+                     <Button type="button" variant="ghost" size="sm" className="h-6 text-xs text-amber-600 hover:text-amber-700 hover:bg-amber-100" onClick={() => {
+                        // Mock single item translation
+                        const mockTrans = "AI: Avtomatik tarjima..."; 
+                        setEditingEntry({...editingEntry, uzbek: mockTrans});
+                        toast({description: "AI taklifi kiritildi"});
+                     }}>
+                       <Wand2 className="h-3 w-3 mr-1" />
+                       AI dan so'rash
+                     </Button>
+                   </label>
                    <Textarea 
                       id="uzbek" 
                       value={editingEntry.uzbek}
