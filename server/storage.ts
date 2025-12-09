@@ -68,10 +68,10 @@ export class DatabaseStorage implements IStorage {
     
     if (conditions.length > 0) {
       const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
-      return await db.select().from(dictionaryEntries).where(whereClause).orderBy(dictionaryEntries.createdAt);
+      return await db.select().from(dictionaryEntries).where(whereClause).limit(100);
     }
     
-    return await db.select().from(dictionaryEntries).orderBy(dictionaryEntries.createdAt);
+    return await db.select().from(dictionaryEntries).limit(100);
   }
 
   private stripArabicDiacritics(text: string): string {
