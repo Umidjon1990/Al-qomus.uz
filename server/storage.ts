@@ -59,13 +59,18 @@ export class DatabaseStorage implements IStorage {
   async getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
     const conditions: any[] = [];
     
+    // Normalize search term by stripping Arabic diacritics
+    const normalizedSearch = search ? this.stripArabicDiacritics(search) : '';
+    
     if (search) {
-      const normalizedSearch = this.stripArabicDiacritics(search);
       conditions.push(
         or(
+          // Search in Arabic field (with diacritics stripped from both sides)
           sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`,
-          ilike(dictionaryEntries.uzbek, `%${search}%`),
-          ilike(dictionaryEntries.transliteration, `%${search}%`)
+          // Search in Uzbek field (use normalized search for consistency)
+          ilike(dictionaryEntries.uzbek, `%${normalizedSearch}%`),
+          // Search in transliteration field
+          ilike(dictionaryEntries.transliteration, `%${normalizedSearch}%`)
         )
       );
     }
@@ -78,7 +83,6 @@ export class DatabaseStorage implements IStorage {
       const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
       
       if (search) {
-        const normalizedSearch = this.stripArabicDiacritics(search);
         return await db.select().from(dictionaryEntries)
           .where(whereClause)
           .orderBy(
