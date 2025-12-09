@@ -178,6 +178,61 @@ export async function registerRoutes(
     }
   });
 
+  // Continuous batch translation - runs multiple batches
+  app.post("/api/dictionary/continuous-translate", async (req, res) => {
+    try {
+      const maxBatches = req.body.maxBatches || 50;
+      const batchSize = req.body.batchSize || 50;
+      let totalTranslated = 0;
+      let batchCount = 0;
+      
+      console.log(`Starting continuous translation: max ${maxBatches} batches of ${batchSize} words`);
+      
+      for (let i = 0; i < maxBatches; i++) {
+        const untranslated = await storage.getUntranslatedEntries();
+        
+        if (untranslated.length === 0) {
+          console.log("All words translated!");
+          break;
+        }
+        
+        const limitedEntries = untranslated.slice(0, batchSize);
+        const entriesToTranslate = limitedEntries.map(entry => ({
+          id: entry.id,
+          arabic: entry.arabic,
+          arabicDefinition: entry.arabicDefinition || undefined,
+        }));
+        
+        const translations = await batchTranslate(entriesToTranslate);
+        
+        const updatePromises = translations.map(({ id, translation }) => 
+          storage.updateEntryTranslation(id, translation)
+        );
+        await Promise.all(updatePromises);
+        
+        const successCount = translations.filter(t => t.translation && t.translation.length > 0).length;
+        totalTranslated += successCount;
+        batchCount++;
+        
+        console.log(`Batch ${batchCount}/${maxBatches}: ${successCount} translated, ${untranslated.length - batchSize} remaining`);
+        
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+      
+      const remaining = await storage.getUntranslatedEntries();
+      
+      res.json({
+        message: "Uzluksiz tarjima yakunlandi",
+        batchesCompleted: batchCount,
+        totalTranslated,
+        remaining: remaining.length
+      });
+    } catch (error) {
+      console.error("Error in continuous translation:", error);
+      res.status(500).json({ error: "Uzluksiz tarjima xatolik berdi" });
+    }
+  });
+
   // AI Translation - Single entry
   app.post("/api/dictionary/:id/translate", async (req, res) => {
     try {

@@ -74,6 +74,42 @@ function extractWordMetadata(arabicDefinition: string): WordMetadata {
   };
 }
 
+function validateTranslationQuality(translation: string): { valid: boolean; issue?: string } {
+  if (!translation || translation.trim().length === 0) {
+    return { valid: false, issue: 'empty' };
+  }
+  
+  if (translation === '[taqiqlangan]') {
+    return { valid: true };
+  }
+  
+  const cyrillicPattern = /[\u0400-\u04FF]/;
+  if (cyrillicPattern.test(translation)) {
+    return { valid: false, issue: 'cyrillic' };
+  }
+  
+  const arabicPattern = /[\u0600-\u06FF\u0750-\u077F]/;
+  if (arabicPattern.test(translation)) {
+    return { valid: false, issue: 'arabic' };
+  }
+  
+  const validUzbekPattern = /^[a-zA-Z0-9\s\-,.'"\(\)\[\]\/;:!?']+$/;
+  const cleanedTranslation = translation.replace(/o'|g'|O'|G'/g, 'X');
+  if (!validUzbekPattern.test(cleanedTranslation)) {
+    const invalidChars = cleanedTranslation.match(/[^a-zA-Z0-9\s\-,.'"\(\)\[\]\/;:!?']/g);
+    if (invalidChars && invalidChars.length > 0) {
+      return { valid: false, issue: `invalid_chars: ${Array.from(new Set(invalidChars)).join('')}` };
+    }
+  }
+  
+  if (translation.toLowerCase().includes('uzbek translation') || 
+      translation.toLowerCase().includes('tarjima:')) {
+    return { valid: false, issue: 'prefix' };
+  }
+  
+  return { valid: true };
+}
+
 function buildProfessionalPrompt(metadata: WordMetadata): string {
   let grammarInstructions = '';
   
@@ -208,14 +244,31 @@ O'ZBEKCHA TARJIMA:`;
       .replace(/^[-•]\s*/, '')
       .trim();
     
+    const validation = validateTranslationQuality(result);
+    if (!validation.valid) {
+      console.log(`Quality issue for "${arabicWord}": ${validation.issue} - "${result}"`);
+      if (validation.issue === 'empty') {
+        return "";
+      }
+      result = result
+        .replace(/[\u0400-\u04FF]/g, '')
+        .replace(/[\u0600-\u06FF\u0750-\u077F]/g, '')
+        .trim();
+      
+      if (!result) {
+        return "";
+      }
+    }
+    
     return result;
   } catch (error: any) {
     console.error("Translation error:", error);
     const errorCode = error?.code || error?.error?.code || '';
-    if (errorCode === 'content_filter' || error?.message?.includes('content management policy')) {
+    const errorMessage = error?.message || '';
+    if (errorCode === 'content_filter' || errorMessage.includes('content management policy') || errorMessage.includes('content_filter')) {
       return "[taqiqlangan]";
     }
-    throw new Error("AI tarjima xatolik berdi");
+    return "";
   }
 }
 
