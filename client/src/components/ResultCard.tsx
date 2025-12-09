@@ -52,12 +52,15 @@ export function ResultCard({ entry, index }: ResultCardProps) {
                 <CardTitle className="text-4xl font-arabic text-primary leading-relaxed" dir="rtl">
                   {entry.arabic}
                 </CardTitle>
-                {entry.root && (
-                  <span className="text-sm font-mono text-muted-foreground bg-background px-2 py-0.5 rounded border">
+              </div>
+              {entry.root && (
+                <div className="flex items-center gap-2 mt-2 bg-primary/5 px-3 py-1.5 rounded-lg border border-primary/20 w-fit">
+                  <span className="text-xs text-muted-foreground font-medium">So'z o'zagi:</span>
+                  <span className="text-xl font-arabic text-primary font-semibold" dir="rtl">
                     {entry.root}
                   </span>
-                )}
-              </div>
+                </div>
+              )}
               <CardDescription className="text-lg font-medium text-foreground/80 flex items-center gap-2">
                 {entry.transliteration && <span>{entry.transliteration}</span>}
                 <span className="text-muted-foreground text-sm font-normal">• {entry.type}</span>
