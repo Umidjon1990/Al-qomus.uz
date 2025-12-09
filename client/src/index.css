@@ -30,9 +30,9 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
-  --font-arabic: 'Amiri', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-arabic: 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 :root {
