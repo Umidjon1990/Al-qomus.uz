@@ -63,13 +63,22 @@ export function ResultCard({ entry, index }: ResultCardProps) {
                 <span className="text-muted-foreground text-sm font-normal">• {entry.type}</span>
               </CardDescription>
             </div>
-            <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-              <Button variant="ghost" size="icon" onClick={copyToClipboard} title="Nusxalash">
-                <Copy className="h-4 w-4 text-muted-foreground" />
-              </Button>
-              <Button variant="ghost" size="icon" title="Ulashish">
-                <Share2 className="h-4 w-4 text-muted-foreground" />
-              </Button>
+            <div className="flex items-center gap-2">
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                entry.dictionarySource === 'Roid' 
+                  ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+                  : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+              }`} data-testid={`badge-source-${entry.id}`}>
+                {entry.dictionarySource}
+              </span>
+              <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Button variant="ghost" size="icon" onClick={copyToClipboard} title="Nusxalash">
+                  <Copy className="h-4 w-4 text-muted-foreground" />
+                </Button>
+                <Button variant="ghost" size="icon" title="Ulashish">
+                  <Share2 className="h-4 w-4 text-muted-foreground" />
+                </Button>
+              </div>
             </div>
           </div>
         </CardHeader>
