@@ -68,6 +68,22 @@ export class DatabaseStorage implements IStorage {
     
     if (conditions.length > 0) {
       const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
+      
+      if (search) {
+        const normalizedSearch = this.stripArabicDiacritics(search);
+        return await db.select().from(dictionaryEntries)
+          .where(whereClause)
+          .orderBy(
+            sql`CASE 
+              WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch + '%'} THEN 0
+              WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'} THEN 1
+              ELSE 2
+            END`,
+            sql`length(${dictionaryEntries.arabic})`
+          )
+          .limit(100);
+      }
+      
       return await db.select().from(dictionaryEntries).where(whereClause).limit(100);
     }
     
