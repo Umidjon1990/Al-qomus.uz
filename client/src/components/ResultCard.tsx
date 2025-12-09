@@ -5,6 +5,7 @@ import { DictionaryEntry, getRelatedWords } from "@/lib/api";
 import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart } from "lucide-react";
 import { isFavorite, toggleFavorite } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
+import { DefinitionFormatter } from "./DefinitionFormatter";
 import {
   Card,
   CardContent,
@@ -121,14 +122,12 @@ export function ResultCard({ entry, index }: ResultCardProps) {
           </div>
 
           {entry.arabicDefinition && (
-            <div className="mb-6 bg-amber-50 dark:bg-amber-900/10 p-3 rounded-md border border-amber-100 dark:border-amber-800/30">
-              <h4 className="text-xs font-semibold text-amber-700 dark:text-amber-500 uppercase tracking-wider mb-1 flex items-center gap-1">
+            <div className="mb-6 bg-amber-50 dark:bg-amber-900/10 p-4 rounded-lg border border-amber-200 dark:border-amber-800/30">
+              <h4 className="text-xs font-semibold text-amber-700 dark:text-amber-500 uppercase tracking-wider mb-3 flex items-center gap-1">
                 <Info className="h-3 w-3" />
                 Arabcha izohi
               </h4>
-              <p className="font-arabic text-right text-lg leading-relaxed text-foreground/90" dir="rtl">
-                {entry.arabicDefinition}
-              </p>
+              <DefinitionFormatter definition={entry.arabicDefinition} />
             </div>
           )}
 
