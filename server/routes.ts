@@ -44,6 +44,10 @@ export async function registerRoutes(
       const search = req.query.search as string | undefined;
       const sourcesParam = req.query.sources as string | undefined;
       const sources = sourcesParam ? sourcesParam.split(',') : undefined;
+      
+      // Debug logging
+      console.log(`[Search] query="${search}", sources=${JSON.stringify(sources)}`);
+      
       const entries = await storage.getDictionaryEntries(search, sources);
       res.json(entries);
     } catch (error) {
