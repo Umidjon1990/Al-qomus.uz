@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries } from "@/lib/api";
-import { SearchX, Loader2 } from "lucide-react";
+import { SearchX, Loader2, Search } from "lucide-react";
 
 export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +21,7 @@ export default function DictionaryPage() {
   const { data: entries = [], isLoading } = useQuery({
     queryKey: ['dictionary', debouncedSearch],
     queryFn: () => getDictionaryEntries(debouncedSearch || undefined),
+    enabled: debouncedSearch.length > 0,
   });
 
   return (
@@ -34,7 +35,16 @@ export default function DictionaryPage() {
           </div>
         )}
         
-        {isLoading ? (
+        {!debouncedSearch ? (
+          <div className="text-center py-20 bg-card rounded-xl border border-dashed max-w-2xl mx-auto">
+            <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Search className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="text-lg font-medium text-foreground">So'z izlang</h3>
+            <p className="text-muted-foreground">Arabcha yoki o'zbekcha so'z yozing</p>
+            <p className="text-sm text-muted-foreground/70 mt-2">32,292 ta so'z bazasidan qidiring</p>
+          </div>
+        ) : isLoading ? (
           <div className="text-center py-20">
             <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
             <p className="text-muted-foreground mt-4">Yuklanmoqda...</p>
