@@ -41,7 +41,8 @@ export async function registerRoutes(
   // Get all dictionary entries (with optional search and source filter)
   app.get("/api/dictionary", async (req, res) => {
     try {
-      const search = req.query.search as string | undefined;
+      const rawSearch = req.query.search as string | undefined;
+      const search = rawSearch?.trim(); // Bo'sh joylarni olib tashlash
       const sourcesParam = req.query.sources as string | undefined;
       const sources = sourcesParam ? sourcesParam.split(',') : undefined;
       
