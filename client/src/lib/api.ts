@@ -1,13 +1,18 @@
 export interface DictionaryEntry {
   id: number;
   arabic: string;
+  arabicVocalized?: string | null;
   arabicDefinition?: string | null;
+  arabicDefinitionVocalized?: string | null;
   uzbek?: string | null;
   transliteration?: string | null;
   type: string;
   root?: string | null;
   examplesJson?: string | null;
+  meaningsJson?: string | null;
+  wordType?: string | null;
   dictionarySource: string;
+  processingStatus?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }

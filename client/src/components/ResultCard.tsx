@@ -56,6 +56,9 @@ export function ResultCard({ entry, index }: ResultCardProps) {
 
   // Parse examples from JSON
   const examples = entry.examplesJson ? JSON.parse(entry.examplesJson) : [];
+  
+  // Parse structured meanings from JSON (for Ghoniy with AI translations)
+  const structuredMeanings = entry.meaningsJson ? JSON.parse(entry.meaningsJson) : [];
 
   // Extract word type from definition if it's in parentheses at the beginning (for Ghoniy)
   const extractWordTypeFromDefinition = (definition: string | null | undefined) => {
@@ -149,15 +152,79 @@ export function ResultCard({ entry, index }: ResultCardProps) {
           </div>
         </CardHeader>
         <CardContent className="pt-6">
-          <div className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/20 rounded-lg border border-green-200 dark:border-green-800/50">
-            <div className="flex items-center gap-2 mb-1">
-              <Globe className="h-4 w-4 text-green-600 dark:text-green-400" />
-              <span className="text-xs font-semibold text-green-600 dark:text-green-400 uppercase tracking-wider">O'zbekcha tarjima</span>
+          {/* Structured Meanings Display - for Ghoniy with AI translations */}
+          {structuredMeanings.length > 0 ? (
+            <div className="mb-6 space-y-3">
+              <div className="flex items-center gap-2 mb-3">
+                <Globe className="h-4 w-4 text-green-600 dark:text-green-400" />
+                <span className="text-xs font-semibold text-green-600 dark:text-green-400 uppercase tracking-wider">O'zbekcha tarjima ({structuredMeanings.length} ma'no)</span>
+              </div>
+              {structuredMeanings.map((meaning: any, idx: number) => (
+                <div 
+                  key={idx}
+                  className={`p-4 rounded-lg border ${
+                    idx % 3 === 0 
+                      ? 'bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/20 border-green-200 dark:border-green-800/50'
+                      : idx % 3 === 1
+                        ? 'bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-950/30 dark:to-cyan-950/20 border-teal-200 dark:border-teal-800/50'
+                        : 'bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800/50'
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold shrink-0 ${
+                      idx % 3 === 0 
+                        ? 'bg-green-600 text-white'
+                        : idx % 3 === 1
+                          ? 'bg-teal-600 text-white'
+                          : 'bg-blue-600 text-white'
+                    }`}>
+                      {meaning.index || idx + 1}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className={`text-lg font-bold mb-1 ${
+                        idx % 3 === 0 
+                          ? 'text-green-700 dark:text-green-300'
+                          : idx % 3 === 1
+                            ? 'text-teal-700 dark:text-teal-300'
+                            : 'text-blue-700 dark:text-blue-300'
+                      }`}>
+                        {meaning.uzbekMeaning || meaning.uzbek_meaning}
+                      </h3>
+                      
+                      {(meaning.arabicExample || meaning.arabic_example) && (
+                        <div className="mt-2 pt-2 border-t border-current/10">
+                          <p className="text-sm font-arabic text-foreground/80" dir="rtl">
+                            {meaning.arabicExample || meaning.arabic_example}
+                          </p>
+                          {(meaning.uzbekExample || meaning.uzbek_example) && (
+                            <p className="text-sm text-muted-foreground italic mt-1">
+                              ↳ {meaning.uzbekExample || meaning.uzbek_example}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                      
+                      {meaning.confidence && meaning.confidence < 0.8 && (
+                        <span className="inline-flex items-center px-2 py-0.5 mt-2 text-xs rounded bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                          Taxminiy tarjima
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <h3 className="text-xl font-bold text-green-700 dark:text-green-300">
-              {entry.uzbek || <span className="text-muted-foreground italic text-sm font-normal">Tarjima qilinmagan</span>}
-            </h3>
-          </div>
+          ) : (
+            <div className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/20 rounded-lg border border-green-200 dark:border-green-800/50">
+              <div className="flex items-center gap-2 mb-1">
+                <Globe className="h-4 w-4 text-green-600 dark:text-green-400" />
+                <span className="text-xs font-semibold text-green-600 dark:text-green-400 uppercase tracking-wider">O'zbekcha tarjima</span>
+              </div>
+              <h3 className="text-xl font-bold text-green-700 dark:text-green-300">
+                {entry.uzbek || <span className="text-muted-foreground italic text-sm font-normal">Tarjima qilinmagan</span>}
+              </h3>
+            </div>
+          )}
 
           {entry.arabicDefinition && (
             <div className="mb-6 bg-amber-50 dark:bg-amber-900/10 p-4 rounded-lg border border-amber-200 dark:border-amber-800/30">
