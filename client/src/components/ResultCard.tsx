@@ -57,6 +57,28 @@ export function ResultCard({ entry, index }: ResultCardProps) {
   // Parse examples from JSON
   const examples = entry.examplesJson ? JSON.parse(entry.examplesJson) : [];
 
+  // Extract word type from definition if it's in parentheses at the beginning (for Ghoniy)
+  const extractWordTypeFromDefinition = (definition: string | null | undefined) => {
+    if (!definition) return { wordType: null, cleanDefinition: definition };
+    
+    // Match Arabic text in parentheses at the start: (مصدر تَزَلَّفَ) or similar
+    const match = definition.match(/^\s*\(([^)]+)\)\s*[.|]?\s*/);
+    if (match) {
+      return {
+        wordType: match[1].trim(),
+        cleanDefinition: definition.slice(match[0].length).trim()
+      };
+    }
+    return { wordType: null, cleanDefinition: definition };
+  };
+
+  const { wordType: extractedWordType, cleanDefinition } = extractWordTypeFromDefinition(entry.arabicDefinition);
+  
+  // Use extracted word type if available and entry type is just the root
+  const displayType = entry.type && entry.type !== 'aniqlanmagan' && entry.type.length > 3 
+    ? entry.type 
+    : extractedWordType;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -74,18 +96,20 @@ export function ResultCard({ entry, index }: ResultCardProps) {
               </div>
               
               <div className="flex flex-wrap items-center gap-2 mt-2">
-                {entry.root && (
+                {/* Show root - either from root field or from type field (for Ghoniy) */}
+                {(entry.root || (entry.dictionarySource === 'Ghoniy' && entry.type && entry.type.length <= 4)) && (
                   <div className="flex items-center gap-1.5 bg-gradient-to-r from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-900/20 px-3 py-1.5 rounded-full border border-purple-300 dark:border-purple-700">
                     <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">ildiz:</span>
                     <span className="text-lg font-arabic text-purple-700 dark:text-purple-300 font-bold" dir="rtl">
-                      {entry.root}
+                      {entry.root || entry.type}
                     </span>
                   </div>
                 )}
                 
-                {entry.type && entry.type !== 'aniqlanmagan' && (
-                  <span className="px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/40 dark:to-amber-900/30 text-orange-700 dark:text-orange-400 border border-orange-300 dark:border-orange-700">
-                    {entry.type}
+                {/* Show word type - extracted from definition for Ghoniy or from type field for others */}
+                {displayType && (
+                  <span className="px-3 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/40 dark:to-amber-900/30 text-orange-700 dark:text-orange-400 border border-orange-300 dark:border-orange-700 font-arabic" dir="rtl">
+                    {displayType}
                   </span>
                 )}
               </div>
@@ -141,7 +165,7 @@ export function ResultCard({ entry, index }: ResultCardProps) {
                 <Info className="h-3 w-3" />
                 Arabcha izohi
               </h4>
-              <DefinitionFormatter definition={entry.arabicDefinition} />
+              <DefinitionFormatter definition={cleanDefinition || entry.arabicDefinition} />
             </div>
           )}
 
