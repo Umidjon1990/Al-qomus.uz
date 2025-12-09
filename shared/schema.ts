@@ -22,13 +22,16 @@ export type User = typeof users.$inferSelect;
 export const dictionaryEntries = pgTable("dictionary_entries", {
   id: serial("id").primaryKey(),
   arabic: text("arabic").notNull(),
+  arabicVocalized: text("arabic_vocalized"), // Harakatli arabcha so'z
   arabicDefinition: text("arabic_definition"),
+  arabicDefinitionVocalized: text("arabic_definition_vocalized"), // Harakatli arabcha ta'rif
   uzbek: text("uzbek"),
   transliteration: text("transliteration"),
   type: text("type").notNull().default("aniqlanmagan"),
   root: text("root"),
   examplesJson: text("examples_json"), // Store JSON string of examples
   dictionarySource: text("dictionary_source").notNull().default("Muasir"), // Lug'at nomi: Muasir, Roid, va boshqalar
+  processingStatus: text("processing_status").default("pending"), // pending, processing, completed, failed
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

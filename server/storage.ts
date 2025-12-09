@@ -28,6 +28,10 @@ export interface IStorage {
   batchCreateDictionaryEntries(entries: InsertDictionaryEntry[]): Promise<DictionaryEntry[]>;
   getUntranslatedEntries(): Promise<DictionaryEntry[]>;
   updateEntryTranslation(id: number, uzbek: string): Promise<DictionaryEntry | undefined>;
+  
+  // Roid processing methods
+  getRoidEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
+  updateRoidProcessedEntry(id: number, arabicVocalized: string, arabicDefinitionVocalized: string, uzbek: string): Promise<DictionaryEntry | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -200,6 +204,41 @@ export class DatabaseStorage implements IStorage {
   async updateEntryTranslation(id: number, uzbek: string): Promise<DictionaryEntry | undefined> {
     const result = await db.update(dictionaryEntries)
       .set({ uzbek, updatedAt: new Date() })
+      .where(eq(dictionaryEntries.id, id))
+      .returning();
+    return result[0];
+  }
+
+  // Roid processing methods
+  async getRoidEntriesForProcessing(limit: number): Promise<DictionaryEntry[]> {
+    return await db.select().from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.dictionarySource, 'Roid'),
+          or(
+            eq(dictionaryEntries.uzbek, ''),
+            sql`${dictionaryEntries.uzbek} IS NULL`
+          )
+        )
+      )
+      .orderBy(dictionaryEntries.id)
+      .limit(limit);
+  }
+
+  async updateRoidProcessedEntry(
+    id: number,
+    arabicVocalized: string,
+    arabicDefinitionVocalized: string,
+    uzbek: string
+  ): Promise<DictionaryEntry | undefined> {
+    const result = await db.update(dictionaryEntries)
+      .set({
+        arabicVocalized,
+        arabicDefinitionVocalized,
+        uzbek,
+        processingStatus: 'completed',
+        updatedAt: new Date(),
+      })
       .where(eq(dictionaryEntries.id, id))
       .returning();
     return result[0];

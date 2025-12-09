@@ -303,3 +303,178 @@ export async function batchTranslate(
 
   return results;
 }
+
+// ==================== HARAKAT (VOCALIZATION) FUNCTIONS ====================
+
+interface VocalizationResult {
+  wordVocalized: string;
+  definitionVocalized: string;
+}
+
+export async function vocalizeArabicText(
+  arabicWord: string,
+  arabicDefinition?: string
+): Promise<VocalizationResult> {
+  try {
+    const systemPrompt = `Sen professional arab tili mutaxassisisan. Vazifang arabcha matnlarga to'g'ri harakat (tashkil) qo'yish.
+
+QOIDALAR:
+1. Har bir harfga to'g'ri harakat qo'y: fatha (◌َ), kasra (◌ِ), damma (◌ُ), sukun (◌ْ), shadda (◌ّ), tanvin
+2. Kontekstga qarab grammatik jihatdan to'g'ri harakat qo'y
+3. Qur'on oyatlari va diniy atamalar uchun an'anaviy harakatni saqlа
+4. Harflarni o'zgartirma, faqat harakat qo'sh
+5. Tinish belgilarini saqlа
+
+JAVOB FORMATI - FAQAT JSON:
+{
+  "word_vocalized": "harakatli so'z",
+  "definition_vocalized": "harakatli ta'rif"
+}`;
+
+    const userPrompt = arabicDefinition
+      ? `SO'Z: ${arabicWord}
+TA'RIF: ${arabicDefinition}
+
+Ikkalasiga ham harakat qo'y.`
+      : `SO'Z: ${arabicWord}
+
+Faqat so'zga harakat qo'y.`;
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0,
+      max_tokens: 1000,
+      response_format: { type: "json_object" },
+    });
+
+    const content = completion.choices[0]?.message?.content || '{}';
+    const parsed = JSON.parse(content);
+    
+    return {
+      wordVocalized: parsed.word_vocalized || arabicWord,
+      definitionVocalized: parsed.definition_vocalized || arabicDefinition || '',
+    };
+  } catch (error) {
+    console.error("Vocalization error:", error);
+    return {
+      wordVocalized: arabicWord,
+      definitionVocalized: arabicDefinition || '',
+    };
+  }
+}
+
+interface FullProcessingResult {
+  id: number;
+  arabicVocalized: string;
+  arabicDefinitionVocalized: string;
+  uzbekTranslation: string;
+  processingTime: number;
+  tokensUsed: number;
+  success: boolean;
+  error?: string;
+}
+
+export async function processRoidEntry(
+  entry: { id: number; arabic: string; arabicDefinition?: string }
+): Promise<FullProcessingResult> {
+  const startTime = Date.now();
+  let tokensUsed = 0;
+  
+  try {
+    // 1-bosqich: Harakat qo'yish
+    const vocalizationResult = await vocalizeArabicText(entry.arabic, entry.arabicDefinition);
+    tokensUsed += 500; // Taxminiy token soni
+    
+    // 2-bosqich: O'zbekchaga tarjima (harakatli matn asosida)
+    const uzbekTranslation = await translateArabicToUzbek(
+      vocalizationResult.wordVocalized,
+      vocalizationResult.definitionVocalized
+    );
+    tokensUsed += 300;
+    
+    return {
+      id: entry.id,
+      arabicVocalized: vocalizationResult.wordVocalized,
+      arabicDefinitionVocalized: vocalizationResult.definitionVocalized,
+      uzbekTranslation,
+      processingTime: Date.now() - startTime,
+      tokensUsed,
+      success: true,
+    };
+  } catch (error: any) {
+    return {
+      id: entry.id,
+      arabicVocalized: entry.arabic,
+      arabicDefinitionVocalized: entry.arabicDefinition || '',
+      uzbekTranslation: '',
+      processingTime: Date.now() - startTime,
+      tokensUsed,
+      success: false,
+      error: error?.message || 'Unknown error',
+    };
+  }
+}
+
+export async function batchProcessRoidEntries(
+  entries: Array<{ id: number; arabic: string; arabicDefinition?: string }>,
+  onProgress?: (current: number, total: number, result: FullProcessingResult) => void
+): Promise<{
+  results: FullProcessingResult[];
+  summary: {
+    total: number;
+    successful: number;
+    failed: number;
+    totalTime: number;
+    estimatedCost: number;
+    totalTokens: number;
+  };
+}> {
+  const results: FullProcessingResult[] = [];
+  const startTime = Date.now();
+  let totalTokens = 0;
+  
+  const batchSize = 3; // Bir vaqtda 3 ta so'z
+  
+  for (let i = 0; i < entries.length; i += batchSize) {
+    const batch = entries.slice(i, i + batchSize);
+    const batchPromises = batch.map(entry => processRoidEntry(entry));
+    const batchResults = await Promise.all(batchPromises);
+    
+    for (const result of batchResults) {
+      results.push(result);
+      totalTokens += result.tokensUsed;
+      
+      if (onProgress) {
+        onProgress(results.length, entries.length, result);
+      }
+    }
+    
+    // Rate limiting
+    if (i + batchSize < entries.length) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+  }
+  
+  const successful = results.filter(r => r.success).length;
+  const failed = results.filter(r => !r.success).length;
+  
+  // Narx hisoblash: gpt-4o ~ $5/1M input, $15/1M output tokens
+  // O'rtacha 800 token har bir so'z uchun (input + output)
+  const estimatedCost = (totalTokens / 1000000) * 10; // O'rtacha $10/1M
+  
+  return {
+    results,
+    summary: {
+      total: entries.length,
+      successful,
+      failed,
+      totalTime: Date.now() - startTime,
+      estimatedCost,
+      totalTokens,
+    },
+  };
+}

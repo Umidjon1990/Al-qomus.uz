@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertDictionaryEntrySchema, updateDictionaryEntrySchema } from "@shared/schema";
-import { translateArabicToUzbek, batchTranslate } from "./ai";
+import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries } from "./ai";
 import * as XLSX from 'xlsx';
 
 export async function registerRoutes(
@@ -292,6 +292,69 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error translating entry:", error);
       res.status(500).json({ error: "Tarjima xatolik berdi" });
+    }
+  });
+
+  // Test: Process Roid entries with vocalization and translation
+  app.post("/api/dictionary/process-roid-test", async (req, res) => {
+    try {
+      const limit = parseInt(req.query.limit as string) || 100;
+      
+      // Get Roid entries that don't have uzbek translation yet
+      const allEntries = await storage.getRoidEntriesForProcessing(limit);
+      
+      if (allEntries.length === 0) {
+        return res.json({
+          message: "Qayta ishlash uchun Roid so'zlari topilmadi",
+          processed: 0,
+        });
+      }
+      
+      console.log(`Processing ${allEntries.length} Roid entries...`);
+      
+      const { results, summary } = await batchProcessRoidEntries(
+        allEntries.map(e => ({
+          id: e.id,
+          arabic: e.arabic,
+          arabicDefinition: e.arabicDefinition || undefined,
+        })),
+        (current, total, result) => {
+          console.log(`[${current}/${total}] ${result.success ? '✓' : '✗'} ${result.arabicVocalized} → ${result.uzbekTranslation}`);
+        }
+      );
+      
+      // Save results to database
+      let savedCount = 0;
+      for (const result of results) {
+        if (result.success) {
+          await storage.updateRoidProcessedEntry(
+            result.id,
+            result.arabicVocalized,
+            result.arabicDefinitionVocalized,
+            result.uzbekTranslation
+          );
+          savedCount++;
+        }
+      }
+      
+      res.json({
+        message: "Roid so'zlari qayta ishlandi",
+        summary: {
+          ...summary,
+          saved: savedCount,
+          totalTimeFormatted: `${(summary.totalTime / 1000).toFixed(1)} soniya`,
+          estimatedCostFormatted: `$${summary.estimatedCost.toFixed(4)}`,
+        },
+        sampleResults: results.slice(0, 10).map(r => ({
+          id: r.id,
+          arabic: r.arabicVocalized,
+          uzbek: r.uzbekTranslation,
+          success: r.success,
+        })),
+      });
+    } catch (error) {
+      console.error("Error processing Roid entries:", error);
+      res.status(500).json({ error: "Roid so'zlarini qayta ishlashda xatolik" });
     }
   });
 
