@@ -89,3 +89,9 @@ export async function getStats(): Promise<DictionaryStats> {
   if (!response.ok) throw new Error('Failed to fetch stats');
   return response.json();
 }
+
+export async function getRelatedWords(id: number): Promise<DictionaryEntry[]> {
+  const response = await fetch(`/api/dictionary/related/${id}`);
+  if (!response.ok) throw new Error('Failed to fetch related words');
+  return response.json();
+}

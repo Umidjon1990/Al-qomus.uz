@@ -1,7 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { DictionaryEntry } from "@/lib/api";
-import { Book, Globe, Copy, Share2, Info } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { DictionaryEntry, getRelatedWords } from "@/lib/api";
+import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,6 +19,14 @@ interface ResultCardProps {
 }
 
 export function ResultCard({ entry, index }: ResultCardProps) {
+  const [showRelated, setShowRelated] = useState(false);
+  
+  const { data: relatedWords = [], isLoading: isLoadingRelated } = useQuery({
+    queryKey: ['related', entry.id],
+    queryFn: () => getRelatedWords(entry.id),
+    enabled: showRelated,
+  });
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(`${entry.arabic} - ${entry.uzbek}`);
     toast({
@@ -100,6 +109,55 @@ export function ResultCard({ entry, index }: ResultCardProps) {
               </div>
             </div>
           )}
+
+          <div className="mt-4 pt-4 border-t border-border/50">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowRelated(!showRelated)}
+              className="w-full justify-between text-muted-foreground hover:text-foreground"
+              data-testid={`button-related-${entry.id}`}
+            >
+              <span className="flex items-center gap-2">
+                <Link2 className="h-4 w-4" />
+                O'xshash so'zlar
+              </span>
+              {showRelated ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
+            
+            <AnimatePresence>
+              {showRelated && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-3 space-y-2">
+                    {isLoadingRelated ? (
+                      <p className="text-sm text-muted-foreground text-center py-2">Yuklanmoqda...</p>
+                    ) : relatedWords.length > 0 ? (
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        {relatedWords.slice(0, 12).map((related) => (
+                          <div
+                            key={related.id}
+                            className="p-2 bg-muted/50 rounded-md border border-border/50 hover:border-primary/30 transition-colors cursor-pointer"
+                            data-testid={`related-word-${related.id}`}
+                          >
+                            <p className="font-arabic text-lg text-primary" dir="rtl">{related.arabic}</p>
+                            <p className="text-xs text-muted-foreground truncate">{related.uzbek || "—"}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground text-center py-2">O'xshash so'zlar topilmadi</p>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </CardContent>
       </Card>
     </motion.div>

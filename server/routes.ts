@@ -39,6 +39,25 @@ export async function registerRoutes(
     }
   });
 
+  // Get related words by root
+  app.get("/api/dictionary/related/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Noto'g'ri ID" });
+      }
+      const entry = await storage.getDictionaryEntry(id);
+      if (!entry) {
+        return res.status(404).json({ error: "So'z topilmadi" });
+      }
+      const relatedWords = await storage.getRelatedWords(entry.arabic, id);
+      res.json(relatedWords);
+    } catch (error) {
+      console.error("Error fetching related words:", error);
+      res.status(500).json({ error: "O'xshash so'zlarni olishda xatolik" });
+    }
+  });
+
   // Get single dictionary entry
   app.get("/api/dictionary/:id", async (req, res) => {
     try {

@@ -20,6 +20,7 @@ export interface IStorage {
   // Dictionary methods
   getDictionaryEntries(search?: string): Promise<DictionaryEntry[]>;
   getDictionaryEntry(id: number): Promise<DictionaryEntry | undefined>;
+  getRelatedWords(arabicWord: string, excludeId?: number): Promise<DictionaryEntry[]>;
   createDictionaryEntry(entry: InsertDictionaryEntry): Promise<DictionaryEntry>;
   updateDictionaryEntry(id: number, entry: UpdateDictionaryEntry): Promise<DictionaryEntry | undefined>;
   deleteDictionaryEntry(id: number): Promise<boolean>;
@@ -67,6 +68,53 @@ export class DatabaseStorage implements IStorage {
   async getDictionaryEntry(id: number): Promise<DictionaryEntry | undefined> {
     const result = await db.select().from(dictionaryEntries).where(eq(dictionaryEntries.id, id)).limit(1);
     return result[0];
+  }
+
+  async getRelatedWords(arabicWord: string, excludeId?: number): Promise<DictionaryEntry[]> {
+    const rootLetters = this.extractArabicRoot(arabicWord);
+    if (rootLetters.length < 2) return [];
+    
+    const pattern = rootLetters.join('');
+    
+    let query = db.select().from(dictionaryEntries).where(
+      sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ~ ${pattern}`
+    );
+    
+    const results = await query.limit(30);
+    
+    if (excludeId) {
+      return results.filter(r => r.id !== excludeId).slice(0, 15);
+    }
+    return results.slice(0, 15);
+  }
+
+  private extractArabicRoot(word: string): string[] {
+    const stripped = word.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
+    
+    const prefixPatterns = ['استكـ', 'است', 'ان', 'مست', 'مت', 'م', 'ت', 'ا'];
+    const suffixPatterns = ['ات', 'ون', 'ين', 'ة', 'ان', 'ية'];
+    
+    let root = stripped;
+    
+    for (const prefix of prefixPatterns) {
+      if (root.startsWith(prefix) && root.length > prefix.length + 2) {
+        root = root.slice(prefix.length);
+        break;
+      }
+    }
+    
+    for (const suffix of suffixPatterns) {
+      if (root.endsWith(suffix) && root.length > suffix.length + 2) {
+        root = root.slice(0, -suffix.length);
+        break;
+      }
+    }
+    
+    const letters = root.split('');
+    if (letters.length >= 3) {
+      return letters.slice(0, 3);
+    }
+    return letters;
   }
 
   async createDictionaryEntry(entry: InsertDictionaryEntry): Promise<DictionaryEntry> {
