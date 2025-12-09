@@ -10,6 +10,7 @@ interface ParsedMeaning {
   mainText: string;
   examples: string[];
   isGrammar?: boolean;
+  grammarInfo?: string;
 }
 
 function parseArabicDefinition(definition: string): ParsedMeaning[] {
@@ -33,6 +34,7 @@ function parseArabicDefinition(definition: string): ParsedMeaning[] {
     let mainPart = trimmed;
     let number: string | undefined;
     let isGrammar = false;
+    let grammarInfo: string | undefined;
     
     if (numberMatch) {
       number = numberMatch[1];
@@ -40,6 +42,12 @@ function parseArabicDefinition(definition: string): ParsedMeaning[] {
     } else if (bulletMatch) {
       mainPart = trimmed.slice(bulletMatch[0].length);
       isGrammar = true;
+    }
+    
+    const grammarMatch = mainPart.match(/^\(([^)]+)\)\s*/);
+    if (grammarMatch) {
+      grammarInfo = grammarMatch[1];
+      mainPart = mainPart.slice(grammarMatch[0].length);
     }
     
     const exampleSplit = mainPart.split(/:-|:\s*-/);
@@ -65,6 +73,7 @@ function parseArabicDefinition(definition: string): ParsedMeaning[] {
         mainText,
         examples: examples.slice(0, 5),
         isGrammar,
+        grammarInfo,
       });
     }
   }
@@ -88,6 +97,15 @@ function parseArabicDefinition(definition: string): ParsedMeaning[] {
   return meanings;
 }
 
+const meaningColors = [
+  { border: "border-blue-500", bg: "bg-blue-500", text: "text-blue-600 dark:text-blue-400" },
+  { border: "border-purple-500", bg: "bg-purple-500", text: "text-purple-600 dark:text-purple-400" },
+  { border: "border-rose-500", bg: "bg-rose-500", text: "text-rose-600 dark:text-rose-400" },
+  { border: "border-orange-500", bg: "bg-orange-500", text: "text-orange-600 dark:text-orange-400" },
+  { border: "border-teal-500", bg: "bg-teal-500", text: "text-teal-600 dark:text-teal-400" },
+  { border: "border-indigo-500", bg: "bg-indigo-500", text: "text-indigo-600 dark:text-indigo-400" },
+];
+
 export function DefinitionFormatter({ definition, className = "" }: DefinitionFormatterProps) {
   const meanings = parseArabicDefinition(definition);
   
@@ -100,78 +118,57 @@ export function DefinitionFormatter({ definition, className = "" }: DefinitionFo
   }
   
   return (
-    <div className={`space-y-3 ${className}`} dir="rtl">
-      {meanings.map((meaning, idx) => (
-        <div key={idx} className="border-r-4 border-primary/40 pr-3 py-1">
-          <div className="flex items-start gap-2">
-            {meaning.number && (
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-sm font-bold flex-shrink-0">
-                {meaning.number}
-              </span>
-            )}
-            {meaning.isGrammar && (
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-secondary text-secondary-foreground text-sm font-bold flex-shrink-0">
-                •
-              </span>
-            )}
-            <p className="font-arabic text-lg leading-relaxed text-foreground font-medium flex-1">
-              {meaning.mainText}
-            </p>
-          </div>
-          
-          {meaning.examples.length > 0 && (
-            <div className="mt-2 mr-8 space-y-1">
-              {meaning.examples.map((example, exIdx) => (
-                <p 
-                  key={exIdx} 
-                  className="font-arabic text-base text-emerald-700 dark:text-emerald-400 leading-relaxed pr-2 border-r-2 border-emerald-400/50"
-                >
-                  {example}
+    <div className={`space-y-4 ${className}`} dir="rtl">
+      {meanings.map((meaning, idx) => {
+        const colorScheme = meaningColors[idx % meaningColors.length];
+        
+        return (
+          <div 
+            key={idx} 
+            className={`border-r-4 ${colorScheme.border} pr-4 py-2 bg-gradient-to-l from-white/50 to-transparent dark:from-gray-800/30 rounded-l-lg`}
+          >
+            <div className="flex items-start gap-3">
+              {meaning.number && (
+                <span className={`inline-flex items-center justify-center min-w-[28px] h-7 rounded-full ${colorScheme.bg} text-white text-sm font-bold shadow-md`}>
+                  {meaning.number}
+                </span>
+              )}
+              {meaning.isGrammar && !meaning.number && (
+                <span className="inline-flex items-center justify-center min-w-[28px] h-7 rounded-full bg-gray-500 text-white text-sm font-bold shadow-md">
+                  ●
+                </span>
+              )}
+              
+              <div className="flex-1">
+                {meaning.grammarInfo && (
+                  <span className="inline-block px-2 py-0.5 mb-1 text-xs font-medium bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400 rounded-full">
+                    {meaning.grammarInfo}
+                  </span>
+                )}
+                <p className={`font-arabic text-lg leading-relaxed ${colorScheme.text} font-semibold`}>
+                  {meaning.mainText}
                 </p>
-              ))}
+              </div>
             </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export function SimpleDefinitionFormatter({ definition, className = "" }: DefinitionFormatterProps) {
-  if (!definition) return null;
-  
-  const parts = definition.split(/\d+[-–—]\s*/);
-  const numberedParts: { num: number; text: string }[] = [];
-  
-  const matches = definition.match(/\d+[-–—]\s*[^0-9]+/g);
-  if (matches && matches.length > 1) {
-    matches.forEach((match, idx) => {
-      const numMatch = match.match(/^(\d+)/);
-      const text = match.replace(/^\d+[-–—]\s*/, '').trim();
-      if (text) {
-        numberedParts.push({ num: numMatch ? parseInt(numMatch[1]) : idx + 1, text });
-      }
-    });
-    
-    return (
-      <div className={`space-y-2 ${className}`} dir="rtl">
-        {numberedParts.map((part, idx) => (
-          <div key={idx} className="flex items-start gap-2 border-r-3 border-amber-500/50 pr-2 py-1">
-            <span className="inline-flex items-center justify-center min-w-[24px] h-6 rounded-full bg-amber-500 text-white text-sm font-bold">
-              {part.num}
-            </span>
-            <p className="font-arabic text-lg leading-relaxed text-foreground/90">
-              {part.text}
-            </p>
+            
+            {meaning.examples.length > 0 && (
+              <div className="mt-3 mr-10 space-y-2">
+                {meaning.examples.map((example, exIdx) => (
+                  <div 
+                    key={exIdx} 
+                    className="flex items-center gap-2 pr-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border-r-2 border-emerald-500"
+                  >
+                    <span className="text-emerald-500 text-lg">◆</span>
+                    <p className="font-arabic text-base text-emerald-700 dark:text-emerald-400 leading-relaxed">
+                      {example}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        ))}
-      </div>
-    );
-  }
-  
-  return (
-    <p className={`font-arabic text-right text-lg leading-relaxed text-foreground/90 ${className}`} dir="rtl">
-      {definition}
-    </p>
+        );
+      })}
+    </div>
   );
 }
