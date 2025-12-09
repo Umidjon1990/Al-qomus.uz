@@ -201,15 +201,33 @@ export default function AdminPage() {
             meaning: row.meaning || row.Meaning || "",
           }));
         } else {
-          // 2-column format: Column A = Arabic word, Column B = Arabic definition
+          // Auto-detect 2 or 3 column format
+          // 3-column: A = Arabic word, B = complement/type, C = definition
+          // 2-column: A = Arabic word, B = definition
+          const sampleRow = rawData.find((row: any[]) => row[0] && String(row[0]).trim());
+          const columnCount = sampleRow ? sampleRow.filter((c: any) => c !== undefined && c !== null && String(c).trim()).length : 0;
+          
           entriesToImport = rawData
             .filter((row: any[]) => row[0] && String(row[0]).trim()) // Filter empty rows
-            .map((row: any[]) => ({
-              word: String(row[0] || "").trim(),
-              meaning: String(row[1] || "").trim(),
-              complement: "",
-              root: "",
-            }));
+            .map((row: any[]) => {
+              if (columnCount >= 3) {
+                // 3-column format: word, complement/type, definition
+                return {
+                  word: String(row[0] || "").trim(),
+                  complement: String(row[1] || "").trim(),
+                  meaning: String(row[2] || "").trim(),
+                  root: "",
+                };
+              } else {
+                // 2-column format: word, definition
+                return {
+                  word: String(row[0] || "").trim(),
+                  meaning: String(row[1] || "").trim(),
+                  complement: "",
+                  root: "",
+                };
+              }
+            });
         }
 
         if (entriesToImport.length === 0) {
