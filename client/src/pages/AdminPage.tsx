@@ -169,26 +169,57 @@ export default function AdminPage() {
         const wb = XLSX.read(bstr, { type: 'binary' });
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
-        const data = XLSX.utils.sheet_to_json(ws);
-
-        const hasWord = data.some((row: any) => 'word' in row);
         
-        if (!hasWord) {
+        // Try to detect format: headers or just 2 columns
+        const rawData: any[][] = XLSX.utils.sheet_to_json(ws, { header: 1 });
+        
+        if (rawData.length === 0) {
           toast({
-            variant: "destructive",
-            title: "Format noto'g'ri",
-            description: "Excel faylda 'word' ustuni bo'lishi shart.",
+            variant: "destructive", 
+            title: "Bo'sh fayl",
+            description: "Excel faylda ma'lumot yo'q",
           });
           return;
         }
 
-        // Map all 4 columns: word, complement, root, meaning
-        const entriesToImport = data.map((row: any) => ({
-          word: row.word || "",
-          complement: row.complement || "",
-          root: row.root || "",
-          meaning: row.meaning || "",
-        }));
+        // Check if first row looks like headers (has 'word' or similar)
+        const firstRow = rawData[0];
+        const hasHeaders = firstRow.some((cell: any) => 
+          typeof cell === 'string' && 
+          ['word', 'meaning', 'root', 'complement'].includes(cell.toLowerCase())
+        );
+
+        let entriesToImport: any[];
+
+        if (hasHeaders) {
+          // Use standard JSON parsing with headers
+          const data = XLSX.utils.sheet_to_json(ws);
+          entriesToImport = data.map((row: any) => ({
+            word: row.word || row.Word || "",
+            complement: row.complement || row.Complement || "",
+            root: row.root || row.Root || "",
+            meaning: row.meaning || row.Meaning || "",
+          }));
+        } else {
+          // 2-column format: Column A = Arabic word, Column B = Arabic definition
+          entriesToImport = rawData
+            .filter((row: any[]) => row[0] && String(row[0]).trim()) // Filter empty rows
+            .map((row: any[]) => ({
+              word: String(row[0] || "").trim(),
+              meaning: String(row[1] || "").trim(),
+              complement: "",
+              root: "",
+            }));
+        }
+
+        if (entriesToImport.length === 0) {
+          toast({
+            variant: "destructive",
+            title: "Ma'lumot topilmadi",
+            description: "Excel faylda so'zlar topilmadi",
+          });
+          return;
+        }
 
         // Show dialog to select dictionary source
         setPendingImportData(entriesToImport);

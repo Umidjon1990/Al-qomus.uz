@@ -20,8 +20,9 @@ export interface DictionaryStats {
 
 // Available dictionary sources
 export const DICTIONARY_SOURCES = [
-  { id: 'Muasir', name: 'Muasir', description: 'Arabcha-O\'zbekcha-Arabcha izohli' },
-  { id: 'Roid', name: 'Roid', description: 'Arabcha-Arabcha izohli' },
+  { id: 'Muasir', name: 'Muasir', description: 'Arabcha-O\'zbekcha-Arabcha izohli lug\'at' },
+  { id: 'Roid', name: 'Roid (الرائد)', description: 'Arabcha-Arabcha izohli lug\'at' },
+  { id: 'Ghoniy', name: 'G\'oniy (الغني)', description: 'Arabcha-Arabcha izohli lug\'at' },
 ] as const;
 
 // API Functions
