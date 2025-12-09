@@ -135,28 +135,31 @@ export async function registerRoutes(
   // Batch import from Excel
   app.post("/api/dictionary/import", async (req, res) => {
     try {
-      const { entries } = req.body;
+      const { entries, dictionarySource = "Muasir" } = req.body;
       
       if (!Array.isArray(entries) || entries.length === 0) {
         return res.status(400).json({ error: "Ma'lumotlar yuborilmadi" });
       }
 
+      // Map user's template columns: word, complement, root, meaning
       const validatedEntries = entries.map(entry => {
         return insertDictionaryEntrySchema.parse({
-          arabic: entry.word || entry.arabic,
-          arabicDefinition: entry.meaning || entry.arabicDefinition,
+          arabic: entry.word || entry.arabic || "",
+          arabicDefinition: entry.meaning || entry.arabicDefinition || "",
           uzbek: entry.uzbek || "",
           transliteration: entry.transliteration || "",
-          type: entry.type || "aniqlanmagan",
+          type: entry.complement || entry.type || "aniqlanmagan",
           root: entry.root || "",
           examplesJson: entry.examplesJson || null,
+          dictionarySource: dictionarySource,
         });
       });
 
       const created = await storage.batchCreateDictionaryEntries(validatedEntries);
       res.status(201).json({ 
         count: created.length,
-        entries: created 
+        entries: created,
+        dictionarySource: dictionarySource
       });
     } catch (error) {
       console.error("Error importing entries:", error);

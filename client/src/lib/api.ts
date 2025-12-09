@@ -75,11 +75,11 @@ export async function deleteDictionaryEntry(id: number): Promise<void> {
   if (!response.ok) throw new Error('Failed to delete entry');
 }
 
-export async function importEntries(entries: any[]): Promise<{ count: number; entries: DictionaryEntry[] }> {
+export async function importEntries(entries: any[], dictionarySource: string = "Muasir"): Promise<{ count: number; entries: DictionaryEntry[]; dictionarySource: string }> {
   const response = await fetch('/api/dictionary/import', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ entries }),
+    body: JSON.stringify({ entries, dictionarySource }),
   });
   if (!response.ok) throw new Error('Failed to import entries');
   return response.json();

@@ -35,7 +35,8 @@ import {
   importEntries,
   batchTranslate,
   getStats,
-  DictionaryEntry 
+  DictionaryEntry,
+  DICTIONARY_SOURCES
 } from "@/lib/api";
 import { Edit2, Plus, Save, Trash2, Upload, AlertCircle, Wand2, Loader2, Database, CheckCircle2, Clock, FileText } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
@@ -46,6 +47,9 @@ type FilterType = 'all' | 'translated' | 'pending';
 export default function AdminPage() {
   const [editingEntry, setEditingEntry] = React.useState<DictionaryEntry | null>(null);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [isImportDialogOpen, setIsImportDialogOpen] = React.useState(false);
+  const [importSource, setImportSource] = React.useState<string>("Roid");
+  const [pendingImportData, setPendingImportData] = React.useState<any[] | null>(null);
   const [filter, setFilter] = React.useState<FilterType>('all');
   const [visibleCount, setVisibleCount] = React.useState(100);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -100,13 +104,16 @@ export default function AdminPage() {
   });
 
   const importMutation = useMutation({
-    mutationFn: (entries: any[]) => importEntries(entries),
+    mutationFn: ({ entries, source }: { entries: any[]; source: string }) => importEntries(entries, source),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['dictionary'] });
       queryClient.invalidateQueries({ queryKey: ['stats'] });
+      queryClient.invalidateQueries({ queryKey: ['dictionary-sources'] });
+      setIsImportDialogOpen(false);
+      setPendingImportData(null);
       toast({
         title: "Import muvaffaqiyatli",
-        description: `${data.count} ta so'z bazaga qo'shildi`,
+        description: `${data.count} ta so'z "${data.dictionarySource}" lug'atiga qo'shildi`,
       });
     },
   });
@@ -175,12 +182,17 @@ export default function AdminPage() {
           return;
         }
 
+        // Map all 4 columns: word, complement, root, meaning
         const entriesToImport = data.map((row: any) => ({
           word: row.word || "",
+          complement: row.complement || "",
+          root: row.root || "",
           meaning: row.meaning || "",
         }));
 
-        importMutation.mutate(entriesToImport);
+        // Show dialog to select dictionary source
+        setPendingImportData(entriesToImport);
+        setIsImportDialogOpen(true);
 
       } catch (error) {
         console.error("Error reading file:", error);
@@ -193,6 +205,12 @@ export default function AdminPage() {
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
     reader.readAsBinaryString(file);
+  };
+
+  const handleConfirmImport = () => {
+    if (pendingImportData) {
+      importMutation.mutate({ entries: pendingImportData, source: importSource });
+    }
   };
 
   const totalWords = stats?.total || 0;
@@ -548,6 +566,92 @@ export default function AdminPage() {
                 </DialogFooter>
               </form>
             )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Import Dialog - Select Dictionary Source */}
+        <Dialog open={isImportDialogOpen} onOpenChange={(open) => {
+          setIsImportDialogOpen(open);
+          if (!open) setPendingImportData(null);
+        }}>
+          <DialogContent className="sm:max-w-[500px]">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Upload className="h-5 w-5" />
+                Lug'at Tanlang
+              </DialogTitle>
+              <DialogDescription>
+                {pendingImportData?.length} ta so'z qaysi lug'atga qo'shilsin?
+              </DialogDescription>
+            </DialogHeader>
+            <div className="py-4 space-y-4">
+              <div className="grid gap-3">
+                {DICTIONARY_SOURCES.map((source) => (
+                  <button
+                    key={source.id}
+                    data-testid={`import-source-${source.id}`}
+                    onClick={() => setImportSource(source.id)}
+                    className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all text-left ${
+                      importSource === source.id
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/50'
+                    }`}
+                  >
+                    <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                      importSource === source.id ? 'border-primary bg-primary' : 'border-muted-foreground'
+                    }`}>
+                      {importSource === source.id && (
+                        <div className="w-2 h-2 rounded-full bg-white" />
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-semibold">{source.name}</p>
+                      <p className="text-sm text-muted-foreground">{source.description}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              
+              {pendingImportData && pendingImportData.length > 0 && (
+                <div className="bg-muted/50 p-3 rounded-lg text-sm">
+                  <p className="font-medium mb-2">Namunaviy ma'lumot:</p>
+                  <div className="font-arabic text-right text-lg" dir="rtl">
+                    {pendingImportData[0].word}
+                  </div>
+                  {pendingImportData[0].complement && (
+                    <p className="text-muted-foreground text-xs">Turi: {pendingImportData[0].complement}</p>
+                  )}
+                  {pendingImportData[0].root && (
+                    <p className="text-muted-foreground text-xs">Ildiz: {pendingImportData[0].root}</p>
+                  )}
+                </div>
+              )}
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => {
+                setIsImportDialogOpen(false);
+                setPendingImportData(null);
+              }}>
+                Bekor qilish
+              </Button>
+              <Button 
+                onClick={handleConfirmImport} 
+                disabled={importMutation.isPending}
+                data-testid="button-confirm-import"
+              >
+                {importMutation.isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Yuklanmoqda...
+                  </>
+                ) : (
+                  <>
+                    <Upload className="mr-2 h-4 w-4" />
+                    {pendingImportData?.length} ta so'zni yuklash
+                  </>
+                )}
+              </Button>
+            </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
