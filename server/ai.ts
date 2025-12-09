@@ -83,31 +83,86 @@ function validateTranslationQuality(translation: string): { valid: boolean; issu
     return { valid: true };
   }
   
+  // 1. Kirill harflarini tekshir
   const cyrillicPattern = /[\u0400-\u04FF]/;
   if (cyrillicPattern.test(translation)) {
     return { valid: false, issue: 'cyrillic' };
   }
   
+  // 2. Arab harflarini tekshir
   const arabicPattern = /[\u0600-\u06FF\u0750-\u077F]/;
   if (arabicPattern.test(translation)) {
     return { valid: false, issue: 'arabic' };
   }
   
-  const validUzbekPattern = /^[a-zA-Z0-9\s\-,.'"\(\)\[\]\/;:!?']+$/;
-  const cleanedTranslation = translation.replace(/o'|g'|O'|G'/g, 'X');
+  // 3. Boshqa tillar harflarini tekshir (xitoy, yapon, koreya, va h.k.)
+  const otherScriptsPattern = /[\u4E00-\u9FFF\u3040-\u30FF\uAC00-\uD7AF\u0370-\u03FF]/;
+  if (otherScriptsPattern.test(translation)) {
+    return { valid: false, issue: 'foreign_script' };
+  }
+  
+  // 4. O'zbek lotin alifbosi uchun ruxsat etilgan belgilar
+  const validUzbekPattern = /^[a-zA-Z0-9\s\-,.'"\(\)\[\]\/;:!?'']+$/;
+  const cleanedTranslation = translation.replace(/o'|g'|O'|G'|sh|ch|ng|Sh|Ch|Ng|SH|CH|NG/g, 'X');
   if (!validUzbekPattern.test(cleanedTranslation)) {
-    const invalidChars = cleanedTranslation.match(/[^a-zA-Z0-9\s\-,.'"\(\)\[\]\/;:!?']/g);
+    const invalidChars = cleanedTranslation.match(/[^a-zA-Z0-9\s\-,.'"\(\)\[\]\/;:!?'']/g);
     if (invalidChars && invalidChars.length > 0) {
       return { valid: false, issue: `invalid_chars: ${Array.from(new Set(invalidChars)).join('')}` };
     }
   }
   
-  if (translation.toLowerCase().includes('uzbek translation') || 
-      translation.toLowerCase().includes('tarjima:')) {
-    return { valid: false, issue: 'prefix' };
+  // 5. Prefiks va tushuntirishlarni tekshir
+  const bannedPrefixes = [
+    'uzbek translation', 'tarjima:', "ma'no:", 'meaning:', 'translation:',
+    'answer:', 'javob:', 'result:', 'natija:'
+  ];
+  const lowerTranslation = translation.toLowerCase();
+  for (const prefix of bannedPrefixes) {
+    if (lowerTranslation.includes(prefix)) {
+      return { valid: false, issue: 'prefix' };
+    }
+  }
+  
+  // 6. Juda qisqa tarjimalarni tekshir (1-2 harf)
+  if (translation.trim().length < 2) {
+    return { valid: false, issue: 'too_short' };
+  }
+  
+  // 7. Juda uzun tarjimalarni tekshir (500+ belgi)
+  if (translation.length > 500) {
+    return { valid: false, issue: 'too_long' };
   }
   
   return { valid: true };
+}
+
+// Kuchli Ghoniy validatsiya funksiyasi
+function validateGhoniyMeaning(meaning: string): { valid: boolean; issue?: string; cleaned?: string } {
+  const baseValidation = validateTranslationQuality(meaning);
+  if (!baseValidation.valid) {
+    return baseValidation;
+  }
+  
+  // O'zbek so'zlarining to'g'riligini tekshir
+  const uzbekLetters = meaning.replace(/[^a-zA-Z']/g, '').toLowerCase();
+  
+  // Takrorlanuvchi harflar (imloviy xato)
+  if (/(.)\1{3,}/.test(uzbekLetters)) {
+    return { valid: false, issue: 'repeated_chars' };
+  }
+  
+  // Unli harflar mavjudligini tekshir
+  const vowels = uzbekLetters.match(/[aeiou]/g) || [];
+  if (uzbekLetters.length > 5 && vowels.length === 0) {
+    return { valid: false, issue: 'no_vowels' };
+  }
+  
+  // Tozalangan versiyani qaytarish
+  let cleaned = meaning.trim();
+  cleaned = cleaned.replace(/\s+/g, ' '); // Ko'p bo'shliqlarni birlashtir
+  cleaned = cleaned.replace(/^[-•*]\s*/, ''); // Boshi belgisini olib tashla
+  
+  return { valid: true, cleaned };
 }
 
 function buildProfessionalPrompt(metadata: WordMetadata): string {
@@ -504,63 +559,81 @@ const GHONIY_SYSTEM_PROMPT = `Sen professional arabcha-o'zbekcha LUG'AT tarjimon
 
 🎯 ASOSIY MAQSAD:
 Arabcha ta'rifdan SO'ZNING HAQIQIY MA'NOSINI tushunib, O'ZBEK TILIDA to'g'ri va aniq tarjima qilish.
-Talaba NOTO'G'RI ma'no yodlab olmasligi uchun, FAQAT kontekstga mos tarjima ber!
+Talaba BARCHA MA'NOLARNI bilishi kerak! Har bir ma'noni MISOL KONTEKSTIDAN ol!
 
 📚 SO'Z TURLARINI ANIQLASH:
 Ta'rif boshidagi qavslardan so'z turini aniqla:
-- (مصدر ...) → MASDAR (fe'ldan yasalgan ot) → o'zbekcha: -ish, -uv, -lik
-- (اسم فاعل) → ISMU FOIL (fe'l boshlovchisi) → o'zbekcha: -uvchi, -chi
-- (اسم مفعول) → ISMU MAFʼUL (fe'l qabul qiluvchi) → o'zbekcha: -lgan, -ilgan
-- (صفة) → SIFAT → o'zbekcha sifat shaklida
-- (اسم) → OT → o'zbekcha ot shaklida
-- (فعل) → FE'L → o'zbekcha: -moq
+- (مصدر ...) → masdar → o'zbekcha: -ish, -uv, -lik (MASDAR OT SHAKLIDA!)
+- (اسم فاعل) → ismu_foil → o'zbekcha: -uvchi, -chi
+- (اسم مفعول) → ismu_mafʼul → o'zbekcha: -lgan, -ilgan
+- (صفة) → sifat → o'zbekcha sifat shaklida
+- (اسم) → ot → o'zbekcha ot shaklida
+- (فعل) → feʼl → o'zbekcha: -moq
 
 📖 TARJIMA QOIDALARI:
 
-1. GRAMMATIK MOSLIK MUHIM!
-   - Masdar → ot shaklida tarjima qil (yozish, o'qish, YOzmoq EMAS!)
-   - Ismu foil → -uvchi/-chi (yozuvchi, o'quvchi)
-   - Fe'l → -moq (yozmoq, o'qimoq)
+1. GRAMMATIK MOSLIK - JUDA MUHIM!
+   ✅ TO'G'RI:
+   - مصدر كَتَبَ → yozish (OT!) 
+   - فعل كَتَبَ → yozmoq (FE'L!)
+   - اسم فاعل كَاتِب → yozuvchi
+   - صفة جَمِيل → chiroyli
+   
+   ❌ XATO:
+   - مصدر uchun "yozmoq" (bu fe'l shakli!)
+   - جَمْع uchun ko'plik (BIRLIK shaklida yoz!)
 
-2. MA'NOLARNI MISOLLARDAN OL!
-   - Har bir ":-" belgisidan keyingi jumla - bu MISOL
-   - Misoldan kontekstga mos MA'NONI aniqla
-   - Har bir ma'noni ALOHIDA raqamla
+2. O'ZBEK IMLO QOIDALARI:
+   ✅ TO'G'RI: o', g', sh, ch, ng
+   ✅ Tinish belgilari: , . ; : - ( )
+   ❌ TAQIQLANGAN: ъ, ь, kirill, arab harflari
+   
+3. MA'NOLARNI MISOLLARDAN OL - BU JUDA MUHIM!
+   - Ta'rifdagi HAR BIR ":-" belgisidan keyin - bu MISOL
+   - Har bir misolning KONTEKSTIDAN ma'noni aniqla
+   - "|1-", "|2-" raqamlari - bu turli ma'nolar
+   - BARCHA ma'nolarni raqamlab yoz!
 
-3. KO'P MA'NOLI SO'ZLAR:
-   - Har bir ma'noni alohida raqam bilan ber
-   - Har bir ma'no uchun arabcha misol va uning tarjimasini ber
+4. SIFAT FILTRI - QAT'IY TAQIQLANGAN:
+   ❌ Kirill harflari (а, б, в...)
+   ❌ Arab harflari tarjimada
+   ❌ Prefiks ("Tarjima:", "Ma'no:" kabi)
+   ❌ Tushuntirish va izohlar
+   ❌ Emoji va maxsus belgilar
+   ✅ FAQAT: a-z, A-Z, o', g', sh, ch, ng, vergul, nuqta
 
-4. SIFAT FILTRI - TAQIQLANGAN:
-   - ❌ Kirill harflari
-   - ❌ Arabcha harflar tarjimada
-   - ❌ Prefiks ("Tarjima:", "Ma'no:" kabi)
-   - ❌ Tushuntirish va izohlar
-   - ✅ FAQAT lotin harflari: a-z, o', g', sh, ch
-
-5. ISLOMIY ATAMALAR:
-   Alloh, Muhammad (s.a.v), Qur'on, namoz, ro'za, haj, zakot - o'zbek islomiy uslubida
+5. ISLOMIY ATAMALAR (O'ZBEK USLUBIDA):
+   الله → Alloh | محمد → Muhammad (s.a.v) | القرآن → Qur'on
+   صلاة → namoz | صوم → ro'za | حج → haj | زكاة → zakot
 
 📝 JAVOB FORMATI (FAQAT JSON):
 {
   "word_type": "masdar/ismu_foil/ismu_mafʼul/sifat/ot/feʼl",
-  "uzbek_summary": "asosiy qisqa tarjima",
+  "uzbek_summary": "1. birinchi ma'no; 2. ikkinchi ma'no; 3. uchinchi ma'no",
   "meanings": [
     {
       "index": 1,
-      "uzbek_meaning": "birinchi ma'no",
+      "uzbek_meaning": "birinchi ma'no (kontekstga mos)",
       "arabic_example": "arabcha misol jumla",
       "uzbek_example": "o'zbekcha tarjima",
       "confidence": 0.95
+    },
+    {
+      "index": 2,
+      "uzbek_meaning": "ikkinchi ma'no (boshqa kontekst)",
+      "arabic_example": "boshqa arabcha misol",
+      "uzbek_example": "boshqa o'zbekcha tarjima",
+      "confidence": 0.90
     }
   ]
 }
 
-⚠️ MUHIM ESLATMALAR:
-- Har bir ma'no ALOHIDA indeksga ega
-- arabic_example va uzbek_example - bu TA'RIFDAGI misollar
-- confidence - bu tarjima ishonchlilik darajasi (0.0 - 1.0)
-- uzbek_summary - bu BARCHA ma'nolarning qisqacha yig'indisi`;
+⚠️ MUHIM QOIDALAR:
+- uzbek_summary: BARCHA ma'nolar RAQAMLANGAN bo'lishi kerak! Format: "1. ma'no1; 2. ma'no2; 3. ma'no3"
+- Har bir ma'no MISOL kontekstidan olinishi kerak
+- uzbek_meaning va uzbek_example FAQAT lotin harflarida!
+- confidence - tarjima ishonchliligi (0.7-1.0)
+- So'z turi noma'lum bo'lsa: "ot" deb yoz`;
 
 function parseGhoniyDefinition(definition: string): {
   wordType: string;
@@ -597,10 +670,12 @@ function parseGhoniyDefinition(definition: string): {
 }
 
 export async function translateGhoniyEntry(
-  entry: { id: number; arabic: string; arabicDefinition?: string; type?: string }
+  entry: { id: number; arabic: string; arabicDefinition?: string; type?: string },
+  retryCount: number = 0
 ): Promise<GhoniyTranslationResult> {
   const startTime = Date.now();
   let tokensUsed = 0;
+  const MAX_RETRIES = 2;
   
   try {
     const parsed = parseGhoniyDefinition(entry.arabicDefinition || '');
@@ -611,10 +686,11 @@ SO'Z TURI (ta'rifdan): ${parsed.wordType || 'aniqlanmagan'}
 ARABCHA TA'RIF: ${entry.arabicDefinition || ''}
 
 Yuqoridagi ma'lumotlarni tahlil qilib:
-1. So'z turini aniqla (masdar, ismu foil, fe'l, ot, sifat)
+1. So'z turini aniqla (masdar, ismu_foil, feʼl, ot, sifat)
 2. Har bir ma'noni alohida raqamla
 3. Har bir ma'no uchun misol va tarjimasini ber
 4. Grammatik jihatdan to'g'ri tarjima qil
+5. FAQAT lotin harflarida yoz (o', g', sh, ch)
 
 JSON formatida javob ber:`;
 
@@ -624,7 +700,7 @@ JSON formatida javob ber:`;
         { role: "system", content: GHONIY_SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
-      temperature: 0,
+      temperature: retryCount > 0 ? 0.1 : 0, // Qayta urinishda biroz temperature
       max_tokens: 1500,
       response_format: { type: "json_object" },
     });
@@ -634,46 +710,78 @@ JSON formatida javob ber:`;
     
     const parsed_response = JSON.parse(content);
     
-    // Validate and extract meanings
+    // Validate and extract meanings with enhanced validation
     const meanings: GhoniyMeaning[] = [];
     if (Array.isArray(parsed_response.meanings)) {
       for (const m of parsed_response.meanings) {
-        // Validate Uzbek meaning - must be Latin only
         const uzbekMeaning = m.uzbek_meaning || m.uzbekMeaning || '';
-        const validation = validateTranslationQuality(uzbekMeaning);
+        const uzbekExample = m.uzbek_example || m.uzbekExample || '';
         
-        if (validation.valid && uzbekMeaning.trim()) {
+        // Kuchli validatsiya
+        const meaningValidation = validateGhoniyMeaning(uzbekMeaning);
+        const exampleValidation = uzbekExample ? validateGhoniyMeaning(uzbekExample) : { valid: true, cleaned: '' };
+        
+        if (meaningValidation.valid && uzbekMeaning.trim()) {
           meanings.push({
             index: m.index || meanings.length + 1,
-            uzbekMeaning: uzbekMeaning.trim(),
+            uzbekMeaning: meaningValidation.cleaned || uzbekMeaning.trim(),
             arabicExample: m.arabic_example || m.arabicExample || '',
-            uzbekExample: m.uzbek_example || m.uzbekExample || '',
-            confidence: typeof m.confidence === 'number' ? m.confidence : 0.8,
+            uzbekExample: exampleValidation.cleaned || uzbekExample,
+            confidence: typeof m.confidence === 'number' ? m.confidence : 0.85,
           });
         }
       }
     }
     
-    // Validate summary
+    // Validate summary and ensure numbered format
     let uzbekSummary = parsed_response.uzbek_summary || parsed_response.uzbekSummary || '';
-    const summaryValidation = validateTranslationQuality(uzbekSummary);
-    if (!summaryValidation.valid) {
-      // Try to create summary from meanings
-      uzbekSummary = meanings.map(m => m.uzbekMeaning).join(', ');
+    const summaryValidation = validateGhoniyMeaning(uzbekSummary);
+    
+    // Har doim raqamlangan format yaratish
+    const createNumberedSummary = (meaningsArr: GhoniyMeaning[]): string => {
+      if (meaningsArr.length === 0) return '';
+      if (meaningsArr.length === 1) return meaningsArr[0].uzbekMeaning;
+      return meaningsArr.map((m, i) => `${i + 1}. ${m.uzbekMeaning}`).join('; ');
+    };
+    
+    if (!summaryValidation.valid || !uzbekSummary.includes('1.')) {
+      // Agar raqamsiz bo'lsa yoki validatsiya o'tmasa, ma'nolardan yaratish
+      uzbekSummary = createNumberedSummary(meanings);
+    } else {
+      uzbekSummary = summaryValidation.cleaned || uzbekSummary.trim();
     }
     
-    // If no valid meanings, try simple translation
+    // If no valid meanings but have summary
     if (meanings.length === 0 && uzbekSummary) {
-      meanings.push({
-        index: 1,
-        uzbekMeaning: uzbekSummary,
-        confidence: 0.7,
-      });
+      // Summary dan ma'nolarni ajratib olish
+      const summaryParts = uzbekSummary.split(/[;,]/).map(s => s.replace(/^\d+\.\s*/, '').trim()).filter(Boolean);
+      if (summaryParts.length > 0) {
+        summaryParts.forEach((part, idx) => {
+          meanings.push({
+            index: idx + 1,
+            uzbekMeaning: part,
+            confidence: 0.7,
+          });
+        });
+      } else {
+        meanings.push({
+          index: 1,
+          uzbekMeaning: uzbekSummary,
+          confidence: 0.7,
+        });
+      }
+    }
+    
+    // Agar ma'no topilmasa va qayta urinish imkoni bo'lsa
+    if (meanings.length === 0 && retryCount < MAX_RETRIES) {
+      console.log(`Retry ${retryCount + 1} for entry ${entry.id}: ${entry.arabic}`);
+      await new Promise(resolve => setTimeout(resolve, 500));
+      return translateGhoniyEntry(entry, retryCount + 1);
     }
     
     return {
       id: entry.id,
-      wordType: parsed_response.word_type || parsed_response.wordType || parsed.wordType || '',
+      wordType: parsed_response.word_type || parsed_response.wordType || parsed.wordType || 'ot',
       uzbekSummary: uzbekSummary.trim(),
       meanings,
       processingTime: Date.now() - startTime,
@@ -683,6 +791,14 @@ JSON formatida javob ber:`;
     };
   } catch (error: any) {
     console.error(`Error translating Ghoniy entry ${entry.id}:`, error);
+    
+    // Xato bo'lganda qayta urinish
+    if (retryCount < MAX_RETRIES && !error?.message?.includes('content_filter')) {
+      console.log(`Retry after error for entry ${entry.id}`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return translateGhoniyEntry(entry, retryCount + 1);
+    }
+    
     return {
       id: entry.id,
       wordType: '',
