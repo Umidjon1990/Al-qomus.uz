@@ -7,6 +7,7 @@ export interface DictionaryEntry {
   type: string;
   root?: string | null;
   examplesJson?: string | null;
+  dictionarySource: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -17,11 +18,27 @@ export interface DictionaryStats {
   pending: number;
 }
 
+// Available dictionary sources
+export const DICTIONARY_SOURCES = [
+  { id: 'Muasir', name: 'Muasir', description: 'Zamonaviy arab tili lug\'ati - tarjimali' },
+  { id: 'Roid', name: 'Roid', description: 'Ar-Roid lug\'ati - arabcha izohli' },
+] as const;
+
 // API Functions
-export async function getDictionaryEntries(search?: string): Promise<DictionaryEntry[]> {
-  const url = search ? `/api/dictionary?search=${encodeURIComponent(search)}` : '/api/dictionary';
+export async function getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+  if (sources && sources.length > 0) params.set('sources', sources.join(','));
+  
+  const url = params.toString() ? `/api/dictionary?${params.toString()}` : '/api/dictionary';
   const response = await fetch(url);
   if (!response.ok) throw new Error('Failed to fetch entries');
+  return response.json();
+}
+
+export async function getDictionarySources(): Promise<{ source: string; count: number }[]> {
+  const response = await fetch('/api/dictionary/sources');
+  if (!response.ok) throw new Error('Failed to fetch sources');
   return response.json();
 }
 

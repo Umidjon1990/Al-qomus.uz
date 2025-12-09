@@ -27,11 +27,24 @@ export async function registerRoutes(
     }
   });
 
-  // Get all dictionary entries (with optional search)
+  // Get dictionary sources with counts
+  app.get("/api/dictionary/sources", async (req, res) => {
+    try {
+      const sources = await storage.getDictionarySources();
+      res.json(sources);
+    } catch (error) {
+      console.error("Error fetching sources:", error);
+      res.status(500).json({ error: "Lug'atlar ro'yxatini olishda xatolik" });
+    }
+  });
+
+  // Get all dictionary entries (with optional search and source filter)
   app.get("/api/dictionary", async (req, res) => {
     try {
       const search = req.query.search as string | undefined;
-      const entries = await storage.getDictionaryEntries(search);
+      const sourcesParam = req.query.sources as string | undefined;
+      const sources = sourcesParam ? sourcesParam.split(',') : undefined;
+      const entries = await storage.getDictionaryEntries(search, sources);
       res.json(entries);
     } catch (error) {
       console.error("Error fetching dictionary entries:", error);

@@ -18,9 +18,10 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   
   // Dictionary methods
-  getDictionaryEntries(search?: string): Promise<DictionaryEntry[]>;
+  getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]>;
   getDictionaryEntry(id: number): Promise<DictionaryEntry | undefined>;
   getRelatedWords(arabicWord: string, excludeId?: number): Promise<DictionaryEntry[]>;
+  getDictionarySources(): Promise<{ source: string; count: number }[]>;
   createDictionaryEntry(entry: InsertDictionaryEntry): Promise<DictionaryEntry>;
   updateDictionaryEntry(id: number, entry: UpdateDictionaryEntry): Promise<DictionaryEntry | undefined>;
   deleteDictionaryEntry(id: number): Promise<boolean>;
@@ -47,17 +48,29 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Dictionary methods
-  async getDictionaryEntries(search?: string): Promise<DictionaryEntry[]> {
+  async getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
+    const conditions = [];
+    
     if (search) {
       const normalizedSearch = this.stripArabicDiacritics(search);
-      return await db.select().from(dictionaryEntries).where(
+      conditions.push(
         or(
           sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`,
           ilike(dictionaryEntries.uzbek, `%${search}%`),
           ilike(dictionaryEntries.transliteration, `%${search}%`)
         )
-      ).orderBy(dictionaryEntries.createdAt);
+      );
     }
+    
+    if (sources && sources.length > 0) {
+      conditions.push(sql`${dictionaryEntries.dictionarySource} = ANY(${sources})`);
+    }
+    
+    if (conditions.length > 0) {
+      const whereClause = conditions.length === 1 ? conditions[0] : sql`${conditions[0]} AND ${conditions[1]}`;
+      return await db.select().from(dictionaryEntries).where(whereClause).orderBy(dictionaryEntries.createdAt);
+    }
+    
     return await db.select().from(dictionaryEntries).orderBy(dictionaryEntries.createdAt);
   }
 
@@ -68,6 +81,14 @@ export class DatabaseStorage implements IStorage {
   async getDictionaryEntry(id: number): Promise<DictionaryEntry | undefined> {
     const result = await db.select().from(dictionaryEntries).where(eq(dictionaryEntries.id, id)).limit(1);
     return result[0];
+  }
+
+  async getDictionarySources(): Promise<{ source: string; count: number }[]> {
+    const result = await db.select({
+      source: dictionaryEntries.dictionarySource,
+      count: sql<number>`count(*)::int`
+    }).from(dictionaryEntries).groupBy(dictionaryEntries.dictionarySource);
+    return result;
   }
 
   async getRelatedWords(arabicWord: string, excludeId?: number): Promise<DictionaryEntry[]> {

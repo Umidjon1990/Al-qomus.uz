@@ -28,6 +28,7 @@ export const dictionaryEntries = pgTable("dictionary_entries", {
   type: text("type").notNull().default("aniqlanmagan"),
   root: text("root"),
   examplesJson: text("examples_json"), // Store JSON string of examples
+  dictionarySource: text("dictionary_source").notNull().default("Muasir"), // Lug'at nomi: Muasir, Roid, va boshqalar
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
