@@ -8,7 +8,7 @@ import {
   dictionaryEntries
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, ilike, or } from "drizzle-orm";
+import { eq, ilike, or, inArray, and } from "drizzle-orm";
 import { sql } from "drizzle-orm";
 
 export interface IStorage {
@@ -49,7 +49,7 @@ export class DatabaseStorage implements IStorage {
 
   // Dictionary methods
   async getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
-    const conditions = [];
+    const conditions: any[] = [];
     
     if (search) {
       const normalizedSearch = this.stripArabicDiacritics(search);
@@ -63,11 +63,11 @@ export class DatabaseStorage implements IStorage {
     }
     
     if (sources && sources.length > 0) {
-      conditions.push(sql`${dictionaryEntries.dictionarySource} = ANY(${sources})`);
+      conditions.push(inArray(dictionaryEntries.dictionarySource, sources));
     }
     
     if (conditions.length > 0) {
-      const whereClause = conditions.length === 1 ? conditions[0] : sql`${conditions[0]} AND ${conditions[1]}`;
+      const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
       return await db.select().from(dictionaryEntries).where(whereClause).orderBy(dictionaryEntries.createdAt);
     }
     
