@@ -47,30 +47,39 @@ export default function DictionaryPage() {
       <Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       
       <div className="container mx-auto px-4 py-12 -mt-10 relative z-30">
-        <div className="flex flex-wrap gap-3 mb-6 justify-center">
+        <div className="flex flex-wrap gap-4 mb-6 justify-center">
           {DICTIONARY_SOURCES.map((source) => (
             <button
               key={source.id}
               data-testid={`btn-source-${source.id}`}
               onClick={() => toggleSource(source.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
+              className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
                 selectedSources.includes(source.id)
-                  ? 'bg-primary text-primary-foreground border-primary'
-                  : 'bg-card text-muted-foreground border-border hover:border-primary/50'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-lg'
+                  : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
               }`}
             >
-              <Book className="h-4 w-4" />
-              <span className="font-medium">{source.name}</span>
-              <span className={`text-xs px-2 py-0.5 rounded-full ${
+              <div className="flex items-center gap-2 mb-1">
+                <Book className="h-4 w-4" />
+                <span className="font-semibold text-lg">{source.name}</span>
+                {selectedSources.includes(source.id) && (
+                  <Check className="h-4 w-4" />
+                )}
+              </div>
+              <span className={`text-xs ${
+                selectedSources.includes(source.id)
+                  ? 'text-primary-foreground/80'
+                  : 'text-muted-foreground'
+              }`}>
+                {source.description}
+              </span>
+              <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
                 selectedSources.includes(source.id)
                   ? 'bg-primary-foreground/20'
                   : 'bg-muted'
               }`}>
-                {getSourceCount(source.id).toLocaleString()}
+                {getSourceCount(source.id).toLocaleString()} so'z
               </span>
-              {selectedSources.includes(source.id) && (
-                <Check className="h-4 w-4" />
-              )}
             </button>
           ))}
         </div>
