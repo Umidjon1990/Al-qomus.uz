@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [selectedSources, setSelectedSources] = useState<string[]>(["Muasir"]);
+  const [selectedSources, setSelectedSources] = useState<string[]>(["Muasir", "Ghoniy", "Roid"]);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
   const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
