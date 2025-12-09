@@ -48,15 +48,20 @@ export class DatabaseStorage implements IStorage {
   // Dictionary methods
   async getDictionaryEntries(search?: string): Promise<DictionaryEntry[]> {
     if (search) {
+      const normalizedSearch = this.stripArabicDiacritics(search);
       return await db.select().from(dictionaryEntries).where(
         or(
-          ilike(dictionaryEntries.arabic, `%${search}%`),
+          sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`,
           ilike(dictionaryEntries.uzbek, `%${search}%`),
           ilike(dictionaryEntries.transliteration, `%${search}%`)
         )
       ).orderBy(dictionaryEntries.createdAt);
     }
     return await db.select().from(dictionaryEntries).orderBy(dictionaryEntries.createdAt);
+  }
+
+  private stripArabicDiacritics(text: string): string {
+    return text.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
   }
 
   async getDictionaryEntry(id: number): Promise<DictionaryEntry | undefined> {
