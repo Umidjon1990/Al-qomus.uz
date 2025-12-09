@@ -77,10 +77,16 @@ export function ResultCard({ entry, index }: ResultCardProps) {
 
   const { wordType: extractedWordType, cleanDefinition } = extractWordTypeFromDefinition(entry.arabicDefinition);
   
-  // Use extracted word type if available and entry type is just the root
-  const displayType = entry.type && entry.type !== 'aniqlanmagan' && entry.type.length > 3 
-    ? entry.type 
-    : extractedWordType;
+  // Priority for word type display:
+  // 1. wordType field from AI processing (e.g., "masdar", "feʼl", "ot")
+  // 2. Extracted from definition parentheses
+  // 3. entry.type if it's long (not just root)
+  const displayType = entry.wordType 
+    ? entry.wordType 
+    : (extractedWordType || (entry.type && entry.type !== 'aniqlanmagan' && entry.type.length > 4 ? entry.type : null));
+  
+  // For Ghoniy, entry.type is the root (3-4 Arabic letters)
+  const isGhoniyRoot = entry.dictionarySource === 'Ghoniy' && entry.type && entry.type.length <= 4;
 
   return (
     <motion.div
@@ -100,7 +106,7 @@ export function ResultCard({ entry, index }: ResultCardProps) {
               
               <div className="flex flex-wrap items-center gap-2 mt-2">
                 {/* Show root - either from root field or from type field (for Ghoniy) */}
-                {(entry.root || (entry.dictionarySource === 'Ghoniy' && entry.type && entry.type.length <= 4)) && (
+                {(entry.root || isGhoniyRoot) && (
                   <div className="flex items-center gap-1.5 bg-gradient-to-r from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-900/20 px-3 py-1.5 rounded-full border border-purple-300 dark:border-purple-700">
                     <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">ildiz:</span>
                     <span className="text-lg font-arabic text-purple-700 dark:text-purple-300 font-bold" dir="rtl">
@@ -109,9 +115,9 @@ export function ResultCard({ entry, index }: ResultCardProps) {
                   </div>
                 )}
                 
-                {/* Show word type - extracted from definition for Ghoniy or from type field for others */}
+                {/* Show word type - from AI wordType, extracted from definition, or from type field if long */}
                 {displayType && (
-                  <span className="px-3 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/40 dark:to-amber-900/30 text-orange-700 dark:text-orange-400 border border-orange-300 dark:border-orange-700 font-arabic" dir="rtl">
+                  <span className="px-3 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/40 dark:to-amber-900/30 text-orange-700 dark:text-orange-400 border border-orange-300 dark:border-orange-700">
                     {displayType}
                   </span>
                 )}
