@@ -478,3 +478,279 @@ export async function batchProcessRoidEntries(
     },
   };
 }
+
+// ==================== GHONIY DICTIONARY TRANSLATION ====================
+
+interface GhoniyMeaning {
+  index: number;
+  uzbekMeaning: string;
+  arabicExample?: string;
+  uzbekExample?: string;
+  confidence: number;
+}
+
+interface GhoniyTranslationResult {
+  id: number;
+  wordType: string;
+  uzbekSummary: string;
+  meanings: GhoniyMeaning[];
+  processingTime: number;
+  tokensUsed: number;
+  success: boolean;
+  error?: string;
+}
+
+const GHONIY_SYSTEM_PROMPT = `Sen professional arabcha-o'zbekcha LUG'AT tarjimoni va tilshunossisan. G'oniy arabcha-arabcha izohli lug'atidan so'zlarni O'ZBEK TILIGA tarjima qilasan.
+
+🎯 ASOSIY MAQSAD:
+Arabcha ta'rifdan SO'ZNING HAQIQIY MA'NOSINI tushunib, O'ZBEK TILIDA to'g'ri va aniq tarjima qilish.
+Talaba NOTO'G'RI ma'no yodlab olmasligi uchun, FAQAT kontekstga mos tarjima ber!
+
+📚 SO'Z TURLARINI ANIQLASH:
+Ta'rif boshidagi qavslardan so'z turini aniqla:
+- (مصدر ...) → MASDAR (fe'ldan yasalgan ot) → o'zbekcha: -ish, -uv, -lik
+- (اسم فاعل) → ISMU FOIL (fe'l boshlovchisi) → o'zbekcha: -uvchi, -chi
+- (اسم مفعول) → ISMU MAFʼUL (fe'l qabul qiluvchi) → o'zbekcha: -lgan, -ilgan
+- (صفة) → SIFAT → o'zbekcha sifat shaklida
+- (اسم) → OT → o'zbekcha ot shaklida
+- (فعل) → FE'L → o'zbekcha: -moq
+
+📖 TARJIMA QOIDALARI:
+
+1. GRAMMATIK MOSLIK MUHIM!
+   - Masdar → ot shaklida tarjima qil (yozish, o'qish, YOzmoq EMAS!)
+   - Ismu foil → -uvchi/-chi (yozuvchi, o'quvchi)
+   - Fe'l → -moq (yozmoq, o'qimoq)
+
+2. MA'NOLARNI MISOLLARDAN OL!
+   - Har bir ":-" belgisidan keyingi jumla - bu MISOL
+   - Misoldan kontekstga mos MA'NONI aniqla
+   - Har bir ma'noni ALOHIDA raqamla
+
+3. KO'P MA'NOLI SO'ZLAR:
+   - Har bir ma'noni alohida raqam bilan ber
+   - Har bir ma'no uchun arabcha misol va uning tarjimasini ber
+
+4. SIFAT FILTRI - TAQIQLANGAN:
+   - ❌ Kirill harflari
+   - ❌ Arabcha harflar tarjimada
+   - ❌ Prefiks ("Tarjima:", "Ma'no:" kabi)
+   - ❌ Tushuntirish va izohlar
+   - ✅ FAQAT lotin harflari: a-z, o', g', sh, ch
+
+5. ISLOMIY ATAMALAR:
+   Alloh, Muhammad (s.a.v), Qur'on, namoz, ro'za, haj, zakot - o'zbek islomiy uslubida
+
+📝 JAVOB FORMATI (FAQAT JSON):
+{
+  "word_type": "masdar/ismu_foil/ismu_mafʼul/sifat/ot/feʼl",
+  "uzbek_summary": "asosiy qisqa tarjima",
+  "meanings": [
+    {
+      "index": 1,
+      "uzbek_meaning": "birinchi ma'no",
+      "arabic_example": "arabcha misol jumla",
+      "uzbek_example": "o'zbekcha tarjima",
+      "confidence": 0.95
+    }
+  ]
+}
+
+⚠️ MUHIM ESLATMALAR:
+- Har bir ma'no ALOHIDA indeksga ega
+- arabic_example va uzbek_example - bu TA'RIFDAGI misollar
+- confidence - bu tarjima ishonchlilik darajasi (0.0 - 1.0)
+- uzbek_summary - bu BARCHA ma'nolarning qisqacha yig'indisi`;
+
+function parseGhoniyDefinition(definition: string): {
+  wordType: string;
+  cleanDefinition: string;
+  examples: Array<{ arabic: string }>;
+} {
+  if (!definition) {
+    return { wordType: '', cleanDefinition: '', examples: [] };
+  }
+  
+  // Extract word type from parentheses at the beginning
+  let wordType = '';
+  let cleanDefinition = definition;
+  
+  const typeMatch = definition.match(/^\s*\(([^)]+)\)\s*\.?\|?-?\s*/);
+  if (typeMatch) {
+    wordType = typeMatch[1].trim();
+    cleanDefinition = definition.slice(typeMatch[0].length).trim();
+  }
+  
+  // Extract examples (text after :- or : followed by Arabic text)
+  const examples: Array<{ arabic: string }> = [];
+  const exampleMatches = cleanDefinition.match(/[:-]\s*([^|]+)/g);
+  if (exampleMatches) {
+    for (const match of exampleMatches) {
+      const example = match.replace(/^[:-]\s*/, '').trim();
+      if (example && example.length > 3) {
+        examples.push({ arabic: example });
+      }
+    }
+  }
+  
+  return { wordType, cleanDefinition, examples };
+}
+
+export async function translateGhoniyEntry(
+  entry: { id: number; arabic: string; arabicDefinition?: string; type?: string }
+): Promise<GhoniyTranslationResult> {
+  const startTime = Date.now();
+  let tokensUsed = 0;
+  
+  try {
+    const parsed = parseGhoniyDefinition(entry.arabicDefinition || '');
+    
+    const userPrompt = `ARABCHA SO'Z: ${entry.arabic}
+ILDIZ: ${entry.type || 'nomaʼlum'}
+SO'Z TURI (ta'rifdan): ${parsed.wordType || 'aniqlanmagan'}
+ARABCHA TA'RIF: ${entry.arabicDefinition || ''}
+
+Yuqoridagi ma'lumotlarni tahlil qilib:
+1. So'z turini aniqla (masdar, ismu foil, fe'l, ot, sifat)
+2. Har bir ma'noni alohida raqamla
+3. Har bir ma'no uchun misol va tarjimasini ber
+4. Grammatik jihatdan to'g'ri tarjima qil
+
+JSON formatida javob ber:`;
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: GHONIY_SYSTEM_PROMPT },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0,
+      max_tokens: 1500,
+      response_format: { type: "json_object" },
+    });
+
+    const content = completion.choices[0]?.message?.content || '{}';
+    tokensUsed = completion.usage?.total_tokens || 1000;
+    
+    const parsed_response = JSON.parse(content);
+    
+    // Validate and extract meanings
+    const meanings: GhoniyMeaning[] = [];
+    if (Array.isArray(parsed_response.meanings)) {
+      for (const m of parsed_response.meanings) {
+        // Validate Uzbek meaning - must be Latin only
+        const uzbekMeaning = m.uzbek_meaning || m.uzbekMeaning || '';
+        const validation = validateTranslationQuality(uzbekMeaning);
+        
+        if (validation.valid && uzbekMeaning.trim()) {
+          meanings.push({
+            index: m.index || meanings.length + 1,
+            uzbekMeaning: uzbekMeaning.trim(),
+            arabicExample: m.arabic_example || m.arabicExample || '',
+            uzbekExample: m.uzbek_example || m.uzbekExample || '',
+            confidence: typeof m.confidence === 'number' ? m.confidence : 0.8,
+          });
+        }
+      }
+    }
+    
+    // Validate summary
+    let uzbekSummary = parsed_response.uzbek_summary || parsed_response.uzbekSummary || '';
+    const summaryValidation = validateTranslationQuality(uzbekSummary);
+    if (!summaryValidation.valid) {
+      // Try to create summary from meanings
+      uzbekSummary = meanings.map(m => m.uzbekMeaning).join(', ');
+    }
+    
+    // If no valid meanings, try simple translation
+    if (meanings.length === 0 && uzbekSummary) {
+      meanings.push({
+        index: 1,
+        uzbekMeaning: uzbekSummary,
+        confidence: 0.7,
+      });
+    }
+    
+    return {
+      id: entry.id,
+      wordType: parsed_response.word_type || parsed_response.wordType || parsed.wordType || '',
+      uzbekSummary: uzbekSummary.trim(),
+      meanings,
+      processingTime: Date.now() - startTime,
+      tokensUsed,
+      success: meanings.length > 0,
+      error: meanings.length === 0 ? 'No valid meanings extracted' : undefined,
+    };
+  } catch (error: any) {
+    console.error(`Error translating Ghoniy entry ${entry.id}:`, error);
+    return {
+      id: entry.id,
+      wordType: '',
+      uzbekSummary: '',
+      meanings: [],
+      processingTime: Date.now() - startTime,
+      tokensUsed,
+      success: false,
+      error: error?.message || 'Unknown error',
+    };
+  }
+}
+
+export async function batchProcessGhoniyEntries(
+  entries: Array<{ id: number; arabic: string; arabicDefinition?: string; type?: string }>,
+  onProgress?: (current: number, total: number, result: GhoniyTranslationResult) => void
+): Promise<{
+  results: GhoniyTranslationResult[];
+  summary: {
+    total: number;
+    successful: number;
+    failed: number;
+    totalTime: number;
+    estimatedCost: number;
+    totalTokens: number;
+  };
+}> {
+  const results: GhoniyTranslationResult[] = [];
+  const startTime = Date.now();
+  let totalTokens = 0;
+  
+  const batchSize = 5; // 5 ta so'z parallel
+  
+  for (let i = 0; i < entries.length; i += batchSize) {
+    const batch = entries.slice(i, i + batchSize);
+    const batchPromises = batch.map(entry => translateGhoniyEntry(entry));
+    const batchResults = await Promise.all(batchPromises);
+    
+    for (const result of batchResults) {
+      results.push(result);
+      totalTokens += result.tokensUsed;
+      
+      if (onProgress) {
+        onProgress(results.length, entries.length, result);
+      }
+    }
+    
+    // Rate limiting
+    if (i + batchSize < entries.length) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+  }
+  
+  const successful = results.filter(r => r.success).length;
+  const failed = results.filter(r => !r.success).length;
+  
+  // Cost estimation: gpt-4o ~ $2.5/1M input, $10/1M output
+  const estimatedCost = (totalTokens / 1000000) * 6; // Average $6/1M
+  
+  return {
+    results,
+    summary: {
+      total: entries.length,
+      successful,
+      failed,
+      totalTime: Date.now() - startTime,
+      estimatedCost,
+      totalTokens,
+    },
+  };
+}

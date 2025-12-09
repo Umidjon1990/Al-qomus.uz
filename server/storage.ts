@@ -32,6 +32,10 @@ export interface IStorage {
   // Roid processing methods
   getRoidEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
   updateRoidProcessedEntry(id: number, arabicVocalized: string, arabicDefinitionVocalized: string, uzbek: string): Promise<DictionaryEntry | undefined>;
+  
+  // Ghoniy processing methods
+  getGhoniyEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
+  updateGhoniyProcessedEntry(id: number, uzbekSummary: string, meaningsJson: string, wordType: string): Promise<DictionaryEntry | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -236,6 +240,41 @@ export class DatabaseStorage implements IStorage {
         arabicVocalized,
         arabicDefinitionVocalized,
         uzbek,
+        processingStatus: 'completed',
+        updatedAt: new Date(),
+      })
+      .where(eq(dictionaryEntries.id, id))
+      .returning();
+    return result[0];
+  }
+
+  // Ghoniy processing methods
+  async getGhoniyEntriesForProcessing(limit: number): Promise<DictionaryEntry[]> {
+    return await db.select().from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
+          or(
+            eq(dictionaryEntries.uzbek, ''),
+            sql`${dictionaryEntries.uzbek} IS NULL`
+          )
+        )
+      )
+      .orderBy(dictionaryEntries.id)
+      .limit(limit);
+  }
+
+  async updateGhoniyProcessedEntry(
+    id: number,
+    uzbekSummary: string,
+    meaningsJson: string,
+    wordType: string
+  ): Promise<DictionaryEntry | undefined> {
+    const result = await db.update(dictionaryEntries)
+      .set({
+        uzbek: uzbekSummary,
+        meaningsJson,
+        wordType,
         processingStatus: 'completed',
         updatedAt: new Date(),
       })

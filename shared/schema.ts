@@ -30,6 +30,8 @@ export const dictionaryEntries = pgTable("dictionary_entries", {
   type: text("type").notNull().default("aniqlanmagan"),
   root: text("root"),
   examplesJson: text("examples_json"), // Store JSON string of examples
+  meaningsJson: text("meanings_json"), // Strukturali ma'nolar: [{index, uzbekMeaning, arabicExample, uzbekExample}]
+  wordType: text("word_type"), // So'z turi: masdar, ismu foil, fe'l, ot, sifat
   dictionarySource: text("dictionary_source").notNull().default("Muasir"), // Lug'at nomi: Muasir, Roid, va boshqalar
   processingStatus: text("processing_status").default("pending"), // pending, processing, completed, failed
   createdAt: timestamp("created_at").defaultNow().notNull(),

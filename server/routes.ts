@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertDictionaryEntrySchema, updateDictionaryEntrySchema } from "@shared/schema";
-import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries } from "./ai";
+import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries, batchProcessGhoniyEntries } from "./ai";
 import * as XLSX from 'xlsx';
 
 export async function registerRoutes(
@@ -355,6 +355,72 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error processing Roid entries:", error);
       res.status(500).json({ error: "Roid so'zlarini qayta ishlashda xatolik" });
+    }
+  });
+
+  // Process Ghoniy entries with structured meanings extraction
+  app.post("/api/dictionary/process-ghoniy", async (req, res) => {
+    try {
+      const limit = parseInt(req.query.limit as string) || 10;
+      
+      // Get Ghoniy entries that don't have uzbek translation yet
+      const allEntries = await storage.getGhoniyEntriesForProcessing(limit);
+      
+      if (allEntries.length === 0) {
+        return res.json({
+          message: "Tarjima qilish uchun G'oniy so'zlari topilmadi",
+          processed: 0,
+        });
+      }
+      
+      console.log(`Processing ${allEntries.length} Ghoniy entries...`);
+      
+      const { results, summary } = await batchProcessGhoniyEntries(
+        allEntries.map(e => ({
+          id: e.id,
+          arabic: e.arabic,
+          arabicDefinition: e.arabicDefinition || undefined,
+          type: e.type || undefined,
+        })),
+        (current, total, result) => {
+          console.log(`[${current}/${total}] ${result.success ? '✓' : '✗'} ${result.uzbekSummary} (${result.meanings.length} ma'no)`);
+        }
+      );
+      
+      // Save results to database
+      let savedCount = 0;
+      for (const result of results) {
+        if (result.success && result.meanings.length > 0) {
+          await storage.updateGhoniyProcessedEntry(
+            result.id,
+            result.uzbekSummary,
+            JSON.stringify(result.meanings),
+            result.wordType
+          );
+          savedCount++;
+        }
+      }
+      
+      res.json({
+        message: "G'oniy so'zlari tarjima qilindi",
+        summary: {
+          ...summary,
+          saved: savedCount,
+          totalTimeFormatted: `${(summary.totalTime / 1000).toFixed(1)} soniya`,
+          estimatedCostFormatted: `$${summary.estimatedCost.toFixed(4)}`,
+        },
+        sampleResults: results.slice(0, 10).map(r => ({
+          id: r.id,
+          wordType: r.wordType,
+          uzbekSummary: r.uzbekSummary,
+          meanings: r.meanings,
+          success: r.success,
+          error: r.error,
+        })),
+      });
+    } catch (error) {
+      console.error("Error processing Ghoniy entries:", error);
+      res.status(500).json({ error: "G'oniy so'zlarini tarjima qilishda xatolik" });
     }
   });
 
