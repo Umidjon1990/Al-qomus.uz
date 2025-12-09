@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { DictionaryEntry, getRelatedWords } from "@/lib/api";
-import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2 } from "lucide-react";
+import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart } from "lucide-react";
+import { isFavorite, toggleFavorite } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,12 +21,29 @@ interface ResultCardProps {
 
 export function ResultCard({ entry, index }: ResultCardProps) {
   const [showRelated, setShowRelated] = useState(false);
+  const [liked, setLiked] = useState(false);
+  
+  useEffect(() => {
+    setLiked(isFavorite(entry.id));
+  }, [entry.id]);
   
   const { data: relatedWords = [], isLoading: isLoadingRelated } = useQuery({
     queryKey: ['related', entry.id],
     queryFn: () => getRelatedWords(entry.id),
     enabled: showRelated,
   });
+
+  const handleToggleFavorite = () => {
+    const isNowFavorite = toggleFavorite({
+      id: entry.id,
+      arabic: entry.arabic,
+      uzbek: entry.uzbek,
+    });
+    setLiked(isNowFavorite);
+    toast({
+      title: isNowFavorite ? "Yoqtirilganlarga qo'shildi" : "Yoqtirilganlardan olib tashlandi",
+    });
+  };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(`${entry.arabic} - ${entry.uzbek}`);
@@ -74,11 +92,20 @@ export function ResultCard({ entry, index }: ResultCardProps) {
               }`} data-testid={`badge-source-${entry.id}`}>
                 {entry.dictionarySource}
               </span>
-              <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Button variant="ghost" size="icon" onClick={copyToClipboard} title="Nusxalash">
+              <div className="flex gap-1">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={handleToggleFavorite} 
+                  title={liked ? "Yoqtirilganlardan olib tashlash" : "Yoqtirish"}
+                  data-testid={`btn-favorite-${entry.id}`}
+                >
+                  <Heart className={`h-5 w-5 transition-colors ${liked ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
+                </Button>
+                <Button variant="ghost" size="icon" onClick={copyToClipboard} title="Nusxalash" className="opacity-0 group-hover:opacity-100 transition-opacity">
                   <Copy className="h-4 w-4 text-muted-foreground" />
                 </Button>
-                <Button variant="ghost" size="icon" title="Ulashish">
+                <Button variant="ghost" size="icon" title="Ulashish" className="opacity-0 group-hover:opacity-100 transition-opacity">
                   <Share2 className="h-4 w-4 text-muted-foreground" />
                 </Button>
               </div>

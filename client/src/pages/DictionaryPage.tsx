@@ -1,22 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2 } from "lucide-react";
+import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
+import { Button } from "@/components/ui/button";
 
 export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedSources, setSelectedSources] = useState<string[]>(["Muasir"]);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
+  const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setHistory(getSearchHistory());
+    setFavorites(getFavorites());
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(searchTerm);
+      if (searchTerm.trim()) {
+        addToHistory(searchTerm.trim());
+        setHistory(getSearchHistory());
+      }
     }, 300);
     return () => clearTimeout(timer);
   }, [searchTerm]);
+
+  const handleHistoryClick = (term: string) => {
+    setSearchTerm(term);
+  };
+
+  const handleRemoveHistory = (term: string) => {
+    removeFromHistory(term);
+    setHistory(getSearchHistory());
+  };
+
+  const handleClearHistory = () => {
+    clearHistory();
+    setHistory([]);
+  };
+
+  const refreshFavorites = () => {
+    setFavorites(getFavorites());
+  };
 
   const { data: sourcesData } = useQuery({
     queryKey: ['dictionary-sources'],
@@ -97,15 +129,105 @@ export default function DictionaryPage() {
         )}
         
         {!debouncedSearch ? (
-          <div className="text-center py-20 bg-card rounded-xl border border-dashed max-w-2xl mx-auto">
-            <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="h-8 w-8 text-primary" />
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center py-10 bg-card rounded-xl border border-dashed mb-6">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-lg font-medium text-foreground">So'z izlang</h3>
+              <p className="text-muted-foreground">Arabcha yoki o'zbekcha so'z yozing</p>
+              <p className="text-sm text-muted-foreground/70 mt-2">
+                {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
+              </p>
             </div>
-            <h3 className="text-lg font-medium text-foreground">So'z izlang</h3>
-            <p className="text-muted-foreground">Arabcha yoki o'zbekcha so'z yozing</p>
-            <p className="text-sm text-muted-foreground/70 mt-2">
-              {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
-            </p>
+
+            {/* Tabs for History and Favorites */}
+            <div className="flex gap-2 mb-4 justify-center">
+              <Button
+                variant={activeTab === 'history' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => { setActiveTab('history'); refreshFavorites(); }}
+                data-testid="tab-history"
+              >
+                <History className="h-4 w-4 mr-2" />
+                Qidirilganlar ({history.length})
+              </Button>
+              <Button
+                variant={activeTab === 'favorites' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => { setActiveTab('favorites'); refreshFavorites(); }}
+                data-testid="tab-favorites"
+              >
+                <Heart className="h-4 w-4 mr-2" />
+                Yoqtirilganlar ({favorites.length})
+              </Button>
+            </div>
+
+            {/* History Tab */}
+            {activeTab === 'history' && (
+              <div className="bg-card rounded-xl border p-4">
+                {history.length > 0 ? (
+                  <>
+                    <div className="flex justify-between items-center mb-3">
+                      <h4 className="text-sm font-medium text-muted-foreground">Qidiruv tarixi</h4>
+                      <Button variant="ghost" size="sm" onClick={handleClearHistory} className="text-xs text-muted-foreground hover:text-destructive">
+                        <Trash2 className="h-3 w-3 mr-1" />
+                        Tozalash
+                      </Button>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {history.map((item) => (
+                        <div key={item.term} className="flex items-center gap-1 bg-muted px-3 py-1.5 rounded-full group">
+                          <button
+                            onClick={() => handleHistoryClick(item.term)}
+                            className="text-sm hover:text-primary transition-colors"
+                            data-testid={`history-item-${item.term}`}
+                          >
+                            {item.term}
+                          </button>
+                          <button
+                            onClick={() => handleRemoveHistory(item.term)}
+                            className="text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-center text-muted-foreground text-sm py-4">Qidiruv tarixi bo'sh</p>
+                )}
+              </div>
+            )}
+
+            {/* Favorites Tab */}
+            {activeTab === 'favorites' && (
+              <div className="bg-card rounded-xl border p-4">
+                {favorites.length > 0 ? (
+                  <div className="space-y-2">
+                    {favorites.map((fav) => (
+                      <button
+                        key={fav.id}
+                        onClick={() => setSearchTerm(fav.arabic)}
+                        className="w-full flex items-center justify-between p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors text-left"
+                        data-testid={`favorite-item-${fav.id}`}
+                      >
+                        <div>
+                          <span className="font-arabic text-xl text-primary" dir="rtl">{fav.arabic}</span>
+                          {fav.uzbek && <span className="text-sm text-muted-foreground ml-3">{fav.uzbek}</span>}
+                        </div>
+                        <Heart className="h-4 w-4 fill-red-500 text-red-500" />
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-center text-muted-foreground text-sm py-4">
+                    Yoqtirilgan so'zlar yo'q. So'z yonidagi yurakchani bosing.
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         ) : isLoading ? (
           <div className="text-center py-20">
