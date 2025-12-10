@@ -755,37 +755,63 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         header += `📗 G'oniy: ${ghoniy.length} | 📘 Roid: ${roid.length} | 📙 Muasir: ${muasir.length}`;
         await ctx.reply(header);
 
+        // Xabarlarni xavfsiz yuborish funksiyasi (4096 belgi limiti)
+        const sendSafeMessage = async (msg: string) => {
+          if (msg.length <= 4000) {
+            await ctx.reply(msg);
+          } else {
+            // Xabarni bo'laklarga bo'lish
+            const chunks = [];
+            let currentChunk = '';
+            const lines = msg.split('\n');
+            
+            for (const line of lines) {
+              if ((currentChunk + line + '\n').length > 3900) {
+                if (currentChunk) chunks.push(currentChunk);
+                currentChunk = line + '\n';
+              } else {
+                currentChunk += line + '\n';
+              }
+            }
+            if (currentChunk) chunks.push(currentChunk);
+            
+            for (const chunk of chunks.slice(0, 3)) { // Maksimum 3 ta xabar
+              await ctx.reply(chunk);
+            }
+          }
+        };
+
         if (ghoniy.length > 0) {
-          let msg = `\n📗 G'ONIY LUG'ATI (${ghoniy.length}):\n\n`;
-          ghoniy.slice(0, 15).forEach((entry, i) => {
+          let msg = `📗 G'ONIY LUG'ATI (${ghoniy.length}):\n\n`;
+          ghoniy.slice(0, 10).forEach((entry, i) => {
             msg += formatFullEntry(entry, i + 1) + '\n\n';
           });
-          if (ghoniy.length > 15) {
-            msg += `... va yana ${ghoniy.length - 15} ta natija`;
+          if (ghoniy.length > 10) {
+            msg += `... va yana ${ghoniy.length - 10} ta natija`;
           }
-          await ctx.reply(msg);
+          await sendSafeMessage(msg);
         }
 
         if (roid.length > 0) {
-          let msg = `\n📘 ROID LUG'ATI (${roid.length}):\n\n`;
-          roid.slice(0, 15).forEach((entry, i) => {
+          let msg = `📘 ROID LUG'ATI (${roid.length}):\n\n`;
+          roid.slice(0, 10).forEach((entry, i) => {
             msg += formatFullEntry(entry, i + 1) + '\n\n';
           });
-          if (roid.length > 15) {
-            msg += `... va yana ${roid.length - 15} ta natija`;
+          if (roid.length > 10) {
+            msg += `... va yana ${roid.length - 10} ta natija`;
           }
-          await ctx.reply(msg);
+          await sendSafeMessage(msg);
         }
 
         if (muasir.length > 0) {
-          let msg = `\n📙 MUASIR LUG'ATI (${muasir.length}):\n\n`;
-          muasir.slice(0, 15).forEach((entry, i) => {
+          let msg = `📙 MUASIR LUG'ATI (${muasir.length}):\n\n`;
+          muasir.slice(0, 10).forEach((entry, i) => {
             msg += formatFullEntry(entry, i + 1) + '\n\n';
           });
-          if (muasir.length > 15) {
-            msg += `... va yana ${muasir.length - 15} ta natija`;
+          if (muasir.length > 10) {
+            msg += `... va yana ${muasir.length - 10} ta natija`;
           }
-          await ctx.reply(msg);
+          await sendSafeMessage(msg);
         }
 
       } catch (error) {
