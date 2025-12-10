@@ -9,24 +9,31 @@ const ADMIN_TELEGRAM_ID = process.env.ADMIN_TELEGRAM_ID || '';
 let bot: Telegraf | null = null;
 
 // Foydalanuvchi holati - murojaat kutish uchun
-const userStates: Map<string, { state: string; timeout?: NodeJS.Timeout }> = new Map();
+const userStates: Map<string, { state: string; timeout?: NodeJS.Timeout; replyToUserId?: string }> = new Map();
 
 // Admin ekanligini tekshirish
 function isAdmin(telegramId: string): boolean {
   return telegramId === ADMIN_TELEGRAM_ID;
 }
 
-// Adminga yangi xabar haqida bildirishnoma yuborish
-async function notifyAdminNewMessage(message: string, fromUser: { firstName?: string; username?: string }) {
+// Adminga yangi xabar haqida bildirishnoma yuborish (inline tugma bilan)
+async function notifyAdminNewMessage(
+  message: string, 
+  fromUser: { id: string; firstName?: string; username?: string },
+  messageId: number
+) {
   if (!bot || !ADMIN_TELEGRAM_ID) return;
   
   try {
-    const userName = fromUser.firstName || 'Noma\'lum';
-    const userHandle = fromUser.username ? `(@${fromUser.username})` : '';
+    const userName = fromUser.firstName || fromUser.id;
+    const userHandle = fromUser.username ? `@${fromUser.username}` : `ID: ${fromUser.id}`;
     
     await bot.telegram.sendMessage(
       ADMIN_TELEGRAM_ID,
-      `🔔 Yangi murojaat!\n\n👤 ${userName} ${userHandle}\n\n💬 ${message}\n\n📥 /xabarlar - barcha murojaatlarni ko'rish`
+      `🔔 Yangi murojaat!\n\n👤 ${userName}\n🆔 ${userHandle}\n\n💬 ${message}`,
+      Markup.inlineKeyboard([
+        [Markup.button.callback('✉️ Javob yozish', `reply_${fromUser.id}_${messageId}`)]
+      ])
     );
   } catch (error) {
     console.error('[Telegram] Admin bildirishnomasida xato:', error);
@@ -667,7 +674,7 @@ Bekor qilish uchun /cancel yozing.`, Markup.keyboard([['❌ Bekor qilish']]).res
       const userState = userStates.get(userId);
       if (userState?.state === 'awaiting_contact') {
         try {
-          await storage.createContactMessage({
+          const savedMsg = await storage.createContactMessage({
             telegramId: userId,
             message: text,
           });
@@ -678,11 +685,12 @@ Bekor qilish uchun /cancel yozing.`, Markup.keyboard([['❌ Bekor qilish']]).res
           }
           userStates.delete(userId);
           
-          // Adminga bildirishnoma yuborish
+          // Adminga bildirishnoma yuborish (inline tugma bilan)
           await notifyAdminNewMessage(text, {
+            id: userId,
             firstName: ctx.from.first_name,
             username: ctx.from.username,
-          });
+          }, savedMsg.id);
           
           await ctx.reply(`✅ Xabaringiz qabul qilindi!
 
@@ -690,6 +698,32 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         } catch (e) {
           console.error('[Telegram] Murojaatni saqlashda xato:', e);
           await ctx.reply('Xatolik yuz berdi. Qaytadan urinib ko\'ring.', getMainKeyboard());
+        }
+        return;
+      }
+      
+      // Admin javob yozish holatida
+      if (userState?.state === 'awaiting_reply' && isAdmin(userId) && userState.replyToUserId) {
+        try {
+          const targetUserId = userState.replyToUserId;
+          
+          // Holatni tozalash
+          if (userState.timeout) {
+            clearTimeout(userState.timeout);
+          }
+          userStates.delete(userId);
+          
+          // Foydalanuvchiga javob yuborish
+          const user = await storage.getTelegramUser(targetUserId);
+          await bot!.telegram.sendMessage(targetUserId, `📩 QOMUS.UZ dan javob:\n\n${text}`);
+          
+          const userName = user?.firstName || targetUserId;
+          const userHandle = user?.username ? `@${user.username}` : '';
+          
+          await ctx.reply(`✅ Javob yuborildi!\n\n👤 ${userName} ${userHandle}`, getAdminKeyboard());
+        } catch (e) {
+          console.error('[Telegram] Javob yuborishda xato:', e);
+          await ctx.reply('❌ Xabar yuborib bo\'lmadi', getAdminKeyboard());
         }
         return;
       }
@@ -817,6 +851,54 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
       } catch (error) {
         console.error('[Telegram] Qidiruv xatosi:', error);
         await ctx.reply('Qidiruvda xatolik yuz berdi. Qaytadan urinib ko\'ring.', getMainKeyboard());
+      }
+    });
+
+    // Callback query handler - inline tugmalar uchun
+    bot.on('callback_query', async (ctx) => {
+      const callbackData = (ctx.callbackQuery as any).data;
+      
+      if (!callbackData) return;
+      
+      // reply_[userId]_[messageId] formatida
+      if (callbackData.startsWith('reply_')) {
+        const parts = callbackData.split('_');
+        if (parts.length >= 2) {
+          const targetUserId = parts[1];
+          const adminId = ctx.from.id.toString();
+          
+          if (!isAdmin(adminId)) {
+            await ctx.answerCbQuery('❌ Faqat admin uchun');
+            return;
+          }
+          
+          // Foydalanuvchi ma'lumotlarini olish
+          const user = await storage.getTelegramUser(targetUserId);
+          const userName = user?.firstName || targetUserId;
+          const userHandle = user?.username ? `@${user.username}` : `ID: ${targetUserId}`;
+          
+          // Javob yozish holatiga o'tkazish
+          const existingState = userStates.get(adminId);
+          if (existingState?.timeout) {
+            clearTimeout(existingState.timeout);
+          }
+          
+          const timeout = setTimeout(() => {
+            userStates.delete(adminId);
+          }, 5 * 60 * 1000);
+          
+          userStates.set(adminId, { 
+            state: 'awaiting_reply', 
+            timeout, 
+            replyToUserId: targetUserId 
+          });
+          
+          await ctx.answerCbQuery();
+          await ctx.reply(
+            `✉️ ${userName} (${userHandle}) ga javob yozing:\n\nBekor qilish uchun /cancel yozing.`,
+            Markup.keyboard([['❌ Bekor qilish']]).resize()
+          );
+        }
       }
     });
 
