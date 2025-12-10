@@ -145,12 +145,28 @@ async function sendBroadcast(content: string): Promise<any> {
   return res.json();
 }
 
+async function sendMessageToUser(telegramId: string, message: string): Promise<any> {
+  const res = await fetch(`${API_BASE}/users/${telegramId}/message`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message }),
+  });
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.error || "Xabar yuborishda xatolik");
+  }
+  return res.json();
+}
+
 export default function TelegramAdminPage() {
   const [replyDialogOpen, setReplyDialogOpen] = React.useState(false);
   const [selectedMessage, setSelectedMessage] = React.useState<ContactMessage | null>(null);
   const [replyText, setReplyText] = React.useState("");
   const [broadcastText, setBroadcastText] = React.useState("");
   const [messageFilter, setMessageFilter] = React.useState<string>("all");
+  const [messageDialogOpen, setMessageDialogOpen] = React.useState(false);
+  const [selectedUser, setSelectedUser] = React.useState<TelegramUser | null>(null);
+  const [userMessageText, setUserMessageText] = React.useState("");
   const queryClient = useQueryClient();
 
   const { data: stats, isLoading: statsLoading } = useQuery({
@@ -204,6 +220,19 @@ export default function TelegramAdminPage() {
     },
   });
 
+  const sendMessageMutation = useMutation({
+    mutationFn: ({ telegramId, message }: { telegramId: string; message: string }) => 
+      sendMessageToUser(telegramId, message),
+    onSuccess: () => {
+      setMessageDialogOpen(false);
+      setUserMessageText("");
+      toast({ title: "Xabar yuborildi" });
+    },
+    onError: (error: Error) => {
+      toast({ title: "Xatolik", description: error.message, variant: "destructive" });
+    },
+  });
+
   const handleReply = (message: ContactMessage) => {
     setSelectedMessage(message);
     setReplyText("");
@@ -219,6 +248,20 @@ export default function TelegramAdminPage() {
     if (!broadcastText.trim()) return;
     if (!confirm(`${stats?.activeUsers || 0} ta foydalanuvchiga xabar yuboriladi. Davom etasizmi?`)) return;
     broadcastMutation.mutate(broadcastText);
+  };
+
+  const handleSendMessage = (user: TelegramUser) => {
+    setSelectedUser(user);
+    setUserMessageText("");
+    setMessageDialogOpen(true);
+  };
+
+  const submitUserMessage = () => {
+    if (!selectedUser || !userMessageText.trim()) return;
+    sendMessageMutation.mutate({ 
+      telegramId: selectedUser.telegramId, 
+      message: userMessageText 
+    });
   };
 
   const formatDate = (dateStr: string | null) => {
@@ -533,6 +576,7 @@ export default function TelegramAdminPage() {
                         <TableHead>Status</TableHead>
                         <TableHead>Oxirgi faollik</TableHead>
                         <TableHead>Qo'shilgan</TableHead>
+                        <TableHead>Amallar</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -559,6 +603,18 @@ export default function TelegramAdminPage() {
                           </TableCell>
                           <TableCell className="text-sm">
                             {formatDate(user.createdAt)}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => handleSendMessage(user)}
+                              disabled={user.isBlocked === "true"}
+                              data-testid={`button-message-${user.telegramId}`}
+                            >
+                              <Send className="h-4 w-4 mr-1" />
+                              Xabar
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -602,6 +658,42 @@ export default function TelegramAdminPage() {
                 data-testid="button-submit-reply"
               >
                 {replyMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+                Yuborish
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Send Message to User Dialog */}
+        <Dialog open={messageDialogOpen} onOpenChange={setMessageDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Xabar yuborish</DialogTitle>
+              <DialogDescription>
+                {selectedUser?.firstName || "Foydalanuvchi"}ga xabar yuborish
+                {selectedUser?.username && ` (@${selectedUser.username})`}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <Textarea
+                placeholder="Xabar matnini yozing..."
+                value={userMessageText}
+                onChange={(e) => setUserMessageText(e.target.value)}
+                rows={5}
+                data-testid="input-user-message"
+              />
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setMessageDialogOpen(false)}>
+                Bekor qilish
+              </Button>
+              <Button 
+                onClick={submitUserMessage}
+                disabled={!userMessageText.trim() || sendMessageMutation.isPending}
+                data-testid="button-send-user-message"
+              >
+                {sendMessageMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+                <Send className="h-4 w-4 mr-2" />
                 Yuborish
               </Button>
             </DialogFooter>

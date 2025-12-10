@@ -558,6 +558,38 @@ export async function registerRoutes(
     }
   });
 
+  // Send individual message to a user
+  app.post("/api/telegram/users/:telegramId/message", async (req, res) => {
+    try {
+      const { telegramId } = req.params;
+      const { message } = req.body;
+      
+      if (!message) {
+        return res.status(400).json({ error: "Xabar matni kerak" });
+      }
+      
+      const user = await storage.getTelegramUser(telegramId);
+      if (!user) {
+        return res.status(404).json({ error: "Foydalanuvchi topilmadi" });
+      }
+      
+      // Telegram orqali xabar yuborish
+      const sent = await sendMessageToUser(
+        telegramId,
+        `📩 QOMUS.UZ dan xabar:\n\n${message}`
+      );
+      
+      if (!sent) {
+        return res.status(500).json({ error: "Xabarni yuborib bo'lmadi (foydalanuvchi botni bloklagan bo'lishi mumkin)" });
+      }
+      
+      res.json({ success: true, message: "Xabar yuborildi" });
+    } catch (error) {
+      console.error("Error sending message to user:", error);
+      res.status(500).json({ error: "Xabar yuborishda xatolik" });
+    }
+  });
+
   // Send broadcast
   app.post("/api/telegram/broadcast", async (req, res) => {
     try {
