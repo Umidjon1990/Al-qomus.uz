@@ -708,7 +708,38 @@ JSON formatida javob ber:`;
     const content = completion.choices[0]?.message?.content || '{}';
     tokensUsed = completion.usage?.total_tokens || 1000;
     
-    const parsed_response = JSON.parse(content);
+    // JSON ni parse qilish, xato bo'lsa tuzatishga urining
+    let parsed_response: any;
+    try {
+      parsed_response = JSON.parse(content);
+    } catch (parseError) {
+      // JSON xato bo'lsa - qavslarni yopib ko'ring
+      let fixedContent = content;
+      const openBrackets = (content.match(/\[/g) || []).length;
+      const closeBrackets = (content.match(/\]/g) || []).length;
+      const openBraces = (content.match(/\{/g) || []).length;
+      const closeBraces = (content.match(/\}/g) || []).length;
+      
+      // Yopilmagan stringlarni tozalash
+      fixedContent = fixedContent.replace(/,\s*"[^"]*$/g, '');
+      
+      // Qavslarni yopish
+      for (let i = 0; i < openBrackets - closeBrackets; i++) fixedContent += ']';
+      for (let i = 0; i < openBraces - closeBraces; i++) fixedContent += '}';
+      
+      try {
+        parsed_response = JSON.parse(fixedContent);
+      } catch {
+        // Hali ham xato - oddiy regex bilan ma'nolarni olish
+        const meaningMatches = content.match(/"uzbek_meaning"\s*:\s*"([^"]+)"/g) || [];
+        const meanings = meaningMatches.map((m: string, idx: number) => ({
+          index: idx + 1,
+          uzbek_meaning: m.match(/"uzbek_meaning"\s*:\s*"([^"]+)"/)?.[1] || ''
+        })).filter((m: any) => m.uzbek_meaning);
+        
+        parsed_response = { meanings, word_type: 'nomalum' };
+      }
+    }
     
     // Validate and extract meanings with enhanced validation
     const meanings: GhoniyMeaning[] = [];

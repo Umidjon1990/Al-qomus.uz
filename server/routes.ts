@@ -13,12 +13,13 @@ export async function registerRoutes(
   // Get statistics (MUST be before /:id route)
   app.get("/api/dictionary/stats", async (req, res) => {
     try {
-      const allEntries = await storage.getDictionaryEntries();
+      const sources = await storage.getDictionarySources();
+      const totalCount = sources.reduce((sum, s) => sum + s.count, 0);
       const untranslated = await storage.getUntranslatedEntries();
       
       res.json({
-        total: allEntries.length,
-        translated: allEntries.length - untranslated.length,
+        total: totalCount,
+        translated: totalCount - untranslated.length,
         pending: untranslated.length,
       });
     } catch (error) {
