@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User } from "lucide-react";
+import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
@@ -38,12 +38,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <NavLink href="/about">Loyiha haqida</NavLink>
             
             {isAdmin && (
-              <NavLink href="/admin">
-                 <span className="flex items-center gap-1">
-                   <Edit3 className="h-3 w-3" />
-                   Tahrirlovchi
-                 </span>
-              </NavLink>
+              <>
+                <NavLink href="/admin">
+                   <span className="flex items-center gap-1">
+                     <Edit3 className="h-3 w-3" />
+                     Lug'at
+                   </span>
+                </NavLink>
+                <NavLink href="/admin/telegram">
+                   <span className="flex items-center gap-1">
+                     <MessageSquare className="h-3 w-3" />
+                     Telegram
+                   </span>
+                </NavLink>
+              </>
             )}
 
             <div className="h-4 w-px bg-border mx-2"></div>
@@ -92,10 +100,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </Link>
                   
                   {isAdmin && (
-                    <Link href="/admin" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
-                      <Edit3 className="h-4 w-4" />
-                      Tahrirlovchi
-                    </Link>
+                    <>
+                      <Link href="/admin" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
+                        <Edit3 className="h-4 w-4" />
+                        Lug'at Tahriri
+                      </Link>
+                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
+                        <MessageSquare className="h-4 w-4" />
+                        Telegram
+                      </Link>
+                    </>
                   )}
 
                   <div className="h-px bg-border my-2"></div>

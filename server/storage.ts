@@ -429,7 +429,7 @@ export class DatabaseStorage implements IStorage {
 
   async updateBroadcastProgress(id: number, sent: number, failed: number): Promise<void> {
     await db.update(broadcasts)
-      .set({ sentCount: sent, failedCount: failed })
+      .set({ sentCount: sent.toString(), failedCount: failed.toString() })
       .where(eq(broadcasts.id, id));
   }
 

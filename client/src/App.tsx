@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import DictionaryPage from "@/pages/DictionaryPage";
 import AdminPage from "@/pages/AdminPage";
+import TelegramAdminPage from "@/pages/TelegramAdminPage";
 import LoginPage from "@/pages/LoginPage";
 import NotFound from "@/pages/not-found";
 import { AuthProvider, useAuth } from "@/lib/auth";
@@ -37,6 +38,9 @@ function Router() {
       <Route path="/login" component={LoginPage} />
       <Route path="/admin">
         {() => <ProtectedRoute component={AdminPage} adminOnly={true} />}
+      </Route>
+      <Route path="/admin/telegram">
+        {() => <ProtectedRoute component={TelegramAdminPage} adminOnly={true} />}
       </Route>
       <Route component={NotFound} />
     </Switch>

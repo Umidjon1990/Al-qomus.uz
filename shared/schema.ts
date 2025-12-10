@@ -97,9 +97,9 @@ export const broadcasts = pgTable("broadcasts", {
   id: serial("id").primaryKey(),
   content: text("content").notNull(),
   status: text("status").default("pending"), // pending, sending, completed, failed
-  totalUsers: serial("total_users"),
-  sentCount: serial("sent_count"),
-  failedCount: serial("failed_count"),
+  totalUsers: text("total_users").default("0"),
+  sentCount: text("sent_count").default("0"),
+  failedCount: text("failed_count").default("0"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   completedAt: timestamp("completed_at"),
 });

@@ -572,7 +572,7 @@ export async function registerRoutes(
       // Broadcast yaratish
       const broadcast = await storage.createBroadcast({
         content,
-        totalUsers: users.length,
+        totalUsers: users.length.toString(),
       });
       
       // Asinxron yuborish (hozircha sinxron)
