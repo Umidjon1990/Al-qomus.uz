@@ -645,7 +645,13 @@ Bekor qilish uchun /cancel yozing.`, Markup.keyboard([['❌ Bekor qilish']]).res
         clearTimeout(state.timeout);
       }
       userStates.delete(userId);
-      await ctx.reply('Bekor qilindi.', getMainKeyboard());
+      
+      // Admin uchun admin tugmalarini ko'rsatish
+      if (isAdmin(userId)) {
+        await ctx.reply('Bekor qilindi.', getAdminKeyboard());
+      } else {
+        await ctx.reply('Bekor qilindi.', getMainKeyboard());
+      }
     });
 
     bot.command('cancel', async (ctx) => {
@@ -655,7 +661,13 @@ Bekor qilish uchun /cancel yozing.`, Markup.keyboard([['❌ Bekor qilish']]).res
         clearTimeout(state.timeout);
       }
       userStates.delete(userId);
-      await ctx.reply('Bekor qilindi.', getMainKeyboard());
+      
+      // Admin uchun admin tugmalarini ko'rsatish
+      if (isAdmin(userId)) {
+        await ctx.reply('Bekor qilindi.', getAdminKeyboard());
+      } else {
+        await ctx.reply('Bekor qilindi.', getMainKeyboard());
+      }
     });
 
     // Matn xabarlarini qabul qilish
