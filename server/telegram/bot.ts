@@ -122,6 +122,15 @@ function getMainKeyboard() {
   ]).resize();
 }
 
+// Admin tugmalari
+function getAdminKeyboard() {
+  return Markup.keyboard([
+    ['📥 Yangi xabarlar', '👥 Foydalanuvchilar'],
+    ['📤 Broadcast', '✉️ Xabar yuborish'],
+    ['📊 Statistika', '🔙 Asosiy menyu']
+  ]).resize();
+}
+
 export async function initTelegramBot(): Promise<Telegraf | null> {
   console.log('[Telegram] Bot ishga tushirilmoqda...');
   
@@ -165,7 +174,13 @@ QOMUS.UZ - Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 
 Tugmalardan foydalaning:`;
 
-      await ctx.reply(welcomeMessage, getMainKeyboard());
+      // Admin uchun admin tugmalarini ko'rsatish
+      const userId = ctx.from.id.toString();
+      if (isAdmin(userId)) {
+        await ctx.reply(welcomeMessage, getAdminKeyboard());
+      } else {
+        await ctx.reply(welcomeMessage, getMainKeyboard());
+      }
     });
 
     // /help yoki ℹ️ Yordam tugmasi
@@ -370,6 +385,157 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
       }
     });
 
+    // ===== ADMIN TUGMALAR =====
+
+    // 🔐 Admin panel tugmasi
+    bot.hears('🔐 Admin', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      await ctx.reply('🔐 Admin paneliga xush kelibsiz!', getAdminKeyboard());
+    });
+
+    // 📥 Yangi xabarlar tugmasi
+    bot.hears('📥 Yangi xabarlar', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      try {
+        const messages = await storage.getContactMessages('new');
+        
+        if (messages.length === 0) {
+          await ctx.reply('✅ Yangi murojaatlar yo\'q!', getAdminKeyboard());
+          return;
+        }
+        
+        let text = `📥 Yangi murojaatlar (${messages.length} ta):\n\n`;
+        
+        for (const msg of messages.slice(0, 10)) {
+          const user = await storage.getTelegramUser(msg.telegramId);
+          const userName = user?.firstName || 'Noma\'lum';
+          const userHandle = user?.username ? `@${user.username}` : '';
+          const date = new Date(msg.createdAt).toLocaleDateString('uz-UZ');
+          
+          text += `👤 ${userName} ${userHandle}\n`;
+          text += `💬 ${msg.message.substring(0, 100)}${msg.message.length > 100 ? '...' : ''}\n`;
+          text += `📅 ${date} | ID: ${msg.id}\n`;
+          text += `➡️ Javob: /javob ${msg.id} [matn]\n\n`;
+        }
+        
+        if (messages.length > 10) {
+          text += `... va yana ${messages.length - 10} ta xabar`;
+        }
+        
+        await ctx.reply(text, getAdminKeyboard());
+      } catch (error) {
+        await ctx.reply('Xatolik yuz berdi', getAdminKeyboard());
+      }
+    });
+
+    // 👥 Foydalanuvchilar tugmasi
+    bot.hears('👥 Foydalanuvchilar', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      try {
+        const users = await storage.getAllTelegramUsers();
+        const activeUsers = users.filter(u => u.isBlocked !== 'true');
+        
+        let text = `👥 Foydalanuvchilar (${users.length} ta):\n\n`;
+        text += `✅ Faol: ${activeUsers.length}\n`;
+        text += `🚫 Bloklangan: ${users.length - activeUsers.length}\n\n`;
+        text += `Oxirgi 10 ta:\n\n`;
+        
+        for (const user of users.slice(0, 10)) {
+          const name = user.firstName || 'Noma\'lum';
+          const handle = user.username ? `@${user.username}` : '';
+          text += `• ${name} ${handle}\n  ID: ${user.telegramId}\n`;
+        }
+        
+        text += `\n💡 Xabar yuborish:\n/xabar [ID] [matn]`;
+        
+        await ctx.reply(text, getAdminKeyboard());
+      } catch (error) {
+        await ctx.reply('Xatolik yuz berdi', getAdminKeyboard());
+      }
+    });
+
+    // 📤 Broadcast tugmasi
+    bot.hears('📤 Broadcast', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      const users = await storage.getActiveTelegramUsers();
+      
+      // Holatni saqlash
+      const existingState = userStates.get(userId);
+      if (existingState?.timeout) {
+        clearTimeout(existingState.timeout);
+      }
+      
+      const timeout = setTimeout(() => {
+        userStates.delete(userId);
+      }, 5 * 60 * 1000);
+      
+      userStates.set(userId, { state: 'awaiting_broadcast', timeout });
+      
+      await ctx.reply(`📤 Broadcast yuborish
+
+${users.length} ta faol foydalanuvchiga xabar yuboriladi.
+
+Xabar matnini yozing:`, Markup.keyboard([['❌ Bekor qilish']]).resize());
+    });
+
+    // ✉️ Xabar yuborish tugmasi
+    bot.hears('✉️ Xabar yuborish', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      await ctx.reply(`✉️ Foydalanuvchiga xabar yuborish
+
+Format: /xabar [Telegram ID] [matn]
+
+Misol:
+/xabar 123456789 Assalomu alaykum!
+
+💡 ID larni ko'rish uchun "👥 Foydalanuvchilar" tugmasini bosing.`, getAdminKeyboard());
+    });
+
+    // 🔙 Asosiy menyu tugmasi
+    bot.hears('🔙 Asosiy menyu', async (ctx) => {
+      await ctx.reply('Asosiy menyuga qaytdingiz', getMainKeyboard());
+    });
+
+    // /xabar [id] [matn] - foydalanuvchiga xabar yuborish
+    bot.command('xabar', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      const args = ctx.message.text.split(' ').slice(1);
+      if (args.length < 2) {
+        await ctx.reply('❌ Format: /xabar [Telegram ID] [matn]\n\nMisol: /xabar 123456789 Assalomu alaykum!', getAdminKeyboard());
+        return;
+      }
+      
+      const targetId = args[0];
+      const message = args.slice(1).join(' ');
+      
+      try {
+        const user = await storage.getTelegramUser(targetId);
+        if (!user) {
+          await ctx.reply('❌ Foydalanuvchi topilmadi', getAdminKeyboard());
+          return;
+        }
+        
+        await bot!.telegram.sendMessage(targetId, `📩 QOMUS.UZ dan xabar:\n\n${message}`);
+        
+        await ctx.reply(`✅ Xabar yuborildi!\n\n👤 ${user.firstName || 'Noma\'lum'} ${user.username ? '@' + user.username : ''}`, getAdminKeyboard());
+      } catch (error) {
+        console.error('[Telegram] Xabar yuborishda xato:', error);
+        await ctx.reply('❌ Xabar yuborib bo\'lmadi (foydalanuvchi botni bloklagan bo\'lishi mumkin)', getAdminKeyboard());
+      }
+    });
+
     // ===== ADMIN KOMANDALARI TUGADI =====
 
     // 📊 Statistika tugmasi
@@ -504,6 +670,43 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         } catch (e) {
           console.error('[Telegram] Murojaatni saqlashda xato:', e);
           await ctx.reply('Xatolik yuz berdi. Qaytadan urinib ko\'ring.', getMainKeyboard());
+        }
+        return;
+      }
+      
+      // Admin broadcast kutish holatida
+      if (userState?.state === 'awaiting_broadcast' && isAdmin(userId)) {
+        try {
+          const users = await storage.getActiveTelegramUsers();
+          
+          // Holatni tozalash
+          if (userState.timeout) {
+            clearTimeout(userState.timeout);
+          }
+          userStates.delete(userId);
+          
+          await ctx.reply(`📤 ${users.length} ta foydalanuvchiga yuborilmoqda...`);
+          
+          let sent = 0;
+          let failed = 0;
+          
+          for (const user of users) {
+            try {
+              await bot!.telegram.sendMessage(user.telegramId, text);
+              sent++;
+              // Rate limiting
+              if (sent % 25 === 0) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+              }
+            } catch (e) {
+              failed++;
+            }
+          }
+          
+          await ctx.reply(`✅ Broadcast tugadi!\n\n📤 Yuborildi: ${sent}\n❌ Xato: ${failed}`, getAdminKeyboard());
+        } catch (e) {
+          console.error('[Telegram] Broadcast xatosi:', e);
+          await ctx.reply('Xatolik yuz berdi', getAdminKeyboard());
         }
         return;
       }
