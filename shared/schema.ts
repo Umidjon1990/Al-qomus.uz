@@ -53,3 +53,61 @@ export const updateDictionaryEntrySchema = createInsertSchema(dictionaryEntries)
 export type DictionaryEntry = typeof dictionaryEntries.$inferSelect;
 export type InsertDictionaryEntry = z.infer<typeof insertDictionaryEntrySchema>;
 export type UpdateDictionaryEntry = z.infer<typeof updateDictionaryEntrySchema>;
+
+// Telegram Users Table - bot foydalanuvchilari
+export const telegramUsers = pgTable("telegram_users", {
+  telegramId: text("telegram_id").primaryKey(),
+  username: text("username"),
+  firstName: text("first_name"),
+  lastName: text("last_name"),
+  languageCode: text("language_code"),
+  isBlocked: text("is_blocked").default("false"),
+  lastInteractionAt: timestamp("last_interaction_at").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertTelegramUserSchema = createInsertSchema(telegramUsers).omit({
+  createdAt: true,
+});
+
+export type TelegramUser = typeof telegramUsers.$inferSelect;
+export type InsertTelegramUser = z.infer<typeof insertTelegramUserSchema>;
+
+// Contact Messages Table - murojaatlar
+export const contactMessages = pgTable("contact_messages", {
+  id: serial("id").primaryKey(),
+  telegramId: text("telegram_id").notNull(),
+  message: text("message").notNull(),
+  status: text("status").default("new"), // new, in_progress, resolved
+  adminResponse: text("admin_response"),
+  respondedAt: timestamp("responded_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type ContactMessage = typeof contactMessages.$inferSelect;
+export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
+
+// Broadcasts Table - e'lonlar
+export const broadcasts = pgTable("broadcasts", {
+  id: serial("id").primaryKey(),
+  content: text("content").notNull(),
+  status: text("status").default("pending"), // pending, sending, completed, failed
+  totalUsers: serial("total_users"),
+  sentCount: serial("sent_count"),
+  failedCount: serial("failed_count"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  completedAt: timestamp("completed_at"),
+});
+
+export const insertBroadcastSchema = createInsertSchema(broadcasts).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type Broadcast = typeof broadcasts.$inferSelect;
+export type InsertBroadcast = z.infer<typeof insertBroadcastSchema>;

@@ -4,11 +4,20 @@ import {
   type DictionaryEntry,
   type InsertDictionaryEntry,
   type UpdateDictionaryEntry,
+  type TelegramUser,
+  type InsertTelegramUser,
+  type ContactMessage,
+  type InsertContactMessage,
+  type Broadcast,
+  type InsertBroadcast,
   users,
-  dictionaryEntries
+  dictionaryEntries,
+  telegramUsers,
+  contactMessages,
+  broadcasts
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, ilike, or, inArray, and } from "drizzle-orm";
+import { eq, ilike, or, inArray, and, desc } from "drizzle-orm";
 import { sql } from "drizzle-orm";
 
 export interface IStorage {
@@ -37,6 +46,27 @@ export interface IStorage {
   // Ghoniy processing methods
   getGhoniyEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
   updateGhoniyProcessedEntry(id: number, uzbekSummary: string, meaningsJson: string, wordType: string): Promise<DictionaryEntry | undefined>;
+  
+  // Telegram user methods
+  upsertTelegramUser(user: InsertTelegramUser): Promise<TelegramUser>;
+  getTelegramUser(telegramId: string): Promise<TelegramUser | undefined>;
+  getAllTelegramUsers(): Promise<TelegramUser[]>;
+  getActiveTelegramUsers(): Promise<TelegramUser[]>;
+  markTelegramUserBlocked(telegramId: string): Promise<void>;
+  updateTelegramUserInteraction(telegramId: string): Promise<void>;
+  
+  // Contact message methods
+  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  getContactMessages(status?: string): Promise<ContactMessage[]>;
+  getContactMessage(id: number): Promise<ContactMessage | undefined>;
+  updateContactMessageStatus(id: number, status: string): Promise<void>;
+  respondToContactMessage(id: number, response: string): Promise<ContactMessage | undefined>;
+  
+  // Broadcast methods
+  createBroadcast(broadcast: InsertBroadcast): Promise<Broadcast>;
+  getBroadcasts(): Promise<Broadcast[]>;
+  updateBroadcastProgress(id: number, sent: number, failed: number): Promise<void>;
+  completeBroadcast(id: number, status: string): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -298,6 +328,115 @@ export class DatabaseStorage implements IStorage {
       .where(eq(dictionaryEntries.id, id))
       .returning();
     return result[0];
+  }
+
+  // Telegram user methods
+  async upsertTelegramUser(user: InsertTelegramUser): Promise<TelegramUser> {
+    const existing = await this.getTelegramUser(user.telegramId);
+    if (existing) {
+      const result = await db.update(telegramUsers)
+        .set({
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          languageCode: user.languageCode,
+          lastInteractionAt: new Date(),
+        })
+        .where(eq(telegramUsers.telegramId, user.telegramId))
+        .returning();
+      return result[0];
+    }
+    const result = await db.insert(telegramUsers).values(user).returning();
+    return result[0];
+  }
+
+  async getTelegramUser(telegramId: string): Promise<TelegramUser | undefined> {
+    const result = await db.select().from(telegramUsers)
+      .where(eq(telegramUsers.telegramId, telegramId)).limit(1);
+    return result[0];
+  }
+
+  async getAllTelegramUsers(): Promise<TelegramUser[]> {
+    return await db.select().from(telegramUsers).orderBy(desc(telegramUsers.createdAt));
+  }
+
+  async getActiveTelegramUsers(): Promise<TelegramUser[]> {
+    return await db.select().from(telegramUsers)
+      .where(eq(telegramUsers.isBlocked, 'false'))
+      .orderBy(desc(telegramUsers.lastInteractionAt));
+  }
+
+  async markTelegramUserBlocked(telegramId: string): Promise<void> {
+    await db.update(telegramUsers)
+      .set({ isBlocked: 'true' })
+      .where(eq(telegramUsers.telegramId, telegramId));
+  }
+
+  async updateTelegramUserInteraction(telegramId: string): Promise<void> {
+    await db.update(telegramUsers)
+      .set({ lastInteractionAt: new Date() })
+      .where(eq(telegramUsers.telegramId, telegramId));
+  }
+
+  // Contact message methods
+  async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
+    const result = await db.insert(contactMessages).values(message).returning();
+    return result[0];
+  }
+
+  async getContactMessages(status?: string): Promise<ContactMessage[]> {
+    if (status) {
+      return await db.select().from(contactMessages)
+        .where(eq(contactMessages.status, status))
+        .orderBy(desc(contactMessages.createdAt));
+    }
+    return await db.select().from(contactMessages).orderBy(desc(contactMessages.createdAt));
+  }
+
+  async getContactMessage(id: number): Promise<ContactMessage | undefined> {
+    const result = await db.select().from(contactMessages)
+      .where(eq(contactMessages.id, id)).limit(1);
+    return result[0];
+  }
+
+  async updateContactMessageStatus(id: number, status: string): Promise<void> {
+    await db.update(contactMessages)
+      .set({ status })
+      .where(eq(contactMessages.id, id));
+  }
+
+  async respondToContactMessage(id: number, response: string): Promise<ContactMessage | undefined> {
+    const result = await db.update(contactMessages)
+      .set({
+        adminResponse: response,
+        status: 'resolved',
+        respondedAt: new Date(),
+      })
+      .where(eq(contactMessages.id, id))
+      .returning();
+    return result[0];
+  }
+
+  // Broadcast methods
+  async createBroadcast(broadcast: InsertBroadcast): Promise<Broadcast> {
+    const result = await db.insert(broadcasts).values(broadcast).returning();
+    return result[0];
+  }
+
+  async getBroadcasts(): Promise<Broadcast[]> {
+    return await db.select().from(broadcasts).orderBy(desc(broadcasts.createdAt));
+  }
+
+  async updateBroadcastProgress(id: number, sent: number, failed: number): Promise<void> {
+    await db.update(broadcasts)
+      .set({ sentCount: sent, failedCount: failed })
+      .where(eq(broadcasts.id, id));
+  }
+
+  async completeBroadcast(id: number, status: string): Promise<void> {
+    await db.update(broadcasts)
+      .set({ status, completedAt: new Date() })
+      .where(eq(broadcasts.id, id));
   }
 }
 
