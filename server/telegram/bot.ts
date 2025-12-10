@@ -114,11 +114,11 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
   return lines.join('\n');
 }
 
-// Asosiy tugmalar
+// Asosiy tugmalar (oddiy foydalanuvchilar uchun)
 function getMainKeyboard() {
   return Markup.keyboard([
     ['🔍 Qidiruv', '✉️ Biz bilan aloqa'],
-    ['📊 Statistika', 'ℹ️ Yordam']
+    ['ℹ️ Yordam']
   ]).resize();
 }
 
@@ -538,46 +538,66 @@ Misol:
 
     // ===== ADMIN KOMANDALARI TUGADI =====
 
-    // 📊 Statistika tugmasi
+    // 📊 Statistika tugmasi (faqat admin uchun)
     bot.hears('📊 Statistika', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
       try {
         const sources = await storage.getDictionarySources();
         const users = await storage.getAllTelegramUsers();
+        const activeUsers = users.filter(u => u.isBlocked !== 'true');
+        const newMessages = await storage.getContactMessages('new');
+        
         let total = 0;
-        let statsText = "📊 Lug'at statistikasi:\n\n";
+        let statsText = "📊 Statistika:\n\n";
+        statsText += "📚 Lug'atlar:\n";
         
         for (const source of sources) {
-          statsText += `📕 ${source.source}: ${source.count.toLocaleString()} so'z\n`;
+          statsText += `• ${source.source}: ${source.count.toLocaleString()} so'z\n`;
           total += source.count;
         }
         
         statsText += `\n📚 Jami: ${total.toLocaleString()} so'z`;
-        statsText += `\n👥 Bot foydalanuvchilari: ${users.length}`;
+        statsText += `\n\n👥 Foydalanuvchilar:`;
+        statsText += `\n• Faol: ${activeUsers.length}`;
+        statsText += `\n• Jami: ${users.length}`;
+        statsText += `\n\n📥 Yangi murojaatlar: ${newMessages.length}`;
         
-        await ctx.reply(statsText, getMainKeyboard());
+        await ctx.reply(statsText, getAdminKeyboard());
       } catch (error) {
-        await ctx.reply('Statistikani olishda xatolik yuz berdi', getMainKeyboard());
+        await ctx.reply('Statistikani olishda xatolik yuz berdi', getAdminKeyboard());
       }
     });
 
     bot.command('stats', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
       try {
         const sources = await storage.getDictionarySources();
         const users = await storage.getAllTelegramUsers();
+        const activeUsers = users.filter(u => u.isBlocked !== 'true');
+        const newMessages = await storage.getContactMessages('new');
+        
         let total = 0;
-        let statsText = "📊 Lug'at statistikasi:\n\n";
+        let statsText = "📊 Statistika:\n\n";
+        statsText += "📚 Lug'atlar:\n";
         
         for (const source of sources) {
-          statsText += `📕 ${source.source}: ${source.count.toLocaleString()} so'z\n`;
+          statsText += `• ${source.source}: ${source.count.toLocaleString()} so'z\n`;
           total += source.count;
         }
         
         statsText += `\n📚 Jami: ${total.toLocaleString()} so'z`;
-        statsText += `\n👥 Bot foydalanuvchilari: ${users.length}`;
+        statsText += `\n\n👥 Foydalanuvchilar:`;
+        statsText += `\n• Faol: ${activeUsers.length}`;
+        statsText += `\n• Jami: ${users.length}`;
+        statsText += `\n\n📥 Yangi murojaatlar: ${newMessages.length}`;
         
-        await ctx.reply(statsText, getMainKeyboard());
+        await ctx.reply(statsText, getAdminKeyboard());
       } catch (error) {
-        await ctx.reply('Statistikani olishda xatolik yuz berdi', getMainKeyboard());
+        await ctx.reply('Statistikani olishda xatolik yuz berdi', getAdminKeyboard());
       }
     });
 
