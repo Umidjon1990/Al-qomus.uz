@@ -129,6 +129,14 @@ function getMainKeyboard() {
   ]).resize();
 }
 
+// Asosiy tugmalar + admin tugmasi (admin uchun)
+function getMainKeyboardWithAdmin() {
+  return Markup.keyboard([
+    ['🔍 Qidiruv', '✉️ Biz bilan aloqa'],
+    ['ℹ️ Yordam', '🔐 Admin']
+  ]).resize();
+}
+
 // Admin tugmalari
 function getAdminKeyboard() {
   return Markup.keyboard([
@@ -510,7 +518,20 @@ Misol:
 
     // 🔙 Asosiy menyu tugmasi
     bot.hears('🔙 Asosiy menyu', async (ctx) => {
-      await ctx.reply('Asosiy menyuga qaytdingiz', getMainKeyboard());
+      const userId = ctx.from.id.toString();
+      if (isAdmin(userId)) {
+        await ctx.reply('Asosiy menyuga qaytdingiz', getMainKeyboardWithAdmin());
+      } else {
+        await ctx.reply('Asosiy menyuga qaytdingiz', getMainKeyboard());
+      }
+    });
+
+    // 🔐 Admin menyu tugmasi (asosiy menyudan adminmenyuga o'tish)
+    bot.hears('🔐 Admin', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      if (!isAdmin(userId)) return;
+      
+      await ctx.reply('🔐 Admin paneliga xush kelibsiz!', getAdminKeyboard());
     });
 
     // /xabar [id] [matn] - foydalanuvchiga xabar yuborish
