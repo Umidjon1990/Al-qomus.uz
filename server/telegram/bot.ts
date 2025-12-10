@@ -75,7 +75,7 @@ export async function initTelegramBot(): Promise<Telegraf | null> {
 
     bot.command('start', async (ctx) => {
       const welcomeMessage = `
-🌙 *Assalomu alaykum!*
+🌙 *Assalomu alaykum\\!*
 
 *QOMUS\\.UZ* \\- Arabcha\\-O'zbekcha lug'at botiga xush kelibsiz\\!
 
