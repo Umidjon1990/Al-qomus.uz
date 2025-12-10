@@ -49,6 +49,41 @@ function formatShortEntry(entry: DictionaryEntry, index: number): string {
   return `${index + 1}. ${entry.arabic} — ${uzbekShort}${entry.uzbek && entry.uzbek.length > 80 ? '...' : ''}`;
 }
 
+function formatFullEntry(entry: DictionaryEntry, num: number): string {
+  const lines: string[] = [];
+  
+  lines.push(`${num}. ${entry.arabic}`);
+  
+  if (entry.transliteration) {
+    lines.push(`   🔤 ${entry.transliteration}`);
+  }
+  
+  if (entry.wordType) {
+    lines.push(`   📝 ${entry.wordType}`);
+  }
+  
+  if (entry.uzbek) {
+    lines.push(`   🇺🇿 ${entry.uzbek}`);
+  }
+  
+  // Ma'nolar (meaningsJson dan)
+  if (entry.meaningsJson) {
+    try {
+      const meanings = JSON.parse(entry.meaningsJson);
+      if (Array.isArray(meanings) && meanings.length > 0) {
+        meanings.slice(0, 3).forEach((m: any, i: number) => {
+          const meaning = m.uzbekMeaning || m.meaning || '';
+          if (meaning) {
+            lines.push(`   ${i + 1}) ${meaning}`);
+          }
+        });
+      }
+    } catch (e) {}
+  }
+  
+  return lines.join('\n');
+}
+
 export async function initTelegramBot(): Promise<Telegraf | null> {
   console.log('[Telegram] Bot ishga tushirilmoqda...');
   
@@ -139,22 +174,52 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
           return;
         }
 
-        if (entries.length === 1) {
-          await ctx.reply(formatEntry(entries[0]));
-        } else {
-          let response = `🔍 "${query}" bo'yicha ${entries.length} ta natija:\n\n`;
-          
-          entries.slice(0, 10).forEach((entry, i) => {
-            response += formatShortEntry(entry, i) + '\n\n';
+        // Lug'atlarga bo'lib guruhlaymiz
+        const ghoniy = entries.filter(e => e.dictionarySource === 'Ghoniy');
+        const roid = entries.filter(e => e.dictionarySource === 'Roid');
+        const muasir = entries.filter(e => e.dictionarySource === 'Muasir');
+
+        // Har bir lug'atdan alohida xabar yuboramiz
+        let header = `🔍 "${query}" bo'yicha ${entries.length} ta natija topildi:\n`;
+        header += `📗 G'oniy: ${ghoniy.length} | 📘 Roid: ${roid.length} | 📙 Muasir: ${muasir.length}`;
+        await ctx.reply(header);
+
+        // G'oniy lug'ati
+        if (ghoniy.length > 0) {
+          let msg = `\n📗 G'ONIY LUG'ATI (${ghoniy.length}):\n\n`;
+          ghoniy.slice(0, 15).forEach((entry, i) => {
+            msg += formatFullEntry(entry, i + 1) + '\n\n';
           });
-          
-          if (entries.length > 10) {
-            response += `\n... va yana ${entries.length - 10} ta natija\n`;
-            response += `\n🌐 To'liq ro'yxat uchun: qomus.uz`;
+          if (ghoniy.length > 15) {
+            msg += `... va yana ${ghoniy.length - 15} ta natija`;
           }
-          
-          await ctx.reply(response);
+          await ctx.reply(msg);
         }
+
+        // Roid lug'ati
+        if (roid.length > 0) {
+          let msg = `\n📘 ROID LUG'ATI (${roid.length}):\n\n`;
+          roid.slice(0, 15).forEach((entry, i) => {
+            msg += formatFullEntry(entry, i + 1) + '\n\n';
+          });
+          if (roid.length > 15) {
+            msg += `... va yana ${roid.length - 15} ta natija`;
+          }
+          await ctx.reply(msg);
+        }
+
+        // Muasir lug'ati
+        if (muasir.length > 0) {
+          let msg = `\n📙 MUASIR LUG'ATI (${muasir.length}):\n\n`;
+          muasir.slice(0, 15).forEach((entry, i) => {
+            msg += formatFullEntry(entry, i + 1) + '\n\n';
+          });
+          if (muasir.length > 15) {
+            msg += `... va yana ${muasir.length - 15} ta natija`;
+          }
+          await ctx.reply(msg);
+        }
+
       } catch (error) {
         console.error('[Telegram] Qidiruv xatosi:', error);
         await ctx.reply('Qidiruvda xatolik yuz berdi. Qaytadan urinib ko\'ring.');
