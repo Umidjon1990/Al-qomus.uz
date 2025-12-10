@@ -66,19 +66,31 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
     lines.push(`   🇺🇿 ${entry.uzbek}`);
   }
   
-  // Ma'nolar (meaningsJson dan)
+  // Ma'nolar va misollar (meaningsJson dan)
   if (entry.meaningsJson) {
     try {
       const meanings = JSON.parse(entry.meaningsJson);
       if (Array.isArray(meanings) && meanings.length > 0) {
-        meanings.slice(0, 3).forEach((m: any, i: number) => {
+        lines.push(`   📚 Ma'nolar:`);
+        meanings.slice(0, 4).forEach((m: any, i: number) => {
           const meaning = m.uzbekMeaning || m.meaning || '';
           if (meaning) {
             lines.push(`   ${i + 1}) ${meaning}`);
+            // Misollar
+            if (m.arabicExample && m.uzbekExample) {
+              lines.push(`      📖 ${m.arabicExample.substring(0, 100)}${m.arabicExample.length > 100 ? '...' : ''}`);
+              lines.push(`      ➡️ ${m.uzbekExample.substring(0, 100)}${m.uzbekExample.length > 100 ? '...' : ''}`);
+            }
           }
         });
       }
     } catch (e) {}
+  }
+  
+  // Arabcha ta'rif (agar meanings bo'lmasa)
+  if (!entry.meaningsJson && entry.arabicDefinition) {
+    const defShort = entry.arabicDefinition.substring(0, 200);
+    lines.push(`   📜 ${defShort}${entry.arabicDefinition.length > 200 ? '...' : ''}`);
   }
   
   return lines.join('\n');
