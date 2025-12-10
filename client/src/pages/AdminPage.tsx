@@ -35,14 +35,15 @@ import {
   importEntries,
   batchTranslate,
   getStats,
+  getRecentlyTranslated,
   DictionaryEntry,
   DICTIONARY_SOURCES
 } from "@/lib/api";
-import { Edit2, Plus, Save, Trash2, Upload, AlertCircle, Wand2, Loader2, Database, CheckCircle2, Clock, FileText } from "lucide-react";
+import { Edit2, Plus, Save, Trash2, Upload, AlertCircle, Wand2, Loader2, Database, CheckCircle2, Clock, FileText, History } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import * as XLSX from 'xlsx';
 
-type FilterType = 'all' | 'translated' | 'pending';
+type FilterType = 'all' | 'translated' | 'pending' | 'recent';
 
 export default function AdminPage() {
   const [editingEntry, setEditingEntry] = React.useState<DictionaryEntry | null>(null);
@@ -64,6 +65,12 @@ export default function AdminPage() {
   const { data: entries = [], isLoading } = useQuery({
     queryKey: ['dictionary'],
     queryFn: () => getDictionaryEntries(),
+  });
+
+  const { data: recentEntries = [], isLoading: isLoadingRecent } = useQuery({
+    queryKey: ['dictionary-recent'],
+    queryFn: () => getRecentlyTranslated(200),
+    refetchInterval: 10000,
   });
 
   const { data: stats } = useQuery({
@@ -404,8 +411,17 @@ export default function AdminPage() {
               <div className="flex rounded-md border overflow-hidden">
                 <Button 
                   size="sm" 
-                  variant={filter === 'all' ? 'default' : 'ghost'}
+                  variant={filter === 'recent' ? 'default' : 'ghost'}
                   className="rounded-none"
+                  onClick={() => setFilter('recent')}
+                >
+                  <History className="h-3 w-3 mr-1" />
+                  So'nggi ({recentEntries.length})
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant={filter === 'all' ? 'default' : 'ghost'}
+                  className="rounded-none border-l"
                   onClick={() => setFilter('all')}
                 >
                   Barchasi ({totalWords})
@@ -466,7 +482,7 @@ export default function AdminPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {entries
+                {(filter === 'recent' ? recentEntries : entries)
                   .filter(entry => {
                     if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
                     if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
@@ -516,7 +532,7 @@ export default function AdminPage() {
                     </TableCell>
                   </TableRow>
                 ))}
-                {entries.filter(entry => {
+                {(filter === 'recent' ? recentEntries : entries).filter(entry => {
                     if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
                     if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
                     return true;
@@ -524,7 +540,7 @@ export default function AdminPage() {
                   <TableRow>
                     <TableCell colSpan={5} className="text-center py-12 text-muted-foreground">
                       <Database className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                      <p>{filter === 'all' ? "Baza bo'sh. Excel fayl yuklang." : filter === 'translated' ? "Tarjima qilingan so'z yo'q." : "Kutilayotgan so'z yo'q."}</p>
+                      <p>{filter === 'recent' ? "So'nggi tarjimalar yo'q." : filter === 'all' ? "Baza bo'sh. Excel fayl yuklang." : filter === 'translated' ? "Tarjima qilingan so'z yo'q." : "Kutilayotgan so'z yo'q."}</p>
                     </TableCell>
                   </TableRow>
                 )}
@@ -532,7 +548,8 @@ export default function AdminPage() {
             </Table>
           )}
           {(() => {
-            const filteredEntries = entries.filter(entry => {
+            const dataSource = filter === 'recent' ? recentEntries : entries;
+            const filteredEntries = dataSource.filter(entry => {
               if (filter === 'translated') return entry.uzbek && entry.uzbek.length > 0;
               if (filter === 'pending') return !entry.uzbek || entry.uzbek.length === 0;
               return true;

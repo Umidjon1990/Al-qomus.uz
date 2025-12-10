@@ -38,6 +38,18 @@ export async function registerRoutes(
     }
   });
 
+  // Get recently translated entries
+  app.get("/api/dictionary/recent", async (req, res) => {
+    try {
+      const limit = parseInt(req.query.limit as string) || 100;
+      const entries = await storage.getRecentlyTranslated(limit);
+      res.json(entries);
+    } catch (error) {
+      console.error("Error fetching recent entries:", error);
+      res.status(500).json({ error: "So'nggi tarjimalarni olishda xatolik" });
+    }
+  });
+
   // Get all dictionary entries (with optional search and source filter)
   app.get("/api/dictionary", async (req, res) => {
     try {

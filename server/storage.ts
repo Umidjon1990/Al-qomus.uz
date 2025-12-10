@@ -28,6 +28,7 @@ export interface IStorage {
   batchCreateDictionaryEntries(entries: InsertDictionaryEntry[]): Promise<DictionaryEntry[]>;
   getUntranslatedEntries(): Promise<DictionaryEntry[]>;
   updateEntryTranslation(id: number, uzbek: string): Promise<DictionaryEntry | undefined>;
+  getRecentlyTranslated(limit: number): Promise<DictionaryEntry[]>;
   
   // Roid processing methods
   getRoidEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
@@ -215,6 +216,18 @@ export class DatabaseStorage implements IStorage {
       .where(eq(dictionaryEntries.id, id))
       .returning();
     return result[0];
+  }
+
+  async getRecentlyTranslated(limit: number): Promise<DictionaryEntry[]> {
+    return await db.select().from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.processingStatus, 'completed'),
+          sql`${dictionaryEntries.uzbek} IS NOT NULL AND ${dictionaryEntries.uzbek} != ''`
+        )
+      )
+      .orderBy(sql`${dictionaryEntries.updatedAt} DESC`)
+      .limit(limit);
   }
 
   // Roid processing methods

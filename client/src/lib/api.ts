@@ -113,6 +113,12 @@ export async function getStats(): Promise<DictionaryStats> {
   return response.json();
 }
 
+export async function getRecentlyTranslated(limit: number = 100): Promise<DictionaryEntry[]> {
+  const response = await fetch(`/api/dictionary/recent?limit=${limit}`);
+  if (!response.ok) throw new Error('Failed to fetch recent entries');
+  return response.json();
+}
+
 export async function getRelatedWords(id: number): Promise<DictionaryEntry[]> {
   const response = await fetch(`/api/dictionary/related/${id}`);
   if (!response.ok) throw new Error('Failed to fetch related words');
