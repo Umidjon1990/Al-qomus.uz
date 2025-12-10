@@ -1,4 +1,4 @@
-import { Telegraf, Context } from 'telegraf';
+import { Telegraf, Markup } from 'telegraf';
 import { message } from 'telegraf/filters';
 import { storage } from '../storage';
 import type { DictionaryEntry } from '@shared/schema';
@@ -6,6 +6,9 @@ import type { DictionaryEntry } from '@shared/schema';
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
 let bot: Telegraf | null = null;
+
+// Foydalanuvchi holati - murojaat kutish uchun
+const userStates: Map<string, { state: string; timeout?: NodeJS.Timeout }> = new Map();
 
 function formatEntry(entry: DictionaryEntry): string {
   const lines: string[] = [];
@@ -44,11 +47,6 @@ function formatEntry(entry: DictionaryEntry): string {
   return lines.join('\n');
 }
 
-function formatShortEntry(entry: DictionaryEntry, index: number): string {
-  const uzbekShort = entry.uzbek ? entry.uzbek.substring(0, 80) : 'Tarjima mavjud emas';
-  return `${index + 1}. ${entry.arabic} — ${uzbekShort}${entry.uzbek && entry.uzbek.length > 80 ? '...' : ''}`;
-}
-
 function formatFullEntry(entry: DictionaryEntry, num: number): string {
   const lines: string[] = [];
   
@@ -66,7 +64,6 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
     lines.push(`   🇺🇿 ${entry.uzbek}`);
   }
   
-  // Ma'nolar va misollar (meaningsJson dan)
   if (entry.meaningsJson) {
     try {
       const meanings = JSON.parse(entry.meaningsJson);
@@ -76,7 +73,6 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
           const meaning = m.uzbekMeaning || m.meaning || '';
           if (meaning) {
             lines.push(`   ${i + 1}) ${meaning}`);
-            // Misollar
             if (m.arabicExample && m.uzbekExample) {
               lines.push(`      📖 ${m.arabicExample.substring(0, 100)}${m.arabicExample.length > 100 ? '...' : ''}`);
               lines.push(`      ➡️ ${m.uzbekExample.substring(0, 100)}${m.uzbekExample.length > 100 ? '...' : ''}`);
@@ -87,13 +83,20 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
     } catch (e) {}
   }
   
-  // Arabcha ta'rif (agar meanings bo'lmasa)
   if (!entry.meaningsJson && entry.arabicDefinition) {
     const defShort = entry.arabicDefinition.substring(0, 200);
     lines.push(`   📜 ${defShort}${entry.arabicDefinition.length > 200 ? '...' : ''}`);
   }
   
   return lines.join('\n');
+}
+
+// Asosiy tugmalar
+function getMainKeyboard() {
+  return Markup.keyboard([
+    ['🔍 Qidiruv', '✉️ Biz bilan aloqa'],
+    ['📊 Statistika', 'ℹ️ Yordam']
+  ]).resize();
 }
 
 export async function initTelegramBot(): Promise<Telegraf | null> {
@@ -109,8 +112,24 @@ export async function initTelegramBot(): Promise<Telegraf | null> {
   try {
     bot = new Telegraf(BOT_TOKEN);
 
+    // /start - foydalanuvchini saqlash va tugmalar ko'rsatish
     bot.command('start', async (ctx) => {
-      const welcomeMessage = `🌙 Assalomu alaykum!
+      try {
+        // Foydalanuvchini saqlash
+        const user = ctx.from;
+        await storage.upsertTelegramUser({
+          telegramId: user.id.toString(),
+          username: user.username || null,
+          firstName: user.first_name || null,
+          lastName: user.last_name || null,
+          languageCode: user.language_code || null,
+        });
+        console.log(`[Telegram] Yangi foydalanuvchi: ${user.id} - ${user.first_name}`);
+      } catch (e) {
+        console.error('[Telegram] Foydalanuvchini saqlashda xato:', e);
+      }
+
+      const welcomeMessage = `🌙 Assalomu alaykum, ${ctx.from.first_name}!
 
 QOMUS.UZ - Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 
@@ -119,17 +138,16 @@ QOMUS.UZ - Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 • Roid (الرائد) - 46,931 so'z  
 • Muasir - 32,292 so'z
 
-🔍 Qanday foydalanish:
-So'z yozing va men sizga tarjimasini topib beraman!
+🔍 So'z qidirish uchun shunchaki yozing!
 
-Misol: كتب yoki kitob
+Tugmalardan foydalaning:`;
 
-/help - Yordam olish`;
-      await ctx.reply(welcomeMessage);
+      await ctx.reply(welcomeMessage, getMainKeyboard());
     });
 
-    bot.command('help', async (ctx) => {
-      const helpMessage = `📖 Yordam
+    // /help yoki ℹ️ Yordam tugmasi
+    bot.hears('ℹ️ Yordam', async (ctx) => {
+      await ctx.reply(`📖 Yordam
 
 🔍 Qidiruv:
 Istalgan arabcha yoki o'zbekcha so'zni yozing
@@ -143,13 +161,33 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
 • Harakatlar bilan ham, harakatsiz ham qidirsa bo'ladi
 • Qisqa so'zlar aniqroq natija beradi
 
-🌐 Veb-sayt: qomus.uz`;
-      await ctx.reply(helpMessage);
+✉️ Murojaat:
+"Biz bilan aloqa" tugmasini bosing
+
+🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
     });
 
-    bot.command('stats', async (ctx) => {
+    bot.command('help', async (ctx) => {
+      await ctx.reply(`📖 Yordam
+
+🔍 Qidiruv:
+Istalgan arabcha yoki o'zbekcha so'zni yozing
+
+📝 Misollar:
+• كتاب - arabcha so'z
+• kitob - o'zbekcha so'z
+
+✉️ Murojaat:
+"Biz bilan aloqa" tugmasini bosing
+
+🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
+    });
+
+    // 📊 Statistika tugmasi
+    bot.hears('📊 Statistika', async (ctx) => {
       try {
         const sources = await storage.getDictionarySources();
+        const users = await storage.getAllTelegramUsers();
         let total = 0;
         let statsText = "📊 Lug'at statistikasi:\n\n";
         
@@ -159,44 +197,146 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
         }
         
         statsText += `\n📚 Jami: ${total.toLocaleString()} so'z`;
+        statsText += `\n👥 Bot foydalanuvchilari: ${users.length}`;
         
-        await ctx.reply(statsText);
+        await ctx.reply(statsText, getMainKeyboard());
       } catch (error) {
-        await ctx.reply('Statistikani olishda xatolik yuz berdi');
+        await ctx.reply('Statistikani olishda xatolik yuz berdi', getMainKeyboard());
       }
     });
 
+    bot.command('stats', async (ctx) => {
+      try {
+        const sources = await storage.getDictionarySources();
+        const users = await storage.getAllTelegramUsers();
+        let total = 0;
+        let statsText = "📊 Lug'at statistikasi:\n\n";
+        
+        for (const source of sources) {
+          statsText += `📕 ${source.source}: ${source.count.toLocaleString()} so'z\n`;
+          total += source.count;
+        }
+        
+        statsText += `\n📚 Jami: ${total.toLocaleString()} so'z`;
+        statsText += `\n👥 Bot foydalanuvchilari: ${users.length}`;
+        
+        await ctx.reply(statsText, getMainKeyboard());
+      } catch (error) {
+        await ctx.reply('Statistikani olishda xatolik yuz berdi', getMainKeyboard());
+      }
+    });
+
+    // 🔍 Qidiruv tugmasi
+    bot.hears('🔍 Qidiruv', async (ctx) => {
+      await ctx.reply('🔍 So\'z yozing va men sizga tarjimasini topib beraman!\n\nMisol: كتب yoki kitob', getMainKeyboard());
+    });
+
+    // ✉️ Biz bilan aloqa tugmasi
+    bot.hears('✉️ Biz bilan aloqa', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      
+      // Holatni saqlash
+      const existingState = userStates.get(userId);
+      if (existingState?.timeout) {
+        clearTimeout(existingState.timeout);
+      }
+      
+      // 5 daqiqalik timeout
+      const timeout = setTimeout(() => {
+        userStates.delete(userId);
+      }, 5 * 60 * 1000);
+      
+      userStates.set(userId, { state: 'awaiting_contact', timeout });
+      
+      await ctx.reply(`✉️ Biz bilan aloqa
+
+Xabaringizni yozing va biz tez orada javob beramiz.
+
+Bekor qilish uchun /cancel yozing.`, Markup.keyboard([['❌ Bekor qilish']]).resize());
+    });
+
+    // Bekor qilish
+    bot.hears('❌ Bekor qilish', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      const state = userStates.get(userId);
+      if (state?.timeout) {
+        clearTimeout(state.timeout);
+      }
+      userStates.delete(userId);
+      await ctx.reply('Bekor qilindi.', getMainKeyboard());
+    });
+
+    bot.command('cancel', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      const state = userStates.get(userId);
+      if (state?.timeout) {
+        clearTimeout(state.timeout);
+      }
+      userStates.delete(userId);
+      await ctx.reply('Bekor qilindi.', getMainKeyboard());
+    });
+
+    // Matn xabarlarini qabul qilish
     bot.on(message('text'), async (ctx) => {
-      const query = ctx.message.text.trim();
+      const text = ctx.message.text.trim();
+      const userId = ctx.from.id.toString();
       
-      if (query.startsWith('/')) return;
+      if (text.startsWith('/')) return;
       
-      if (query.length < 2) {
-        await ctx.reply('🔍 Kamida 2 ta belgi kiriting');
+      // Foydalanuvchi interaksiyasini yangilash
+      try {
+        await storage.updateTelegramUserInteraction(userId);
+      } catch (e) {}
+      
+      // Murojaat kutish holatida
+      const userState = userStates.get(userId);
+      if (userState?.state === 'awaiting_contact') {
+        try {
+          await storage.createContactMessage({
+            telegramId: userId,
+            message: text,
+          });
+          
+          // Holatni tozalash
+          if (userState.timeout) {
+            clearTimeout(userState.timeout);
+          }
+          userStates.delete(userId);
+          
+          await ctx.reply(`✅ Xabaringiz qabul qilindi!
+
+Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
+        } catch (e) {
+          console.error('[Telegram] Murojaatni saqlashda xato:', e);
+          await ctx.reply('Xatolik yuz berdi. Qaytadan urinib ko\'ring.', getMainKeyboard());
+        }
+        return;
+      }
+      
+      // Qidiruv
+      if (text.length < 2) {
+        await ctx.reply('🔍 Kamida 2 ta belgi kiriting', getMainKeyboard());
         return;
       }
 
       try {
         await ctx.sendChatAction('typing');
         
-        const entries = await storage.getDictionaryEntries(query);
+        const entries = await storage.getDictionaryEntries(text);
         
         if (entries.length === 0) {
-          await ctx.reply(`😔 "${query}" bo'yicha hech narsa topilmadi.\n\nBoshqa so'z bilan urinib ko'ring.`);
+          await ctx.reply(`😔 "${text}" bo'yicha hech narsa topilmadi.\n\nBoshqa so'z bilan urinib ko'ring.`, getMainKeyboard());
           return;
         }
 
-        // Lug'atlarga bo'lib guruhlaymiz
         const ghoniy = entries.filter(e => e.dictionarySource === 'Ghoniy');
         const roid = entries.filter(e => e.dictionarySource === 'Roid');
         const muasir = entries.filter(e => e.dictionarySource === 'Muasir');
 
-        // Har bir lug'atdan alohida xabar yuboramiz
-        let header = `🔍 "${query}" bo'yicha ${entries.length} ta natija topildi:\n`;
+        let header = `🔍 "${text}" bo'yicha ${entries.length} ta natija topildi:\n`;
         header += `📗 G'oniy: ${ghoniy.length} | 📘 Roid: ${roid.length} | 📙 Muasir: ${muasir.length}`;
         await ctx.reply(header);
 
-        // G'oniy lug'ati
         if (ghoniy.length > 0) {
           let msg = `\n📗 G'ONIY LUG'ATI (${ghoniy.length}):\n\n`;
           ghoniy.slice(0, 15).forEach((entry, i) => {
@@ -208,7 +348,6 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
           await ctx.reply(msg);
         }
 
-        // Roid lug'ati
         if (roid.length > 0) {
           let msg = `\n📘 ROID LUG'ATI (${roid.length}):\n\n`;
           roid.slice(0, 15).forEach((entry, i) => {
@@ -220,7 +359,6 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
           await ctx.reply(msg);
         }
 
-        // Muasir lug'ati
         if (muasir.length > 0) {
           let msg = `\n📙 MUASIR LUG'ATI (${muasir.length}):\n\n`;
           muasir.slice(0, 15).forEach((entry, i) => {
@@ -234,7 +372,7 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
 
       } catch (error) {
         console.error('[Telegram] Qidiruv xatosi:', error);
-        await ctx.reply('Qidiruvda xatolik yuz berdi. Qaytadan urinib ko\'ring.');
+        await ctx.reply('Qidiruvda xatolik yuz berdi. Qaytadan urinib ko\'ring.', getMainKeyboard());
       }
     });
 
@@ -257,4 +395,46 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
 
 export function getBot(): Telegraf | null {
   return bot;
+}
+
+// Admin uchun xabar yuborish funksiyasi
+export async function sendMessageToUser(telegramId: string, message: string): Promise<boolean> {
+  if (!bot) return false;
+  
+  try {
+    await bot.telegram.sendMessage(telegramId, message);
+    return true;
+  } catch (error: any) {
+    console.error(`[Telegram] Xabar yuborishda xato (${telegramId}):`, error.message);
+    // Agar foydalanuvchi botni bloklagan bo'lsa
+    if (error.code === 403) {
+      await storage.markTelegramUserBlocked(telegramId);
+    }
+    return false;
+  }
+}
+
+// Broadcast yuborish funksiyasi
+export async function sendBroadcast(content: string): Promise<{ sent: number; failed: number }> {
+  if (!bot) return { sent: 0, failed: 0 };
+  
+  const users = await storage.getActiveTelegramUsers();
+  let sent = 0;
+  let failed = 0;
+  
+  for (const user of users) {
+    try {
+      await bot.telegram.sendMessage(user.telegramId, content);
+      sent++;
+      // Rate limiting - 30 xabar/soniya
+      await new Promise(resolve => setTimeout(resolve, 50));
+    } catch (error: any) {
+      failed++;
+      if (error.code === 403) {
+        await storage.markTelegramUserBlocked(user.telegramId);
+      }
+    }
+  }
+  
+  return { sent, failed };
 }

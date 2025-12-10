@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertDictionaryEntrySchema, updateDictionaryEntrySchema } from "@shared/schema";
 import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries, batchProcessGhoniyEntries } from "./ai";
+import { sendMessageToUser, sendBroadcast } from "./telegram/bot";
 import * as XLSX from 'xlsx';
 
 export async function registerRoutes(
@@ -439,6 +440,172 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error processing Ghoniy entries:", error);
       res.status(500).json({ error: "G'oniy so'zlarini tarjima qilishda xatolik" });
+    }
+  });
+
+  // ============ TELEGRAM API ROUTES ============
+  
+  // Get all telegram users
+  app.get("/api/telegram/users", async (req, res) => {
+    try {
+      const users = await storage.getAllTelegramUsers();
+      res.json(users);
+    } catch (error) {
+      console.error("Error fetching telegram users:", error);
+      res.status(500).json({ error: "Foydalanuvchilarni olishda xatolik" });
+    }
+  });
+
+  // Get telegram stats
+  app.get("/api/telegram/stats", async (req, res) => {
+    try {
+      const allUsers = await storage.getAllTelegramUsers();
+      const activeUsers = await storage.getActiveTelegramUsers();
+      const messages = await storage.getContactMessages();
+      const newMessages = messages.filter(m => m.status === 'new');
+      
+      res.json({
+        totalUsers: allUsers.length,
+        activeUsers: activeUsers.length,
+        blockedUsers: allUsers.length - activeUsers.length,
+        totalMessages: messages.length,
+        newMessages: newMessages.length,
+      });
+    } catch (error) {
+      console.error("Error fetching telegram stats:", error);
+      res.status(500).json({ error: "Statistikani olishda xatolik" });
+    }
+  });
+
+  // Get contact messages
+  app.get("/api/telegram/messages", async (req, res) => {
+    try {
+      const status = req.query.status as string | undefined;
+      const messages = await storage.getContactMessages(status);
+      
+      // Foydalanuvchi ma'lumotlarini ham qo'shish
+      const enrichedMessages = await Promise.all(
+        messages.map(async (msg) => {
+          const user = await storage.getTelegramUser(msg.telegramId);
+          return {
+            ...msg,
+            user: user ? {
+              username: user.username,
+              firstName: user.firstName,
+              lastName: user.lastName,
+            } : null,
+          };
+        })
+      );
+      
+      res.json(enrichedMessages);
+    } catch (error) {
+      console.error("Error fetching contact messages:", error);
+      res.status(500).json({ error: "Xabarlarni olishda xatolik" });
+    }
+  });
+
+  // Respond to a contact message
+  app.post("/api/telegram/messages/:id/reply", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { response } = req.body;
+      
+      if (!response) {
+        return res.status(400).json({ error: "Javob matni kerak" });
+      }
+      
+      const message = await storage.getContactMessage(id);
+      if (!message) {
+        return res.status(404).json({ error: "Xabar topilmadi" });
+      }
+      
+      // Telegram orqali javob yuborish
+      const sent = await sendMessageToUser(
+        message.telegramId,
+        `📩 QOMUS.UZ dan javob:\n\n${response}`
+      );
+      
+      if (!sent) {
+        return res.status(500).json({ error: "Xabarni yuborib bo'lmadi (foydalanuvchi botni bloklagan bo'lishi mumkin)" });
+      }
+      
+      // Bazada yangilash
+      const updated = await storage.respondToContactMessage(id, response);
+      
+      res.json(updated);
+    } catch (error) {
+      console.error("Error responding to message:", error);
+      res.status(500).json({ error: "Javob yuborishda xatolik" });
+    }
+  });
+
+  // Update message status
+  app.patch("/api/telegram/messages/:id/status", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { status } = req.body;
+      
+      if (!['new', 'in_progress', 'resolved'].includes(status)) {
+        return res.status(400).json({ error: "Noto'g'ri status" });
+      }
+      
+      await storage.updateContactMessageStatus(id, status);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error updating message status:", error);
+      res.status(500).json({ error: "Statusni yangilashda xatolik" });
+    }
+  });
+
+  // Send broadcast
+  app.post("/api/telegram/broadcast", async (req, res) => {
+    try {
+      const { content } = req.body;
+      
+      if (!content) {
+        return res.status(400).json({ error: "Xabar matni kerak" });
+      }
+      
+      const users = await storage.getActiveTelegramUsers();
+      
+      // Broadcast yaratish
+      const broadcast = await storage.createBroadcast({
+        content,
+        totalUsers: users.length,
+      });
+      
+      // Asinxron yuborish (hozircha sinxron)
+      const result = await sendBroadcast(content);
+      
+      // Natijani yangilash
+      await storage.updateBroadcastProgress(broadcast.id, result.sent, result.failed);
+      await storage.completeBroadcast(broadcast.id, 'completed');
+      
+      res.json({
+        success: true,
+        broadcast: {
+          id: broadcast.id,
+          content,
+          totalUsers: users.length,
+          sent: result.sent,
+          failed: result.failed,
+        },
+      });
+    } catch (error) {
+      console.error("Error sending broadcast:", error);
+      res.status(500).json({ error: "Broadcast yuborishda xatolik" });
+    }
+  });
+
+  // Get broadcast history
+  app.get("/api/telegram/broadcasts", async (req, res) => {
+    try {
+      const broadcasts = await storage.getBroadcasts();
+      res.json(broadcasts);
+    } catch (error) {
+      console.error("Error fetching broadcasts:", error);
+      res.status(500).json({ error: "Broadcastlarni olishda xatolik" });
     }
   });
 
