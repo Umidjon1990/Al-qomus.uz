@@ -4,11 +4,34 @@ import { storage } from '../storage';
 import type { DictionaryEntry } from '@shared/schema';
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const ADMIN_TELEGRAM_ID = process.env.ADMIN_TELEGRAM_ID || '';
 
 let bot: Telegraf | null = null;
 
 // Foydalanuvchi holati - murojaat kutish uchun
 const userStates: Map<string, { state: string; timeout?: NodeJS.Timeout }> = new Map();
+
+// Admin ekanligini tekshirish
+function isAdmin(telegramId: string): boolean {
+  return telegramId === ADMIN_TELEGRAM_ID;
+}
+
+// Adminga yangi xabar haqida bildirishnoma yuborish
+async function notifyAdminNewMessage(message: string, fromUser: { firstName?: string; username?: string }) {
+  if (!bot || !ADMIN_TELEGRAM_ID) return;
+  
+  try {
+    const userName = fromUser.firstName || 'Noma\'lum';
+    const userHandle = fromUser.username ? `(@${fromUser.username})` : '';
+    
+    await bot.telegram.sendMessage(
+      ADMIN_TELEGRAM_ID,
+      `🔔 Yangi murojaat!\n\n👤 ${userName} ${userHandle}\n\n💬 ${message}\n\n📥 /xabarlar - barcha murojaatlarni ko'rish`
+    );
+  } catch (error) {
+    console.error('[Telegram] Admin bildirishnomasida xato:', error);
+  }
+}
 
 function formatEntry(entry: DictionaryEntry): string {
   const lines: string[] = [];
@@ -183,6 +206,172 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
 🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
     });
 
+    // ===== ADMIN KOMANDALARI =====
+    
+    // /xabarlar - yangi murojaatlarni ko'rish (faqat admin uchun)
+    bot.command('xabarlar', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      
+      if (!isAdmin(userId)) {
+        return; // Admin bo'lmasa javob bermaslik
+      }
+      
+      try {
+        const messages = await storage.getContactMessages('new');
+        
+        if (messages.length === 0) {
+          await ctx.reply('✅ Yangi murojaatlar yo\'q!');
+          return;
+        }
+        
+        let text = `📥 Yangi murojaatlar (${messages.length} ta):\n\n`;
+        
+        for (const msg of messages.slice(0, 10)) {
+          const user = await storage.getTelegramUser(msg.telegramId);
+          const userName = user?.firstName || 'Noma\'lum';
+          const userHandle = user?.username ? `@${user.username}` : '';
+          const date = new Date(msg.createdAt).toLocaleDateString('uz-UZ');
+          
+          text += `👤 ${userName} ${userHandle}\n`;
+          text += `💬 ${msg.message.substring(0, 100)}${msg.message.length > 100 ? '...' : ''}\n`;
+          text += `📅 ${date} | ID: ${msg.id}\n\n`;
+        }
+        
+        if (messages.length > 10) {
+          text += `... va yana ${messages.length - 10} ta xabar\n`;
+        }
+        
+        text += `\n💡 Javob berish: /javob [ID] [matn]`;
+        
+        await ctx.reply(text);
+      } catch (error) {
+        console.error('[Telegram] Xabarlarni olishda xato:', error);
+        await ctx.reply('Xatolik yuz berdi');
+      }
+    });
+
+    // /javob [id] [matn] - xabarga javob berish
+    bot.command('javob', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      
+      if (!isAdmin(userId)) {
+        return;
+      }
+      
+      const args = ctx.message.text.split(' ').slice(1);
+      if (args.length < 2) {
+        await ctx.reply('❌ Format: /javob [ID] [matn]\n\nMisol: /javob 5 Rahmat, tez orada javob beramiz!');
+        return;
+      }
+      
+      const messageId = parseInt(args[0]);
+      const response = args.slice(1).join(' ');
+      
+      if (isNaN(messageId)) {
+        await ctx.reply('❌ Noto\'g\'ri ID');
+        return;
+      }
+      
+      try {
+        const message = await storage.getContactMessage(messageId);
+        if (!message) {
+          await ctx.reply('❌ Xabar topilmadi');
+          return;
+        }
+        
+        // Foydalanuvchiga javob yuborish
+        await bot!.telegram.sendMessage(
+          message.telegramId,
+          `📩 QOMUS.UZ dan javob:\n\n${response}`
+        );
+        
+        // Bazada yangilash
+        await storage.respondToContactMessage(messageId, response);
+        
+        await ctx.reply(`✅ Javob yuborildi!`);
+      } catch (error) {
+        console.error('[Telegram] Javob yuborishda xato:', error);
+        await ctx.reply('❌ Xatolik yuz berdi');
+      }
+    });
+
+    // /broadcast [matn] - barcha foydalanuvchilarga xabar
+    bot.command('broadcast', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      
+      if (!isAdmin(userId)) {
+        return;
+      }
+      
+      const content = ctx.message.text.replace('/broadcast ', '').trim();
+      
+      if (!content || content === '/broadcast') {
+        await ctx.reply('❌ Format: /broadcast [matn]\n\nMisol: /broadcast Yangi funksiya qo\'shildi!');
+        return;
+      }
+      
+      try {
+        const users = await storage.getActiveTelegramUsers();
+        await ctx.reply(`📤 ${users.length} ta foydalanuvchiga yuborilmoqda...`);
+        
+        let sent = 0;
+        let failed = 0;
+        
+        for (const user of users) {
+          try {
+            await bot!.telegram.sendMessage(user.telegramId, content);
+            sent++;
+            // Rate limiting
+            if (sent % 25 === 0) {
+              await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+          } catch (e) {
+            failed++;
+          }
+        }
+        
+        await ctx.reply(`✅ Broadcast tugadi!\n\n📤 Yuborildi: ${sent}\n❌ Xato: ${failed}`);
+      } catch (error) {
+        console.error('[Telegram] Broadcast xatosi:', error);
+        await ctx.reply('❌ Xatolik yuz berdi');
+      }
+    });
+
+    // /admin - admin statistikasi
+    bot.command('admin', async (ctx) => {
+      const userId = ctx.from.id.toString();
+      
+      if (!isAdmin(userId)) {
+        return;
+      }
+      
+      try {
+        const newMessages = await storage.getContactMessages('new');
+        const allMessages = await storage.getContactMessages();
+        const users = await storage.getAllTelegramUsers();
+        const activeUsers = users.filter(u => u.isBlocked !== 'true');
+        
+        await ctx.reply(`🔐 Admin Panel
+
+📥 Murojaatlar:
+• Yangi: ${newMessages.length}
+• Jami: ${allMessages.length}
+
+👥 Foydalanuvchilar:
+• Faol: ${activeUsers.length}
+• Jami: ${users.length}
+
+📋 Komandalar:
+/xabarlar - yangi murojaatlar
+/javob [ID] [matn] - javob berish
+/broadcast [matn] - hammaga xabar`);
+      } catch (error) {
+        await ctx.reply('Xatolik yuz berdi');
+      }
+    });
+
+    // ===== ADMIN KOMANDALARI TUGADI =====
+
     // 📊 Statistika tugmasi
     bot.hears('📊 Statistika', async (ctx) => {
       try {
@@ -302,6 +491,12 @@ Bekor qilish uchun /cancel yozing.`, Markup.keyboard([['❌ Bekor qilish']]).res
             clearTimeout(userState.timeout);
           }
           userStates.delete(userId);
+          
+          // Adminga bildirishnoma yuborish
+          await notifyAdminNewMessage(text, {
+            firstName: ctx.from.first_name,
+            username: ctx.from.username,
+          });
           
           await ctx.reply(`✅ Xabaringiz qabul qilindi!
 
