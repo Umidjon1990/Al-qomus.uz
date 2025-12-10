@@ -1,14 +1,30 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare } from "lucide-react";
+import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
+import { useQuery } from "@tanstack/react-query";
+import { Badge } from "@/components/ui/badge";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = React.useState(false);
   const { user, logout, isAdmin } = useAuth();
+
+  // Admin uchun yangi xabarlar sonini olish
+  const { data: telegramStats } = useQuery({
+    queryKey: ["telegram-stats"],
+    queryFn: async () => {
+      const res = await fetch("/api/telegram/stats");
+      if (!res.ok) return null;
+      return res.json();
+    },
+    enabled: isAdmin,
+    refetchInterval: 30000, // Har 30 sekundda yangilash
+  });
+
+  const newMessagesCount = telegramStats?.newMessages || 0;
 
   const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
     const isActive = location === href;
@@ -51,6 +67,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
                      Telegram
                    </span>
                 </NavLink>
+                <Link href="/admin/telegram" data-testid="link-notifications">
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="h-5 w-5" />
+                    {newMessagesCount > 0 && (
+                      <Badge 
+                        variant="destructive" 
+                        className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                        data-testid="badge-new-messages"
+                      >
+                        {newMessagesCount > 9 ? "9+" : newMessagesCount}
+                      </Badge>
+                    )}
+                  </Button>
+                </Link>
               </>
             )}
 
@@ -108,6 +138,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
                         <MessageSquare className="h-4 w-4" />
                         Telegram
+                      </Link>
+                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-orange-600">
+                        <Bell className="h-4 w-4" />
+                        Murojaatlar
+                        {newMessagesCount > 0 && (
+                          <Badge variant="destructive" className="ml-2">
+                            {newMessagesCount}
+                          </Badge>
+                        )}
                       </Link>
                     </>
                   )}
