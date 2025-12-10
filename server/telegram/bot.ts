@@ -10,54 +10,43 @@ let bot: Telegraf | null = null;
 function formatEntry(entry: DictionaryEntry): string {
   const lines: string[] = [];
   
-  lines.push(`📖 *${escapeMarkdown(entry.arabic)}*`);
+  lines.push(`📖 ${entry.arabic}`);
   
   if (entry.transliteration) {
-    lines.push(`🔤 _${escapeMarkdown(entry.transliteration)}_`);
+    lines.push(`🔤 ${entry.transliteration}`);
   }
   
   if (entry.wordType) {
-    lines.push(`📝 ${escapeMarkdown(entry.wordType)}`);
+    lines.push(`📝 ${entry.wordType}`);
   }
   
   if (entry.uzbek) {
-    lines.push(`\n🇺🇿 *Tarjima:*\n${escapeMarkdown(entry.uzbek)}`);
+    lines.push(`\n🇺🇿 Tarjima:\n${entry.uzbek}`);
   }
   
   if (entry.meaningsJson) {
     try {
       const meanings = JSON.parse(entry.meaningsJson);
       if (Array.isArray(meanings) && meanings.length > 0) {
-        lines.push(`\n📚 *Ma'nolar:*`);
+        lines.push(`\n📚 Ma'nolar:`);
         meanings.slice(0, 5).forEach((m: any, i: number) => {
-          if (m.meaning) {
-            lines.push(`${i + 1}. ${escapeMarkdown(m.meaning)}`);
-            if (m.examples && m.examples.length > 0) {
-              const ex = m.examples[0];
-              if (ex.arabic && ex.uzbek) {
-                lines.push(`   _${escapeMarkdown(ex.arabic)}_`);
-                lines.push(`   → ${escapeMarkdown(ex.uzbek)}`);
-              }
-            }
+          const meaning = m.uzbekMeaning || m.meaning || '';
+          if (meaning) {
+            lines.push(`${i + 1}. ${meaning}`);
           }
         });
       }
     } catch (e) {}
   }
   
-  lines.push(`\n📕 _${escapeMarkdown(entry.dictionarySource)} lug'ati_`);
+  lines.push(`\n📕 ${entry.dictionarySource} lug'ati`);
   
   return lines.join('\n');
 }
 
-function escapeMarkdown(text: string): string {
-  if (!text) return '';
-  return text.replace(/[_*\[\]()~`>#+\-=|{}.!\\]/g, '\\$&');
-}
-
 function formatShortEntry(entry: DictionaryEntry, index: number): string {
-  const uzbekShort = entry.uzbek ? entry.uzbek.substring(0, 100) : 'Tarjima mavjud emas';
-  return `${index + 1}. *${escapeMarkdown(entry.arabic)}* — ${escapeMarkdown(uzbekShort)}${entry.uzbek && entry.uzbek.length > 100 ? '...' : ''}`;
+  const uzbekShort = entry.uzbek ? entry.uzbek.substring(0, 80) : 'Tarjima mavjud emas';
+  return `${index + 1}. ${entry.arabic} — ${uzbekShort}${entry.uzbek && entry.uzbek.length > 80 ? '...' : ''}`;
 }
 
 export async function initTelegramBot(): Promise<Telegraf | null> {
@@ -74,61 +63,57 @@ export async function initTelegramBot(): Promise<Telegraf | null> {
     bot = new Telegraf(BOT_TOKEN);
 
     bot.command('start', async (ctx) => {
-      const welcomeMessage = `
-🌙 *Assalomu alaykum\\!*
+      const welcomeMessage = `🌙 Assalomu alaykum!
 
-*QOMUS\\.UZ* \\- Arabcha\\-O'zbekcha lug'at botiga xush kelibsiz\\!
+QOMUS.UZ - Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 
-📚 *Mavjud lug'atlar:*
-• G'oniy \\(الغني\\) \\- 29,682 so'z
-• Roid \\(الرائد\\) \\- 46,931 so'z  
-• Muasir \\- 32,292 so'z
+📚 Mavjud lug'atlar:
+• G'oniy (الغني) - 29,682 so'z
+• Roid (الرائد) - 46,931 so'z  
+• Muasir - 32,292 so'z
 
-🔍 *Qanday foydalanish:*
-So'z yozing va men sizga tarjimasini topib beraman\\!
+🔍 Qanday foydalanish:
+So'z yozing va men sizga tarjimasini topib beraman!
 
-_Misol: كتب yoki kitob_
+Misol: كتب yoki kitob
 
-/help \\- Yordam olish
-`;
-      await ctx.replyWithMarkdownV2(welcomeMessage);
+/help - Yordam olish`;
+      await ctx.reply(welcomeMessage);
     });
 
     bot.command('help', async (ctx) => {
-      const helpMessage = `
-📖 *Yordam*
+      const helpMessage = `📖 Yordam
 
-🔍 *Qidiruv:*
+🔍 Qidiruv:
 Istalgan arabcha yoki o'zbekcha so'zni yozing
 
-📝 *Misollar:*
-• كتاب \\- arabcha so'z
-• kitob \\- o'zbekcha so'z
-• كتب \\- ildiz so'z
+📝 Misollar:
+• كتاب - arabcha so'z
+• kitob - o'zbekcha so'z
+• كتب - ildiz so'z
 
-💡 *Maslahatlar:*
+💡 Maslahatlar:
 • Harakatlar bilan ham, harakatsiz ham qidirsa bo'ladi
 • Qisqa so'zlar aniqroq natija beradi
 
-🌐 *Veb\\-sayt:* qomus\\.uz
-`;
-      await ctx.replyWithMarkdownV2(helpMessage);
+🌐 Veb-sayt: qomus.uz`;
+      await ctx.reply(helpMessage);
     });
 
     bot.command('stats', async (ctx) => {
       try {
         const sources = await storage.getDictionarySources();
         let total = 0;
-        let statsText = "📊 *Lug'at statistikasi:*\\n\\n";
+        let statsText = "📊 Lug'at statistikasi:\n\n";
         
         for (const source of sources) {
-          statsText += `📕 ${escapeMarkdown(source.source)}: ${source.count.toLocaleString()} so\\'z\\n`;
+          statsText += `📕 ${source.source}: ${source.count.toLocaleString()} so'z\n`;
           total += source.count;
         }
         
-        statsText += `\\n📚 *Jami:* ${total.toLocaleString()} so\\'z`;
+        statsText += `\n📚 Jami: ${total.toLocaleString()} so'z`;
         
-        await ctx.replyWithMarkdownV2(statsText);
+        await ctx.reply(statsText);
       } catch (error) {
         await ctx.reply('Statistikani olishda xatolik yuz berdi');
       }
@@ -155,20 +140,20 @@ Istalgan arabcha yoki o'zbekcha so'zni yozing
         }
 
         if (entries.length === 1) {
-          await ctx.replyWithMarkdownV2(formatEntry(entries[0]));
+          await ctx.reply(formatEntry(entries[0]));
         } else {
-          let response = `🔍 *"${escapeMarkdown(query)}" bo'yicha ${entries.length} ta natija:*\n\n`;
+          let response = `🔍 "${query}" bo'yicha ${entries.length} ta natija:\n\n`;
           
           entries.slice(0, 10).forEach((entry, i) => {
             response += formatShortEntry(entry, i) + '\n\n';
           });
           
           if (entries.length > 10) {
-            response += `\n_\\.\\.\\. va yana ${entries.length - 10} ta natija_\n`;
-            response += `\n🌐 To'liq ro'yxat uchun: qomus\\.uz`;
+            response += `\n... va yana ${entries.length - 10} ta natija\n`;
+            response += `\n🌐 To'liq ro'yxat uchun: qomus.uz`;
           }
           
-          await ctx.replyWithMarkdownV2(response);
+          await ctx.reply(response);
         }
       } catch (error) {
         console.error('[Telegram] Qidiruv xatosi:', error);
