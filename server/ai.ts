@@ -1,13 +1,22 @@
 import OpenAI from "openai";
 
-if (!process.env.AI_INTEGRATIONS_OPENAI_API_KEY) {
-  throw new Error("AI_INTEGRATIONS_OPENAI_API_KEY is not set");
+// Foydalanuvchining o'z API kalitini ishlatish (agar mavjud bo'lsa)
+// Aks holda Replit integratsiyasidan foydalanish
+const apiKey = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+
+if (!apiKey) {
+  throw new Error("OpenAI API key is not set. Please provide OPENAI_API_KEY.");
 }
 
+// Agar foydalanuvchi o'z kalitini ishlatsa, to'g'ridan-to'g'ri OpenAI ga ulanish
+const useUserKey = !!process.env.OPENAI_API_KEY;
+
 export const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+  apiKey: apiKey,
+  baseURL: useUserKey ? undefined : process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
 });
+
+console.log(`[AI] Using ${useUserKey ? "user's OPENAI_API_KEY" : "Replit AI integration"}`);
 
 type WordType = 'verb' | 'noun' | 'adjective' | 'particle' | 'unknown';
 
