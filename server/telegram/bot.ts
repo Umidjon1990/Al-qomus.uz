@@ -80,39 +80,34 @@ function formatEntry(entry: DictionaryEntry): string {
 function formatFullEntry(entry: DictionaryEntry, num: number): string {
   const lines: string[] = [];
   
-  // Ramkali sarlavha
-  lines.push(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓`);
-  lines.push(`┃  📖  ${entry.arabic}`);
-  lines.push(`┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`);
+  // Sarlavha - oddiy va chiroyli
+  lines.push(`📖 ${entry.arabic}`);
   
-  if (entry.transliteration) {
-    lines.push(`│ 🔤 Talaffuz: ${entry.transliteration}`);
-  }
+  // Meta ma'lumotlar
+  const meta: string[] = [];
+  if (entry.transliteration) meta.push(`🔤 ${entry.transliteration}`);
+  if (entry.wordType) meta.push(`📝 ${entry.wordType}`);
+  if (meta.length > 0) lines.push(meta.join(' • '));
   
-  if (entry.wordType) {
-    lines.push(`│ 📝 Turi: ${entry.wordType}`);
-  }
-  
-  lines.push(`├─────────────────────────────`);
-  
+  // Tarjima
   if (entry.uzbek) {
-    lines.push(`│ 🇺🇿 Tarjima:`);
-    lines.push(`│ ${entry.uzbek}`);
+    lines.push('');
+    lines.push(`🇺🇿 ${entry.uzbek}`);
   }
   
+  // Ma'nolar
   if (entry.meaningsJson) {
     try {
       const meanings = JSON.parse(entry.meaningsJson);
       if (Array.isArray(meanings) && meanings.length > 0) {
-        lines.push(`├─────────────────────────────`);
-        lines.push(`│ 📚 Ma'nolar:`);
-        meanings.slice(0, 4).forEach((m: any, i: number) => {
+        lines.push('');
+        meanings.slice(0, 3).forEach((m: any, i: number) => {
           const meaning = m.uzbekMeaning || m.meaning || '';
           if (meaning) {
-            lines.push(`│ ${i + 1}. ${meaning}`);
+            lines.push(`${i + 1}. ${meaning}`);
             if (m.arabicExample && m.uzbekExample) {
-              lines.push(`│    📖 ${m.arabicExample.substring(0, 80)}${m.arabicExample.length > 80 ? '...' : ''}`);
-              lines.push(`│    ➡️ ${m.uzbekExample.substring(0, 80)}${m.uzbekExample.length > 80 ? '...' : ''}`);
+              lines.push(`   📖 ${m.arabicExample.substring(0, 60)}...`);
+              lines.push(`   ➡️ ${m.uzbekExample.substring(0, 60)}...`);
             }
           }
         });
@@ -120,13 +115,15 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
     } catch (e) {}
   }
   
-  if (!entry.meaningsJson && entry.arabicDefinition) {
-    lines.push(`├─────────────────────────────`);
-    const defShort = entry.arabicDefinition.substring(0, 150);
-    lines.push(`│ 📜 ${defShort}${entry.arabicDefinition.length > 150 ? '...' : ''}`);
+  // Arabcha ta'rif (agar tarjima yo'q bo'lsa)
+  if (!entry.uzbek && !entry.meaningsJson && entry.arabicDefinition) {
+    lines.push('');
+    const defShort = entry.arabicDefinition.substring(0, 120);
+    lines.push(`📜 ${defShort}${entry.arabicDefinition.length > 120 ? '...' : ''}`);
   }
   
-  lines.push(`└─────────────────────────────`);
+  // Ajratuvchi chiziq
+  lines.push('━━━━━━━━━━━━━━━━━━━━');
   
   return lines.join('\n');
 }
@@ -186,18 +183,16 @@ export async function initTelegramBot(): Promise<Telegraf | null> {
         console.error('[Telegram] Foydalanuvchini saqlashda xato:', e);
       }
 
-      const welcomeMessage = `┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  🌙  QOMUS.UZ
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+      const welcomeMessage = `🌙 QOMUS.UZ
 
 Assalomu alaykum, ${ctx.from.first_name}!
 
 Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 
-📗 G'ONIY LUG'ATI (الغني)
-├─ 29,682 ta so'z
-├─ Harakatli arabcha matn
-└─ O'zbekcha tarjima
+📗 G'ONIY LUG'ATI
+   • 29,682 ta so'z
+   • Harakatli arabcha matn
+   • O'zbekcha tarjima
 
 🔍 So'z qidirish uchun shunchaki yozing!`;
 
@@ -212,36 +207,32 @@ Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 
     // /help yoki ℹ️ Yordam tugmasi
     bot.hears('ℹ️ Yordam', async (ctx) => {
-      await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  📖  YORDAM
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+      await ctx.reply(`📖 YORDAM
 
-🔍 QIDIRUV:
-│ Arabcha yoki o'zbekcha so'z yozing
-├─────────────────────────────
-📝 MISOLLAR:
-│ • كتاب - arabcha so'z
-│ • kitob - o'zbekcha so'z
-│ • كتب - ildiz so'z
-├─────────────────────────────
-💡 MASLAHATLAR:
-│ • Harakatli va harakatsiz qidirish
-│ • Qisqa so'zlar aniqroq natija beradi
-├─────────────────────────────
+🔍 Qidiruv:
+Arabcha yoki o'zbekcha so'z yozing
+
+📝 Misollar:
+   • كتاب - arabcha so'z
+   • kitob - o'zbekcha so'z
+   • كتب - ildiz so'z
+
+💡 Maslahatlar:
+   • Harakatli va harakatsiz qidirish
+   • Qisqa so'zlar aniqroq natija beradi
+
 ✉️ Murojaat: "Biz bilan aloqa"
 🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
     });
 
     bot.command('help', async (ctx) => {
-      await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  📖  YORDAM
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+      await ctx.reply(`📖 YORDAM
 
 🔍 Arabcha yoki o'zbekcha so'z yozing
 
 📝 Misollar:
-│ • كتاب - arabcha so'z
-│ • kitob - o'zbekcha so'z
+   • كتاب - arabcha so'z
+   • kitob - o'zbekcha so'z
 
 ✉️ Murojaat: "Biz bilan aloqa"
 🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
@@ -823,9 +814,7 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         const entries = allEntries.filter(e => e.dictionarySource === 'Ghoniy');
         
         if (entries.length === 0) {
-          await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  😔  Natija topilmadi
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+          await ctx.reply(`😔 Natija topilmadi
 
 "${text}" so'zi G'oniy lug'atida topilmadi.
 
@@ -834,11 +823,9 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         }
 
         // Sarlavha
-        await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  🔍  QIDIRUV NATIJALARI
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        await ctx.reply(`🔍 QIDIRUV NATIJALARI
 
-📗 G'ONIY LUG'ATI
+📗 G'oniy lug'ati
 📊 "${text}" → ${entries.length} ta natija`);
 
         // Xabarlarni xavfsiz yuborish funksiyasi (4096 belgi limiti)
@@ -873,9 +860,7 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         });
         
         if (entries.length > 5) {
-          msg += `┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  📌  Va yana ${entries.length - 5} ta natija...
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+          msg += `📌 Va yana ${entries.length - 5} ta natija...
 
 🌐 To'liq natijalar: qomus.uz`;
         }
