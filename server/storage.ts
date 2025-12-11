@@ -35,7 +35,7 @@ export interface IStorage {
   updateDictionaryEntry(id: number, entry: UpdateDictionaryEntry): Promise<DictionaryEntry | undefined>;
   deleteDictionaryEntry(id: number): Promise<boolean>;
   batchCreateDictionaryEntries(entries: InsertDictionaryEntry[]): Promise<DictionaryEntry[]>;
-  getUntranslatedEntries(): Promise<DictionaryEntry[]>;
+  getUntranslatedEntries(source?: string): Promise<DictionaryEntry[]>;
   updateEntryTranslation(id: number, uzbek: string): Promise<DictionaryEntry | undefined>;
   getRecentlyTranslated(limit: number): Promise<DictionaryEntry[]>;
   
@@ -231,7 +231,18 @@ export class DatabaseStorage implements IStorage {
     return allResults;
   }
 
-  async getUntranslatedEntries(): Promise<DictionaryEntry[]> {
+  async getUntranslatedEntries(source?: string): Promise<DictionaryEntry[]> {
+    if (source) {
+      return await db.select().from(dictionaryEntries).where(
+        and(
+          eq(dictionaryEntries.dictionarySource, source),
+          or(
+            eq(dictionaryEntries.uzbek, ''),
+            sql`${dictionaryEntries.uzbek} IS NULL`
+          )
+        )
+      ).orderBy(dictionaryEntries.createdAt);
+    }
     return await db.select().from(dictionaryEntries).where(
       or(
         eq(dictionaryEntries.uzbek, ''),

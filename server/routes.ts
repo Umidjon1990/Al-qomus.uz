@@ -237,16 +237,17 @@ export async function registerRoutes(
     try {
       const maxBatches = req.body.maxBatches || 50;
       const batchSize = req.body.batchSize || 50;
+      const source = req.body.source || 'Ghoniy'; // Default faqat Ghoniy
       let totalTranslated = 0;
       let batchCount = 0;
       
-      console.log(`Starting continuous translation: max ${maxBatches} batches of ${batchSize} words`);
+      console.log(`Starting continuous translation for ${source}: max ${maxBatches} batches of ${batchSize} words`);
       
       for (let i = 0; i < maxBatches; i++) {
-        const untranslated = await storage.getUntranslatedEntries();
+        const untranslated = await storage.getUntranslatedEntries(source);
         
         if (untranslated.length === 0) {
-          console.log("All words translated!");
+          console.log(`All ${source} words translated!`);
           break;
         }
         
@@ -268,15 +269,16 @@ export async function registerRoutes(
         totalTranslated += successCount;
         batchCount++;
         
-        console.log(`Batch ${batchCount}/${maxBatches}: ${successCount} translated, ${untranslated.length - batchSize} remaining`);
+        console.log(`[${source}] Batch ${batchCount}/${maxBatches}: ${successCount} translated, ${untranslated.length - batchSize} remaining`);
         
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
       
-      const remaining = await storage.getUntranslatedEntries();
+      const remaining = await storage.getUntranslatedEntries(source);
       
       res.json({
-        message: "Uzluksiz tarjima yakunlandi",
+        message: `${source} uzluksiz tarjima yakunlandi`,
+        source,
         batchesCompleted: batchCount,
         totalTranslated,
         remaining: remaining.length
