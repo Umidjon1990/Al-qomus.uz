@@ -80,32 +80,39 @@ function formatEntry(entry: DictionaryEntry): string {
 function formatFullEntry(entry: DictionaryEntry, num: number): string {
   const lines: string[] = [];
   
-  lines.push(`${num}. ${entry.arabic}`);
+  // Ramkali sarlavha
+  lines.push(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓`);
+  lines.push(`┃  📖  ${entry.arabic}`);
+  lines.push(`┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`);
   
   if (entry.transliteration) {
-    lines.push(`   🔤 ${entry.transliteration}`);
+    lines.push(`│ 🔤 Talaffuz: ${entry.transliteration}`);
   }
   
   if (entry.wordType) {
-    lines.push(`   📝 ${entry.wordType}`);
+    lines.push(`│ 📝 Turi: ${entry.wordType}`);
   }
   
+  lines.push(`├─────────────────────────────`);
+  
   if (entry.uzbek) {
-    lines.push(`   🇺🇿 ${entry.uzbek}`);
+    lines.push(`│ 🇺🇿 Tarjima:`);
+    lines.push(`│ ${entry.uzbek}`);
   }
   
   if (entry.meaningsJson) {
     try {
       const meanings = JSON.parse(entry.meaningsJson);
       if (Array.isArray(meanings) && meanings.length > 0) {
-        lines.push(`   📚 Ma'nolar:`);
+        lines.push(`├─────────────────────────────`);
+        lines.push(`│ 📚 Ma'nolar:`);
         meanings.slice(0, 4).forEach((m: any, i: number) => {
           const meaning = m.uzbekMeaning || m.meaning || '';
           if (meaning) {
-            lines.push(`   ${i + 1}) ${meaning}`);
+            lines.push(`│ ${i + 1}. ${meaning}`);
             if (m.arabicExample && m.uzbekExample) {
-              lines.push(`      📖 ${m.arabicExample.substring(0, 100)}${m.arabicExample.length > 100 ? '...' : ''}`);
-              lines.push(`      ➡️ ${m.uzbekExample.substring(0, 100)}${m.uzbekExample.length > 100 ? '...' : ''}`);
+              lines.push(`│    📖 ${m.arabicExample.substring(0, 80)}${m.arabicExample.length > 80 ? '...' : ''}`);
+              lines.push(`│    ➡️ ${m.uzbekExample.substring(0, 80)}${m.uzbekExample.length > 80 ? '...' : ''}`);
             }
           }
         });
@@ -114,9 +121,12 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
   }
   
   if (!entry.meaningsJson && entry.arabicDefinition) {
-    const defShort = entry.arabicDefinition.substring(0, 200);
-    lines.push(`   📜 ${defShort}${entry.arabicDefinition.length > 200 ? '...' : ''}`);
+    lines.push(`├─────────────────────────────`);
+    const defShort = entry.arabicDefinition.substring(0, 150);
+    lines.push(`│ 📜 ${defShort}${entry.arabicDefinition.length > 150 ? '...' : ''}`);
   }
+  
+  lines.push(`└─────────────────────────────`);
   
   return lines.join('\n');
 }
@@ -176,18 +186,20 @@ export async function initTelegramBot(): Promise<Telegraf | null> {
         console.error('[Telegram] Foydalanuvchini saqlashda xato:', e);
       }
 
-      const welcomeMessage = `🌙 Assalomu alaykum, ${ctx.from.first_name}!
+      const welcomeMessage = `┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  🌙  QOMUS.UZ
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-QOMUS.UZ - Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
+Assalomu alaykum, ${ctx.from.first_name}!
 
-📚 Mavjud lug'atlar:
-• G'oniy (الغني) - 29,682 so'z
-• Roid (الرائد) - 46,931 so'z  
-• Muasir - 32,292 so'z
+Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
 
-🔍 So'z qidirish uchun shunchaki yozing!
+📗 G'ONIY LUG'ATI (الغني)
+├─ 29,682 ta so'z
+├─ Harakatli arabcha matn
+└─ O'zbekcha tarjima
 
-Tugmalardan foydalaning:`;
+🔍 So'z qidirish uchun shunchaki yozing!`;
 
       // Admin uchun admin tugmalarini ko'rsatish
       const userId = ctx.from.id.toString();
@@ -200,39 +212,38 @@ Tugmalardan foydalaning:`;
 
     // /help yoki ℹ️ Yordam tugmasi
     bot.hears('ℹ️ Yordam', async (ctx) => {
-      await ctx.reply(`📖 Yordam
+      await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  📖  YORDAM
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-🔍 Qidiruv:
-Istalgan arabcha yoki o'zbekcha so'zni yozing
-
-📝 Misollar:
-• كتاب - arabcha so'z
-• kitob - o'zbekcha so'z
-• كتب - ildiz so'z
-
-💡 Maslahatlar:
-• Harakatlar bilan ham, harakatsiz ham qidirsa bo'ladi
-• Qisqa so'zlar aniqroq natija beradi
-
-✉️ Murojaat:
-"Biz bilan aloqa" tugmasini bosing
-
+🔍 QIDIRUV:
+│ Arabcha yoki o'zbekcha so'z yozing
+├─────────────────────────────
+📝 MISOLLAR:
+│ • كتاب - arabcha so'z
+│ • kitob - o'zbekcha so'z
+│ • كتب - ildiz so'z
+├─────────────────────────────
+💡 MASLAHATLAR:
+│ • Harakatli va harakatsiz qidirish
+│ • Qisqa so'zlar aniqroq natija beradi
+├─────────────────────────────
+✉️ Murojaat: "Biz bilan aloqa"
 🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
     });
 
     bot.command('help', async (ctx) => {
-      await ctx.reply(`📖 Yordam
+      await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  📖  YORDAM
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-🔍 Qidiruv:
-Istalgan arabcha yoki o'zbekcha so'zni yozing
+🔍 Arabcha yoki o'zbekcha so'z yozing
 
 📝 Misollar:
-• كتاب - arabcha so'z
-• kitob - o'zbekcha so'z
+│ • كتاب - arabcha so'z
+│ • kitob - o'zbekcha so'z
 
-✉️ Murojaat:
-"Biz bilan aloqa" tugmasini bosing
-
+✉️ Murojaat: "Biz bilan aloqa"
 🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
     });
 
@@ -798,7 +809,7 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         return;
       }
       
-      // Qidiruv
+      // Qidiruv - FAQAT G'ONIY LUG'ATI
       if (text.length < 2) {
         await ctx.reply('🔍 Kamida 2 ta belgi kiriting', getMainKeyboard());
         return;
@@ -807,28 +818,35 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
       try {
         await ctx.sendChatAction('typing');
         
-        const entries = await storage.getDictionaryEntries(text);
+        // Faqat Ghoniy lug'atidan qidiruv
+        const allEntries = await storage.getDictionaryEntries(text);
+        const entries = allEntries.filter(e => e.dictionarySource === 'Ghoniy');
         
         if (entries.length === 0) {
-          await ctx.reply(`😔 "${text}" bo'yicha hech narsa topilmadi.\n\nBoshqa so'z bilan urinib ko'ring.`, getMainKeyboard());
+          await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  😔  Natija topilmadi
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+"${text}" so'zi G'oniy lug'atida topilmadi.
+
+💡 Boshqa so'z bilan urinib ko'ring.`, getMainKeyboard());
           return;
         }
 
-        const ghoniy = entries.filter(e => e.dictionarySource === 'Ghoniy');
-        const roid = entries.filter(e => e.dictionarySource === 'Roid');
-        const muasir = entries.filter(e => e.dictionarySource === 'Muasir');
+        // Sarlavha
+        await ctx.reply(`┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  🔍  QIDIRUV NATIJALARI
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-        let header = `🔍 "${text}" bo'yicha ${entries.length} ta natija topildi:\n`;
-        header += `📗 G'oniy: ${ghoniy.length} | 📘 Roid: ${roid.length} | 📙 Muasir: ${muasir.length}`;
-        await ctx.reply(header);
+📗 G'ONIY LUG'ATI
+📊 "${text}" → ${entries.length} ta natija`);
 
         // Xabarlarni xavfsiz yuborish funksiyasi (4096 belgi limiti)
         const sendSafeMessage = async (msg: string) => {
           if (msg.length <= 4000) {
             await ctx.reply(msg);
           } else {
-            // Xabarni bo'laklarga bo'lish
-            const chunks = [];
+            const chunks: string[] = [];
             let currentChunk = '';
             const lines = msg.split('\n');
             
@@ -842,44 +860,27 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
             }
             if (currentChunk) chunks.push(currentChunk);
             
-            for (const chunk of chunks.slice(0, 3)) { // Maksimum 3 ta xabar
+            for (const chunk of chunks.slice(0, 5)) {
               await ctx.reply(chunk);
             }
           }
         };
 
-        if (ghoniy.length > 0) {
-          let msg = `📗 G'ONIY LUG'ATI (${ghoniy.length}):\n\n`;
-          ghoniy.slice(0, 10).forEach((entry, i) => {
-            msg += formatFullEntry(entry, i + 1) + '\n\n';
-          });
-          if (ghoniy.length > 10) {
-            msg += `... va yana ${ghoniy.length - 10} ta natija`;
-          }
-          await sendSafeMessage(msg);
-        }
+        // Natijalarni ko'rsatish
+        let msg = '';
+        entries.slice(0, 5).forEach((entry, i) => {
+          msg += formatFullEntry(entry, i + 1) + '\n\n';
+        });
+        
+        if (entries.length > 5) {
+          msg += `┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  📌  Va yana ${entries.length - 5} ta natija...
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-        if (roid.length > 0) {
-          let msg = `📘 ROID LUG'ATI (${roid.length}):\n\n`;
-          roid.slice(0, 10).forEach((entry, i) => {
-            msg += formatFullEntry(entry, i + 1) + '\n\n';
-          });
-          if (roid.length > 10) {
-            msg += `... va yana ${roid.length - 10} ta natija`;
-          }
-          await sendSafeMessage(msg);
+🌐 To'liq natijalar: qomus.uz`;
         }
-
-        if (muasir.length > 0) {
-          let msg = `📙 MUASIR LUG'ATI (${muasir.length}):\n\n`;
-          muasir.slice(0, 10).forEach((entry, i) => {
-            msg += formatFullEntry(entry, i + 1) + '\n\n';
-          });
-          if (muasir.length > 10) {
-            msg += `... va yana ${muasir.length - 10} ta natija`;
-          }
-          await sendSafeMessage(msg);
-        }
+        
+        await sendSafeMessage(msg);
 
       } catch (error) {
         console.error('[Telegram] Qidiruv xatosi:', error);
