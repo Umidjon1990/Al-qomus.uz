@@ -27,14 +27,14 @@ export function Hero({ searchTerm, setSearchTerm }: HeroProps) {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary-foreground text-sm font-medium mb-6 border border-secondary/20">
-            BETA • Test rejimida
+            SAYT • TEST REJIMIDA ISHLAMOQDA..
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground font-serif leading-tight">
-            Arab tili olamiga <br/>
-            <span className="text-primary italic">professional</span> yo'llanma
+            Arab tili so'z boyligiga  <br/>
+            <span className="text-primary italic">professional</span> yechim 
           </h1>
           <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-            Minglab so'zlarning aniq tarjimasi, grammatik tahlili va jonli misollar bilan boyitilgan eng mukammal onlayn lug'at.
+            Minglab so'zlarning aniq tarjimasi, grammatik tahlili, sinonimlari va jonli misollar bilan boyitilgan eng ajoyib onlayn lug'at.
           </p>
         </motion.div>
 
