@@ -222,7 +222,7 @@ Arabcha yoki o'zbekcha so'z yozing
    • Qisqa so'zlar aniqroq natija beradi
 
 ✉️ Murojaat: "Biz bilan aloqa"
-🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
+🌐 Veb-sayt: www.al-qomus.uz`, getMainKeyboard());
     });
 
     bot.command('help', async (ctx) => {
@@ -235,7 +235,7 @@ Arabcha yoki o'zbekcha so'z yozing
    • kitob - o'zbekcha so'z
 
 ✉️ Murojaat: "Biz bilan aloqa"
-🌐 Veb-sayt: qomus.uz`, getMainKeyboard());
+🌐 Veb-sayt: www.al-qomus.uz`, getMainKeyboard());
     });
 
     // ===== ADMIN KOMANDALARI =====
@@ -862,7 +862,7 @@ Tez orada javob beramiz. Rahmat!`, getMainKeyboard());
         if (entries.length > 5) {
           msg += `📌 Va yana ${entries.length - 5} ta natija...
 
-🌐 To'liq natijalar: qomus.uz`;
+🌐 To'liq natijalar: www.al-qomus.uz`;
         }
         
         await sendSafeMessage(msg);
