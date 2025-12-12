@@ -23,11 +23,11 @@ export interface DictionaryStats {
   pending: number;
 }
 
-// Available dictionary sources
+// Available dictionary sources - G'oniy is the primary/default
 export const DICTIONARY_SOURCES = [
-  { id: 'Muasir', name: 'Muasir', description: 'Arabcha-O\'zbekcha-Arabcha izohli lug\'at' },
-  { id: 'Roid', name: 'Roid (الرائد)', description: 'Arabcha-Arabcha izohli lug\'at' },
-  { id: 'Ghoniy', name: 'G\'oniy (الغني)', description: 'Arabcha-Arabcha izohli lug\'at' },
+  { id: 'Ghoniy', name: 'G\'oniy (الغني)', description: 'Harakatli arabcha izohli lug\'at', isPrimary: true },
+  { id: 'Muasir', name: 'Muasir', description: 'Arabcha-O\'zbekcha lug\'at', isPrimary: false },
+  { id: 'Roid', name: 'Roid (الرائد)', description: 'Arabcha-Arabcha lug\'at', isPrimary: false },
 ] as const;
 
 // API Functions

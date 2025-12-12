@@ -4,14 +4,20 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2 } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [selectedSources, setSelectedSources] = useState<string[]>(["Muasir", "Ghoniy", "Roid"]);
+  const [selectedSources, setSelectedSources] = useState<string[]>(["Ghoniy"]);
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
   const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
@@ -79,41 +85,114 @@ export default function DictionaryPage() {
       <Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       
       <div className="container mx-auto px-4 py-12 -mt-10 relative z-30">
-        <div className="flex flex-wrap gap-4 mb-6 justify-center">
-          {DICTIONARY_SOURCES.map((source) => (
-            <button
-              key={source.id}
-              data-testid={`btn-source-${source.id}`}
-              onClick={() => toggleSource(source.id)}
-              className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
-                selectedSources.includes(source.id)
-                  ? 'bg-primary text-primary-foreground border-primary shadow-lg'
-                  : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Book className="h-4 w-4" />
-                <span className="font-semibold text-lg">{source.name}</span>
-                {selectedSources.includes(source.id) && (
-                  <Check className="h-4 w-4" />
+        <div className="flex flex-wrap gap-3 mb-6 justify-center items-center">
+          {/* Primary dictionary - G'oniy */}
+          <button
+            data-testid="btn-source-Ghoniy"
+            onClick={() => {
+              if (!selectedSources.includes('Ghoniy')) {
+                setSelectedSources(['Ghoniy']);
+              }
+            }}
+            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[180px] ${
+              selectedSources.includes('Ghoniy')
+                ? 'bg-primary text-primary-foreground border-primary shadow-lg'
+                : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
+            }`}
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <Book className="h-4 w-4" />
+              <span className="font-semibold text-lg">G'oniy (الغني)</span>
+              {selectedSources.includes('Ghoniy') && (
+                <Check className="h-4 w-4" />
+              )}
+            </div>
+            <span className={`text-xs ${
+              selectedSources.includes('Ghoniy')
+                ? 'text-primary-foreground/80'
+                : 'text-muted-foreground'
+            }`}>
+              Harakatli arabcha izohli lug'at
+            </span>
+            <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
+              selectedSources.includes('Ghoniy')
+                ? 'bg-primary-foreground/20'
+                : 'bg-muted'
+            }`}>
+              {getSourceCount('Ghoniy').toLocaleString()} so'z
+            </span>
+          </button>
+
+          {/* Additional dictionaries popover */}
+          <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 h-auto py-3 px-4 rounded-xl border-2 border-dashed"
+                data-testid="btn-more-sources"
+              >
+                <Plus className="h-4 w-4" />
+                <span>Boshqa lug'atlar</span>
+                {selectedSources.filter(s => s !== 'Ghoniy').length > 0 && (
+                  <span className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full">
+                    +{selectedSources.filter(s => s !== 'Ghoniy').length}
+                  </span>
                 )}
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80 p-3" align="center">
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-muted-foreground mb-3">Qo'shimcha lug'atlarni tanlang:</p>
+                {DICTIONARY_SOURCES.filter(s => !s.isPrimary).map((source) => (
+                  <button
+                    key={source.id}
+                    data-testid={`btn-source-${source.id}`}
+                    onClick={() => toggleSource(source.id)}
+                    className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
+                      selectedSources.includes(source.id)
+                        ? 'bg-primary/10 border-primary'
+                        : 'bg-muted/50 border-transparent hover:bg-muted'
+                    }`}
+                  >
+                    <div className="flex flex-col items-start">
+                      <span className="font-medium">{source.name}</span>
+                      <span className="text-xs text-muted-foreground">{source.description}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
+                        {getSourceCount(source.id).toLocaleString()}
+                      </span>
+                      {selectedSources.includes(source.id) && (
+                        <Check className="h-4 w-4 text-primary" />
+                      )}
+                    </div>
+                  </button>
+                ))}
               </div>
-              <span className={`text-xs ${
-                selectedSources.includes(source.id)
-                  ? 'text-primary-foreground/80'
-                  : 'text-muted-foreground'
-              }`}>
-                {source.description}
-              </span>
-              <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
-                selectedSources.includes(source.id)
-                  ? 'bg-primary-foreground/20'
-                  : 'bg-muted'
-              }`}>
-                {getSourceCount(source.id).toLocaleString()} so'z
-              </span>
-            </button>
-          ))}
+            </PopoverContent>
+          </Popover>
+
+          {/* Show selected additional sources */}
+          {selectedSources.filter(s => s !== 'Ghoniy').map(sourceId => {
+            const source = DICTIONARY_SOURCES.find(s => s.id === sourceId);
+            if (!source) return null;
+            return (
+              <div
+                key={sourceId}
+                className="flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm"
+              >
+                <span>{source.name}</span>
+                <button
+                  onClick={() => toggleSource(sourceId)}
+                  className="hover:text-destructive transition-colors"
+                  data-testid={`btn-remove-${sourceId}`}
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            );
+          })}
         </div>
 
         {selectedSources.length === 0 && (
