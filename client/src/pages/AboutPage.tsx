@@ -129,8 +129,7 @@ export default function AboutPage() {
                         <p className="text-muted-foreground">
                           Bu loyiha <strong className="text-foreground">Umidjon Abdurayimov</strong> tomonidan asos solingan. 
                           Loyihaning maqsadi — arab tilini o'rganayotgan o'zbek yoshlariga sifatli va bepul 
-                          lug'at xizmatini taqdim etish. Platformani yaratishda zamonaviy texnologiyalar va 
-                          sun'iy intellekt imkoniyatlaridan foydalanilgan.
+                          lug'at xizmatini taqdim etish. 
                         </p>
                       </div>
                     </div>
