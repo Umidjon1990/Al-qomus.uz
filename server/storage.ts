@@ -19,6 +19,7 @@ import {
 import { db } from "./db";
 import { eq, ilike, or, inArray, and, desc } from "drizzle-orm";
 import { sql } from "drizzle-orm";
+import { dictionaryCache, getCacheKey } from "./cache";
 
 export interface IStorage {
   // User methods
@@ -88,6 +89,14 @@ export class DatabaseStorage implements IStorage {
 
   // Dictionary methods
   async getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
+    if (search && sources) {
+      const cacheKey = getCacheKey(search, sources);
+      const cached = dictionaryCache.get<DictionaryEntry[]>(cacheKey);
+      if (cached) {
+        return cached;
+      }
+    }
+
     const conditions: any[] = [];
     
     // Normalize search term by stripping Arabic diacritics
@@ -114,7 +123,7 @@ export class DatabaseStorage implements IStorage {
       const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
       
       if (search) {
-        return await db.select().from(dictionaryEntries)
+        const results = await db.select().from(dictionaryEntries)
           .where(whereClause)
           .orderBy(
             sql`CASE 
@@ -125,6 +134,12 @@ export class DatabaseStorage implements IStorage {
             sql`length(${dictionaryEntries.arabic})`
           )
           .limit(100);
+        
+        if (sources) {
+          const cacheKey = getCacheKey(search, sources);
+          dictionaryCache.set(cacheKey, results, 300);
+        }
+        return results;
       }
       
       return await db.select().from(dictionaryEntries).where(whereClause).limit(100);
