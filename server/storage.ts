@@ -89,13 +89,8 @@ export class DatabaseStorage implements IStorage {
 
   // Dictionary methods
   async getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
-    if (search && sources) {
-      const cacheKey = getCacheKey(search, sources);
-      const cached = dictionaryCache.get<DictionaryEntry[]>(cacheKey);
-      if (cached) {
-        return cached;
-      }
-    }
+    // Cache temporarily disabled - was causing Uzbek search issues
+    // TODO: Redesign cache key to include search type (Arabic vs Uzbek)
 
     const conditions: any[] = [];
     
@@ -123,7 +118,7 @@ export class DatabaseStorage implements IStorage {
       const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
       
       if (search) {
-        const results = await db.select().from(dictionaryEntries)
+        return await db.select().from(dictionaryEntries)
           .where(whereClause)
           .orderBy(
             sql`CASE 
@@ -134,12 +129,6 @@ export class DatabaseStorage implements IStorage {
             sql`length(${dictionaryEntries.arabic})`
           )
           .limit(100);
-        
-        if (sources) {
-          const cacheKey = getCacheKey(search, sources);
-          dictionaryCache.set(cacheKey, results, 300);
-        }
-        return results;
       }
       
       return await db.select().from(dictionaryEntries).where(whereClause).limit(100);
