@@ -21,20 +21,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [, setLocation] = useLocation();
 
   const login = async (username: string, password: string) => {
-    // Mock login logic
-    if (username === "admin" && password === "admin") {
-      setUser({ username: "Admin", role: "admin" });
-      toast({
-        title: "Xush kelibsiz!",
-        description: "Admin sifatida tizimga kirdingiz.",
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
       });
-      setLocation("/admin");
-      return true;
-    } else {
+      
+      if (response.ok) {
+        setUser({ username: "Admin", role: "admin" });
+        toast({
+          title: "Xush kelibsiz!",
+          description: "Admin sifatida tizimga kirdingiz.",
+        });
+        setLocation("/admin");
+        return true;
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Xatolik",
+          description: "Login yoki parol noto'g'ri",
+        });
+        return false;
+      }
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Xatolik",
-        description: "Parol yoki login noto'g'ri (Login: admin, Parol: admin)",
+        description: "Server bilan bog'lanib bo'lmadi",
       });
       return false;
     }

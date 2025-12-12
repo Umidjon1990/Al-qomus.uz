@@ -11,6 +11,23 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  // Admin login - uses environment variables
+  app.post("/api/auth/login", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const adminUsername = process.env.ADMIN_USERNAME || 'admin';
+      const adminPassword = process.env.ADMIN_PASSWORD || 'qomus2024';
+      
+      if (username === adminUsername && password === adminPassword) {
+        res.json({ success: true, role: 'admin' });
+      } else {
+        res.status(401).json({ error: 'Login yoki parol noto\'g\'ri' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Server xatosi' });
+    }
+  });
+
   // Get statistics (MUST be before /:id route)
   app.get("/api/dictionary/stats", async (req, res) => {
     try {
