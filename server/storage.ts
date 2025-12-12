@@ -98,18 +98,21 @@ export class DatabaseStorage implements IStorage {
     const normalizedSearch = search ? this.stripArabicDiacritics(search) : '';
     
     if (search) {
-      conditions.push(
-        or(
-          // Search in Arabic field (with diacritics stripped from both sides)
-          sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`,
-          // Search in Uzbek field (main translation)
-          ilike(dictionaryEntries.uzbek, `%${normalizedSearch}%`),
-          // Search in transliteration field
-          ilike(dictionaryEntries.transliteration, `%${normalizedSearch}%`),
-          // Search in meanings JSON (AI translations)
-          sql`${dictionaryEntries.meaningsJson}::text ILIKE ${'%' + normalizedSearch + '%'}`
-        )
-      );
+      // Detect if search is Arabic (contains Arabic characters)
+      const isArabicSearch = /[\u0600-\u06FF]/.test(search);
+      
+      if (isArabicSearch) {
+        // Arabic search - search in Arabic field only
+        conditions.push(
+          sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`
+        );
+      } else {
+        // Uzbek/Latin search - search only in uzbek field (main translation)
+        // This prevents showing unrelated results from examples
+        conditions.push(
+          ilike(dictionaryEntries.uzbek, `%${normalizedSearch}%`)
+        );
+      }
     }
     
     if (sources && sources.length > 0) {
@@ -123,30 +126,34 @@ export class DatabaseStorage implements IStorage {
         // Detect if search is Arabic (contains Arabic characters)
         const isArabicSearch = /[\u0600-\u06FF]/.test(search);
         
-        return await db.select().from(dictionaryEntries)
-          .where(whereClause)
-          .orderBy(
-            sql`CASE 
-              -- Priority 1: Exact or prefix match in main Uzbek field
-              WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch} THEN 0
-              WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch + '%'} THEN 1
-              -- Priority 2: Contains in main Uzbek field  
-              WHEN ${dictionaryEntries.uzbek} ILIKE ${'%' + normalizedSearch + '%'} THEN 2
-              -- Priority 3: Arabic exact/prefix match
-              WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch} THEN 3
-              WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch + '%'} THEN 4
-              -- Priority 4: Arabic contains
-              WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'} THEN 5
-              -- Priority 5: Match in meanings JSON (examples/secondary meanings)
-              WHEN ${dictionaryEntries.meaningsJson}::text ILIKE ${'%' + normalizedSearch + '%'} THEN 6
-              -- Priority 6: Transliteration match
-              WHEN ${dictionaryEntries.transliteration} ILIKE ${'%' + normalizedSearch + '%'} THEN 7
-              ELSE 8
-            END`,
-            sql`COALESCE(length(${dictionaryEntries.uzbek}), 999)`,
-            sql`length(${dictionaryEntries.arabic})`
-          )
-          .limit(100);
+        if (isArabicSearch) {
+          // Arabic search ordering
+          return await db.select().from(dictionaryEntries)
+            .where(whereClause)
+            .orderBy(
+              sql`CASE 
+                WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch} THEN 0
+                WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch + '%'} THEN 1
+                ELSE 2
+              END`,
+              sql`length(${dictionaryEntries.arabic})`
+            )
+            .limit(50);
+        } else {
+          // Uzbek search ordering - prioritize exact and prefix matches
+          return await db.select().from(dictionaryEntries)
+            .where(whereClause)
+            .orderBy(
+              sql`CASE 
+                WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch} THEN 0
+                WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch + '%'} THEN 1
+                WHEN ${dictionaryEntries.uzbek} ILIKE ${'% ' + normalizedSearch + '%'} THEN 2
+                ELSE 3
+              END`,
+              sql`COALESCE(length(${dictionaryEntries.uzbek}), 999)`
+            )
+            .limit(50);
+        }
       }
       
       return await db.select().from(dictionaryEntries).where(whereClause).limit(100);
