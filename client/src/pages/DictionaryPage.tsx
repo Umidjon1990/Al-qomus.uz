@@ -368,7 +368,10 @@ export default function DictionaryPage() {
                 </Button>
               </div>
             )}
-            <div className="grid gap-6" style={{ fontSize: `${zoomLevel}%` }}>
+            <div 
+              className="grid gap-6 origin-top" 
+              style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
+            >
               {entries.length > 0 ? (
                 entries.map((entry, index) => (
                   <ResultCard key={entry.id} entry={entry} index={index} />
