@@ -62,6 +62,28 @@ export async function registerRoutes(
     }
   });
 
+  // Export dictionary for offline use (chunked)
+  app.get("/api/dictionary/export", async (req, res) => {
+    try {
+      const source = req.query.source as string || 'Ghoniy';
+      const cursor = parseInt(req.query.cursor as string) || 0;
+      const limit = 1000;
+      
+      const entries = await storage.getEntriesForExport(source, cursor, limit);
+      const hasMore = entries.length === limit;
+      const nextCursor = hasMore ? cursor + limit : null;
+      
+      res.json({
+        entries,
+        nextCursor,
+        hasMore
+      });
+    } catch (error) {
+      console.error("Error exporting dictionary:", error);
+      res.status(500).json({ error: "Eksport xatolik berdi" });
+    }
+  });
+
   // Get recently translated entries
   app.get("/api/dictionary/recent", async (req, res) => {
     try {

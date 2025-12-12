@@ -39,6 +39,7 @@ export interface IStorage {
   getUntranslatedEntries(source?: string): Promise<DictionaryEntry[]>;
   updateEntryTranslation(id: number, uzbek: string): Promise<DictionaryEntry | undefined>;
   getRecentlyTranslated(limit: number): Promise<DictionaryEntry[]>;
+  getEntriesForExport(source: string, cursor: number, limit: number): Promise<DictionaryEntry[]>;
   
   // Roid processing methods
   getRoidEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
@@ -224,6 +225,14 @@ export class DatabaseStorage implements IStorage {
       return letters.slice(0, 3);
     }
     return letters;
+  }
+
+  async getEntriesForExport(source: string, cursor: number, limit: number): Promise<DictionaryEntry[]> {
+    return await db.select().from(dictionaryEntries)
+      .where(eq(dictionaryEntries.dictionarySource, source))
+      .orderBy(dictionaryEntries.id)
+      .offset(cursor)
+      .limit(limit);
   }
 
   async createDictionaryEntry(entry: InsertDictionaryEntry): Promise<DictionaryEntry> {
