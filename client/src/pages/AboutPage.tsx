@@ -27,7 +27,7 @@ export default function AboutPage() {
               </div>
               
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                QOMUS<span className="text-secondary">.UZ</span> Loyihasi Haqida
+                AL-QOMUS<span className="text-secondary">.UZ</span> Loyihasi Haqida
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
@@ -89,7 +89,7 @@ export default function AboutPage() {
                       <div>
                         <h3 className="text-xl font-semibold text-foreground mb-2">Eng katta arab tili lug'ati</h3>
                         <p className="text-muted-foreground">
-                          QOMUS.UZ — bu O'zbekistondagi arab tili onlayn lug'atshunosligidagi eng katta loyiha. 
+                          AL-QOMUS.UZ — bu O'zbekistondagi arab tili onlayn lug'atshunosligidagi eng katta loyiha. 
                           Platformada <strong className="text-foreground">108,000 dan ortiq so'z va iboralar</strong> jamlangan bo'lib, 
                           ular 3 ta asosiy lug'atdan olingan: <strong className="text-foreground">Ghoniy (الغني)</strong> — 29,682 ta so'z harakat bilan, 
                           <strong className="text-foreground">Muasir</strong> — 32,292 ta so'z va <strong className="text-foreground">Roid</strong> — 46,931 ta so'z.

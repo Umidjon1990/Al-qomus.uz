@@ -40,9 +40,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <img src="/logo.png" alt="QOMUS.UZ" className="h-10 w-10 rounded-lg" />
+            <img src="/logo.png" alt="AL-QOMUS.UZ" className="h-10 w-10 rounded-lg" />
             <span className="font-serif text-xl font-bold tracking-tight text-foreground">
-              QOMUS<span className="text-secondary">.UZ</span>
+              AL-QOMUS<span className="text-secondary">.UZ</span>
             </span>
           </Link>
 
@@ -166,7 +166,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t bg-muted/30 py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} QOMUS.UZ. Barcha huquqlar himoyalangan.</p>
+          <p>&copy; {new Date().getFullYear()} AL-QOMUS.UZ. Barcha huquqlar himoyalangan.</p>
           <p className="mt-2">Professional Arabcha-O'zbekcha onlayn lug'at platformasi.</p>
         </div>
       </footer>
