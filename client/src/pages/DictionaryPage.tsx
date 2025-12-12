@@ -4,7 +4,8 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff } from "lucide-react";
+import { OfflineManager } from "@/components/OfflineManager";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -239,6 +240,11 @@ export default function DictionaryPage() {
               <p className="text-sm text-muted-foreground/70 mt-2">
                 {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
               </p>
+            </div>
+
+            {/* Offline Mode Manager */}
+            <div className="mb-6">
+              <OfflineManager />
             </div>
 
             {/* Tabs for History and Favorites */}

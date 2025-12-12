@@ -30,6 +30,8 @@ export const DICTIONARY_SOURCES = [
   { id: 'Roid', name: 'Roid (الرائد)', description: 'Arabcha-Arabcha lug\'at', isPrimary: false },
 ] as const;
 
+import { searchOffline, isOfflineReady } from './offlineDb';
+
 // API Functions
 export async function getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
   const params = new URLSearchParams();
@@ -37,9 +39,24 @@ export async function getDictionaryEntries(search?: string, sources?: string[]):
   if (sources && sources.length > 0) params.set('sources', sources.join(','));
   
   const url = params.toString() ? `/api/dictionary?${params.toString()}` : '/api/dictionary';
-  const response = await fetch(url);
-  if (!response.ok) throw new Error('Failed to fetch entries');
-  return response.json();
+  
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Failed to fetch entries');
+    const data = await response.json();
+    
+    if (data.offline === true) {
+      throw new Error('Offline mode');
+    }
+    
+    return data;
+  } catch (error) {
+    if (search && await isOfflineReady()) {
+      console.log('Using offline search for:', search);
+      return searchOffline(search, sources || ['Ghoniy']);
+    }
+    throw error;
+  }
 }
 
 export async function getDictionarySources(): Promise<{ source: string; count: number }[]> {
