@@ -86,7 +86,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
             <div className="h-4 w-px bg-border mx-2"></div>
 
-            {user ? (
+            {user && (
               <div className="flex items-center gap-4">
                 <span className="text-sm font-medium text-foreground flex items-center gap-2">
                   <User className="h-4 w-4" />
@@ -97,13 +97,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   Chiqish
                 </Button>
               </div>
-            ) : (
-              <Link href="/login">
-                <Button variant="ghost" size="sm" className="gap-2">
-                  <LogIn className="h-4 w-4" />
-                  Kirish
-                </Button>
-              </Link>
             )}
             
             <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90 text-white gap-2 ml-2">
@@ -153,7 +146,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
                   <div className="h-px bg-border my-2"></div>
 
-                  {user ? (
+                  {user && (
                     <Button variant="ghost" className="justify-start px-0 text-lg font-medium text-destructive hover:text-destructive" onClick={() => {
                       logout();
                       setIsOpen(false);
@@ -161,11 +154,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       <LogOut className="h-5 w-5 mr-2" />
                       Chiqish ({user.username})
                     </Button>
-                  ) : (
-                    <Link href="/login" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2">
-                      <LogIn className="h-5 w-5" />
-                      Kirish
-                    </Link>
                   )}
                 </div>
               </SheetContent>

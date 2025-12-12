@@ -56,9 +56,6 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="p-3 bg-muted/50 rounded text-xs text-muted-foreground">
-                <span className="font-semibold">Eslatma:</span> Demo uchun login: <b>admin</b>, parol: <b>admin</b>
-              </div>
             </CardContent>
             <CardFooter>
               <Button type="submit" className="w-full" disabled={isLoading}>

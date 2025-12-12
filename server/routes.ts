@@ -11,12 +11,17 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
-  // Admin login - uses environment variables
+  // Admin login - requires environment variables (no default credentials)
   app.post("/api/auth/login", async (req, res) => {
     try {
       const { username, password } = req.body;
-      const adminUsername = process.env.ADMIN_USERNAME || 'admin';
-      const adminPassword = process.env.ADMIN_PASSWORD || 'qomus2024';
+      const adminUsername = process.env.ADMIN_USERNAME;
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      
+      if (!adminUsername || !adminPassword) {
+        res.status(500).json({ error: 'Admin sozlanmagan' });
+        return;
+      }
       
       if (username === adminUsername && password === adminPassword) {
         res.json({ success: true, role: 'admin' });
