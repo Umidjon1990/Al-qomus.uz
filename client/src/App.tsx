@@ -7,6 +7,7 @@ import DictionaryPage from "@/pages/DictionaryPage";
 import AdminPage from "@/pages/AdminPage";
 import TelegramAdminPage from "@/pages/TelegramAdminPage";
 import LoginPage from "@/pages/LoginPage";
+import AboutPage from "@/pages/AboutPage";
 import NotFound from "@/pages/not-found";
 import { AuthProvider, useAuth } from "@/lib/auth";
 import { useEffect } from "react";
@@ -35,6 +36,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={DictionaryPage} />
+      <Route path="/about" component={AboutPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/admin">
         {() => <ProtectedRoute component={AdminPage} adminOnly={true} />}
