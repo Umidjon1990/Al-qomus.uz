@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +21,27 @@ export default function DictionaryPage() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
   const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
+  const [zoomLevel, setZoomLevel] = useState<number>(() => {
+    const saved = localStorage.getItem('dictionary-zoom');
+    return saved ? parseInt(saved) : 100;
+  });
+
+  const handleZoomIn = () => {
+    const newZoom = Math.min(zoomLevel + 10, 150);
+    setZoomLevel(newZoom);
+    localStorage.setItem('dictionary-zoom', newZoom.toString());
+  };
+
+  const handleZoomOut = () => {
+    const newZoom = Math.max(zoomLevel - 10, 70);
+    setZoomLevel(newZoom);
+    localStorage.setItem('dictionary-zoom', newZoom.toString());
+  };
+
+  const resetZoom = () => {
+    setZoomLevel(100);
+    localStorage.setItem('dictionary-zoom', '100');
+  };
 
   useEffect(() => {
     setHistory(getSearchHistory());
@@ -314,20 +335,54 @@ export default function DictionaryPage() {
             <p className="text-muted-foreground mt-4">Yuklanmoqda...</p>
           </div>
         ) : (
-          <div className="grid gap-6 max-w-4xl mx-auto">
-            {entries.length > 0 ? (
-              entries.map((entry, index) => (
-                <ResultCard key={entry.id} entry={entry} index={index} />
-              ))
-            ) : (
-              <div className="text-center py-20 bg-card rounded-xl border border-dashed">
-                <div className="bg-muted/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <SearchX className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <h3 className="text-lg font-medium text-foreground">Hech narsa topilmadi</h3>
-                <p className="text-muted-foreground">So'z yozilishini tekshirib ko'ring yoki boshqa so'z izlang.</p>
+          <div className="max-w-4xl mx-auto">
+            {entries.length > 0 && (
+              <div className="flex justify-end items-center gap-2 mb-4 bg-card rounded-lg border p-2">
+                <span className="text-sm text-muted-foreground mr-2">Shrift o'lchami:</span>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleZoomOut}
+                  disabled={zoomLevel <= 70}
+                  className="h-8 w-8"
+                  data-testid="btn-zoom-out"
+                >
+                  <ZoomOut className="h-4 w-4" />
+                </Button>
+                <button
+                  onClick={resetZoom}
+                  className="text-sm font-medium min-w-[50px] text-center hover:text-primary transition-colors"
+                  data-testid="btn-zoom-reset"
+                >
+                  {zoomLevel}%
+                </button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleZoomIn}
+                  disabled={zoomLevel >= 150}
+                  className="h-8 w-8"
+                  data-testid="btn-zoom-in"
+                >
+                  <ZoomIn className="h-4 w-4" />
+                </Button>
               </div>
             )}
+            <div className="grid gap-6" style={{ fontSize: `${zoomLevel}%` }}>
+              {entries.length > 0 ? (
+                entries.map((entry, index) => (
+                  <ResultCard key={entry.id} entry={entry} index={index} />
+                ))
+              ) : (
+                <div className="text-center py-20 bg-card rounded-xl border border-dashed">
+                  <div className="bg-muted/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <SearchX className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-lg font-medium text-foreground">Hech narsa topilmadi</h3>
+                  <p className="text-muted-foreground">So'z yozilishini tekshirib ko'ring yoki boshqa so'z izlang.</p>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
