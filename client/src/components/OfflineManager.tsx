@@ -15,8 +15,9 @@ import { toast } from '@/hooks/use-toast';
 
 interface ExportResponse {
   entries: any[];
-  nextCursor: number | null;
+  nextLastId: number | null;
   hasMore: boolean;
+  totalCount: number;
 }
 
 export function OfflineManager() {
@@ -65,24 +66,30 @@ export function OfflineManager() {
 
     try {
       await openDatabase();
-      let cursor = 0;
+      let lastId = 0;
       let totalDownloaded = 0;
+      let total = totalExpected;
 
       while (true) {
-        const response = await fetch(`/api/dictionary/export?source=Ghoniy&cursor=${cursor}`);
+        const response = await fetch(`/api/dictionary/export?source=Ghoniy&lastId=${lastId}`);
         const data: ExportResponse = await response.json();
+
+        if (data.totalCount) {
+          total = data.totalCount;
+          setTotalExpected(data.totalCount);
+        }
 
         if (data.entries && data.entries.length > 0) {
           await saveEntries(data.entries);
           totalDownloaded += data.entries.length;
-          setProgress(Math.min((totalDownloaded / totalExpected) * 100, 99));
+          setProgress(Math.min((totalDownloaded / total) * 100, 99));
         }
 
-        if (!data.hasMore || data.nextCursor === null) {
+        if (!data.hasMore || data.nextLastId === null) {
           break;
         }
 
-        cursor = data.nextCursor;
+        lastId = data.nextLastId;
       }
 
       await setMeta('lastSync', new Date().toISOString());

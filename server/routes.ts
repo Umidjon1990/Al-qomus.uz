@@ -66,17 +66,21 @@ export async function registerRoutes(
   app.get("/api/dictionary/export", async (req, res) => {
     try {
       const source = req.query.source as string || 'Ghoniy';
-      const cursor = parseInt(req.query.cursor as string) || 0;
+      const lastId = parseInt(req.query.lastId as string) || 0;
       const limit = 1000;
       
-      const entries = await storage.getEntriesForExport(source, cursor, limit);
+      const entries = await storage.getEntriesForExport(source, lastId, limit);
       const hasMore = entries.length === limit;
-      const nextCursor = hasMore ? cursor + limit : null;
+      const nextLastId = hasMore && entries.length > 0 ? entries[entries.length - 1].id : null;
+      
+      const sources = await storage.getDictionarySources();
+      const totalCount = sources.find(s => s.source === source)?.count || 0;
       
       res.json({
         entries,
-        nextCursor,
-        hasMore
+        nextLastId,
+        hasMore,
+        totalCount
       });
     } catch (error) {
       console.error("Error exporting dictionary:", error);
