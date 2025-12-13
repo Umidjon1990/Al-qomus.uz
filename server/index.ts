@@ -24,6 +24,21 @@ app.use(
 
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
+// Telegram Mini App uchun headerlar
+app.use((req, res, next) => {
+  // Telegram iframe ichida ochilishiga ruxsat berish
+  res.setHeader('X-Frame-Options', 'ALLOWALL');
+  res.removeHeader('X-Frame-Options');
+  
+  // Content Security Policy - Telegram ga ruxsat
+  res.setHeader(
+    'Content-Security-Policy',
+    "frame-ancestors 'self' https://web.telegram.org https://telegram.org https://*.telegram.org"
+  );
+  
+  next();
+});
+
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
