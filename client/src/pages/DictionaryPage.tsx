@@ -242,10 +242,11 @@ export default function DictionaryPage() {
               </p>
             </div>
 
-            {/* Offline Mode Manager */}
+            {/* Offline Mode Manager - vaqtinchalik o'chirilgan
             <div className="mb-6">
               <OfflineManager />
             </div>
+            */}
 
             {/* Tabs for History and Favorites */}
             <div className="flex gap-2 mb-4 justify-center">
