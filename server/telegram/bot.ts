@@ -219,14 +219,28 @@ Quyidagilardan birini tanlang:`;
       
       const userId = ctx.from?.id.toString() || '';
       
+      // Avval keyboard tugmalarini ko'rsatamiz
       if (isAdmin(userId)) {
         await ctx.reply(`🤖 Bot rejimi faollashtirildi!
 
-So'z qidirish uchun arabcha yoki o'zbekcha yozing.`, getMainKeyboardWithAdmin());
+So'z qidirish uchun arabcha yoki o'zbekcha yozing.
+
+Ilovaga qaytish uchun:`, {
+          ...getMainKeyboardWithAdmin(),
+          reply_markup: {
+            ...getMainKeyboardWithAdmin().reply_markup,
+            inline_keyboard: [[Markup.button.webApp('📱 Ilovaga qaytish', WEB_APP_URL)]]
+          }
+        });
       } else {
         await ctx.reply(`🤖 Bot rejimi faollashtirildi!
 
 So'z qidirish uchun arabcha yoki o'zbekcha yozing.`, getMainKeyboard());
+        
+        // Inline tugma alohida xabar sifatida
+        await ctx.reply('Ilovaga qaytish:', Markup.inlineKeyboard([
+          [Markup.button.webApp('📱 Ilovaga qaytish', WEB_APP_URL)]
+        ]));
       }
     });
 
