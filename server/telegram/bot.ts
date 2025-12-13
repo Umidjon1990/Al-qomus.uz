@@ -128,11 +128,23 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
   return lines.join('\n');
 }
 
+// Web App URL (Mini App uchun)
+const WEB_APP_URL = process.env.WEB_APP_URL || 'https://al-qomus.uz';
+
+// Boshlang'ich inline menyu (3 ta variant)
+function getStartInlineKeyboard() {
+  return Markup.inlineKeyboard([
+    [Markup.button.webApp('📱 Ilova ochish', WEB_APP_URL)],
+    [Markup.button.url('🌐 Saytga o\'tish', WEB_APP_URL)],
+    [Markup.button.callback('🤖 Bot rejimi', 'use_bot')]
+  ]);
+}
+
 // Asosiy tugmalar (oddiy foydalanuvchilar uchun)
 function getMainKeyboard() {
   return Markup.keyboard([
     ['🔍 Qidiruv', '✉️ Biz bilan aloqa'],
-    ['ℹ️ Yordam']
+    ['ℹ️ Yordam', '📱 Ilova']
   ]).resize();
 }
 
@@ -140,7 +152,8 @@ function getMainKeyboard() {
 function getMainKeyboardWithAdmin() {
   return Markup.keyboard([
     ['🔍 Qidiruv', '✉️ Biz bilan aloqa'],
-    ['ℹ️ Yordam', '🔐 Admin']
+    ['ℹ️ Yordam', '📱 Ilova'],
+    ['🔐 Admin']
   ]).resize();
 }
 
@@ -183,7 +196,7 @@ export async function initTelegramBot(): Promise<Telegraf | null> {
         console.error('[Telegram] Foydalanuvchini saqlashda xato:', e);
       }
 
-      const welcomeMessage = `🌙 QOMUS.UZ
+      const welcomeMessage = `🌙 AL-QOMUS.UZ
 
 Assalomu alaykum, ${ctx.from.first_name}!
 
@@ -194,15 +207,37 @@ Arabcha-O'zbekcha lug'at botiga xush kelibsiz!
    • Harakatli arabcha matn
    • O'zbekcha tarjima
 
-🔍 So'z qidirish uchun shunchaki yozing!`;
+Quyidagilardan birini tanlang:`;
 
-      // Admin uchun admin tugmalarini ko'rsatish
-      const userId = ctx.from.id.toString();
+      // Inline tugmalar bilan xush kelibsiz xabari
+      await ctx.reply(welcomeMessage, getStartInlineKeyboard());
+    });
+
+    // 🤖 Bot rejimi tugmasi bosilganda
+    bot.action('use_bot', async (ctx) => {
+      await ctx.answerCbQuery();
+      
+      const userId = ctx.from?.id.toString() || '';
+      
       if (isAdmin(userId)) {
-        await ctx.reply(welcomeMessage, getAdminKeyboard());
+        await ctx.reply(`🤖 Bot rejimi faollashtirildi!
+
+So'z qidirish uchun arabcha yoki o'zbekcha yozing.`, getMainKeyboardWithAdmin());
       } else {
-        await ctx.reply(welcomeMessage, getMainKeyboard());
+        await ctx.reply(`🤖 Bot rejimi faollashtirildi!
+
+So'z qidirish uchun arabcha yoki o'zbekcha yozing.`, getMainKeyboard());
       }
+    });
+
+    // 📱 Ilova tugmasi - Mini App ochish
+    bot.hears('📱 Ilova', async (ctx) => {
+      await ctx.reply(
+        '📱 Ilovani ochish uchun quyidagi tugmani bosing:',
+        Markup.inlineKeyboard([
+          [Markup.button.webApp('📱 Ilovani ochish', WEB_APP_URL)]
+        ])
+      );
     });
 
     // /help yoki ℹ️ Yordam tugmasi
