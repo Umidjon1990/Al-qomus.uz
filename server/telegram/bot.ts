@@ -129,7 +129,7 @@ function formatFullEntry(entry: DictionaryEntry, num: number): string {
 }
 
 // Web App URL (Mini App uchun)
-const WEB_APP_URL = process.env.WEB_APP_URL || 'https://al-qomus.uz';
+const WEB_APP_URL = process.env.WEB_APP_URL || 'https://www.al-qomus.uz';
 
 // Boshlang'ich inline menyu (3 ta variant)
 function getStartInlineKeyboard() {

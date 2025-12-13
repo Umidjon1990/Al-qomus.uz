@@ -47,4 +47,4 @@ integrations = ["javascript_openai_ai_integrations:1.0.0"]
 [userenv]
 
 [userenv.shared]
-WEB_APP_URL = "https://al-qomus.uz"
+WEB_APP_URL = "https://www.al-qomus.uz"
