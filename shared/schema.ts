@@ -111,3 +111,19 @@ export const insertBroadcastSchema = createInsertSchema(broadcasts).omit({
 
 export type Broadcast = typeof broadcasts.$inferSelect;
 export type InsertBroadcast = z.infer<typeof insertBroadcastSchema>;
+
+// Synonyms Table - sinonimlar (o'xshash ma'noli so'zlar)
+export const synonyms = pgTable("synonyms", {
+  id: serial("id").primaryKey(),
+  entryId: serial("entry_id").notNull(), // Asosiy so'z
+  synonymEntryId: serial("synonym_entry_id").notNull(), // Sinonim so'z
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertSynonymSchema = createInsertSchema(synonyms).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type Synonym = typeof synonyms.$inferSelect;
+export type InsertSynonym = z.infer<typeof insertSynonymSchema>;
