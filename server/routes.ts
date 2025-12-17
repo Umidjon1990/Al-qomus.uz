@@ -124,61 +124,6 @@ export async function registerRoutes(
     }
   });
 
-  // Get synonyms for a dictionary entry - sinonimlar olish
-  app.get("/api/dictionary/:id/synonyms", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ error: "Noto'g'ri ID" });
-      }
-      const synonyms = await storage.getSynonyms(id);
-      res.json(synonyms);
-    } catch (error) {
-      console.error("Error fetching synonyms:", error);
-      res.status(500).json({ error: "Sinonimlarni olishda xatolik" });
-    }
-  });
-
-  // Add synonym - sinonim qo'shish
-  app.post("/api/dictionary/:id/synonyms", async (req, res) => {
-    try {
-      const entryId = parseInt(req.params.id);
-      const { synonymEntryId } = req.body;
-      
-      if (isNaN(entryId) || !synonymEntryId) {
-        return res.status(400).json({ error: "Noto'g'ri ma'lumot" });
-      }
-      
-      if (entryId === synonymEntryId) {
-        return res.status(400).json({ error: "So'z o'ziga sinonim bo'la olmaydi" });
-      }
-      
-      const synonym = await storage.addSynonym(entryId, synonymEntryId);
-      res.status(201).json(synonym);
-    } catch (error) {
-      console.error("Error adding synonym:", error);
-      res.status(500).json({ error: "Sinonim qo'shishda xatolik" });
-    }
-  });
-
-  // Remove synonym - sinonimni o'chirish
-  app.delete("/api/dictionary/:id/synonyms/:synonymId", async (req, res) => {
-    try {
-      const entryId = parseInt(req.params.id);
-      const synonymEntryId = parseInt(req.params.synonymId);
-      
-      if (isNaN(entryId) || isNaN(synonymEntryId)) {
-        return res.status(400).json({ error: "Noto'g'ri ID" });
-      }
-      
-      await storage.removeSynonym(entryId, synonymEntryId);
-      res.json({ success: true });
-    } catch (error) {
-      console.error("Error removing synonym:", error);
-      res.status(500).json({ error: "Sinonimni o'chirishda xatolik" });
-    }
-  });
-
   // Get related words by root
   app.get("/api/dictionary/related/:id", async (req, res) => {
     try {

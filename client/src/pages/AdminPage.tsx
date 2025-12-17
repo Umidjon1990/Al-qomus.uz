@@ -36,13 +36,10 @@ import {
   batchTranslate,
   getStats,
   getRecentlyTranslated,
-  getSynonyms,
-  addSynonym,
-  removeSynonym,
   DictionaryEntry,
   DICTIONARY_SOURCES
 } from "@/lib/api";
-import { Edit2, Plus, Save, Trash2, Upload, AlertCircle, Wand2, Loader2, Database, CheckCircle2, Clock, FileText, History, ArrowRightLeft, X, Search } from "lucide-react";
+import { Edit2, Plus, Save, Trash2, Upload, AlertCircle, Wand2, Loader2, Database, CheckCircle2, Clock, FileText, History } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import * as XLSX from 'xlsx';
 
@@ -58,69 +55,11 @@ export default function AdminPage() {
   const [visibleCount, setVisibleCount] = React.useState(100);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
-  
-  // Sinonimlar boshqaruvi uchun
-  const [currentSynonyms, setCurrentSynonyms] = React.useState<DictionaryEntry[]>([]);
-  const [synonymSearch, setSynonymSearch] = React.useState("");
-  const [synonymSearchResults, setSynonymSearchResults] = React.useState<DictionaryEntry[]>([]);
-  const [isLoadingSynonyms, setIsLoadingSynonyms] = React.useState(false);
 
   // Reset visible count when filter changes
   React.useEffect(() => {
     setVisibleCount(100);
   }, [filter]);
-
-  // Sinonimlarni yuklash - dialog ochilganda
-  React.useEffect(() => {
-    if (editingEntry?.id && isDialogOpen) {
-      setIsLoadingSynonyms(true);
-      getSynonyms(editingEntry.id)
-        .then(setCurrentSynonyms)
-        .catch(console.error)
-        .finally(() => setIsLoadingSynonyms(false));
-    } else {
-      setCurrentSynonyms([]);
-      setSynonymSearch("");
-      setSynonymSearchResults([]);
-    }
-  }, [editingEntry?.id, isDialogOpen]);
-
-  // Sinonim qidirish
-  React.useEffect(() => {
-    if (synonymSearch.length >= 2) {
-      const filtered = entries.filter(e => 
-        e.id !== editingEntry?.id && 
-        !currentSynonyms.some(s => s.id === e.id) &&
-        (e.arabic.includes(synonymSearch) || e.uzbek?.includes(synonymSearch))
-      ).slice(0, 10);
-      setSynonymSearchResults(filtered);
-    } else {
-      setSynonymSearchResults([]);
-    }
-  }, [synonymSearch, entries, editingEntry?.id, currentSynonyms]);
-
-  const handleAddSynonym = async (synonymEntry: DictionaryEntry) => {
-    if (!editingEntry) return;
-    try {
-      await addSynonym(editingEntry.id, synonymEntry.id);
-      setCurrentSynonyms(prev => [...prev, synonymEntry]);
-      setSynonymSearch("");
-      toast({ title: "Sinonim qo'shildi" });
-    } catch (error) {
-      toast({ title: "Xatolik", description: "Sinonim qo'shib bo'lmadi", variant: "destructive" });
-    }
-  };
-
-  const handleRemoveSynonym = async (synonymId: number) => {
-    if (!editingEntry) return;
-    try {
-      await removeSynonym(editingEntry.id, synonymId);
-      setCurrentSynonyms(prev => prev.filter(s => s.id !== synonymId));
-      toast({ title: "Sinonim o'chirildi" });
-    } catch (error) {
-      toast({ title: "Xatolik", description: "Sinonimni o'chirib bo'lmadi", variant: "destructive" });
-    }
-  };
 
   // Fetch data
   const { data: entries = [], isLoading } = useQuery({

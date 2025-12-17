@@ -10,14 +10,11 @@ import {
   type InsertContactMessage,
   type Broadcast,
   type InsertBroadcast,
-  type Synonym,
-  type InsertSynonym,
   users,
   dictionaryEntries,
   telegramUsers,
   contactMessages,
-  broadcasts,
-  synonyms
+  broadcasts
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, ilike, or, inArray, and, desc } from "drizzle-orm";
@@ -72,11 +69,6 @@ export interface IStorage {
   getBroadcasts(): Promise<Broadcast[]>;
   updateBroadcastProgress(id: number, sent: number, failed: number): Promise<void>;
   completeBroadcast(id: number, status: string): Promise<void>;
-  
-  // Synonym methods - sinonimlar
-  getSynonyms(entryId: number): Promise<DictionaryEntry[]>;
-  addSynonym(entryId: number, synonymEntryId: number): Promise<Synonym>;
-  removeSynonym(entryId: number, synonymEntryId: number): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -504,51 +496,6 @@ export class DatabaseStorage implements IStorage {
     await db.update(broadcasts)
       .set({ status, completedAt: new Date() })
       .where(eq(broadcasts.id, id));
-  }
-
-  // Synonym methods - sinonimlar
-  async getSynonyms(entryId: number): Promise<DictionaryEntry[]> {
-    // Sinonim ID larini olish
-    const synonymLinks = await db.select()
-      .from(synonyms)
-      .where(eq(synonyms.entryId, entryId));
-    
-    if (synonymLinks.length === 0) return [];
-    
-    // Sinonim so'zlarni olish
-    const synonymIds = synonymLinks.map(s => s.synonymEntryId);
-    return await db.select()
-      .from(dictionaryEntries)
-      .where(inArray(dictionaryEntries.id, synonymIds));
-  }
-
-  async addSynonym(entryId: number, synonymEntryId: number): Promise<Synonym> {
-    // Ikki tomonlama bog'lanish - A→B va B→A
-    const [synonym] = await db.insert(synonyms)
-      .values({ entryId, synonymEntryId })
-      .returning();
-    
-    // Teskari bog'lanish ham qo'shish
-    await db.insert(synonyms)
-      .values({ entryId: synonymEntryId, synonymEntryId: entryId })
-      .onConflictDoNothing();
-    
-    return synonym;
-  }
-
-  async removeSynonym(entryId: number, synonymEntryId: number): Promise<boolean> {
-    // Ikki tomonlama o'chirish
-    await db.delete(synonyms)
-      .where(and(
-        eq(synonyms.entryId, entryId),
-        eq(synonyms.synonymEntryId, synonymEntryId)
-      ));
-    await db.delete(synonyms)
-      .where(and(
-        eq(synonyms.entryId, synonymEntryId),
-        eq(synonyms.synonymEntryId, entryId)
-      ));
-    return true;
   }
 }
 
