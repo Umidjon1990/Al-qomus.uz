@@ -179,50 +179,6 @@ export async function registerRoutes(
     }
   });
 
-  // WordNet API - sinonim guruhlari qidirish
-  app.get("/api/wordnet/search", async (req, res) => {
-    try {
-      const search = req.query.q as string;
-      const posParam = req.query.pos as string | undefined;
-      const posFilter = posParam ? posParam.split(',') : undefined;
-      
-      if (!search || search.trim().length < 2) {
-        return res.json([]);
-      }
-      const results = await storage.searchWordnetSynsets(search.trim(), posFilter);
-      res.json(results);
-    } catch (error) {
-      console.error("Error searching wordnet:", error);
-      res.status(500).json({ error: "Qidiruvda xatolik" });
-    }
-  });
-
-  // WordNet stats
-  app.get("/api/wordnet/stats", async (req, res) => {
-    try {
-      const stats = await storage.getWordnetStats();
-      res.json(stats);
-    } catch (error) {
-      console.error("Error fetching wordnet stats:", error);
-      res.status(500).json({ error: "Statistika olishda xatolik" });
-    }
-  });
-
-  // Get single synset
-  app.get("/api/wordnet/synset/:id", async (req, res) => {
-    try {
-      const synsetId = req.params.id;
-      const result = await storage.getWordnetSynset(synsetId);
-      if (!result) {
-        return res.status(404).json({ error: "Synset topilmadi" });
-      }
-      res.json(result);
-    } catch (error) {
-      console.error("Error fetching synset:", error);
-      res.status(500).json({ error: "Synset olishda xatolik" });
-    }
-  });
-
   // Get related words by root
   app.get("/api/dictionary/related/:id", async (req, res) => {
     try {

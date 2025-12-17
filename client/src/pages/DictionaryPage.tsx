@@ -3,9 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
-import { SynonymResultCard } from "@/components/SynonymResultCard";
-import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchWordnetSynonyms } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff, Users } from "lucide-react";
+import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -83,19 +82,10 @@ export default function DictionaryPage() {
     queryFn: getDictionarySources,
   });
 
-  const isSynonymMode = selectedSources.includes('Synonyms') && selectedSources.length === 1;
-  const regularSources = selectedSources.filter(s => s !== 'Synonyms');
-
   const { data: entries = [], isLoading } = useQuery({
-    queryKey: ['dictionary', debouncedSearch, regularSources],
-    queryFn: () => getDictionaryEntries(debouncedSearch || undefined, regularSources),
-    enabled: debouncedSearch.length > 0 && regularSources.length > 0 && !isSynonymMode,
-  });
-
-  const { data: synonymResults = [], isLoading: isSynonymLoading } = useQuery({
-    queryKey: ['synonyms', debouncedSearch],
-    queryFn: () => searchWordnetSynonyms(debouncedSearch),
-    enabled: debouncedSearch.length > 0 && isSynonymMode,
+    queryKey: ['dictionary', debouncedSearch, selectedSources],
+    queryFn: () => getDictionaryEntries(debouncedSearch || undefined, selectedSources),
+    enabled: debouncedSearch.length > 0 && selectedSources.length > 0,
   });
 
   const toggleSource = (sourceId: string) => {
@@ -121,69 +111,36 @@ export default function DictionaryPage() {
           <button
             data-testid="btn-source-Ghoniy"
             onClick={() => {
-              setSelectedSources(['Ghoniy']);
+              if (!selectedSources.includes('Ghoniy')) {
+                setSelectedSources(['Ghoniy']);
+              }
             }}
-            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
-              selectedSources.includes('Ghoniy') && !isSynonymMode
+            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[180px] ${
+              selectedSources.includes('Ghoniy')
                 ? 'bg-primary text-primary-foreground border-primary shadow-lg'
                 : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
             }`}
           >
             <div className="flex items-center gap-2 mb-1">
               <Book className="h-4 w-4" />
-              <span className="font-semibold">G'oniy (الغني)</span>
-              {selectedSources.includes('Ghoniy') && !isSynonymMode && (
+              <span className="font-semibold text-lg">G'oniy (الغني)</span>
+              {selectedSources.includes('Ghoniy') && (
                 <Check className="h-4 w-4" />
               )}
             </div>
             <span className={`text-xs ${
-              selectedSources.includes('Ghoniy') && !isSynonymMode
+              selectedSources.includes('Ghoniy')
                 ? 'text-primary-foreground/80'
                 : 'text-muted-foreground'
             }`}>
               Harakatli arabcha izohli lug'at
             </span>
             <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
-              selectedSources.includes('Ghoniy') && !isSynonymMode
+              selectedSources.includes('Ghoniy')
                 ? 'bg-primary-foreground/20'
                 : 'bg-muted'
             }`}>
               {getSourceCount('Ghoniy').toLocaleString()} so'z
-            </span>
-          </button>
-
-          {/* Synonyms - Sinonimlar */}
-          <button
-            data-testid="btn-source-Synonyms"
-            onClick={() => {
-              setSelectedSources(['Synonyms']);
-            }}
-            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
-              isSynonymMode
-                ? 'bg-emerald-600 text-white border-emerald-600 shadow-lg'
-                : 'bg-card text-foreground border-border hover:border-emerald-400 hover:shadow-md'
-            }`}
-          >
-            <div className="flex items-center gap-2 mb-1">
-              <Users className="h-4 w-4" />
-              <span className="font-semibold">Sinonimlar (مرادفات)</span>
-              {isSynonymMode && (
-                <Check className="h-4 w-4" />
-              )}
-            </div>
-            <span className={`text-xs ${
-              isSynonymMode
-                ? 'text-white/80'
-                : 'text-muted-foreground'
-            }`}>
-              Arabic WordNet sinonim guruhlari
-            </span>
-            <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
-              isSynonymMode
-                ? 'bg-white/20'
-                : 'bg-muted'
-            }`}>
-              9,361 guruh
             </span>
           </button>
 
@@ -267,8 +224,7 @@ export default function DictionaryPage() {
         
         {debouncedSearch && selectedSources.length > 0 && (
           <div className="mb-6 text-muted-foreground text-center" data-testid="search-result-count">
-            "{debouncedSearch}" bo'yicha {isSynonymMode ? synonymResults.length : entries.length} ta natija topildi
-            {isSynonymMode && <span className="ml-2 text-emerald-600">(sinonimlar)</span>}
+            "{debouncedSearch}" bo'yicha {entries.length} ta natija topildi
           </div>
         )}
         
@@ -374,60 +330,10 @@ export default function DictionaryPage() {
               </div>
             )}
           </div>
-        ) : (isLoading || isSynonymLoading) ? (
+        ) : isLoading ? (
           <div className="text-center py-20">
             <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
             <p className="text-muted-foreground mt-4">Yuklanmoqda...</p>
-          </div>
-        ) : isSynonymMode ? (
-          <div className="max-w-4xl mx-auto">
-            {synonymResults.length > 0 && (
-              <div className="flex justify-end items-center gap-2 mb-4 bg-card rounded-lg border p-2">
-                <span className="text-sm text-muted-foreground mr-2">Shrift o'lchami:</span>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleZoomOut}
-                  disabled={zoomLevel <= 70}
-                  className="h-8 w-8"
-                  data-testid="btn-zoom-out"
-                >
-                  <ZoomOut className="h-4 w-4" />
-                </Button>
-                <button
-                  onClick={resetZoom}
-                  className="text-sm font-medium min-w-[50px] text-center hover:text-primary transition-colors"
-                  data-testid="btn-zoom-reset"
-                >
-                  {zoomLevel}%
-                </button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleZoomIn}
-                  disabled={zoomLevel >= 150}
-                  className="h-8 w-8"
-                  data-testid="btn-zoom-in"
-                >
-                  <ZoomIn className="h-4 w-4" />
-                </Button>
-              </div>
-            )}
-            <div className="grid gap-6">
-              {synonymResults.length > 0 ? (
-                synonymResults.map((result: any) => (
-                  <SynonymResultCard key={result.synset.synsetId} result={result} zoomLevel={zoomLevel} />
-                ))
-              ) : (
-                <div className="text-center py-20 bg-card rounded-xl border border-dashed">
-                  <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-emerald-600" />
-                  </div>
-                  <h3 className="text-lg font-medium text-foreground">Sinonim topilmadi</h3>
-                  <p className="text-muted-foreground">Boshqa so'z bilan qidiring.</p>
-                </div>
-              )}
-            </div>
           </div>
         ) : (
           <div className="max-w-4xl mx-auto">

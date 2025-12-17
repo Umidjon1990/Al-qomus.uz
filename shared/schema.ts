@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, serial, timestamp, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, serial, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -115,8 +115,8 @@ export type InsertBroadcast = z.infer<typeof insertBroadcastSchema>;
 // Synonyms Table - sinonimlar (o'xshash ma'noli so'zlar)
 export const synonyms = pgTable("synonyms", {
   id: serial("id").primaryKey(),
-  entryId: integer("entry_id").notNull(), // Asosiy so'z
-  synonymEntryId: integer("synonym_entry_id").notNull(), // Sinonim so'z
+  entryId: serial("entry_id").notNull(), // Asosiy so'z
+  synonymEntryId: serial("synonym_entry_id").notNull(), // Sinonim so'z
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -127,58 +127,3 @@ export const insertSynonymSchema = createInsertSchema(synonyms).omit({
 
 export type Synonym = typeof synonyms.$inferSelect;
 export type InsertSynonym = z.infer<typeof insertSynonymSchema>;
-
-// WordNet Synsets - Arabic WordNet sinonim guruhlari
-export const wordnetSynsets = pgTable("wordnet_synsets", {
-  id: serial("id").primaryKey(),
-  synsetId: text("synset_id").notNull().unique(), // Princeton WordNet synset ID
-  partOfSpeech: text("part_of_speech"), // noun, verb, adjective, adverb
-  arabicGloss: text("arabic_gloss"), // Arabcha ta'rif
-  arabicExamples: text("arabic_examples"), // Arabcha misollar
-  englishLemmas: text("english_lemmas"), // Inglizcha so'zlar
-  englishGloss: text("english_gloss"), // Inglizcha ta'rif
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
-export const insertWordnetSynsetSchema = createInsertSchema(wordnetSynsets).omit({
-  id: true,
-  createdAt: true,
-});
-
-export type WordnetSynset = typeof wordnetSynsets.$inferSelect;
-export type InsertWordnetSynset = z.infer<typeof insertWordnetSynsetSchema>;
-
-// WordNet Lemmas - Arabic WordNet so'zlari
-export const wordnetLemmas = pgTable("wordnet_lemmas", {
-  id: serial("id").primaryKey(),
-  synsetId: text("synset_id").notNull(), // FK to wordnet_synsets.synset_id
-  arabicWord: text("arabic_word").notNull(), // Arabcha so'z
-  arabicWordNormalized: text("arabic_word_normalized"), // Harakatsiz shakli
-  dictionaryEntryId: integer("dictionary_entry_id"), // FK to dictionary_entries.id (agar topilsa)
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
-export const insertWordnetLemmaSchema = createInsertSchema(wordnetLemmas).omit({
-  id: true,
-  createdAt: true,
-});
-
-export type WordnetLemma = typeof wordnetLemmas.$inferSelect;
-export type InsertWordnetLemma = z.infer<typeof insertWordnetLemmaSchema>;
-
-// Lexical Relations - sinonim va antonim bog'lanishlari
-export const lexicalRelations = pgTable("lexical_relations", {
-  id: serial("id").primaryKey(),
-  synsetId: text("synset_id").notNull(), // FK to wordnet_synsets.synset_id
-  relatedSynsetId: text("related_synset_id").notNull(), // Bog'liq synset
-  relationType: text("relation_type").notNull(), // 'synonym', 'antonym', 'hypernym', 'hyponym'
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
-export const insertLexicalRelationSchema = createInsertSchema(lexicalRelations).omit({
-  id: true,
-  createdAt: true,
-});
-
-export type LexicalRelation = typeof lexicalRelations.$inferSelect;
-export type InsertLexicalRelation = z.infer<typeof insertLexicalRelationSchema>;

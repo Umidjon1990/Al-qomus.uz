@@ -85,12 +85,6 @@ export default function AdminPage() {
     }
   }, [editingEntry?.id, isDialogOpen]);
 
-  // Fetch data
-  const { data: entries = [], isLoading } = useQuery({
-    queryKey: ['dictionary'],
-    queryFn: () => getDictionaryEntries(),
-  });
-
   // Sinonim qidirish
   React.useEffect(() => {
     if (synonymSearch.length >= 2) {
@@ -127,6 +121,12 @@ export default function AdminPage() {
       toast({ title: "Xatolik", description: "Sinonimni o'chirib bo'lmadi", variant: "destructive" });
     }
   };
+
+  // Fetch data
+  const { data: entries = [], isLoading } = useQuery({
+    queryKey: ['dictionary'],
+    queryFn: () => getDictionaryEntries(),
+  });
 
   const { data: recentEntries = [], isLoading: isLoadingRecent } = useQuery({
     queryKey: ['dictionary-recent'],
@@ -679,67 +679,6 @@ export default function AdminPage() {
                       className="min-h-[100px] border-primary/30 focus-visible:ring-primary" 
                     />
                 </div>
-                
-                {/* Sinonimlar boshqaruvi */}
-                {editingEntry.id && (
-                  <div className="space-y-3 p-4 bg-violet-50 dark:bg-violet-950/20 rounded-lg border border-violet-200 dark:border-violet-800">
-                    <div className="flex items-center gap-2">
-                      <ArrowRightLeft className="h-4 w-4 text-violet-600" />
-                      <label className="text-sm font-medium text-violet-700 dark:text-violet-400">Sinonimlar (مرادفات)</label>
-                    </div>
-                    
-                    {isLoadingSynonyms ? (
-                      <div className="text-sm text-muted-foreground">Yuklanmoqda...</div>
-                    ) : (
-                      <>
-                        {currentSynonyms.length > 0 && (
-                          <div className="flex flex-wrap gap-2">
-                            {currentSynonyms.map(syn => (
-                              <div key={syn.id} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-gray-800 rounded-full border border-violet-300 dark:border-violet-700">
-                                <span className="font-arabic text-violet-700 dark:text-violet-300" dir="rtl">{syn.arabic}</span>
-                                <span className="text-xs text-muted-foreground">({syn.uzbek || "—"})</span>
-                                <button 
-                                  type="button"
-                                  onClick={() => handleRemoveSynonym(syn.id)}
-                                  className="ml-1 text-red-500 hover:text-red-700"
-                                >
-                                  <X className="h-3 w-3" />
-                                </button>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        
-                        <div className="relative">
-                          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                          <Input
-                            placeholder="Sinonim qidirish..."
-                            value={synonymSearch}
-                            onChange={(e) => setSynonymSearch(e.target.value)}
-                            className="pl-9"
-                          />
-                        </div>
-                        
-                        {synonymSearchResults.length > 0 && (
-                          <div className="max-h-32 overflow-y-auto border rounded-md bg-white dark:bg-gray-800">
-                            {synonymSearchResults.map(result => (
-                              <button
-                                key={result.id}
-                                type="button"
-                                onClick={() => handleAddSynonym(result)}
-                                className="w-full text-left px-3 py-2 hover:bg-violet-100 dark:hover:bg-violet-900/30 flex items-center justify-between"
-                              >
-                                <span className="font-arabic" dir="rtl">{result.arabic}</span>
-                                <span className="text-xs text-muted-foreground">{result.uzbek || "—"}</span>
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
-                )}
-                
                 <DialogFooter>
                   <Button type="submit" disabled={updateMutation.isPending || createMutation.isPending}>
                     {(updateMutation.isPending || createMutation.isPending) ? (
