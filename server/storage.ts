@@ -12,12 +12,16 @@ import {
   type InsertBroadcast,
   type Synonym,
   type InsertSynonym,
+  type WordnetSynset,
+  type WordnetLemma,
   users,
   dictionaryEntries,
   telegramUsers,
   contactMessages,
   broadcasts,
-  synonyms
+  synonyms,
+  wordnetSynsets,
+  wordnetLemmas
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, ilike, or, inArray, and, desc } from "drizzle-orm";
@@ -77,6 +81,11 @@ export interface IStorage {
   getSynonyms(entryId: number): Promise<DictionaryEntry[]>;
   addSynonym(entryId: number, synonymEntryId: number): Promise<Synonym>;
   removeSynonym(entryId: number, synonymEntryId: number): Promise<boolean>;
+  
+  // WordNet methods - sinonim/antonim qidirish
+  searchWordnetSynsets(search: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]}[]>;
+  getWordnetSynset(synsetId: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]} | null>;
+  getWordnetStats(): Promise<{totalSynsets: number; totalLemmas: number; matchedLemmas: number}>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -557,6 +566,85 @@ export class DatabaseStorage implements IStorage {
         eq(synonyms.synonymEntryId, entryId)
       ));
     return true;
+  }
+
+  // WordNet methods
+  async searchWordnetSynsets(search: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]}[]> {
+    const normalizedSearch = this.stripArabicDiacritics(search);
+    
+    // Qidirish - arabcha so'z yoki inglizcha so'z bo'yicha
+    const isArabic = /[\u0600-\u06FF]/.test(search);
+    
+    let matchedLemmas: WordnetLemma[];
+    
+    if (isArabic) {
+      matchedLemmas = await db.select()
+        .from(wordnetLemmas)
+        .where(sql`${wordnetLemmas.arabicWordNormalized} ILIKE ${'%' + normalizedSearch + '%'}`)
+        .limit(100);
+    } else {
+      // Inglizcha qidirish - synset orqali
+      const matchedSynsets = await db.select()
+        .from(wordnetSynsets)
+        .where(ilike(wordnetSynsets.englishLemmas, `%${search}%`))
+        .limit(50);
+      
+      if (matchedSynsets.length === 0) return [];
+      
+      const synsetIds = matchedSynsets.map(s => s.synsetId);
+      matchedLemmas = await db.select()
+        .from(wordnetLemmas)
+        .where(inArray(wordnetLemmas.synsetId, synsetIds));
+    }
+    
+    // Synset ID larini olish
+    const synsetIds = Array.from(new Set(matchedLemmas.map(l => l.synsetId)));
+    if (synsetIds.length === 0) return [];
+    
+    // Synsetlarni olish
+    const synsets = await db.select()
+      .from(wordnetSynsets)
+      .where(inArray(wordnetSynsets.synsetId, synsetIds));
+    
+    // Har bir synset uchun barcha lemmalarni olish
+    const allLemmas = await db.select()
+      .from(wordnetLemmas)
+      .where(inArray(wordnetLemmas.synsetId, synsetIds));
+    
+    // Natijani tuzish
+    return synsets.map(synset => ({
+      synset,
+      lemmas: allLemmas.filter(l => l.synsetId === synset.synsetId)
+    }));
+  }
+
+  async getWordnetSynset(synsetId: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]} | null> {
+    const [synset] = await db.select()
+      .from(wordnetSynsets)
+      .where(eq(wordnetSynsets.synsetId, synsetId))
+      .limit(1);
+    
+    if (!synset) return null;
+    
+    const lemmas = await db.select()
+      .from(wordnetLemmas)
+      .where(eq(wordnetLemmas.synsetId, synsetId));
+    
+    return { synset, lemmas };
+  }
+
+  async getWordnetStats(): Promise<{totalSynsets: number; totalLemmas: number; matchedLemmas: number}> {
+    const [synsetCount] = await db.select({ count: sql<number>`count(*)::int` }).from(wordnetSynsets);
+    const [lemmaCount] = await db.select({ count: sql<number>`count(*)::int` }).from(wordnetLemmas);
+    const [matchedCount] = await db.select({ count: sql<number>`count(*)::int` })
+      .from(wordnetLemmas)
+      .where(sql`${wordnetLemmas.dictionaryEntryId} IS NOT NULL`);
+    
+    return {
+      totalSynsets: synsetCount?.count || 0,
+      totalLemmas: lemmaCount?.count || 0,
+      matchedLemmas: matchedCount?.count || 0
+    };
   }
 }
 
