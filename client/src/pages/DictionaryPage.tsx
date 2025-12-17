@@ -5,7 +5,7 @@ import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { SynonymResultCard } from "@/components/SynonymResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchWordnetSynonyms } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff, Users } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, Users } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +17,7 @@ import {
 export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [searchMode, setSearchMode] = useState<'dictionary' | 'synonyms'>('dictionary');
   const [selectedSources, setSelectedSources] = useState<string[]>(["Ghoniy"]);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -52,13 +53,13 @@ export default function DictionaryPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(searchTerm);
-      if (searchTerm.trim()) {
+      if (searchTerm.trim() && searchMode === 'dictionary') {
         addToHistory(searchTerm.trim());
         setHistory(getSearchHistory());
       }
     }, 300);
     return () => clearTimeout(timer);
-  }, [searchTerm]);
+  }, [searchTerm, searchMode]);
 
   const handleHistoryClick = (term: string) => {
     setSearchTerm(term);
@@ -83,19 +84,16 @@ export default function DictionaryPage() {
     queryFn: getDictionarySources,
   });
 
-  const isSynonymMode = selectedSources.includes('Synonyms') && selectedSources.length === 1;
-  const regularSources = selectedSources.filter(s => s !== 'Synonyms');
-
   const { data: entries = [], isLoading } = useQuery({
-    queryKey: ['dictionary', debouncedSearch, regularSources],
-    queryFn: () => getDictionaryEntries(debouncedSearch || undefined, regularSources),
-    enabled: debouncedSearch.length > 0 && regularSources.length > 0 && !isSynonymMode,
+    queryKey: ['dictionary', debouncedSearch, selectedSources],
+    queryFn: () => getDictionaryEntries(debouncedSearch || undefined, selectedSources),
+    enabled: debouncedSearch.length > 0 && selectedSources.length > 0 && searchMode === 'dictionary',
   });
 
   const { data: synonymResults = [], isLoading: isSynonymLoading } = useQuery({
     queryKey: ['synonyms', debouncedSearch],
     queryFn: () => searchWordnetSynonyms(debouncedSearch),
-    enabled: debouncedSearch.length > 0 && isSynonymMode,
+    enabled: debouncedSearch.length > 0 && searchMode === 'synonyms',
   });
 
   const toggleSource = (sourceId: string) => {
@@ -113,180 +111,179 @@ export default function DictionaryPage() {
 
   return (
     <Layout>
-      <Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Hero 
+        searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm} 
+        searchMode={searchMode}
+        setSearchMode={setSearchMode}
+      />
       
       <div className="container mx-auto px-4 py-12 -mt-10 relative z-30">
-        <div className="flex flex-wrap gap-3 mb-6 justify-center items-center">
-          {/* Primary dictionary - G'oniy */}
-          <button
-            data-testid="btn-source-Ghoniy"
-            onClick={() => {
-              setSelectedSources(['Ghoniy']);
-            }}
-            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
-              selectedSources.includes('Ghoniy') && !isSynonymMode
-                ? 'bg-primary text-primary-foreground border-primary shadow-lg'
-                : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
-            }`}
-          >
-            <div className="flex items-center gap-2 mb-1">
-              <Book className="h-4 w-4" />
-              <span className="font-semibold">G'oniy (الغني)</span>
-              {selectedSources.includes('Ghoniy') && !isSynonymMode && (
-                <Check className="h-4 w-4" />
-              )}
-            </div>
-            <span className={`text-xs ${
-              selectedSources.includes('Ghoniy') && !isSynonymMode
-                ? 'text-primary-foreground/80'
-                : 'text-muted-foreground'
-            }`}>
-              Harakatli arabcha izohli lug'at
-            </span>
-            <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
-              selectedSources.includes('Ghoniy') && !isSynonymMode
-                ? 'bg-primary-foreground/20'
-                : 'bg-muted'
-            }`}>
-              {getSourceCount('Ghoniy').toLocaleString()} so'z
-            </span>
-          </button>
-
-          {/* Synonyms - Sinonimlar */}
-          <button
-            data-testid="btn-source-Synonyms"
-            onClick={() => {
-              setSelectedSources(['Synonyms']);
-            }}
-            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
-              isSynonymMode
-                ? 'bg-emerald-600 text-white border-emerald-600 shadow-lg'
-                : 'bg-card text-foreground border-border hover:border-emerald-400 hover:shadow-md'
-            }`}
-          >
-            <div className="flex items-center gap-2 mb-1">
-              <Users className="h-4 w-4" />
-              <span className="font-semibold">Sinonimlar (مرادفات)</span>
-              {isSynonymMode && (
-                <Check className="h-4 w-4" />
-              )}
-            </div>
-            <span className={`text-xs ${
-              isSynonymMode
-                ? 'text-white/80'
-                : 'text-muted-foreground'
-            }`}>
-              Arabic WordNet sinonim guruhlari
-            </span>
-            <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
-              isSynonymMode
-                ? 'bg-white/20'
-                : 'bg-muted'
-            }`}>
-              9,361 guruh
-            </span>
-          </button>
-
-          {/* Additional dictionaries popover */}
-          <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                className="flex items-center gap-2 h-auto py-3 px-4 rounded-xl border-2 border-dashed"
-                data-testid="btn-more-sources"
-              >
-                <Plus className="h-4 w-4" />
-                <span>Boshqa lug'atlar</span>
-                {selectedSources.filter(s => s !== 'Ghoniy').length > 0 && (
-                  <span className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full">
-                    +{selectedSources.filter(s => s !== 'Ghoniy').length}
-                  </span>
+        {/* Dictionary sources - only show in dictionary mode */}
+        {searchMode === 'dictionary' && (
+          <div className="flex flex-wrap gap-3 mb-6 justify-center items-center">
+            {/* Primary dictionary - G'oniy */}
+            <button
+              data-testid="btn-source-Ghoniy"
+              onClick={() => {
+                setSelectedSources(prev => 
+                  prev.includes('Ghoniy') && prev.length > 1
+                    ? prev.filter(s => s !== 'Ghoniy')
+                    : prev.includes('Ghoniy') ? prev : [...prev, 'Ghoniy']
+                );
+              }}
+              className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[160px] ${
+                selectedSources.includes('Ghoniy')
+                  ? 'bg-primary text-primary-foreground border-primary shadow-lg'
+                  : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <Book className="h-4 w-4" />
+                <span className="font-semibold">G'oniy (الغني)</span>
+                {selectedSources.includes('Ghoniy') && (
+                  <Check className="h-4 w-4" />
                 )}
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-80 p-3" align="center">
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-muted-foreground mb-3">Qo'shimcha lug'atlarni tanlang:</p>
-                {DICTIONARY_SOURCES.filter(s => !s.isPrimary).map((source) => (
-                  <button
-                    key={source.id}
-                    data-testid={`btn-source-${source.id}`}
-                    onClick={() => toggleSource(source.id)}
-                    className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
-                      selectedSources.includes(source.id)
-                        ? 'bg-primary/10 border-primary'
-                        : 'bg-muted/50 border-transparent hover:bg-muted'
-                    }`}
-                  >
-                    <div className="flex flex-col items-start">
-                      <span className="font-medium">{source.name}</span>
-                      <span className="text-xs text-muted-foreground">{source.description}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
-                        {getSourceCount(source.id).toLocaleString()}
-                      </span>
-                      {selectedSources.includes(source.id) && (
-                        <Check className="h-4 w-4 text-primary" />
-                      )}
-                    </div>
-                  </button>
-                ))}
               </div>
-            </PopoverContent>
-          </Popover>
+              <span className={`text-xs ${
+                selectedSources.includes('Ghoniy')
+                  ? 'text-primary-foreground/80'
+                  : 'text-muted-foreground'
+              }`}>
+                Harakatli arabcha izohli lug'at
+              </span>
+              <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
+                selectedSources.includes('Ghoniy')
+                  ? 'bg-primary-foreground/20'
+                  : 'bg-muted'
+              }`}>
+                {getSourceCount('Ghoniy').toLocaleString()} so'z
+              </span>
+            </button>
 
-          {/* Show selected additional sources */}
-          {selectedSources.filter(s => s !== 'Ghoniy').map(sourceId => {
-            const source = DICTIONARY_SOURCES.find(s => s.id === sourceId);
-            if (!source) return null;
-            return (
-              <div
-                key={sourceId}
-                className="flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm"
-              >
-                <span>{source.name}</span>
-                <button
-                  onClick={() => toggleSource(sourceId)}
-                  className="hover:text-destructive transition-colors"
-                  data-testid={`btn-remove-${sourceId}`}
+            {/* Additional dictionaries popover */}
+            <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-auto py-3 px-4 rounded-xl border-2 border-dashed"
+                  data-testid="btn-more-sources"
                 >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-            );
-          })}
-        </div>
+                  <Plus className="h-4 w-4" />
+                  <span>Boshqa lug'atlar</span>
+                  {selectedSources.filter(s => s !== 'Ghoniy').length > 0 && (
+                    <span className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full">
+                      +{selectedSources.filter(s => s !== 'Ghoniy').length}
+                    </span>
+                  )}
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80 p-3" align="center">
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-muted-foreground mb-3">Qo'shimcha lug'atlarni tanlang:</p>
+                  {DICTIONARY_SOURCES.filter(s => !s.isPrimary).map((source) => (
+                    <button
+                      key={source.id}
+                      data-testid={`btn-source-${source.id}`}
+                      onClick={() => toggleSource(source.id)}
+                      className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
+                        selectedSources.includes(source.id)
+                          ? 'bg-primary/10 border-primary'
+                          : 'bg-muted/50 border-transparent hover:bg-muted'
+                      }`}
+                    >
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">{source.name}</span>
+                        <span className="text-xs text-muted-foreground">{source.description}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
+                          {getSourceCount(source.id).toLocaleString()}
+                        </span>
+                        {selectedSources.includes(source.id) && (
+                          <Check className="h-4 w-4 text-primary" />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
 
-        {selectedSources.length === 0 && (
+            {/* Show selected additional sources */}
+            {selectedSources.filter(s => s !== 'Ghoniy').map(sourceId => {
+              const source = DICTIONARY_SOURCES.find(s => s.id === sourceId);
+              if (!source) return null;
+              return (
+                <div
+                  key={sourceId}
+                  className="flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm"
+                >
+                  <span>{source.name}</span>
+                  <button
+                    onClick={() => toggleSource(sourceId)}
+                    className="hover:text-destructive transition-colors"
+                    data-testid={`btn-remove-${sourceId}`}
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {searchMode === 'dictionary' && selectedSources.length === 0 && (
           <div className="text-center py-6 text-amber-600 bg-amber-50 rounded-lg mb-6">
             Kamida bitta lug'atni tanlang
           </div>
         )}
         
-        {debouncedSearch && selectedSources.length > 0 && (
+        {debouncedSearch && searchMode === 'dictionary' && selectedSources.length > 0 && (
           <div className="mb-6 text-muted-foreground text-center" data-testid="search-result-count">
-            "{debouncedSearch}" bo'yicha {isSynonymMode ? synonymResults.length : entries.length} ta natija topildi
-            {isSynonymMode && <span className="ml-2 text-emerald-600">(sinonimlar)</span>}
+            <Book className="inline h-4 w-4 mr-2" />
+            "{debouncedSearch}" bo'yicha {entries.length} ta natija topildi
+          </div>
+        )}
+        
+        {debouncedSearch && searchMode === 'synonyms' && (
+          <div className="mb-6 text-center bg-emerald-50 border border-emerald-200 rounded-lg py-3 px-4" data-testid="synonym-result-count">
+            <Users className="inline h-4 w-4 mr-2 text-emerald-600" />
+            <span className="text-emerald-700">
+              "{debouncedSearch}" uchun {synonymResults.length} ta sinonim guruhi topildi
+            </span>
           </div>
         )}
         
         {!debouncedSearch ? (
           <div className="max-w-2xl mx-auto">
-            <div className="text-center py-10 bg-card rounded-xl border border-dashed mb-6">
-              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="h-8 w-8 text-primary" />
+            {searchMode === 'dictionary' ? (
+              <div className="text-center py-10 bg-card rounded-xl border border-dashed mb-6">
+                <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Book className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-lg font-medium text-foreground">Lug'atdan qidiring</h3>
+                <p className="text-muted-foreground">Arabcha yoki o'zbekcha so'z yozing</p>
+                <p className="text-sm text-muted-foreground/70 mt-2">
+                  {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
+                </p>
               </div>
-              <h3 className="text-lg font-medium text-foreground">So'z izlang</h3>
-              <p className="text-muted-foreground">Arabcha yoki o'zbekcha so'z yozing</p>
-              <p className="text-sm text-muted-foreground/70 mt-2">
-                {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
-              </p>
-            </div>
+            ) : (
+              <div className="text-center py-10 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-200 mb-6">
+                <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-emerald-600" />
+                </div>
+                <h3 className="text-lg font-medium text-emerald-900">Sinonim qidiring</h3>
+                <p className="text-emerald-700">Arabcha so'z kiriting, sinonimlarini toping</p>
+                <p className="text-sm text-emerald-600/70 mt-2">
+                  Arabic WordNet bazasidan 9,361 sinonim guruhidan qidiring
+                </p>
+              </div>
+            )}
 
-
-            {/* Tabs for History and Favorites */}
+            {/* Tabs for History and Favorites - only in dictionary mode */}
+            {searchMode === 'dictionary' && (
             <div className="flex gap-2 mb-4 justify-center">
               <Button
                 variant={activeTab === 'history' ? 'default' : 'outline'}
@@ -307,9 +304,10 @@ export default function DictionaryPage() {
                 Yoqtirilganlar ({favorites.length})
               </Button>
             </div>
+            )}
 
-            {/* History Tab */}
-            {activeTab === 'history' && (
+            {/* History Tab - only in dictionary mode */}
+            {searchMode === 'dictionary' && activeTab === 'history' && (
               <div className="bg-card rounded-xl border p-4">
                 {history.length > 0 ? (
                   <>
@@ -346,8 +344,8 @@ export default function DictionaryPage() {
               </div>
             )}
 
-            {/* Favorites Tab */}
-            {activeTab === 'favorites' && (
+            {/* Favorites Tab - only in dictionary mode */}
+            {searchMode === 'dictionary' && activeTab === 'favorites' && (
               <div className="bg-card rounded-xl border p-4">
                 {favorites.length > 0 ? (
                   <div className="space-y-2">
@@ -379,24 +377,24 @@ export default function DictionaryPage() {
             <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
             <p className="text-muted-foreground mt-4">Yuklanmoqda...</p>
           </div>
-        ) : isSynonymMode ? (
+        ) : searchMode === 'synonyms' ? (
           <div className="max-w-4xl mx-auto">
             {synonymResults.length > 0 && (
-              <div className="flex justify-end items-center gap-2 mb-4 bg-card rounded-lg border p-2">
-                <span className="text-sm text-muted-foreground mr-2">Shrift o'lchami:</span>
+              <div className="flex justify-end items-center gap-2 mb-4 bg-emerald-50 rounded-lg border border-emerald-200 p-2">
+                <span className="text-sm text-emerald-700 mr-2">Shrift o'lchami:</span>
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={handleZoomOut}
                   disabled={zoomLevel <= 70}
-                  className="h-8 w-8"
+                  className="h-8 w-8 border-emerald-300 hover:bg-emerald-100"
                   data-testid="btn-zoom-out"
                 >
-                  <ZoomOut className="h-4 w-4" />
+                  <ZoomOut className="h-4 w-4 text-emerald-600" />
                 </Button>
                 <button
                   onClick={resetZoom}
-                  className="text-sm font-medium min-w-[50px] text-center hover:text-primary transition-colors"
+                  className="text-sm font-medium min-w-[50px] text-center text-emerald-700 hover:text-emerald-900 transition-colors"
                   data-testid="btn-zoom-reset"
                 >
                   {zoomLevel}%
@@ -406,10 +404,10 @@ export default function DictionaryPage() {
                   size="icon"
                   onClick={handleZoomIn}
                   disabled={zoomLevel >= 150}
-                  className="h-8 w-8"
+                  className="h-8 w-8 border-emerald-300 hover:bg-emerald-100"
                   data-testid="btn-zoom-in"
                 >
-                  <ZoomIn className="h-4 w-4" />
+                  <ZoomIn className="h-4 w-4 text-emerald-600" />
                 </Button>
               </div>
             )}
@@ -419,12 +417,12 @@ export default function DictionaryPage() {
                   <SynonymResultCard key={result.synset.synsetId} result={result} zoomLevel={zoomLevel} />
                 ))
               ) : (
-                <div className="text-center py-20 bg-card rounded-xl border border-dashed">
+                <div className="text-center py-20 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-200">
                   <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-medium text-foreground">Sinonim topilmadi</h3>
-                  <p className="text-muted-foreground">Boshqa so'z bilan qidiring.</p>
+                  <h3 className="text-lg font-medium text-emerald-900">Sinonim topilmadi</h3>
+                  <p className="text-emerald-700">Boshqa so'z bilan qidiring.</p>
                 </div>
               )}
             </div>
