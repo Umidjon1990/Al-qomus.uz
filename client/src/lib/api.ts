@@ -38,29 +38,6 @@ export async function searchWordnetSynonyms(search: string): Promise<any[]> {
   return response.json();
 }
 
-// Word analysis interface
-export interface WordAnalysis {
-  lemma: string;
-  root: string;
-  original: string;
-  vocalized: string;
-  procletic: string;
-  prefix: string;
-  stem: string;
-  suffix: string;
-  encletic: string;
-  type: string;
-  action: string;
-}
-
-// Analyze Arabic word using Qalsadi
-export async function analyzeWord(word: string): Promise<WordAnalysis[]> {
-  if (!word || word.length < 1) return [];
-  const response = await fetch(`/api/analyze?word=${encodeURIComponent(word)}`);
-  if (!response.ok) throw new Error('Failed to analyze word');
-  return response.json();
-}
-
 import { searchOffline, isOfflineReady } from './offlineDb';
 
 // API Functions
