@@ -5,7 +5,6 @@ import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
 import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff } from "lucide-react";
-import { OfflineManager } from "@/components/OfflineManager";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -242,11 +241,6 @@ export default function DictionaryPage() {
               </p>
             </div>
 
-            {/* Offline Mode Manager - vaqtinchalik o'chirilgan
-            <div className="mb-6">
-              <OfflineManager />
-            </div>
-            */}
 
             {/* Tabs for History and Favorites */}
             <div className="flex gap-2 mb-4 justify-center">
