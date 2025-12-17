@@ -83,7 +83,7 @@ export interface IStorage {
   removeSynonym(entryId: number, synonymEntryId: number): Promise<boolean>;
   
   // WordNet methods - sinonim/antonim qidirish
-  searchWordnetSynsets(search: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]}[]>;
+  searchWordnetSynsets(search: string, posFilter?: string[]): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]}[]>;
   getWordnetSynset(synsetId: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]} | null>;
   getWordnetStats(): Promise<{totalSynsets: number; totalLemmas: number; matchedLemmas: number}>;
 }
@@ -569,7 +569,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   // WordNet methods
-  async searchWordnetSynsets(search: string): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]}[]> {
+  async searchWordnetSynsets(search: string, posFilter?: string[]): Promise<{synset: WordnetSynset; lemmas: WordnetLemma[]}[]> {
     const normalizedSearch = this.stripArabicDiacritics(search);
     
     // Qidirish - arabcha so'z yoki inglizcha so'z bo'yicha
@@ -584,10 +584,11 @@ export class DatabaseStorage implements IStorage {
         .limit(100);
     } else {
       // Inglizcha qidirish - synset orqali
-      const matchedSynsets = await db.select()
+      let query = db.select()
         .from(wordnetSynsets)
-        .where(ilike(wordnetSynsets.englishLemmas, `%${search}%`))
-        .limit(50);
+        .where(ilike(wordnetSynsets.englishLemmas, `%${search}%`));
+      
+      const matchedSynsets = await query.limit(50);
       
       if (matchedSynsets.length === 0) return [];
       
@@ -601,15 +602,28 @@ export class DatabaseStorage implements IStorage {
     const synsetIds = Array.from(new Set(matchedLemmas.map(l => l.synsetId)));
     if (synsetIds.length === 0) return [];
     
-    // Synsetlarni olish
-    const synsets = await db.select()
-      .from(wordnetSynsets)
-      .where(inArray(wordnetSynsets.synsetId, synsetIds));
+    // Synsetlarni olish (POS filter bilan)
+    let synsets: WordnetSynset[];
+    if (posFilter && posFilter.length > 0) {
+      synsets = await db.select()
+        .from(wordnetSynsets)
+        .where(and(
+          inArray(wordnetSynsets.synsetId, synsetIds),
+          inArray(wordnetSynsets.partOfSpeech, posFilter)
+        ));
+    } else {
+      synsets = await db.select()
+        .from(wordnetSynsets)
+        .where(inArray(wordnetSynsets.synsetId, synsetIds));
+    }
+    
+    if (synsets.length === 0) return [];
     
     // Har bir synset uchun barcha lemmalarni olish
+    const filteredSynsetIds = synsets.map(s => s.synsetId);
     const allLemmas = await db.select()
       .from(wordnetLemmas)
-      .where(inArray(wordnetLemmas.synsetId, synsetIds));
+      .where(inArray(wordnetLemmas.synsetId, filteredSynsetIds));
     
     // Natijani tuzish
     return synsets.map(synset => ({

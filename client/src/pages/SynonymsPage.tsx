@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Search, BookOpen, ArrowLeft, Users, BookText, Sparkles } from "lucide-react";
+import { Search, BookOpen, ArrowLeft, Users, BookText, Sparkles, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,6 +37,13 @@ interface WordnetStats {
   matchedLemmas: number;
 }
 
+const POS_OPTIONS = [
+  { id: "noun", label: "Ism (اسم)", arabicLabel: "اسم", icon: "📖", count: 0 },
+  { id: "verb", label: "Fe'l (فعل)", arabicLabel: "فعل", icon: "⚡", count: 0 },
+  { id: "adjective", label: "Sifat (صفة)", arabicLabel: "صفة", icon: "🎨", count: 0 },
+  { id: "adverb", label: "Zarf (ظرف)", arabicLabel: "ظرف", icon: "🕐", count: 0 },
+];
+
 const posLabels: Record<string, string> = {
   noun: "ism (اسم)",
   verb: "fe'l (فعل)",
@@ -47,6 +54,7 @@ const posLabels: Record<string, string> = {
 export default function SynonymsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [selectedPos, setSelectedPos] = useState<string[]>(["noun"]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -64,14 +72,23 @@ export default function SynonymsPage() {
   });
 
   const { data: results, isLoading } = useQuery<SynsetResult[]>({
-    queryKey: ["/api/wordnet/search", debouncedQuery],
+    queryKey: ["/api/wordnet/search", debouncedQuery, selectedPos],
     queryFn: async () => {
-      if (debouncedQuery.length < 2) return [];
-      const res = await fetch(`/api/wordnet/search?q=${encodeURIComponent(debouncedQuery)}`);
+      if (debouncedQuery.length < 2 || selectedPos.length === 0) return [];
+      const posParam = selectedPos.join(',');
+      const res = await fetch(`/api/wordnet/search?q=${encodeURIComponent(debouncedQuery)}&pos=${posParam}`);
       return res.json();
     },
-    enabled: debouncedQuery.length >= 2,
+    enabled: debouncedQuery.length >= 2 && selectedPos.length > 0,
   });
+
+  const togglePos = (posId: string) => {
+    setSelectedPos(prev => 
+      prev.includes(posId)
+        ? prev.filter(p => p !== posId)
+        : [...prev, posId]
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white">
@@ -110,6 +127,38 @@ export default function SynonymsPage() {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-8">
+        <div className="flex flex-wrap gap-3 mb-6 justify-center">
+          {POS_OPTIONS.map((pos) => (
+            <button
+              key={pos.id}
+              data-testid={`btn-pos-${pos.id}`}
+              onClick={() => togglePos(pos.id)}
+              className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[140px] ${
+                selectedPos.includes(pos.id)
+                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-lg'
+                  : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-400 hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-lg">{pos.icon}</span>
+                {selectedPos.includes(pos.id) && <Check className="h-4 w-4" />}
+              </div>
+              <span className="font-medium text-sm">{pos.label}</span>
+              <span className="font-arabic text-lg" dir="rtl">{pos.arabicLabel}</span>
+            </button>
+          ))}
+        </div>
+
+        {selectedPos.length === 0 && (
+          <Card className="bg-amber-50 border-amber-200 mb-6">
+            <CardContent className="p-4 text-center">
+              <p className="text-amber-700">
+                Kamida bitta so'z turini tanlang
+              </p>
+            </CardContent>
+          </Card>
+        )}
+
         {stats && !debouncedQuery && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +189,7 @@ export default function SynonymsPage() {
           </motion.div>
         )}
 
-        {!debouncedQuery && (
+        {!debouncedQuery && selectedPos.length > 0 && (
           <Card className="bg-emerald-50 border-emerald-200">
             <CardContent className="p-6 text-center">
               <Users className="h-12 w-12 mx-auto mb-4 text-emerald-600" />
@@ -148,7 +197,7 @@ export default function SynonymsPage() {
                 Sinonimlar qidiring
               </h3>
               <p className="text-emerald-600">
-                Arabcha yoki inglizcha so'z kiriting va bir xil ma'noli so'zlar guruhini toping.
+                Arabcha yoki inglizcha so'z kiriting.
                 <br />
                 Masalan: <span className="font-arabic text-lg">كتاب</span> yoki "book"
               </p>
@@ -230,7 +279,7 @@ export default function SynonymsPage() {
           </div>
         )}
 
-        {results && results.length === 0 && debouncedQuery && (
+        {results && results.length === 0 && debouncedQuery && selectedPos.length > 0 && (
           <Card className="bg-gray-50">
             <CardContent className="p-8 text-center">
               <Search className="h-12 w-12 mx-auto mb-4 text-gray-400" />
@@ -240,7 +289,7 @@ export default function SynonymsPage() {
               <p className="text-gray-500">
                 "{debouncedQuery}" uchun sinonim guruhi topilmadi.
                 <br />
-                Boshqa so'z bilan urinib ko'ring.
+                Boshqa so'z yoki so'z turini tanlang.
               </p>
             </CardContent>
           </Card>

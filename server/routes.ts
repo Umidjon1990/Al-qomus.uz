@@ -183,10 +183,13 @@ export async function registerRoutes(
   app.get("/api/wordnet/search", async (req, res) => {
     try {
       const search = req.query.q as string;
+      const posParam = req.query.pos as string | undefined;
+      const posFilter = posParam ? posParam.split(',') : undefined;
+      
       if (!search || search.trim().length < 2) {
         return res.json([]);
       }
-      const results = await storage.searchWordnetSynsets(search.trim());
+      const results = await storage.searchWordnetSynsets(search.trim(), posFilter);
       res.json(results);
     } catch (error) {
       console.error("Error searching wordnet:", error);
