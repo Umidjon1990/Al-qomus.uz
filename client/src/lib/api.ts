@@ -30,6 +30,14 @@ export const DICTIONARY_SOURCES = [
   { id: 'Roid', name: 'Roid (الرائد)', description: 'Arabcha-Arabcha lug\'at', isPrimary: false },
 ] as const;
 
+// WordNet search for synonyms
+export async function searchWordnetSynonyms(search: string): Promise<any[]> {
+  if (!search || search.length < 2) return [];
+  const response = await fetch(`/api/wordnet/search?q=${encodeURIComponent(search)}`);
+  if (!response.ok) throw new Error('Failed to search synonyms');
+  return response.json();
+}
+
 import { searchOffline, isOfflineReady } from './offlineDb';
 
 // API Functions
