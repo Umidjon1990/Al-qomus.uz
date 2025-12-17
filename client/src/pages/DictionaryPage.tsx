@@ -4,8 +4,9 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { SynonymResultCard } from "@/components/SynonymResultCard";
-import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchWordnetSynonyms } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, Users } from "lucide-react";
+import { AnalysisResultCard } from "@/components/AnalysisResultCard";
+import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchWordnetSynonyms, analyzeWord } from "@/lib/api";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, Users, FlaskConical } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +18,7 @@ import {
 export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [searchMode, setSearchMode] = useState<'dictionary' | 'synonyms'>('dictionary');
+  const [searchMode, setSearchMode] = useState<'dictionary' | 'synonyms' | 'analysis'>('dictionary');
   const [selectedSources, setSelectedSources] = useState<string[]>(["Ghoniy"]);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -94,6 +95,12 @@ export default function DictionaryPage() {
     queryKey: ['synonyms', debouncedSearch],
     queryFn: () => searchWordnetSynonyms(debouncedSearch),
     enabled: debouncedSearch.length > 0 && searchMode === 'synonyms',
+  });
+
+  const { data: analysisResults = [], isLoading: isAnalysisLoading } = useQuery({
+    queryKey: ['analysis', debouncedSearch],
+    queryFn: () => analyzeWord(debouncedSearch),
+    enabled: debouncedSearch.length > 0 && searchMode === 'analysis',
   });
 
   const toggleSource = (sourceId: string) => {
@@ -256,9 +263,18 @@ export default function DictionaryPage() {
           </div>
         )}
         
+        {debouncedSearch && searchMode === 'analysis' && (
+          <div className="mb-6 text-center bg-violet-50 border border-violet-200 rounded-lg py-3 px-4" data-testid="analysis-result-count">
+            <FlaskConical className="inline h-4 w-4 mr-2 text-violet-600" />
+            <span className="text-violet-700">
+              "{debouncedSearch}" uchun {analysisResults.length} ta tahlil natijasi
+            </span>
+          </div>
+        )}
+        
         {!debouncedSearch ? (
           <div className="max-w-2xl mx-auto">
-            {searchMode === 'dictionary' ? (
+            {searchMode === 'dictionary' && (
               <div className="text-center py-10 bg-card rounded-xl border border-dashed mb-6">
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Book className="h-8 w-8 text-primary" />
@@ -269,7 +285,8 @@ export default function DictionaryPage() {
                   {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
                 </p>
               </div>
-            ) : (
+            )}
+            {searchMode === 'synonyms' && (
               <div className="text-center py-10 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-200 mb-6">
                 <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-8 w-8 text-emerald-600" />
@@ -278,6 +295,18 @@ export default function DictionaryPage() {
                 <p className="text-emerald-700">Arabcha so'z kiriting, sinonimlarini toping</p>
                 <p className="text-sm text-emerald-600/70 mt-2">
                   Arabic WordNet bazasidan 9,361 sinonim guruhidan qidiring
+                </p>
+              </div>
+            )}
+            {searchMode === 'analysis' && (
+              <div className="text-center py-10 bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl border border-violet-200 mb-6">
+                <div className="bg-violet-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FlaskConical className="h-8 w-8 text-violet-600" />
+                </div>
+                <h3 className="text-lg font-medium text-violet-900">So'z tahlili</h3>
+                <p className="text-violet-700">Arabcha so'z kiriting, morfologik tahlilini ko'ring</p>
+                <p className="text-sm text-violet-600/70 mt-2">
+                  Ildiz, qo'shimchalar va grammatik tuzilishni aniqlang
                 </p>
               </div>
             )}
@@ -372,10 +401,27 @@ export default function DictionaryPage() {
               </div>
             )}
           </div>
-        ) : (isLoading || isSynonymLoading) ? (
+        ) : (isLoading || isSynonymLoading || isAnalysisLoading) ? (
           <div className="text-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+            <Loader2 className={`h-8 w-8 animate-spin mx-auto ${
+              searchMode === 'analysis' ? 'text-violet-600' : 
+              searchMode === 'synonyms' ? 'text-emerald-600' : 'text-primary'
+            }`} />
             <p className="text-muted-foreground mt-4">Yuklanmoqda...</p>
+          </div>
+        ) : searchMode === 'analysis' ? (
+          <div className="max-w-4xl mx-auto">
+            {analysisResults.length > 0 ? (
+              <AnalysisResultCard analyses={analysisResults} word={debouncedSearch} />
+            ) : (
+              <div className="text-center py-20 bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl border border-violet-200">
+                <div className="bg-violet-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FlaskConical className="h-8 w-8 text-violet-600" />
+                </div>
+                <h3 className="text-lg font-medium text-violet-900">Tahlil natijasi topilmadi</h3>
+                <p className="text-violet-700">Boshqa so'z bilan sinab ko'ring.</p>
+              </div>
+            )}
           </div>
         ) : searchMode === 'synonyms' ? (
           <div className="max-w-4xl mx-auto">

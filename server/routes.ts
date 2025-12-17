@@ -179,6 +179,32 @@ export async function registerRoutes(
     }
   });
 
+  // Word Analysis API - Qalsadi bilan so'z tahlili
+  app.get("/api/analyze", async (req, res) => {
+    try {
+      const word = req.query.word as string;
+      
+      if (!word || word.trim().length < 1) {
+        return res.json([]);
+      }
+      
+      const { exec } = await import('child_process');
+      const { promisify } = await import('util');
+      const execAsync = promisify(exec);
+      
+      const { stdout } = await execAsync(`python3 scripts/analyze-word.py "${word.trim()}"`, {
+        timeout: 10000,
+        maxBuffer: 1024 * 1024
+      });
+      
+      const result = JSON.parse(stdout);
+      res.json(result);
+    } catch (error) {
+      console.error("Error analyzing word:", error);
+      res.status(500).json({ error: "Tahlilda xatolik" });
+    }
+  });
+
   // WordNet API - sinonim guruhlari qidirish
   app.get("/api/wordnet/search", async (req, res) => {
     try {

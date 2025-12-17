@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Search, Book, Users } from "lucide-react";
+import { Search, Book, Users, FlaskConical } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import stockImage from '@assets/stock_images/islamic_geometric_pa_33a8e635.jpg';
 
 interface HeroProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  searchMode: 'dictionary' | 'synonyms';
-  setSearchMode: (mode: 'dictionary' | 'synonyms') => void;
+  searchMode: 'dictionary' | 'synonyms' | 'analysis';
+  setSearchMode: (mode: 'dictionary' | 'synonyms' | 'analysis') => void;
 }
 
 export function Hero({ searchTerm, setSearchTerm, searchMode, setSearchMode }: HeroProps) {
@@ -69,7 +69,19 @@ export function Hero({ searchTerm, setSearchTerm, searchMode, setSearchMode }: H
             }`}
           >
             <Users className="h-4 w-4" />
-            <span>Sinonim qidirish</span>
+            <span>Sinonimlar</span>
+          </button>
+          <button
+            data-testid="mode-analysis"
+            onClick={() => setSearchMode('analysis')}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all ${
+              searchMode === 'analysis'
+                ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/25'
+                : 'bg-card/80 text-muted-foreground hover:bg-card border border-border'
+            }`}
+          >
+            <FlaskConical className="h-4 w-4" />
+            <span>So'z tahlili</span>
           </button>
         </motion.div>
 
@@ -82,13 +94,21 @@ export function Hero({ searchTerm, setSearchTerm, searchMode, setSearchMode }: H
           <div className={`absolute -inset-1 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 ${
             searchMode === 'synonyms' 
               ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500'
+              : searchMode === 'analysis'
+              ? 'bg-gradient-to-r from-violet-500 via-purple-500 to-violet-500'
               : 'bg-gradient-to-r from-primary via-secondary to-primary'
           }`}></div>
           <div className="relative flex items-center bg-card rounded-lg shadow-xl border border-border/50">
             <Search className="absolute left-4 h-6 w-6 text-muted-foreground" />
             <Input 
               type="text"
-              placeholder={searchMode === 'synonyms' ? "Arabcha so'z kiriting (sinonimlarni topish uchun)..." : "So'z izlash (arabcha yoki o'zbekcha)..."}
+              placeholder={
+                searchMode === 'synonyms' 
+                  ? "Arabcha so'z kiriting (sinonimlarni topish uchun)..." 
+                  : searchMode === 'analysis'
+                  ? "Arabcha so'z kiriting (morfologik tahlil uchun)..."
+                  : "So'z izlash (arabcha yoki o'zbekcha)..."
+              }
               className="w-full h-16 pl-14 pr-4 text-lg bg-transparent border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground/60"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -97,6 +117,11 @@ export function Hero({ searchTerm, setSearchTerm, searchMode, setSearchMode }: H
           {searchMode === 'synonyms' && (
             <p className="text-xs text-emerald-600 mt-2">
               Arabic WordNet bazasidan 9,361 sinonim guruhidan qidiring
+            </p>
+          )}
+          {searchMode === 'analysis' && (
+            <p className="text-xs text-violet-600 mt-2">
+              So'zning ildizi, morfologik tuzilishi va grammatik tahlilini ko'ring
             </p>
           )}
         </motion.div>
