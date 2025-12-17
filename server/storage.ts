@@ -361,8 +361,9 @@ export class DatabaseStorage implements IStorage {
         and(
           eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
           or(
-            eq(dictionaryEntries.uzbek, ''),
-            sql`${dictionaryEntries.uzbek} IS NULL`
+            sql`${dictionaryEntries.meaningsJson} IS NULL`,
+            eq(dictionaryEntries.meaningsJson, ''),
+            eq(dictionaryEntries.meaningsJson, '[]')
           )
         )
       )
