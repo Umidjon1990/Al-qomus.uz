@@ -8,6 +8,7 @@ import AdminPage from "@/pages/AdminPage";
 import TelegramAdminPage from "@/pages/TelegramAdminPage";
 import LoginPage from "@/pages/LoginPage";
 import AboutPage from "@/pages/AboutPage";
+import SynonymsPage from "@/pages/SynonymsPage";
 import NotFound from "@/pages/not-found";
 import { AuthProvider, useAuth } from "@/lib/auth";
 import { useEffect } from "react";
@@ -36,6 +37,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={DictionaryPage} />
+      <Route path="/synonyms" component={SynonymsPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/admin">

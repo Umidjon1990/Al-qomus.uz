@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell } from "lucide-react";
+import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
@@ -49,6 +49,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             <NavLink href="/">Lug'at</NavLink>
+            <NavLink href="/synonyms">
+              <span className="flex items-center gap-1">
+                <Users className="h-3 w-3" />
+                Sinonimlar
+              </span>
+            </NavLink>
             <NavLink href="/about">Loyiha haqida</NavLink>
             
             {isAdmin && (
@@ -115,6 +121,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <div className="flex flex-col gap-6 mt-8">
                   <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                     Lug'at
+                  </Link>
+                  <Link href="/synonyms" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    Sinonimlar
                   </Link>
                   <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                     Loyiha haqida
