@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, serial, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, serial, timestamp, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -115,8 +115,8 @@ export type InsertBroadcast = z.infer<typeof insertBroadcastSchema>;
 // Synonyms Table - sinonimlar (o'xshash ma'noli so'zlar)
 export const synonyms = pgTable("synonyms", {
   id: serial("id").primaryKey(),
-  entryId: serial("entry_id").notNull(), // Asosiy so'z
-  synonymEntryId: serial("synonym_entry_id").notNull(), // Sinonim so'z
+  entryId: integer("entry_id").notNull(), // Asosiy so'z
+  synonymEntryId: integer("synonym_entry_id").notNull(), // Sinonim so'z
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

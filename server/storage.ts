@@ -508,18 +508,26 @@ export class DatabaseStorage implements IStorage {
 
   // Synonym methods - sinonimlar
   async getSynonyms(entryId: number): Promise<DictionaryEntry[]> {
-    // Sinonim ID larini olish
-    const synonymLinks = await db.select()
+    // Ikki yo'nalishda sinonimlarni olish (A→B va B→A)
+    const forwardLinks = await db.select()
       .from(synonyms)
       .where(eq(synonyms.entryId, entryId));
     
-    if (synonymLinks.length === 0) return [];
+    const reverseLinks = await db.select()
+      .from(synonyms)
+      .where(eq(synonyms.synonymEntryId, entryId));
+    
+    // Barcha sinonim ID larini yig'ish
+    const synonymIds = new Set<number>();
+    forwardLinks.forEach(s => synonymIds.add(s.synonymEntryId));
+    reverseLinks.forEach(s => synonymIds.add(s.entryId));
+    
+    if (synonymIds.size === 0) return [];
     
     // Sinonim so'zlarni olish
-    const synonymIds = synonymLinks.map(s => s.synonymEntryId);
     return await db.select()
       .from(dictionaryEntries)
-      .where(inArray(dictionaryEntries.id, synonymIds));
+      .where(inArray(dictionaryEntries.id, Array.from(synonymIds)));
   }
 
   async addSynonym(entryId: number, synonymEntryId: number): Promise<Synonym> {
