@@ -1,6 +1,6 @@
 import { db } from "../server/db";
 import { dictionaryEntries, synonyms } from "../shared/schema";
-import { eq, sql, inArray } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -9,28 +9,31 @@ interface SynsetGroup {
   arabicLemmas: string[];
 }
 
+// Harakatlarni olib tashlash
+function stripDiacritics(text: string): string {
+  return text.replace(/[\u064B-\u065F\u0670]/g, "").trim();
+}
+
 function parseCSV(filePath: string): SynsetGroup[] {
   const content = fs.readFileSync(filePath, "utf-8");
-  const lines = content.split("\n").slice(1); // Skip header
+  const lines = content.split("\n").slice(1);
   const groups: SynsetGroup[] = [];
 
   for (const line of lines) {
     if (!line.trim()) continue;
     
-    // CSV parsing - handle quoted fields
     const parts = line.split(",");
     const synsetId = parts[0];
-    const arabicLemmasField = parts[4] || ""; // Arabic lemmas column
+    const arabicLemmasField = parts[4] || "";
     
     if (!arabicLemmasField || arabicLemmasField.trim() === "") continue;
     
-    // Split Arabic lemmas by comma or space
     const arabicLemmas = arabicLemmasField
       .split(/[,،\s]+/)
-      .map(w => w.trim())
-      .filter(w => w.length > 0 && /[\u0600-\u06FF]/.test(w)); // Only Arabic words
+      .map(w => stripDiacritics(w))
+      .filter(w => w.length > 0 && /[\u0600-\u06FF]/.test(w));
     
-    if (arabicLemmas.length >= 2) {
+    if (arabicLemmas.length >= 1) {
       groups.push({ synsetId, arabicLemmas });
     }
   }
@@ -39,7 +42,23 @@ function parseCSV(filePath: string): SynsetGroup[] {
 }
 
 async function importSynonyms() {
-  console.log("Arabic WordNet sinonimlarni import qilish...\n");
+  console.log("Arabic WordNet sinonimlarni import qilish (harakatsiz qidirish)...\n");
+  
+  // Avval barcha entry larni olish
+  console.log("Lug'at so'zlarini yuklash...");
+  const allEntries = await db.select({ id: dictionaryEntries.id, arabic: dictionaryEntries.arabic })
+    .from(dictionaryEntries);
+  
+  // Harakatsiz xarita yaratish
+  const entryMap = new Map<string, number[]>();
+  for (const entry of allEntries) {
+    const stripped = stripDiacritics(entry.arabic);
+    if (!entryMap.has(stripped)) {
+      entryMap.set(stripped, []);
+    }
+    entryMap.get(stripped)!.push(entry.id);
+  }
+  console.log(`${allEntries.length} ta so'z yuklandi, ${entryMap.size} ta noyob harakatsiz shakl\n`);
   
   const dataDir = path.join(process.cwd(), "arabic_wordnet_data");
   const csvFiles = [
@@ -52,52 +71,55 @@ async function importSynonyms() {
   let totalGroups = 0;
   let totalSynonymsAdded = 0;
   let totalMatches = 0;
+  const addedPairs = new Set<string>();
   
   for (const csvFile of csvFiles) {
     const filePath = path.join(dataDir, csvFile);
-    if (!fs.existsSync(filePath)) {
-      console.log(`Fayl topilmadi: ${csvFile}`);
-      continue;
-    }
+    if (!fs.existsSync(filePath)) continue;
     
     console.log(`O'qilmoqda: ${csvFile}`);
     const groups = parseCSV(filePath);
     totalGroups += groups.length;
-    console.log(`  ${groups.length} ta sinonim guruhi topildi`);
     
     for (const group of groups) {
-      // Bazadan mos so'zlarni qidirish
-      const matchedEntries = await db.select({ id: dictionaryEntries.id, arabic: dictionaryEntries.arabic })
-        .from(dictionaryEntries)
-        .where(
-          sql`${dictionaryEntries.arabic} IN (${sql.join(group.arabicLemmas.map(w => sql`${w}`), sql`, `)})`
-        )
-        .limit(20);
+      // Barcha mos ID larni topish
+      const matchedIds: number[] = [];
+      for (const lemma of group.arabicLemmas) {
+        const ids = entryMap.get(lemma);
+        if (ids) {
+          matchedIds.push(...ids);
+        }
+      }
       
-      if (matchedEntries.length >= 2) {
+      // Noyob ID lar
+      const uniqueIds = [...new Set(matchedIds)];
+      
+      if (uniqueIds.length >= 2) {
         totalMatches++;
         
-        // Har bir juftlik uchun sinonim qo'shish
-        for (let i = 0; i < matchedEntries.length; i++) {
-          for (let j = i + 1; j < matchedEntries.length; j++) {
-            try {
-              await db.insert(synonyms)
-                .values({ entryId: matchedEntries[i].id, synonymEntryId: matchedEntries[j].id })
-                .onConflictDoNothing();
-              totalSynonymsAdded++;
-            } catch (e) {
-              // Duplicate - skip
+        for (let i = 0; i < uniqueIds.length; i++) {
+          for (let j = i + 1; j < uniqueIds.length; j++) {
+            const pairKey = `${Math.min(uniqueIds[i], uniqueIds[j])}-${Math.max(uniqueIds[i], uniqueIds[j])}`;
+            if (!addedPairs.has(pairKey)) {
+              addedPairs.add(pairKey);
+              try {
+                await db.insert(synonyms)
+                  .values({ entryId: uniqueIds[i], synonymEntryId: uniqueIds[j] })
+                  .onConflictDoNothing();
+                totalSynonymsAdded++;
+              } catch (e) {}
             }
           }
         }
       }
     }
+    console.log(`  ${groups.length} ta guruh, hozircha ${totalMatches} ta mos`);
   }
   
   console.log("\n=== Natija ===");
   console.log(`Jami synset guruhlari: ${totalGroups}`);
   console.log(`Bazada topilgan guruhlar: ${totalMatches}`);
-  console.log(`Qo'shilgan sinonim bog'lanishlar: ${totalSynonymsAdded}`);
+  console.log(`Yangi sinonim bog'lanishlar: ${totalSynonymsAdded}`);
 }
 
 importSynonyms()
