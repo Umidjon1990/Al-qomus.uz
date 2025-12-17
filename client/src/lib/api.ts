@@ -141,3 +141,26 @@ export async function getRelatedWords(id: number): Promise<DictionaryEntry[]> {
   if (!response.ok) throw new Error('Failed to fetch related words');
   return response.json();
 }
+
+// Sinonimlar - o'xshash ma'noli so'zlar
+export async function getSynonyms(id: number): Promise<DictionaryEntry[]> {
+  const response = await fetch(`/api/dictionary/${id}/synonyms`);
+  if (!response.ok) throw new Error('Failed to fetch synonyms');
+  return response.json();
+}
+
+export async function addSynonym(entryId: number, synonymEntryId: number): Promise<void> {
+  const response = await fetch(`/api/dictionary/${entryId}/synonyms`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ synonymEntryId }),
+  });
+  if (!response.ok) throw new Error('Failed to add synonym');
+}
+
+export async function removeSynonym(entryId: number, synonymEntryId: number): Promise<void> {
+  const response = await fetch(`/api/dictionary/${entryId}/synonyms/${synonymEntryId}`, {
+    method: 'DELETE',
+  });
+  if (!response.ok) throw new Error('Failed to remove synonym');
+}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { DictionaryEntry, getRelatedWords } from "@/lib/api";
-import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart } from "lucide-react";
+import { DictionaryEntry, getRelatedWords, getSynonyms } from "@/lib/api";
+import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart, ArrowRightLeft } from "lucide-react";
 import { isFavorite, toggleFavorite } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import { DefinitionFormatter } from "./DefinitionFormatter";
@@ -22,6 +22,7 @@ interface ResultCardProps {
 
 export function ResultCard({ entry, index }: ResultCardProps) {
   const [showRelated, setShowRelated] = useState(false);
+  const [showSynonyms, setShowSynonyms] = useState(false);
   const [liked, setLiked] = useState(false);
   
   useEffect(() => {
@@ -32,6 +33,12 @@ export function ResultCard({ entry, index }: ResultCardProps) {
     queryKey: ['related', entry.id],
     queryFn: () => getRelatedWords(entry.id),
     enabled: showRelated,
+  });
+
+  const { data: synonymWords = [], isLoading: isLoadingSynonyms } = useQuery({
+    queryKey: ['synonyms', entry.id],
+    queryFn: () => getSynonyms(entry.id),
+    enabled: showSynonyms,
   });
 
   const handleToggleFavorite = () => {
@@ -259,6 +266,57 @@ export function ResultCard({ entry, index }: ResultCardProps) {
             </div>
           )}
 
+          {/* Sinonimlar bo'limi */}
+          <div className="mt-4 pt-4 border-t border-border/50">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowSynonyms(!showSynonyms)}
+              className="w-full justify-between text-muted-foreground hover:text-foreground"
+              data-testid={`button-synonyms-${entry.id}`}
+            >
+              <span className="flex items-center gap-2">
+                <ArrowRightLeft className="h-4 w-4" />
+                Sinonimlar (مرادفات)
+              </span>
+              {showSynonyms ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
+            
+            <AnimatePresence>
+              {showSynonyms && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-3 space-y-2">
+                    {isLoadingSynonyms ? (
+                      <p className="text-sm text-muted-foreground text-center py-2">Yuklanmoqda...</p>
+                    ) : synonymWords.length > 0 ? (
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        {synonymWords.map((synonym) => (
+                          <div
+                            key={synonym.id}
+                            className="p-2 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/20 rounded-md border border-violet-200 dark:border-violet-800/50 hover:border-violet-400 transition-colors cursor-pointer"
+                            data-testid={`synonym-word-${synonym.id}`}
+                          >
+                            <p className="font-arabic text-lg text-violet-700 dark:text-violet-300" dir="rtl">{synonym.arabic}</p>
+                            <p className="text-xs text-muted-foreground truncate">{synonym.uzbek || "—"}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground text-center py-2">Sinonimlar topilmadi</p>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* O'xshash so'zlar bo'limi */}
           <div className="mt-4 pt-4 border-t border-border/50">
             <Button
               variant="ghost"
