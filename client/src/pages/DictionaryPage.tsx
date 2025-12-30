@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +18,7 @@ export default function DictionaryPage() {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedSources, setSelectedSources] = useState<string[]>(["Ghoniy"]);
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const [showExamples, setShowExamples] = useState(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
   const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
@@ -402,40 +403,53 @@ export default function DictionaryPage() {
                     <ResultCard key={entry.id} entry={entry} index={index} />
                   ))}
                   
-                  {/* Misollar bo'limi */}
+                  {/* Misollar tugmasi */}
                   {examplesData && examplesData.examples.length > 0 && (
-                    <div className="mt-8 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 rounded-xl border-2 border-primary/20 p-6" data-testid="examples-section">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="bg-primary/10 p-2 rounded-lg">
-                          <MessageSquareQuote className="h-5 w-5 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-foreground">Misollar</h3>
-                          <p className="text-sm text-muted-foreground">
-                            "{debouncedSearch}" so'zi ishtirok etgan {examplesData.count} ta gap topildi
-                          </p>
-                        </div>
-                      </div>
+                    <div className="mt-6" data-testid="examples-section">
+                      <Button
+                        onClick={() => setShowExamples(!showExamples)}
+                        variant="outline"
+                        className="w-full py-6 border-2 border-primary/30 bg-gradient-to-r from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 hover:border-primary/50 transition-all"
+                        data-testid="btn-toggle-examples"
+                      >
+                        <MessageSquareQuote className="h-5 w-5 text-primary mr-3" />
+                        <span className="font-bold text-foreground">Misollar</span>
+                        <span className="ml-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full">
+                          {examplesData.count} ta gap
+                        </span>
+                        {showExamples ? (
+                          <ChevronUp className="h-5 w-5 ml-auto text-muted-foreground" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5 ml-auto text-muted-foreground" />
+                        )}
+                      </Button>
                       
-                      <div className="space-y-3">
-                        {examplesData.examples.map((example, idx) => (
-                          <div 
-                            key={`${example.entryId}-${idx}`} 
-                            className="bg-background/80 backdrop-blur rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-colors"
-                            data-testid={`example-item-${idx}`}
-                          >
-                            <div className="font-arabic text-xl text-right leading-relaxed mb-2" dir="rtl">
-                              {highlightWord(example.arabicExample, debouncedSearch)}
-                            </div>
-                            <div className="text-sm text-muted-foreground border-t border-dashed pt-2 mt-2">
-                              {example.uzbekExample || example.uzbekMeaning}
-                            </div>
-                            <div className="text-xs text-muted-foreground/60 mt-1">
-                              Manba: <span className="font-arabic">{example.arabic}</span>
-                            </div>
+                      {showExamples && (
+                        <div className="mt-4 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 rounded-xl border-2 border-primary/20 p-6">
+                          <p className="text-sm text-muted-foreground mb-4">
+                            "{debouncedSearch}" so'zi ishtirok etgan gaplar:
+                          </p>
+                          <div className="space-y-3">
+                            {examplesData.examples.map((example, idx) => (
+                              <div 
+                                key={`${example.entryId}-${idx}`} 
+                                className="bg-background/80 backdrop-blur rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-colors"
+                                data-testid={`example-item-${idx}`}
+                              >
+                                <div className="font-arabic text-xl text-right leading-relaxed mb-2" dir="rtl">
+                                  {highlightWord(example.arabicExample, debouncedSearch)}
+                                </div>
+                                <div className="text-sm text-muted-foreground border-t border-dashed pt-2 mt-2">
+                                  {example.uzbekExample || example.uzbekMeaning}
+                                </div>
+                                <div className="text-xs text-muted-foreground/60 mt-1">
+                                  Manba: <span className="font-arabic">{example.arabic}</span>
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </>
