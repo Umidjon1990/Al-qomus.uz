@@ -429,7 +429,7 @@ export default function DictionaryPage() {
                             className="bg-background/80 backdrop-blur rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-colors"
                             data-testid={`example-item-${idx}`}
                           >
-                            <div className="font-arabic text-xl text-right leading-relaxed mb-2" dir="rtl">
+                            <div className="font-arabic text-base text-right leading-relaxed mb-2" dir="rtl">
                               {highlightWord(example.arabicExample, debouncedSearch)}
                             </div>
                             <div className="text-sm text-muted-foreground border-t border-dashed pt-2 mt-2">
