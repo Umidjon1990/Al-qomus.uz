@@ -105,7 +105,7 @@ export default function DictionaryPage() {
     return parts.map((part, i) => {
       const normalizedPart = part.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
       if (normalizedPart.toLowerCase() === normalizedWord.toLowerCase()) {
-        return <span key={i} className="bg-primary/30 text-primary font-bold px-1 rounded">{part}</span>;
+        return <span key={i} className="bg-primary/30 text-primary px-1 rounded">{part}</span>;
       }
       return part;
     });
