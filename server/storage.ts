@@ -41,6 +41,15 @@ export interface IStorage {
   getRecentlyTranslated(limit: number): Promise<DictionaryEntry[]>;
   getEntriesForExport(source: string, lastId: number, limit: number): Promise<DictionaryEntry[]>;
   
+  // Example search methods - so'z ishtirok etgan gaplarni qidirish
+  searchExamples(word: string, limit?: number): Promise<{
+    entryId: number;
+    arabic: string;
+    arabicExample: string;
+    uzbekExample: string;
+    uzbekMeaning: string;
+  }[]>;
+  
   // Roid processing methods
   getRoidEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
   updateRoidProcessedEntry(id: number, arabicVocalized: string, arabicDefinitionVocalized: string, uzbek: string): Promise<DictionaryEntry | undefined>;
@@ -317,6 +326,69 @@ export class DatabaseStorage implements IStorage {
       )
       .orderBy(sql`${dictionaryEntries.updatedAt} DESC`)
       .limit(limit);
+  }
+
+  // Example search - so'z ishtirok etgan gaplarni qidirish
+  async searchExamples(word: string, limit: number = 50): Promise<{
+    entryId: number;
+    arabic: string;
+    arabicExample: string;
+    uzbekExample: string;
+    uzbekMeaning: string;
+  }[]> {
+    const normalizedWord = this.stripArabicDiacritics(word);
+    
+    const entries = await db.select({
+      id: dictionaryEntries.id,
+      arabic: dictionaryEntries.arabic,
+      meaningsJson: dictionaryEntries.meaningsJson,
+    }).from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
+          sql`${dictionaryEntries.meaningsJson} IS NOT NULL`,
+          sql`${dictionaryEntries.meaningsJson} != ''`,
+          sql`${dictionaryEntries.meaningsJson} != '[]'`,
+          sql`regexp_replace(${dictionaryEntries.meaningsJson}::text, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedWord + '%'}`
+        )
+      )
+      .limit(100);
+    
+    const results: {
+      entryId: number;
+      arabic: string;
+      arabicExample: string;
+      uzbekExample: string;
+      uzbekMeaning: string;
+    }[] = [];
+    
+    for (const entry of entries) {
+      if (!entry.meaningsJson) continue;
+      
+      try {
+        const meanings = JSON.parse(entry.meaningsJson);
+        for (const meaning of meanings) {
+          if (meaning.arabicExample) {
+            const normalizedExample = this.stripArabicDiacritics(meaning.arabicExample);
+            if (normalizedExample.includes(normalizedWord)) {
+              results.push({
+                entryId: entry.id,
+                arabic: entry.arabic,
+                arabicExample: meaning.arabicExample,
+                uzbekExample: meaning.uzbekExample || '',
+                uzbekMeaning: meaning.uzbekMeaning || '',
+              });
+            }
+          }
+        }
+      } catch (e) {
+        continue;
+      }
+      
+      if (results.length >= limit) break;
+    }
+    
+    return results.slice(0, limit);
   }
 
   // Roid processing methods
