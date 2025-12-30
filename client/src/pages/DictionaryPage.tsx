@@ -405,8 +405,8 @@ export default function DictionaryPage() {
                     className="w-full py-6 border-2 border-primary/30 bg-gradient-to-r from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 hover:border-primary/50 transition-all"
                     data-testid="btn-toggle-examples"
                   >
-                    <MessageSquareQuote className="h-5 w-5 text-primary mr-3" />
-                    <span className="font-bold text-foreground">Misollar</span>
+                    <MessageSquareQuote className="h-6 w-6 text-primary mr-3" />
+                    <span className="font-bold text-foreground text-xl">Misollar</span>
                     <span className="ml-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full">
                       {examplesData.count} ta gap
                     </span>
