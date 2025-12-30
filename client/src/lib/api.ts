@@ -98,6 +98,31 @@ export async function deleteDictionaryEntry(id: number): Promise<void> {
   if (!response.ok) throw new Error('Failed to delete entry');
 }
 
+// Example search - so'z ishtirok etgan gaplarni qidirish
+export interface ExampleResult {
+  entryId: number;
+  arabic: string;
+  arabicExample: string;
+  uzbekExample: string;
+  uzbekMeaning: string;
+}
+
+export interface ExampleSearchResponse {
+  word: string;
+  count: number;
+  examples: ExampleResult[];
+}
+
+export async function searchExamples(word: string, limit: number = 30): Promise<ExampleSearchResponse> {
+  const params = new URLSearchParams();
+  params.set('word', word);
+  params.set('limit', limit.toString());
+  
+  const response = await fetch(`/api/dictionary/examples?${params.toString()}`);
+  if (!response.ok) throw new Error('Failed to search examples');
+  return response.json();
+}
+
 export async function importEntries(entries: any[], dictionarySource: string = "Muasir"): Promise<{ count: number; entries: DictionaryEntry[]; dictionarySource: string }> {
   const response = await fetch('/api/dictionary/import', {
     method: 'POST',

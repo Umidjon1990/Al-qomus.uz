@@ -105,6 +105,31 @@ export async function registerRoutes(
     }
   });
 
+  // Search examples - so'z ishtirok etgan gaplarni qidirish
+  app.get("/api/dictionary/examples", async (req, res) => {
+    try {
+      const word = req.query.word as string;
+      const limit = parseInt(req.query.limit as string) || 30;
+      
+      if (!word || word.trim().length < 2) {
+        return res.status(400).json({ error: "So'z kamida 2 ta harf bo'lishi kerak" });
+      }
+      
+      console.log(`[Examples] Searching for word: "${word}"`);
+      const examples = await storage.searchExamples(word.trim(), limit);
+      console.log(`[Examples] Found ${examples.length} examples`);
+      
+      res.json({
+        word: word.trim(),
+        count: examples.length,
+        examples
+      });
+    } catch (error) {
+      console.error("Error searching examples:", error);
+      res.status(500).json({ error: "Misollarni qidirishda xatolik" });
+    }
+  });
+
   // Get all dictionary entries (with optional search and source filter)
   app.get("/api/dictionary", async (req, res) => {
     try {

@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
-import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff } from "lucide-react";
+import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult } from "@/lib/api";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
@@ -87,6 +87,29 @@ export default function DictionaryPage() {
     queryFn: () => getDictionaryEntries(debouncedSearch || undefined, selectedSources),
     enabled: debouncedSearch.length > 0 && selectedSources.length > 0,
   });
+
+  // Misol qidirish - Arabcha so'z uchun
+  const isArabicSearch = /[\u0600-\u06FF]/.test(debouncedSearch);
+  const { data: examplesData, isLoading: examplesLoading } = useQuery({
+    queryKey: ['examples', debouncedSearch],
+    queryFn: () => searchExamples(debouncedSearch, 20),
+    enabled: debouncedSearch.length >= 2 && isArabicSearch && selectedSources.includes('Ghoniy'),
+  });
+
+  // So'zni gap ichida rangli ko'rsatish
+  const highlightWord = (text: string, word: string) => {
+    if (!word || !text) return text;
+    const normalizedWord = word.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
+    const regex = new RegExp(`(${normalizedWord.split('').join('[\u064B-\u0652\u0670\u0671]*')})`, 'gi');
+    const parts = text.split(regex);
+    return parts.map((part, i) => {
+      const normalizedPart = part.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
+      if (normalizedPart.toLowerCase() === normalizedWord.toLowerCase()) {
+        return <span key={i} className="bg-primary/30 text-primary font-bold px-1 rounded">{part}</span>;
+      }
+      return part;
+    });
+  };
 
   const toggleSource = (sourceId: string) => {
     setSelectedSources(prev => 
@@ -374,9 +397,48 @@ export default function DictionaryPage() {
               style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
             >
               {entries.length > 0 ? (
-                entries.map((entry, index) => (
-                  <ResultCard key={entry.id} entry={entry} index={index} />
-                ))
+                <>
+                  {entries.map((entry, index) => (
+                    <ResultCard key={entry.id} entry={entry} index={index} />
+                  ))}
+                  
+                  {/* Misollar bo'limi */}
+                  {examplesData && examplesData.examples.length > 0 && (
+                    <div className="mt-8 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 rounded-xl border-2 border-primary/20 p-6" data-testid="examples-section">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-primary/10 p-2 rounded-lg">
+                          <MessageSquareQuote className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground">Misollar</h3>
+                          <p className="text-sm text-muted-foreground">
+                            "{debouncedSearch}" so'zi ishtirok etgan {examplesData.count} ta gap topildi
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        {examplesData.examples.map((example, idx) => (
+                          <div 
+                            key={`${example.entryId}-${idx}`} 
+                            className="bg-background/80 backdrop-blur rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-colors"
+                            data-testid={`example-item-${idx}`}
+                          >
+                            <div className="font-arabic text-xl text-right leading-relaxed mb-2" dir="rtl">
+                              {highlightWord(example.arabicExample, debouncedSearch)}
+                            </div>
+                            <div className="text-sm text-muted-foreground border-t border-dashed pt-2 mt-2">
+                              {example.uzbekExample || example.uzbekMeaning}
+                            </div>
+                            <div className="text-xs text-muted-foreground/60 mt-1">
+                              Manba: <span className="font-arabic">{example.arabic}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="text-center py-20 bg-card rounded-xl border border-dashed">
                   <div className="bg-muted/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
