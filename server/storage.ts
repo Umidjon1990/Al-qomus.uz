@@ -56,6 +56,7 @@ export interface IStorage {
   
   // Ghoniy processing methods
   getGhoniyEntriesForProcessing(limit: number): Promise<DictionaryEntry[]>;
+  getGhoniyRemainingCount(): Promise<number>;
   updateGhoniyProcessedEntry(id: number, uzbekSummary: string, meaningsJson: string, wordType: string): Promise<DictionaryEntry | undefined>;
   
   // Telegram user methods
@@ -448,6 +449,22 @@ export class DatabaseStorage implements IStorage {
       )
       .orderBy(dictionaryEntries.id)
       .limit(limit);
+  }
+
+  async getGhoniyRemainingCount(): Promise<number> {
+    const result = await db.select({ count: sql<number>`count(*)` })
+      .from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
+          or(
+            sql`${dictionaryEntries.meaningsJson} IS NULL`,
+            eq(dictionaryEntries.meaningsJson, ''),
+            eq(dictionaryEntries.meaningsJson, '[]')
+          )
+        )
+      );
+    return Number(result[0]?.count || 0);
   }
 
   async updateGhoniyProcessedEntry(
