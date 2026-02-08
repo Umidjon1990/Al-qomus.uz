@@ -89,14 +89,12 @@ export default function DictionaryPage() {
     enabled: debouncedSearch.length > 0 && selectedSources.length > 0,
   });
 
-  // Misol qidirish - har qanday qidiruvda
   const { data: examplesData, isLoading: examplesLoading } = useQuery({
     queryKey: ['examples', debouncedSearch],
     queryFn: () => searchExamples(debouncedSearch, 20),
     enabled: debouncedSearch.length >= 2 && selectedSources.includes('Ghoniy'),
   });
 
-  // So'zni gap ichida rangli ko'rsatish
   const highlightWord = (text: string, word: string) => {
     if (!word || !text) return text;
     const normalizedWord = word.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
@@ -105,7 +103,7 @@ export default function DictionaryPage() {
     return parts.map((part, i) => {
       const normalizedPart = part.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
       if (normalizedPart.toLowerCase() === normalizedWord.toLowerCase()) {
-        return <span key={i} className="bg-primary/30 text-primary px-1 rounded">{part}</span>;
+        return <span key={i} className="bg-emerald-200/60 text-emerald-800 px-1 rounded">{part}</span>;
       }
       return part;
     });
@@ -128,9 +126,8 @@ export default function DictionaryPage() {
     <Layout>
       <Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       
-      <div className="container mx-auto px-4 py-12 -mt-10 relative z-30">
-        <div className="flex flex-wrap gap-3 mb-6 justify-center items-center">
-          {/* Primary dictionary - G'oniy */}
+      <div className="container mx-auto px-4 py-8 -mt-6 relative z-30">
+        <div className="flex flex-wrap gap-3 mb-8 justify-center items-center">
           <button
             data-testid="btn-source-Ghoniy"
             onClick={() => {
@@ -138,54 +135,42 @@ export default function DictionaryPage() {
                 setSelectedSources(['Ghoniy']);
               }
             }}
-            className={`flex flex-col items-center px-6 py-3 rounded-xl border-2 transition-all min-w-[180px] ${
+            className={`group flex items-center gap-3 px-5 py-2.5 rounded-full border-2 transition-all duration-300 ${
               selectedSources.includes('Ghoniy')
-                ? 'bg-primary text-primary-foreground border-primary shadow-lg'
-                : 'bg-card text-foreground border-border hover:border-primary/50 hover:shadow-md'
+                ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg shadow-emerald-700/20'
+                : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-300 hover:shadow-md'
             }`}
           >
-            <div className="flex items-center gap-2 mb-1">
-              <Book className="h-4 w-4" />
-              <span className="font-semibold text-lg">G'oniy (الغني)</span>
-              {selectedSources.includes('Ghoniy') && (
-                <Check className="h-4 w-4" />
-              )}
-            </div>
-            <span className={`text-xs ${
+            <Book className="h-4 w-4" />
+            <span className="font-semibold">G'oniy (الغني)</span>
+            {selectedSources.includes('Ghoniy') && <Check className="h-4 w-4" />}
+            <span className={`text-xs px-2 py-0.5 rounded-full ${
               selectedSources.includes('Ghoniy')
-                ? 'text-primary-foreground/80'
-                : 'text-muted-foreground'
+                ? 'bg-white/20'
+                : 'bg-gray-100'
             }`}>
-              Harakatli arabcha izohli lug'at
-            </span>
-            <span className={`text-xs mt-1 px-2 py-0.5 rounded-full ${
-              selectedSources.includes('Ghoniy')
-                ? 'bg-primary-foreground/20'
-                : 'bg-muted'
-            }`}>
-              {getSourceCount('Ghoniy').toLocaleString()} so'z
+              {getSourceCount('Ghoniy').toLocaleString()}
             </span>
           </button>
 
-          {/* Additional dictionaries popover */}
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="flex items-center gap-2 h-auto py-3 px-4 rounded-xl border-2 border-dashed"
+                className="flex items-center gap-2 h-auto py-2.5 px-4 rounded-full border-2 border-dashed border-gray-300 hover:border-emerald-300"
                 data-testid="btn-more-sources"
               >
                 <Plus className="h-4 w-4" />
                 <span>Boshqa lug'atlar</span>
                 {selectedSources.filter(s => s !== 'Ghoniy').length > 0 && (
-                  <span className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full">
+                  <span className="bg-emerald-600 text-white text-xs px-2 py-0.5 rounded-full">
                     +{selectedSources.filter(s => s !== 'Ghoniy').length}
                   </span>
                 )}
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-80 p-3" align="center">
+            <PopoverContent className="w-80 p-3 rounded-xl" align="center">
               <div className="space-y-2">
                 <p className="text-sm font-medium text-muted-foreground mb-3">Qo'shimcha lug'atlarni tanlang:</p>
                 {DICTIONARY_SOURCES.filter(s => !s.isPrimary).map((source) => (
@@ -193,10 +178,10 @@ export default function DictionaryPage() {
                     key={source.id}
                     data-testid={`btn-source-${source.id}`}
                     onClick={() => toggleSource(source.id)}
-                    className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
+                    className={`w-full flex items-center justify-between p-3 rounded-xl border transition-all ${
                       selectedSources.includes(source.id)
-                        ? 'bg-primary/10 border-primary'
-                        : 'bg-muted/50 border-transparent hover:bg-muted'
+                        ? 'bg-emerald-50 border-emerald-300'
+                        : 'bg-gray-50 border-transparent hover:bg-gray-100'
                     }`}
                   >
                     <div className="flex flex-col items-start">
@@ -204,11 +189,11 @@ export default function DictionaryPage() {
                       <span className="text-xs text-muted-foreground">{source.description}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
+                      <span className="text-xs bg-white px-2 py-0.5 rounded-full border">
                         {getSourceCount(source.id).toLocaleString()}
                       </span>
                       {selectedSources.includes(source.id) && (
-                        <Check className="h-4 w-4 text-primary" />
+                        <Check className="h-4 w-4 text-emerald-600" />
                       )}
                     </div>
                   </button>
@@ -217,19 +202,18 @@ export default function DictionaryPage() {
             </PopoverContent>
           </Popover>
 
-          {/* Show selected additional sources */}
           {selectedSources.filter(s => s !== 'Ghoniy').map(sourceId => {
             const source = DICTIONARY_SOURCES.find(s => s.id === sourceId);
             if (!source) return null;
             return (
               <div
                 key={sourceId}
-                className="flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm"
+                className="flex items-center gap-2 bg-amber-50 text-amber-800 px-3 py-2 rounded-full text-sm border border-amber-200"
               >
                 <span>{source.name}</span>
                 <button
                   onClick={() => toggleSource(sourceId)}
-                  className="hover:text-destructive transition-colors"
+                  className="hover:text-red-500 transition-colors"
                   data-testid={`btn-remove-${sourceId}`}
                 >
                   <X className="h-4 w-4" />
@@ -240,25 +224,25 @@ export default function DictionaryPage() {
         </div>
 
         {selectedSources.length === 0 && (
-          <div className="text-center py-6 text-amber-600 bg-amber-50 rounded-lg mb-6">
+          <div className="text-center py-6 text-amber-600 bg-amber-50 rounded-xl mb-6 border border-amber-200">
             Kamida bitta lug'atni tanlang
           </div>
         )}
         
         {debouncedSearch && selectedSources.length > 0 && (
-          <div className="mb-6 text-muted-foreground text-center" data-testid="search-result-count">
-            "{debouncedSearch}" bo'yicha {entries.length} ta natija topildi
+          <div className="mb-6 text-muted-foreground text-center text-sm" data-testid="search-result-count">
+            <span className="font-medium text-foreground">"{debouncedSearch}"</span> bo'yicha {entries.length} ta natija topildi
           </div>
         )}
         
         {!debouncedSearch ? (
           <div className="max-w-2xl mx-auto">
-            {/* Tabs for History and Favorites */}
             <div className="flex gap-2 mb-4 justify-center">
               <Button
                 variant={activeTab === 'history' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => { setActiveTab('history'); refreshFavorites(); }}
+                className="rounded-full"
                 data-testid="tab-history"
               >
                 <History className="h-4 w-4 mr-2" />
@@ -268,6 +252,7 @@ export default function DictionaryPage() {
                 variant={activeTab === 'favorites' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => { setActiveTab('favorites'); refreshFavorites(); }}
+                className="rounded-full"
                 data-testid="tab-favorites"
               >
                 <Heart className="h-4 w-4 mr-2" />
@@ -275,9 +260,8 @@ export default function DictionaryPage() {
               </Button>
             </div>
 
-            {/* History Tab */}
             {activeTab === 'history' && (
-              <div className="bg-card rounded-xl border p-4">
+              <div className="glass-card rounded-2xl p-5">
                 {history.length > 0 ? (
                   <>
                     <div className="flex justify-between items-center mb-3">
@@ -289,10 +273,10 @@ export default function DictionaryPage() {
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {history.map((item) => (
-                        <div key={item.term} className="flex items-center gap-1 bg-muted px-3 py-1.5 rounded-full group">
+                        <div key={item.term} className="flex items-center gap-1 bg-white/80 border border-gray-200 px-3 py-1.5 rounded-full group hover:border-emerald-300 transition-colors">
                           <button
                             onClick={() => handleHistoryClick(item.term)}
-                            className="text-sm hover:text-primary transition-colors"
+                            className="text-sm hover:text-emerald-700 transition-colors"
                             data-testid={`history-item-${item.term}`}
                           >
                             {item.term}
@@ -308,25 +292,24 @@ export default function DictionaryPage() {
                     </div>
                   </>
                 ) : (
-                  <p className="text-center text-muted-foreground text-sm py-4">Qidiruv tarixi bo'sh</p>
+                  <p className="text-center text-muted-foreground text-sm py-6">Qidiruv tarixi bo'sh</p>
                 )}
               </div>
             )}
 
-            {/* Favorites Tab */}
             {activeTab === 'favorites' && (
-              <div className="bg-card rounded-xl border p-4">
+              <div className="glass-card rounded-2xl p-5">
                 {favorites.length > 0 ? (
                   <div className="space-y-2">
                     {favorites.map((fav) => (
                       <button
                         key={fav.id}
                         onClick={() => setSearchTerm(fav.arabic)}
-                        className="w-full flex items-center justify-between p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors text-left"
+                        className="w-full flex items-center justify-between p-3 bg-white/60 rounded-xl hover:bg-white transition-colors text-left border border-transparent hover:border-emerald-200"
                         data-testid={`favorite-item-${fav.id}`}
                       >
                         <div>
-                          <span className="font-arabic text-xl text-primary" dir="rtl">{fav.arabic}</span>
+                          <span className="font-arabic text-xl text-emerald-800" dir="rtl">{fav.arabic}</span>
                           {fav.uzbek && <span className="text-sm text-muted-foreground ml-3">{fav.uzbek}</span>}
                         </div>
                         <Heart className="h-4 w-4 fill-red-500 text-red-500" />
@@ -334,7 +317,7 @@ export default function DictionaryPage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-center text-muted-foreground text-sm py-4">
+                  <p className="text-center text-muted-foreground text-sm py-6">
                     Yoqtirilgan so'zlar yo'q. So'z yonidagi yurakchani bosing.
                   </p>
                 )}
@@ -343,27 +326,29 @@ export default function DictionaryPage() {
           </div>
         ) : isLoading ? (
           <div className="text-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
-            <p className="text-muted-foreground mt-4">Yuklanmoqda...</p>
+            <div className="inline-flex items-center gap-3 bg-white rounded-2xl shadow-lg px-6 py-4">
+              <Loader2 className="h-6 w-6 animate-spin text-emerald-600" />
+              <p className="text-muted-foreground font-medium">Qidirilmoqda...</p>
+            </div>
           </div>
         ) : (
           <div className="max-w-4xl mx-auto">
             {entries.length > 0 && (
-              <div className="flex justify-end items-center gap-2 mb-4 bg-card rounded-lg border p-2">
-                <span className="text-sm text-muted-foreground mr-2">Shrift o'lchami:</span>
+              <div className="flex justify-end items-center gap-2 mb-4 bg-white/70 backdrop-blur rounded-xl border border-gray-200 p-2">
+                <span className="text-sm text-muted-foreground mr-2">Shrift:</span>
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={handleZoomOut}
                   disabled={zoomLevel <= 70}
-                  className="h-8 w-8"
+                  className="h-8 w-8 rounded-lg"
                   data-testid="btn-zoom-out"
                 >
                   <ZoomOut className="h-4 w-4" />
                 </Button>
                 <button
                   onClick={resetZoom}
-                  className="text-sm font-medium min-w-[50px] text-center hover:text-primary transition-colors"
+                  className="text-sm font-medium min-w-[50px] text-center hover:text-emerald-700 transition-colors"
                   data-testid="btn-zoom-reset"
                 >
                   {zoomLevel}%
@@ -373,7 +358,7 @@ export default function DictionaryPage() {
                   size="icon"
                   onClick={handleZoomIn}
                   disabled={zoomLevel >= 150}
-                  className="h-8 w-8"
+                  className="h-8 w-8 rounded-lg"
                   data-testid="btn-zoom-in"
                 >
                   <ZoomIn className="h-4 w-4" />
@@ -381,21 +366,20 @@ export default function DictionaryPage() {
               </div>
             )}
             <div 
-              className="grid gap-6 origin-top" 
+              className="grid gap-5 origin-top" 
               style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
             >
-              {/* Misollar tugmasi - har doim birinchi ko'rinadi */}
               {examplesData && examplesData.examples.length > 0 && (
-                <div className="mb-6" data-testid="examples-section">
+                <div className="mb-4 animate-fade-in-up" data-testid="examples-section">
                   <Button
                     onClick={() => setShowExamples(!showExamples)}
                     variant="outline"
-                    className="w-full py-6 border-2 border-primary/30 bg-gradient-to-r from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 hover:border-primary/50 transition-all"
+                    className="w-full py-5 rounded-2xl border-2 border-emerald-200 bg-gradient-to-r from-amber-50/80 to-emerald-50/80 hover:border-emerald-300 transition-all backdrop-blur"
                     data-testid="btn-toggle-examples"
                   >
-                    <MessageSquareQuote className="h-6 w-6 text-primary mr-3" />
-                    <span className="font-bold text-foreground text-xl">Misollar</span>
-                    <span className="ml-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full">
+                    <MessageSquareQuote className="h-5 w-5 text-emerald-600 mr-3" />
+                    <span className="font-bold text-foreground text-lg">Misollar</span>
+                    <span className="ml-2 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full">
                       {examplesData.count} ta gap
                     </span>
                     {showExamples ? (
@@ -406,25 +390,26 @@ export default function DictionaryPage() {
                   </Button>
                   
                   {showExamples && (
-                    <div className="mt-4 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 rounded-xl border-2 border-primary/20 p-6">
+                    <div className="mt-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-emerald-200 p-5">
                       <p className="text-sm text-muted-foreground mb-4">
-                        "{debouncedSearch}" so'zi ishtirok etgan gaplar:
+                        "<span className="font-medium text-foreground">{debouncedSearch}</span>" so'zi ishtirok etgan gaplar:
                       </p>
-                      <div className="space-y-3">
+                      <div className="space-y-2.5">
                         {examplesData.examples.map((example, idx) => (
                           <div 
                             key={`${example.entryId}-${idx}`} 
-                            className="bg-background/80 backdrop-blur rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-colors"
+                            className="bg-white rounded-xl p-4 border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition-all"
                             data-testid={`example-item-${idx}`}
+                            style={{ animationDelay: `${idx * 50}ms` }}
                           >
                             <div className="font-arabic text-base text-right leading-relaxed mb-2" dir="rtl">
                               {highlightWord(example.arabicExample, debouncedSearch)}
                             </div>
-                            <div className="text-sm text-muted-foreground border-t border-dashed pt-2 mt-2">
+                            <div className="text-sm text-muted-foreground border-t border-dashed border-gray-200 pt-2 mt-2">
                               {example.uzbekExample || example.uzbekMeaning}
                             </div>
-                            <div className="text-xs text-muted-foreground/60 mt-1">
-                              Manba: <span className="font-arabic">{example.arabic}</span>
+                            <div className="text-xs text-gray-400 mt-1">
+                              <span className="font-arabic">{example.arabic}</span>
                             </div>
                           </div>
                         ))}
@@ -434,18 +419,17 @@ export default function DictionaryPage() {
                 </div>
               )}
 
-              {/* Natijalar */}
               {entries.length > 0 ? (
                 entries.map((entry, index) => (
                   <ResultCard key={entry.id} entry={entry} index={index} />
                 ))
               ) : (
-                <div className="text-center py-20 bg-card rounded-xl border border-dashed">
-                  <div className="bg-muted/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <SearchX className="h-8 w-8 text-muted-foreground" />
+                <div className="text-center py-20 bg-white/70 backdrop-blur rounded-2xl border border-dashed border-gray-300">
+                  <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <SearchX className="h-8 w-8 text-gray-400" />
                   </div>
                   <h3 className="text-lg font-medium text-foreground">Hech narsa topilmadi</h3>
-                  <p className="text-muted-foreground">So'z yozilishini tekshirib ko'ring yoki boshqa so'z izlang.</p>
+                  <p className="text-muted-foreground mt-1">So'z yozilishini tekshirib ko'ring yoki boshqa so'z izlang.</p>
                 </div>
               )}
             </div>
