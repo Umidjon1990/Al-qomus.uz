@@ -4,10 +4,9 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote, Gamepad2, Trophy, ArrowRight } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 import {
   Popover,
   PopoverContent,
@@ -130,36 +129,6 @@ export default function DictionaryPage() {
       <Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       
       <div className="container mx-auto px-4 py-12 -mt-10 relative z-30">
-        {/* So'z o'yini banner */}
-        <Link href="/quiz" className="block max-w-md mx-auto mb-6">
-          <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl shadow-lg px-5 py-3 flex items-center justify-between hover:shadow-xl hover:scale-[1.02] transition-all cursor-pointer group" data-testid="banner-quiz">
-            <div className="flex items-center gap-3">
-              <div className="bg-white/20 w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                <Gamepad2 className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-sm">So'z o'yini</h3>
-                <p className="text-emerald-100 text-xs">Bilimingizni sinab ko'ring!</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              {(() => {
-                const best = localStorage.getItem('quiz-best-score');
-                return best && parseInt(best) > 0 ? (
-                  <div className="flex items-center gap-1 text-amber-200 text-xs mr-2">
-                    <Trophy className="h-3.5 w-3.5" />
-                    <span>{best}/10</span>
-                  </div>
-                ) : null;
-              })()}
-              <div className="bg-white/20 text-white px-3 py-1.5 rounded-full text-xs font-medium group-hover:bg-white/30 transition-colors flex items-center gap-1">
-                O'ynash
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </div>
-        </Link>
-
         <div className="flex flex-wrap gap-3 mb-6 justify-center items-center">
           {/* Primary dictionary - G'oniy */}
           <button
