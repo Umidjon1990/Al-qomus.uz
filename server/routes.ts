@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertDictionaryEntrySchema, updateDictionaryEntrySchema } from "@shared/schema";
-import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries, batchProcessGhoniyEntries } from "./ai";
+import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries, batchProcessGhoniyEntries, conjugateVerb } from "./ai";
 import { sendMessageToUser, sendBroadcast } from "./telegram/bot";
 import * as XLSX from 'xlsx';
 
@@ -127,6 +127,23 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error searching examples:", error);
       res.status(500).json({ error: "Misollarni qidirishda xatolik" });
+    }
+  });
+
+  // Fe'l tasrifi - verb conjugation
+  app.post("/api/dictionary/conjugate", async (req, res) => {
+    try {
+      const { verb } = req.body;
+      if (!verb || verb.trim().length < 1) {
+        return res.status(400).json({ error: "Fe'l kiritilmagan" });
+      }
+      console.log(`[Conjugation] Processing verb: "${verb}"`);
+      const result = await conjugateVerb(verb.trim());
+      console.log(`[Conjugation] Success for: "${verb}"`);
+      res.json(result);
+    } catch (error: any) {
+      console.error("Conjugation error:", error);
+      res.status(500).json({ error: error.message || "Fe'l tasrifida xatolik" });
     }
   });
 

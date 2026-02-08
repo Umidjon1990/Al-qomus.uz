@@ -123,6 +123,47 @@ export async function searchExamples(word: string, limit: number = 30): Promise<
   return response.json();
 }
 
+export interface ConjugationForm {
+  arabic: string;
+  uzbek: string;
+}
+
+export interface ConjugationData {
+  verb: string;
+  past: {
+    he: ConjugationForm;
+    she: ConjugationForm;
+    they_m: ConjugationForm;
+    i: ConjugationForm;
+    we: ConjugationForm;
+  };
+  present: {
+    he: ConjugationForm;
+    she: ConjugationForm;
+    they_m: ConjugationForm;
+    i: ConjugationForm;
+    we: ConjugationForm;
+  };
+  imperative: {
+    you_m: ConjugationForm;
+    you_f: ConjugationForm;
+  };
+  masdar: ConjugationForm;
+  active_participle: ConjugationForm;
+  passive_participle: ConjugationForm;
+  verb_type: string;
+}
+
+export async function conjugateVerb(verb: string): Promise<ConjugationData> {
+  const response = await fetch('/api/dictionary/conjugate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ verb }),
+  });
+  if (!response.ok) throw new Error('Failed to conjugate verb');
+  return response.json();
+}
+
 export async function importEntries(entries: any[], dictionarySource: string = "Muasir"): Promise<{ count: number; entries: DictionaryEntry[]; dictionarySource: string }> {
   const response = await fetch('/api/dictionary/import', {
     method: 'POST',

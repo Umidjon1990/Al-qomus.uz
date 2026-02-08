@@ -368,6 +368,95 @@ export async function batchTranslate(
   return results;
 }
 
+// ==================== FE'L TASRIFI (VERB CONJUGATION) ====================
+
+export interface ConjugationResult {
+  verb: string;
+  past: {
+    he: { arabic: string; uzbek: string };
+    she: { arabic: string; uzbek: string };
+    they_m: { arabic: string; uzbek: string };
+    i: { arabic: string; uzbek: string };
+    we: { arabic: string; uzbek: string };
+  };
+  present: {
+    he: { arabic: string; uzbek: string };
+    she: { arabic: string; uzbek: string };
+    they_m: { arabic: string; uzbek: string };
+    i: { arabic: string; uzbek: string };
+    we: { arabic: string; uzbek: string };
+  };
+  imperative: {
+    you_m: { arabic: string; uzbek: string };
+    you_f: { arabic: string; uzbek: string };
+  };
+  masdar: { arabic: string; uzbek: string };
+  active_participle: { arabic: string; uzbek: string };
+  passive_participle: { arabic: string; uzbek: string };
+  verb_type: string;
+}
+
+const CONJUGATION_SYSTEM_PROMPT = `Sen arab tili grammatikasi (sarf) bo'yicha mutaxassis olimsan.
+
+Berilgan arabcha fe'lning asosiy grammatik shakllarini chiqar.
+
+QOIDALAR:
+1. Faqat mashhur va to'g'ri shakllarni ber
+2. Har bir shakl yonida qisqa o'zbekcha izoh bo'lsin
+3. Harakatlar (tashkil) bilan yoz
+4. Ortiqcha tushuntirish yozma
+5. Javobni faqat JSON formatda ber
+6. O'zbek tilida lotin alifbosida yoz (o', g', sh, ch, ng)
+
+JSON format:
+{
+  "verb": "fe'l",
+  "past": {
+    "he": { "arabic": "فَعَلَ", "uzbek": "u qildi" },
+    "she": { "arabic": "فَعَلَتْ", "uzbek": "u (ayol) qildi" },
+    "they_m": { "arabic": "فَعَلُوا", "uzbek": "ular qildi" },
+    "i": { "arabic": "فَعَلْتُ", "uzbek": "men qildim" },
+    "we": { "arabic": "فَعَلْنَا", "uzbek": "biz qildik" }
+  },
+  "present": {
+    "he": { "arabic": "يَفْعَلُ", "uzbek": "u qiladi" },
+    "she": { "arabic": "تَفْعَلُ", "uzbek": "u (ayol) qiladi" },
+    "they_m": { "arabic": "يَفْعَلُونَ", "uzbek": "ular qiladi" },
+    "i": { "arabic": "أَفْعَلُ", "uzbek": "men qilaman" },
+    "we": { "arabic": "نَفْعَلُ", "uzbek": "biz qilamiz" }
+  },
+  "imperative": {
+    "you_m": { "arabic": "اِفْعَلْ", "uzbek": "qil (erkak)" },
+    "you_f": { "arabic": "اِفْعَلِي", "uzbek": "qil (ayol)" }
+  },
+  "masdar": { "arabic": "فِعْلٌ", "uzbek": "qilish" },
+  "active_participle": { "arabic": "فَاعِلٌ", "uzbek": "qiluvchi" },
+  "passive_participle": { "arabic": "مَفْعُولٌ", "uzbek": "qilingan" },
+  "verb_type": "sulosiy mujarrad (uchlik oddiy)"
+}`;
+
+export async function conjugateVerb(verb: string): Promise<ConjugationResult> {
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: CONJUGATION_SYSTEM_PROMPT },
+        { role: "user", content: `Fe'l: ${verb}\n\nYuqoridagi formatda tasrif qil.` },
+      ],
+      temperature: 0,
+      max_tokens: 1500,
+      response_format: { type: "json_object" },
+    });
+
+    const content = completion.choices[0]?.message?.content || '{}';
+    const parsed = JSON.parse(content);
+    return parsed as ConjugationResult;
+  } catch (error: any) {
+    console.error("Conjugation error:", error);
+    throw new Error("Fe'l tasrifida xatolik yuz berdi");
+  }
+}
+
 // ==================== HARAKAT (VOCALIZATION) FUNCTIONS ====================
 
 interface VocalizationResult {
