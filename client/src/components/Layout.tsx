@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell } from "lucide-react";
+import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
@@ -49,6 +49,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             <NavLink href="/">Lug'at</NavLink>
+            <NavLink href="/quiz">
+              <span className="flex items-center gap-1">
+                <Gamepad2 className="h-3.5 w-3.5" />
+                So'z o'yini
+              </span>
+            </NavLink>
             <NavLink href="/about">Loyiha haqida</NavLink>
             
             {isAdmin && (
@@ -115,6 +121,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <div className="flex flex-col gap-6 mt-8">
                   <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                     Lug'at
+                  </Link>
+                  <Link href="/quiz" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-emerald-600">
+                    <Gamepad2 className="h-5 w-5" />
+                    So'z o'yini
                   </Link>
                   <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                     Loyiha haqida
