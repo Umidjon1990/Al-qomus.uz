@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { DictionaryEntry, getRelatedWords, conjugateVerb, ConjugationData } from "@/lib/api";
-import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart, BookOpen, Loader2 } from "lucide-react";
+import { DictionaryEntry, getRelatedWords } from "@/lib/api";
+import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart, Loader2 } from "lucide-react";
 import { isFavorite, toggleFavorite } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import { DefinitionFormatter } from "./DefinitionFormatter";
@@ -22,7 +22,6 @@ interface ResultCardProps {
 
 export function ResultCard({ entry, index }: ResultCardProps) {
   const [showRelated, setShowRelated] = useState(false);
-  const [showConjugation, setShowConjugation] = useState(false);
   const [liked, setLiked] = useState(false);
   
   useEffect(() => {
@@ -33,12 +32,6 @@ export function ResultCard({ entry, index }: ResultCardProps) {
     queryKey: ['related', entry.id],
     queryFn: () => getRelatedWords(entry.id),
     enabled: showRelated,
-  });
-
-  const { data: conjugationData, isLoading: isLoadingConjugation } = useQuery({
-    queryKey: ['conjugation', entry.arabic],
-    queryFn: () => conjugateVerb(entry.arabic),
-    enabled: showConjugation,
   });
 
   const handleToggleFavorite = () => {
@@ -266,126 +259,8 @@ export function ResultCard({ entry, index }: ResultCardProps) {
             </div>
           )}
 
-          {/* Tasrif va O'xshash so'zlar tugmalari */}
+          {/* O'xshash so'zlar bo'limi */}
           <div className="mt-4 pt-4 border-t border-border/50 space-y-2">
-            {/* Tasrif tugmasi */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setShowConjugation(!showConjugation)}
-              className="w-full justify-between text-muted-foreground hover:text-foreground"
-              data-testid={`button-conjugation-${entry.id}`}
-            >
-              <span className="flex items-center gap-2">
-                <BookOpen className="h-4 w-4" />
-                <span className="text-base font-bold">Tasrif</span>
-              </span>
-              {isLoadingConjugation ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : showConjugation ? (
-                <ChevronUp className="h-4 w-4" />
-              ) : (
-                <ChevronDown className="h-4 w-4" />
-              )}
-            </Button>
-
-            <AnimatePresence>
-              {showConjugation && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  {isLoadingConjugation ? (
-                    <div className="text-center py-6">
-                      <Loader2 className="h-6 w-6 animate-spin mx-auto text-primary" />
-                      <p className="text-sm text-muted-foreground mt-2">Tasrif tayyorlanmoqda...</p>
-                    </div>
-                  ) : conjugationData ? (
-                    <div className="space-y-4 p-4 bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-950/20 dark:to-indigo-950/20 rounded-lg border border-violet-200 dark:border-violet-800/50">
-                      {conjugationData.verb_type && (
-                        <div className="text-center mb-3">
-                          <span className="px-3 py-1 bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium">
-                            {conjugationData.verb_type}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* O'tgan zamon */}
-                      <div>
-                        <h4 className="text-sm font-bold text-violet-700 dark:text-violet-400 mb-2">O'tgan zamon (الماضي)</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                          {conjugationData.past && Object.entries(conjugationData.past).map(([key, form]) => (
-                            <div key={key} className="flex justify-between items-center bg-white/60 dark:bg-white/5 px-3 py-1.5 rounded text-sm">
-                              <span className="font-arabic text-lg" dir="rtl">{form.arabic}</span>
-                              <span className="text-muted-foreground">{form.uzbek}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Hozirgi zamon */}
-                      <div>
-                        <h4 className="text-sm font-bold text-indigo-700 dark:text-indigo-400 mb-2">Hozirgi zamon (المضارع)</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                          {conjugationData.present && Object.entries(conjugationData.present).map(([key, form]) => (
-                            <div key={key} className="flex justify-between items-center bg-white/60 dark:bg-white/5 px-3 py-1.5 rounded text-sm">
-                              <span className="font-arabic text-lg" dir="rtl">{form.arabic}</span>
-                              <span className="text-muted-foreground">{form.uzbek}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Buyruq shakli */}
-                      <div>
-                        <h4 className="text-sm font-bold text-blue-700 dark:text-blue-400 mb-2">Buyruq shakli (الأمر)</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                          {conjugationData.imperative && Object.entries(conjugationData.imperative).map(([key, form]) => (
-                            <div key={key} className="flex justify-between items-center bg-white/60 dark:bg-white/5 px-3 py-1.5 rounded text-sm">
-                              <span className="font-arabic text-lg" dir="rtl">{form.arabic}</span>
-                              <span className="text-muted-foreground">{form.uzbek}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Masdar va boshqalar */}
-                      <div>
-                        <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 mb-2">Boshqa shakllar</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
-                          {conjugationData.masdar && (
-                            <div className="bg-white/60 dark:bg-white/5 px-3 py-2 rounded text-center">
-                              <span className="text-xs text-muted-foreground block">Masdar</span>
-                              <span className="font-arabic text-lg block" dir="rtl">{conjugationData.masdar.arabic}</span>
-                              <span className="text-sm text-muted-foreground">{conjugationData.masdar.uzbek}</span>
-                            </div>
-                          )}
-                          {conjugationData.active_participle && (
-                            <div className="bg-white/60 dark:bg-white/5 px-3 py-2 rounded text-center">
-                              <span className="text-xs text-muted-foreground block">Ismu foil</span>
-                              <span className="font-arabic text-lg block" dir="rtl">{conjugationData.active_participle.arabic}</span>
-                              <span className="text-sm text-muted-foreground">{conjugationData.active_participle.uzbek}</span>
-                            </div>
-                          )}
-                          {conjugationData.passive_participle && (
-                            <div className="bg-white/60 dark:bg-white/5 px-3 py-2 rounded text-center">
-                              <span className="text-xs text-muted-foreground block">Ismu maf'ul</span>
-                              <span className="font-arabic text-lg block" dir="rtl">{conjugationData.passive_participle.arabic}</span>
-                              <span className="text-sm text-muted-foreground">{conjugationData.passive_participle.uzbek}</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ) : null}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* O'xshash so'zlar tugmasi */}
             <Button
               variant="ghost"
               size="sm"

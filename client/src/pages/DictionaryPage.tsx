@@ -3,10 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
-import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote } from "lucide-react";
+import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult, conjugateVerb, ConjugationData } from "@/lib/api";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote, BookOpen } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Popover,
   PopoverContent,
@@ -22,6 +23,9 @@ export default function DictionaryPage() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
   const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
+  const [showTasrif, setShowTasrif] = useState(false);
+  const [tasrifVerb, setTasrifVerb] = useState("");
+  const [tasrifSearch, setTasrifSearch] = useState("");
   const [zoomLevel, setZoomLevel] = useState<number>(() => {
     const saved = localStorage.getItem('dictionary-zoom');
     return saved ? parseInt(saved) : 100;
@@ -88,6 +92,19 @@ export default function DictionaryPage() {
     queryFn: () => getDictionaryEntries(debouncedSearch || undefined, selectedSources),
     enabled: debouncedSearch.length > 0 && selectedSources.length > 0,
   });
+
+  const { data: tasrifData, isLoading: tasrifLoading, error: tasrifError } = useQuery({
+    queryKey: ['tasrif', tasrifSearch],
+    queryFn: () => conjugateVerb(tasrifSearch),
+    enabled: tasrifSearch.length > 0,
+  });
+
+  const handleTasrif = () => {
+    if (tasrifVerb.trim()) {
+      setTasrifSearch(tasrifVerb.trim());
+      setShowTasrif(true);
+    }
+  };
 
   // Misol qidirish - har qanday qidiruvda
   const { data: examplesData, isLoading: examplesLoading } = useQuery({
@@ -237,6 +254,152 @@ export default function DictionaryPage() {
               </div>
             );
           })}
+        </div>
+
+        {/* Tasrif (Fe'l tasrifi) - alohida bo'lim */}
+        <div className="max-w-2xl mx-auto mb-6">
+          <div className="bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-950/20 dark:to-indigo-950/20 rounded-xl border-2 border-violet-200 dark:border-violet-800/50 p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex-1 flex items-center gap-2">
+                <BookOpen className="h-5 w-5 text-violet-600 dark:text-violet-400 shrink-0" />
+                <input
+                  type="text"
+                  value={tasrifVerb}
+                  onChange={(e) => setTasrifVerb(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleTasrif()}
+                  placeholder="Arabcha fe'l yozing... (masalan: كَتَبَ)"
+                  className="flex-1 bg-white dark:bg-background border border-violet-200 dark:border-violet-700 rounded-lg px-4 py-2.5 text-right font-arabic text-lg placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                  dir="rtl"
+                  data-testid="input-tasrif"
+                />
+              </div>
+              <Button
+                onClick={handleTasrif}
+                disabled={!tasrifVerb.trim() || tasrifLoading}
+                className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-lg font-bold shrink-0"
+                data-testid="btn-tasrif"
+              >
+                {tasrifLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  "Tasrif"
+                )}
+              </Button>
+            </div>
+            <p className="text-xs text-violet-600/70 dark:text-violet-400/70 mt-2 text-center">
+              Faqat fe'llar uchun - arabcha fe'lning barcha shakllarini ko'ring
+            </p>
+          </div>
+
+          <AnimatePresence>
+            {showTasrif && tasrifSearch && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                {tasrifLoading ? (
+                  <div className="text-center py-8 mt-4 bg-card rounded-xl border">
+                    <Loader2 className="h-8 w-8 animate-spin mx-auto text-violet-600" />
+                    <p className="text-muted-foreground mt-3">Tasrif tayyorlanmoqda...</p>
+                  </div>
+                ) : tasrifError ? (
+                  <div className="text-center py-6 mt-4 bg-red-50 dark:bg-red-950/20 rounded-xl border border-red-200 dark:border-red-800">
+                    <p className="text-red-600 dark:text-red-400">Xatolik yuz berdi. Fe'lni tekshirib qaytadan urinib ko'ring.</p>
+                  </div>
+                ) : tasrifData ? (
+                  <div className="mt-4 space-y-4 p-5 bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-950/20 dark:to-indigo-950/20 rounded-xl border-2 border-violet-200 dark:border-violet-800/50">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-bold text-violet-700 dark:text-violet-300 flex items-center gap-2">
+                        <BookOpen className="h-5 w-5" />
+                        <span className="font-arabic text-2xl" dir="rtl">{tasrifData.verb || tasrifSearch}</span>
+                      </h3>
+                      <button
+                        onClick={() => { setShowTasrif(false); setTasrifSearch(""); setTasrifVerb(""); }}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        data-testid="btn-close-tasrif"
+                      >
+                        <X className="h-5 w-5" />
+                      </button>
+                    </div>
+
+                    {tasrifData.verb_type && (
+                      <div className="text-center">
+                        <span className="px-4 py-1.5 bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium">
+                          {tasrifData.verb_type}
+                        </span>
+                      </div>
+                    )}
+
+                    <div>
+                      <h4 className="text-sm font-bold text-violet-700 dark:text-violet-400 mb-2">O'tgan zamon (الماضي)</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                        {tasrifData.past && Object.entries(tasrifData.past).map(([key, form]) => (
+                          <div key={key} className="flex justify-between items-center bg-white/60 dark:bg-white/5 px-3 py-2 rounded-lg text-sm">
+                            <span className="font-arabic text-lg" dir="rtl">{form.arabic}</span>
+                            <span className="text-muted-foreground">{form.uzbek}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-bold text-indigo-700 dark:text-indigo-400 mb-2">Hozirgi zamon (المضارع)</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                        {tasrifData.present && Object.entries(tasrifData.present).map(([key, form]) => (
+                          <div key={key} className="flex justify-between items-center bg-white/60 dark:bg-white/5 px-3 py-2 rounded-lg text-sm">
+                            <span className="font-arabic text-lg" dir="rtl">{form.arabic}</span>
+                            <span className="text-muted-foreground">{form.uzbek}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-bold text-blue-700 dark:text-blue-400 mb-2">Buyruq shakli (الأمر)</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                        {tasrifData.imperative && Object.entries(tasrifData.imperative).map(([key, form]) => (
+                          <div key={key} className="flex justify-between items-center bg-white/60 dark:bg-white/5 px-3 py-2 rounded-lg text-sm">
+                            <span className="font-arabic text-lg" dir="rtl">{form.arabic}</span>
+                            <span className="text-muted-foreground">{form.uzbek}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 mb-2">Boshqa shakllar</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
+                        {tasrifData.masdar && (
+                          <div className="bg-white/60 dark:bg-white/5 px-3 py-3 rounded-lg text-center">
+                            <span className="text-xs text-muted-foreground block mb-1">Masdar</span>
+                            <span className="font-arabic text-xl block" dir="rtl">{tasrifData.masdar.arabic}</span>
+                            <span className="text-sm text-muted-foreground">{tasrifData.masdar.uzbek}</span>
+                          </div>
+                        )}
+                        {tasrifData.active_participle && (
+                          <div className="bg-white/60 dark:bg-white/5 px-3 py-3 rounded-lg text-center">
+                            <span className="text-xs text-muted-foreground block mb-1">Ismu foil</span>
+                            <span className="font-arabic text-xl block" dir="rtl">{tasrifData.active_participle.arabic}</span>
+                            <span className="text-sm text-muted-foreground">{tasrifData.active_participle.uzbek}</span>
+                          </div>
+                        )}
+                        {tasrifData.passive_participle && (
+                          <div className="bg-white/60 dark:bg-white/5 px-3 py-3 rounded-lg text-center">
+                            <span className="text-xs text-muted-foreground block mb-1">Ismu maf'ul</span>
+                            <span className="font-arabic text-xl block" dir="rtl">{tasrifData.passive_participle.arabic}</span>
+                            <span className="text-sm text-muted-foreground">{tasrifData.passive_participle.uzbek}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {selectedSources.length === 0 && (
