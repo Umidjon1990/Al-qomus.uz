@@ -130,6 +130,25 @@ export async function registerRoutes(
     }
   });
 
+  // Quiz - tasodifiy savol olish
+  app.get("/api/quiz/question", async (req, res) => {
+    try {
+      const question = await storage.getQuizQuestion();
+      if (!question) {
+        return res.status(404).json({ error: "Savol topilmadi" });
+      }
+      res.json({
+        id: question.word.id,
+        arabic: question.word.arabic,
+        options: question.options,
+        correctIndex: question.correctIndex,
+      });
+    } catch (error: any) {
+      console.error("Quiz error:", error);
+      res.status(500).json({ error: "Savol olishda xatolik" });
+    }
+  });
+
   // Get all dictionary entries (with optional search and source filter)
   app.get("/api/dictionary", async (req, res) => {
     try {

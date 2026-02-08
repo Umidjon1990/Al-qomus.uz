@@ -78,6 +78,13 @@ export interface IStorage {
   getBroadcasts(): Promise<Broadcast[]>;
   updateBroadcastProgress(id: number, sent: number, failed: number): Promise<void>;
   completeBroadcast(id: number, status: string): Promise<void>;
+
+  // Quiz methods
+  getQuizQuestion(): Promise<{
+    word: DictionaryEntry;
+    options: string[];
+    correctIndex: number;
+  } | null>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -569,6 +576,58 @@ export class DatabaseStorage implements IStorage {
     await db.update(broadcasts)
       .set({ status, completedAt: new Date() })
       .where(eq(broadcasts.id, id));
+  }
+
+  async getQuizQuestion(): Promise<{
+    word: DictionaryEntry;
+    options: string[];
+    correctIndex: number;
+  } | null> {
+    const randomWord = await db.select()
+      .from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
+          sql`${dictionaryEntries.uzbek} IS NOT NULL AND ${dictionaryEntries.uzbek} != ''`,
+          sql`LENGTH(${dictionaryEntries.uzbek}) > 2`
+        )
+      )
+      .orderBy(sql`RANDOM()`)
+      .limit(1);
+
+    if (randomWord.length === 0) return null;
+
+    const correctWord = randomWord[0];
+    const correctAnswer = correctWord.uzbek!.split(';')[0].split(',')[0].replace(/^\d+\.\s*/, '').trim();
+
+    const wrongOptions = await db.select({ uzbek: dictionaryEntries.uzbek })
+      .from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
+          sql`${dictionaryEntries.uzbek} IS NOT NULL AND ${dictionaryEntries.uzbek} != ''`,
+          sql`LENGTH(${dictionaryEntries.uzbek}) > 2`,
+          sql`${dictionaryEntries.id} != ${correctWord.id}`
+        )
+      )
+      .orderBy(sql`RANDOM()`)
+      .limit(3);
+
+    if (wrongOptions.length < 3) return null;
+
+    const wrongAnswers = wrongOptions.map(w => 
+      w.uzbek!.split(';')[0].split(',')[0].replace(/^\d+\.\s*/, '').trim()
+    );
+
+    const options = [...wrongAnswers];
+    const correctIndex = Math.floor(Math.random() * 4);
+    options.splice(correctIndex, 0, correctAnswer);
+
+    return {
+      word: correctWord,
+      options,
+      correctIndex,
+    };
   }
 }
 

@@ -4,9 +4,10 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
 import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote } from "lucide-react";
+import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote, Gamepad2, Trophy, ArrowRight } from "lucide-react";
 import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import {
   Popover,
   PopoverContent,
@@ -252,18 +253,45 @@ export default function DictionaryPage() {
         )}
         
         {!debouncedSearch ? (
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center py-10 bg-card rounded-xl border border-dashed mb-6">
-              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="h-8 w-8 text-primary" />
+          <div className="max-w-4xl mx-auto">
+            {/* Dashboard kartalar */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              {/* Qidiruv kartasi */}
+              <div className="bg-card rounded-2xl border shadow-sm p-6 flex flex-col items-center justify-center text-center min-h-[200px]">
+                <div className="bg-primary/10 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                  <Search className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">So'z izlang</h3>
+                <p className="text-muted-foreground text-sm">Arabcha yoki o'zbekcha so'z yozing</p>
+                <p className="text-xs text-muted-foreground/70 mt-2">
+                  {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '108,905'} ta so'z bazasidan
+                </p>
               </div>
-              <h3 className="text-lg font-medium text-foreground">So'z izlang</h3>
-              <p className="text-muted-foreground">Arabcha yoki o'zbekcha so'z yozing</p>
-              <p className="text-sm text-muted-foreground/70 mt-2">
-                {sourcesData?.reduce((sum, s) => sum + s.count, 0)?.toLocaleString() || '32,292'} ta so'z bazasidan qidiring
-              </p>
-            </div>
 
+              {/* So'z o'yini kartasi */}
+              <Link href="/quiz" className="block">
+                <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center min-h-[200px] hover:shadow-xl hover:scale-[1.02] transition-all cursor-pointer group" data-testid="card-quiz">
+                  <div className="bg-white/20 w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-colors">
+                    <Gamepad2 className="h-7 w-7 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-1">So'z o'yini</h3>
+                  <p className="text-emerald-100 text-sm mb-3">Bilimingizni sinab ko'ring!</p>
+                  {(() => {
+                    const best = localStorage.getItem('quiz-best-score');
+                    return best && parseInt(best) > 0 ? (
+                      <div className="flex items-center gap-1.5 text-amber-200 text-sm mb-3">
+                        <Trophy className="h-4 w-4" />
+                        <span>Eng yaxshi: {best}/10</span>
+                      </div>
+                    ) : null;
+                  })()}
+                  <div className="flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium group-hover:bg-white/30 transition-colors">
+                    O'ynash
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </div>
 
             {/* Tabs for History and Favorites */}
             <div className="flex gap-2 mb-4 justify-center">
