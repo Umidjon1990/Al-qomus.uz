@@ -416,52 +416,82 @@ export default function DictionaryPage() {
               style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
             >
               {examplesData && examplesData.examples.length > 0 && (
-                <div className="mb-4 animate-fade-in-up" data-testid="examples-section">
-                  <Button
-                    onClick={() => setShowExamples(!showExamples)}
-                    variant="outline"
-                    className="w-full py-5 rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50/80 to-amber-50/80 hover:border-orange-300 transition-all backdrop-blur"
-                    data-testid="btn-toggle-examples"
-                  >
-                    <MessageSquareQuote className="h-5 w-5 text-orange-500 mr-3" />
-                    <span className="font-bold text-gray-800 text-lg">Misollar</span>
-                    <span className="ml-2 bg-orange-500 text-white text-xs px-2.5 py-1 rounded-full">
-                      {examplesData.count} ta gap
-                    </span>
-                    {showExamples ? (
-                      <ChevronUp className="h-5 w-5 ml-auto text-gray-400" />
-                    ) : (
-                      <ChevronDown className="h-5 w-5 ml-auto text-gray-400" />
-                    )}
-                  </Button>
-                  
-                  {showExamples && (
-                    <div className="mt-3 bg-white rounded-2xl border border-orange-200 p-5">
-                      <p className="text-sm text-gray-400 mb-4">
-                        "<span className="font-medium text-gray-700">{debouncedSearch}</span>" so'zi ishtirok etgan gaplar:
-                      </p>
-                      <div className="space-y-2.5">
-                        {examplesData.examples.map((example, idx) => (
-                          <div 
-                            key={`${example.entryId}-${idx}`} 
-                            className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-orange-200 hover:shadow-sm transition-all"
-                            data-testid={`example-item-${idx}`}
-                            style={{ animationDelay: `${idx * 50}ms` }}
-                          >
-                            <div className="font-arabic text-base text-right leading-relaxed mb-2" dir="rtl">
-                              {highlightWord(example.arabicExample, debouncedSearch)}
-                            </div>
-                            <div className="text-sm text-gray-500 border-t border-dashed border-gray-200 pt-2 mt-2">
-                              {example.uzbekExample || example.uzbekMeaning}
-                            </div>
-                            <div className="text-xs text-gray-400 mt-1">
-                              <span className="font-arabic">{example.arabic}</span>
-                            </div>
-                          </div>
-                        ))}
+                <div className="mb-6 animate-fade-in-up" data-testid="examples-section">
+                  <div className="bg-white rounded-2xl border-2 border-orange-200 overflow-hidden shadow-sm">
+                    <div className="bg-gradient-to-r from-orange-500 to-amber-500 px-5 py-3 flex items-center justify-between">
+                      <div className="flex items-center gap-2.5">
+                        <MessageSquareQuote className="h-5 w-5 text-white" />
+                        <span className="font-bold text-white text-base">Matnlarda uchraydi</span>
+                        <span className="bg-white/20 text-white text-xs px-2.5 py-0.5 rounded-full font-medium">
+                          {examplesData.count} ta gap
+                        </span>
                       </div>
+                      <Button
+                        onClick={() => setShowExamples(!showExamples)}
+                        variant="ghost"
+                        size="sm"
+                        className="text-white hover:bg-white/20 h-8 px-2"
+                        data-testid="btn-toggle-examples"
+                      >
+                        {showExamples ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                      </Button>
                     </div>
-                  )}
+
+                    {!showExamples && (
+                      <div className="px-5 py-4">
+                        <div className="bg-orange-50 rounded-xl p-4 border border-orange-100" dir="rtl">
+                          <div className="font-arabic text-lg text-right leading-loose">
+                            {highlightWord(examplesData.examples[0].arabicExample, debouncedSearch)}
+                          </div>
+                          <div className="text-sm text-gray-500 mt-2 pt-2 border-t border-orange-200/50 text-right" dir="ltr">
+                            <span className="text-left inline-block">{examplesData.examples[0].uzbekExample || examplesData.examples[0].uzbekMeaning}</span>
+                          </div>
+                          <div className="flex items-center gap-2 mt-2 text-right" dir="ltr">
+                            <span className="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-arabic">{examplesData.examples[0].arabic}</span>
+                          </div>
+                        </div>
+                        {examplesData.count > 1 && (
+                          <button
+                            onClick={() => setShowExamples(true)}
+                            className="w-full mt-3 text-sm text-orange-500 hover:text-orange-600 font-medium transition-colors"
+                            data-testid="btn-show-all-examples"
+                          >
+                            Barchasi ({examplesData.count} ta gap) →
+                          </button>
+                        )}
+                      </div>
+                    )}
+
+                    {showExamples && (
+                      <div className="px-5 py-4 max-h-[600px] overflow-y-auto">
+                        <p className="text-sm text-gray-400 mb-3">
+                          "<span className="font-bold text-orange-500 font-arabic">{debouncedSearch}</span>" so'zi ishtirok etgan gaplar:
+                        </p>
+                        <div className="space-y-3">
+                          {examplesData.examples.map((example, idx) => (
+                            <div 
+                              key={`${example.entryId}-${idx}`} 
+                              className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-orange-200 hover:shadow-sm transition-all"
+                              data-testid={`example-item-${idx}`}
+                            >
+                              <div className="font-arabic text-lg text-right leading-loose mb-2" dir="rtl">
+                                {highlightWord(example.arabicExample, debouncedSearch)}
+                              </div>
+                              <div className="text-sm text-gray-500 border-t border-dashed border-gray-200 pt-2 mt-2">
+                                {example.uzbekExample || example.uzbekMeaning}
+                              </div>
+                              <div className="flex items-center gap-2 mt-2">
+                                <span className="text-xs bg-orange-50 text-orange-500 px-2.5 py-0.5 rounded-full border border-orange-100 font-arabic">
+                                  {example.arabic}
+                                </span>
+                                <span className="text-xs text-gray-300">#{idx + 1}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
 
