@@ -12,7 +12,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const { user, logout, isAdmin } = useAuth();
 
-  // Admin uchun yangi xabarlar sonini olish
   const { data: telegramStats } = useQuery({
     queryKey: ["telegram-stats"],
     queryFn: async () => {
@@ -21,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       return res.json();
     },
     enabled: isAdmin,
-    refetchInterval: 30000, // Har 30 sekundda yangilash
+    refetchInterval: 30000,
   });
 
   const newMessagesCount = telegramStats?.newMessages || 0;
@@ -29,7 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
     const isActive = location === href;
     return (
-      <Link href={href} className={`text-sm font-medium transition-colors hover:text-primary ${isActive ? "text-primary" : "text-muted-foreground"}`}>
+      <Link href={href} className={`text-sm font-medium transition-colors hover:text-orange-500 ${isActive ? "text-orange-500" : "text-gray-500"}`}>
         {children}
       </Link>
     );
@@ -37,17 +36,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200/60 bg-white/90 backdrop-blur-xl">
+        <div className="container mx-auto px-4 h-14 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <img src="/logo.png" alt="AL-QOMUS.UZ" className="h-10 w-10 rounded-lg" />
-            <span className="font-serif text-xl font-bold tracking-tight text-foreground">
-              AL-QOMUS<span className="text-secondary">.UZ</span>
+            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-md shadow-orange-500/20">
+              <BookOpen className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-gray-900">
+              AL-QOMUS<span className="text-orange-500">.UZ</span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/">Lug'at</NavLink>
             <NavLink href="/about">Loyiha haqida</NavLink>
             
@@ -66,12 +66,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
                    </span>
                 </NavLink>
                 <Link href="/admin/telegram" data-testid="link-notifications">
-                  <Button variant="ghost" size="icon" className="relative">
-                    <Bell className="h-5 w-5" />
+                  <Button variant="ghost" size="icon" className="relative h-9 w-9">
+                    <Bell className="h-4 w-4 text-gray-500" />
                     {newMessagesCount > 0 && (
                       <Badge 
                         variant="destructive" 
-                        className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                        className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-orange-500"
                         data-testid="badge-new-messages"
                       >
                         {newMessagesCount > 9 ? "9+" : newMessagesCount}
@@ -82,59 +82,53 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </>
             )}
 
-            <div className="h-4 w-px bg-border mx-2"></div>
-
             {user && (
-              <div className="flex items-center gap-4">
-                <span className="text-sm font-medium text-foreground flex items-center gap-2">
-                  <User className="h-4 w-4" />
+              <>
+                <div className="h-4 w-px bg-gray-200 mx-1"></div>
+                <span className="text-xs text-gray-400 flex items-center gap-1.5">
+                  <User className="h-3.5 w-3.5" />
                   {user.username}
                 </span>
-                <Button variant="ghost" size="sm" onClick={logout} className="text-muted-foreground hover:text-destructive">
-                  <LogOut className="h-4 w-4 mr-2" />
+                <Button variant="ghost" size="sm" onClick={logout} className="text-gray-400 hover:text-red-500 h-8 text-xs">
+                  <LogOut className="h-3.5 w-3.5 mr-1" />
                   Chiqish
                 </Button>
-              </div>
+              </>
             )}
-            
-            <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90 text-white gap-2 ml-2">
-              <Search className="h-4 w-4" />
-              Qidirish
-            </Button>
           </nav>
 
-          {/* Mobile Nav */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon" className="h-9 w-9">
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <div className="flex flex-col gap-6 mt-8">
-                  <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">
+              <SheetContent side="right" className="bg-white">
+                <div className="flex flex-col gap-5 mt-8">
+                  <Link href="/" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
                     Lug'at
                   </Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium">
+                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
                     Loyiha haqida
                   </Link>
                   
                   {isAdmin && (
                     <>
-                      <Link href="/admin" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
+                      <div className="h-px bg-gray-100"></div>
+                      <Link href="/admin" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-orange-500">
                         <Edit3 className="h-4 w-4" />
                         Lug'at Tahriri
                       </Link>
-                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-primary">
+                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-orange-500">
                         <MessageSquare className="h-4 w-4" />
                         Telegram
                       </Link>
-                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-lg font-medium flex items-center gap-2 text-orange-600">
+                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-gray-600">
                         <Bell className="h-4 w-4" />
                         Murojaatlar
                         {newMessagesCount > 0 && (
-                          <Badge variant="destructive" className="ml-2">
+                          <Badge className="bg-orange-500 text-white ml-1">
                             {newMessagesCount}
                           </Badge>
                         )}
@@ -142,16 +136,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     </>
                   )}
 
-                  <div className="h-px bg-border my-2"></div>
-
                   {user && (
-                    <Button variant="ghost" className="justify-start px-0 text-lg font-medium text-destructive hover:text-destructive" onClick={() => {
-                      logout();
-                      setIsOpen(false);
-                    }}>
-                      <LogOut className="h-5 w-5 mr-2" />
-                      Chiqish ({user.username})
-                    </Button>
+                    <>
+                      <div className="h-px bg-gray-100"></div>
+                      <Button variant="ghost" className="justify-start px-0 text-base font-medium text-red-500 hover:text-red-600" onClick={() => {
+                        logout();
+                        setIsOpen(false);
+                      }}>
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Chiqish ({user.username})
+                      </Button>
+                    </>
                   )}
                 </div>
               </SheetContent>
@@ -164,10 +159,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <footer className="border-t bg-muted/30 py-8">
-        <div className="container mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} AL-QOMUS.UZ. Barcha huquqlar himoyalangan.</p>
-          <p className="mt-2">Professional Arabcha-O'zbekcha onlayn lug'at platformasi.</p>
+      <footer className="border-t border-gray-100 bg-gray-50 py-6">
+        <div className="container mx-auto px-4 text-center text-gray-400 text-xs">
+          <p>&copy; {new Date().getFullYear()} AL-QOMUS.UZ — Professional Arabcha-O'zbekcha lug'at</p>
         </div>
       </footer>
     </div>

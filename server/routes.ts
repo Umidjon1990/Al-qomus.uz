@@ -93,6 +93,20 @@ export async function registerRoutes(
     }
   });
 
+  app.get("/api/dictionary/random", async (req, res) => {
+    try {
+      const seed = parseInt(req.query.seed as string) || Date.now();
+      const entries = await storage.getRandomTranslatedEntry(seed);
+      if (!entries) {
+        return res.status(404).json({ error: "So'z topilmadi" });
+      }
+      res.json(entries);
+    } catch (error) {
+      console.error("Error fetching random entry:", error);
+      res.status(500).json({ error: "Tasodifiy so'zni olishda xatolik" });
+    }
+  });
+
   // Get recently translated entries
   app.get("/api/dictionary/recent", async (req, res) => {
     try {

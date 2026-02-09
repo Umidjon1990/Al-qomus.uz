@@ -39,6 +39,7 @@ export interface IStorage {
   getUntranslatedEntries(source?: string): Promise<DictionaryEntry[]>;
   updateEntryTranslation(id: number, uzbek: string): Promise<DictionaryEntry | undefined>;
   getRecentlyTranslated(limit: number): Promise<DictionaryEntry[]>;
+  getRandomTranslatedEntry(seed: number): Promise<DictionaryEntry | null>;
   getEntriesForExport(source: string, lastId: number, limit: number): Promise<DictionaryEntry[]>;
   
   // Example search methods - so'z ishtirok etgan gaplarni qidirish
@@ -334,6 +335,20 @@ export class DatabaseStorage implements IStorage {
       )
       .orderBy(sql`${dictionaryEntries.updatedAt} DESC`)
       .limit(limit);
+  }
+
+  async getRandomTranslatedEntry(seed: number): Promise<DictionaryEntry | null> {
+    const result = await db.select().from(dictionaryEntries)
+      .where(
+        and(
+          eq(dictionaryEntries.processingStatus, 'completed'),
+          eq(dictionaryEntries.dictionarySource, 'Ghoniy'),
+          sql`${dictionaryEntries.meaningsJson} IS NOT NULL AND ${dictionaryEntries.meaningsJson} != '[]'`
+        )
+      )
+      .orderBy(sql`md5(${dictionaryEntries.id}::text || ${seed}::text)`)
+      .limit(1);
+    return result[0] || null;
   }
 
   // Example search - so'z ishtirok etgan gaplarni qidirish

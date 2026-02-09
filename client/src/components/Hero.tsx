@@ -1,57 +1,59 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Sparkles } from "lucide-react";
+import { Search, BookOpen } from "lucide-react";
 
 interface HeroProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  totalWords?: number;
 }
 
-export function Hero({ searchTerm, setSearchTerm }: HeroProps) {
+const POPULAR_SEARCHES = [
+  "كتب", "علم", "صلاة", "قرأ", "جمل", "حسن", "عمل", "نور"
+];
+
+export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div className="relative w-full min-h-[420px] md:min-h-[460px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full flex items-center justify-center overflow-hidden" style={{ minHeight: '340px' }}>
       <div className="absolute inset-0 z-0 hero-gradient" />
-      <div className="absolute inset-0 z-[1] islamic-pattern opacity-[0.04]" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 z-[2] bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute inset-0 z-[1] islamic-pattern opacity-[0.03]" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 z-[2] bg-gradient-to-t from-background to-transparent" />
 
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center max-w-3xl py-12">
+      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center max-w-2xl py-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
+          className="w-full"
         >
-          <div className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-sm font-medium mb-6 border border-white/20">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>108,000+ so'z bazasi</span>
-          </div>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white font-serif leading-tight tracking-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 text-white leading-tight tracking-tight">
             Arabcha-O'zbekcha
             <br />
             <span className="hero-text-gradient">Lug'at</span>
           </h1>
-          <p className="text-base md:text-lg text-white/70 mb-8 max-w-lg mx-auto leading-relaxed">
-            Minglab so'zlarning aniq tarjimasi, grammatik tahlili va jonli misollar bilan boyitilgan professional lug'at
+          <p className="text-sm md:text-base text-white/60 mb-6 max-w-md mx-auto leading-relaxed">
+            {totalWords ? `${totalWords.toLocaleString()}+ so'z bazasi` : "Professional tarjima va grammatik tahlil"}
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="w-full max-w-xl relative"
         >
           <div className={`absolute -inset-1 rounded-2xl transition-all duration-500 ${
             isFocused 
-              ? 'bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 opacity-60 blur-md scale-[1.02]' 
-              : 'bg-gradient-to-r from-emerald-400/30 via-teal-300/20 to-emerald-400/30 opacity-40 blur-sm'
+              ? 'bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 opacity-50 blur-md scale-[1.02]' 
+              : 'bg-gradient-to-r from-orange-500/20 via-orange-400/10 to-orange-500/20 opacity-30 blur-sm'
           }`} />
-          <div className={`relative flex items-center bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl transition-all duration-300 ${
-            isFocused ? 'shadow-emerald-500/20' : ''
+          <div className={`relative flex items-center bg-white rounded-2xl shadow-2xl transition-all duration-300 ${
+            isFocused ? 'shadow-orange-500/25 orange-glow' : 'search-glow'
           }`}>
             <Search className={`absolute left-5 h-5 w-5 transition-colors duration-300 ${
-              isFocused ? 'text-emerald-600' : 'text-gray-400'
+              isFocused ? 'text-orange-500' : 'text-gray-400'
             }`} />
             <input
               type="text"
@@ -63,6 +65,27 @@ export function Hero({ searchTerm, setSearchTerm }: HeroProps) {
               onBlur={() => setIsFocused(false)}
               data-testid="input-search"
             />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
+          className="mt-5 flex flex-col items-center gap-2"
+        >
+          <span className="text-white/50 text-xs">Mashhur qidiruvlar:</span>
+          <div className="flex flex-wrap justify-center gap-2">
+            {POPULAR_SEARCHES.map((term) => (
+              <button
+                key={term}
+                onClick={() => setSearchTerm(term)}
+                className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white/80 hover:text-white text-sm font-arabic border border-white/10 hover:border-white/25 transition-all duration-200"
+                data-testid={`popular-search-${term}`}
+              >
+                {term}
+              </button>
+            ))}
           </div>
         </motion.div>
       </div>
