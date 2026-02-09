@@ -68,8 +68,13 @@ export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
           transition={{ duration: 0.4, delay: 0.25 }}
           className="mt-6 text-center"
         >
-          <p className="text-white/80 text-lg md:text-2xl font-medium capitalize">
-            {new Date().toLocaleDateString('uz-UZ', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          <p className="text-white/80 text-lg md:text-2xl font-medium">
+            {(() => {
+              const now = new Date();
+              const weekdays = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
+              const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
+              return `${weekdays[now.getDay()]}, ${now.getDate()}-${months[now.getMonth()]} ${now.getFullYear()}-yil`;
+            })()}
           </p>
         </motion.div>
       </div>
