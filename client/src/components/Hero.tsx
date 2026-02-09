@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, BookOpen } from "lucide-react";
+import { Search } from "lucide-react";
 
 interface HeroProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   totalWords?: number;
 }
-
-const POPULAR_SEARCHES = [
-  "كتب", "علم", "صلاة", "قرأ", "جمل", "حسن", "عمل", "نور"
-];
 
 export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
   const [isFocused, setIsFocused] = useState(false);
@@ -70,21 +66,11 @@ export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.25 }}
-          className="mt-5 flex flex-col items-center gap-2"
+          className="mt-6 text-center"
         >
-          <span className="text-white/50 text-xs">Mashhur qidiruvlar:</span>
-          <div className="flex flex-wrap justify-center gap-2">
-            {POPULAR_SEARCHES.map((term) => (
-              <button
-                key={term}
-                onClick={() => setSearchTerm(term)}
-                className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white/80 hover:text-white text-sm font-arabic border border-white/10 hover:border-white/25 transition-all duration-200"
-                data-testid={`popular-search-${term}`}
-              >
-                {term}
-              </button>
-            ))}
-          </div>
+          <p className="text-white/80 text-lg md:text-2xl font-medium">
+            {new Date().toLocaleDateString('uz-UZ', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
         </motion.div>
       </div>
     </div>
