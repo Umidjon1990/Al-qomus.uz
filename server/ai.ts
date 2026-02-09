@@ -1,22 +1,29 @@
 import OpenAI from "openai";
 
-// Foydalanuvchining o'z API kalitini ishlatish (agar mavjud bo'lsa)
-// Aks holda Replit integratsiyasidan foydalanish
-const apiKey = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+const userKey = process.env.OPENAI_API_KEY;
+const replitKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+const replitBaseURL = process.env.AI_INTEGRATIONS_OPENAI_BASE_URL;
+
+const apiKey = userKey || replitKey;
 
 if (!apiKey) {
   throw new Error("OpenAI API key is not set. Please provide OPENAI_API_KEY.");
 }
 
-// Agar foydalanuvchi o'z kalitini ishlatsa, to'g'ridan-to'g'ri OpenAI ga ulanish
-const useUserKey = !!process.env.OPENAI_API_KEY;
+const useUserKey = !!userKey;
 
 export const openai = new OpenAI({
   apiKey: apiKey,
-  baseURL: useUserKey ? undefined : process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+  baseURL: useUserKey ? undefined : replitBaseURL,
 });
 
-console.log(`[AI] Using ${useUserKey ? "user's OPENAI_API_KEY" : "Replit AI integration"}`);
+export const replitOpenai = new OpenAI({
+  apiKey: replitKey || apiKey,
+  baseURL: replitBaseURL || undefined,
+});
+
+console.log(`[AI] Primary: ${useUserKey ? "user's OPENAI_API_KEY" : "Replit AI integration"}`);
+console.log(`[AI] Replit fallback: ${replitKey ? "available" : "not available"}`);
 
 type WordType = 'verb' | 'noun' | 'adjective' | 'particle' | 'unknown';
 
@@ -703,13 +710,14 @@ Yuqoridagi ma'lumotlarni tahlil qilib:
 
 JSON formatida javob ber:`;
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
+    const aiClient = replitOpenai || openai;
+    const completion = await aiClient.chat.completions.create({
+      model: "gpt-4o-mini",
       messages: [
         { role: "system", content: GHONIY_SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
-      temperature: retryCount > 0 ? 0.1 : 0, // Qayta urinishda biroz temperature
+      temperature: retryCount > 0 ? 0.1 : 0,
       max_tokens: 1500,
       response_format: { type: "json_object" },
     });
@@ -952,7 +960,8 @@ TA'RIF: ${entry.arabicDefinition || '-'}`;
 
     const userPrompt = `Quyidagi ${entries.length} ta so'zni tarjima qil. Har biri uchun barcha ma'nolar, misollar va tarjimalarni ber.\n\n${wordsBlock}\n\nJSON formatida javob ber ({"words": [...]})`;
 
-    const completion = await openai.chat.completions.create({
+    const aiClient = replitOpenai || openai;
+    const completion = await aiClient.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: GHONIY_MULTI_PROMPT },
