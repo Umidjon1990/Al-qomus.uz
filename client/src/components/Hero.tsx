@@ -68,7 +68,7 @@ export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
           transition={{ duration: 0.4, delay: 0.25 }}
           className="mt-6 text-center"
         >
-          <p className="text-white/80 text-lg md:text-2xl font-medium">
+          <p className="text-white/80 text-lg md:text-2xl font-medium capitalize">
             {new Date().toLocaleDateString('uz-UZ', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </motion.div>
