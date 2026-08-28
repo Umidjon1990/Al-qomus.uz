@@ -10,7 +10,6 @@ import {
   Loader2,
   MessageSquareQuote,
   SearchX,
-  Sparkles,
   Trash2,
   X,
 } from "lucide-react";
@@ -33,68 +32,6 @@ import {
   removeFromHistory,
 } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
-
-function parseJsonArray(value?: string | null): Array<Record<string, string>> {
-  if (!value) return [];
-  try {
-    const parsed = JSON.parse(value);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-function WordOfTheDay({ onSearch }: { onSearch: (term: string) => void }) {
-  const { data: wordData, isLoading } = useQuery({
-    queryKey: ["word-of-day"],
-    queryFn: async () => {
-      const today = new Date();
-      const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-      const response = await fetch(`/api/dictionary/random?seed=${seed}`);
-      if (!response.ok) return null;
-      return response.json();
-    },
-    staleTime: 1000 * 60 * 60,
-  });
-
-  if (isLoading) {
-    return <div className="h-52 animate-pulse rounded-2xl border border-slate-200 bg-white" />;
-  }
-
-  if (!wordData) return null;
-  const meanings = parseJsonArray(wordData.meaningsJson);
-  const firstMeaning = meanings[0]?.uzbekMeaning || meanings[0]?.uzbek_meaning || wordData.uzbek || "";
-
-  return (
-    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
-      <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3.5">
-        <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
-          <Sparkles className="h-4 w-4 text-amber-500" aria-hidden="true" />
-          Kunning so'zi
-        </span>
-        <span className="text-xs font-medium text-slate-400">G'oniy lug'ati</span>
-      </div>
-
-      <div className="grid gap-5 px-5 py-6 text-center sm:grid-cols-[1fr_auto] sm:items-center sm:px-7 sm:text-left">
-        <div>
-          <p className="font-arabic text-4xl font-semibold leading-[1.6] text-slate-950 sm:text-5xl" dir="rtl" lang="ar">
-            {wordData.arabic}
-          </p>
-          {wordData.transliteration && <p className="mt-1 text-sm font-medium text-slate-400">{wordData.transliteration}</p>}
-          <p className="mt-2 text-base font-semibold leading-7 text-slate-700">{firstMeaning}</p>
-        </div>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={() => onSearch(wordData.arabic)}
-          className="rounded-xl border-slate-200 bg-white font-semibold text-primary hover:border-primary/30 hover:bg-primary/5"
-        >
-          To'liq ko'rish
-        </Button>
-      </div>
-    </section>
-  );
-}
 
 interface SourcePanelProps {
   selectedSources: string[];
@@ -426,19 +363,16 @@ export default function DictionaryPage() {
                 <p className="mt-1 text-sm text-amber-700">Yuqoridagi manbalardan birini bosing.</p>
               </div>
             ) : !debouncedSearch ? (
-              <div className="space-y-5">
-                <WordOfTheDay onSearch={handleRelatedSearch} />
-                <div className="lg:hidden">
-                  <LibraryPanel
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                    history={history}
-                    favorites={favorites}
-                    onSearch={handleRelatedSearch}
-                    onRemoveHistory={handleRemoveHistory}
-                    onClearHistory={handleClearHistory}
-                  />
-                </div>
+              <div className="lg:hidden">
+                <LibraryPanel
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                  history={history}
+                  favorites={favorites}
+                  onSearch={handleRelatedSearch}
+                  onRemoveHistory={handleRemoveHistory}
+                  onClearHistory={handleClearHistory}
+                />
               </div>
             ) : !queryIsLongEnough ? (
               <div className="rounded-2xl border border-slate-200 bg-white px-5 py-12 text-center">
