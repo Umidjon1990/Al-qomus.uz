@@ -1,83 +1,97 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Search } from "lucide-react";
+import React from "react";
+import { ArrowRight, Search, X } from "lucide-react";
 
 interface HeroProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  onSubmit: () => void;
   totalWords?: number;
 }
 
-export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
-  const [isFocused, setIsFocused] = useState(false);
+export function Hero({ searchTerm, setSearchTerm, onSubmit, totalWords }: HeroProps) {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit();
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    inputRef.current?.focus();
+  };
 
   return (
-    <div className="relative w-full flex items-center justify-center overflow-hidden" style={{ minHeight: '340px' }}>
-      <div className="absolute inset-0 z-0 hero-gradient" />
-      <div className="absolute inset-0 z-[1] islamic-pattern opacity-[0.03]" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 z-[2] bg-gradient-to-t from-background to-transparent" />
-
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center max-w-2xl py-10">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="w-full"
-        >
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 text-white leading-tight tracking-tight">
-            Arabcha-O'zbekcha
-            <br />
-            <span className="hero-text-gradient">Lug'at</span>
-          </h1>
-          <p className="text-sm md:text-base text-white/60 mb-6 max-w-md mx-auto leading-relaxed">
-            {totalWords ? `${totalWords.toLocaleString()}+ so'z bazasi` : "Professional tarjima va grammatik tahlil"}
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="w-full max-w-xl relative"
-        >
-          <div className={`absolute -inset-[2px] rounded-2xl transition-all duration-500 ${
-            isFocused ? 'search-border-active' : 'search-border-idle'
-          }`} />
-          <div className={`relative flex items-center bg-white rounded-2xl shadow-2xl transition-all duration-300 ${
-            isFocused ? 'shadow-orange-500/25' : 'search-glow'
-          }`}>
-            <Search className={`absolute left-5 h-5 w-5 transition-colors duration-300 ${
-              isFocused ? 'text-orange-500' : 'text-gray-400'
-            }`} />
-            <input
-              type="text"
-              placeholder="So'z izlash (arabcha yoki o'zbekcha)..."
-              className="w-full h-14 md:h-16 pl-14 pr-5 text-base md:text-lg bg-transparent border-none outline-none text-gray-800 placeholder:text-gray-400 rounded-2xl"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              data-testid="input-search"
-            />
+    <section className="relative overflow-hidden bg-[#173f35] text-white">
+      <div className="dictionary-grid-pattern absolute inset-0 opacity-35" aria-hidden="true" />
+      <div className="relative mx-auto w-full max-w-7xl px-4 py-9 sm:px-6 sm:py-11 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-3 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-emerald-100/80">
+            <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5">
+              Arabcha · O'zbekcha
+            </span>
+            {totalWords ? (
+              <span>{totalWords.toLocaleString("uz-UZ")} ta lug'at yozuvi</span>
+            ) : (
+              <span>Professional e-lug'at</span>
+            )}
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.25 }}
-          className="mt-6 text-center"
-        >
-          <p className="text-white/80 text-lg md:text-2xl font-medium">
-            {(() => {
-              const now = new Date();
-              const weekdays = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
-              const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
-              return `${weekdays[now.getDay()]}, ${now.getDate()}-${months[now.getMonth()]} ${now.getFullYear()}-yil`;
-            })()}
+          <h1 className="text-balance text-2xl font-bold tracking-tight sm:text-3xl lg:text-[34px]">
+            So'zning aniq ma'nosini toping
+          </h1>
+          <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-emerald-50/70 sm:text-base">
+            Arabcha harakatli yoki harakatsiz, shuningdek o'zbekcha so'z bilan qidiring.
           </p>
-        </motion.div>
+
+          <form
+            role="search"
+            aria-label="Lug'atdan so'z qidirish"
+            onSubmit={handleSubmit}
+            className="mx-auto mt-6 max-w-2xl"
+          >
+            <div className="group relative flex min-h-16 items-center rounded-2xl bg-white p-1.5 shadow-[0_18px_55px_rgba(0,0,0,0.22)] ring-1 ring-black/5 transition focus-within:ring-4 focus-within:ring-amber-300/35">
+              <Search className="ml-4 h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
+              <input
+                ref={inputRef}
+                type="search"
+                inputMode="search"
+                dir="auto"
+                autoComplete="off"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder="Masalan: كِتَابٌ yoki kitob"
+                className="h-12 min-w-0 flex-1 bg-transparent px-3 text-base font-medium text-slate-900 outline-none placeholder:font-normal placeholder:text-slate-400 sm:text-lg"
+                data-testid="input-search"
+              />
+
+              {searchTerm && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="grid h-10 w-10 shrink-0 place-items-center rounded-xl text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                  aria-label="Qidiruvni tozalash"
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
+
+              <button
+                type="submit"
+                aria-label="Qidirish"
+                className="ml-1 inline-flex h-11 shrink-0 items-center gap-2 rounded-xl bg-[#bd7b2a] px-4 text-sm font-bold text-white transition hover:bg-[#a96b22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 sm:px-5"
+              >
+                <span className="hidden sm:inline">Qidirish</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
+          </form>
+
+          <p className="mt-3 text-xs text-emerald-50/55">
+            Qidiruv harakat belgilarini hisobga olmaydi · Natijalar lug'at manbasi bilan ko'rsatiladi
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

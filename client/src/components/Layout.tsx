@@ -1,167 +1,190 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell } from "lucide-react";
+import {
+  BookOpenText,
+  GraduationCap,
+  Info,
+  LogOut,
+  Menu,
+  MessageSquare,
+  PencilLine,
+  UserRound,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
-import { useQuery } from "@tanstack/react-query";
-import { Badge } from "@/components/ui/badge";
+
+const publicLinks = [
+  { href: "/", label: "Lug'at", icon: BookOpenText },
+  { href: "/quiz", label: "So'z mashqi", icon: GraduationCap },
+  { href: "/about", label: "Loyiha", icon: Info },
+];
+
+function HeaderLink({ href, label }: { href: string; label: string }) {
+  const [location] = useLocation();
+  const active = location === href;
+
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+        active
+          ? "bg-primary/10 text-primary"
+          : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+      }`}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
   const [isOpen, setIsOpen] = React.useState(false);
   const { user, logout, isAdmin } = useAuth();
 
-  const { data: telegramStats } = useQuery({
-    queryKey: ["telegram-stats"],
-    queryFn: async () => {
-      const res = await fetch("/api/telegram/stats");
-      if (!res.ok) return null;
-      return res.json();
-    },
-    enabled: isAdmin,
-    refetchInterval: 30000,
-  });
-
-  const newMessagesCount = telegramStats?.newMessages || 0;
-
-  const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-    const isActive = location === href;
-    return (
-      <Link href={href} className={`text-sm font-medium transition-colors hover:text-orange-500 ${isActive ? "text-orange-500" : "text-gray-500"}`}>
-        {children}
-      </Link>
-    );
-  };
-
   return (
-    <div className="min-h-screen flex flex-col bg-background font-sans">
-      <header className="sticky top-0 z-50 w-full border-b border-gray-200/60 bg-white/90 backdrop-blur-xl">
-        <div className="container mx-auto px-4 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-md shadow-orange-500/20">
-              <BookOpen className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-gray-900">
-              AL-QOMUS<span className="text-orange-500">.UZ</span>
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-lg">
+        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="group flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+            aria-label="AL-QOMUS.UZ bosh sahifasi"
+          >
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#173f35] font-arabic text-2xl font-bold text-white shadow-sm transition-transform group-hover:-translate-y-0.5">
+              ق
+            </span>
+            <span className="leading-none">
+              <span className="block text-[15px] font-extrabold tracking-[0.08em] text-slate-950">
+                AL-QOMUS
+              </span>
+              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                Arabcha · O'zbekcha
+              </span>
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
-            <NavLink href="/">Lug'at</NavLink>
-            <NavLink href="/about">Loyiha haqida</NavLink>
-            
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Asosiy navigatsiya">
+            {publicLinks.map((link) => (
+              <HeaderLink key={link.href} href={link.href} label={link.label} />
+            ))}
+
             {isAdmin && (
               <>
-                <NavLink href="/admin">
-                   <span className="flex items-center gap-1">
-                     <Edit3 className="h-3 w-3" />
-                     Lug'at
-                   </span>
-                </NavLink>
-                <NavLink href="/admin/telegram">
-                   <span className="flex items-center gap-1">
-                     <MessageSquare className="h-3 w-3" />
-                     Telegram
-                   </span>
-                </NavLink>
-                <Link href="/admin/telegram" data-testid="link-notifications">
-                  <Button variant="ghost" size="icon" className="relative h-9 w-9">
-                    <Bell className="h-4 w-4 text-gray-500" />
-                    {newMessagesCount > 0 && (
-                      <Badge 
-                        variant="destructive" 
-                        className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-orange-500"
-                        data-testid="badge-new-messages"
-                      >
-                        {newMessagesCount > 9 ? "9+" : newMessagesCount}
-                      </Badge>
-                    )}
-                  </Button>
-                </Link>
-              </>
-            )}
-
-            {user && (
-              <>
-                <div className="h-4 w-px bg-gray-200 mx-1"></div>
-                <span className="text-xs text-gray-400 flex items-center gap-1.5">
-                  <User className="h-3.5 w-3.5" />
-                  {user.username}
-                </span>
-                <Button variant="ghost" size="sm" onClick={logout} className="text-gray-400 hover:text-red-500 h-8 text-xs">
-                  <LogOut className="h-3.5 w-3.5 mr-1" />
-                  Chiqish
-                </Button>
+                <span className="mx-2 h-6 w-px bg-slate-200" />
+                <HeaderLink href="/admin" label="Tahririyat" />
+                <HeaderLink href="/admin/telegram" label="Telegram" />
               </>
             )}
           </nav>
 
+          <div className="hidden items-center gap-2 md:flex">
+            {user && (
+              <>
+                <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-slate-600">
+                  <UserRound className="h-3.5 w-3.5" aria-hidden="true" />
+                  {user.username}
+                </span>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  onClick={logout}
+                  className="h-9 w-9 rounded-full text-slate-500 hover:bg-red-50 hover:text-red-600"
+                  aria-label="Tizimdan chiqish"
+                >
+                  <LogOut className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </>
+            )}
+          </div>
+
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Menu className="h-5 w-5" />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10 rounded-xl"
+                  aria-label="Menyuni ochish"
+                >
+                  <Menu className="h-5 w-5" aria-hidden="true" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-white">
-                <div className="flex flex-col gap-5 mt-8">
-                  <Link href="/" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
-                    Lug'at
-                  </Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
-                    Loyiha haqida
-                  </Link>
-                  
+              <SheetContent side="right" className="w-[86vw] max-w-sm bg-white p-0">
+                <div className="border-b border-slate-100 px-6 py-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">Menyu</p>
+                </div>
+                <nav className="space-y-1 p-4" aria-label="Mobil navigatsiya">
+                  {publicLinks.map(({ href, label, icon: Icon }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                    >
+                      <Icon className="h-4 w-4 text-primary" aria-hidden="true" />
+                      {label}
+                    </Link>
+                  ))}
+
                   {isAdmin && (
                     <>
-                      <div className="h-px bg-gray-100"></div>
-                      <Link href="/admin" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-orange-500">
-                        <Edit3 className="h-4 w-4" />
-                        Lug'at Tahriri
+                      <div className="my-3 h-px bg-slate-100" />
+                      <Link
+                        href="/admin"
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                      >
+                        <PencilLine className="h-4 w-4 text-primary" aria-hidden="true" />
+                        Lug'at tahriri
                       </Link>
-                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-orange-500">
-                        <MessageSquare className="h-4 w-4" />
-                        Telegram
-                      </Link>
-                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-gray-600">
-                        <Bell className="h-4 w-4" />
-                        Murojaatlar
-                        {newMessagesCount > 0 && (
-                          <Badge className="bg-orange-500 text-white ml-1">
-                            {newMessagesCount}
-                          </Badge>
-                        )}
+                      <Link
+                        href="/admin/telegram"
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                      >
+                        <MessageSquare className="h-4 w-4 text-primary" aria-hidden="true" />
+                        Telegram boshqaruvi
                       </Link>
                     </>
                   )}
 
                   {user && (
                     <>
-                      <div className="h-px bg-gray-100"></div>
-                      <Button variant="ghost" className="justify-start px-0 text-base font-medium text-red-500 hover:text-red-600" onClick={() => {
-                        logout();
-                        setIsOpen(false);
-                      }}>
-                        <LogOut className="h-4 w-4 mr-2" />
-                        Chiqish ({user.username})
-                      </Button>
+                      <div className="my-3 h-px bg-slate-100" />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          logout();
+                          setIsOpen(false);
+                        }}
+                        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50"
+                      >
+                        <LogOut className="h-4 w-4" aria-hidden="true" />
+                        Tizimdan chiqish
+                      </button>
                     </>
                   )}
-                </div>
+                </nav>
               </SheetContent>
             </Sheet>
           </div>
         </div>
       </header>
 
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
-      <footer className="border-t border-gray-100 bg-gray-50 py-6">
-        <div className="container mx-auto px-4 text-center text-gray-400 text-xs">
-          <p>&copy; {new Date().getFullYear()} AL-QOMUS.UZ — Professional Arabcha-O'zbekcha lug'at</p>
+      <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-7 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>© {new Date().getFullYear()} AL-QOMUS.UZ — bepul arabcha-o'zbekcha e-lug'at</p>
+          <div className="flex items-center gap-4">
+            <Link href="/about" className="font-medium hover:text-primary">Loyiha haqida</Link>
+            <span aria-hidden="true">·</span>
+            <span>108 000+ so'z va ibora</span>
+          </div>
         </div>
       </footer>
     </div>
