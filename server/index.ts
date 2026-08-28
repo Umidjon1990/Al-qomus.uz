@@ -3,6 +3,7 @@ import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 import { initTelegramBot } from "./telegram/bot";
+import { ensureTranslationPipelineSchema } from "./translation-pipeline";
 
 const app = express();
 const httpServer = createServer(app);
@@ -65,7 +66,7 @@ app.use((req, res, next) => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
+      if (capturedJsonResponse && path !== "/api/auth/login") {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
 
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  await ensureTranslationPipelineSchema();
   await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -119,3 +121,4 @@ app.use((req, res, next) => {
     },
   );
 })();
+

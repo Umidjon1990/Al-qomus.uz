@@ -4,6 +4,22 @@ import { storage } from "./storage";
 import { insertDictionaryEntrySchema, updateDictionaryEntrySchema } from "@shared/schema";
 import { translateArabicToUzbek, batchTranslate, batchProcessRoidEntries, batchProcessGhoniyEntries } from "./ai";
 import { sendMessageToUser, sendBroadcast } from "./telegram/bot";
+import {
+  adminCredentialsMatch,
+  adminLoginRateLimit,
+  clearAdminLoginAttempts,
+  createAdminToken,
+  requireAdmin,
+} from "./admin-auth";
+import {
+  applyApprovedCandidates,
+  createTranslationJob,
+  listTranslationCandidates,
+  listTranslationJobs,
+  rollbackTranslationRevision,
+  retryFailedCandidates,
+  runTranslationJob,
+} from "./translation-pipeline";
 import * as XLSX from 'xlsx';
 
 export async function registerRoutes(
@@ -17,7 +33,7 @@ export async function registerRoutes(
   });
 
   // Admin login - requires environment variables (no default credentials)
-  app.post("/api/auth/login", async (req, res) => {
+  app.post("/api/auth/login", adminLoginRateLimit, async (req, res) => {
     try {
       const { username, password } = req.body;
       const adminUsername = process.env.ADMIN_USERNAME;
@@ -28,13 +44,125 @@ export async function registerRoutes(
         return;
       }
       
-      if (username === adminUsername && password === adminPassword) {
-        res.json({ success: true, role: 'admin' });
+      if (adminCredentialsMatch(username, password)) {
+        clearAdminLoginAttempts(req);
+        res.json({
+          success: true,
+          role: 'admin',
+          username: adminUsername,
+          token: createAdminToken(adminUsername),
+        });
       } else {
         res.status(401).json({ error: 'Login yoki parol noto\'g\'ri' });
       }
     } catch (error) {
       res.status(500).json({ error: 'Server xatosi' });
+    }
+  });
+
+  app.get("/api/auth/session", requireAdmin, (req, res) => {
+    res.json({
+      success: true,
+      role: "admin",
+      username: res.locals.admin.username,
+      expiresAt: res.locals.admin.exp,
+    });
+  });
+
+  // Public dictionary reads remain open. Every mutation requires an admin token.
+  app.use("/api/dictionary", (req, res, next) => {
+    if (["POST", "PUT", "PATCH", "DELETE"].includes(req.method)) {
+      requireAdmin(req, res, next);
+      return;
+    }
+    next();
+  });
+
+  // Telegram administration includes private data and outbound messaging.
+  app.use("/api/telegram", requireAdmin);
+  app.use("/api/admin", requireAdmin);
+
+  app.get("/api/admin/translation/jobs", async (_req, res) => {
+    try {
+      res.json(await listTranslationJobs());
+    } catch (error) {
+      console.error("Error listing translation jobs:", error);
+      res.status(500).json({ error: "Tarjima ishlarini olishda xatolik" });
+    }
+  });
+
+  app.post("/api/admin/translation/jobs", async (req, res) => {
+    try {
+      const source = typeof req.body.source === "string" ? req.body.source.trim() : "";
+      if (!source) return res.status(400).json({ error: "Lug'at manbasi kerak" });
+
+      const job = await createTranslationJob({
+        source,
+        limit: Number(req.body.limit) || 100,
+        startAfterId: Number(req.body.startAfterId) || 0,
+        onlyPending: req.body.onlyPending === true,
+        autoApply: req.body.autoApply === true,
+      });
+      if (req.body.start !== false && job.candidateCount > 0) void runTranslationJob(job.id);
+      res.status(201).json({ ...job, started: req.body.start !== false && job.candidateCount > 0 });
+    } catch (error) {
+      console.error("Error creating translation job:", error);
+      res.status(500).json({ error: "Tarjima ishini yaratishda xatolik" });
+    }
+  });
+
+  app.post("/api/admin/translation/jobs/:id/start", async (req, res) => {
+    const jobId = Number(req.params.id);
+    if (!Number.isInteger(jobId) || jobId <= 0) return res.status(400).json({ error: "Noto'g'ri ish ID" });
+    void runTranslationJob(jobId);
+    res.status(202).json({ success: true, jobId });
+  });
+
+  app.post("/api/admin/translation/jobs/:id/retry-failed", async (req, res) => {
+    try {
+      const jobId = Number(req.params.id);
+      if (!Number.isInteger(jobId) || jobId <= 0) return res.status(400).json({ error: "Noto'g'ri ish ID" });
+      const result = await retryFailedCandidates(jobId);
+      if (req.body.start !== false && result.queued > 0) void runTranslationJob(jobId);
+      res.json({ ...result, started: req.body.start !== false && result.queued > 0 });
+    } catch (error) {
+      console.error("Error retrying failed translations:", error);
+      res.status(500).json({ error: "Xatolangan tarjimalarni qayta boshlashda xatolik" });
+    }
+  });
+
+  app.get("/api/admin/translation/jobs/:id/candidates", async (req, res) => {
+    try {
+      const jobId = Number(req.params.id);
+      if (!Number.isInteger(jobId) || jobId <= 0) return res.status(400).json({ error: "Noto'g'ri ish ID" });
+      const status = typeof req.query.status === "string" ? req.query.status : undefined;
+      res.json(await listTranslationCandidates(jobId, status));
+    } catch (error) {
+      console.error("Error listing translation candidates:", error);
+      res.status(500).json({ error: "Tarjima nomzodlarini olishda xatolik" });
+    }
+  });
+
+  app.post("/api/admin/translation/jobs/:id/apply", async (req, res) => {
+    try {
+      const jobId = Number(req.params.id);
+      if (!Number.isInteger(jobId) || jobId <= 0) return res.status(400).json({ error: "Noto'g'ri ish ID" });
+      res.json(await applyApprovedCandidates(jobId));
+    } catch (error) {
+      console.error("Error applying approved translations:", error);
+      res.status(500).json({ error: "Tasdiqlangan tarjimalarni qo'llashda xatolik" });
+    }
+  });
+
+  app.post("/api/admin/translation/revisions/:id/rollback", async (req, res) => {
+    try {
+      const revisionId = Number(req.params.id);
+      if (!Number.isInteger(revisionId) || revisionId <= 0) return res.status(400).json({ error: "Noto'g'ri tahrir ID" });
+      await rollbackTranslationRevision(revisionId, res.locals.admin.username);
+      res.json({ success: true, revisionId });
+    } catch (error) {
+      console.error("Error rolling back translation revision:", error);
+      res.status(500).json({ error: "Tarjimani qaytarishda xatolik" });
     }
   });
 
@@ -451,7 +579,7 @@ export async function registerRoutes(
           arabicDefinition: e.arabicDefinition || undefined,
         })),
         (current, total, result) => {
-          console.log(`[${current}/${total}] ${result.success ? '✓' : '✗'} ${result.arabicVocalized} → ${result.uzbekTranslation}`);
+          console.log(`[${current}/${total}] ${result.success ? 'вњ“' : 'вњ—'} ${result.arabicVocalized} в†’ ${result.uzbekTranslation}`);
         }
       );
       
@@ -515,7 +643,7 @@ export async function registerRoutes(
           type: e.type || undefined,
         })),
         (current, total, result) => {
-          console.log(`[${current}/${total}] ${result.success ? '✓' : '✗'} ${result.uzbekSummary} (${result.meanings.length} ma'no)`);
+          console.log(`[${current}/${total}] ${result.success ? 'вњ“' : 'вњ—'} ${result.uzbekSummary} (${result.meanings.length} ma'no)`);
         }
       );
       
@@ -636,7 +764,7 @@ export async function registerRoutes(
       // Telegram orqali javob yuborish
       const sent = await sendMessageToUser(
         message.telegramId,
-        `📩 QOMUS.UZ dan javob:\n\n${response}`
+        `рџ“© QOMUS.UZ dan javob:\n\n${response}`
       );
       
       if (!sent) {
@@ -689,7 +817,7 @@ export async function registerRoutes(
       // Telegram orqali xabar yuborish
       const sent = await sendMessageToUser(
         telegramId,
-        `📩 QOMUS.UZ dan xabar:\n\n${message}`
+        `рџ“© QOMUS.UZ dan xabar:\n\n${message}`
       );
       
       if (!sent) {
@@ -756,3 +884,4 @@ export async function registerRoutes(
 
   return httpServer;
 }
+

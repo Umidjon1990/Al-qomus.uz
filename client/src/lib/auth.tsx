@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { useLocation } from "wouter";
 import { toast } from "@/hooks/use-toast";
+import { clearAdminToken, getAdminToken, setAdminToken } from "@/lib/adminAuth";
 
 interface User {
   username: string;
@@ -17,7 +18,9 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() =>
+    getAdminToken() ? { username: "Admin", role: "admin" } : null,
+  );
   const [, setLocation] = useLocation();
 
   const login = async (username: string, password: string) => {
@@ -29,7 +32,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       
       if (response.ok) {
-        setUser({ username: "Admin", role: "admin" });
+        const data = await response.json() as { token?: string; username?: string };
+        if (!data.token) throw new Error("Admin token was not returned");
+        setAdminToken(data.token);
+        setUser({ username: data.username || "Admin", role: "admin" });
         toast({
           title: "Xush kelibsiz!",
           description: "Admin sifatida tizimga kirdingiz.",
@@ -55,6 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = () => {
+    clearAdminToken();
     setUser(null);
     setLocation("/");
     toast({
@@ -76,3 +83,4 @@ export function useAuth() {
   }
   return context;
 }
+

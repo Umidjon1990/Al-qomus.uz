@@ -46,6 +46,7 @@ import {
   RefreshCw
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { adminFetch } from "@/lib/adminAuth";
 
 interface TelegramUser {
   telegramId: string;
@@ -95,32 +96,32 @@ interface Broadcast {
 const API_BASE = "/api/telegram";
 
 async function fetchTelegramStats(): Promise<TelegramStats> {
-  const res = await fetch(`${API_BASE}/stats`);
+  const res = await adminFetch(`${API_BASE}/stats`);
   if (!res.ok) throw new Error("Stats olishda xatolik");
   return res.json();
 }
 
 async function fetchUsers(): Promise<TelegramUser[]> {
-  const res = await fetch(`${API_BASE}/users`);
+  const res = await adminFetch(`${API_BASE}/users`);
   if (!res.ok) throw new Error("Foydalanuvchilarni olishda xatolik");
   return res.json();
 }
 
 async function fetchMessages(status?: string): Promise<ContactMessage[]> {
   const url = status ? `${API_BASE}/messages?status=${status}` : `${API_BASE}/messages`;
-  const res = await fetch(url);
+  const res = await adminFetch(url);
   if (!res.ok) throw new Error("Xabarlarni olishda xatolik");
   return res.json();
 }
 
 async function fetchBroadcasts(): Promise<Broadcast[]> {
-  const res = await fetch(`${API_BASE}/broadcasts`);
+  const res = await adminFetch(`${API_BASE}/broadcasts`);
   if (!res.ok) throw new Error("Broadcastlarni olishda xatolik");
   return res.json();
 }
 
 async function sendReply(id: number, response: string): Promise<any> {
-  const res = await fetch(`${API_BASE}/messages/${id}/reply`, {
+  const res = await adminFetch(`${API_BASE}/messages/${id}/reply`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ response }),
@@ -133,7 +134,7 @@ async function sendReply(id: number, response: string): Promise<any> {
 }
 
 async function sendBroadcast(content: string): Promise<any> {
-  const res = await fetch(`${API_BASE}/broadcast`, {
+  const res = await adminFetch(`${API_BASE}/broadcast`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ content }),
@@ -146,7 +147,7 @@ async function sendBroadcast(content: string): Promise<any> {
 }
 
 async function sendMessageToUser(telegramId: string, message: string): Promise<any> {
-  const res = await fetch(`${API_BASE}/users/${telegramId}/message`, {
+  const res = await adminFetch(`${API_BASE}/users/${telegramId}/message`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message }),
@@ -703,3 +704,4 @@ export default function TelegramAdminPage() {
     </Layout>
   );
 }
+
