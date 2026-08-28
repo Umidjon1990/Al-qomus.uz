@@ -32,6 +32,12 @@ import {
   removeFromHistory,
 } from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
+import {
+  ARABIC_MARKS_SOURCE,
+  hasArabicLetters,
+  normalizeSearchTerm,
+  stripArabicMarks,
+} from "@shared/search";
 
 interface SourcePanelProps {
   selectedSources: string[];
@@ -224,7 +230,7 @@ export default function DictionaryPage() {
 
   React.useEffect(() => {
     const timer = window.setTimeout(() => {
-      const nextSearch = searchTerm.trim();
+      const nextSearch = searchTerm.normalize("NFC").trim();
       setDebouncedSearch(nextSearch);
       setShowExamples(false);
 
@@ -254,22 +260,26 @@ export default function DictionaryPage() {
   });
 
   const totalWords = sourcesData?.reduce((sum, source) => sum + source.count, 0) || 0;
-  const queryIsLongEnough = debouncedSearch.length >= 2;
-  const containsArabic = /[\u0600-\u06FF]/.test(debouncedSearch);
+  const normalizedDebouncedSearch = React.useMemo(
+    () => normalizeSearchTerm(debouncedSearch),
+    [debouncedSearch],
+  );
+  const queryIsLongEnough = Array.from(normalizedDebouncedSearch).length >= 2;
+  const containsArabic = hasArabicLetters(debouncedSearch);
 
   const {
     data: entries = [],
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["dictionary", debouncedSearch, selectedSources],
-    queryFn: () => getDictionaryEntries(debouncedSearch, selectedSources),
+    queryKey: ["dictionary", normalizedDebouncedSearch, selectedSources],
+    queryFn: () => getDictionaryEntries(normalizedDebouncedSearch, selectedSources),
     enabled: queryIsLongEnough && selectedSources.length > 0,
   });
 
   const { data: examplesData } = useQuery({
-    queryKey: ["examples", debouncedSearch],
-    queryFn: () => searchExamples(debouncedSearch, 20),
+    queryKey: ["examples", normalizedDebouncedSearch],
+    queryFn: () => searchExamples(normalizedDebouncedSearch, 20),
     enabled: queryIsLongEnough && containsArabic && selectedSources.includes("Ghoniy"),
   });
 
@@ -305,15 +315,15 @@ export default function DictionaryPage() {
 
   const highlightWord = (text: string, word: string) => {
     if (!word || !text) return text;
-    const normalizedWord = word.replace(/[\u064B-\u0652\u0670\u0671]/g, "");
+    const normalizedWord = stripArabicMarks(word);
     const escapedCharacters = Array.from(normalizedWord)
       .map((character) => character.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-      .join("[\u064B-\u0652\u0670\u0671]*");
+      .join(`${ARABIC_MARKS_SOURCE}*`);
 
     if (!escapedCharacters) return text;
     const regex = new RegExp(`(${escapedCharacters})`, "gi");
     return text.split(regex).map((part, index) => {
-      const normalizedPart = part.replace(/[\u064B-\u0652\u0670\u0671]/g, "");
+      const normalizedPart = stripArabicMarks(part);
       return normalizedPart.toLowerCase() === normalizedWord.toLowerCase() ? (
         <mark key={index} className="rounded bg-amber-100 px-1 text-amber-900">{part}</mark>
       ) : part;

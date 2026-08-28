@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Search, X } from "lucide-react";
+import { detectSearchScript, getSearchDirection } from "@shared/search";
 
 interface HeroProps {
   searchTerm: string;
@@ -10,6 +11,9 @@ interface HeroProps {
 
 export function Hero({ searchTerm, setSearchTerm, onSubmit, totalWords }: HeroProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const searchScript = detectSearchScript(searchTerm);
+  const isArabic = searchScript === "arabic";
+  const inputDirection = getSearchDirection(searchTerm);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -54,14 +58,24 @@ export function Hero({ searchTerm, setSearchTerm, onSubmit, totalWords }: HeroPr
               <Search className="ml-4 h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
               <input
                 ref={inputRef}
-                type="search"
+                type="text"
                 inputMode="search"
-                dir="auto"
+                enterKeyHint="search"
+                dir={inputDirection}
+                lang={isArabic ? "ar" : "uz"}
                 autoComplete="off"
+                autoCapitalize="none"
+                spellCheck={false}
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
+                aria-label="Arabcha yoki o'zbekcha so'z"
+                aria-describedby="search-guidance"
                 placeholder="Masalan: كِتَابٌ yoki kitob"
-                className="h-12 min-w-0 flex-1 bg-transparent px-3 text-base font-medium text-slate-900 outline-none placeholder:font-normal placeholder:text-slate-400 sm:text-lg"
+                className={`h-12 min-w-0 flex-1 bg-transparent px-3 font-medium text-slate-900 outline-none placeholder:font-sans placeholder:text-base placeholder:font-normal placeholder:text-slate-400 sm:placeholder:text-lg ${
+                  isArabic
+                    ? "font-arabic text-right text-xl leading-[1.8] sm:text-2xl"
+                    : "font-sans text-left text-base sm:text-lg"
+                }`}
                 data-testid="input-search"
               />
 
@@ -87,8 +101,12 @@ export function Hero({ searchTerm, setSearchTerm, onSubmit, totalWords }: HeroPr
             </div>
           </form>
 
-          <p className="mt-3 text-xs text-emerald-50/55">
-            Qidiruv harakat belgilarini hisobga olmaydi · Natijalar lug'at manbasi bilan ko'rsatiladi
+          <p id="search-guidance" className="mt-3 text-xs text-emerald-50/55" aria-live="polite">
+            {isArabic
+              ? "Arabcha qidiruv · harakatli va harakatsiz yozuv bir xil topiladi"
+              : searchScript === "latin"
+                ? "O'zbekcha qidiruv · so'z yozilishi avtomatik aniqlandi"
+                : "Arabcha yoki o'zbekcha yozing · yozuv yo'nalishi avtomatik aniqlanadi"}
           </p>
         </div>
       </div>

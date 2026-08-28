@@ -31,11 +31,13 @@ export const DICTIONARY_SOURCES = [
 ] as const;
 
 import { searchOffline, isOfflineReady } from './offlineDb';
+import { normalizeSearchTerm } from '@shared/search';
 
 // API Functions
 export async function getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
   const params = new URLSearchParams();
-  if (search) params.set('search', search);
+  const normalizedSearch = search ? normalizeSearchTerm(search) : '';
+  if (normalizedSearch) params.set('search', normalizedSearch);
   if (sources && sources.length > 0) params.set('sources', sources.join(','));
   
   const url = params.toString() ? `/api/dictionary?${params.toString()}` : '/api/dictionary';
@@ -51,9 +53,9 @@ export async function getDictionaryEntries(search?: string, sources?: string[]):
     
     return data;
   } catch (error) {
-    if (search && await isOfflineReady()) {
-      console.log('Using offline search for:', search);
-      return searchOffline(search, sources || ['Ghoniy']);
+    if (normalizedSearch && await isOfflineReady()) {
+      console.log('Using offline search for:', normalizedSearch);
+      return searchOffline(normalizedSearch, sources || ['Ghoniy']);
     }
     throw error;
   }
@@ -115,7 +117,7 @@ export interface ExampleSearchResponse {
 
 export async function searchExamples(word: string, limit: number = 30): Promise<ExampleSearchResponse> {
   const params = new URLSearchParams();
-  params.set('word', word);
+  params.set('word', normalizeSearchTerm(word));
   params.set('limit', limit.toString());
   
   const response = await fetch(`/api/dictionary/examples?${params.toString()}`);

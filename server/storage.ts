@@ -16,8 +16,14 @@ import {
   contactMessages,
   broadcasts
 } from "@shared/schema";
+import {
+  ARABIC_MARKS_SOURCE,
+  hasArabicLetters,
+  normalizeArabicForSearch,
+  normalizeSearchTerm,
+} from "@shared/search";
 import { db } from "./db";
-import { eq, ilike, or, inArray, and, desc } from "drizzle-orm";
+import { eq, or, inArray, and, desc } from "drizzle-orm";
 import { sql } from "drizzle-orm";
 import { dictionaryCache, getCacheKey } from "./cache";
 
@@ -113,23 +119,30 @@ export class DatabaseStorage implements IStorage {
 
     const conditions: any[] = [];
     
-    // Normalize search term by stripping Arabic diacritics
-    const normalizedSearch = search ? this.stripArabicDiacritics(search) : '';
+    const normalizedSearch = search ? normalizeSearchTerm(search) : '';
+    const isArabicSearch = search ? hasArabicLetters(search) : false;
+    const normalizedArabicColumn = sql`translate(
+      regexp_replace(${dictionaryEntries.arabic}, ${ARABIC_MARKS_SOURCE}, '', 'g'),
+      ${"ٱأإآىؤئیک"},
+      ${"اااايوييك"}
+    )`;
+    const normalizedUzbekColumn = sql`translate(
+      lower(${dictionaryEntries.uzbek}),
+      ${"ʻʼ’‘`´"},
+      ${"''''''"}
+    )`;
     
-    if (search) {
-      // Detect if search is Arabic (contains Arabic characters)
-      const isArabicSearch = /[\u0600-\u06FF]/.test(search);
-      
+    if (normalizedSearch) {
       if (isArabicSearch) {
         // Arabic search - search in Arabic field only
         conditions.push(
-          sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`
+          sql`${normalizedArabicColumn} ILIKE ${'%' + normalizedSearch + '%'}`
         );
       } else {
         // Uzbek/Latin search - search only in uzbek field (main translation)
         // This prevents showing unrelated results from examples
         conditions.push(
-          ilike(dictionaryEntries.uzbek, `%${normalizedSearch}%`)
+          sql`${normalizedUzbekColumn} LIKE ${'%' + normalizedSearch + '%'}`
         );
       }
     }
@@ -141,18 +154,15 @@ export class DatabaseStorage implements IStorage {
     if (conditions.length > 0) {
       const whereClause = conditions.length === 1 ? conditions[0] : and(...conditions);
       
-      if (search) {
-        // Detect if search is Arabic (contains Arabic characters)
-        const isArabicSearch = /[\u0600-\u06FF]/.test(search);
-        
+      if (normalizedSearch) {
         if (isArabicSearch) {
           // Arabic search ordering
           return await db.select().from(dictionaryEntries)
             .where(whereClause)
             .orderBy(
               sql`CASE 
-                WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch} THEN 0
-                WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch + '%'} THEN 1
+                WHEN ${normalizedArabicColumn} ILIKE ${normalizedSearch} THEN 0
+                WHEN ${normalizedArabicColumn} ILIKE ${normalizedSearch + '%'} THEN 1
                 ELSE 2
               END`,
               sql`length(${dictionaryEntries.arabic})`
@@ -164,9 +174,9 @@ export class DatabaseStorage implements IStorage {
             .where(whereClause)
             .orderBy(
               sql`CASE 
-                WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch} THEN 0
-                WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch + '%'} THEN 1
-                WHEN ${dictionaryEntries.uzbek} ILIKE ${'% ' + normalizedSearch + '%'} THEN 2
+                WHEN ${normalizedUzbekColumn} = ${normalizedSearch} THEN 0
+                WHEN ${normalizedUzbekColumn} LIKE ${normalizedSearch + '%'} THEN 1
+                WHEN ${normalizedUzbekColumn} LIKE ${'% ' + normalizedSearch + '%'} THEN 2
                 ELSE 3
               END`,
               sql`COALESCE(length(${dictionaryEntries.uzbek}), 999)`
@@ -179,10 +189,6 @@ export class DatabaseStorage implements IStorage {
     }
     
     return await db.select().from(dictionaryEntries).limit(100);
-  }
-
-  private stripArabicDiacritics(text: string): string {
-    return text.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
   }
 
   async getDictionaryEntry(id: number): Promise<DictionaryEntry | undefined> {
@@ -359,7 +365,12 @@ export class DatabaseStorage implements IStorage {
     uzbekExample: string;
     uzbekMeaning: string;
   }[]> {
-    const normalizedWord = this.stripArabicDiacritics(word);
+    const normalizedWord = normalizeArabicForSearch(word);
+    const normalizedMeaningsColumn = sql`translate(
+      regexp_replace(${dictionaryEntries.meaningsJson}::text, ${ARABIC_MARKS_SOURCE}, '', 'g'),
+      ${"ٱأإآىؤئیک"},
+      ${"اااايوييك"}
+    )`;
     
     const entries = await db.select({
       id: dictionaryEntries.id,
@@ -372,7 +383,7 @@ export class DatabaseStorage implements IStorage {
           sql`${dictionaryEntries.meaningsJson} IS NOT NULL`,
           sql`${dictionaryEntries.meaningsJson} != ''`,
           sql`${dictionaryEntries.meaningsJson} != '[]'`,
-          sql`regexp_replace(${dictionaryEntries.meaningsJson}::text, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedWord + '%'}`
+          sql`${normalizedMeaningsColumn} ILIKE ${'%' + normalizedWord + '%'}`
         )
       )
       .limit(100);
@@ -392,7 +403,7 @@ export class DatabaseStorage implements IStorage {
         const meanings = JSON.parse(entry.meaningsJson);
         for (const meaning of meanings) {
           if (meaning.arabicExample) {
-            const normalizedExample = this.stripArabicDiacritics(meaning.arabicExample);
+            const normalizedExample = normalizeArabicForSearch(meaning.arabicExample);
             if (normalizedExample.includes(normalizedWord)) {
               results.push({
                 entryId: entry.id,
