@@ -1,0 +1,3310 @@
+{
+  "package": "ghoniy-approved-batch-000301-000400",
+  "dictionarySource": "Ghoniy",
+  "status": "approved_with_holds_for_staged_apply",
+  "productionReady": false,
+  "stagedApplyReady": true,
+  "productionApplied": false,
+  "generatedAt": "2026-08-29",
+  "safeguards": {
+    "sourceHashRequiredAtApply": true,
+    "revisionBackupRequired": true,
+    "transactionalApplyRequired": true,
+    "rollbackRequired": true,
+    "heldEntriesMustBeExcluded": true
+  },
+  "totals": {
+    "entries": 100,
+    "senses": 123,
+    "applyEligibleEntries": 98,
+    "heldEntries": 2
+  },
+  "heldEntries": [
+    {
+      "id": 79441,
+      "arabic": "Щ…ЩЋШ§ШІЩЏШ±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "reason": "review_hold",
+      "note": "Zamonaviy lotincha oilaga ishonchli tenglashtirilmaguncha ishlab turgan bazaga kiritilmaydi."
+    },
+    {
+      "id": 79498,
+      "arabic": "Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩЊ",
+      "reason": "review_hold",
+      "note": "Ш§Щ„Щ’Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄ oilasining zamonaviy lotincha muqobili ishonchli manbalarda aniqlanmadi; tavsif tarjima qilindi, ammo tur majburan belgilanmadi"
+    }
+  ],
+  "entries": [
+    {
+      "sequenceIndex": 301,
+      "id": 79425,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш«ЩЋЩ„Ш§Ш«Щ€Щ†ЩЋ",
+      "root": "Ш«Щ„Ш«вЂЏ",
+      "grammarLabel": "Ш«ЩЋЩ„Ш§Ш«ЩЏ Ш№ЩЋШґЩЋШ±Ш§ШЄЩЌШЊ Щ„ЩђЩ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±Щђ Щ€Ш§Щ„Щ’Щ…ЩЏШ¤ЩЋЩ†Щ‘ЩЋШ«Щђ",
+      "morphology": "",
+      "arabicDefinition": "(Ш«ЩЋЩ„Ш§Ш«ЩЏ Ш№ЩЋШґЩЋШ±Ш§ШЄЩЌШЊ Щ„ЩђЩ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±Щђ Щ€Ш§Щ„Щ’Щ…ЩЏШ¤ЩЋЩ†Щ‘ЩЋШ«Щђ)ШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Ш№ЩЋШЇЩЋШЇЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ„Щ’ЩЃШ§ШёЩђ Ш§Щ„Ш№ЩЏЩ‚Щ€ШЇЩђ Щ€ЩЋШҐЩђШ№Щ’Ш±Ш§ШЁЩЏЩ‡ЩЏ ЩЉЩЋШ¬Щ’Ш±ЩђЩЉ Ш№ЩЋЩ„ЩЋЩЉЩ’Щ‡Щђ Щ…ЩЋШ¬Щ’Ш±ЩЋЩ‰ Ш¬ЩЋЩ…Щ’Ш№Щђ Ш§Щ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ„ЩђЩ…ЩђШЊ ШЈЩЋЩЉЩ’ ЩЉЩЏШ±Щ’ЩЃЩЋШ№ЩЏ ШЁЩђШ§Щ„Щ€Ш§Щ€Щђ Щ€ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Щ€ЩЉЩЏШ¬ЩЋШ±Щ‘ЩЏ ШЁЩђШ§Щ„ЩЉШ§ШЎЩђШЊ Щ€ЩЋЩ…ЩЋШ№Щ’ШЇЩ€ШЇЩЏЩ‡ЩЏ ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Ш№Щ„Щ‰ Ш§Щ„ШЄЩ‘ЩЋЩ…Щ’ЩЉЩђЩЉШІЩђ. ШЈ- Щ€ЩЋШµЩЋЩ„ЩЋ Ш«ЩЋЩ„Ш§Ш«Щ€Щ†ЩЋ Ш¶ЩЋЩЉЩ’ЩЃШ§Щ‹. ШЁ- Ш§ЩђЩ…Щ’ШЄЩЋШ­ЩЋЩ†Щ’ШЄЩЏ Ш«ЩЋЩ„Ш§Ш«ЩђЩЉЩ†ЩЋ Ш·Ш§Щ„ЩђШЁШ§Щ‹. Ш¬- Щ…ЩЋШ±ЩЋШ±Щ’ШЄЩЏ ШЁЩђШ«ЩЋЩ„Ш§Ш«ЩђЩЉЩ†ЩЋ Ш¬ЩЏЩ†Щ’ШЇЩђЩЉЩ‘Ш§Щ‹.",
+      "sourceHash": "3df474167c82d999204e7d21ed8b25ba60e04134e041156a14bbe7c5bfd4499c",
+      "wordType": "son",
+      "uzbek": "oвЂttiz; arab tilida bosh kelishikda Ш«ЩЋЩ„Ш§Ш«Щ€Щ†ЩЋ, tushum va qaratqichda Ш«ЩЋЩ„Ш§Ш«ЩђЩЉЩ†ЩЋ",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Ш№ЩЋШЇЩЋШЇЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ„Щ’ЩЃШ§ШёЩђ Ш§Щ„Ш№ЩЏЩ‚Щ€ШЇЩђ Щ€ЩЋШҐЩђШ№Щ’Ш±Ш§ШЁЩЏЩ‡ЩЏ ЩЉЩЋШ¬Щ’Ш±ЩђЩЉ Ш№ЩЋЩ„ЩЋЩЉЩ’Щ‡Щђ Щ…ЩЋШ¬Щ’Ш±ЩЋЩ‰ Ш¬ЩЋЩ…Щ’Ш№Щђ Ш§Щ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ„ЩђЩ…ЩђШЊ ШЈЩЋЩЉЩ’ ЩЉЩЏШ±Щ’ЩЃЩЋШ№ЩЏ ШЁЩђШ§Щ„Щ€Ш§Щ€Щђ Щ€ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Щ€ЩЉЩЏШ¬ЩЋШ±Щ‘ЩЏ ШЁЩђШ§Щ„ЩЉШ§ШЎЩђШЊ Щ€ЩЋЩ…ЩЋШ№Щ’ШЇЩ€ШЇЩЏЩ‡ЩЏ ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Ш№Щ„Щ‰ Ш§Щ„ШЄЩ‘ЩЋЩ…Щ’ЩЉЩђЩЉШІЩђ. ШЈ- Щ€ЩЋШµЩЋЩ„ЩЋ Ш«ЩЋЩ„Ш§Ш«Щ€Щ†ЩЋ Ш¶ЩЋЩЉЩ’ЩЃШ§Щ‹. ШЁ- Ш§ЩђЩ…Щ’ШЄЩЋШ­ЩЋЩ†Щ’ШЄЩЏ Ш«ЩЋЩ„Ш§Ш«ЩђЩЉЩ†ЩЋ Ш·Ш§Щ„ЩђШЁШ§Щ‹. Ш¬- Щ…ЩЋШ±ЩЋШ±Щ’ШЄЩЏ ШЁЩђШ«ЩЋЩ„Ш§Ш«ЩђЩЉЩ†ЩЋ Ш¬ЩЏЩ†Щ’ШЇЩђЩЉЩ‘Ш§Щ‹.",
+          "uzbekMeaning": "uchta oвЂnlikka teng son вЂ” oвЂttiz; muzakkar salim koвЂplik kabi bosh kelishikda vov bilan, tushum va qaratqichda ya bilan turlanadi, sanaluvchi ot esa birlik tushumda tamyiz boвЂladi",
+          "uzbekExample": "OвЂttiz mehmon keldi; oвЂttiz talabani imtihon qildim; oвЂttiz askarning yonidan oвЂtdim.",
+          "register": "arab tili grammatikasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_case_grammar",
+        "issues": [
+          "Uchta misol alohida maвЂ™no emas, oвЂttiz sonining bosh, tushum va qaratqich shakllarini koвЂrsatuvchi grammatik misollar sifatida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 302,
+      "id": 79426,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш«ЩЋЩ…Ш§Щ†Щ€Щ†ЩЋ",
+      "root": "Ш«Щ…Щ†вЂЏ",
+      "grammarLabel": "Ш«ЩЋЩ…Ш§Щ†ЩђЩЉ Ш№ЩЋШґЩЋШ±Ш§ШЄЩЌ (80",
+      "morphology": "Щ„ЩђЩ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±ЩЋ Щ€Ш§Щ„Щ’Щ…ЩЏШ¤ЩЋЩ†Щ‘ЩЋШ«Щђ).",
+      "arabicDefinition": "(Ш«ЩЋЩ…Ш§Щ†ЩђЩЉ Ш№ЩЋШґЩЋШ±Ш§ШЄЩЌ (80) Щ„ЩђЩ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±ЩЋ Щ€Ш§Щ„Щ’Щ…ЩЏШ¤ЩЋЩ†Щ‘ЩЋШ«Щђ).| Щ‡ЩЏЩ€ЩЋ Ш№ЩЋШЇЩЋШЇЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ„Щ’ЩЃШ§ШёЩђ Ш§Щ„Ш№ЩЏЩ‚Щ€ШЇЩђ ЩЉЩЏШіШ§Щ€ЩђЩЉ Ш«ЩЋЩ…Ш§Щ†ЩЉ Ш№ЩЋШґЩЋШ±Ш§ШЄЩЌ Щ„ЩђЩ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ± Щ€Ш§Щ„Щ’Щ…ЩЏШ¤ЩЋЩ†Щ‘ЩЋШ«ШЊ Щ€ЩЋШҐЩђШ№Щ’Ш±Ш§ШЁЩЏЩ‡ЩЏ ЩЉЩЋШ¬Щ’Ш±ЩЉ Ш№ЩЋЩ„ЩЋЩЉЩ’Щ‡Щђ Щ…ЩЋШ¬Щ’Ш±Щ‰ Ш¬ЩЋЩ…Щ’Ш№Щђ Ш§Щ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ„ЩђЩ…ЩђШЊ ШЈЩЋЩЉЩ’ ЩЉЩЏШ±Щ’ЩЃЩЋШ№ЩЏ ШЁЩђШ§Щ„Щ€Ш§Щ€Щђ Щ€ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Щ€ЩЉЩЏШ¬ЩЋШ±Щ‘ЩЏ ШЁЩђШ§Щ„ЩЉШ§ШЎЩђШЊ Щ€ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Ш№Щ„Щ‰ Ш§Щ„ШЄЩ‘ЩЋЩ…Щ’ЩЉЩђЩЉШІЩђ. ШЈ- Ш®ЩЋШ±ЩЋШ¬ЩЋ Ш«ЩЋЩ…Ш§Щ†Щ€Щ†ЩЋ Ш¬ЩЏЩ†Щ’ШЇЩђЩЉЩ‘Ш§Щ‹ :ШЊ :Ш§ЩђЩ†Щ’Щ‚ЩЋШ¶ЩЋШЄЩ’ Ш«ЩЋЩ…Ш§Щ†Щ€Щ†ЩЋ ШіЩЋЩ†ЩЋШ©Щ‹ Ш№Щ„Щ‰ Щ€ЩЋЩЃШ§ШЄЩђЩ‡Щђ. ШЁ- ШµЩЋШ±ЩЋЩЃЩ’ШЄЩЏ Ш«ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ ШЇЩђШ±Щ’Щ‡ЩЋЩ…Ш§Щ‹- ШЁЩЋЩ„ЩЋШєЩЋ Ш§Щ„Щ€Ш§Щ„ЩђШЇЩЏ Ш§Щ„Ш«Щ‘ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ Щ…ЩђЩ†Щ’ Ш№ЩЏЩ…Щ’Ш±ЩђЩ‡Щђ. Ш¬- Щ…ЩЋШ±ЩЋШ±Щ’ШЄЩЏ ШЁЩђШ«ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ Ш¬ЩЏЩ†Щ’ШЇЩђЩЉЩ‘Ш§Щ‹.",
+      "sourceHash": "c0bd7a58da26b05d0952b86537f6ef661d69a2a472e4e14ccbe1a3788b7e21fe",
+      "wordType": "son",
+      "uzbek": "sakson; arab tilida bosh kelishikda Ш«ЩЋЩ…Ш§Щ†Щ€Щ†ЩЋ, tushum va qaratqichda Ш«ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Щ‡ЩЏЩ€ЩЋ Ш№ЩЋШЇЩЋШЇЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ„Щ’ЩЃШ§ШёЩђ Ш§Щ„Ш№ЩЏЩ‚Щ€ШЇЩђ ЩЉЩЏШіШ§Щ€ЩђЩЉ Ш«ЩЋЩ…Ш§Щ†ЩЉ Ш№ЩЋШґЩЋШ±Ш§ШЄЩЌ Щ„ЩђЩ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ± Щ€Ш§Щ„Щ’Щ…ЩЏШ¤ЩЋЩ†Щ‘ЩЋШ«ШЊ Щ€ЩЋШҐЩђШ№Щ’Ш±Ш§ШЁЩЏЩ‡ЩЏ ЩЉЩЋШ¬Щ’Ш±ЩЉ Ш№ЩЋЩ„ЩЋЩЉЩ’Щ‡Щђ Щ…ЩЋШ¬Щ’Ш±Щ‰ Ш¬ЩЋЩ…Щ’Ш№Щђ Ш§Щ„Щ’Щ…ЩЏШ°ЩЋЩѓЩ‘ЩЋШ±Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ„ЩђЩ…ЩђШЊ ШЈЩЋЩЉЩ’ ЩЉЩЏШ±Щ’ЩЃЩЋШ№ЩЏ ШЁЩђШ§Щ„Щ€Ш§Щ€Щђ Щ€ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Щ€ЩЉЩЏШ¬ЩЋШ±Щ‘ЩЏ ШЁЩђШ§Щ„ЩЉШ§ШЎЩђШЊ Щ€ЩЉЩЏЩ†Щ’ШµЩЋШЁЩЏ Ш№Щ„Щ‰ Ш§Щ„ШЄЩ‘ЩЋЩ…Щ’ЩЉЩђЩЉШІЩђ. ШЈ- Ш®ЩЋШ±ЩЋШ¬ЩЋ Ш«ЩЋЩ…Ш§Щ†Щ€Щ†ЩЋ Ш¬ЩЏЩ†Щ’ШЇЩђЩЉЩ‘Ш§Щ‹",
+          "arabicGloss": "ШЊ :Ш§ЩђЩ†Щ’Щ‚ЩЋШ¶ЩЋШЄЩ’ Ш«ЩЋЩ…Ш§Щ†Щ€Щ†ЩЋ ШіЩЋЩ†ЩЋШ©Щ‹ Ш№Щ„Щ‰ Щ€ЩЋЩЃШ§ШЄЩђЩ‡Щђ. ШЁ- ШµЩЋШ±ЩЋЩЃЩ’ШЄЩЏ Ш«ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ ШЇЩђШ±Щ’Щ‡ЩЋЩ…Ш§Щ‹- ШЁЩЋЩ„ЩЋШєЩЋ Ш§Щ„Щ€Ш§Щ„ЩђШЇЩЏ Ш§Щ„Ш«Щ‘ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ Щ…ЩђЩ†Щ’ Ш№ЩЏЩ…Щ’Ш±ЩђЩ‡Щђ. Ш¬- Щ…ЩЋШ±ЩЋШ±Щ’ШЄЩЏ ШЁЩђШ«ЩЋЩ…Ш§Щ†ЩђЩЉЩ†ЩЋ Ш¬ЩЏЩ†Щ’ШЇЩђЩЉЩ‘Ш§Щ‹.",
+          "uzbekMeaning": "sakkizta oвЂnlikka teng son вЂ” sakson; muzakkar salim koвЂplik kabi bosh kelishikda vov bilan, tushum va qaratqichda ya bilan turlanadi, sanaluvchi ot esa birlik tushumda tamyiz boвЂladi",
+          "uzbekExample": "Sakson askar chiqdi; sakson dirham sarfladim; sakson askarning yonidan oвЂtdim.",
+          "register": "arab tili grammatikasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_source_punctuation_cleanup",
+        "issues": [
+          "Manbadagi takroriy ikki nuqta va chalkash misol ajratkichlari oвЂzbekcha tarjimaga koвЂchirilmagan",
+          "Sakson sonining kelishik turlanishi bitta grammatik maвЂ™noda berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 303,
+      "id": 79427,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш±ЩЋШІЩЋЩ…ЩЋ",
+      "root": "Ш±ШІЩ…вЂЏ",
+      "grammarLabel": "Ш«Щ„Ш§ШЊ Щ„Ш§ШІЩ…",
+      "morphology": "",
+      "arabicDefinition": "(Ш«Щ„Ш§ШЊ Щ„Ш§ШІЩ…).| Ш±ЩЋШІЩЋЩ…ЩЋШЊЩЉЩЋШ±Щ’ШІЩЏЩ…ЩЏШЊ Щ…ШµШЇШ± Ш±ЩЋШІЩ’Щ…ЩЋШ©ЩЊ- Ш±ЩЋШІЩЋЩ…ЩЋ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩЏ : ШЁЩЋШ±ЩЋШЇЩЋ.",
+      "sourceHash": "68b6692e917506e25a641511095808eb3385425b74cacd8b7e45d81106baf584",
+      "wordType": "feвЂ™l",
+      "uzbek": "qish sovimoq, qishda sovuq tushmoq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Ш±ЩЋШІЩЋЩ…ЩЋШЊЩЉЩЋШ±Щ’ШІЩЏЩ…ЩЏШЊ Щ…ШµШЇШ± Ш±ЩЋШІЩ’Щ…ЩЋШ©ЩЊ- Ш±ЩЋШІЩЋЩ…ЩЋ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩЏ",
+          "arabicGloss": "ШЁЩЋШ±ЩЋШЇЩЋ.",
+          "uzbekMeaning": "qish sovimoq yoki qishda havo sovib ketmoq",
+          "uzbekExample": "Qish sovidi, havo keskin salqinlashdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_semantic_correction",
+        "issues": [
+          "Manbada faqat Ш±ЩЋШІЩЋЩ…ЩЋ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩЏ : ШЁЩЋШ±ЩЋШЇЩЋ maвЂ™nosi bor; avvalgi tarjimadagi sunвЂ™iy takror olib tashlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 304,
+      "id": 79428,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ†ЩђШіЩЋШ§ШЎЩЊ",
+      "root": "Щ†ШіЩ€вЂЏ",
+      "grammarLabel": "Ш¬ЩЋЩ…Щ’Ш№ЩЊ Щ„ЩђЩ„Щ’Щ…ЩЋШ±Щ’ШЈЩЋШ©Щђ Щ…ЩђЩ†Щ’ ШєЩЋЩЉЩ’Ш±Щђ Щ„ЩЋЩЃЩ’ШёЩђЩ‡ЩЋШ§",
+      "morphology": "",
+      "arabicDefinition": "(Ш¬ЩЋЩ…Щ’Ш№ЩЊ Щ„ЩђЩ„Щ’Щ…ЩЋШ±Щ’ШЈЩЋШ©Щђ Щ…ЩђЩ†Щ’ ШєЩЋЩЉЩ’Ш±Щђ Щ„ЩЋЩЃЩ’ШёЩђЩ‡ЩЋШ§).|1- Щ†ЩђШµЩ’ЩЃЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†Щђ Ш§Щ„Ш№ЩЋШ§Щ„ЩЋЩ…Щђ Щ†ЩђШіЩЋШ§ШЎЩЊ : Щ†ЩђШµЩ’ЩЃЩЏ Ш§Щ„Ш±Щ‘ЩђШ¬ЩЋШ§Щ„Щђ.|2- Щ†ЩђШіЩЋШ§ШЎЩЏ Ш§Щ„Щ†Щ‘ЩЋШЁЩђЩЉЩ‘Щђ : ШІЩЋЩ€Щ’Ш¬ЩЋШ§ШЄЩЏЩ‡ЩЏ.Ш§Щ„ШЈШ­ШІШ§ШЁ ШўЩЉШ© 32 ЩЉЩЋШ§ Щ†ЩђШіЩЋШ§ШЎЩЋ Ш§Щ„Щ†Щ‘ЩЋШЁЩђЩЉЩ‘Щђ Щ„ЩЋШіЩ’ШЄЩЏЩ†Щ‘ЩЋ ЩѓЩЋШЈЩЋШ­ЩЋШЇЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ†Щ‘ЩђШіЩЋШ§ШЎЩђ ШҐЩђЩ†Щђ Ш§ШЄЩ‘ЩЋЩ‚ЩЋЩЉЩ’ШЄЩЏЩ†Щ‘ЩЋ (Щ‚Ш±ШўЩ†).",
+      "sourceHash": "6b5526a27ae46657935b1c4f4ed924f8b63aca467a59a6a820c0e021e8e9d909",
+      "wordType": "koвЂplikdagi ot",
+      "uzbek": "1. ayollar; 2. PaygвЂambarning ayollari вЂ” zavjalari",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Щ†ЩђШµЩ’ЩЃЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†Щђ Ш§Щ„Ш№ЩЋШ§Щ„ЩЋЩ…Щђ Щ†ЩђШіЩЋШ§ШЎЩЊ",
+          "arabicGloss": "Щ†ЩђШµЩ’ЩЃЩЏ Ш§Щ„Ш±Щ‘ЩђШ¬ЩЋШ§Щ„Щђ.",
+          "uzbekMeaning": "ayol soвЂzining oвЂzga oвЂzakdan yasalgan koвЂpligi вЂ” ayollar",
+          "uzbekExample": "Dunyo aholisining bir qismi ayollar, bir qismi erkaklardir."
+        },
+        {
+          "index": 2,
+          "arabicExample": "Щ†ЩђШіЩЋШ§ШЎЩЏ Ш§Щ„Щ†Щ‘ЩЋШЁЩђЩЉЩ‘Щђ",
+          "arabicGloss": "ШІЩЋЩ€Щ’Ш¬ЩЋШ§ШЄЩЏЩ‡ЩЏ.Ш§Щ„ШЈШ­ШІШ§ШЁ ШўЩЉШ© 32 ЩЉЩЋШ§ Щ†ЩђШіЩЋШ§ШЎЩЋ Ш§Щ„Щ†Щ‘ЩЋШЁЩђЩЉЩ‘Щђ Щ„ЩЋШіЩ’ШЄЩЏЩ†Щ‘ЩЋ ЩѓЩЋШЈЩЋШ­ЩЋШЇЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ†Щ‘ЩђШіЩЋШ§ШЎЩђ ШҐЩђЩ†Щђ Ш§ШЄЩ‘ЩЋЩ‚ЩЋЩЉЩ’ШЄЩЏЩ†Щ‘ЩЋ (Щ‚Ш±ШўЩ†).",
+          "uzbekMeaning": "PaygвЂambarning ayollari, yaвЂ™ni u zotning zavjalari",
+          "uzbekExample": "Ahzob surasi 32-oyatda: В«Ey PaygвЂambar ayollari! Sizlar, agar taqvo qilsangiz, boshqa ayollardan birortasi kabi emassizlarВ», deyiladi.",
+          "register": "QurвЂ™on ifodasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_quran_reference",
+        "issues": [
+          "Ayol soвЂzining oвЂzga oвЂzakdan koвЂplik shakli ekani va Ahzob surasi 32-oyatdagi maxsus maвЂ™no alohida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 305,
+      "id": 79429,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЋШ§ШІЩЋШ§Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "Ш¬ШєШ±Ш§ЩЃЩЉШ§",
+      "morphology": "",
+      "arabicDefinition": "(Ш¬ШєШ±Ш§ЩЃЩЉШ§).|-ШЁЩЋШ§ШІЩЋШ§Ш±ЩЏ Ш§Щ„Щ’Щ…ЩЋШЇЩђЩЉЩ†ЩЋШ©Щђ : ШіЩЏЩ€Щ‚ЩЊ ШЄЩђШ¬ЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ ШЁЩђЩ‡ЩЋШ§ ШЇЩЋЩѓЩЋШ§ЩѓЩђЩЉЩ†ЩЏ Щ„ЩђШЁЩЋЩЉЩ’Ш№Щђ Щ…ЩЏШ®Щ’ШЄЩЋЩ„ЩђЩЃЩђ Ш§Щ„Щ’Щ…ЩЋЩ€ЩЋШ§ШЇЩ‘Щђ Щ€Ш§Щ„ШЁЩЋШ¶ЩЋШ§Ш¦Ш№Щђ.",
+      "sourceHash": "e045b9af07523d47bc52da09554187e7068cd67316c3613e275da028750977db",
+      "wordType": "ot",
+      "uzbek": "bozor, turli mol va mahsulotlar sotiladigan savdo joyi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ШЁЩЋШ§ШІЩЋШ§Ш±ЩЏ Ш§Щ„Щ’Щ…ЩЋШЇЩђЩЉЩ†ЩЋШ©Щђ",
+          "arabicGloss": "ШіЩЏЩ€Щ‚ЩЊ ШЄЩђШ¬ЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ ШЁЩђЩ‡ЩЋШ§ ШЇЩЋЩѓЩЋШ§ЩѓЩђЩЉЩ†ЩЏ Щ„ЩђШЁЩЋЩЉЩ’Ш№Щђ Щ…ЩЏШ®Щ’ШЄЩЋЩ„ЩђЩЃЩђ Ш§Щ„Щ’Щ…ЩЋЩ€ЩЋШ§ШЇЩ‘Щђ Щ€Ш§Щ„ШЁЩЋШ¶ЩЋШ§Ш¦Ш№Щђ.",
+          "uzbekMeaning": "turli mol, mahsulot va buyumlar sotiladigan doвЂkonlar jamlangan savdo joyi вЂ” bozor",
+          "uzbekExample": "Shahar bozorida turli mahsulotlar sotiladigan doвЂkonlar bor."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 306,
+      "id": 79430,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШҐЩЃЩ’Ш±ЩђЩЉЩ‚Щ’ЩЉЩЋШ§",
+      "root": "aniqlanmagan",
+      "grammarLabel": "Ш¬ШєШ±Ш§ЩЃЩЉШ§",
+      "morphology": "",
+      "arabicDefinition": "(Ш¬ШєШ±Ш§ЩЃЩЉШ§).| Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ ШЄЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШ§Щ„Щ‚Ш§Ш±Щ‘ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ€Щ’ШЇЩЋШ§ШЎЩђШЊ ШЄЩЏЩ‚Щ‘ШЇЩ‘ЩЋШ±ЩЏ Щ…ЩђШіЩЋШ§Ш­ЩЋШЄЩЏЩ‡ЩЋШ§ ШЁЩЂ (30 Щ…Щ„ЩЉЩ€Щ† ЩѓЩ„Щ…ВІ ) Щ€Ш№ШЇШЇ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡Ш§ ШЁЩЂ ( 554 Щ…Щ„ЩЉЩ€Щ† Щ†ШіЩ…Ш©).",
+      "sourceHash": "d1717cca3357f005b6e0d864f4ce4bd2897fc5bcf15b95de8994949c983df4d3",
+      "wordType": "atoqli ot",
+      "uzbek": "Afrika qitвЂ™asi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ ШЄЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШ§Щ„Щ‚Ш§Ш±Щ‘ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ€Щ’ШЇЩЋШ§ШЎЩђШЊ ШЄЩЏЩ‚Щ‘ШЇЩ‘ЩЋШ±ЩЏ Щ…ЩђШіЩЋШ§Ш­ЩЋШЄЩЏЩ‡ЩЋШ§ ШЁЩЂ (30 Щ…Щ„ЩЉЩ€Щ† ЩѓЩ„Щ…ВІ ) Щ€Ш№ШЇШЇ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡Ш§ ШЁЩЂ ( 554 Щ…Щ„ЩЉЩ€Щ† Щ†ШіЩ…Ш©).",
+          "uzbekMeaning": "Afrika вЂ” dunyoning yirik geografik qitвЂ™alaridan biri",
+          "uzbekExample": "Afrika shimoliy, gвЂarbiy, markaziy, sharqiy va janubiy hududlarga ajratib oвЂrganiladi.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_geography_check",
+        "issues": [
+          "Manbadagi 554 millionlik aholi soni eskirganligi uchun chiqarildi",
+          "В«Qora qitвЂ™aВ» tarixiy tamgвЂalovchi nomi asosiy zamonaviy taвЂ™rifga kiritilmadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 307,
+      "id": 79431,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЈЩЏЩ€Ш±ЩЏЩ€ШЁЩ‘ЩЋШ§",
+      "root": "aniqlanmagan",
+      "grammarLabel": "Ш¬ШєШ±Ш§ЩЃЩЉШ§",
+      "morphology": "",
+      "arabicDefinition": "(Ш¬ШєШ±Ш§ЩЃЩЉШ§).| Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ ШЄЩЏЩ‚ЩЋШЇЩ‘ЩЋШ±ЩЏ Щ…ЩђШіЩЋШ§Ш­ЩЋШЄЩЏЩ‡ЩЋШ§ ШЁЩЂ 10 Щ…Щ„ЩЉЩ€Щ† ЩѓЩ„Щ…ВІ Щ€ЩЋШ№ЩЋШЇЩЋШЇЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡ЩЋШ§ ШЁЩЂ 495 Щ…Щ„ЩЉЩ€Щ† Щ†ШіЩ…Ш©.",
+      "sourceHash": "ef807ea9d813b81cc0d09aca81cdc8fc0a1ab30f01a5b13fb244946291aa7924",
+      "wordType": "atoqli ot",
+      "uzbek": "Yevropa qitвЂ™asi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ ШЄЩЏЩ‚ЩЋШЇЩ‘ЩЋШ±ЩЏ Щ…ЩђШіЩЋШ§Ш­ЩЋШЄЩЏЩ‡ЩЋШ§ ШЁЩЂ 10 Щ…Щ„ЩЉЩ€Щ† ЩѓЩ„Щ…ВІ Щ€ЩЋШ№ЩЋШЇЩЋШЇЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡ЩЋШ§ ШЁЩЂ 495 Щ…Щ„ЩЉЩ€Щ† Щ†ШіЩ…Ш©.",
+          "uzbekMeaning": "Yevropa вЂ” Yevrosiyoning gвЂarbiy qismida joylashgan qitвЂ™a",
+          "uzbekExample": "Yevropa BMT statistik tasnifida alohida geografik mintaqa sifatida beriladi.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_geography_check",
+        "issues": [
+          "Manbadagi 495 millionlik aholi soni eskirganligi uchun chiqarildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 308,
+      "id": 79432,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШўШіЩђЩЉЩЋШ§",
+      "root": "aniqlanmagan",
+      "grammarLabel": "Ш¬ШєШ±Ш§ЩЃЩЉШ§",
+      "morphology": "",
+      "arabicDefinition": "(Ш¬ШєШ±Ш§ЩЃЩЉШ§).| Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ ЩЉЩЋШ­ЩЏШЇЩ‘ЩЏЩ‡ЩЋШ§ Ш§Щ„Щ’Щ…ЩЏШ­ЩђЩЉШ·ЩЏ Ш§Щ„Щ’Щ…ЩЏШЄЩЋШ¬ЩЋЩ…Щ‘ЩђШЇЩЏ Ш§Щ„ШґЩ‘ЩЋЩ…ЩЋШ§Щ„ЩЉЩ‘ЩЏ Щ€ЩЋШ§Щ„Щ’Щ…ЩЏШ­ЩђЩЉШ·ЩЋШ§Щ†Щђ Ш§Щ„Щ‡ЩђЩ†Щ’ШЇЩђЩЉЩ‘ЩЏ Щ€ЩЋШ§Щ„Щ‡ЩЋШ§ШЇЩђЩЉШЊ Щ€Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩЋШ§Щ† Ш§Щ„ШЈШЁЩ’ЩЉЩЋШ¶ЩЏ Ш§Щ„Щ’Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·ЩЏ Щ€ЩЋШ§Щ„ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Щ€ЩЋШЈЩ€Ш±ЩЏЩ€ШЁЩ‘ЩЋШ§ШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Щ…ЩђЩ†Щ’ ШЈЩѓЩ’ШЁЩЋШ±Щђ Ш§ЩЋЩ„Щ’Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Щ…ЩђШіЩЋШ§Ш­ЩЋШ© (44 Щ…ЩђЩ„Щ’ЩЉЩЏЩ€Щ† ЩѓЩ„Щ…ВІ) Щ€ЩЋШЈЩЋЩѓЩ’Ш«ЩЋШ±ЩђЩ‡ЩЋШ§ ШіЩЏЩѓЩ‘ЩЋШ§Щ†Щ‹Ш§ ( 2,8 Щ…Щ„ЩЉШ§Ш±Ш§Щ†).",
+      "sourceHash": "99b57aaec0dab454e3d9e888ed009fc88fb7d568922ec8188639720724639970",
+      "wordType": "atoqli ot",
+      "uzbek": "Osiyo qitвЂ™asi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ ЩЉЩЋШ­ЩЏШЇЩ‘ЩЏЩ‡ЩЋШ§ Ш§Щ„Щ’Щ…ЩЏШ­ЩђЩЉШ·ЩЏ Ш§Щ„Щ’Щ…ЩЏШЄЩЋШ¬ЩЋЩ…Щ‘ЩђШЇЩЏ Ш§Щ„ШґЩ‘ЩЋЩ…ЩЋШ§Щ„ЩЉЩ‘ЩЏ Щ€ЩЋШ§Щ„Щ’Щ…ЩЏШ­ЩђЩЉШ·ЩЋШ§Щ†Щђ Ш§Щ„Щ‡ЩђЩ†Щ’ШЇЩђЩЉЩ‘ЩЏ Щ€ЩЋШ§Щ„Щ‡ЩЋШ§ШЇЩђЩЉШЊ Щ€Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩЋШ§Щ† Ш§Щ„ШЈШЁЩ’ЩЉЩЋШ¶ЩЏ Ш§Щ„Щ’Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·ЩЏ Щ€ЩЋШ§Щ„ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Щ€ЩЋШЈЩ€Ш±ЩЏЩ€ШЁЩ‘ЩЋШ§ШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Щ…ЩђЩ†Щ’ ШЈЩѓЩ’ШЁЩЋШ±Щђ Ш§ЩЋЩ„Щ’Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Щ…ЩђШіЩЋШ§Ш­ЩЋШ© (44 Щ…ЩђЩ„Щ’ЩЉЩЏЩ€Щ† ЩѓЩ„Щ…ВІ) Щ€ЩЋШЈЩЋЩѓЩ’Ш«ЩЋШ±ЩђЩ‡ЩЋШ§ ШіЩЏЩѓЩ‘ЩЋШ§Щ†Щ‹Ш§ ( 2,8 Щ…Щ„ЩЉШ§Ш±Ш§Щ†).",
+          "uzbekMeaning": "Osiyo вЂ” maydoni va aholisi jihatidan dunyoning eng yirik qitвЂ™asi",
+          "uzbekExample": "Osiyo shimolda Shimoliy Muz okeani, sharqda Tinch okeani va janubda Hind okeani bilan tutashadi.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_geography_check",
+        "issues": [
+          "Manbadagi 2,8 milliardlik aholi soni eskirganligi uchun chiqarildi",
+          "Geografik chegaralar va qitвЂ™aning yirikligi zamonaviy, barqaror shaklda berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 309,
+      "id": 79433,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЈЩЏШіЩ’ШЄШ±ЩЋШ§Щ„ЩђЩЉШ§",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®Щ…ШіЩђШЊ ШЄЩЏЩ‚ШЇЩ‘Ш± Щ…ШіШ§Ш­ЩЋШЄЩЏЩ‡Ш§ ШЁЩЂ (7.700.000 ЩѓЩ„Щ…ВІ) Щ€Ш№ШЇШЇЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡ЩЋШ§ ШЁЩЂ(15.800.000 Щ†ШіЩ…Ш©).",
+      "sourceHash": "a34dad6b559d10392089b71390d93c400c7682adee75de8f97012d421df64e12",
+      "wordType": "atoqli ot",
+      "uzbek": "Avstraliya вЂ” mamlakat va qitвЂ™a nomi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋШ§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®Щ…ШіЩђШЊ ШЄЩЏЩ‚ШЇЩ‘Ш± Щ…ШіШ§Ш­ЩЋШЄЩЏЩ‡Ш§ ШЁЩЂ (7.700.000 ЩѓЩ„Щ…ВІ) Щ€Ш№ШЇШЇЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡ЩЋШ§ ШЁЩЂ(15.800.000 Щ†ШіЩ…Ш©).",
+          "uzbekMeaning": "Avstraliya вЂ” shu nomdagi mamlakat hamda u joylashgan eng kichik qitвЂ™a nomi",
+          "uzbekExample": "Avstraliya Okeaniya geografik mintaqasining tarkibida ham koвЂrib chiqiladi.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_geography_check",
+        "issues": [
+          "Manbadagi 15,8 millionlik aholi soni eskirganligi uchun chiqarildi",
+          "Avstraliya mamlakat nomi va qitвЂ™a nomi boвЂlishi aniq farqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 310,
+      "id": 79434,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЈЩЋЩ…Щ’Ш±ЩђЩЉЩѓШ§",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚Ш§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ Щ€ЩЋЩ‡ЩЉЩЋ Щ…Ш§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШЈЩЋЩ…Щ’Ш±ЩЉЩѓШ§ Ш§Щ„ШґЩ‘ЩЋЩ…Ш§Щ„ЩђЩЉЩ‘ЩЋШ©Щђ Щ€ЩЋШЈЩЋЩ…Ш±ЩЉЩѓШ§ Ш§Щ„Ш¬ЩЋЩ†Щ€ШЁЩђЩЉЩ‘ЩЋШ©ЩђШЊ ШЄЩЏЩ‚ЩЋШЇЩ‘ЩЋШ±ЩЏ Щ…ЩђШіШ§Ш­ЩЋШЄЩЏЩ‡Ш§ ШЁЩЂ 42 Щ…Щ„ЩЉЩ€Щ† ЩѓЩ„Щ… ВІШЊ Щ€Ш№ЩЋШЇЩЋШЇЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡Ш§ ШЁЩЂ 675 Щ…Щ„ЩЉЩ€Щ† Щ†ЩЋШіЩЋЩ…Ш©.",
+      "sourceHash": "228e46e87ec8567f34b2630d4f3e9e1caf92e3dce297559fba439c9ab728e739",
+      "wordType": "atoqli ot",
+      "uzbek": "Amerika вЂ” Shimoliy va Janubiy Amerika qitвЂ™alari",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚Ш§Ш±Щ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш®ЩЋЩ…Щ’ШіЩђШЊ Щ€ЩЋЩ‡ЩЉЩЋ Щ…Ш§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШЈЩЋЩ…Щ’Ш±ЩЉЩѓШ§ Ш§Щ„ШґЩ‘ЩЋЩ…Ш§Щ„ЩђЩЉЩ‘ЩЋШ©Щђ Щ€ЩЋШЈЩЋЩ…Ш±ЩЉЩѓШ§ Ш§Щ„Ш¬ЩЋЩ†Щ€ШЁЩђЩЉЩ‘ЩЋШ©ЩђШЊ ШЄЩЏЩ‚ЩЋШЇЩ‘ЩЋШ±ЩЏ Щ…ЩђШіШ§Ш­ЩЋШЄЩЏЩ‡Ш§ ШЁЩЂ 42 Щ…Щ„ЩЉЩ€Щ† ЩѓЩ„Щ… ВІШЊ Щ€Ш№ЩЋШЇЩЋШЇЩЏ ШіЩЏЩѓЩ‘ЩЋШ§Щ†ЩђЩ‡Ш§ ШЁЩЂ 675 Щ…Щ„ЩЉЩ€Щ† Щ†ЩЋШіЩЋЩ…Ш©.",
+          "uzbekMeaning": "Amerika вЂ” Shimoliy Amerika va Janubiy Amerikani birgalikda anglatuvchi geografik nom",
+          "uzbekExample": "Amerika ikki yirik qismga вЂ” Shimoliy va Janubiy Amerikaga boвЂlinadi.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_geography_check",
+        "issues": [
+          "Manbadagi 675 millionlik aholi soni eskirganligi uchun chiqarildi",
+          "Manba qoвЂllagan besh qitвЂ™ali model ochiqlandi: Amerika Shimoliy va Janubiy Amerikani birgalikda anglatadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 311,
+      "id": 79435,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЈЩЋШ·Щ’Щ„ЩЋШіЩЏ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1- ЩѓЩђШЄШ§ШЁЩЏ Ш§Щ„ШЈШ·Щ’Щ„ЩЋШіЩђ ШЁЩђЩ‡Щђ Ш®ЩЋШ±Ш§Ш¦ЩђШ·ЩЏ Ш§Щ„Ш№Ш§Щ„ЩЋЩ…Щђ :ЩѓЩђШЄШ§ШЁЩЊ ЩЉЩЋШ¶ЩЏЩ…Щ‘ЩЏ Щ…ЩЋШ¬Щ’Щ…Щ€Ш№ЩЋШ©Щ‹ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш®ЩЋШ±Ш§Ш¦ЩђШ·Щђ Ш§Щ„Ш¬ЩЏШєЩ’Ш±Ш§ЩЃЩђЩЉЩ‘ЩЋШ©Щђ.|2- Щ‚ЩЋШ¶ЩЋЩЉЩ’Щ†Ш§ ШЁЩђШ¬ЩђШЁШ§Щ„Щђ Ш§Щ„ШЈЩЋШ·Щ’Щ„ЩЋШіЩђ ШЈЩЏШіЩ’ШЁЩ€Ш№Ш§Щ‹ : ШіЩђЩ„Щ’ШіЩђЩ„ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш¬ЩђШЁШ§Щ„Щђ ШЁЩђШ§Щ„Щ’Щ…ЩЋШєЩ’Ш±ЩђШЁЩђ.",
+      "sourceHash": "e39285273239e7e4a82c6400c095f247830b66f20ff197efae1f4c0ff69a4c33",
+      "wordType": "ot",
+      "uzbek": "1. geografik atlas; 2. Atlas togвЂlari",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ЩѓЩђШЄШ§ШЁЩЏ Ш§Щ„ШЈШ·Щ’Щ„ЩЋШіЩђ ШЁЩђЩ‡Щђ Ш®ЩЋШ±Ш§Ш¦ЩђШ·ЩЏ Ш§Щ„Ш№Ш§Щ„ЩЋЩ…Щђ",
+          "arabicGloss": "ЩѓЩђШЄШ§ШЁЩЊ ЩЉЩЋШ¶ЩЏЩ…Щ‘ЩЏ Щ…ЩЋШ¬Щ’Щ…Щ€Ш№ЩЋШ©Щ‹ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш®ЩЋШ±Ш§Ш¦ЩђШ·Щђ Ш§Щ„Ш¬ЩЏШєЩ’Ш±Ш§ЩЃЩђЩЉЩ‘ЩЋШ©Щђ.",
+          "uzbekMeaning": "geografik xaritalar toвЂplamidan iborat kitob вЂ” atlas",
+          "uzbekExample": "Geografik atlasda dunyo va uning mintaqalari xaritalari jamlangan."
+        },
+        {
+          "index": 2,
+          "arabicExample": "Щ‚ЩЋШ¶ЩЋЩЉЩ’Щ†Ш§ ШЁЩђШ¬ЩђШЁШ§Щ„Щђ Ш§Щ„ШЈЩЋШ·Щ’Щ„ЩЋШіЩђ ШЈЩЏШіЩ’ШЁЩ€Ш№Ш§Щ‹",
+          "arabicGloss": "ШіЩђЩ„Щ’ШіЩђЩ„ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш¬ЩђШЁШ§Щ„Щђ ШЁЩђШ§Щ„Щ’Щ…ЩЋШєЩ’Ш±ЩђШЁЩђ.",
+          "uzbekMeaning": "Shimoliy-gвЂarbiy Afrikadagi togвЂ tizmasi вЂ” Atlas togвЂlari",
+          "uzbekExample": "Biz Atlas togвЂlarida bir hafta oвЂtkazdik.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 312,
+      "id": 79436,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЋЩ€Ш§ШіЩђЩЉЩЋШ©ЩЊ",
+      "root": "ШіЩ€ЩЉвЂЏ",
+      "grammarLabel": "Ш¬Щ…Ш№ ШіЩЋЩ€Ш§ШЎ Ш№Щ„Щ‰ ШєЩЋЩЉЩ’Ш±Щђ Щ‚ЩђЩЉШ§Ші",
+      "morphology": "",
+      "arabicDefinition": "(Ш¬Щ…Ш№ ШіЩЋЩ€Ш§ШЎ Ш№Щ„Щ‰ ШєЩЋЩЉЩ’Ш±Щђ Щ‚ЩђЩЉШ§Ші).|-Щ‡ЩЏЩ…Щ’ ШіЩЋЩ€Ш§ШіЩђЩЉЩЋШ©ЩЊ : ШҐЩђШ°Ш§ Ш§ШіЩ’ШЄЩЋЩ€ЩЋЩ€Щ’Ш§ ЩЃЩЉ ШґЩЋЩЉЩ’ШЎЩЌШЊ ЩЃЩЉ Ш§Щ„Щ„Щ‘ЩЏШ¤Щ’Щ…Щђ Щ€Ш§Щ„ШґЩ‘ЩЋШ±Щ‘ЩђШЊ ШЈЩЋЩ€Щ’ ЩЃЩЉ ШґЩЋЩЉЩ’ШЎЩЌ Ш№Ш§ШЇЩђЩЉЩ‘ЩЌ- Ш§Щ„Щ†Щ‘ЩЋШ§ШіЩЏ ШіЩЋЩ€Ш§ШіЩђЩЉЩЋШ©ЩЊ ЩѓЩЋШЈЩЋШіЩ’Щ†Ш§Щ†Щђ Ш§Щ„Щ’Щ…ЩЏШґЩ’Ш·Щђ.",
+      "sourceHash": "4e7d86698013f10b1f714c028892b2174ef487a7967167c7fb471e38ac564fee",
+      "wordType": "sifat",
+      "uzbek": "teng, barobar, bir xil",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Щ‡ЩЏЩ…Щ’ ШіЩЋЩ€Ш§ШіЩђЩЉЩЋШ©ЩЊ",
+          "arabicGloss": "ШҐЩђШ°Ш§ Ш§ШіЩ’ШЄЩЋЩ€ЩЋЩ€Щ’Ш§ ЩЃЩЉ ШґЩЋЩЉЩ’ШЎЩЌШЊ ЩЃЩЉ Ш§Щ„Щ„Щ‘ЩЏШ¤Щ’Щ…Щђ Щ€Ш§Щ„ШґЩ‘ЩЋШ±Щ‘ЩђШЊ ШЈЩЋЩ€Щ’ ЩЃЩЉ ШґЩЋЩЉЩ’ШЎЩЌ Ш№Ш§ШЇЩђЩЉЩ‘ЩЌ- Ш§Щ„Щ†Щ‘ЩЋШ§ШіЩЏ ШіЩЋЩ€Ш§ШіЩђЩЉЩЋШ©ЩЊ ЩѓЩЋШЈЩЋШіЩ’Щ†Ш§Щ†Щђ Ш§Щ„Щ’Щ…ЩЏШґЩ’Ш·Щђ.",
+          "uzbekMeaning": "biror jihatdan oвЂzaro teng, barobar yoki bir xil",
+          "uzbekExample": "Odamlar taroq tishlaridek oвЂzaro tengdir.",
+          "register": "koвЂplik maвЂ™nosida"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 313,
+      "id": 79437,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШµЩЋШ±Щ‘ЩЋШ§Ш±ЩЊ",
+      "root": "ШµШ±Ш±вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Ш¬ЩЏШЇЩ’Ш¬ЩЏШЇЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Щ…ЩЏШіЩ’ШЄЩЋЩ‚ЩђЩЉЩ…ЩЋШ§ШЄЩђ Ш§Щ„ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШ©ЩђШЊ ШЄЩЋЩ…Щ’ШЄЩЋШ§ШІЩЏ ШЁЩђЩ‚ЩЋЩ€ЩЋШ§ШіЩђЩ…ЩђЩ‡ЩЋШ§ Ш§Щ„Ш·Щ‘ЩЋЩ€ЩђЩЉЩ„ЩЋШ©ЩђШЊ Щ€ЩЋШ§Щ„Ш°Щ‘ЩЋЩѓЩЋШ±ЩЏ Щ„ЩЋЩ‡ЩЏ Щ‚ЩЏШЇЩ’Ш±ЩЋШ©ЩЊ Ш№ЩЋЩ„ЩЋЩ‰ ШҐЩђШ­Щ’ШЇЩЋШ§Ш«Щђ ШµЩЋЩ€Щ’ШЄЩЌ ШЁЩђШ§Ш­Щ’ШЄЩђЩѓЩЋШ§ЩѓЩђ ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШЄЩђЩ‡Щђ Ш§Щ„ШЈЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ Ш§Щ„Щ’Ш¬ЩЏШЇЩ’Ш¬ЩЏШЇЩЋ- ШµЩЋШ±Щ‘ЩЋШ§Ш±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ : Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ†ЩЋЩ€Щ’Ш№ЩЋШ§Щ†Щђ: Ш¬ЩЏШЇЩ’Ш¬ЩЏШЇЩЊ Ш­ЩЋЩ‚Щ’Щ„ЩђЩЉЩ‘ЩЊ Щ€ЩЋШ¬ЩЏШЇЩ’Ш¬ЩЏШЇЩЊ Щ…ЩЋЩ†Щ’ШІЩђЩ„ЩђЩЉЩ‘ЩЊ.",
+      "sourceHash": "d4125d829fd139f6884b58d7ae83d6d51d5a735592718958fd76f2a859b6069e",
+      "wordType": "ot",
+      "uzbek": "chirildoq, kriket hasharoti",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Ш¬ЩЏШЇЩ’Ш¬ЩЏШЇЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Щ…ЩЏШіЩ’ШЄЩЋЩ‚ЩђЩЉЩ…ЩЋШ§ШЄЩђ Ш§Щ„ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШ©ЩђШЊ ШЄЩЋЩ…Щ’ШЄЩЋШ§ШІЩЏ ШЁЩђЩ‚ЩЋЩ€ЩЋШ§ШіЩђЩ…ЩђЩ‡ЩЋШ§ Ш§Щ„Ш·Щ‘ЩЋЩ€ЩђЩЉЩ„ЩЋШ©ЩђШЊ Щ€ЩЋШ§Щ„Ш°Щ‘ЩЋЩѓЩЋШ±ЩЏ Щ„ЩЋЩ‡ЩЏ Щ‚ЩЏШЇЩ’Ш±ЩЋШ©ЩЊ Ш№ЩЋЩ„ЩЋЩ‰ ШҐЩђШ­Щ’ШЇЩЋШ§Ш«Щђ ШµЩЋЩ€Щ’ШЄЩЌ ШЁЩђШ§Ш­Щ’ШЄЩђЩѓЩЋШ§ЩѓЩђ ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШЄЩђЩ‡Щђ Ш§Щ„ШЈЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ Ш§Щ„Щ’Ш¬ЩЏШЇЩ’Ш¬ЩЏШЇЩЋ- ШµЩЋШ±Щ‘ЩЋШ§Ш±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ",
+          "arabicGloss": "Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ†ЩЋЩ€Щ’Ш№ЩЋШ§Щ†Щђ: Ш¬ЩЏШЇЩ’Ш¬ЩЏШЇЩЊ Ш­ЩЋЩ‚Щ’Щ„ЩђЩЉЩ‘ЩЊ Щ€ЩЋШ¬ЩЏШЇЩ’Ш¬ЩЏШЇЩЊ Щ…ЩЋЩ†Щ’ШІЩђЩ„ЩђЩЉЩ‘ЩЊ.",
+          "uzbekMeaning": "toвЂgвЂriqanotlilar turkumining Gryllidae oilasiga mansub, uzun moвЂylovli va erkagi old qanotlarini ishqalab chirillaydigan hasharot вЂ” chirildoq yoki kriket",
+          "uzbekExample": "Dala chirildogвЂi va uy chirildogвЂi kechasi aniq eshitiladigan tovush chiqaradi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Avvalgi В«chigirtkaВ» tarjimasi Gryllidae oilasini aniq bermagan; ITIS tasnifi asosida В«chirildoq, kriketВ» deb tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 314,
+      "id": 79438,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш·ЩЋЩ†Щ‘ЩЋШ§Щ†ЩЋШ©ЩЊ",
+      "root": "Ш·Щ†Щ†вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩѓЩЋШ«ЩђЩЉШ±ЩЋШ©ЩЏ Ш§Щ„ШґЩ‘ЩЋШ№ЩЋШ±Щђ Ш§Щ„Щ„Ш§Щ‘ЩЋЩ…ЩђШ№ЩђШЊ ШЄЩЏШ­Щ’ШЇЩђШ«ЩЏ ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШЄЩЏЩ‡ЩЋШ§ Ш·ЩЋЩ†ЩђЩЉЩ†Ш§Щ‹ШЊ Ш®ЩђЩ„Ш§ЩЋЩ„ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†ЩђШЊ ШЄЩЋШ®Щ’ШЄЩЋЩ„ЩђЩЃЩЏ ШЈЩЋЩ„Щ’Щ€ЩЋШ§Щ†ЩЏЩ‡ЩЋШ§ ШЁЩђШ§Ш®Щ’ШЄЩђЩ„Ш§ЩЃЩђ Ш§Щ„ШЈЩЋШµЩ’Щ†ЩЋШ§ЩЃЩђШЊ ШЄЩЏЩЃЩђЩЉШЇЩЏ ЩЃЩђЩЉ ШҐЩђЩ„Щ’Щ‚ЩЋШ§Ш­Щђ Ш§Щ„ШІЩ‘ЩЏЩ‡ЩЏЩ€Ш±Щђ.",
+      "sourceHash": "bc7eaba4f90e4f54699e3d6df98524dc19996e948a960754bb243610e23bf829",
+      "wordType": "ot",
+      "uzbek": "tukli gвЂoвЂngвЂillovchi ari вЂ” bumblebee",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩѓЩЋШ«ЩђЩЉШ±ЩЋШ©ЩЏ Ш§Щ„ШґЩ‘ЩЋШ№ЩЋШ±Щђ Ш§Щ„Щ„Ш§Щ‘ЩЋЩ…ЩђШ№ЩђШЊ ШЄЩЏШ­Щ’ШЇЩђШ«ЩЏ ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШЄЩЏЩ‡ЩЋШ§ Ш·ЩЋЩ†ЩђЩЉЩ†Ш§Щ‹ШЊ Ш®ЩђЩ„Ш§ЩЋЩ„ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†ЩђШЊ ШЄЩЋШ®Щ’ШЄЩЋЩ„ЩђЩЃЩЏ ШЈЩЋЩ„Щ’Щ€ЩЋШ§Щ†ЩЏЩ‡ЩЋШ§ ШЁЩђШ§Ш®Щ’ШЄЩђЩ„Ш§ЩЃЩђ Ш§Щ„ШЈЩЋШµЩ’Щ†ЩЋШ§ЩЃЩђШЊ ШЄЩЏЩЃЩђЩЉШЇЩЏ ЩЃЩђЩЉ ШҐЩђЩ„Щ’Щ‚ЩЋШ§Ш­Щђ Ш§Щ„ШІЩ‘ЩЏЩ‡ЩЏЩ€Ш±Щђ.",
+          "uzbekMeaning": "tanasi qalin tukli, uchganda gвЂoвЂngвЂillagan tovush chiqaradigan va gullarni changlatishda muhim boвЂlgan yirik ari вЂ” bumblebee",
+          "uzbekExample": "Tukli gвЂoвЂngвЂillovchi ari guldan gulga qoвЂnib, changlanishga yordam berdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_zoological_check",
+        "issues": [
+          "Tukli tana, gвЂoвЂngвЂillash va gul changlatish belgilari bumblebee tavsifiga moslashtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 315,
+      "id": 79439,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЋЩ‚Щ‘ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ ШµЩЋШєЩЉШ±ЩЋШ©ЩЊ Щ…ЩЏШіЩЋШ·Щ‘ЩЋШ­ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЋЩ‚Щ‘ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Щ†ЩђШµЩ’ЩЃЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„ШЈШ¬Щ’Щ†ЩђШ­ЩЋШ©ЩђШЊ Щ‚Ш§Щ†ЩђЩЉЩЋШ©ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ ШЄЩЋЩ…Щ’ШЄЩЋШµЩ‘ЩЏ ШЇЩЋЩ…ЩЋ Ш§Щ„ШҐЩђЩ†Щ’ШіШ§Щ†Щђ Щ€ЩЋШЄЩЋЩ„Щ’ШЇЩЋШєЩЏШЊ Щ„ЩЋЩ‡Ш§ Ш±Ш§Ш¦ЩђШ­ЩЋШ©ЩЊ ЩѓЩЋШ±ЩЉЩ‡ЩЋШ©ЩЊ.",
+      "sourceHash": "547d3beb891b4594cc361b7a0a1cd9b868030488e5c5dbd52b609c3517c367f4",
+      "wordType": "jamlovchi ot",
+      "uzbek": "toвЂshak qandalasi, odam yoki hayvon qonini soвЂruvchi yassi hasharot",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ ШµЩЋШєЩЉШ±ЩЋШ©ЩЊ Щ…ЩЏШіЩЋШ·Щ‘ЩЋШ­ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЋЩ‚Щ‘ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Щ†ЩђШµЩ’ЩЃЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„ШЈШ¬Щ’Щ†ЩђШ­ЩЋШ©ЩђШЊ Щ‚Ш§Щ†ЩђЩЉЩЋШ©ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ ШЄЩЋЩ…Щ’ШЄЩЋШµЩ‘ЩЏ ШЇЩЋЩ…ЩЋ Ш§Щ„ШҐЩђЩ†Щ’ШіШ§Щ†Щђ Щ€ЩЋШЄЩЋЩ„Щ’ШЇЩЋШєЩЏШЊ Щ„ЩЋЩ‡Ш§ Ш±Ш§Ш¦ЩђШ­ЩЋШ©ЩЊ ЩѓЩЋШ±ЩЉЩ‡ЩЋШ©ЩЊ.",
+          "uzbekMeaning": "Cimicidae oilasiga mansub, yassi tanali, odam va boshqa issiqqonli hayvonlarning qonini soвЂradigan qandala; odatda toвЂshak qandalasi nazarda tutiladi",
+          "uzbekExample": "ToвЂshak qandalasi tunda chiqib, odamning qonini soвЂrishi mumkin.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_zoological_check",
+        "issues": [
+          "Yassi tana va qon soвЂrish belgilari CDC maвЂ™lumoti bilan tekshirilib, toвЂshak qandalasi deb aniqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 316,
+      "id": 79440,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш°ЩЏШЁШ§ШЁЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1- Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ | Ш°ЩЋШ§ШЄЩђ Ш§Щ„Ш¬ЩЋЩ†Ш§Ш­ЩЋЩЉЩ’Щ†ЩђШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Щ…ЩЏШЄЩЋШ№ЩЋШЇЩ‘ЩђШЇЩЋШ©ЩЏ Ш§Щ„ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩђШЊ Щ…ЩђЩ†Щ‡Ш§ Ш§Щ„ШІЩ‘ЩЋЩ†Ш§ШЁЩђЩЉШ±ЩЏ Щ€Ш§Щ„ШЁЩЋШ№Щ€Ш¶ЩЏШЊ Щ€ЩЋШ°ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„ШЁЩЏЩЉЩ€ШЄЩђ ШЄЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁЩђШ§Щ„Щ‚Ш§Ш°ЩЏЩ€Ш±Ш§ШЄЩђ Щ€ЩЋШЄЩЋЩ†Щ’Щ‚ЩЏЩ„ЩЏ Ш§Щ„ШЈЩЋЩ…Щ’Ш±Ш§Ш¶ЩЋ.|2- Ш°ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„Ш®ЩЋЩЉЩ’Щ„Щђ :Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђ ШЄЩЋШ№ЩЉШґЩЏ ЩЃЩЉ Ш§Щ„ШҐЩђШµЩ’Ш·ЩЋШЁЩ’Щ„Ш§ШЄЩђ Щ€ЩЋШЄЩЋЩ„Щ’ШµЩЋЩ‚ЩЏ ЩЃЩЉ ШЇЩЏШЁЩЏШ±Щђ Ш§Щ„Ш®ЩЋЩЉЩ’Щ„Щђ Щ€Ш§Щ„ШЈЩЋШЁЩ’Щ‚Ш§Ш±Щђ Щ€ЩЋШЄЩЋЩ†Щ’Щ‚ЩЏЩ„ЩЏ Ш§Щ„ШЈЩЋЩ…Щ’Ш±Ш§Ш¶ЩЋ.|3- Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„Ш­ЩЋЩ„ЩЋШІЩ€Щ†ЩђЩЉЩ‘ЩЋШ©ЩЏ : Ш°ЩЏШЁШ§ШЁЩЋШ©ЩЊ Ш®ЩЋШ·ЩЉШ±ЩЋШ©ЩЊ Щ‚Ш§ШЄЩђЩ„ЩЋШ©ЩЊ ШЈЩЋЩѓЩ€Щ„ЩЋШ©ЩЊШЊ ШЄЩЋШЈЩ’ЩѓЩЏЩ„ЩЏ Щ„ЩЏШ­Щ€Щ…ЩЋ Ш§Щ„ШЈЩЋШ­Щ’ЩЉШ§ШЎЩђ Щ€ЩЋШЄЩЋЩЃЩ’ШЄЩђЩѓЩЋ ШЁЩђШ§Щ„Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Щђ Щ€ЩЋШ§Щ„ШҐЩђЩ†Щ’ШіШ§Щ†Щђ ШЈЩЉШ¶Ш§Щ‹ШЊ Ш­ЩЋЩ…Щ’Ш±Ш§ШЎЩЏ Ш§Щ„Ш№ЩЋЩЉЩ’Щ†ЩЋЩЉЩ’Щ†ЩђШЊ ЩЉЩЋШЁЩ’Щ„ЩЏШєЩЏ Ш­Ш¬Щ’Щ…ЩЏЩ‡Ш§ Ш«ЩЋЩ„Ш§Ш«ЩЋШ©ЩЋ ШЈЩЋЩ…Щ’Ш«Ш§Щ„Щђ Ш­ЩЋШ¬Щ’Щ…Щђ Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩЋШ©Щђ Ш§Щ„Ш№Ш§ШЇЩђЩЉЩЋШ©ЩђШЊ ШЄЩЋШ¶ЩЋШ№ЩЏ ШЁЩЋЩЉЩ’Ш¶ЩЋЩ‡Ш§ ЩЃЩЉ Ш§Щ„Щ‚ЩЋШ±Щ’Ш­Щђ ШЈЩЋЩ€Щђ Ш§Щ„Ш¬ЩЏШ±Щ€Ш­Щђ Ш§Щ„Щ’Щ…ЩЋЩЃЩ’ШЄЩ€Ш­ЩЋШ©Щђ Щ€ЩЋЩЉЩЏЩЃЩЋЩ‚Щ‘ЩЋШіЩЏ ЩЃЩЉ ШєЩЏШ¶Щ€Щ†Щђ ШіШ§Ш№Ш§ШЄЩЌ Щ‚ЩЋЩ„ЩЉЩ„ЩЋШ©ЩЌШЊ ШЄЩЋШ­Щ’ЩЃЩЏШ±ЩЏ ЩЉЩЋШ±Щ’Щ‚Ш§ШЄЩЏЩ‡Ш§ Ш§Щ„Ш¬ЩЋШіЩЋШЇЩЋ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‡ЩЏ ШҐЩ„Щ‰ Ш§Щ„ШЈЩЋШ№Щ’Ш¶Ш§ШЎЩђ Щ…ЩЏШЁШ§ШґЩЋШ±ЩЋШ©Щ‹.|4- Ш°ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„ШґЩ‘ЩЋЩЉЩ’ШЎЩђ : ШЁЩЋЩ‚ЩђЩЉЩ‘ЩЋШЄЩЏЩ‡ЩЏ.",
+      "sourceHash": "1e9d97e3ceefe1d2b29dfc361a7978de939a5b009791a3681d9d9a03c1a33ea1",
+      "wordType": "jamlovchi ot",
+      "uzbek": "1. pashsha; 2. ot pashshasi; 3. spiral yara pashshasi; 4. narsaning qoldigвЂi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ | Ш°ЩЋШ§ШЄЩђ Ш§Щ„Ш¬ЩЋЩ†Ш§Ш­ЩЋЩЉЩ’Щ†ЩђШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Щ…ЩЏШЄЩЋШ№ЩЋШЇЩ‘ЩђШЇЩЋШ©ЩЏ Ш§Щ„ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩђШЊ Щ…ЩђЩ†Щ‡Ш§ Ш§Щ„ШІЩ‘ЩЋЩ†Ш§ШЁЩђЩЉШ±ЩЏ Щ€Ш§Щ„ШЁЩЋШ№Щ€Ш¶ЩЏШЊ Щ€ЩЋШ°ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„ШЁЩЏЩЉЩ€ШЄЩђ ШЄЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁЩђШ§Щ„Щ‚Ш§Ш°ЩЏЩ€Ш±Ш§ШЄЩђ Щ€ЩЋШЄЩЋЩ†Щ’Щ‚ЩЏЩ„ЩЏ Ш§Щ„ШЈЩЋЩ…Щ’Ш±Ш§Ш¶ЩЋ.",
+          "uzbekMeaning": "ikkiqanotlilar вЂ” Diptera turkumiga mansub pashsha; uy pashshasi iflos muhitdan oziqlanib, kasallik qoвЂzgвЂatuvchilarini tashishi mumkin",
+          "uzbekExample": "Uy pashshasi oziq-ovqatni ifloslantirmasligi uchun gigiyenaga rioya qilish zarur.",
+          "register": "zoologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш°ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„Ш®ЩЋЩЉЩ’Щ„Щђ",
+          "arabicGloss": "Ш­ЩЋШґЩЋШ±ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђ ШЄЩЋШ№ЩЉШґЩЏ ЩЃЩЉ Ш§Щ„ШҐЩђШµЩ’Ш·ЩЋШЁЩ’Щ„Ш§ШЄЩђ Щ€ЩЋШЄЩЋЩ„Щ’ШµЩЋЩ‚ЩЏ ЩЃЩЉ ШЇЩЏШЁЩЏШ±Щђ Ш§Щ„Ш®ЩЋЩЉЩ’Щ„Щђ Щ€Ш§Щ„ШЈЩЋШЁЩ’Щ‚Ш§Ш±Щђ Щ€ЩЋШЄЩЋЩ†Щ’Щ‚ЩЏЩ„ЩЏ Ш§Щ„ШЈЩЋЩ…Щ’Ш±Ш§Ш¶ЩЋ.",
+          "uzbekMeaning": "ot va qoramolni chaqib yoki bezovta qilib, ayrim kasallik qoвЂzgвЂatuvchilarini tashishi mumkin boвЂlgan ot pashshasi",
+          "uzbekExample": "Ot pashshasi molxona atrofida ot va qoramolga yopishdi.",
+          "register": "zoologiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„Ш­ЩЋЩ„ЩЋШІЩ€Щ†ЩђЩЉЩ‘ЩЋШ©ЩЏ",
+          "arabicGloss": "Ш°ЩЏШЁШ§ШЁЩЋШ©ЩЊ Ш®ЩЋШ·ЩЉШ±ЩЋШ©ЩЊ Щ‚Ш§ШЄЩђЩ„ЩЋШ©ЩЊ ШЈЩЋЩѓЩ€Щ„ЩЋШ©ЩЊШЊ ШЄЩЋШЈЩ’ЩѓЩЏЩ„ЩЏ Щ„ЩЏШ­Щ€Щ…ЩЋ Ш§Щ„ШЈЩЋШ­Щ’ЩЉШ§ШЎЩђ Щ€ЩЋШЄЩЋЩЃЩ’ШЄЩђЩѓЩЋ ШЁЩђШ§Щ„Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Щђ Щ€ЩЋШ§Щ„ШҐЩђЩ†Щ’ШіШ§Щ†Щђ ШЈЩЉШ¶Ш§Щ‹ШЊ Ш­ЩЋЩ…Щ’Ш±Ш§ШЎЩЏ Ш§Щ„Ш№ЩЋЩЉЩ’Щ†ЩЋЩЉЩ’Щ†ЩђШЊ ЩЉЩЋШЁЩ’Щ„ЩЏШєЩЏ Ш­Ш¬Щ’Щ…ЩЏЩ‡Ш§ Ш«ЩЋЩ„Ш§Ш«ЩЋШ©ЩЋ ШЈЩЋЩ…Щ’Ш«Ш§Щ„Щђ Ш­ЩЋШ¬Щ’Щ…Щђ Ш§Щ„Ш°Щ‘ЩЏШЁШ§ШЁЩЋШ©Щђ Ш§Щ„Ш№Ш§ШЇЩђЩЉЩЋШ©ЩђШЊ ШЄЩЋШ¶ЩЋШ№ЩЏ ШЁЩЋЩЉЩ’Ш¶ЩЋЩ‡Ш§ ЩЃЩЉ Ш§Щ„Щ‚ЩЋШ±Щ’Ш­Щђ ШЈЩЋЩ€Щђ Ш§Щ„Ш¬ЩЏШ±Щ€Ш­Щђ Ш§Щ„Щ’Щ…ЩЋЩЃЩ’ШЄЩ€Ш­ЩЋШ©Щђ Щ€ЩЋЩЉЩЏЩЃЩЋЩ‚Щ‘ЩЋШіЩЏ ЩЃЩЉ ШєЩЏШ¶Щ€Щ†Щђ ШіШ§Ш№Ш§ШЄЩЌ Щ‚ЩЋЩ„ЩЉЩ„ЩЋШ©ЩЌШЊ ШЄЩЋШ­Щ’ЩЃЩЏШ±ЩЏ ЩЉЩЋШ±Щ’Щ‚Ш§ШЄЩЏЩ‡Ш§ Ш§Щ„Ш¬ЩЋШіЩЋШЇЩЋ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‡ЩЏ ШҐЩ„Щ‰ Ш§Щ„ШЈЩЋШ№Щ’Ш¶Ш§ШЎЩђ Щ…ЩЏШЁШ§ШґЩЋШ±ЩЋШ©Щ‹.",
+          "uzbekMeaning": "yangi dunyo spiral yara pashshasi; tuxumini tirik issiqqonli hayvon yoki odamning ochiq yarasi yoxud tabiiy teshigi yaqiniga qoвЂyadi, lichinkalari tirik toвЂqimaga kirib oziqlanib, ogвЂir va baвЂ™zan oвЂlimli shikast yetkazadi",
+          "uzbekExample": "Spiral yara pashshasining lichinkalari ochiq yaraga kirsa, zudlik bilan tibbiy yoki veterinariya yordami talab etiladi.",
+          "register": "parazitologiya"
+        },
+        {
+          "index": 4,
+          "arabicExample": "Ш°ЩЏШЁШ§ШЁЩЋШ©ЩЏ Ш§Щ„ШґЩ‘ЩЋЩЉЩ’ШЎЩђ",
+          "arabicGloss": "ШЁЩЋЩ‚ЩђЩЉЩ‘ЩЋШЄЩЏЩ‡ЩЏ.",
+          "uzbekMeaning": "biror narsadan ortib qolgan qism, qoldiq",
+          "uzbekExample": "Idishda taomning ozgina qoldigвЂi qoldi.",
+          "register": "koвЂchma maвЂ™no"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_correction",
+        "issues": [
+          "Manbadagi arilarni Diptera turkumiga kiritish xatosi tuzatildi: chivinlar Diptera, arilar esa bu turkumga kirmaydi",
+          "Spiral yara pashshasining kattaligi oddiy pashshadan uch baravar degan xato olib tashlandi; USDA maвЂ™lumotiga koвЂra u uy pashshasidek yoki biroz kattaroq",
+          "Lichinkalarning tirik toвЂqimada oziqlanishi va ogвЂir zarar yetkazishi rasmiy USDA maвЂ™lumoti bilan tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 317,
+      "id": 79441,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ…ЩЋШ§ШІЩЏШ±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±ЩђШЊ Ш№ЩЋШЇЩЉШЇЩЋШ©ЩЏ Ш§Щ„ШЈЩ†Щ’Щ€ЩЋШ§Ш№ЩђШЊ Щ„ЩЋЩ‡ЩЋШ§ Щ…ЩЋЩ†ЩЋШ§Щ‚ЩЉШ±ЩЏШ№ЩЋШ±ЩђЩЉШ¶Ш©ЩЊ Щ€ЩЋЩѓЩЋШЁЩђЩЉШ±ЩЋШ©ЩЊШЊ ШЄЩЋШ№ЩђЩЉШґЩЏ ШЇЩЋШ§Ш®ЩђЩ„ЩЋ Ш§Щ„Ш¬ЩЋЩ…ЩЋШ§Ш№ЩЋШ©ЩђШЊ | ШЄЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁШ§Щ„Щ’Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ Щ€Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€Ш§Щ„ШЈЩЋШіЩ’Щ…ЩЋШ§ЩѓЩђ.",
+      "sourceHash": "892b14291accddab54f82a638ea8dd198db807ac74686aa5bf545bd5a2468918",
+      "wordType": "koвЂplikdagi zoologik ot",
+      "uzbek": "keng va yirik tumshuqli, toвЂda boвЂlib yashaydigan qushlar oilasi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±ЩђШЊ Ш№ЩЋШЇЩЉШЇЩЋШ©ЩЏ Ш§Щ„ШЈЩ†Щ’Щ€ЩЋШ§Ш№ЩђШЊ Щ„ЩЋЩ‡ЩЋШ§ Щ…ЩЋЩ†ЩЋШ§Щ‚ЩЉШ±ЩЏШ№ЩЋШ±ЩђЩЉШ¶Ш©ЩЊ Щ€ЩЋЩѓЩЋШЁЩђЩЉШ±ЩЋШ©ЩЊШЊ ШЄЩЋШ№ЩђЩЉШґЩЏ ШЇЩЋШ§Ш®ЩђЩ„ЩЋ Ш§Щ„Ш¬ЩЋЩ…ЩЋШ§Ш№ЩЋШ©ЩђШЊ ШЄЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁШ§Щ„Щ’Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ Щ€Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€Ш§Щ„ШЈЩЋШіЩ’Щ…ЩЋШ§ЩѓЩђ.",
+          "uzbekMeaning": "manba taвЂ™rifiga koвЂra koвЂp turlari bor, tumshugвЂi keng va yirik, toвЂda boвЂlib yashaydigan hamda hasharotlar, qisqichbaqasimonlar va baliqlar bilan oziqlanadigan qushlar oilasi",
+          "uzbekExample": "Mazuriylar deb berilgan bu qushlar hasharot, qisqichbaqasimon va baliqlar bilan oziqlanadi.",
+          "register": "eskirgan yoki aniqlashtirilishi zarur zoologik tasnif"
+        }
+      ],
+      "applyStatus": "held",
+      "hold": {
+        "reason": "review_hold",
+        "note": "Zamonaviy lotincha oilaga ishonchli tenglashtirilmaguncha ishlab turgan bazaga kiritilmaydi."
+      },
+      "approval": {
+        "decision": "approved_with_hold_for_taxonomic_identification",
+        "issues": [
+          "Texnik ajratishda tushib qolgan taвЂ™rifning birinchi yarmi qayta tiklandi",
+          "Щ…ЩЋШ§ШІЩЏШ±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ atamasining zamonaviy lotincha qushlar oilasiga ishonchli mosligi topilmadi; tavsif tarjima qilindi, ammo yozuv ishlab turgan bazaga kiritilmaydi"
+        ],
+        "reviewedAt": "2026-08-29"
+      },
+      "notes": "Zamonaviy lotincha oilaga ishonchli tenglashtirilmaguncha ishlab turgan bazaga kiritilmaydi."
+    },
+    {
+      "sequenceIndex": 318,
+      "id": 79442,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш­ЩЋЩ„Щ’ЩѓЩЋШ©ЩЊ",
+      "root": "Ш­Щ„ЩѓвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШЇЩЏЩ€ЩЋЩЉЩђШЁЩ‘ЩЋШ©ЩЊШЊ ШЄЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„Ш№ЩЋШёЩЋШ§ШЎШ©ЩЏШЊ ШЄЩЋШєЩЏЩ€ШµЩЏ ЩЃЩђЩЉ Ш§Щ„Ш±Щ‘ЩЋЩ…Щ’Щ„Щђ ШҐШ°ЩЋШ§ ШЈЩЋШ­ЩЋШіЩ‘ЩЋШЄЩ’ ШЁЩђШ§Щ„ШҐЩ†Щ’ШіЩЋШ§Щ†Щђ.",
+      "sourceHash": "a0905ae19a08510b24682840a873c739ece4e44496f2255d1f49669ad35d79ef",
+      "wordType": "ot",
+      "uzbek": "qumga shoвЂngвЂib yashirinadigan kaltakesaksimon mayda jonivor",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШЇЩЏЩ€ЩЋЩЉЩђШЁЩ‘ЩЋШ©ЩЊШЊ ШЄЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„Ш№ЩЋШёЩЋШ§ШЎШ©ЩЏШЊ ШЄЩЋШєЩЏЩ€ШµЩЏ ЩЃЩђЩЉ Ш§Щ„Ш±Щ‘ЩЋЩ…Щ’Щ„Щђ ШҐШ°ЩЋШ§ ШЈЩЋШ­ЩЋШіЩ‘ЩЋШЄЩ’ ШЁЩђШ§Щ„ШҐЩ†Щ’ШіЩЋШ§Щ†Щђ.",
+          "uzbekMeaning": "kaltakesakka oвЂxshash, odamni sezganda qum ichiga shoвЂngвЂib yashirinadigan mayda sudralib yuruvchi; hulka",
+          "uzbekExample": "Hulka odam yaqinlashganini sezib, qum ichiga shoвЂngвЂidi.",
+          "register": "kam qoвЂllanadigan zoologik nom"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_rare_term_note",
+        "issues": [
+          "Noyob hayvon nomi tur darajasida majburan tenglashtirilmadi; manbadagi kaltakesaksimon va qumga shoвЂngвЂish belgilari aniq tarjima qilindi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 319,
+      "id": 79443,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЋШ±Щ’ШєЩЋШґЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "-Щ„ЩЋШіЩЋШ№ЩЋЩ‡ЩЏ ШЁЩЋШ±Щ’ШєЩЋШґЩЊ : ШЁЩЋШ№Щ€Ш¶ЩЊ ЩЉЩЋЩ„Щ’ШіЩЋШ№ЩЏ ШЁЩђШґЩђШЇЩ‘ЩЋШ©ЩЌ.",
+      "sourceHash": "63c62bca83124a5c7bdeb8bfc48afa85dd9ff3cf223bcf614f18ee367aa033c6",
+      "wordType": "jamlovchi ot",
+      "uzbek": "qattiq chaqadigan mayda chivin yoki pashshacha",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Щ„ЩЋШіЩЋШ№ЩЋЩ‡ЩЏ ШЁЩЋШ±Щ’ШєЩЋШґЩЊ",
+          "arabicGloss": "ШЁЩЋШ№Щ€Ш¶ЩЊ ЩЉЩЋЩ„Щ’ШіЩЋШ№ЩЏ ШЁЩђШґЩђШЇЩ‘ЩЋШ©ЩЌ.",
+          "uzbekMeaning": "odam yoki hayvonni qattiq chaqadigan mayda chivin yoxud pashshacha",
+          "uzbekExample": "Uni mayda chaquvchi chivin tishladi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 320,
+      "id": 79444,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ…ЩЋШ№ЩђШЇЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "Щ…Ш№ШЇвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "-Щ…ЩЋШ№ЩђШЇЩђЩЉЩ‘ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ : Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш±Щ‘ЩђШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩЏШЄЩЋЩ…ЩЋЩЉЩ‘ЩђШІЩЋШ©ЩЊ ШЁЩђШ±ЩђШ¬Щ’Щ„ЩЌ Щ…ЩЏШіЩЋШ·Щ‘ЩЋШ­ЩЋШ©ЩЌ.",
+      "sourceHash": "8aa252acd6ab01c41a0d44c5aaf3a06cb7426dfab479525dd896e4c8c270addc",
+      "wordType": "koвЂplikdagi zoologik ot",
+      "uzbek": "Щ…ЩЋШ№ЩђШЇЩђЩЉЩ‘ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ вЂ” qorinoyoqlilar, Gastropoda",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Щ…ЩЋШ№ЩђШЇЩђЩЉЩ‘ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ",
+          "arabicGloss": "Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш±Щ‘ЩђШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩЏШЄЩЋЩ…ЩЋЩЉЩ‘ЩђШІЩЋШ©ЩЊ ШЁЩђШ±ЩђШ¬Щ’Щ„ЩЌ Щ…ЩЏШіЩЋШ·Щ‘ЩЋШ­ЩЋШ©ЩЌ.",
+          "uzbekMeaning": "qorinoyoqlilar вЂ” Gastropoda; shilliqqurt va salyangozlarni qamrab oladigan, qorin tomonida muskulli yassi oyogвЂi boвЂlgan mollyuskalar sinfi",
+          "uzbekExample": "Salyangozlar qorinoyoqlilar sinfiga kiradi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_rank_correction",
+        "issues": [
+          "Manba Gastropoda guruhini В«turkumВ» deb bergan; NCBI va ITIS tasnifida u mollyuskalar tipi tarkibidagi sinf boвЂlgani uchun В«qorinoyoqlilar sinfiВ» deb tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 321,
+      "id": 79445,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ„ЩђЩ‚Щ’Щ€ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШЈЩЏЩ†Щ’Ш«ЩЋЩ‰ Ш§Щ„Щ’Ш№ЩЏЩ‚ЩЋШ§ШЁЩђШЊ Ш№ЩЏЩ‚ЩЋШ§ШЁЩЊ ШіЩЋШ±ЩђЩЉШ№ЩЊ.",
+      "sourceHash": "904913a3dbee63dd569107ef5ce3ecb4f689a62c1274931bb9dd1b272026d73a",
+      "wordType": "ot",
+      "uzbek": "urgвЂochi burgut; tez uchib, oвЂljani chaqqon iladigan burgut",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШЈЩЏЩ†Щ’Ш«ЩЋЩ‰ Ш§Щ„Щ’Ш№ЩЏЩ‚ЩЋШ§ШЁЩђШЊ Ш№ЩЏЩ‚ЩЋШ§ШЁЩЊ ШіЩЋШ±ЩђЩЉШ№ЩЊ.",
+          "uzbekMeaning": "urgвЂochi burgut, xususan tez uchib, oвЂljani chaqqon iladigan burgut",
+          "uzbekExample": "UrgвЂochi burgut oвЂljasiga tez tashlandi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_dictionary_cross_check",
+        "issues": [
+          "В«UrgвЂochi burgutВ» va В«tez oвЂlja iluvchi burgutВ» alohida omonim emas, bir nomning oвЂzaro bogвЂliq tavsiflari sifatida berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 322,
+      "id": 79446,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ€ЩЋШ±ЩЋЩ„ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШЈЩЏЩ†Щ’Ш«ЩЋЩ‰ Ш§Щ„Щ€ЩЋШ±ЩЋЩ„Щђ.",
+      "sourceHash": "012426ff35e60699d8697c17277369ffee05e0ebddce88c4bd80cc30d9292eea",
+      "wordType": "ot",
+      "uzbek": "urgвЂochi varan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШЈЩЏЩ†Щ’Ш«ЩЋЩ‰ Ш§Щ„Щ€ЩЋШ±ЩЋЩ„Щђ.",
+          "uzbekMeaning": "varan, yaвЂ™ni yirik kaltakesakning urgвЂochisi",
+          "uzbekExample": "UrgвЂochi varan qumli joyda harakatlanib yurdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 323,
+      "id": 79447,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩЏШЇЩ‘ЩЊ",
+      "root": "Щ‚ШЇШЇвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш¬ЩђЩ†Щ’ШіЩЏ ШіЩЋЩ…ЩЋЩѓЩЌ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЌШЊ ШґЩЋШ§Ш¦ЩђЩѓЩЏ Ш§Щ„ШІЩ‘ЩЋШ№ЩЋШ§Щ†ЩђЩЃЩђШЊ ШµЩЋШєЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋШЇЩ‘ЩђШЊ ЩЉЩЏШіЩ’ШЄЩЋШ®Щ’Ш±ЩЋШ¬ЩЏ Щ…ЩђЩ†Щ’ ЩѓЩЋШЁЩђШЇЩђ ШЁЩЋШ№Щ’Ш¶Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡Щђ ШІЩЋЩЉЩ’ШЄЩЏ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩђ.",
+      "sourceHash": "59a8d77d0a51223181569cfecf9ccc651504a9f326b274d26704b4a48af402a1",
+      "wordType": "jamlovchi ot",
+      "uzbek": "treska, Gadus turkumidagi dengiz baliqlari",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш¬ЩђЩ†Щ’ШіЩЏ ШіЩЋЩ…ЩЋЩѓЩЌ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЌШЊ ШґЩЋШ§Ш¦ЩђЩѓЩЏ Ш§Щ„ШІЩ‘ЩЋШ№ЩЋШ§Щ†ЩђЩЃЩђШЊ ШµЩЋШєЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋШЇЩ‘ЩђШЊ ЩЉЩЏШіЩ’ШЄЩЋШ®Щ’Ш±ЩЋШ¬ЩЏ Щ…ЩђЩ†Щ’ ЩѓЩЋШЁЩђШЇЩђ ШЁЩЋШ№Щ’Ш¶Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡Щђ ШІЩЋЩЉЩ’ШЄЩЏ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩђ.",
+          "uzbekMeaning": "Gadus turkumiga mansub treska baliqlari; ayrim turlarining jigaridan treska jigar moyi olinadi",
+          "uzbekExample": "Treska jigaridan baliq moyi olinadi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Uchta umumiy ibora bitta baliq nomining tavsiflari edi; Gadus ITIS tasnifi asosida В«treskaВ» deb aniqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 324,
+      "id": 79448,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ…ЩЏЩЃЩЋЩ„Щ’Ш·ЩЋШ­ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш¬ЩђЩ†Щ’ШіЩЏ ШіЩЋЩ…ЩЋЩѓЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЏЩЃЩЋЩ„Щ’Ш·ЩЋШ­ЩЋШ§ШЄЩђШЊ Щ…ЩЋЩ„Щ’ШіЩЋШ§ШЎЩЏШЊ Щ„ЩЋЩ‡ЩЋШ§ Ш¬ЩђШіЩ’Щ…ЩЊ Щ…ЩЏЩ†Щ’ШЁЩЋШіЩђШ·ЩЊ Щ€ЩЋШ№ЩЋШ±ЩђЩЉШ¶ЩЊ.",
+      "sourceHash": "86ac6fc1b3eabe8d522411a6aca5bd8ad23a0dfff715e127df9b4a5490ca7be3",
+      "wordType": "ot",
+      "uzbek": "tanasi keng va yassi boвЂlgan yassi baliq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш¬ЩђЩ†Щ’ШіЩЏ ШіЩЋЩ…ЩЋЩѓЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЏЩЃЩЋЩ„Щ’Ш·ЩЋШ­ЩЋШ§ШЄЩђШЊ Щ…ЩЋЩ„Щ’ШіЩЋШ§ШЎЩЏШЊ Щ„ЩЋЩ‡ЩЋШ§ Ш¬ЩђШіЩ’Щ…ЩЊ Щ…ЩЏЩ†Щ’ШЁЩЋШіЩђШ·ЩЊ Щ€ЩЋШ№ЩЋШ±ЩђЩЉШ¶ЩЊ.",
+          "uzbekMeaning": "Pleuronectiformes turkumiga mansub, tanasi yon tomondan yassilashgan va keng boвЂlgan yassi baliq",
+          "uzbekExample": "Yassi baliq dengiz tubiga yaqin suzdi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Manbadagi silliq, keng va yassi tana tavsiflari uch maвЂ™no emas; Pleuronectiformes yassi baliqlari bilan bitta maвЂ™noda berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 325,
+      "id": 79449,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩЉЩЋШєЩ’Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш§Щ„Щ’ЩѓЩЋЩ„Щ’ШЁЩђ Щ€ЩЋШ§Щ„ШіЩ‘ЩђЩ†Щ‘ЩЋЩ€Щ’Ш±ЩђШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Щ’Щ‚ЩЋЩ€ЩЋШ§Ш¦ЩђЩ…ЩђШЊ ШЈЩЋШєЩ’ШЁЩЋШ±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„Щ’ШєЩЏШ±ЩЋЩЉЩ’Ш±Щђ.",
+      "sourceHash": "aff91594e76b81bf50fae516af301a5c951fe49e96d07425502d772e7797b527",
+      "wordType": "ot",
+      "uzbek": "boвЂrsiq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш§Щ„Щ’ЩѓЩЋЩ„Щ’ШЁЩђ Щ€ЩЋШ§Щ„ШіЩ‘ЩђЩ†Щ‘ЩЋЩ€Щ’Ш±ЩђШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Щ’Щ‚ЩЋЩ€ЩЋШ§Ш¦ЩђЩ…ЩђШЊ ШЈЩЋШєЩ’ШЁЩЋШ±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„Щ’ШєЩЏШ±ЩЋЩЉЩ’Ш±Щђ.",
+          "uzbekMeaning": "oyoqlari kalta, tanasi baquvvat boвЂlgan kulrang tusli sutemizuvchi вЂ” boвЂrsiq; arabchada Ш§Щ„ШєЩЏШ±ЩЋЩЉЩ’Ш± nomi bilan ham ataladi",
+          "uzbekExample": "BoвЂrsiq kalta oyoqlari bilan in tomon yurdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_from_explicit_source_synonym",
+        "issues": [
+          "Manbadagi Ш§Щ„ШєЩЏШ±ЩЋЩЉЩ’Ш± sinonimi В«boвЂrsiqВ» maвЂ™nosini aniq koвЂrsatadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 326,
+      "id": 79450,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩѓЩЋШ±Щ’ЩѓЩЋШЇЩЋЩ†Щ‘ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Щ€ЩЋШЄЩЋШ±ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„ШЈЩЋШёЩ’Щ„Ш§ЩЋЩЃЩђШЊ Ш¶ЩЋШ®Щ’Щ…ЩЏ Ш§Щ„Ш¬ЩЏШ«Щ‘ЩЋШ©ЩђШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋЩ€ЩЋШ§Ш¦ЩђЩ…ЩђШЊ ШєЩЋЩ„ЩђЩЉШёЩЏ Ш§Щ„Ш¬ЩђЩ„Щ’ШЇЩђШЊ ЩЉЩЋШЄЩЋЩ…ЩЋЩЉЩ‘ЩЋШІЩЏ ШЁЩђЩ‚ЩЋШ±Щ’Щ†ЩђЩ‡Щђ Ш§Щ„ЩѓЩЋШЁЩђЩЉШ±Щђ ЩЃЩђЩЉ Щ…ЩЏЩ†Щ’ШЄЩЋШµЩЋЩЃЩђ Ш±ЩЋШЈЩ’ШіЩђЩ‡ЩђШЊ Щ€ЩЋЩ„ЩђШЁЩЋШ№Щ’Ш¶Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡Щђ Щ‚ЩЋШ±Щ’Щ†ЩЋШ§Щ†ЩђШЊ Ш§Щ„Щ€ЩЋШ§Ш­ЩђШЇЩЏ ЩЃЩЋЩ€Щ’Щ‚ЩЋ Ш§Щ„ШўШ®ЩЋШ±ЩђШЊ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ Щ€ЩЋШ­ЩђЩЉШЇЩЋ Ш§Щ„Щ‚ЩЋШ±Щ’Щ†Щђ.",
+      "sourceHash": "c28dff5039affc9ef70347c8400b924ca17e1158838f1a7d018ee2647db94864",
+      "wordType": "ot",
+      "uzbek": "karkidon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Щ€ЩЋШЄЩЋШ±ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„ШЈЩЋШёЩ’Щ„Ш§ЩЋЩЃЩђШЊ Ш¶ЩЋШ®Щ’Щ…ЩЏ Ш§Щ„Ш¬ЩЏШ«Щ‘ЩЋШ©ЩђШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋЩ€ЩЋШ§Ш¦ЩђЩ…ЩђШЊ ШєЩЋЩ„ЩђЩЉШёЩЏ Ш§Щ„Ш¬ЩђЩ„Щ’ШЇЩђШЊ ЩЉЩЋШЄЩЋЩ…ЩЋЩЉЩ‘ЩЋШІЩЏ ШЁЩђЩ‚ЩЋШ±Щ’Щ†ЩђЩ‡Щђ Ш§Щ„ЩѓЩЋШЁЩђЩЉШ±Щђ ЩЃЩђЩЉ Щ…ЩЏЩ†Щ’ШЄЩЋШµЩЋЩЃЩђ Ш±ЩЋШЈЩ’ШіЩђЩ‡ЩђШЊ Щ€ЩЋЩ„ЩђШЁЩЋШ№Щ’Ш¶Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡Щђ Щ‚ЩЋШ±Щ’Щ†ЩЋШ§Щ†ЩђШЊ Ш§Щ„Щ€ЩЋШ§Ш­ЩђШЇЩЏ ЩЃЩЋЩ€Щ’Щ‚ЩЋ Ш§Щ„ШўШ®ЩЋШ±ЩђШЊ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ Щ€ЩЋШ­ЩђЩЉШЇЩЋ Ш§Щ„Щ‚ЩЋШ±Щ’Щ†Щђ.",
+          "uzbekMeaning": "tanasi yirik, oyoqlari kalta, terisi qalin, burni ustida bir yoki ikki shoxi boвЂladigan tuyoqli sutemizuvchi вЂ” karkidon",
+          "uzbekExample": "Karkidonning burni ustida katta shoxi bor.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_semantic_correction",
+        "issues": [
+          "Щ€ЩЋШ­ЩђЩЉШЇЩЏ Ш§Щ„Щ‚ЩЋШ±Щ’Щ†Щђ bu manbada karkidonning arabcha nomi; В«yagona shoxli karkidonВ» degan sunвЂ™iy ikkinchi maвЂ™no olib tashlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 327,
+      "id": 79451,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩЃЩЋЩ†ЩЋЩѓЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’ЩѓЩЋЩ„Щ’ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ ЩЃЩђЩЉ Щ…ЩЋШёЩ’Щ‡ЩЋШ±ЩђЩ‡Щђ Ш§Щ„Ш«Щ‘ЩЋШ№Щ’Щ„ЩЋШЁЩЋ Щ€ЩЋЩЉЩЋШ®Щ’ШЄЩЋЩ„ЩђЩЃЩЏ Ш№ЩЋЩ†Щ’Щ‡ЩЏ ЩЃЩђЩЉ ШЈЩЏШ°ЩЏЩ†ЩЋЩЉЩ’Щ‡Щђ Ш§Щ„Щ’ЩѓЩЋШЁЩђЩЉШ±ЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш®ЩЋШ·Щ’Щ…ЩЊ Щ…ЩЏШіЩ’ШЄЩЋШЇЩђЩ‚Щ‘ЩЊШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊШЊ ЩЉЩЋЩ…Щ’ШЄЩЋШ§ШІЩЏ ШЁЩђЩЃЩЋШ±Щ’Щ€ЩЋШЄЩђЩ‡Щђ Ш§Щ„Щ’Ш¬ЩЋЩ…ЩђЩЉЩ„ЩЋШ©ЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ ШЁЩђШ§Щ„ШµЩ‘ЩЋШ­Щ’Ш±ЩЋШ§ШЎЩђ.",
+      "sourceHash": "f01a1fbeb048e24b59bafbc76902e89dec89e617b63951f8d88bd95381e7a3ae",
+      "wordType": "ot",
+      "uzbek": "fenek, katta quloqli choвЂl tulkisi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’ЩѓЩЋЩ„Щ’ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ ЩЃЩђЩЉ Щ…ЩЋШёЩ’Щ‡ЩЋШ±ЩђЩ‡Щђ Ш§Щ„Ш«Щ‘ЩЋШ№Щ’Щ„ЩЋШЁЩЋ Щ€ЩЋЩЉЩЋШ®Щ’ШЄЩЋЩ„ЩђЩЃЩЏ Ш№ЩЋЩ†Щ’Щ‡ЩЏ ЩЃЩђЩЉ ШЈЩЏШ°ЩЏЩ†ЩЋЩЉЩ’Щ‡Щђ Ш§Щ„Щ’ЩѓЩЋШЁЩђЩЉШ±ЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш®ЩЋШ·Щ’Щ…ЩЊ Щ…ЩЏШіЩ’ШЄЩЋШЇЩђЩ‚Щ‘ЩЊШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊШЊ ЩЉЩЋЩ…Щ’ШЄЩЋШ§ШІЩЏ ШЁЩђЩЃЩЋШ±Щ’Щ€ЩЋШЄЩђЩ‡Щђ Ш§Щ„Щ’Ш¬ЩЋЩ…ЩђЩЉЩ„ЩЋШ©ЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ ШЁЩђШ§Щ„ШµЩ‘ЩЋШ­Щ’Ш±ЩЋШ§ШЎЩђ.",
+          "uzbekMeaning": "Vulpes zerda turiga mansub, katta quloqli, ingichka tumshuqli va uzun dumli choвЂl tulkisi вЂ” fenek",
+          "uzbekExample": "Fenek katta quloqlari bilan sahrodagi mayda tovushlarni sezadi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Katta quloqli choвЂl tulkisi ITISdagi Vulpes zerda вЂ” fenek bilan tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 328,
+      "id": 79452,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЏЩ†ЩЏЩ€Щ†ЩЏЩ€",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш®ЩЋШ·ЩЋШ§Ш·ЩђЩЉЩЃЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш№ЩЏШµЩ’ЩЃЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ‚ЩЋШµЩЉШ±ЩЏ Ш§Щ„Ш±Щ‘ЩђШ¬Щ’Щ„ЩЋЩЉЩ’Щ†ЩђШЊ Ш№ЩЋШ±ЩђЩЉШ¶ЩЏ Ш§Щ„Щ‚ЩЋШ§Ш№ЩђШЇЩЋШ©ЩђШЊ ШЇЩЋЩ‚ЩђЩЉЩ‚ЩЏ Ш§Щ„Щ†Щ‘ЩЋШёЩЋШ±ЩђШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЏЩ‡ЩЏ ЩЉЩЋШЄЩЋШґЩЋШ№Щ‘ЩЋШЁЩЏ ШґЩЏШ№Щ’ШЁЩЋШЄЩЋЩЉЩ’Щ†Щђ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ ШіЩЋШ±ЩђЩЉШ№ЩЏ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†Щђ.",
+      "sourceHash": "12ee7c42b01ea99af216516a6afd94c0bf5287a32ff7da90f8e7fbee6e967be0",
+      "wordType": "ot",
+      "uzbek": "qaldirgвЂoch",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш®ЩЋШ·ЩЋШ§Ш·ЩђЩЉЩЃЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш№ЩЏШµЩ’ЩЃЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ‚ЩЋШµЩЉШ±ЩЏ Ш§Щ„Ш±Щ‘ЩђШ¬Щ’Щ„ЩЋЩЉЩ’Щ†ЩђШЊ Ш№ЩЋШ±ЩђЩЉШ¶ЩЏ Ш§Щ„Щ‚ЩЋШ§Ш№ЩђШЇЩЋШ©ЩђШЊ ШЇЩЋЩ‚ЩђЩЉЩ‚ЩЏ Ш§Щ„Щ†Щ‘ЩЋШёЩЋШ±ЩђШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЏЩ‡ЩЏ ЩЉЩЋШЄЩЋШґЩЋШ№Щ‘ЩЋШЁЩЏ ШґЩЏШ№Щ’ШЁЩЋШЄЩЋЩЉЩ’Щ†Щђ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ ШіЩЋШ±ЩђЩЉШ№ЩЏ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†Щђ.",
+          "uzbekMeaning": "oyogвЂi kalta, dumi uzun ikki ayriga boвЂlingan va tez uchadigan qush вЂ” qaldirgвЂoch",
+          "uzbekExample": "QaldirgвЂoch havoda tez burilib, hasharot tutdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_semantic_cleanup",
+        "issues": [
+          "Avvalgi tarjimadagi В«boshqa maвЂ™no aniqlanmaganВ» mazmunsiz band olib tashlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 329,
+      "id": 79453,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЏШ±Щ’Ш№ЩЏЩ€ШЁЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЏШ±Щ’Ш№ЩЏЩ€ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩЋШ§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШ§ШЁЩ’Щ†Щђ Ш№ЩђШ±Щ’ШіЩЌ.",
+      "sourceHash": "8621f5021334512f6688e7fbdb9ee8c638aa5ea1421212955d462db3d5e1b31e",
+      "wordType": "ot",
+      "uzbek": "sichqonsimon mayda yirtqich sutemizuvchi вЂ” latcha, weasel",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЏШ±Щ’Ш№ЩЏЩ€ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩЋШ§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШ§ШЁЩ’Щ†Щђ Ш№ЩђШ±Щ’ШіЩЌ.",
+          "uzbekMeaning": "arabchada Ш§ШЁЩ’Щ†ЩЏ Ш№ЩђШ±Щ’ШіЩЌ deb ham ataladigan, tanasi choвЂziq mayda yirtqich sutemizuvchi вЂ” latcha yoki weasel",
+          "uzbekExample": "Latcha kemiruvchini quvib, iniga kirib ketdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_dictionary_cross_check",
+        "issues": [
+          "Avvalgi В«ilonlar oilasiВ» tarjimasi xato edi; Ш§ШЁЩ’Щ†ЩЏ Ш№ЩђШ±Щ’ШіЩЌ klassik va zamonaviy arabcha lugвЂatlarda weasel/latchani bildiradi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 330,
+      "id": 79454,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш¶ЩЋШЈЩ’Щ†ЩЊ",
+      "root": "Ш¶ШЈЩ†вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШєЩЋЩ†ЩЋЩ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ…ЩЏШ¬Щ’ШЄЩЋШ±Щ‘ЩЊШЊ ШЈЩЋЩ‡Щ’Щ„ЩђЩЉЩ‘ЩЊШЊ Щ€ЩЋЩЉЩЏШ·Щ’Щ„ЩЋЩ‚ЩЏ Ш§ШіЩ’Щ…ЩЏ Ш§Щ„Ш¶Щ‘ЩЋШЈЩ’Щ†Щђ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„Щ’Ш¬ЩЋЩ…Щ’Ш№Щђ Щ€ЩЋШ§Щ„Щ€ЩЋШ§Ш­ЩђШЇЩђ. ЩЉЩЏШіЩ’ШЄЩЋЩЃЩЋШ§ШЇЩЏ Щ…ЩђЩ†Щ’ ШµЩЏЩ€ЩЃЩђЩ‡Щђ Щ€ЩЋЩ„ЩЋШ­Щ’Щ…ЩђЩ‡Щђ Щ€ЩЋЩ„ЩЋШЁЩЋЩ†ЩђЩ‡Щђ.",
+      "sourceHash": "88caa305581105ad837b943b36eec9314274609e211ff833986bb4605cb7e059",
+      "wordType": "jamlovchi ot",
+      "uzbek": "qoвЂy; junli uy qoвЂylari",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШєЩЋЩ†ЩЋЩ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ…ЩЏШ¬Щ’ШЄЩЋШ±Щ‘ЩЊШЊ ШЈЩЋЩ‡Щ’Щ„ЩђЩЉЩ‘ЩЊШЊ Щ€ЩЋЩЉЩЏШ·Щ’Щ„ЩЋЩ‚ЩЏ Ш§ШіЩ’Щ…ЩЏ Ш§Щ„Ш¶Щ‘ЩЋШЈЩ’Щ†Щђ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„Щ’Ш¬ЩЋЩ…Щ’Ш№Щђ Щ€ЩЋШ§Щ„Щ€ЩЋШ§Ш­ЩђШЇЩђ. ЩЉЩЏШіЩ’ШЄЩЋЩЃЩЋШ§ШЇЩЏ Щ…ЩђЩ†Щ’ ШµЩЏЩ€ЩЃЩђЩ‡Щђ Щ€ЩЋЩ„ЩЋШ­Щ’Щ…ЩђЩ‡Щђ Щ€ЩЋЩ„ЩЋШЁЩЋЩ†ЩђЩ‡Щђ.",
+          "uzbekMeaning": "jun, goвЂsht va sut olish uchun boqiladigan kavsh qaytaruvchi uy hayvoni вЂ” qoвЂy; soвЂz birlik va jamoa maвЂ™nosida qoвЂllanadi",
+          "uzbekExample": "QoвЂydan jun, goвЂsht va sut olinadi.",
+          "register": "zoologiya va chorvachilik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_collective_noun_note",
+        "issues": [
+          "Birlik va jamoa maвЂ™nosida qoвЂllanishi oвЂzbekcha izohda saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 331,
+      "id": 79455,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩЏЩ†Щ’ШЇЩЏШіЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€Ш§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ‚ЩЏЩ†Щ’ШЇЩЏШіЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋЩ€Ш§Ш±ЩђШ¶Щђ Ш§Щ„Щ’Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш°ЩЋЩ†ЩЋШЁЩЊ Щ‚ЩЋЩ€ЩђЩЉЩ‘ЩЊ Щ…ЩЏЩЃЩЋЩ„Ш·ЩЋШ­ЩЊШЊ Щ€ЩЋШєЩђШґШ§ШЎЩЊ ШЁЩЋЩЉЩ’Щ†ЩЋ ШЈЩЋШµШ§ШЁЩђШ№Щђ Ш±ЩђШ¬Щ’Щ„ЩЋЩЉЩ’Щ‡Щђ ЩЉЩЋШіЩ’ШЄЩЋШ№ЩђЩЉЩ† ШЁЩђЩ‡Щђ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„ШіЩ‘ЩЋШЁШ§Ш­ЩЋШ©ЩђШЊ Щ…ЩђЩ† Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Ш§ШЄЩђ ШЈЩЏЩ€Ш±ЩЏЩ€ШЁЩ‘Ш§ Щ€ШЈЩЋЩ…Щ’Ш±ЩђЩЉЩѓЩЋШ§ Ш§Щ„ШґЩ‘ЩЋЩ…Ш§Щ„ЩђЩЉЩ‘ЩЋШ©Щђ.",
+      "sourceHash": "a548deb7dd40c4b568772e4e5b92af00b956631282dd6e47ecc86d3ff33451dc",
+      "wordType": "ot",
+      "uzbek": "qunduz, yassi dumli suv kemiruvchisi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€Ш§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ‚ЩЏЩ†Щ’ШЇЩЏШіЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋЩ€Ш§Ш±ЩђШ¶Щђ Ш§Щ„Щ’Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш°ЩЋЩ†ЩЋШЁЩЊ Щ‚ЩЋЩ€ЩђЩЉЩ‘ЩЊ Щ…ЩЏЩЃЩЋЩ„Ш·ЩЋШ­ЩЊШЊ Щ€ЩЋШєЩђШґШ§ШЎЩЊ ШЁЩЋЩЉЩ’Щ†ЩЋ ШЈЩЋШµШ§ШЁЩђШ№Щђ Ш±ЩђШ¬Щ’Щ„ЩЋЩЉЩ’Щ‡Щђ ЩЉЩЋШіЩ’ШЄЩЋШ№ЩђЩЉЩ† ШЁЩђЩ‡Щђ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„ШіЩ‘ЩЋШЁШ§Ш­ЩЋШ©ЩђШЊ Щ…ЩђЩ† Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Ш§ШЄЩђ ШЈЩЏЩ€Ш±ЩЏЩ€ШЁЩ‘Ш§ Щ€ШЈЩЋЩ…Щ’Ш±ЩђЩЉЩѓЩЋШ§ Ш§Щ„ШґЩ‘ЩЋЩ…Ш§Щ„ЩђЩЉЩ‘ЩЋШ©Щђ.",
+          "uzbekMeaning": "Castoridae oilasiga mansub, kuchli yassi dumli va orqa oyoq barmoqlari orasida suzgich pardasi boвЂlgan yirik suv kemiruvchisi вЂ” qunduz",
+          "uzbekExample": "Qunduz yassi dumi va pardali oyoqlari yordamida suzdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Castoridae, yassi dum va suzgich parda belgilari ITIS tasnifi bilan mos keladi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 332,
+      "id": 79456,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩЏЩ€Ш§Ш№ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш°ЩЋЩѓЩЋШ±ЩЏ Ш§Щ„ШЈЩЋШ±Щ’Щ†ЩЋШЁЩђШЊ ЩѓЩ…Ш§ ЩЉЩЏШ·Щ’Щ„ЩЋЩ‚ЩЏ Ш№Щ„Щ‰ Ш§Щ„ШЈЩЋШ±Щ’Щ†ЩЋШЁЩђ Ш§Щ„Щ€ЩЋШ­Щ’ШґЩђЩЉЩ‘ЩЋШ©Щђ.",
+      "sourceHash": "62b3a52ba06a081771d9a7c66ddcdb9bb982c74281cba6c57386031edb69e209",
+      "wordType": "ot",
+      "uzbek": "erkak quyon; yovvoyi quyon yoki tovushqon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш°ЩЋЩѓЩЋШ±ЩЏ Ш§Щ„ШЈЩЋШ±Щ’Щ†ЩЋШЁЩђШЊ ЩѓЩ…Ш§ ЩЉЩЏШ·Щ’Щ„ЩЋЩ‚ЩЏ Ш№Щ„Щ‰ Ш§Щ„ШЈЩЋШ±Щ’Щ†ЩЋШЁЩђ Ш§Щ„Щ€ЩЋШ­Щ’ШґЩђЩЉЩ‘ЩЋШ©Щђ.",
+          "uzbekMeaning": "erkak quyon; shuningdek yovvoyi quyon yoki tovushqon",
+          "uzbekExample": "Erkak yovvoyi quyon butalar orasiga yugurib kirdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 333,
+      "id": 79457,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЋЩ„Щ’Щ…ЩЏЩ€Щ†ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШіЩЋЩ…ЩЋЩѓЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ…ЩЏЩ€Щ†ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЏШ§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„ШЈШіЩ’Щ…ЩЋШ§ЩѓЩђ Ш§Щ„Ш№ЩЋШёЩ’Щ…ЩђЩЉЩ‘ЩЋШ©ЩђШЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩЏЩЃЩ’ШЄЩЋШ±ЩђШіЩЋШ©ЩЊ Щ„Ш§Ш­ЩђЩ…ЩЋШ©ЩЊШЊ ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩЏЩ‡Ш§ Ш№ЩЋШЇЩђЩЉШЇЩЋШ©ЩЊ.",
+      "sourceHash": "bba1adc556b7b55f96ef19d902cd266702f2454df72e932c04ff4a8cb7b3c5cc",
+      "wordType": "jamlovchi ot",
+      "uzbek": "losos, Salmonidae oilasidagi baliqlar",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШіЩЋЩ…ЩЋЩѓЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ…ЩЏЩ€Щ†ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЏШ§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„ШЈШіЩ’Щ…ЩЋШ§ЩѓЩђ Ш§Щ„Ш№ЩЋШёЩ’Щ…ЩђЩЉЩ‘ЩЋШ©ЩђШЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩЏЩЃЩ’ШЄЩЋШ±ЩђШіЩЋШ©ЩЊ Щ„Ш§Ш­ЩђЩ…ЩЋШ©ЩЊШЊ ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩЏЩ‡Ш§ Ш№ЩЋШЇЩђЩЉШЇЩЋШ©ЩЊ.",
+          "uzbekMeaning": "Salmoniformes turkumining Salmonidae oilasiga mansub losos baliqlari; koвЂp turlari chuchuk suvda tuxumdan chiqib, dengizda voyaga yetadi va koвЂpayish uchun yana chuchuk suvga qaytadi",
+          "uzbekExample": "Losos koвЂpayish davrida dengizdan tugвЂilgan daryosiga qaytadi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_correction",
+        "issues": [
+          "Manbadagi Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄ turkumi xato; ITIS boвЂyicha Salmonidae oilasi Salmoniformes turkumiga kiradi",
+          "В«Faqat dengiz baligвЂiВ» degan tor talqin NOAA hayot aylanishi maвЂ™lumoti asosida chuchuk suv va dengiz bosqichlarini qamrab oladigan qilib tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 334,
+      "id": 79458,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШёЩЋШЁЩ’ШЈЩЋШ©ЩЊ",
+      "root": "ШёШЁШЈвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш¶ЩЋШЁЩЏШ№ЩЊ Ш№ЩЋШ±Щ’Ш¬ЩЋШ§ШЎЩЏ.",
+      "sourceHash": "f08442083afd41d299d182751977bd3219640edd2393a25e69958ecde9fdc338",
+      "wordType": "ot",
+      "uzbek": "oqsoq sirtlon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш¶ЩЋШЁЩЏШ№ЩЊ Ш№ЩЋШ±Щ’Ш¬ЩЋШ§ШЎЩЏ.",
+          "uzbekMeaning": "oyogвЂi oqsoq sirtlon",
+          "uzbekExample": "Oqsoq sirtlon sekin yurib, iniga qaytdi.",
+          "register": "kam qoвЂllanadigan zoologik nom"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_dictionary_cross_check",
+        "issues": [
+          "Avvalgi В«oqsoq boвЂriВ» tarjimasi xato; Ш¶ЩЋШЁЩЏШ№ЩЊ sirtlonni bildiradi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 335,
+      "id": 79459,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ€ЩЋШ±Щ’Щ€ЩЋШ§Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„Щ’Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩђШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Ш±Щ‘ЩђШ¬Щ’Щ„ЩЋЩЉЩ’Щ†ЩђШЊ ШІЩЋШ§Щ‡ЩђЩЉ Ш§Щ„ШЈЩЋЩ„Щ’Щ€ЩЋШ§Щ†ЩђШЊ ЩЃЩђЩЉ Щ€ЩЋШіЩЋШ·Щђ Ш°ЩЋЩ†ЩЋШЁЩђЩ‡Щђ Ш±ЩђЩЉШґЩЋШЄЩЋШ§Щ†Щђ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЋШ§Щ†ЩђШЊ ЩЉЩЋЩ‚Щ’Ш·ЩЏЩ†ЩЏ ЩЃЩђЩЉ Ш§Щ„ШЁЩђЩ„Ш§ЩЋШЇЩђ Ш§Щ„Щ’Ш­ЩЋШ§Ш±Щ‘ЩЋШ©Щђ Щ€ЩЋЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„Щђ Щ€ЩЋШ§Щ„ШІЩ‘ЩЋЩ†ЩЋШ§ШЁЩђЩЉШ±ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩЋШ§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„Щ’Ш®ЩЏШ¶Щ‘ЩЋШ§Ш±Щђ.",
+      "sourceHash": "db823c42ddb2affbe2142c2886a82ff00484f29fabbe3872b321a4c99009c500",
+      "wordType": "ot",
+      "uzbek": "asalarixoвЂr qush, bee-eater",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„Щ’Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩђШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Ш±Щ‘ЩђШ¬Щ’Щ„ЩЋЩЉЩ’Щ†ЩђШЊ ШІЩЋШ§Щ‡ЩђЩЉ Ш§Щ„ШЈЩЋЩ„Щ’Щ€ЩЋШ§Щ†ЩђШЊ ЩЃЩђЩЉ Щ€ЩЋШіЩЋШ·Щђ Ш°ЩЋЩ†ЩЋШЁЩђЩ‡Щђ Ш±ЩђЩЉШґЩЋШЄЩЋШ§Щ†Щђ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЋШ§Щ†ЩђШЊ ЩЉЩЋЩ‚Щ’Ш·ЩЏЩ†ЩЏ ЩЃЩђЩЉ Ш§Щ„ШЁЩђЩ„Ш§ЩЋШЇЩђ Ш§Щ„Щ’Ш­ЩЋШ§Ш±Щ‘ЩЋШ©Щђ Щ€ЩЋЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„Щђ Щ€ЩЋШ§Щ„ШІЩ‘ЩЋЩ†ЩЋШ§ШЁЩђЩЉШ±ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩЋШ§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„Щ’Ш®ЩЏШ¶Щ‘ЩЋШ§Ш±Щђ.",
+          "uzbekMeaning": "Meropidae oilasiga mansub, tumshugвЂi uzun, oyogвЂi kalta, pati rang-barang va asosan asalari hamda arilar bilan oziqlanadigan qush вЂ” asalarixoвЂr yoki bee-eater",
+          "uzbekExample": "AsalarixoвЂr qush havoda uchayotgan arini tutdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Uzun tumshuq, rang-barang pat va asalari bilan oziqlanish tavsifi Meropidae вЂ” bee-eater guruhiga mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 336,
+      "id": 79460,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ†ЩЏШ­ЩЋШ§Щ…ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЏШ­ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ЩѓЩЋШЁЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋШ§Щ…ЩЋШ©ЩђШЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„Ш№ЩЏЩ†ЩЏЩ‚Щђ Щ€ЩЋШ§Щ„ШіЩ‘ЩђЩЉЩ‚ЩЋШ§Щ†ЩђШЊ Щ„ЩЋЩ‡ЩЏ Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ ШєЩЋЩ„ЩђЩЉШёЩЊ Щ…ЩЋШ№Щ’Щ‚ЩЏЩ€ЩЃЩЊШЊ ЩЉЩЋЩ…ЩђЩЉЩ„ЩЏ Щ„ЩЋЩ€Щ’Щ†ЩЏ Ш±ЩђЩЉШґЩђЩ‡Щђ ШҐЩђЩ„ЩЋЩ‰ Ш­ЩЏЩ…Щ’Ш±ЩЋШ©ЩЌ Щ€ЩЋШ±Щ’ШЇЩђЩЉЩ‘ЩЋШ©ЩЌШЊ ЩЉЩЋЩѓЩ’Ш«ЩЏШ±ЩЏ ШЁЩђШ§Щ„ШґЩ‘ЩЋЩ€ЩЋШ§Ш·ЩђШ¦Щђ Ш§Щ„ШіЩ‘ЩЋШ§Ш­ЩђЩ„ЩђЩЉЩ‘ЩЋШ©Щђ Щ€ЩЋШ№ЩЋЩ„ЩЋЩ‰ Ш¶ЩђЩЃЩЋШ§ЩЃЩђ Ш§Щ„ШЈЩЋЩ†Щ’Щ‡ЩЋШ§Ш±Щђ.",
+      "sourceHash": "bf913375b36050d7129ae99e8bfd8b83a4802fcd8fcbc4e082c2f02aba743176",
+      "wordType": "ot",
+      "uzbek": "flamingo",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЏШ­ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ЩѓЩЋШЁЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋШ§Щ…ЩЋШ©ЩђШЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„Ш№ЩЏЩ†ЩЏЩ‚Щђ Щ€ЩЋШ§Щ„ШіЩ‘ЩђЩЉЩ‚ЩЋШ§Щ†ЩђШЊ Щ„ЩЋЩ‡ЩЏ Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ ШєЩЋЩ„ЩђЩЉШёЩЊ Щ…ЩЋШ№Щ’Щ‚ЩЏЩ€ЩЃЩЊШЊ ЩЉЩЋЩ…ЩђЩЉЩ„ЩЏ Щ„ЩЋЩ€Щ’Щ†ЩЏ Ш±ЩђЩЉШґЩђЩ‡Щђ ШҐЩђЩ„ЩЋЩ‰ Ш­ЩЏЩ…Щ’Ш±ЩЋШ©ЩЌ Щ€ЩЋШ±Щ’ШЇЩђЩЉЩ‘ЩЋШ©ЩЌШЊ ЩЉЩЋЩѓЩ’Ш«ЩЏШ±ЩЏ ШЁЩђШ§Щ„ШґЩ‘ЩЋЩ€ЩЋШ§Ш·ЩђШ¦Щђ Ш§Щ„ШіЩ‘ЩЋШ§Ш­ЩђЩ„ЩђЩЉЩ‘ЩЋШ©Щђ Щ€ЩЋШ№ЩЋЩ„ЩЋЩ‰ Ш¶ЩђЩЃЩЋШ§ЩЃЩђ Ш§Щ„ШЈЩЋЩ†Щ’Щ‡ЩЋШ§Ш±Щђ.",
+          "uzbekMeaning": "boвЂyni va oyoqlari uzun, tumshugвЂi yoвЂgвЂon va qayrilgan, pati pushti-qizgвЂish suv qushi вЂ” flamingo",
+          "uzbekExample": "Flamingolar sayoz suv boвЂyida uzun oyoqlarida turardi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 337,
+      "id": 79461,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩЋШ§Щ‚ЩЊ",
+      "root": "Щ‚Щ€Щ‚вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’ШєЩЏШ±ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩђШ§Щ„Щ’Ш№ЩЏШµЩ’ЩЃЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Ш§Щ„Ш±Щ‘ЩЋШЈЩ’ШіЩђ Щ€ЩЋШ§Щ„Щ’Ш¬ЩЋЩ†ЩЋШ§Ш­ЩЋЩЉЩ’Щ†Щђ Щ€ЩЋШ§Щ„Ш°Щ‘ЩЋЩ†ЩЋШЁЩђ.",
+      "sourceHash": "83ca83b303f9643da8b840e999369346c24baf627a266ae484b3328aea286d7a",
+      "wordType": "ot",
+      "uzbek": "kulrang qargвЂa, hooded crow",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’ШєЩЏШ±ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩђШ§Щ„Щ’Ш№ЩЏШµЩ’ЩЃЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Ш§Щ„Ш±Щ‘ЩЋШЈЩ’ШіЩђ Щ€ЩЋШ§Щ„Щ’Ш¬ЩЋЩ†ЩЋШ§Ш­ЩЋЩЉЩ’Щ†Щђ Щ€ЩЋШ§Щ„Ш°Щ‘ЩЋЩ†ЩЋШЁЩђ.",
+          "uzbekMeaning": "tanasi kulrang, boshi, qanotlari va dumi qora boвЂlgan qargвЂasimon qush вЂ” kulrang qargвЂa yoki hooded crow",
+          "uzbekExample": "Kulrang qargвЂaning boshi va qanotlari qora edi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_diagnostic_name",
+        "issues": [
+          "Kulrang tana hamda qora bosh, qanot va dum belgilariga koвЂra oвЂzbekcha nom В«kulrang qargвЂaВ» deb aniq berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 338,
+      "id": 79462,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЋЩ…ЩЋШ±Щ’Щ…ЩЋШ±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШІЩ‘ЩЋШ±ЩЋШ§ШІЩђЩЉШ±ЩђШЊ ШЈШіЩ’Щ€ЩЋШЇЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ Щ‚ЩЏЩ€ШЄЩЏЩ‡ЩЏ Ш§Щ„Ш¬ЩЋШ±ЩЋШ§ШЇЩЏ Щ€ЩЋШ§Щ„Ш¬ЩЋЩ†ЩЋШ§ШЇЩђШЁЩЏ.",
+      "sourceHash": "a76a4c1eca8a01bd7059e181e5e3b18777d9077b01769d5a2691627fd7eeaa40",
+      "wordType": "ot",
+      "uzbek": "sarmarmar вЂ” chugвЂurchiqlar oilasidagi qora, chigirtqaxoвЂr qush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШІЩ‘ЩЋШ±ЩЋШ§ШІЩђЩЉШ±ЩђШЊ ШЈШіЩ’Щ€ЩЋШЇЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ Щ‚ЩЏЩ€ШЄЩЏЩ‡ЩЏ Ш§Щ„Ш¬ЩЋШ±ЩЋШ§ШЇЩЏ Щ€ЩЋШ§Щ„Ш¬ЩЋЩ†ЩЋШ§ШЇЩђШЁЩЏ.",
+          "uzbekMeaning": "Sturnidae вЂ” chugвЂurchiqlar oilasiga mansub, qora tusli, asosan chigirtka va boshqa toвЂgвЂriqanotlilar bilan oziqlanadigan qush; sarmarmar",
+          "uzbekExample": "Sarmarmar dalada chigirtkalarni terib yedi.",
+          "register": "kam qoвЂllanadigan ornitologik nom"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_rare_term_note",
+        "issues": [
+          "Aniq tur majburan belgilanmadi; Sturnidae oilasi, qora tus va chigirtqaxoвЂrlik belgilari manba darajasida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 339,
+      "id": 79463,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш№ЩЋШ§ШіЩЏЩ€Щ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ ЩЃЩђЩЉ Ш­ЩЋШ¬Щ’Щ… Щђ Ш§Щ„Щ’ШЁЩЋШ§ШґЩђЩ‚ЩђШЊ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†Щђ Щ…ЩЏЩ†ЩЋЩ‚Щ‘ЩЋШ·ЩЊ ШЁЩђШіЩЋЩ€ЩЋШ§ШЇЩЌШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„Щ’Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„Ш¶Щ‘ЩЋЩЃЩЋШ§ШЇЩђШ№Щђ Щ€ЩЋШ§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Щ€ЩЋШ§Щ„Щ’Ш­ЩЋЩЉЩ‘ЩЋШ§ШЄЩђ.",
+      "sourceHash": "7837d50bfa0ad00b8fbf72162c9a5db2d7cca3f3fdf84c6ea289eb7f7d29fa71",
+      "wordType": "ot",
+      "uzbek": "kestrel, mayda lochin",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ ЩЃЩђЩЉ Ш­ЩЋШ¬Щ’Щ… Щђ Ш§Щ„Щ’ШЁЩЋШ§ШґЩђЩ‚ЩђШЊ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†Щђ Щ…ЩЏЩ†ЩЋЩ‚Щ‘ЩЋШ·ЩЊ ШЁЩђШіЩЋЩ€ЩЋШ§ШЇЩЌШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„Щ’Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„Ш¶Щ‘ЩЋЩЃЩЋШ§ШЇЩђШ№Щђ Щ€ЩЋШ§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Щ€ЩЋШ§Щ„Щ’Ш­ЩЋЩЉЩ‘ЩЋШ§ШЄЩђ.",
+          "uzbekMeaning": "Falco turkumiga mansub, koвЂpincha qizgвЂish-jigarrang va qora dogвЂli boвЂladigan, hasharotlar hamda mayda umurtqalilar bilan oziqlanuvchi mayda lochin вЂ” kestrel",
+          "uzbekExample": "Kestrel havoda bir joyda qanot qoqib, oвЂljasini kuzatdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Ш№ЩЋШ§ШіЩЏЩ€Щ‚ЩЊ ning kestrel ekani arabcha atama va ITISdagi Falco turlari bilan tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 340,
+      "id": 79464,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩѓЩЋЩ†ЩЋШ§Ш±ЩђЩЉЩ‘ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш№ЩЋШµЩЋШ§ЩЃЩђЩЉШ±ЩђШЊ Ш­ЩЋШіЩЋЩ†ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ€Щ’ШЄЩђШЊ ШЈЩЋШµЩ’ЩЃЩЋШ±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†Щђ ШЈЩЋШ®Щ’Ш¶ЩЋШ±ЩЏЩ‡ЩЏШЊ Щ…ЩЋЩ†Щ’ШіЩЏЩ€ШЁЩЊ ШҐЩђЩ„ЩЋЩ‰ Ш¬ЩЏШІЩЏШ±Щђ Ш§Щ„ЩѓЩЋЩ†ЩЋШ§Ш±ЩђЩЉЩ‘.",
+      "sourceHash": "82751ea1b73e3e6816d69c1d9a2335d997398718d62eab6c4c0fbc57e97d49a8",
+      "wordType": "ot",
+      "uzbek": "kanareyka",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш№ЩЋШµЩЋШ§ЩЃЩђЩЉШ±ЩђШЊ Ш­ЩЋШіЩЋЩ†ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ€Щ’ШЄЩђШЊ ШЈЩЋШµЩ’ЩЃЩЋШ±ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†Щђ ШЈЩЋШ®Щ’Ш¶ЩЋШ±ЩЏЩ‡ЩЏШЊ Щ…ЩЋЩ†Щ’ШіЩЏЩ€ШЁЩЊ ШҐЩђЩ„ЩЋЩ‰ Ш¬ЩЏШІЩЏШ±Щђ Ш§Щ„ЩѓЩЋЩ†ЩЋШ§Ш±ЩђЩЉЩ‘.",
+          "uzbekMeaning": "yoqimli sayraydigan, koвЂpincha sariq yoki yashilimtir tusli, nomi Kanar orollariga nisbat berilgan mayda qush вЂ” kanareyka",
+          "uzbekExample": "Kanareyka qafasda yoqimli sayradi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 341,
+      "id": 79465,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩђЩЉЩ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШєЩЏШ±ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш№ЩЏШµЩ’ЩЃЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ШЁЩђШ­ЩЋШ¬Щ’Щ…Щђ Ш§Щ„Щ’Ш­ЩЋЩ…ЩЋШ§Щ…ЩЋШ©ЩђШЊ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Ш§Щ„Ш°Щ‘ЩЋЩ†ЩЋШЁЩђШЊ Щ…ЩЏШ®ЩЋШ·Щ‘ЩЋШ·ЩЏ Ш§Щ„Ш¬ЩЋЩ†ЩЋШ§Ш­ЩЋЩЉЩ’Щ†Щђ ШЁЩђШІЩЏШ±Щ’Щ‚ЩЋШ©ЩЌ Щ€ЩЋШіЩЋЩ€ЩЋШ§ШЇЩЌШЊЩѓЩЋШ«ЩђЩЉШ±ЩЏ Ш§Щ„ШЄЩ‘ЩЋШµЩ’Щ€ЩђЩЉШЄЩђШЊ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШЈЩЋШЁЩђЩЉ ШІЩЏШ±ЩЋЩЉЩ’Щ‚ЩЌ.",
+      "sourceHash": "894c2e87dfcdb397631406d1879c8d49abfd7d5a258086b432adddb8734e8f94",
+      "wordType": "ot",
+      "uzbek": "Yevrosiyo soykasi, qargвЂasimonlar oilasidagi qush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШєЩЏШ±ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш№ЩЏШµЩ’ЩЃЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ШЁЩђШ­ЩЋШ¬Щ’Щ…Щђ Ш§Щ„Щ’Ш­ЩЋЩ…ЩЋШ§Щ…ЩЋШ©ЩђШЊ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Ш§Щ„Ш°Щ‘ЩЋЩ†ЩЋШЁЩђШЊ Щ…ЩЏШ®ЩЋШ·Щ‘ЩЋШ·ЩЏ Ш§Щ„Ш¬ЩЋЩ†ЩЋШ§Ш­ЩЋЩЉЩ’Щ†Щђ ШЁЩђШІЩЏШ±Щ’Щ‚ЩЋШ©ЩЌ Щ€ЩЋШіЩЋЩ€ЩЋШ§ШЇЩЌШЊЩѓЩЋШ«ЩђЩЉШ±ЩЏ Ш§Щ„ШЄЩ‘ЩЋШµЩ’Щ€ЩђЩЉШЄЩђШЊ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШЈЩЋШЁЩђЩЉ ШІЩЏШ±ЩЋЩЉЩ’Щ‚ЩЌ.",
+          "uzbekMeaning": "qargвЂasimonlar oilasiga mansub, qanotida koвЂk-qora yoвЂllari, qora dumi va baland ovozi bilan ajralib turadigan Yevrosiyo soykasi (Garrulus glandarius)",
+          "uzbekExample": "Soykaning qanotidagi koвЂk-qora yoвЂllar uzoqdan koвЂrindi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lexical_and_taxonomic_check",
+        "issues": [
+          "Qanotdagi koвЂk-qora yoвЂllar va ШЈЩЋШЁЩЏЩ€ ШІЩЏШ±ЩЋЩЉЩ’Щ‚ nomi Yevrosiyo soykasiga mos; sunвЂ™iy bir nechta maвЂ™noga boвЂlinmadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 342,
+      "id": 79466,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ†ЩЋЩ€Щ’Ш±ЩЋШіЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЋЩ€Щ’Ш±ЩЋШіЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩђЩЉШґЩЏЩ‡ЩЏ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЊЩЃЩЋШ§ШЄЩђШ­ЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋШ№Щ’Щ„ЩЋЩ‰ШЊ Щ€ЩЋШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏ Щ†ЩЋШ§ШµЩђШ№ЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋШіЩ’ЩЃЩЋЩ„ЩЋ. ЩЉЩЏЩ„Ш§ЩЋШ­ЩЋШёЩЏ ЩЃЩђЩЉ ШЈЩЋЩѓЩ’Ш«ЩЋШ±Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡Щђ ШЈЩЋЩ†Щ‘ЩЋ Щ‚ЩђЩ…Щ‘ЩЋШ©ЩЋ Ш±ЩЋШЈЩ’ШіЩђЩ‡Щђ ШЄЩЋШіЩ’Щ€ЩЋШЇЩ‘ЩЏ ЩЃЩђЩЉ Ш§Щ„ШµЩ‘ЩЋЩЉЩ’ЩЃЩђШЊ Щ€ЩЋЩЉЩЋШ®Щ’ШЄЩЋЩЃЩђЩЉ ШіЩЋЩ€ЩЋШ§ШЇЩЏЩ‡Ш§ Ш¬ЩЏШІЩ’Ш¦ЩђЩЉЩ‘Ш§Щ‹ ШЈЩЋЩ€Щ’ ЩѓЩЏЩ„Щ‘ЩђЩЉЩ‘Ш§Щ‹ ЩЃЩђЩЉ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩђШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШІЩЏЩ…Щ‘ЩЋШ¬Щђ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђ.",
+      "sourceHash": "457683d663baa24af148ca913cafb7f93e0b69e08bfb9c0ebb786f497a3e6d85",
+      "wordType": "ot",
+      "uzbek": "chagвЂalay, dengiz chagвЂalayi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЋЩ€Щ’Ш±ЩЋШіЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩђЩЉШґЩЏЩ‡ЩЏ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЊЩЃЩЋШ§ШЄЩђШ­ЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋШ№Щ’Щ„ЩЋЩ‰ШЊ Щ€ЩЋШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏ Щ†ЩЋШ§ШµЩђШ№ЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋШіЩ’ЩЃЩЋЩ„ЩЋ. ЩЉЩЏЩ„Ш§ЩЋШ­ЩЋШёЩЏ ЩЃЩђЩЉ ШЈЩЋЩѓЩ’Ш«ЩЋШ±Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡Щђ ШЈЩЋЩ†Щ‘ЩЋ Щ‚ЩђЩ…Щ‘ЩЋШ©ЩЋ Ш±ЩЋШЈЩ’ШіЩђЩ‡Щђ ШЄЩЋШіЩ’Щ€ЩЋШЇЩ‘ЩЏ ЩЃЩђЩЉ Ш§Щ„ШµЩ‘ЩЋЩЉЩ’ЩЃЩђШЊ Щ€ЩЋЩЉЩЋШ®Щ’ШЄЩЋЩЃЩђЩЉ ШіЩЋЩ€ЩЋШ§ШЇЩЏЩ‡Ш§ Ш¬ЩЏШІЩ’Ш¦ЩђЩЉЩ‘Ш§Щ‹ ШЈЩЋЩ€Щ’ ЩѓЩЏЩ„Щ‘ЩђЩЉЩ‘Ш§Щ‹ ЩЃЩђЩЉ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩђШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШІЩЏЩ…Щ‘ЩЋШ¬Щђ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђ.",
+          "uzbekMeaning": "odatda dengiz va koвЂl boвЂylarida yashaydigan oq-kulrang suv qushi вЂ” chagвЂalay",
+          "uzbekExample": "ChagвЂalay dengiz ustida aylanib uchdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 343,
+      "id": 79467,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЇЩЏЩ€Ш±ЩђЩЉЩ‘ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш¬ЩЋЩ€Ш§Ш«ЩђЩ…ЩђШЊ ШЈЩЋШіЩ’Щ…ЩЋШ±ЩЏ Щ…ЩЏШ®ЩЋШ·Щ‘ЩЋШ·ЩЊ ШЁЩђШ§Щ„ШЈЩЋШіЩ’Щ€ЩЋШЇЩђШЊ ЩЉЩЋЩѓЩ’Ш«ЩЏШ±ЩЏ ШЁЩђШ§Щ„Щ’Щ…ЩЏШЇЩЏЩ†Щђ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁШ§Щ„Ш№ЩЏШµЩ’ЩЃЩ€Ш±Щђ.",
+      "sourceHash": "b49d3835230b7720d909626a216eae384517e13f57543e2325d59aa8f442baac",
+      "wordType": "ot",
+      "uzbek": "chumchuq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш¬ЩЋЩ€Ш§Ш«ЩђЩ…ЩђШЊ ШЈЩЋШіЩ’Щ…ЩЋШ±ЩЏ Щ…ЩЏШ®ЩЋШ·Щ‘ЩЋШ·ЩЊ ШЁЩђШ§Щ„ШЈЩЋШіЩ’Щ€ЩЋШЇЩђШЊ ЩЉЩЋЩѓЩ’Ш«ЩЏШ±ЩЏ ШЁЩђШ§Щ„Щ’Щ…ЩЏШЇЩЏЩ†Щђ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁШ§Щ„Ш№ЩЏШµЩ’ЩЃЩ€Ш±Щђ.",
+          "uzbekMeaning": "odamlar yashaydigan joylarda koвЂp uchraydigan mayda sayroqi qush вЂ” chumchuq",
+          "uzbekExample": "Chumchuqlar hovlida don terib yurdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 344,
+      "id": 79468,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШІЩЏШ±Щ‘ЩЋЩ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·Ш§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш№ЩЏЩ‚Ш§ШЁЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩЋШЈЩ’ШіЩЏЩ‡ЩЏ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЏЩ‡ЩЏ Ш±ЩЋЩ…Ш§ШЇЩђЩЉЩ‘ЩЊ ШЈЩЋШІЩ’Ш±ЩЋЩ‚ЩЏШЊ ШЁЩЋШ·Щ’Щ†ЩЏЩ‡ЩЏ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏШЊ Ш№ЩЋЩЉЩ’Щ†Ш§Щ‡ЩЏ Щ‚ЩЏШ±Щ’Щ…ЩЏШІЩђЩЉЩ‘ЩЋШЄШ§Щ†ЩђШЊ Щ„ЩЋЩ‡ЩЏ Щ…ЩђЩ†Щ’Щ‚Ш§Ш±ЩЊ Ш­Ш§ШЇЩ‘ЩЊ Щ…ЩЏШЄЩЋЩ‚ЩЋЩ€Щ‘ЩђШіЩЊШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩЏЩ…Щ’ШЄЩЋЩ„ЩђШ¦ЩЏ Ш§Щ„Ш¬ЩђШіЩ’Щ…ЩђШЊ Щ…ЩЋЩ€Щ’Ш·ЩђЩ†ЩЏЩ‡ЩЏ Ш§Щ„ШґЩ‘ЩЋШ±Щ’Щ‚ЩЏ Ш§Щ„ШЈЩЋЩ€Щ’ШіЩЋШ·ЩЏ Щ€ЩЋШҐЩђЩЃЩ’Ш±ЩЉЩ‚ЩђЩЉШ§.",
+      "sourceHash": "f311f31900c800446aea0a562b4a171ed5dc206c3f649bad94b65b19cdd8fa03",
+      "wordType": "ot",
+      "uzbek": "qora qanotli kalxat (Elanus caeruleus)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·Ш§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш№ЩЏЩ‚Ш§ШЁЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш±ЩЋШЈЩ’ШіЩЏЩ‡ЩЏ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЏЩ‡ЩЏ Ш±ЩЋЩ…Ш§ШЇЩђЩЉЩ‘ЩЊ ШЈЩЋШІЩ’Ш±ЩЋЩ‚ЩЏШЊ ШЁЩЋШ·Щ’Щ†ЩЏЩ‡ЩЏ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏШЊ Ш№ЩЋЩЉЩ’Щ†Ш§Щ‡ЩЏ Щ‚ЩЏШ±Щ’Щ…ЩЏШІЩђЩЉЩ‘ЩЋШЄШ§Щ†ЩђШЊ Щ„ЩЋЩ‡ЩЏ Щ…ЩђЩ†Щ’Щ‚Ш§Ш±ЩЊ Ш­Ш§ШЇЩ‘ЩЊ Щ…ЩЏШЄЩЋЩ‚ЩЋЩ€Щ‘ЩђШіЩЊШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩЏЩ…Щ’ШЄЩЋЩ„ЩђШ¦ЩЏ Ш§Щ„Ш¬ЩђШіЩ’Щ…ЩђШЊ Щ…ЩЋЩ€Щ’Ш·ЩђЩ†ЩЏЩ‡ЩЏ Ш§Щ„ШґЩ‘ЩЋШ±Щ’Щ‚ЩЏ Ш§Щ„ШЈЩЋЩ€Щ’ШіЩЋШ·ЩЏ Щ€ЩЋШҐЩђЩЃЩ’Ш±ЩЉЩ‚ЩђЩЉШ§.",
+          "uzbekMeaning": "Accipitridae oilasiga mansub, boshi va qorni oq, yelkasi qora, orqa tomoni koвЂkimtir-kulrang boвЂlgan yirtqich qush вЂ” qora qanotli kalxat (Elanus caeruleus)",
+          "uzbekExample": "Qora qanotli kalxat dalaning ustida muallaq uchib, oвЂljasini kuzatdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_and_plumage_correction",
+        "issues": [
+          "Manbadagi qora bosh tavsifi Elanus caeruleus uchun xato; zamonaviy tasnif va oq bosh-qora yelka belgilari bilan tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 345,
+      "id": 79469,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩЃЩЋШЈЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ„Щ‘ЩЋШЁЩЏЩ€Щ†ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Щ‚ЩЋЩ€ЩЋШ§Ш±ЩђШ¶ЩђШЊ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЋШ§ Ш№ЩЋШЇЩђЩЉШЇЩЋШ©ЩЊШЊ Щ…ЩђЩ†Щ’Щ‡ЩЋШ§ Ш§Щ„Щ’Ш¬ЩЏШ±ЩЋШ°ЩЏШЊ ШµЩЋШєЩђЩЉШ±ЩЋШ©ЩЊ ШЈЩЋЩ€Щ’ ЩѓЩЋШЁЩђЩЉШ±ЩЋШ©ЩЏ Ш§Щ„Щ’Ш­ЩЋШ¬Щ’Щ…ЩђШЊ ШЄЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш§Щ„Щ’Щ…ЩЋЩ†ЩЋШ§ШІЩђЩ„Щђ Ш§Щ„Щ’Ш®ЩЋШ±ЩђШЁЩЋШ©Щђ Щ€ЩЋШ§Щ„Щ’Ш­ЩЏЩ‚ЩЏЩ€Щ„Щђ.",
+      "sourceHash": "f14f909a217bf65dfead2a480041108315f613c088822886c6fd129738a8d7da",
+      "wordType": "oila nomi",
+      "uzbek": "sichqonlar oilasi (Muridae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ„Щ‘ЩЋШЁЩЏЩ€Щ†ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Щ‚ЩЋЩ€ЩЋШ§Ш±ЩђШ¶ЩђШЊ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЋШ§ Ш№ЩЋШЇЩђЩЉШЇЩЋШ©ЩЊШЊ Щ…ЩђЩ†Щ’Щ‡ЩЋШ§ Ш§Щ„Щ’Ш¬ЩЏШ±ЩЋШ°ЩЏШЊ ШµЩЋШєЩђЩЉШ±ЩЋШ©ЩЊ ШЈЩЋЩ€Щ’ ЩѓЩЋШЁЩђЩЉШ±ЩЋШ©ЩЏ Ш§Щ„Щ’Ш­ЩЋШ¬Щ’Щ…ЩђШЊ ШЄЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш§Щ„Щ’Щ…ЩЋЩ†ЩЋШ§ШІЩђЩ„Щђ Ш§Щ„Щ’Ш®ЩЋШ±ЩђШЁЩЋШ©Щђ Щ€ЩЋШ§Щ„Щ’Ш­ЩЏЩ‚ЩЏЩ€Щ„Щђ.",
+          "uzbekMeaning": "kemiruvchilar turkumiga mansub, sichqon va kalamushlarni oвЂz ichiga oladigan Muridae oilasi",
+          "uzbekExample": "Sichqon va kalamushlar Muridae oilasiga kiradi.",
+          "register": "zoologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Avval uchga boвЂlingan parcha bitta Muridae oilasining oвЂzaro bogвЂliq tavsifi ekani tiklandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 346,
+      "id": 79470,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩЃЩђЩЉЩ„ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш§Щ„ШЈЩЋЩЃЩ’ЩЉЩЋШ§Щ„ЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ’Ш®ЩЏШ±Щ’Ш·ЩЏЩ€Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђ.",
+      "sourceHash": "2c185f7653c6d98183560b97408434d23fbca4b08a957094370445bedfe5a919",
+      "wordType": "oila nomi",
+      "uzbek": "fillar oilasi (Elephantidae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш§Щ„ШЈЩЋЩЃЩ’ЩЉЩЋШ§Щ„ЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ’Ш®ЩЏШ±Щ’Ш·ЩЏЩ€Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђ.",
+          "uzbekMeaning": "xartumlilar turkumiga mansub yirik sutemizuvchilar вЂ” fillarni birlashtiradigan Elephantidae oilasi",
+          "uzbekExample": "Afrika va Osiyo fillari Elephantidae oilasiga mansub.",
+          "register": "zoologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 347,
+      "id": 79471,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩЏШЁЩ‘ЩЋШ±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш·ЩЋЩЉЩ’Ш±ЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш¬ЩЋЩ€ЩЋШ§Ш«ЩђЩ…ЩђШЊ Щ…ЩЋШ®Щ’Ш±ЩЏЩ€Ш·ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„Щ’Щ…ЩЋЩ†ЩЋШ§Щ‚ЩђЩЉШ±ЩђШЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡ЩЋШ§ Ш§Щ„Щ‚ЩЏШЁЩ‘ЩЋШ±ЩЏ Щ€ЩЋШ§Щ„Щ’Щ…ЩЏЩѓЩЋШ§ШЎЩЏ.",
+      "sourceHash": "aeb674135d150f044501eb6e1c3f45f942bed1684978c1c5f49e015011aa95eb",
+      "wordType": "oila nomi",
+      "uzbek": "toвЂrgвЂaylar oilasi (Alaudidae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш·ЩЋЩЉЩ’Ш±ЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш¬ЩЋЩ€ЩЋШ§Ш«ЩђЩ…ЩђШЊ Щ…ЩЋШ®Щ’Ш±ЩЏЩ€Ш·ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„Щ’Щ…ЩЋЩ†ЩЋШ§Щ‚ЩђЩЉШ±ЩђШЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡ЩЋШ§ Ш§Щ„Щ‚ЩЏШЁЩ‘ЩЋШ±ЩЏ Щ€ЩЋШ§Щ„Щ’Щ…ЩЏЩѓЩЋШ§ШЎЩЏ.",
+          "uzbekMeaning": "tumshugвЂi koвЂpincha konussimon boвЂladigan sayroqi qushlar вЂ” toвЂrgвЂaylarni birlashtiradigan Alaudidae oilasi",
+          "uzbekExample": "Dala toвЂrgвЂayi Alaudidae oilasiga kiradi.",
+          "register": "ornitologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 348,
+      "id": 79472,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШґЩЏШ±Щ’ШґЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш·ЩЏЩЉЩЏЩ€Ш±ЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„ЩЋШ¬ЩЋЩ€ЩЋШ§Ш«ЩђЩ…ЩђШЊ Щ„ЩЋЩ‡ЩЋШ§ Щ…ЩЋЩ†ЩЋШ§Щ‚ЩђЩЉШ±ЩЏ Щ…ЩЋШ®Щ’Ш±ЩЏЩ€Ш·ЩЋШ©ЩЊШЊ ШЄЩЋШґЩ’Щ…ЩЏЩ„ЩЏ Ш§Щ„Ш­ЩЋШіЩ‘ЩЏЩ€Щ†ЩЋ Щ€ЩЋШ§Щ„ШЇЩ‘ЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋ Щ€ЩЋШ§Щ„ЩѓЩЋЩ†ЩЋШ§Ш±ЩЋ.",
+      "sourceHash": "d1436c757bb5932411eea0140b3a034132b5a3e7be60dd9e037387daba37a764",
+      "wordType": "oila nomi",
+      "uzbek": "finchlar oilasi (Fringillidae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш·ЩЏЩЉЩЏЩ€Ш±ЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„ЩЋШ¬ЩЋЩ€ЩЋШ§Ш«ЩђЩ…ЩђШЊ Щ„ЩЋЩ‡ЩЋШ§ Щ…ЩЋЩ†ЩЋШ§Щ‚ЩђЩЉШ±ЩЏ Щ…ЩЋШ®Щ’Ш±ЩЏЩ€Ш·ЩЋШ©ЩЊШЊ ШЄЩЋШґЩ’Щ…ЩЏЩ„ЩЏ Ш§Щ„Ш­ЩЋШіЩ‘ЩЏЩ€Щ†ЩЋ Щ€ЩЋШ§Щ„ШЇЩ‘ЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋ Щ€ЩЋШ§Щ„ЩѓЩЋЩ†ЩЋШ§Ш±ЩЋ.",
+          "uzbekMeaning": "sayroqi qushlarning Fringillidae oilasi; unga tillarang va kanareyka kabi qushlar kiradi",
+          "uzbekExample": "Tillarang va kanareyka Fringillidae oilasiga mansub.",
+          "register": "ornitologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_family_membership_correction",
+        "issues": [
+          "Manbadagi chumchuq misoli chiqarildi: haqiqiy chumchuqlar Passeridae oilasiga, tillarang va kanareyka esa Fringillidae oilasiga kiradi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 349,
+      "id": 79473,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЋЩ„Щ’Щ…ЩЏЩ€Щ†ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩЉЩ„ЩЋШ©ЩЏ ШЈШіЩ’Щ…ЩЋШ§ЩѓЩЌ Щ…ЩђЩ†Щ’Щ‡Ш§ Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ…Щ€Щ†ЩЏ Щ€ЩЋШ§Щ„ШЄЩ‘ЩЋШ±ЩЏЩ€ШЄЩЋШ©ЩЏ.",
+      "sourceHash": "8be6b29204af6b655cecdec2e3181539de9eb42edac2a787d4a200a6c181d372",
+      "wordType": "oila nomi",
+      "uzbek": "lososlar oilasi (Salmonidae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩЉЩ„ЩЋШ©ЩЏ ШЈШіЩ’Щ…ЩЋШ§ЩѓЩЌ Щ…ЩђЩ†Щ’Щ‡Ш§ Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ…Щ€Щ†ЩЏ Щ€ЩЋШ§Щ„ШЄЩ‘ЩЋШ±ЩЏЩ€ШЄЩЋШ©ЩЏ.",
+          "uzbekMeaning": "losos, forel va ularga yaqin baliqlarni birlashtiradigan Salmonidae oilasi",
+          "uzbekExample": "Losos va forel Salmonidae oilasiga kiradi.",
+          "register": "ixtiologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 350,
+      "id": 79474,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШєЩЏШ±ЩЋЩЉЩ’Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЏШ±Щ’Ш№ЩЏЩ€ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ„Щ‘ЩЋЩ€ЩЋШ§Ш­ЩђЩ…ЩђШЊ Щ„ЩЋШЁЩЏЩ€Щ†ЩЊШЊШґЩЋЩѓЩ’Щ„ЩЏЩ‡ЩЏ Щ…ЩЋШ§ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш§Щ„ЩѓЩЋЩ„Щ’ШЁЩђ Щ€ЩЋШ§Щ„ШіЩ‘ЩђЩ†Щ‘ЩЋЩ€Щ’Ш±ЩђШЊ ШҐЩђЩ„Ш§Щ‘ЩЋ ШЈЩЋЩ†Щ‘ЩЋЩ‡ЩЏ ШіЩЋЩ…ЩђЩЉЩ†ЩЊШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋЩ€ЩЋШ§Ш¦ЩђЩ…ЩђШЊ Ш°ЩЏЩ€ Щ„ЩЋЩ€Щ’Щ†ЩЌ | ШЈЩЋШіЩ’Щ€ЩЋШЇЩЋШЊ Щ€ЩЋШ¬Щ’Щ‡ЩЏЩ‡ЩЏ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏШЊ Щ€ЩЋШ№ЩЋЩ„ЩЋЩ‰ Ш¬ЩЋШ§Щ†ЩђШЁЩЋЩЉЩ’ Щ€ЩЋШ¬Щ’Щ‡ЩђЩ‡Щђ Ш¬ЩЏШЇЩ‘ЩЋШЄЩЋШ§Щ†Щђ ШіЩЋЩ€Щ’ШЇЩЋШ§Щ€ЩЋШ§Щ†Щђ.",
+      "sourceHash": "6287241ac1bc59073878858ed12d156f5089278863131f31dfd18b1f83a6416d",
+      "wordType": "ot",
+      "uzbek": "boвЂrsiq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЏШ±Щ’Ш№ЩЏЩ€ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ„Щ‘ЩЋЩ€ЩЋШ§Ш­ЩђЩ…ЩђШЊ Щ„ЩЋШЁЩЏЩ€Щ†ЩЊШЊШґЩЋЩѓЩ’Щ„ЩЏЩ‡ЩЏ Щ…ЩЋШ§ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш§Щ„ЩѓЩЋЩ„Щ’ШЁЩђ Щ€ЩЋШ§Щ„ШіЩ‘ЩђЩ†Щ‘ЩЋЩ€Щ’Ш±ЩђШЊ ШҐЩђЩ„Ш§Щ‘ЩЋ ШЈЩЋЩ†Щ‘ЩЋЩ‡ЩЏ ШіЩЋЩ…ЩђЩЉЩ†ЩЊШЊ Щ‚ЩЋШµЩђЩЉШ±ЩЏ Ш§Щ„Щ‚ЩЋЩ€ЩЋШ§Ш¦ЩђЩ…ЩђШЊ Ш°ЩЏЩ€ Щ„ЩЋЩ€Щ’Щ†ЩЌ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЋШЊ Щ€ЩЋШ¬Щ’Щ‡ЩЏЩ‡ЩЏ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏШЊ Щ€ЩЋШ№ЩЋЩ„ЩЋЩ‰ Ш¬ЩЋШ§Щ†ЩђШЁЩЋЩЉЩ’ Щ€ЩЋШ¬Щ’Щ‡ЩђЩ‡Щђ Ш¬ЩЏШЇЩ‘ЩЋШЄЩЋШ§Щ†Щђ ШіЩЋЩ€Щ’ШЇЩЋШ§Щ€ЩЋШ§Щ†Щђ.",
+          "uzbekMeaning": "Mustelidae oilasiga mansub, gavdasi baquvvat, yuzi oq va qora yoвЂlli yirtqich sutemizuvchi вЂ” boвЂrsiq",
+          "uzbekExample": "BoвЂrsiq kechasi inidan chiqdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_obsolete_taxonomy_correction",
+        "issues": [
+          "Manbadagi eski oila biriktiruvi zamonaviy Mustelidae tasnifi bilan almashtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 351,
+      "id": 79475,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЏЩ…Щ‘ЩЋШ§Щ†ЩЋЩ‰",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш¬Щ…Ш№: ЩЂШ§ШЄ. Щ†. ШіЩЋЩ„Щ’Щ€Щ‰Щ‹.",
+      "sourceHash": "5d6b472ace026d24355dba205f432a510c4378071047a0dabd01966bb58f046a",
+      "wordType": "ot",
+      "uzbek": "bedana",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Ш¬Щ…Ш№",
+          "arabicGloss": "ЩЂШ§ШЄ. Щ†. ШіЩЋЩ„Щ’Щ€Щ‰Щ‹.",
+          "uzbekMeaning": "tanasining usti qoвЂngвЂir va ola-bula, yerda yashaydigan mayda qush вЂ” bedana; arabchada Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ€ЩЋЩ‰ deb ham ataladi",
+          "uzbekExample": "Bedana maysalar orasida yashirindi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_cross_reference_cleanup",
+        "issues": [
+          "Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ€ЩЋЩ‰ ga havola bu yerda qush nomini bildiradi; tasalli maвЂ™nosi bedanaga notoвЂgвЂri qoвЂshilmagan"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 352,
+      "id": 79476,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩЋЩЉЩ’ЩЃЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "Ш¬Щ…Ш№: ШЈЩЋШіЩ’ЩЉШ§ЩЃЩЊ.",
+      "arabicDefinition": "Ш¬Щ…Ш№: ШЈЩЋШіЩ’ЩЉШ§ЩЃЩЊ.|1-  ШіЩЋЩ…ЩЋЩѓЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩЉЩ’ЩЃЩђЩЉЩ‘Ш§ШЄЩђШЊЩ†: ШЈШЁЩ€ ШіЩЋЩЉЩ’ЩЃ.|2. (ЩЃЩѓ): Ш«ЩЋЩ„Ш§Ш«ЩЋШ©ЩЏ ЩѓЩЋЩ€Ш§ЩѓЩђШЁЩЋ.|3- ШіЩЋЩЉЩ’ЩЃЩЏ Ш§Щ„ШєЩЏШ±Ш§ШЁЩђ : (Щ†ШЁШ§ШЄ) : Щ†ЩЋШЁШ§ШЄЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ€Щ’ШіЩђЩЉЩ‘Ш§ШЄЩђШЊ ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩЏЩ‡ЩЏ Ш№ЩЋШЇЩЉШЇЩЋШ©ЩЊШЊ ШЈЩЋЩ€Щ’Ш±Ш§Щ‚ЩЏЩ‡ЩЏ ШЄЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„ШіЩ‘ЩЋЩЉЩ’ЩЃЩЋШЊ Щ€ЩЋШЈЩЋШІЩ’Щ‡Ш§Ш±ЩЋЩ‡ЩЏ ШІШ§Щ‡ЩђЩЉЩЋШ©ЩЏ Ш§Щ„ШЈЩЋЩ„Щ’Щ€Ш§Щ†ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…Ш§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШ§Щ„ШЇЩ‘ЩЋЩ„Щ’ШЁЩ€Ш«Щђ.",
+      "sourceHash": "c5939eaf76c2348b015760f083b7f1d06b75bcca25ddf116179e5f78156f1273",
+      "wordType": "ot",
+      "uzbek": "qilichbaliq; uch yulduz guruhi; qilichgul",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ШіЩЋЩ…ЩЋЩѓЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩЉЩ’ЩЃЩђЩЉЩ‘Ш§ШЄЩђШЊЩ†",
+          "arabicGloss": "ШЈШЁЩ€ ШіЩЋЩЉЩ’ЩЃ.",
+          "uzbekMeaning": "yuqori jagвЂi qilichdek uzun boвЂlgan yirik dengiz baligвЂi вЂ” qilichbaliq (Xiphias gladius)",
+          "uzbekExample": "Qilichbaliq uzun va oвЂtkir tumshugвЂi bilan ajralib turadi.",
+          "register": "ixtiologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "(ЩЃЩѓ)",
+          "arabicGloss": "Ш«ЩЋЩ„Ш§Ш«ЩЋШ©ЩЏ ЩѓЩЋЩ€Ш§ЩѓЩђШЁЩЋ.",
+          "uzbekMeaning": "astronomiyada bir qatorda koвЂrinadigan uch yulduzdan iborat guruh",
+          "uzbekExample": "Tunda osmondagi uch yulduzli guruh kuzatildi.",
+          "register": "astronomiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "ШіЩЋЩЉЩ’ЩЃЩЏ Ш§Щ„ШєЩЏШ±Ш§ШЁЩђ",
+          "arabicGloss": "(Щ†ШЁШ§ШЄ) : Щ†ЩЋШЁШ§ШЄЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ€Щ’ШіЩђЩЉЩ‘Ш§ШЄЩђШЊ ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩЏЩ‡ЩЏ Ш№ЩЋШЇЩЉШЇЩЋШ©ЩЊШЊ ШЈЩЋЩ€Щ’Ш±Ш§Щ‚ЩЏЩ‡ЩЏ ШЄЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„ШіЩ‘ЩЋЩЉЩ’ЩЃЩЋШЊ Щ€ЩЋШЈЩЋШІЩ’Щ‡Ш§Ш±ЩЋЩ‡ЩЏ ШІШ§Щ‡ЩђЩЉЩЋШ©ЩЏ Ш§Щ„ШЈЩЋЩ„Щ’Щ€Ш§Щ†ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…Ш§ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШ§Щ„ШЇЩ‘ЩЋЩ„Щ’ШЁЩ€Ш«Щђ.",
+          "uzbekMeaning": "qilichsimon bargli, turli rangda gullaydigan gladiolus вЂ” qilichgul; arabchada ШіЩЋЩЉЩ’ЩЃЩЏ Ш§Щ„ШєЩЏШ±ЩЋШ§ШЁ deyiladi",
+          "uzbekExample": "BogвЂda qizil qilichgullar ochildi.",
+          "register": "botanika"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_domain_specific_review",
+        "issues": [
+          "Baliq, astronomiya va oвЂsimlik maвЂ™nolari alohida saqlandi; yulduzlar guruhi manbadan ortiqcha ravishda Orion deb toraytirilmadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 353,
+      "id": 79477,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЇЩђЩЉЩѓЩЊ",
+      "root": "ШЇЩЉЩѓвЂЏ",
+      "grammarLabel": "",
+      "morphology": "Ш¬Щ…Ш№: ШЇЩЏЩЉЩ€ЩѓЩЊШЊ ШЇЩђЩЉЩЋЩѓЩЋШ©ЩЊШЊ ШЈЩЋШЇЩ’ЩЉШ§ЩѓЩЊ.",
+      "arabicDefinition": "Ш¬Щ…Ш№: ШЇЩЏЩЉЩ€ЩѓЩЊШЊ ШЇЩђЩЉЩЋЩѓЩЋШ©ЩЊШЊ ШЈЩЋШЇЩ’ЩЉШ§ЩѓЩЊ. | 1.:Ш°ЩЋЩѓЩЋШ±ЩЏ Ш§Щ„ШЇЩ‘ЩЋШ¬Ш§Ш¬Щђ.|2- Ш§Щ„ШЇЩ‘ЩђЩЉЩѓЩЏ Ш§Щ„Ш±Щ‘ЩЏЩ€Щ…ЩђЩЉЩ‘ЩЏ :Ш·Ш§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„ШЇЩ‘ЩЋШ¬Ш§Ш¬ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш°ЩЋЩ†ЩЋШЁЩЊ Ш¬ЩЋЩ…ЩЉЩ„ЩЊ Ш№ЩЋШ±ЩЉШ¶ЩЊЩ…ЩЏЩ…Щ’ШЄЩЋШЇЩ‘ЩЊЩЊ ШҐЩ„Щ‰ Ш§Щ„ШЈЩЋШ№Щ’Щ„ЩЋЩ‰ Щ€Ш§Щ„Ш¬Ш§Щ†ЩђШЁЩЋЩЉЩ’Щ†Щђ.|3- ШЇЩЉЩѓЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ : ШіЩЋЩ…ЩЋЩѓЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ…ЩђШµЩ’Щ‚Ш§Ш±Щђ ЩЉЩЋЩѓЩ’Ш«ЩЏШ±ЩЏ ЩЃЩЉ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ Ш§Щ„ШЈЩЋШ­Щ’Щ…ЩЋШ±Щђ.",
+      "sourceHash": "8122bc1f9dcb5f9e8de143db223628d7e903021f465997d7bebe21260ae4184b",
+      "wordType": "ot",
+      "uzbek": "xoвЂroz; kurka; dengiz xoвЂrozi deb ataladigan baliq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш°ЩЋЩѓЩЋШ±ЩЏ Ш§Щ„ШЇЩ‘ЩЋШ¬Ш§Ш¬Щђ.",
+          "uzbekMeaning": "tovuqning erkagi вЂ” xoвЂroz",
+          "uzbekExample": "XoвЂroz tong saharda qichqirdi.",
+          "register": "umumiy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш§Щ„ШЇЩ‘ЩђЩЉЩѓЩЏ Ш§Щ„Ш±Щ‘ЩЏЩ€Щ…ЩђЩЉЩ‘ЩЏ",
+          "arabicGloss": "Ш·Ш§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„ШЇЩ‘ЩЋШ¬Ш§Ш¬ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш°ЩЋЩ†ЩЋШЁЩЊ Ш¬ЩЋЩ…ЩЉЩ„ЩЊ Ш№ЩЋШ±ЩЉШ¶ЩЊЩ…ЩЏЩ…Щ’ШЄЩЋШЇЩ‘ЩЊЩЊ ШҐЩ„Щ‰ Ш§Щ„ШЈЩЋШ№Щ’Щ„ЩЋЩ‰ Щ€Ш§Щ„Ш¬Ш§Щ†ЩђШЁЩЋЩЉЩ’Щ†Щђ.",
+          "uzbekMeaning": "kurka; arabchada Ш§Щ„ШЇЩ‘ЩђЩЉЩѓЩЏ Ш§Щ„Ш±Щ‘ЩЏЩ€Щ…ЩђЩЉЩ‘ЩЏ deyiladi",
+          "uzbekExample": "Kurka hovlida don choвЂqidi.",
+          "register": "ornitologiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "ШЇЩЉЩѓЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ",
+          "arabicGloss": "ШіЩЋЩ…ЩЋЩѓЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ…ЩђШµЩ’Щ‚Ш§Ш±Щђ ЩЉЩЋЩѓЩ’Ш«ЩЏШ±ЩЏ ЩЃЩЉ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ Ш§Щ„ШЈЩЋШ­Щ’Щ…ЩЋШ±Щђ.",
+          "uzbekMeaning": "Qizil dengizda uchraydigan va arabchada ШЇЩђЩЉЩѓЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш± deb ataladigan baliq turi",
+          "uzbekExample": "Dengiz xoвЂrozi deb ataladigan baliq Qizil dengizda uchraydi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_without_forced_species_identification",
+        "issues": [
+          "ШЇЩђЩЉЩѓЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш± uchun manbada aniq ilmiy tur berilmagani sababli taxminiy lotincha nom qoвЂshilmadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 354,
+      "id": 79478,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ„ЩЋШЁЩ’Щ€ЩЋШ©ЩЊ",
+      "root": "Щ„ШЁШЈвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш§Щ†ШёШ± Щ„ЩЋШЁЩЏШ¤ЩЋШ©ЩЊ.",
+      "sourceHash": "e6eaaf5b4e93191edf77f772f00bb4e83864604ff80f2c13418dfce1e9941a43",
+      "wordType": "ot",
+      "uzbek": "urgвЂochi sher, sher urgвЂochisi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш§Щ†ШёШ± Щ„ЩЋШЁЩЏШ¤ЩЋШ©ЩЊ.",
+          "uzbekMeaning": "sherning urgвЂochisi; adabiy shakli Щ„ЩЋШЁЩЏШ¤ЩЋШ©ЩЊ",
+          "uzbekExample": "UrgвЂochi sher bolalarini qoвЂriqladi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_source_cross_reference",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 355,
+      "id": 79479,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш§Щ„ШіЩ‘ЩЋЩ„Щ’Щ€ЩЋЩ‰",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "Щ€ЩЋШ§Ш­ЩђШЇЩЋШЄЩЏЩ‡ЩЏ ШіЩЋЩ„Щ’Щ€Ш§Ш©ЩЊ.",
+      "arabicDefinition": "Щ€ЩЋШ§Ш­ЩђШЇЩЋШЄЩЏЩ‡ЩЏ ШіЩЋЩ„Щ’Щ€Ш§Ш©ЩЊ.|1-  Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊЩ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„ШЇЩ‘ЩЋШ¬ЩЋШ§Ш¬ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЏЩ‡ЩЋШ§Ш¬ЩђШ±ЩЋШ©ЩђШЊ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШіЩЋШ§Щ‚ЩЋЩЉЩ’Щ‡Щђ Ш§Щ„Ш·Щ‘ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЉЩ’Щ†Щђ Ш§Щ„Щ’Щ…ЩЏШЄЩЋШЇЩЋЩ„Щ‘ЩђЩЉЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЁЩЏЩ†Щ‘ЩђЩЉЩ‘ЩЊ Щ…ЩЏЩ†ЩЋЩ‚Щ‘ЩЋШ·ЩЊШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Ш§Щ„Ш¬ЩЋЩ†ЩЋШ§Ш­ЩЋЩЉЩ’Щ†Щђ Ш№ЩђЩ†Щ’ШЇЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†ЩђШЊЩЉЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш­ЩЋЩ€Щ’Ш¶Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ Ш§Щ„ШЈЩЋШЁЩ’ЩЉЩЋШ¶Щђ Ш§Щ„Щ’Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·Щђ Щ€ЩЋШЈЩЏЩ€Ш±ЩЏЩ€ШЁЩ‘ЩЋШ§ Щ€ЩЋШ§Щ„ШЁЩЏЩ„Щ’ШЇЩЋШ§Щ†Щђ Ш§Щ„Ш№ЩЋШ±ЩЋШЁЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„ШіЩ‘ЩЏЩ…ЩЋШ§Щ†ЩЋЩ‰.|2- ШіЩЋЩ„Щ’Щ€Щ‰ Ш§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„Щђ : Ш§Щ„Ш№ЩЋШіЩЋЩ„ЩЏ.",
+      "sourceHash": "4d1cc19e668d208412fc234aa4618b8dabf37da207214e2a37e60a0d20944992",
+      "wordType": "ot",
+      "uzbek": "bedana; asal",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊЩ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„ШЇЩ‘ЩЋШ¬ЩЋШ§Ш¬ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЏЩ‡ЩЋШ§Ш¬ЩђШ±ЩЋШ©ЩђШЊ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђШіЩЋШ§Щ‚ЩЋЩЉЩ’Щ‡Щђ Ш§Щ„Ш·Щ‘ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЉЩ’Щ†Щђ Ш§Щ„Щ’Щ…ЩЏШЄЩЋШЇЩЋЩ„Щ‘ЩђЩЉЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЁЩЏЩ†Щ‘ЩђЩЉЩ‘ЩЊ Щ…ЩЏЩ†ЩЋЩ‚Щ‘ЩЋШ·ЩЊШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Ш§Щ„Ш¬ЩЋЩ†ЩЋШ§Ш­ЩЋЩЉЩ’Щ†Щђ Ш№ЩђЩ†Щ’ШЇЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†ЩђШЊЩЉЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш­ЩЋЩ€Щ’Ш¶Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ Ш§Щ„ШЈЩЋШЁЩ’ЩЉЩЋШ¶Щђ Ш§Щ„Щ’Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·Щђ Щ€ЩЋШЈЩЏЩ€Ш±ЩЏЩ€ШЁЩ‘ЩЋШ§ Щ€ЩЋШ§Щ„ШЁЩЏЩ„Щ’ШЇЩЋШ§Щ†Щђ Ш§Щ„Ш№ЩЋШ±ЩЋШЁЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„ШіЩ‘ЩЏЩ…ЩЋШ§Щ†ЩЋЩ‰.",
+          "uzbekMeaning": "yerda yashaydigan mayda qush вЂ” bedana; arabchada Ш§Щ„ШіЩ‘ЩЏЩ…ЩЋШ§Щ†ЩЋЩ‰ deb ham ataladi",
+          "uzbekExample": "Bedana bugвЂdoyzor chetida yugurib yurdi.",
+          "register": "ornitologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "ШіЩЋЩ„Щ’Щ€Щ‰ Ш§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„Щђ",
+          "arabicGloss": "Ш§Щ„Ш№ЩЋШіЩЋЩ„ЩЏ.",
+          "uzbekMeaning": "asal; arabchadagi ШіЩЋЩ„Щ’Щ€ЩЋЩ‰ Ш§Щ„Щ†Щ‘ЩЋШ­Щ’Щ„ birikmasida qoвЂllanadi",
+          "uzbekExample": "Asal shirin va toвЂyimli mahsulotdir.",
+          "register": "kam qoвЂllanadigan birikma"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_semantic_cleanup",
+        "issues": [
+          "Qushning manbadagi ortiqcha va shubhali morfologik tavsiflari asosiy maвЂ™noga aralashtirilmadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 356,
+      "id": 79480,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЏЩ€Щ…ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "Щ…Ш°ШЊ Щ…Ш¤",
+      "morphology": "",
+      "arabicDefinition": "(Щ…Ш°ШЊ Щ…Ш¤).|1- Ш·ЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЏЩ€Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ Ш§Щ„Щ‘ЩЋЩ„ЩЉЩ’Щ„ЩђШЊ ЩЉЩЋШіЩ’ЩѓЩЏЩ†ЩЏ Ш§Щ„ШЈЩ…ЩЋШ§ЩѓЩђЩ†ЩЋ Ш§Щ„Ш®ЩЋШ±ЩђШЁЩЋШ©ЩЋШЊ ЩЉЩЋЩ†Щ’Щ‚ЩЋШ¶Щ‘ЩЏ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„Ш¬ЩЏШ±Щ’Ш°ЩЋШ§Щ†Щђ Щ€ЩЋШ§Щ„ЩЃЩђШ¦Щ’Ш±ЩЋШ§Щ†ЩђШЊ ЩЉЩЏШ¶Щ’Ш±ЩЋШЁЩЏ ШЁЩђЩ‡Щђ Ш§Щ„Щ’Щ…ЩЋШ«ЩЋЩ„ЩЏ ЩЃЩђЩЉ Ш§Щ„ШґЩ‘ЩЏШ¤Щ’Щ…Щђ.|2- Щ„ЩЋЩ…ЩЋШ­ЩЋ ШЁЩЏЩ€Щ…ЩЋШ©Щ‹ ЩЃЩђЩЉ Ш·ЩЋШ±ЩђЩЉЩ‚ЩђЩ‡ЩђШЊ ЩЃЩЋШ№ЩЋШ§ШЇЩЋ Щ…ЩђЩ†Щ’ Ш­ЩЋЩЉЩ’Ш«ЩЏ ШЈШЄЩЋЩ‰ : Ш№ЩЋШ§ШЇЩЋ ШҐЩђЩ„ЩЋЩ‰ ШЁЩЋЩЉЩ’ШЄЩђЩ‡Щђ Щ„ЩђЩЉЩЋШ­ЩЏШЇЩ‘ЩЋ Ш§Щ„ШґЩ‘ЩЏШ¤Щ’Щ…ЩЋ- Ш§Щ„Щ‘ЩЋШ°ЩђЩЉ ЩЉЩЋЩѓЩ’ШЄЩЋШіЩђШЁЩЏ Щ…ЩЋШ№ЩЋШ§ШґЩЋЩ‡ЩЏ Щ„ЩЋЩЉЩ’Щ„Ш§Щ‹ШЊ Ш§Щ„ШЁЩЏЩ€Щ…ЩЋШ©ЩЏ Щ€ЩЋШ§Щ„Щ€ЩЋШ·Щ’Щ€ЩЋШ§Ш·ЩЏ. (Ш§Щ„ШЄЩ€Ш­ЩЉШЇЩЉ).",
+      "sourceHash": "ab4daa753ef849295a58e339b8819529a058a1bf17d13b797aa234d46e87d9ef",
+      "wordType": "ot",
+      "uzbek": "boyoвЂgвЂli; tunda tirikchilik qiluvchi odam haqidagi koвЂchma nom",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЏЩ€Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ Ш§Щ„Щ‘ЩЋЩ„ЩЉЩ’Щ„ЩђШЊ ЩЉЩЋШіЩ’ЩѓЩЏЩ†ЩЏ Ш§Щ„ШЈЩ…ЩЋШ§ЩѓЩђЩ†ЩЋ Ш§Щ„Ш®ЩЋШ±ЩђШЁЩЋШ©ЩЋШЊ ЩЉЩЋЩ†Щ’Щ‚ЩЋШ¶Щ‘ЩЏ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„Ш¬ЩЏШ±Щ’Ш°ЩЋШ§Щ†Щђ Щ€ЩЋШ§Щ„ЩЃЩђШ¦Щ’Ш±ЩЋШ§Щ†ЩђШЊ ЩЉЩЏШ¶Щ’Ш±ЩЋШЁЩЏ ШЁЩђЩ‡Щђ Ш§Щ„Щ’Щ…ЩЋШ«ЩЋЩ„ЩЏ ЩЃЩђЩЉ Ш§Щ„ШґЩ‘ЩЏШ¤Щ’Щ…Щђ.",
+          "uzbekMeaning": "asosan tunda faol boвЂladigan yirtqich qush вЂ” boyoвЂgвЂli; uni shum alomat deb bilish eski xalqona irimdir",
+          "uzbekExample": "BoyoвЂgвЂli tunda ovga chiqdi.",
+          "register": "ornitologiya va madaniy izoh"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Щ„ЩЋЩ…ЩЋШ­ЩЋ ШЁЩЏЩ€Щ…ЩЋШ©Щ‹ ЩЃЩђЩЉ Ш·ЩЋШ±ЩђЩЉЩ‚ЩђЩ‡ЩђШЊ ЩЃЩЋШ№ЩЋШ§ШЇЩЋ Щ…ЩђЩ†Щ’ Ш­ЩЋЩЉЩ’Ш«ЩЏ ШЈШЄЩЋЩ‰",
+          "arabicGloss": "Ш№ЩЋШ§ШЇЩЋ ШҐЩђЩ„ЩЋЩ‰ ШЁЩЋЩЉЩ’ШЄЩђЩ‡Щђ Щ„ЩђЩЉЩЋШ­ЩЏШЇЩ‘ЩЋ Ш§Щ„ШґЩ‘ЩЏШ¤Щ’Щ…ЩЋ- Ш§Щ„Щ‘ЩЋШ°ЩђЩЉ ЩЉЩЋЩѓЩ’ШЄЩЋШіЩђШЁЩЏ Щ…ЩЋШ№ЩЋШ§ШґЩЋЩ‡ЩЏ Щ„ЩЋЩЉЩ’Щ„Ш§Щ‹ШЊ Ш§Щ„ШЁЩЏЩ€Щ…ЩЋШ©ЩЏ Щ€ЩЋШ§Щ„Щ€ЩЋШ·Щ’Щ€ЩЋШ§Ш·ЩЏ. (Ш§Щ„ШЄЩ€Ш­ЩЉШЇЩЉ).",
+          "uzbekMeaning": "koвЂchma maвЂ™noda tunda ishlaydigan yoki tirikchilik qiladigan odam; manbadagi boyoвЂgвЂlini koвЂrib uyga qaytish holati irim-sirim sifatida tushuniladi",
+          "uzbekExample": "U kechasi ishlab, kunduz dam olgani uchun hazillashib boyoвЂgвЂli deyishardi.",
+          "register": "koвЂchma va madaniy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_cultural_context",
+        "issues": [
+          "BoyoвЂgвЂlini shum alomat deb bilish biologik fakt sifatida emas, eski xalqona irim sifatida aniq belgilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 357,
+      "id": 79481,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЋШ§Щ„ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "-Ш¬ЩђЩ†Щ’ШіЩЏ Ш«ЩЋШЇЩ’ЩЉЩЉЩ‘ЩЋШ§ШЄЩЌ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁШ§Щ„ЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш­ЩђЩЉШЄЩЋШ§Щ†ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ ШЈШ·Щ’Щ€ЩЋЩ„ЩЏ Ш§Щ„Ш­ЩЉЩЋЩ€ЩЋШ§Щ†Ш§ШЄЩђ Ш› ШҐШ°Щ’ ЩЉЩЋШЁЩ’Щ„ЩЏШєЩЏ ШЈШ­Щ’ЩЉШ§Щ†Ш§Щ‹ 30 Щ…ШЄШ±Ш§Щ‹ШЊ Щ€ЩЋЩЉЩЋШІЩђЩ†ЩЏ Ш­ЩЋЩ€ЩЋШ§Щ„ЩЋЩЉЩ’ 150 Ш·ЩЏЩ†Щ‘Щ‘Ш§Щ‹ШЊ Щ„ЩЋЩ‡ЩЏ ШґЩЋШ­Щ’Щ…ЩЊ Щ…ЩЏЩЃЩђЩЉШЇЩЊ ЩЉЩЏШіЩ’ШЄЩЋШ®Щ’Ш±ЩЋШ¬ЩЏ Щ…ЩђЩ†Щ’Щ‡ЩЏ Ш­ЩЋЩ€Ш§Щ„ЩЋЩЉЩ’ 30 Ш·Щ†Щ‘Ш§Щ‹ Щ…ЩђЩ†ЩЋ Ш§Щ„ШІЩ‘ЩЋЩЉЩ’ШЄЩђШЊ ЩЉЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁЩђШ№ЩЋЩ„ЩЋЩ‚Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђШЊ Щ€ЩЋЩЉЩЏЩ…Щ’ЩѓЩђЩ†ЩЏ ШЈЩЋЩ†Щ’ ЩЉЩЋШєЩ’Ш·ЩђШіЩЋ Щ†ЩђШµЩ’ЩЃЩЋ ШіШ§Ш№ЩЋШ©ЩЌ Ш«ЩЏЩ…Щ‘ЩЋ ЩЉЩЋШ№ЩЏЩ€ШЇЩЋ ШҐЩ„ЩЋЩ‰ ШіЩЋШ·Щ’Ш­Щђ Ш§Щ„Щ…Ш§ШЎЩђШЊ ЩЉЩЋШІЩ’ЩЃЩЏШ±ЩЏ Щ‡ЩЋЩ€ЩЋШ§ШЎЩ‹ Щ…ЩЏШґЩ’ШЁЩЋШ№Ш§Щ‹ ШЁЩђШЁЩЏШ®Ш§Ш±Щђ Ш§Щ„Щ…Ш§ШЎЩђШЊ Щ€Ш§Щ„ШЁЩЋШ§Щ„ЩЏ Ш§Щ„Ш­ЩЋЩ‚ЩђЩЉЩ‚ЩђЩЉЩ‘ЩЏ Щ†Ш§ШЇЩђШ±ЩЊ Ш¬ЩђШЇЩ‘Ш§Щ‹.",
+      "sourceHash": "d79079fb91b4f6e11d9147965a1f780bc1c1671c26009a05dfc0f74b9cfeb373",
+      "wordType": "ot",
+      "uzbek": "Balaena jinsidagi moвЂylovli kit",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш¬ЩђЩ†Щ’ШіЩЏ Ш«ЩЋШЇЩ’ЩЉЩЉЩ‘ЩЋШ§ШЄЩЌ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁШ§Щ„ЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш­ЩђЩЉШЄЩЋШ§Щ†ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ ШЈШ·Щ’Щ€ЩЋЩ„ЩЏ Ш§Щ„Ш­ЩЉЩЋЩ€ЩЋШ§Щ†Ш§ШЄЩђ Ш› ШҐШ°Щ’ ЩЉЩЋШЁЩ’Щ„ЩЏШєЩЏ ШЈШ­Щ’ЩЉШ§Щ†Ш§Щ‹ 30 Щ…ШЄШ±Ш§Щ‹ШЊ Щ€ЩЋЩЉЩЋШІЩђЩ†ЩЏ Ш­ЩЋЩ€ЩЋШ§Щ„ЩЋЩЉЩ’ 150 Ш·ЩЏЩ†Щ‘Щ‘Ш§Щ‹ШЊ Щ„ЩЋЩ‡ЩЏ ШґЩЋШ­Щ’Щ…ЩЊ Щ…ЩЏЩЃЩђЩЉШЇЩЊ ЩЉЩЏШіЩ’ШЄЩЋШ®Щ’Ш±ЩЋШ¬ЩЏ Щ…ЩђЩ†Щ’Щ‡ЩЏ Ш­ЩЋЩ€Ш§Щ„ЩЋЩЉЩ’ 30 Ш·Щ†Щ‘Ш§Щ‹ Щ…ЩђЩ†ЩЋ Ш§Щ„ШІЩ‘ЩЋЩЉЩ’ШЄЩђШЊ ЩЉЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁЩђШ№ЩЋЩ„ЩЋЩ‚Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђШЊ Щ€ЩЋЩЉЩЏЩ…Щ’ЩѓЩђЩ†ЩЏ ШЈЩЋЩ†Щ’ ЩЉЩЋШєЩ’Ш·ЩђШіЩЋ Щ†ЩђШµЩ’ЩЃЩЋ ШіШ§Ш№ЩЋШ©ЩЌ Ш«ЩЏЩ…Щ‘ЩЋ ЩЉЩЋШ№ЩЏЩ€ШЇЩЋ ШҐЩ„ЩЋЩ‰ ШіЩЋШ·Щ’Ш­Щђ Ш§Щ„Щ…Ш§ШЎЩђШЊ ЩЉЩЋШІЩ’ЩЃЩЏШ±ЩЏ Щ‡ЩЋЩ€ЩЋШ§ШЎЩ‹ Щ…ЩЏШґЩ’ШЁЩЋШ№Ш§Щ‹ ШЁЩђШЁЩЏШ®Ш§Ш±Щђ Ш§Щ„Щ…Ш§ШЎЩђШЊ Щ€Ш§Щ„ШЁЩЋШ§Щ„ЩЏ Ш§Щ„Ш­ЩЋЩ‚ЩђЩЉЩ‚ЩђЩЉЩ‘ЩЏ Щ†Ш§ШЇЩђШ±ЩЊ Ш¬ЩђШЇЩ‘Ш§Щ‹.",
+          "uzbekMeaning": "Balaenidae oilasiga mansub Balaena jinsidagi moвЂylovli kit; hozir yashaydigan vakili Grenlandiya kiti (Balaena mysticetus)",
+          "uzbekExample": "Grenlandiya kiti sovuq Arktika suvlarida yashaydi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_correction",
+        "issues": [
+          "Manba Balaena jinsini koвЂk kit oвЂlchamlari bilan chalkashtirgan; zamonaviy Balaenidae tasnifi tiklanib, notoвЂgвЂri raqamlar olib tashlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 358,
+      "id": 79482,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш®ЩЋШЁЩЋЩ„ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШЁЩЏЩ€Щ…ЩЋШ©ЩЊ ШіЩЋЩ…Щ’Ш±ЩЋШ§ШЎЩЏ Щ„ЩЋЩ‡ЩЋШ§ Ш№ЩЋЩЉЩ’Щ†Ш§Щ†Щђ | ШіЩЋЩ€Щ’ШЇШ§Щ€Ш§Щ† Щ€Ш¬ЩЋЩ†Ш§Ш­Ш§Щ†Щђ Ш№ЩЋШ±ЩЉШ¶Ш§Щ†Щђ Щ…ЩЏШіЩ’ШЄЩЋШЇЩЉШ±Ш§Щ†ШЊ Ш¬ЩђШіЩ’Щ…ЩЏЩ‡ЩЋШ§ ШЁЩЋШЇЩђЩЉЩ†ЩЊШЊ Щ…ЩђЩ†Щ’Щ‚Ш§Ш±ЩЏЩ‡ЩЋШ§ ШЈШµЩ’ШєЩЋШ±ЩЏШЊ Ш¶ЩЋШ§Ш±ЩђШЁЩЊ ЩЃЩђЩЉ Ш§Щ„Щ’Ш®ЩЏШ¶Щ’Ш±ЩЋШ©Щђ Щ„Ш§ЩЋ ЩЉЩЋШЄЩЋЩ€ЩЋЩ‚Щ‘ЩЋЩЃЩЏ Ш№ЩЋЩ†Щђ Ш§Щ„ШµЩ‘ЩђЩЉЩЋШ§Ш­Щђ ЩЃЩђЩЉ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ- ШЁЩЋШ§ШЄЩЋ Ш§Щ„Щ’Ш®ЩЋШЁЩЋЩ„ЩЏ ЩЉЩЋШµЩђЩЉШ­ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„ЩЋ ЩѓЩЏЩ„Щ‘ЩЋЩ‡ЩЏ.",
+      "sourceHash": "0ba6d87f2fe7a71bb0df352cce9672bc5297ff7acfaf41a07cf8fe566317d36b",
+      "wordType": "ot",
+      "uzbek": "jigarrang boyoвЂgвЂli, tawny owl guruhidagi qush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШЁЩЏЩ€Щ…ЩЋШ©ЩЊ ШіЩЋЩ…Щ’Ш±ЩЋШ§ШЎЩЏ Щ„ЩЋЩ‡ЩЋШ§ Ш№ЩЋЩЉЩ’Щ†Ш§Щ†Щђ ШіЩЋЩ€Щ’ШЇШ§Щ€Ш§Щ† Щ€Ш¬ЩЋЩ†Ш§Ш­Ш§Щ†Щђ Ш№ЩЋШ±ЩЉШ¶Ш§Щ†Щђ Щ…ЩЏШіЩ’ШЄЩЋШЇЩЉШ±Ш§Щ†ШЊ Ш¬ЩђШіЩ’Щ…ЩЏЩ‡ЩЋШ§ ШЁЩЋШЇЩђЩЉЩ†ЩЊШЊ Щ…ЩђЩ†Щ’Щ‚Ш§Ш±ЩЏЩ‡ЩЋШ§ ШЈШµЩ’ШєЩЋШ±ЩЏШЊ Ш¶ЩЋШ§Ш±ЩђШЁЩЊ ЩЃЩђЩЉ Ш§Щ„Щ’Ш®ЩЏШ¶Щ’Ш±ЩЋШ©Щђ Щ„Ш§ЩЋ ЩЉЩЋШЄЩЋЩ€ЩЋЩ‚Щ‘ЩЋЩЃЩЏ Ш№ЩЋЩ†Щђ Ш§Щ„ШµЩ‘ЩђЩЉЩЋШ§Ш­Щђ ЩЃЩђЩЉ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ- ШЁЩЋШ§ШЄЩЋ Ш§Щ„Щ’Ш®ЩЋШЁЩЋЩ„ЩЏ ЩЉЩЋШµЩђЩЉШ­ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„ЩЋ ЩѓЩЏЩ„Щ‘ЩЋЩ‡ЩЏ.",
+          "uzbekMeaning": "jigarrang tusli, koвЂzlari qora, qanotlari keng va dumaloq boвЂlgan, tunda ovoz chiqaradigan boyoвЂgвЂli; tawny owl guruhiga mansub qush",
+          "uzbekExample": "Jigarrang boyoвЂgвЂli tunda daraxt shoxidan ovoz berdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_without_forced_species_assignment",
+        "issues": [
+          "Tavsif tawny owl guruhiga mos, ammo aniq tur uchun dalil yetarli emas; umumiy tavsif saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 359,
+      "id": 79483,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШµЩЋШ§ШЁЩЏЩ€ШєЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш¬ЩђЩ†Щ’ШіЩЏ ШіЩЋЩ…ЩЋЩѓЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩѓЩЋШЁЩђЩЉШ±ЩЏШ§Щ„Щ’Ш­ЩЋШ¬Щ’Щ…Щђ Щ†ЩђШіЩ’ШЁЩђЩЉЩ‘Ш§Щ‹ШЊ ЩѓЩЋШ«ЩђЩЉШ±ЩЏ Ш§Щ„Щ’Ш­ЩЋШіЩЋЩѓЩђШЊ Щ„ЩЋШ­Щ’Щ…ЩЏЩ‡ЩЏ Щ„ЩЋШ°ЩђЩЉШ°ЩЊ.",
+      "sourceHash": "f6bb37eae489dc66a5e070eecdb4f8e740153353b4339ab2e7fbe22b20035de4",
+      "wordType": "ot",
+      "uzbek": "shprot baliqlari (Sprattus)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш¬ЩђЩ†Щ’ШіЩЏ ШіЩЋЩ…ЩЋЩѓЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩѓЩЋШЁЩђЩЉШ±ЩЏШ§Щ„Щ’Ш­ЩЋШ¬Щ’Щ…Щђ Щ†ЩђШіЩ’ШЁЩђЩЉЩ‘Ш§Щ‹ШЊ ЩѓЩЋШ«ЩђЩЉШ±ЩЏ Ш§Щ„Щ’Ш­ЩЋШіЩЋЩѓЩђШЊ Щ„ЩЋШ­Щ’Щ…ЩЏЩ‡ЩЏ Щ„ЩЋШ°ЩђЩЉШ°ЩЊ.",
+          "uzbekMeaning": "Clupeidae oilasining Sprattus turkumiga mansub, mayda va toвЂda boвЂlib yuradigan dengiz baliqlari вЂ” shprotlar",
+          "uzbekExample": "Shprotlar dengizda katta toвЂdalar hosil qiladi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_correction",
+        "issues": [
+          "Sprattus shprot baliqlari mayda boвЂladi; manbadagi nisbatan yirik degan xato ilmiy maвЂ™lumot asosida tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 360,
+      "id": 79484,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ЩЉЩЋЩ…ЩЋШ§Щ…ЩЊ",
+      "root": "ЩЉЩ…Щ…вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш¬ЩђЩ†Щ’ШіЩЏ Ш·ЩЋЩЉЩ’Ш±ЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Ш­ЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЁЩЋШ±Щ‘ЩђЩЉЩ‘ЩЊШЊ Щ„ЩЋЩ‡ЩЏ ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШ©ЩЊ Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·ЩЋШ©ЩЏ Ш§Щ„Щ’Ш­ЩЋШ¬Щ’Щ…ЩђШЊ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ ШµЩЋШєЩђЩЉШ±ЩЊШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊШЊ ШіЩЋШ±ЩђЩЉШ№ЩЏ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†Щђ.",
+      "sourceHash": "472d18f6685fd6c7dc7df52a4d4da6367fc6439a62b14e89bcf9922a6c424dbf",
+      "wordType": "jamlovchi ot",
+      "uzbek": "yovvoyi kaptar yoki musicha",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш¬ЩђЩ†Щ’ШіЩЏ Ш·ЩЋЩЉЩ’Ш±ЩЌ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Ш­ЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЁЩЋШ±Щ‘ЩђЩЉЩ‘ЩЊШЊ Щ„ЩЋЩ‡ЩЏ ШЈЩЋШ¬Щ’Щ†ЩђШ­ЩЋШ©ЩЊ Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·ЩЋШ©ЩЏ Ш§Щ„Щ’Ш­ЩЋШ¬Щ’Щ…ЩђШЊ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ ШµЩЋШєЩђЩЉШ±ЩЊШЊ Щ€ЩЋШ°ЩЋЩ†ЩЋШЁЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊШЊ ШіЩЋШ±ЩђЩЉШ№ЩЏ Ш§Щ„Ш·Щ‘ЩЋЩЉЩЋШ±ЩЋШ§Щ†Щђ.",
+          "uzbekMeaning": "qanotlari oвЂrtacha, tumshugвЂi kichik, dumi uzun va uchishi tez boвЂlgan yovvoyi kaptar yoki musicha",
+          "uzbekExample": "Musicha tom chetiga qoвЂndi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_sense_merge",
+        "issues": [
+          "Qanot, tumshuq, dum va uchish tavsiflari alohida maвЂ™nolar emas, bitta qush tavsifi sifatida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 361,
+      "id": 79485,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЈЩЏШ®Щ’Ш·ЩЏШЁЩЏЩ€Ш·ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш±Щ‘ЩђШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш«ЩЋЩ…ЩЋШ§Щ†ЩђЩЉ ШЈШ±Ш¬ЩЏЩ„Щђ ЩЃЩђЩЉ Ш±ЩЋШЈЩ’ШіЩђЩ‡ЩђШЊ ЩЃЩђЩЉЩ‡ЩЋШ§ Щ…ЩЋШ­ЩЋШ§ЩѓЩђЩ… ЩЉЩЋЩ„Щ’ШЄЩЋШµЩђЩ‚ЩЏ ШЁЩђЩ‡ЩЋШ§ШЊ ЩЉЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁШ§Щ„Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©Щђ.",
+      "sourceHash": "304cfd6c8c29d42b61cf77712d86a41672ac39b9623bc5b4dde60330803d94f5",
+      "wordType": "ot",
+      "uzbek": "sakkizoyoq, ahtapot",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш±Щ‘ЩђШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш«ЩЋЩ…ЩЋШ§Щ†ЩђЩЉ ШЈШ±Ш¬ЩЏЩ„Щђ ЩЃЩђЩЉ Ш±ЩЋШЈЩ’ШіЩђЩ‡ЩђШЊ ЩЃЩђЩЉЩ‡ЩЋШ§ Щ…ЩЋШ­ЩЋШ§ЩѓЩђЩ… ЩЉЩЋЩ„Щ’ШЄЩЋШµЩђЩ‚ЩЏ ШЁЩђЩ‡ЩЋШ§ШЊ ЩЉЩЋШЄЩЋШєЩЋШ°Щ‘ЩЋЩ‰ ШЁШ§Щ„Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©Щђ.",
+          "uzbekMeaning": "bosh qismidan sakkizta paypaslagichi chiqadigan, ulardagi soвЂrgвЂichlari bilan narsalarga yopishadigan dengiz mollyuskasi вЂ” sakkizoyoq yoki ahtapot",
+          "uzbekExample": "Sakkizoyoq paypaslagichlaridagi soвЂrgвЂichlari bilan qoyaga yopishdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_sense_merge",
+        "issues": [
+          "Oziqlanishi va sakkiz paypaslagichi alohida maвЂ™no emas; bitta sakkizoyoq tavsifi sifatida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 362,
+      "id": 79486,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ‚ЩЋШ§Щ‚ЩЏЩ…ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Ш«ЩЋШЇЩ’ЩЉЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ…Щ‘ЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ | Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¶Щ‘ЩЋЩ€Ш§ЩЋШ±ЩђЩЉШЊ ШґЩЋШЁЩђЩЉЩ‡ЩЊ ШЁЩђШ§ШЁЩ’Щ†Щђ Ш№ЩђШ±Щ’ШіЩЌШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏШЊ Щ‚ЩЋШ§ШЄЩђЩ…ЩЊ ЩЃЩђЩЉ Ш§Щ„ШµЩ‘ЩЋЩЉЩ’ЩЃЩђШЊ Щ€ЩЋШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏ ЩЃЩђЩЉ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩђШЊ ШЄЩЋЩЃЩЏЩ€Ш­ЩЏ Щ…ЩђЩ†Щ’Щ‡ЩЏ Ш±ЩЋШ§Ш¦ЩђШ­ЩЋШ©ЩЊ ЩѓЩЋШ±ЩђЩЉЩ‡ЩЋШ©ЩЊШЊ ШЄЩЏШµЩ’Щ†ЩЋШ№ЩЏ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ„Щ’ШЇЩђЩ‡Щђ Ш§Щ„ШґЩ‘ЩЋШЄЩ’Щ€ЩђЩЉЩ‘Щђ ЩЃЩђШ±ЩЋШ§ШЎЩЊ Ш¬ЩЋЩЉЩ‘ЩђШЇЩЋШ©ЩЊ..",
+      "sourceHash": "ae76c9ab17980139122f606cb65e36cd54e3f557b69e4c9986364035963c7254",
+      "wordType": "ot",
+      "uzbek": "oqsuvsar, gornostay (Mustela erminea)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Ш«ЩЋШЇЩ’ЩЉЩђЩЉЩ‘ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩЋЩ…Щ‘ЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¶Щ‘ЩЋЩ€Ш§ЩЋШ±ЩђЩЉШЊ ШґЩЋШЁЩђЩЉЩ‡ЩЊ ШЁЩђШ§ШЁЩ’Щ†Щђ Ш№ЩђШ±Щ’ШіЩЌШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏШЊ Щ‚ЩЋШ§ШЄЩђЩ…ЩЊ ЩЃЩђЩЉ Ш§Щ„ШµЩ‘ЩЋЩЉЩ’ЩЃЩђШЊ Щ€ЩЋШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏ ЩЃЩђЩЉ Ш§Щ„ШґЩ‘ЩђШЄЩЋШ§ШЎЩђШЊ ШЄЩЋЩЃЩЏЩ€Ш­ЩЏ Щ…ЩђЩ†Щ’Щ‡ЩЏ Ш±ЩЋШ§Ш¦ЩђШ­ЩЋШ©ЩЊ ЩѓЩЋШ±ЩђЩЉЩ‡ЩЋШ©ЩЊШЊ ШЄЩЏШµЩ’Щ†ЩЋШ№ЩЏ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ„Щ’ШЇЩђЩ‡Щђ Ш§Щ„ШґЩ‘ЩЋШЄЩ’Щ€ЩђЩЉЩ‘Щђ ЩЃЩђШ±ЩЋШ§ШЎЩЊ Ш¬ЩЋЩЉЩ‘ЩђШЇЩЋШ©ЩЊ..",
+          "uzbekMeaning": "Mustelidae oilasiga mansub, yozda usti qoвЂngвЂir, qishda esa koвЂpincha oq tusga kiradigan mayda yirtqich sutemizuvchi вЂ” oqsuvsar yoki gornostay (Mustela erminea); qishki oq moвЂynasi ermin deb ataladi",
+          "uzbekExample": "Oqsuvsarning juni qishda oq tusga kiradi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Щ‚ЩЋШ§Щ‚ЩЏЩ… Mustela erminea bilan moslashtirildi; manbadagi qizil rang soвЂzi tabiiy qoвЂngвЂir yozgi tus sifatida aniqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 363,
+      "id": 79487,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ€ЩЋШґЩЋЩ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩђЩ†Щ‘ЩЋЩ€Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¶Щ‘ЩЋЩ€ЩЋШ§Ш±ЩђЩЉШЊЩ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ†ЩЋЩ€Щ’Ш№ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩђШ·ЩЋШ·Щђ Ш§Щ„Щ€ЩЋШ­Щ’ШґЩђЩЉЩ‘ЩЋШ©Щђ ЩЉЩЋЩ‚Щ’Ш·ЩЏЩ†ЩЏ Ш§Щ„ШєЩЋШ§ШЁЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„ШµЩ‘ЩЋШ­ЩЋШ§Ш±ЩЋЩ‰ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ШЊ Щ…ЩЋШ№Щ’Ш±ЩЏЩ€ЩЃЩЊ ШЁЩђШ­ЩђШЇЩ‘ЩЋШ©Щђ ШЁЩЋШµЩЋШ±ЩђЩ‡Щђ Щ€ЩЋЩ‚ЩђШµЩЋШ±Щђ Ш°ЩЋЩ†ЩЋШЁЩђЩ‡ЩђШЊ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш№ЩЋЩ†ЩЋШ§Щ‚ЩЋ Ш§Щ„ШЈЩЋШ±Щ’Ш¶Щђ ШҐЩђЩ„Ш§Щ‘ЩЋ ШЈЩЋЩ†Щ‘ЩЋЩ‡ЩЏ ШЈЩЋЩѓЩ’ШЁЩЋШ±ЩЏ Щ…ЩђЩ†Щ’Щ‡ЩЏ Щ‚ЩЋЩ„ЩђЩЉЩ„Ш§Щ‹ШЊ ШЈЩЏШ°ЩЏЩ†Ш§Щ‡ЩЏ Щ…ЩЏШґЩЋШ№Щ‘ЩЋШ±ЩЋШЄШ§Щ†ЩђШЊ Щ€ЩЋШЈЩЋШ·Щ’Ш±ЩЋШ§ЩЃЩЏЩ‡ЩЏ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШ©ЩЊШЊ ШЄЩЏШЄЩ‘ЩЋШ®ЩЋШ°ЩЏ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ„Щ’ШЇЩђЩ‡Щђ Ш§Щ„ЩЃЩђШ±ЩЋШ§ШЎЩЏ Ш§Щ„Щ’Ш¬ЩЋЩЉЩ‘ЩђШЇЩЋШ©ЩЏ.",
+      "sourceHash": "85fc4a4aca658a06e9957104abdad7ef0fa87f767ce99f14bd85f250b40a9785",
+      "wordType": "ot",
+      "uzbek": "silovsin, Lynx turkumidagi yovvoyi mushuk",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩђЩ†Щ‘ЩЋЩ€Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¶Щ‘ЩЋЩ€ЩЋШ§Ш±ЩђЩЉШЊЩ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ†ЩЋЩ€Щ’Ш№ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩђШ·ЩЋШ·Щђ Ш§Щ„Щ€ЩЋШ­Щ’ШґЩђЩЉЩ‘ЩЋШ©Щђ ЩЉЩЋЩ‚Щ’Ш·ЩЏЩ†ЩЏ Ш§Щ„ШєЩЋШ§ШЁЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„ШµЩ‘ЩЋШ­ЩЋШ§Ш±ЩЋЩ‰ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ШЊ Щ…ЩЋШ№Щ’Ш±ЩЏЩ€ЩЃЩЊ ШЁЩђШ­ЩђШЇЩ‘ЩЋШ©Щђ ШЁЩЋШµЩЋШ±ЩђЩ‡Щђ Щ€ЩЋЩ‚ЩђШµЩЋШ±Щђ Ш°ЩЋЩ†ЩЋШЁЩђЩ‡ЩђШЊ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш№ЩЋЩ†ЩЋШ§Щ‚ЩЋ Ш§Щ„ШЈЩЋШ±Щ’Ш¶Щђ ШҐЩђЩ„Ш§Щ‘ЩЋ ШЈЩЋЩ†Щ‘ЩЋЩ‡ЩЏ ШЈЩЋЩѓЩ’ШЁЩЋШ±ЩЏ Щ…ЩђЩ†Щ’Щ‡ЩЏ Щ‚ЩЋЩ„ЩђЩЉЩ„Ш§Щ‹ШЊ ШЈЩЏШ°ЩЏЩ†Ш§Щ‡ЩЏ Щ…ЩЏШґЩЋШ№Щ‘ЩЋШ±ЩЋШЄШ§Щ†ЩђШЊ Щ€ЩЋШЈЩЋШ·Щ’Ш±ЩЋШ§ЩЃЩЏЩ‡ЩЏ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШ©ЩЊШЊ ШЄЩЏШЄЩ‘ЩЋШ®ЩЋШ°ЩЏ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ„Щ’ШЇЩђЩ‡Щђ Ш§Щ„ЩЃЩђШ±ЩЋШ§ШЎЩЏ Ш§Щ„Щ’Ш¬ЩЋЩЉЩ‘ЩђШЇЩЋШ©ЩЏ.",
+          "uzbekMeaning": "mushuksimonlar oilasiga mansub, dumi kalta, quloq uchlari popukli, oyoqlari uzun yovvoyi mushuk вЂ” silovsin (Lynx)",
+          "uzbekExample": "Silovsin oвЂrmon chetida oвЂljasini kuzatdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lexical_check",
+        "issues": [
+          "Avval uchga boвЂlingan yashash joyi, moвЂynasi va tana belgilari bitta silovsin tavsifidir"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 364,
+      "id": 79488,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш±ЩЋШ®Щ’Щ…ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„Ш©Щђ Ш§Щ„Щ†Щ‘ЩЋШіЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩђШ§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„Щ†Щ‘ЩЋШіЩ’Ш±ЩЋШЊ Щ„ЩЋЩ‡ЩЏ Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊ Щ…ЩЏЩ‚ЩЋЩ€Щ‘ЩЋШіЩЊШЊ Ш±ЩђЩЉШґЩЏЩ‡ЩЏ ШєЩЋШІЩђЩЉШ±ЩЊШЊ ЩЉЩЋШ®Щ’ШЄЩЋЩ„ЩђШ·ЩЏ ШЁЩђЩ‡Щђ Ш§Щ„ШіЩ‘ЩЋЩ€ЩЋШ§ШЇЩЏ Щ€ЩЋШ§Щ„ШЁЩЋЩЉЩЋШ§Ш¶ЩЏ.",
+      "sourceHash": "ae5a182f75d62be9899e42acbfabc9fb40d2dc9fd55ffa80bbd95922c25760eb",
+      "wordType": "ot",
+      "uzbek": "Misr kalxati (Neophron percnopterus)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„Ш©Щђ Ш§Щ„Щ†Щ‘ЩЋШіЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩђШ§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„Щ†Щ‘ЩЋШіЩ’Ш±ЩЋШЊ Щ„ЩЋЩ‡ЩЏ Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊ Щ…ЩЏЩ‚ЩЋЩ€Щ‘ЩЋШіЩЊШЊ Ш±ЩђЩЉШґЩЏЩ‡ЩЏ ШєЩЋШІЩђЩЉШ±ЩЊШЊ ЩЉЩЋШ®Щ’ШЄЩЋЩ„ЩђШ·ЩЏ ШЁЩђЩ‡Щђ Ш§Щ„ШіЩ‘ЩЋЩ€ЩЋШ§ШЇЩЏ Щ€ЩЋШ§Щ„ШЁЩЋЩЉЩЋШ§Ш¶ЩЏ.",
+          "uzbekMeaning": "Accipitridae oilasiga mansub, tumshugвЂi uzun va qayrilgan, patlari asosan oq, qanot qoqish patlari qora boвЂlgan oвЂlimtikxoвЂr yirtqich qush вЂ” Misr kalxati (Neophron percnopterus)",
+          "uzbekExample": "Misr kalxati ochiq hududda ozuqa izlab uchdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Arabcha Ш±ЩЋШ®Щ’Щ…ЩЋШ©ЩЊ va oq-qora pat tavsifi Misr kalxatiga mos; eski lochinsimonlar tasnifi zamonaviy Accipitridae bilan yangilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 365,
+      "id": 79489,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШҐЩђШ±Щ’ШЁЩђЩЉЩЋШ§Щ†ЩЊ",
+      "root": "ШЈШ±ШЁвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ ШµЩЋШєЩђЩЉШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ†Щ’ШіЩђ Ш§Щ„ШіЩ‘ЩЋШ±ЩЋШ·ЩЋШ§Щ†ЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш№ЩЏШґЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„ШЈЩЋЩ‚Щ’ШЇЩЋШ§Щ…Щђ.",
+      "sourceHash": "51778bbf52f12ef42216d6e00da8aa896664ae5ab46a44b40be76c670d2a5df0",
+      "wordType": "jamlovchi ot",
+      "uzbek": "krevetka, mayda oвЂnoyoqli qisqichbaqasimon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ ШµЩЋШєЩђЩЉШ±ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ†Щ’ШіЩђ Ш§Щ„ШіЩ‘ЩЋШ±ЩЋШ·ЩЋШ§Щ†ЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„Ш№ЩЏШґЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„ШЈЩЋЩ‚Щ’ШЇЩЋШ§Щ…Щђ.",
+          "uzbekMeaning": "oвЂnoyoqli qisqichbaqasimonlarga mansub mayda suv jonivori вЂ” krevetka",
+          "uzbekExample": "Krevetka oвЂnoyoqli qisqichbaqasimonlardan biridir.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_cleanup",
+        "issues": [
+          "Krevetka qisqichbaqaning bir jinsi emas; oвЂnoyoqli qisqichbaqasimon sifatida toвЂgвЂrilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 366,
+      "id": 79490,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш®ЩЋЩЉЩ’Щ„ЩЋШ§Щ†ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„Щ’Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ„ЩЋШЁЩЏЩ€Щ†ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡ЩЋШ§ Ш§Щ„ШЈЩЋШ·ЩЏЩ€Щ…ЩЏ Щ€ЩЋШ®ЩЋШ±ЩЏЩ€ЩЃЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ.",
+      "sourceHash": "4ca04794c2789ea55e833a701d650ac0f066bc9901aa387319ad32d09b075964",
+      "wordType": "turkum nomi",
+      "uzbek": "sirenalar yoki dengiz sigirlari turkumi (Sirenia)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„Щ’Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ„ЩЋШЁЩЏЩ€Щ†ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡ЩЋШ§ Ш§Щ„ШЈЩЋШ·ЩЏЩ€Щ…ЩЏ Щ€ЩЋШ®ЩЋШ±ЩЏЩ€ЩЃЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ.",
+          "uzbekMeaning": "dugong va lamantinlarni oвЂz ichiga oladigan suvda yashovchi oвЂtxoвЂr sutemizuvchilar turkumi вЂ” sirenalar yoki dengiz sigirlari (Sirenia)",
+          "uzbekExample": "Dugong va lamantinlar Sirenia turkumiga kiradi.",
+          "register": "zoologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Dugong va manatiylarni oвЂz ichiga oluvchi guruh ITIS boвЂyicha Sirenia turkumi ekani tasdiqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 367,
+      "id": 79491,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЋЩ„ЩЋЩ…ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШіЩЋЩ…ЩЋЩѓЩЊ ШµЩЋШєЩђЩЉШ±ЩЊ Ш±ЩЋЩ‚ЩђЩЉЩ‚ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђ ЩЉЩЏШ­Ш¶Щ‘ЩЋШ±ЩЏ ШЁЩђШ§Щ„ШІЩ‘ЩЋЩЉЩ’ШЄЩђ Щ€ЩЋШ§Щ„Щ…ЩђЩ„Щ’Ш­Щђ Ш§Щ„ЩѓЩЋШ«ЩђЩЉШ±Щђ.",
+      "sourceHash": "0a67a2612dfe78ca30b80e7ae7af1b4e3e7d37f5774bd10f7ed57d993691db64",
+      "wordType": "ot",
+      "uzbek": "balam, yogвЂ va tuz bilan tayyorlanadigan mayda shprotsimon baliq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШіЩЋЩ…ЩЋЩѓЩЊ ШµЩЋШєЩђЩЉШ±ЩЊ Ш±ЩЋЩ‚ЩђЩЉЩ‚ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђ ЩЉЩЏШ­Ш¶Щ‘ЩЋШ±ЩЏ ШЁЩђШ§Щ„ШІЩ‘ЩЋЩЉЩ’ШЄЩђ Щ€ЩЋШ§Щ„Щ…ЩђЩ„Щ’Ш­Щђ Ш§Щ„ЩѓЩЋШ«ЩђЩЉШ±Щђ.",
+          "uzbekMeaning": "shprotlar guruhiga yaqin, yogвЂ va koвЂp tuz bilan tayyorlanadigan mayda, ingichka baliq; arabcha nomi balam",
+          "uzbekExample": "Balam deb ataladigan mayda baliq yogвЂ va tuz bilan tayyorlanadi.",
+          "register": "ixtiologiya va oziq-ovqat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_descriptively_without_forced_species",
+        "issues": [
+          "Manba tur darajasida yetarli belgi bermaydi; arabcha balam nomi va shprotsimon baliq tavsifi saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 368,
+      "id": 79492,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЏЩ„Щ’Ш·ЩђЩЉЩ‘ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ШіЩЋЩ…ЩЋЩѓЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„Ш© Ш§Щ„ШЁЩЏЩ„Щ’Ш·ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Щ†ЩЋЩ‡Щ’Ш±Щђ Ш§Щ„Щ†Щ‘ЩђЩЉЩ„ЩђШЊ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЉЩ’Ш¶Ш§Щ‹ Ш§Щ„Щ’Щ…ЩЏШґЩ’Ш·ЩЋ.",
+      "sourceHash": "cacdc817bb4e5a54418e9fe1f39ccf17f163e56d0901ca6441d7189ce59e15bf",
+      "wordType": "ot",
+      "uzbek": "tilapiya",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШіЩЋЩ…ЩЋЩѓЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„Ш© Ш§Щ„ШЁЩЏЩ„Щ’Ш·ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Щ†ЩЋЩ‡Щ’Ш±Щђ Ш§Щ„Щ†Щ‘ЩђЩЉЩ„ЩђШЊ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЉЩ’Ш¶Ш§Щ‹ Ш§Щ„Щ’Щ…ЩЏШґЩ’Ш·ЩЋ.",
+          "uzbekMeaning": "Cichlidae oilasiga mansub chuchuk suv baliqlarining tilapiya deb ataladigan guruhi; Nil havzasida ham uchraydi va arabchada Ш§Щ„Щ…ЩЏШґЩ’Ш· deb ham ataladi",
+          "uzbekExample": "Tilapiya iliq chuchuk suvlarda yetishtiriladi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lexical_and_taxonomic_check",
+        "issues": [
+          "Nil daryosi yashash joylaridan biri; tilapiya faqat Nilga xos degan talqin chiqarildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 369,
+      "id": 79493,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШєЩЋШ§Щ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЋШ¬ЩЋШ№ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ€ЩЋШ±ЩЏШЄЩ’ШЁЩЋШ©Щђ ЩѓЩЋЩЃЩ‘ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„Щ‚ЩЋШЇЩЋЩ…ЩђШЊ Щ…ЩђЩ†Щ’ Ш·ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђШЊ ЩЉЩЋШµЩђЩЉШЇЩЏ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩЋ Щ€ЩЋЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђЩ‡Щђ.",
+      "sourceHash": "58b202f6316e472289ea4f2ea2d5bca804260909ff4810d5f475769bce55725f",
+      "wordType": "ot",
+      "uzbek": "kormoran, baliqxoвЂr qora suv qushi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЋШ¬ЩЋШ№ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ€ЩЋШ±ЩЏШЄЩ’ШЁЩЋШ©Щђ ЩѓЩЋЩЃЩ‘ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„Щ‚ЩЋШЇЩЋЩ…ЩђШЊ Щ…ЩђЩ†Щ’ Ш·ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђШЊ ЩЉЩЋШµЩђЩЉШЇЩЏ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩЋ Щ€ЩЋЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђЩ‡Щђ.",
+          "uzbekMeaning": "Phalacrocoracidae oilasiga mansub, suvga shoвЂngвЂib baliq tutadigan toвЂq tusli suv qushi вЂ” kormoran",
+          "uzbekExample": "Kormoran suvga shoвЂngвЂib baliq tutdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_taxonomic_check",
+        "issues": [
+          "Manbadagi eski pelikanlar oilasi va pardabarmoqlilar turkumi oвЂrniga zamonaviy Phalacrocoracidae tasnifi berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 370,
+      "id": 79494,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШґЩЋШ±ЩЋЩ‚Щ’Ш±ЩЋЩ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ ШµЩЋШєЩђЩЉШ±ЩЊШЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШґЩ‘ЩЋЩ‚ЩђШ±Щ‘ЩЋШ§Щ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЈЩЋШµЩ’ШєЩЋШ±ЩЏ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш­ЩЋЩ…ЩЋШ§Щ…ЩЋШ©ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш®ЩЏШ¶Щ’Ш±ЩЋШ©ЩЌ Щ€ЩЋШ­ЩЏЩ…Щ’Ш±ЩЋШ©ЩЌ Щ€ЩЋШІЩЏШ±Щ’Щ‚ЩЋШ©ЩЌ Щ€ЩЋШіЩЋЩ€ЩЋШ§ШЇЩЌШЊ ШЄЩЋШєЩ’Щ„ЩђШЁЩЏ Ш№ЩЋЩ„ЩЋЩЉЩ’Щ‡Щђ Ш§Щ„Щ’Ш®ЩЏШ¶Щ’Ш±ЩЋШ©ЩЏШЊ Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЏЩ‡ЩЏ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Щ€ЩЋЩ…ЩЏШіЩ’ШЄЩЋЩ‚ЩђЩЉЩ…ЩЊШЊ Щ…ЩЋШ№Щ’Щ‚ЩЏЩ€ЩЃЩЊ Ш№ЩђЩ†Щ’ШЇЩЋ Ш·ЩЋШ±ЩЋЩЃЩђЩ‡ЩђШЊ Щ„Ш§ЩЋ ЩЉЩЋЩ‡ЩЋШ§ШЁЩЏ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±ЩЋШЊ ЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЁЩђШ§Щ„ШґЩ‘ЩЋШ±ЩЋЩ‚Щ’Ш±ЩЋШ§Щ‚Щђ ШЈЩЋЩ€Щђ Ш§Щ„ШґЩ‘ЩЋЩ‚ЩђШ±Щ‘ЩЋШ§Щ‚ШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ‘ЩЋШЄЩђЩЉ ШЄЩЋШЄЩЋШґЩЋШ§ШЎЩ…ЩЏ ШЁЩђЩ‡Ш§ Ш§Щ„Ш№ЩЋШ±ЩЋШЁЩЏ.",
+      "sourceHash": "a19f81173217ed55416f541ea419f58c932e63ff244b98e1ace573866c2d0a80",
+      "wordType": "ot",
+      "uzbek": "Yevropa koвЂkqargвЂasi (Coracias garrulus)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ ШµЩЋШєЩђЩЉШ±ЩЊШЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШґЩ‘ЩЋЩ‚ЩђШ±Щ‘ЩЋШ§Щ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЈЩЋШµЩ’ШєЩЋШ±ЩЏ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш­ЩЋЩ…ЩЋШ§Щ…ЩЋШ©ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш®ЩЏШ¶Щ’Ш±ЩЋШ©ЩЌ Щ€ЩЋШ­ЩЏЩ…Щ’Ш±ЩЋШ©ЩЌ Щ€ЩЋШІЩЏШ±Щ’Щ‚ЩЋШ©ЩЌ Щ€ЩЋШіЩЋЩ€ЩЋШ§ШЇЩЌШЊ ШЄЩЋШєЩ’Щ„ЩђШЁЩЏ Ш№ЩЋЩ„ЩЋЩЉЩ’Щ‡Щђ Ш§Щ„Щ’Ш®ЩЏШ¶Щ’Ш±ЩЋШ©ЩЏШЊ Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЏЩ‡ЩЏ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Щ€ЩЋЩ…ЩЏШіЩ’ШЄЩЋЩ‚ЩђЩЉЩ…ЩЊШЊ Щ…ЩЋШ№Щ’Щ‚ЩЏЩ€ЩЃЩЊ Ш№ЩђЩ†Щ’ШЇЩЋ Ш·ЩЋШ±ЩЋЩЃЩђЩ‡ЩђШЊ Щ„Ш§ЩЋ ЩЉЩЋЩ‡ЩЋШ§ШЁЩЏ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±ЩЋШЊ ЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЁЩђШ§Щ„ШґЩ‘ЩЋШ±ЩЋЩ‚Щ’Ш±ЩЋШ§Щ‚Щђ ШЈЩЋЩ€Щђ Ш§Щ„ШґЩ‘ЩЋЩ‚ЩђШ±Щ‘ЩЋШ§Щ‚ШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ‘ЩЋШЄЩђЩЉ ШЄЩЋШЄЩЋШґЩЋШ§ШЎЩ…ЩЏ ШЁЩђЩ‡Ш§ Ш§Щ„Ш№ЩЋШ±ЩЋШЁЩЏ.",
+          "uzbekMeaning": "Coraciidae oilasiga mansub, patlarida koвЂk, yashil, jigarrang va qora ranglar uygвЂunlashgan qush вЂ” Yevropa koвЂkqargвЂasi (Coracias garrulus); uni shum alomat deb bilish eski xalqona irimdir",
+          "uzbekExample": "KoвЂkqargвЂaning yorqin koвЂk qanotlari parvozda yaqqol koвЂrindi.",
+          "register": "ornitologiya va madaniy izoh"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_species_identification",
+        "issues": [
+          "Ш§Щ„ШґЩ‘ЩЋШ±ЩЋЩ‚Щ’Ш±ЩЋШ§Щ‚ Coracias garrulus bilan tekshirildi; shum alomat haqidagi gap faqat tarixiy irim sifatida belgilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 371,
+      "id": 79495,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШµЩЏЩЃЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ„ЩЋЩ‡ЩЏ Ш±ЩђЩЉШґЩЊ ШЈЩЋШµЩ’ЩЃЩЋШ±ЩЏШЊ ЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Ш«Щ‘ЩђЩ…ЩЋШ§Ш±Щђ Щ€ЩЋШ§Щ„Щ’Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ.",
+      "sourceHash": "ff8b423eb402cda41c090f2187c2cbaa9957076951e7f468c3a64731aeb1a9ef",
+      "wordType": "ot",
+      "uzbek": "zargвЂaldoq, sariq patli sayroqi qush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ„ЩЋЩ‡ЩЏ Ш±ЩђЩЉШґЩЊ ШЈЩЋШµЩ’ЩЃЩЋШ±ЩЏШЊ ЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Ш«Щ‘ЩђЩ…ЩЋШ§Ш±Щђ Щ€ЩЋШ§Щ„Щ’Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ.",
+          "uzbekMeaning": "patlari sariq boвЂlib, meva va hasharotlar bilan oziqlanadigan sayroqi qush вЂ” zargвЂaldoq",
+          "uzbekExample": "ZargвЂaldoq daraxt shoxlarida hasharot izladi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lexical_check",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 372,
+      "id": 79496,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЋЩ„ЩЋШґЩЏЩ€Щ†ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊШЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„ШіЩ‘ЩђЩЉЩ‚ЩЋШ§Щ†Щђ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩ„ЩЋШґЩЏЩ€Щ†ЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ„Щ‘ЩЋЩ‚Щ’Щ„ЩЋЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш№ЩЏЩ†ЩЏЩ‚ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊ Ш­ЩЋШ§ШЇЩ‘ЩЊШЊ Ш±ЩђЩЉШґЩЏЩ‡ЩЏ Ш®ЩЋЩЃЩђЩЉЩЃЩЊ Щ€ЩЋШЁЩЋШіЩђЩЉШ·ЩЊШЊ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђЩ…ЩЋШ§Щ„ЩђЩѓЩЌ Ш§Щ„Ш­ЩЋШІЩђЩЉЩ†ЩђШЊ ШЈЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЏ ЩѓЩЋШ«ЩђЩЉШ±ЩЋШ©ЩЊ.",
+      "sourceHash": "562607d6cd2a70e36eab1ab64fb358475e7a2062281774b2ec9cd1ea087b4e4e",
+      "wordType": "ot",
+      "uzbek": "qarqara, uzun oyoqli suv qushi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊШЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„ШіЩ‘ЩђЩЉЩ‚ЩЋШ§Щ†Щђ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩ„ЩЋШґЩЏЩ€Щ†ЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ„Щ‘ЩЋЩ‚Щ’Щ„ЩЋЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ„ЩЋЩ‡ЩЏ Ш№ЩЏЩ†ЩЏЩ‚ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊ Ш­ЩЋШ§ШЇЩ‘ЩЊШЊ Ш±ЩђЩЉШґЩЏЩ‡ЩЏ Ш®ЩЋЩЃЩђЩЉЩЃЩЊ Щ€ЩЋШЁЩЋШіЩђЩЉШ·ЩЊШЊ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁЩђЩ…ЩЋШ§Щ„ЩђЩѓЩЌ Ш§Щ„Ш­ЩЋШІЩђЩЉЩ†ЩђШЊ ШЈЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЏ ЩѓЩЋШ«ЩђЩЉШ±ЩЋШ©ЩЊ.",
+          "uzbekMeaning": "Ardeidae oilasiga mansub, oyoqlari va boвЂyni uzun, tumshugвЂi uzun va uchli boвЂlgan suv qushi вЂ” qarqara yoki heron; arabchada Щ…ЩЋШ§Щ„ЩђЩѓЩЏ Ш§Щ„Ш­ЩЋШІЩђЩЉЩ† deb ham ataladi",
+          "uzbekExample": "Qarqara sayoz suvda qimirlamay turib, baliq kutdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_at_family_level",
+        "issues": [
+          "ШЁЩЋЩ„ЩЋШґЩЏЩ€Щ† heronlarning umumiy nomi boвЂlgani uchun bitta turga asossiz toraytirilmadi; eski Ciconiiformes oвЂrniga Ardeidae oilasi saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 373,
+      "id": 79497,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШµЩЋШ±Щ‘ЩЋШ§Ш±ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩђШЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ†ЩЋЩ€Щ’Ш№ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш№ЩђЩ‚Щ’ШЁЩЋШ§Щ†Щђ Ш§Щ„Ш№ЩЋШёЩђЩЉЩ…ЩЋШ©ЩђШЊ ЩЉЩЋШЈЩ’ЩѓЩЏЩ„ЩЏ Ш§Щ„ШЈЩЋЩЃЩЋШ§Ш№ЩђЩЉЩЋШЊ Щ€ЩЋЩ„Ш§ЩЋ ЩЉЩЋШµЩђЩЉШЇЩЏ ШєЩЋЩЉЩ’Ш±ЩЋЩ‡ЩЋШ§ШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ЩЃЩђЩЉ ШіЩЏЩ€Ш±ЩђЩЉЩЋШ©ЩЋ Щ€ЩЋЩ„ЩЏШЁЩ’Щ†ЩЋШ§Щ†ЩЋ ШЁЩђШЈЩЋШЁЩђЩЉ ШµЩЏЩ€ЩЋЩЉЩ‘.",
+      "sourceHash": "fa5af3bd67bb9ac08e3b4d60385b979ae9485b55a51ef6ed8c94d9dee47779a4",
+      "wordType": "ot",
+      "uzbek": "ilonxoвЂr burgut, snake eagle guruhidagi yirtqich qush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩђШЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ†ЩЋЩ€Щ’Ш№ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш№ЩђЩ‚Щ’ШЁЩЋШ§Щ†Щђ Ш§Щ„Ш№ЩЋШёЩђЩЉЩ…ЩЋШ©ЩђШЊ ЩЉЩЋШЈЩ’ЩѓЩЏЩ„ЩЏ Ш§Щ„ШЈЩЋЩЃЩЋШ§Ш№ЩђЩЉЩЋШЊ Щ€ЩЋЩ„Ш§ЩЋ ЩЉЩЋШµЩђЩЉШЇЩЏ ШєЩЋЩЉЩ’Ш±ЩЋЩ‡ЩЋШ§ШЊ Щ€ЩЋЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ЩЃЩђЩЉ ШіЩЏЩ€Ш±ЩђЩЉЩЋШ©ЩЋ Щ€ЩЋЩ„ЩЏШЁЩ’Щ†ЩЋШ§Щ†ЩЋ ШЁЩђШЈЩЋШЁЩђЩЉ ШµЩЏЩ€ЩЋЩЉЩ‘.",
+          "uzbekMeaning": "asosan ilonlar bilan oziqlanadigan yirik yirtqich qush вЂ” ilonxoвЂr burgut; Suriya va Livanda ШЈЩЋШЁЩЏЩ€ ШµЩЏЩ€ЩЋЩЉЩ‘ deb ham ataladi",
+          "uzbekExample": "IlonxoвЂr burgut ochiq maydonda sudralib yuruvchini ovladi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_without_forced_species_assignment",
+        "issues": [
+          "IlonxoвЂr burgut guruhi aniq, ammo manbada bitta zamonaviy turga yetarli diagnostik belgi yoвЂq"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 374,
+      "id": 79498,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩЉЩ‘ЩЋШ§ШЄЩђ Ш№ЩЋШ±ЩЉШ¶ЩЏ Ш§Щ„Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩђШЊ ЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Ш­ЩЋШґЩЋШ±Ш§ШЄЩђ Щ€Ш§Щ„ШЇЩ‘ЩђЩЉШЇЩЋШ§Щ†Щђ Щ€ЩЋШ§Щ„Щ’Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€Ш§Щ„ШЈЩЋШіЩ’Щ…ЩЋШ§ЩѓЩђ.",
+      "sourceHash": "43668a09c0f274c5c75ec73c8d7641211431325cad4c10b2216eb332324cd318",
+      "wordType": "ot",
+      "uzbek": "mazur, keng tumshuqli suv qushi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩЉЩ‘ЩЋШ§ШЄЩђ Ш№ЩЋШ±ЩЉШ¶ЩЏ Ш§Щ„Щ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩђШЊ ЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Ш­ЩЋШґЩЋШ±Ш§ШЄЩђ Щ€Ш§Щ„ШЇЩ‘ЩђЩЉШЇЩЋШ§Щ†Щђ Щ€ЩЋШ§Щ„Щ’Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€Ш§Щ„ШЈЩЋШіЩ’Щ…ЩЋШ§ЩѓЩђ.",
+          "uzbekMeaning": "tumshugвЂi keng boвЂlib, hasharot, chuvalchang, qisqichbaqasimon va baliqlar bilan oziqlanadigan mazur deb ataluvchi suv qushi",
+          "uzbekExample": "Mazur deb ataluvchi keng tumshuqli qush sayoz suvdan ozuqa izladi.",
+          "register": "kam qoвЂllanadigan ornitologik nom"
+        }
+      ],
+      "applyStatus": "held",
+      "hold": {
+        "reason": "review_hold",
+        "note": "Ш§Щ„Щ’Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄ oilasining zamonaviy lotincha muqobili ishonchli manbalarda aniqlanmadi; tavsif tarjima qilindi, ammo tur majburan belgilanmadi"
+      },
+      "approval": {
+        "decision": "approved_with_hold_for_taxonomic_identification",
+        "issues": [
+          "Ш§Щ„Щ’Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄ ning zamonaviy lotincha oilasi aniqlanmadi; 317-bosh soвЂzdagi shu oila muammosi bilan bogвЂliq holda nashrga chiqarilmaydi"
+        ],
+        "reviewedAt": "2026-08-29"
+      },
+      "notes": "Ш§Щ„Щ’Щ…ЩЋШ§ШІЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄ oilasining zamonaviy lotincha muqobili ishonchli manbalarda aniqlanmadi; tavsif tarjima qilindi, ammo tur majburan belgilanmadi"
+    },
+    {
+      "sequenceIndex": 375,
+      "id": 79499,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЄЩђЩЃЩ’Щ„ЩђЩ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш·ЩђЩ€ЩЋШ§Щ„Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ‚Щђ. Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЋШ©ЩђШЊ ЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ Щ€ЩЋШЁЩЋШ№Щ’Ш¶Щђ Ш§Щ„Щ’Ш­ЩЏШЁЩЏЩ€ШЁЩђ.",
+      "sourceHash": "498ce7986b5fa8321918167abc1fdaf37483484117ec5ab52b6f55cf7cc234ba",
+      "wordType": "ot",
+      "uzbek": "Rallidae oilasidagi suv-botqoq qushi, rail",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш·ЩђЩ€ЩЋШ§Щ„Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ‚Щђ. Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЋШ©ЩђШЊ ЩЉЩЋЩ‚Щ’ШЄЩЋШ§ШЄЩЏ ШЁЩђШ§Щ„Ш­ЩЋШґЩЋШ±ЩЋШ§ШЄЩђ Щ€ЩЋШЁЩЋШ№Щ’Ш¶Щђ Ш§Щ„Щ’Ш­ЩЏШЁЩЏЩ€ШЁЩђ.",
+          "uzbekMeaning": "Rallidae oilasiga mansub, suv-botqoq hududlarda yashab, hasharot va ayrim donlar bilan oziqlanadigan qush вЂ” tifliq yoki rail",
+          "uzbekExample": "Tifliq qamishzor orasida hasharot izladi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_at_family_level_after_taxonomic_check",
+        "issues": [
+          "Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄ Rallidae oilasiga mos; manbadagi uzun oyoqlilar degan eskirgan turkum nomi chiqarildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 376,
+      "id": 79500,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЏШ±Щ’Щ‡ЩЋШ§Щ†ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш·ЩђЩ€ЩЋШ§Щ„Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ‚Щђ. ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЏ Ш№ЩЋШЇЩђЩЉШЇЩЋШ©ЩЊШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†Щ’ Ш·ЩЏЩЉЩЏЩ€Ш±Щђ Щ…ЩђЩ†Щ’Ш·ЩЋЩ‚ЩЋШ©Щђ Ш­ЩЋЩ€Щ’Ш¶Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ Ш§Щ„ШЈЩЋШЁЩ’ЩЉЩЋШ¶Щђ Ш§Щ„Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·Щђ.",
+      "sourceHash": "bd27c57c3ca3bbe4799aa1996cb999f9cad38e2c06a608f63b7070bc754fb15e",
+      "wordType": "ot",
+      "uzbek": "sulton tovugвЂi, Porphyrio turkumidagi botqoq qushi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш·ЩђЩ€ЩЋШ§Щ„Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ‚Щђ. ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЏ Ш№ЩЋШЇЩђЩЉШЇЩЋШ©ЩЊШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†Щ’ Ш·ЩЏЩЉЩЏЩ€Ш±Щђ Щ…ЩђЩ†Щ’Ш·ЩЋЩ‚ЩЋШ©Щђ Ш­ЩЋЩ€Щ’Ш¶Щђ Ш§Щ„ШЁЩЋШ­Щ’Ш±Щђ Ш§Щ„ШЈЩЋШЁЩ’ЩЉЩЋШ¶Щђ Ш§Щ„Щ…ЩЏШЄЩЋЩ€ЩЋШіЩ‘ЩђШ·Щђ.",
+          "uzbekMeaning": "Rallidae oilasining Porphyrio turkumiga mansub, botqoq va qamishzorlarda yashaydigan yirik suv qushi вЂ” sulton tovugвЂi yoki swamphen",
+          "uzbekExample": "Sulton tovugвЂi qamishzor chetida ozuqa izladi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_dictionary_and_taxonomic_cross_check",
+        "issues": [
+          "ШЁЩЏШ±Щ’Щ‡ЩЋШ§Щ† arab ornitologik manbalarida swamphen, yaвЂ™ni Porphyrio guruhi sifatida beriladi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 377,
+      "id": 79501,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш­ЩЋШіЩ‘ЩЏЩ€Щ†ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш­ЩЋШіЩЋЩ†ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ€Щ’ШЄЩђШЊ Ш¬ЩЋЩ…ЩђЩЉЩ„ЩЏ Ш§Щ„Щ’Щ…ЩЋЩ†Щ’ШёЩЋШ±Щђ Щ€ЩЋШЈЩ„Щ’Щ€Ш§Щ†ЩЏ Ш±ЩђЩЉШґЩђЩ‡Щђ ШІЩЋШ§Щ‡ЩђЩЉЩЋШ©ЩЊ.",
+      "sourceHash": "0ab35261eb15e70fb90bdacf4177e90952a6d4b6ecb8173231ffc1fab0f97437",
+      "wordType": "ot",
+      "uzbek": "tillarang (Carduelis carduelis)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш­ЩЋШіЩЋЩ†ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ€Щ’ШЄЩђШЊ Ш¬ЩЋЩ…ЩђЩЉЩ„ЩЏ Ш§Щ„Щ’Щ…ЩЋЩ†Щ’ШёЩЋШ±Щђ Щ€ЩЋШЈЩ„Щ’Щ€Ш§Щ†ЩЏ Ш±ЩђЩЉШґЩђЩ‡Щђ ШІЩЋШ§Щ‡ЩђЩЉЩЋШ©ЩЊ.",
+          "uzbekMeaning": "Fringillidae oilasiga mansub, sayrashi yoqimli va patlari rang-barang mayda qush вЂ” tillarang (Carduelis carduelis)",
+          "uzbekExample": "Tillarang daraxt shoxida yoqimli sayradi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_species_identification",
+        "issues": [
+          "Ш­ЩЋШіЩ‘ЩЏЩ€Щ†ЩЊ rang-barang, yoqimli sayraydigan Carduelis carduelis вЂ” tillarang bilan mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 378,
+      "id": 79502,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩђШ±Щ’Щ‚ЩђШґЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¬ЩЋЩ€Ш§Ш«ЩђЩ…Щђ Щ…ЩЋШ®Щ’Ш±Щ€Ш·ЩЏ Ш§Щ„Щ…ЩђЩ†Щ’Щ‚Ш§Ш±ЩђШЊ Ш¬ЩЋЩ…ЩЉЩ„ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ€Щ’ШЄЩђШЊ Щ…ЩЏЩ„ЩЋЩ€Щ‘ЩЋЩ†ЩЏ Ш§Щ„Ш±Щ‘ЩђЩЉШґЩђШЊ ШІЩЏШ±Щ’Щ‚ЩЋШЄЩЏЩ‡ЩЏ Щ…ЩЏШ®Щ’Ш¶ЩЋШ±Щ‘ЩЋШ©ЩЊ ЩЉЩЋШЄЩЋШ®ЩЋЩ„Щ‘ЩЋЩ„ЩЏЩ‡Ш§ Ш§Щ„ШЈШ­Щ’Щ…ЩЋШ±ЩЏ Щ€Ш§Щ„ШЈШіЩ’Щ€ЩЋШЇЩЏ Щ€Ш§Щ„ШЈШєЩ’ШЁЩЋШ±ЩЏ. ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩ€Ш±Щђ.",
+      "sourceHash": "18116ff378a887073671920abcc2728ffbb329ebabe93854af44ea93d71b8348",
+      "wordType": "ot",
+      "uzbek": "oddiy zyablik, chaffinch (Fringilla coelebs)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¬ЩЋЩ€Ш§Ш«ЩђЩ…Щђ Щ…ЩЋШ®Щ’Ш±Щ€Ш·ЩЏ Ш§Щ„Щ…ЩђЩ†Щ’Щ‚Ш§Ш±ЩђШЊ Ш¬ЩЋЩ…ЩЉЩ„ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ€Щ’ШЄЩђШЊ Щ…ЩЏЩ„ЩЋЩ€Щ‘ЩЋЩ†ЩЏ Ш§Щ„Ш±Щ‘ЩђЩЉШґЩђШЊ ШІЩЏШ±Щ’Щ‚ЩЋШЄЩЏЩ‡ЩЏ Щ…ЩЏШ®Щ’Ш¶ЩЋШ±Щ‘ЩЋШ©ЩЊ ЩЉЩЋШЄЩЋШ®ЩЋЩ„Щ‘ЩЋЩ„ЩЏЩ‡Ш§ Ш§Щ„ШЈШ­Щ’Щ…ЩЋШ±ЩЏ Щ€Ш§Щ„ШЈШіЩ’Щ€ЩЋШЇЩЏ Щ€Ш§Щ„ШЈШєЩ’ШЁЩЋШ±ЩЏ. ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹ ШЁЩђШ§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩ€Ш±Щђ.",
+          "uzbekMeaning": "Fringillidae oilasiga mansub, tumshugвЂi konussimon, sayrashi yoqimli va patlari rang-barang qush вЂ” oddiy zyablik yoki chaffinch (Fringilla coelebs); arabchada Ш§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩЏЩ€Ш± deb ham ataladi",
+          "uzbekExample": "Oddiy zyablik bahorda daraxt shoxida sayradi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_synonym_and_plumage_check",
+        "issues": [
+          "Ш§Щ„ШґЩ‘ЩЋШ±Щ’ШґЩЏЩ€Ш± sinonimi va koвЂkimtir-yashil, qizil-qora pat tavsifi Fringilla coelebs bilan mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 379,
+      "id": 79503,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЄЩЏШ±Щ’ШєЩЏЩ„Щ‘ЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш­ЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЈЩЋШµЩ’ШєЩЋШ±ЩЏ Ш­ЩЋШ¬Щ’Щ…Ш§Щ‹ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш­ЩЋЩ…ЩЋШ§Щ…Щђ Ш§Щ„ШЁЩЋШ±Щ‘ЩђЩЉЩ‘ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЏЩ‡ЩЋШ§Ш¬ЩђШ±ЩЋШ©ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ЩѓЩЋШіЩ’ШЄЩЏЩ†ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊ Щ€ЩЋШЁЩЏЩ†Щ‘ЩђЩЉЩ‘ЩЊ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Щ…ЩЋШ№ЩЋ Щ€ЩЏШ¬ЩЏЩ€ШЇЩђ Щ†ЩЏЩ‚ЩЋШ·ЩЌ ШіЩЋЩ€Щ’ШЇШ§ШЎЩЋШЊ ШЁЩђШ№ЩЏЩ†ЩЏЩ‚ЩђЩ‡Щђ Ш±ЩЏЩ‚Щ’Ш№ЩЋШ©ЩЊ ШµЩЋШєЩђЩЉШ±ЩЋШ©ЩЏ Ш°ЩЋШ§ШЄЩЏ ШЈЩЋШґЩ’Ш±ЩђШ·ЩЋШ©ЩЌ ШіЩЏЩ€ШЇЩЌ Щ€ЩЋШЁЩђЩЉШ¶ЩЌШЊ Ш±ЩђЩЉШґЩЏ Ш°ЩЋЩ†ЩЋШЁЩђЩ‡Щђ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Щ…ЩЋШ№ЩЋ ШҐЩђШ·ЩЋШ§Ш±ЩЌ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЋ ЩЉЩЏЩ…ЩЋЩЉЩ‘ЩђШІЩЏЩ‡ЩЏ .",
+      "sourceHash": "decc41e286f5f6a9b89a3271a46b173725c03bbf7577cc6d9e3b006788f3c275",
+      "wordType": "ot",
+      "uzbek": "Yevropa qumrisi (Streptopelia turtur)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш­ЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЈЩЋШµЩ’ШєЩЋШ±ЩЏ Ш­ЩЋШ¬Щ’Щ…Ш§Щ‹ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш­ЩЋЩ…ЩЋШ§Щ…Щђ Ш§Щ„ШЁЩЋШ±Щ‘ЩђЩЉЩ‘ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±Щђ Ш§Щ„Щ’Щ…ЩЏЩ‡ЩЋШ§Ш¬ЩђШ±ЩЋШ©ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ЩѓЩЋШіЩ’ШЄЩЏЩ†ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊ Щ€ЩЋШЁЩЏЩ†Щ‘ЩђЩЉЩ‘ЩЊ ШЈЩЋШ­Щ’Щ…ЩЋШ±ЩЏ Щ…ЩЋШ№ЩЋ Щ€ЩЏШ¬ЩЏЩ€ШЇЩђ Щ†ЩЏЩ‚ЩЋШ·ЩЌ ШіЩЋЩ€Щ’ШЇШ§ШЎЩЋШЊ ШЁЩђШ№ЩЏЩ†ЩЏЩ‚ЩђЩ‡Щђ Ш±ЩЏЩ‚Щ’Ш№ЩЋШ©ЩЊ ШµЩЋШєЩђЩЉШ±ЩЋШ©ЩЏ Ш°ЩЋШ§ШЄЩЏ ШЈЩЋШґЩ’Ш±ЩђШ·ЩЋШ©ЩЌ ШіЩЏЩ€ШЇЩЌ Щ€ЩЋШЁЩђЩЉШ¶ЩЌШЊ Ш±ЩђЩЉШґЩЏ Ш°ЩЋЩ†ЩЋШЁЩђЩ‡Щђ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЏ Щ…ЩЋШ№ЩЋ ШҐЩђШ·ЩЋШ§Ш±ЩЌ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЋ ЩЉЩЏЩ…ЩЋЩЉЩ‘ЩђШІЩЏЩ‡ЩЏ .",
+          "uzbekMeaning": "Columbidae oilasiga mansub, yovvoyi kaptardan kichikroq, boвЂynida qora-oq yoвЂlli dogвЂi va dumida oq hoshiyasi boвЂladigan koвЂchmanchi qush вЂ” Yevropa qumrisi (Streptopelia turtur)",
+          "uzbekExample": "Yevropa qumrisining boвЂynidagi qora-oq yoвЂllar aniq koвЂrindi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_species_identification",
+        "issues": [
+          "KoвЂchmanchilik, boвЂyindagi qora-oq yoвЂllar va dumdagi oq hoshiya Streptopelia turtur belgilariga mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 380,
+      "id": 79504,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЁЩЏШ±Щ’ЩѓЩЋШ©ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш·Ш§Ш¦ЩђШ±ЩЊ Щ…Ш§Ш¦ЩђЩЉЩ‘ЩЊ Щ€ЩЋШ­Щ’ШґЩђЩЉЩ‘ЩЊ ШµЩЋШєЩЉШ±ЩЏ Ш§Щ„Ш­ЩЋШ¬Щ’Щ…Щђ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЋШ·Щ‘ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁШ§Щ„Ш®ЩЋШ¶Ш§Ш±ЩђЩЉ.",
+      "sourceHash": "88bdb82eda45a47f824e1873be3862900292c3fdbb8e259e5c28add7e42a1e96",
+      "wordType": "ot",
+      "uzbek": "yovvoyi oвЂrdak, mallard (Anas platyrhynchos)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·Ш§Ш¦ЩђШ±ЩЊ Щ…Ш§Ш¦ЩђЩЉЩ‘ЩЊ Щ€ЩЋШ­Щ’ШґЩђЩЉЩ‘ЩЊ ШµЩЋШєЩЉШ±ЩЏ Ш§Щ„Ш­ЩЋШ¬Щ’Щ…Щђ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШЁЩЋШ·Щ‘ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ЩЉЩЏШ№Щ’Ш±ЩЋЩЃЩЏ ШЁШ§Щ„Ш®ЩЋШ¶Ш§Ш±ЩђЩЉ.",
+          "uzbekMeaning": "Anatidae oilasiga mansub yovvoyi oвЂrdak вЂ” mallard (Anas platyrhynchos); arabchada Ш§Щ„Ш®ЩЋШ¶ЩЋШ§Ш±ЩђЩЉ deb ham ataladi",
+          "uzbekExample": "Yovvoyi oвЂrdak koвЂl yuzida suzib yurdi.",
+          "register": "ornitologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_source_synonym_check",
+        "issues": [
+          "Ш§Щ„Ш®ЩЋШ¶ЩЋШ§Ш±ЩђЩЉ mallardni bildiradi; manbadagi kichik hajm daвЂ™vosi diagnostik maвЂ™nodan olib tashlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 381,
+      "id": 79505,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ…ЩЋШ±Щ’Ш¬ЩЋШ§Щ†ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩђЩЉЩ‘ЩЋШ©ЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ШµЩђЩ†Щ’ЩЃЩђ Ш§Щ„Щ’Щ…ЩЏШ¬ЩЋЩ€Щ‘ЩЋЩЃЩЋШ§ШЄЩђ.",
+      "sourceHash": "fa97a633df5a67056d2c457a53a9cf405f7b54286279263d4dddfdcf65419000",
+      "wordType": "jamlovchi ilmiy nom",
+      "uzbek": "marjonlar, Cnidaria tipidagi dengiz umurtqasizlari",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩђЩЉЩ‘ЩЋШ©ЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ ШµЩђЩ†Щ’ЩЃЩђ Ш§Щ„Щ’Щ…ЩЏШ¬ЩЋЩ€Щ‘ЩЋЩЃЩЋШ§ШЄЩђ.",
+          "uzbekMeaning": "Cnidaria tipiga, asosan Anthozoa sinfiga mansub dengiz umurtqasizlari вЂ” marjonlar; koвЂp turlari ohaktoshli skelet hosil qiladi",
+          "uzbekExample": "Marjon koloniyasi rifning asosiy qismini hosil qildi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_taxonomic_correction",
+        "issues": [
+          "Kovakichlilar va bitta oila degan eski tasnif oвЂrniga Cnidaria hamda asosan Anthozoa doirasidagi marjonlar tushunchasi berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 382,
+      "id": 79506,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш¬ЩЋЩ€ЩЋШ§Ш«ЩђЩ…ЩЏ",
+      "root": "Ш¬Ш«Щ…вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩ’Ш±Щђ ЩѓЩЋШ§Щ„ШєЩЏШ±ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„ШґЩ‘ЩЏШ­Щ’Ш±ЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„Щ‡ЩЏШЇЩ’Щ‡ЩЏШЇЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„Щ‚ЩЏШЁЩ‘ЩЋШ±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„ШІЩ‘ЩЏШ±Щ’ШІЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ.",
+      "sourceHash": "7f26953520e427a69de933de548d0864edbbb8cece9f2262de5e4b0639a06d85",
+      "wordType": "turkum nomi",
+      "uzbek": "chumchuqsimonlar turkumi (Passeriformes)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩ’Ш±Щђ ЩѓЩЋШ§Щ„ШєЩЏШ±ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„ШґЩ‘ЩЏШ­Щ’Ш±ЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„Щ‡ЩЏШЇЩ’Щ‡ЩЏШЇЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„Щ‚ЩЏШЁЩ‘ЩЋШ±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ§Щ„ШІЩ‘ЩЏШ±Щ’ШІЩЏЩ€Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ.",
+          "uzbekMeaning": "qargвЂa, qorayaloq, toвЂrgвЂay, chugвЂurchiq va juda koвЂp sayroqi hamda shoxga qoвЂnuvchi qushlarni birlashtiradigan chumchuqsimonlar turkumi вЂ” Passeriformes",
+          "uzbekExample": "QargвЂa va toвЂrgвЂay Passeriformes turkumiga kiradi.",
+          "register": "ornitologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_rank_and_membership_correction",
+        "issues": [
+          "Ш¬ЩЋЩ€ЩЋШ§Ш«ЩђЩ…ЩЏ oila emas, Passeriformes turkumidir; manbadagi hudhud bu turkumga kirmagani uchun misollar roвЂyxatidan chiqarildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 383,
+      "id": 79507,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШҐЩђШіЩ’Щ‚ЩЏЩ…Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ ШЈЩЋШіЩ’Щ…Ш§ЩѓЩЌШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„ЩѓШ§Щ…ЩђЩ„Ш§ШЄЩђ Ш§Щ„Ш№ЩђШёШ§Щ…Щђ.",
+      "sourceHash": "656ba9092d0b86d2470aba61929ad25206974c439d697c3ce007ec603d6d6e2c",
+      "wordType": "oila nomi",
+      "uzbek": "skumbriyasimonlar oilasi (Scombridae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ ШЈЩЋШіЩ’Щ…Ш§ЩѓЩЌШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Щ…ЩђЩ†ЩЋ Ш§Щ„ЩѓШ§Щ…ЩђЩ„Ш§ШЄЩђ Ш§Щ„Ш№ЩђШёШ§Щ…Щђ.",
+          "uzbekMeaning": "skumbriya, tunets va bonito kabi suyakli baliqlarni birlashtiradigan Scombridae oilasi",
+          "uzbekExample": "Skumbriya va tunets Scombridae oilasiga mansub.",
+          "register": "ixtiologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "ШҐЩђШіЩ’Щ‚ЩЏЩ…Щ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ ITIS boвЂyicha Scombridae oilasi bilan moslashtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 384,
+      "id": 79508,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШµЩЋШЇЩЋЩЃЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "ШµШЇЩЃвЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩЌ Ш±ЩЋШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ©ЩЌ Щ…ЩђЩ†Щ’ Ш°ЩЋЩ€ЩЋШ§ШЄЩђ Ш§Щ„ШµЩ‘ЩЋШЇЩЋЩЃЩЋШЄЩЋЩЉЩ’Щ†Щђ Щ€ЩЋЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЋШ­ЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ШЄЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђШЊ Щ„Ш§ЩЋ Ш№ЩђШёЩЋШ§Щ…ЩЋ Щ„ЩЋЩ‡ЩЋШ§ШЊ Ш¬ЩђЩ„Щ’ШЇЩЏЩ‡ЩЋШ§ ШіЩЋЩ…ЩђЩЉЩѓЩЊ.",
+      "sourceHash": "dda3ea095a393a6e276cac5d94decb99974f98e2bb723ef7d8346bd9bb575357",
+      "wordType": "sinf nomi",
+      "uzbek": "ikki pallali mollyuskalar (Bivalvia)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩЌ Ш±ЩЋШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ©ЩЌ Щ…ЩђЩ†Щ’ Ш°ЩЋЩ€ЩЋШ§ШЄЩђ Ш§Щ„ШµЩ‘ЩЋШЇЩЋЩЃЩЋШЄЩЋЩЉЩ’Щ†Щђ Щ€ЩЋЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЋШ­ЩЋШ§Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ Щ€ЩЋШ±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ ШЄЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђШЊ Щ„Ш§ЩЋ Ш№ЩђШёЩЋШ§Щ…ЩЋ Щ„ЩЋЩ‡ЩЋШ§ШЊ Ш¬ЩђЩ„Щ’ШЇЩЏЩ‡ЩЋШ§ ШіЩЋЩ…ЩђЩЉЩѓЩЊ.",
+          "uzbekMeaning": "tanasi ikkita palladan iborat chigвЂanoq ichida joylashadigan suv mollyuskalari вЂ” Bivalvia sinfi; midiya, ustritsa va boshqa ikki pallali mollyuskalar shu guruhga kiradi",
+          "uzbekExample": "Ustritsa Bivalvia sinfiga mansub ikki pallali mollyuskadir.",
+          "register": "zoologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_correction",
+        "issues": [
+          "Manba ikki pallali mollyuskalarni ustritsalar oilasi va qisqichbaqasimonlar turkumi bilan chalkashtirgan; Bivalvia sinfi sifatida tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 385,
+      "id": 79509,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЄЩЋЩЃЩ’Щ„ЩђЩЉЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш·ЩЏЩЉЩЏЩ€Ш±ЩЌШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш·ЩђЩ€ЩЋШ§Щ„Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ‚ЩђШЊ Щ…ЩђЩ†Щ’ ШЈЩЋШґЩ’Щ‡ЩЋШ±Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡ЩЋШ§ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩЏ Щ€ЩЋШ§Щ„Щ’ШєЩЏШ±Щ‘ЩЏ.",
+      "sourceHash": "3a0f35a9a45c4a7ba7f8a79d6b835436ed129e83af24658db7ff095a0c2233ef",
+      "wordType": "oila nomi",
+      "uzbek": "suv tovuqlari va raillar oilasi (Rallidae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©ЩЏ Ш·ЩЏЩЉЩЏЩ€Ш±ЩЌШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш·ЩђЩ€ЩЋШ§Щ„Щђ Ш§Щ„ШіЩ‘ЩЋШ§Щ‚ЩђШЊ Щ…ЩђЩ†Щ’ ШЈЩЋШґЩ’Щ‡ЩЋШ±Щђ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩђЩ‡ЩЋШ§ Ш§Щ„ШЄЩ‘ЩђЩЃЩ’Щ„ЩђЩ‚ЩЏ Щ€ЩЋШ§Щ„Щ’ШєЩЏШ±Щ‘ЩЏ.",
+          "uzbekMeaning": "suv-botqoq hududlarda yashaydigan rail, suv tovugвЂi va qashqaldoq kabi qushlarni birlashtiradigan Rallidae oilasi",
+          "uzbekExample": "Suv tovugвЂi va qashqaldoq Rallidae oilasiga kiradi.",
+          "register": "ornitologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Ш§Щ„ШЄЩ‘ЩЋЩЃЩ’Щ„ЩђЩЉЩ‚ЩђЩЉЩ‘ЩЋШ§ШЄ Rallidae oilasi bilan mos; suv tovugвЂi va qashqaldoq misollari bitta oila doirasida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 386,
+      "id": 79510,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш­ЩђШ±Щ’ШЁЩЋШ§Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "ЩЃЩЋШµЩЉЩ„ЩЋШ©ЩЏ Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Ш§ШЄЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„ШІЩ‘ЩЋЩ€Ш§Ш­ЩђЩЃЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш№ЩЋШёШ§Ш¦ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЈЩЋШґЩ’Щ‡ЩЋШ±ЩЏ ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩђЩ‡Ш§ Ш§Щ„Ш­ЩђШ±Щ’ШЁШ§ШЎЩЏ.",
+      "sourceHash": "3d184237c9283e2ae6fed36a48c014ccfccb5af6babfa14cfa65626f94dcf454",
+      "wordType": "oila nomi",
+      "uzbek": "xameleonlar oilasi (Chamaeleonidae)",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ЩЃЩЋШµЩЉЩ„ЩЋШ©ЩЏ Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Ш§ШЄЩЌ Щ…ЩђЩ†ЩЋ Ш§Щ„ШІЩ‘ЩЋЩ€Ш§Ш­ЩђЩЃЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш№ЩЋШёШ§Ш¦ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ ШЈЩЋШґЩ’Щ‡ЩЋШ±ЩЏ ШЈЩЋЩ†Щ’Щ€Ш§Ш№ЩђЩ‡Ш§ Ш§Щ„Ш­ЩђШ±Щ’ШЁШ§ШЎЩЏ.",
+          "uzbekMeaning": "Squamata tangachalilar turkumiga mansub, koвЂzlarini mustaqil harakatlantira oladigan va rangini oвЂzgartirishi bilan mashhur kaltakesaklar вЂ” xameleonlar oilasi (Chamaeleonidae)",
+          "uzbekExample": "Xameleon Chamaeleonidae oilasiga mansub.",
+          "register": "zoologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_modern_taxonomic_check",
+        "issues": [
+          "Eski kaltakesaklar turkumi ifodasi zamonaviy Squamata va Chamaeleonidae tasnifi bilan yangilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 387,
+      "id": 79511,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЇЩђЩЉЩ†ЩЋШ§ШµЩЏЩ€Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†ЩЋ Ш§Щ„ШІЩ‘ЩЋЩ€Ш§Ш­ЩђЩЃЩђ Ш§Щ„Щ’Щ…ЩЏЩ†Щ’Щ‚ЩЋШ±ЩђШ¶ЩЋШ©Щђ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш№ЩЏШµЩ€Ш±Щђ Ш§Щ„Щ‚ЩЋШЇЩЉЩ…ЩЋШ©ЩђШЊ Ш¶ЩЋШ®Щ’Щ…ЩЏ Ш§Щ„Ш¬ЩђШіЩ’Щ…ЩђШЊ ШµЩЋШєЩЉШ±ЩЏ Ш§Щ„ШЇЩ‘ЩђЩ…Ш§ШєЩђШЊ ЩЉЩЏЩ‚Ш§Щ„ЩЏ ШЁЩђШЈЩЋЩ†Щ‘ЩЋЩ‡ЩЏ ШЈЩЋШ¶Щ’Ш®ЩЋЩ…ЩЏ Щ…ЩђЩ†ЩЋ Ш§Щ„ЩЃЩЉЩ„Щђ.",
+      "sourceHash": "57199c6782918711a669acfd445999f67b5569d5ba7ac32eb36b3aaf398ff0cc",
+      "wordType": "ot",
+      "uzbek": "dinozavr",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„ШІЩ‘ЩЋЩ€Ш§Ш­ЩђЩЃЩђ Ш§Щ„Щ’Щ…ЩЏЩ†Щ’Щ‚ЩЋШ±ЩђШ¶ЩЋШ©Щђ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш№ЩЏШµЩ€Ш±Щђ Ш§Щ„Щ‚ЩЋШЇЩЉЩ…ЩЋШ©ЩђШЊ Ш¶ЩЋШ®Щ’Щ…ЩЏ Ш§Щ„Ш¬ЩђШіЩ’Щ…ЩђШЊ ШµЩЋШєЩЉШ±ЩЏ Ш§Щ„ШЇЩ‘ЩђЩ…Ш§ШєЩђШЊ ЩЉЩЏЩ‚Ш§Щ„ЩЏ ШЁЩђШЈЩЋЩ†Щ‘ЩЋЩ‡ЩЏ ШЈЩЋШ¶Щ’Ш®ЩЋЩ…ЩЏ Щ…ЩђЩ†ЩЋ Ш§Щ„ЩЃЩЉЩ„Щђ.",
+          "uzbekMeaning": "Mezozoy erasida quruqlik ekotizimlarida keng tarqalgan, tana hajmi juda kichik turlardan ulkan turlargacha boвЂlgan sudralib yuruvchilar guruhi вЂ” dinozavr; qushlar teropod dinozavrlar naslining hozir yashayotgan vakillaridir",
+          "uzbekExample": "Dinozavrlarning ayrim turlari juda katta, boshqalari esa kichik boвЂlgan.",
+          "register": "paleontologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_scientific_generalization_correction",
+        "issues": [
+          "Barcha dinozavrlar fildan katta va kichik miyali boвЂlgan degan notoвЂgвЂri umumlashtirish olib tashlandi; tana hajmi xilma-xil ekani aniqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 388,
+      "id": 79512,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЇЩЏЩ„Щ’ШЇЩЏЩ€Щ„ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋЩ€Ш§Ш¶ЩђЩ…ЩђШЊ Щ„ЩЋШЁЩ€Щ†ЩЊШЊ ЩЉЩЋШ№ЩЉШґЩЏ ЩЃЩЉ Ш§Щ„ШЁЩђЩ‚Ш§Ш№Щђ Ш§Щ„Ш­Ш§Ш±Щ‘ЩЋШ©ЩђШЊ Щ…ЩЏШєЩЋШ·Щ‘Щ‰Щ‹ ШЁЩђШґЩЋЩ€Щ’ЩѓЩЌ Ш·ЩЋЩ€ЩЉЩ„ЩЌШЊ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„Щ‚ЩЏЩ†Щ’ЩЃЩЏШ°ЩЋ.",
+      "sourceHash": "88d17eb68e379a27e7f2a94c66e1a120840eac7919fcba906d8af71f59c816d9",
+      "wordType": "ot",
+      "uzbek": "jayra, uzun tikonli kemiruvchi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†ЩЋ Ш§Щ„Щ‚ЩЋЩ€Ш§Ш¶ЩђЩ…ЩђШЊ Щ„ЩЋШЁЩ€Щ†ЩЊШЊ ЩЉЩЋШ№ЩЉШґЩЏ ЩЃЩЉ Ш§Щ„ШЁЩђЩ‚Ш§Ш№Щђ Ш§Щ„Ш­Ш§Ш±Щ‘ЩЋШ©ЩђШЊ Щ…ЩЏШєЩЋШ·Щ‘Щ‰Щ‹ ШЁЩђШґЩЋЩ€Щ’ЩѓЩЌ Ш·ЩЋЩ€ЩЉЩ„ЩЌШЊ ЩЉЩЏШґЩ’ШЁЩђЩ‡ЩЏ Ш§Щ„Щ‚ЩЏЩ†Щ’ЩЃЩЏШ°ЩЋ.",
+          "uzbekMeaning": "tanasi uzun va qattiq tikonlar bilan qoplangan kemiruvchi sutemizuvchi вЂ” jayra yoki porcupine",
+          "uzbekExample": "Jayra xavf sezganda tanasidagi tikonlarini tiklaydi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_species_group_identification",
+        "issues": [
+          "Uzun tikonli issiq oвЂlka kemiruvchisi Hystricidae guruhidagi jayra bilan mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 389,
+      "id": 79513,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЈЩЋШЁЩЋШ§ШІЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ‚ЩЋЩ†Щ’ШєЩЋШ±ЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш«Щ‘ЩЋШЇЩ’ЩЉЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„ЩѓЩђЩЉШіЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ† Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ ШЈЩЏШіЩ’ШЄЩЏШ±ЩЋШ§Щ„Щ’ЩЉЩЋШ§ШЊ Щ„ШЈЩђЩ†Щ’Ш«ЩЋШ§Щ‡ЩЏ ЩѓЩђЩЉШіЩЊ ЩЃЩђЩЉ ШіЩЋШ·Щ’Ш­Щђ ШЁЩЋШ·Щ’Щ†ЩђЩ‡ЩЋШ§ ШЄЩЋШ­Щ’Щ…ЩђЩ„ЩЏ ЩЃЩђЩЉЩ‡Щђ ШµЩђШєЩЋШ§Ш±ЩЋЩ‡Ш§ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЉЩ’Ш¶Щ‹Ш§ Ш§Щ„Щ‚ЩЋЩ†Щ’Щ‚ЩЋШ±ЩЏ.",
+      "sourceHash": "20073d103122b58aab70beda510880e8b4a9bbf3d954cae12d9591dfc44000a2",
+      "wordType": "ot",
+      "uzbek": "kanguru",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ‚ЩЋЩ†Щ’ШєЩЋШ±ЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш«Щ‘ЩЋШЇЩ’ЩЉЩђЩЉЩ‘ЩЋШ§ШЄЩђ Ш§Щ„ЩѓЩђЩЉШіЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ€ЩЋЩ‡ЩЏЩ€ЩЋ Щ…ЩђЩ† Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ ШЈЩЏШіЩ’ШЄЩЏШ±ЩЋШ§Щ„Щ’ЩЉЩЋШ§ШЊ Щ„ШЈЩђЩ†Щ’Ш«ЩЋШ§Щ‡ЩЏ ЩѓЩђЩЉШіЩЊ ЩЃЩђЩЉ ШіЩЋШ·Щ’Ш­Щђ ШЁЩЋШ·Щ’Щ†ЩђЩ‡ЩЋШ§ ШЄЩЋШ­Щ’Щ…ЩђЩ„ЩЏ ЩЃЩђЩЉЩ‡Щђ ШµЩђШєЩЋШ§Ш±ЩЋЩ‡Ш§ Щ€ЩЋЩЉЩЏШіЩЋЩ…Щ‘ЩЋЩ‰ ШЈЩЉЩ’Ш¶Щ‹Ш§ Ш§Щ„Щ‚ЩЋЩ†Щ’Щ‚ЩЋШ±ЩЏ.",
+          "uzbekMeaning": "Avstraliyada yashaydigan xaltali sutemizuvchi вЂ” kanguru; urgвЂochisi bolasini qornidagi xaltasida olib yuradi, arabchada Ш§Щ„Щ‚ЩЋЩ†Щ’Щ‚ЩЋШ±ЩЏ deb ham ataladi",
+          "uzbekExample": "UrgвЂochi kanguru bolasini qornidagi xaltasida olib yurdi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_from_explicit_source_synonym",
+        "issues": [
+          "Ш§Щ„Щ‚ЩЋЩ†Щ’Щ‚ЩЋШ±ЩЏ sinonimi va Avstraliya xaltali sutemizuvchisi tavsifi kanguruni aniq koвЂrsatadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 390,
+      "id": 79514,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш­ЩЋШЁЩ‘ЩЋШ§Ш±ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш±Щ‘ЩЋШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш±ЩЋШЈЩ’ШіЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„Щ‚ШЇЩЋЩ…ЩђШЊ ШЁЩЋЩЉЩ’Ш¶ЩЋЩ€ЩђЩЉЩ‘ЩЏ Ш§Щ„ШґЩ‘ЩЋЩѓЩ’Щ„ЩђШЊ Щ…ЩЏШєЩЋШ·Щ‘Щ‰Щ‹ ШЁЩђШєЩђЩ„Ш§ЩЃЩЌ ШµЩЋШЇЩЋЩЃЩђЩЉЩ‘ЩЌШЊ ЩЉЩЏЩЃЩ’Ш±ЩђШІЩЏ ШіШ§Ш¦ЩђЩ„Ш§Щ‹ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЋ ЩЉЩЏШіЩ’ШЄЩЋШ№Щ’Щ…ЩЋЩ„ЩЏ Щ„Щ„ШµЩ‘ЩђШЁШ§ШєЩЋШ©Щђ.",
+      "sourceHash": "39add6dcf1c79f5f041c40eb79e126ef4ab3621e5e89f8979a02fe040fbbf123",
+      "wordType": "ot",
+      "uzbek": "karakatitsa, siyoh chiqaradigan boshoyoqli mollyuska",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш±Щ‘ЩЋШ®Щ’Щ€ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш±ЩЋШЈЩ’ШіЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„Щ‚ШЇЩЋЩ…ЩђШЊ ШЁЩЋЩЉЩ’Ш¶ЩЋЩ€ЩђЩЉЩ‘ЩЏ Ш§Щ„ШґЩ‘ЩЋЩѓЩ’Щ„ЩђШЊ Щ…ЩЏШєЩЋШ·Щ‘Щ‰Щ‹ ШЁЩђШєЩђЩ„Ш§ЩЃЩЌ ШµЩЋШЇЩЋЩЃЩђЩЉЩ‘ЩЌШЊ ЩЉЩЏЩЃЩ’Ш±ЩђШІЩЏ ШіШ§Ш¦ЩђЩ„Ш§Щ‹ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЋ ЩЉЩЏШіЩ’ШЄЩЋШ№Щ’Щ…ЩЋЩ„ЩЏ Щ„Щ„ШµЩ‘ЩђШЁШ§ШєЩЋШ©Щђ.",
+          "uzbekMeaning": "tanasi oval, ichida ohakli karakatitsa suyagi boвЂladigan va xavf paytida qora siyoh chiqaradigan boshoyoqli dengiz mollyuskasi вЂ” karakatitsa yoki cuttlefish",
+          "uzbekExample": "Karakatitsa xavf sezganda suvga qora siyoh chiqardi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_anatomical_correction",
+        "issues": [
+          "Karakatitsa tashqi chigвЂanoq bilan qoplanmagan; tanasi ichida karakatitsa suyagi boвЂlishi toвЂgвЂri ifodalandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 391,
+      "id": 79515,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШіЩђЩ†Щ’Ш¬ЩЋШ§ШЁЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "Ш­ЩЋЩЉЩЋЩ€Ш§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩђЩ†Щ’Ш¬ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ‚ЩЋЩ€ЩЋШ§Ш±ЩђШ¶ЩђШЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„Ш°Щ‘ЩЋЩ†ЩЋШЁЩђШЊ ЩѓЩЋШ«ЩђЩЉЩЃЩЏ Ш§Щ„ШґЩ‘ЩЋШ№Щ’Ш±ЩђШЊ Щ„ЩЋЩ‡ЩЏ Щ‚ЩЏШЇЩ’Ш±ЩЋШ©ЩЊ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„ШЄЩ‘ЩЋШіЩЋЩ„Щ‘ЩЏЩ‚Щђ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш§Щ„ШЈШґЩ’Ш¬ЩЋШ§Ш±ЩђШЊ ШЄЩЏШіЩЋШ§Ш№ЩђШЇЩЏЩ‡ЩЏ Ш№ЩЋЩ„ЩЋЩ‰ Ш°ЩЋЩ„ЩђЩѓЩЋ Ш·ЩЋЩЉЩ‘ЩЋШ©ЩЊ Ш¬ЩђЩ„Щ’ШЇЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩЋШ·Щ’Щ€ЩђЩЉЩ‘ЩЋШ©ЩЊ ШЄЩЋШ±Щ’ШЁЩђШ·ЩЏ Ш§Щ„Ш°Щ‘ЩђШ±ЩЋШ§Ш№ЩЋ ШЁЩђШ¬ЩЋШ§Щ†ЩђШЁЩђ Ш§Щ„Ш¬ЩђШіЩ’Щ…ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЈШІЩ’Ш±ЩЋЩ‚ЩЏ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЊШЊ ЩЉЩЏШЄЩ‘ЩЋШ®ЩЋШ°ЩЏ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ„Щ’ШЇЩђЩ‡Щђ Ш§Щ„ЩЃЩђШ±ЩЋШ§ШЎЩЏШЊ ЩЉЩЋШЄШєШ°Щ‘ЩЋЩ‰ ШЁЩђШ§Щ„Ш­ЩЏШЁЩЏЩ€ШЁЩђ Щ€Ш§Щ„Ш«Щ‘ЩђЩ…ЩЋШ§Ш±Щђ.",
+      "sourceHash": "6f46e70867867d24a967020e55c0fc3cdc65d71fe75c518cd61998746c72e0c3",
+      "wordType": "ot",
+      "uzbek": "olmaxon; ayrim turlari uchqur olmaxon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш­ЩЋЩЉЩЋЩ€Ш§Щ†ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШіЩ‘ЩђЩ†Щ’Ш¬ЩЋШ§ШЁЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Щ‚ЩЋЩ€ЩЋШ§Ш±ЩђШ¶ЩђШЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЏ Ш§Щ„Ш°Щ‘ЩЋЩ†ЩЋШЁЩђШЊ ЩѓЩЋШ«ЩђЩЉЩЃЩЏ Ш§Щ„ШґЩ‘ЩЋШ№Щ’Ш±ЩђШЊ Щ„ЩЋЩ‡ЩЏ Щ‚ЩЏШЇЩ’Ш±ЩЋШ©ЩЊ Ш№ЩЋЩ„ЩЋЩ‰ Ш§Щ„ШЄЩ‘ЩЋШіЩЋЩ„Щ‘ЩЏЩ‚Щђ ШЁЩЋЩЉЩ’Щ†ЩЋ Ш§Щ„ШЈШґЩ’Ш¬ЩЋШ§Ш±ЩђШЊ ШЄЩЏШіЩЋШ§Ш№ЩђШЇЩЏЩ‡ЩЏ Ш№ЩЋЩ„ЩЋЩ‰ Ш°ЩЋЩ„ЩђЩѓЩЋ Ш·ЩЋЩЉЩ‘ЩЋШ©ЩЊ Ш¬ЩђЩ„Щ’ШЇЩђЩЉЩ‘ЩЋШ©ЩЊ Щ…ЩЋШ·Щ’Щ€ЩђЩЉЩ‘ЩЋШ©ЩЊ ШЄЩЋШ±Щ’ШЁЩђШ·ЩЏ Ш§Щ„Ш°Щ‘ЩђШ±ЩЋШ§Ш№ЩЋ ШЁЩђШ¬ЩЋШ§Щ†ЩђШЁЩђ Ш§Щ„Ш¬ЩђШіЩ’Щ…ЩђШЊ Щ„ЩЋЩ€Щ’Щ†ЩЏЩ‡ЩЏ ШЈШІЩ’Ш±ЩЋЩ‚ЩЏ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЊШЊ ЩЉЩЏШЄЩ‘ЩЋШ®ЩЋШ°ЩЏ Щ…ЩђЩ†Щ’ Ш¬ЩђЩ„Щ’ШЇЩђЩ‡Щђ Ш§Щ„ЩЃЩђШ±ЩЋШ§ШЎЩЏШЊ ЩЉЩЋШЄШєШ°Щ‘ЩЋЩ‰ ШЁЩђШ§Щ„Ш­ЩЏШЁЩЏЩ€ШЁЩђ Щ€Ш§Щ„Ш«Щ‘ЩђЩ…ЩЋШ§Ш±Щђ.",
+          "uzbekMeaning": "Sciuridae oilasiga mansub, dumi uzun va sertuk, daraxtga yaxshi tirmashadigan kemiruvchi вЂ” olmaxon; uchqur olmaxonlarda oldingi va orqa oyoqlar orasidagi teri pardasi havoda sirgвЂalishga yordam beradi",
+          "uzbekExample": "Olmaxon daraxt shoxlari orasida tez harakatlandi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_conflation_cleanup",
+        "issues": [
+          "ШіЩђЩ†Щ’Ш¬ЩЋШ§ШЁЩЊ umumiy olmaxon nomi, oyoqlar orasidagi parda esa faqat uchqur olmaxonlarga xos; ikkalasi izohda farqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 392,
+      "id": 79516,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ",
+      "root": "Ш¬Ш±Ш­вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1- Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩЏ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩ’Ш±Щђ Ш§Щ„Ш¬Щ€ЩЋШ§Ш±ЩђШ­Щђ : ШЈЩЋЩЉЩ’ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩ’Ш±Щђ Ш§Щ„ЩѓЩЋЩ€ЩЋШ§ШіЩђШ±Щђ Ш§Щ„Щ’Щ…ЩЏЩЃЩ’ШЄЩЋШ±ЩђШіЩЋШ©ЩђШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Ш¬ЩЋЩ…ЩђЩЉШ№ЩЏЩ‡ЩЋШ§ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ„Щ‘ЩЋЩ€ЩЋШ§Ш­ЩђЩ…ЩђШЊ Щ…ЩђЩ†Щ’Щ‡ЩЋШ§ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ Щ€ЩЋШ¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ. ШЈ- Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ : Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ ШЄЩЋШґЩ’Щ…ЩЋЩ„ЩЏ Ш§Щ„ШЁЩЏЩ€Щ…ЩЋ. ШЁ- Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ : Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†ЩЋ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ ШЄЩЋШґЩ’Щ…ЩЋЩ„ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩЋ Щ€ЩЋШ§Щ„Щ†Щ‘ЩЋШіЩ’Ш±ЩЋ.|2- Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„ШҐЩђЩ†Щ’ШіЩЋШ§Щ†Щђ : ШЈЩЋШ№Щ’Ш¶ЩЋШ§Ш¤ЩЏЩ‡ЩЏ.|3- ШЁЩђЩѓЩЏЩ„Щ‘Щђ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩђЩЉ :ШЁЩђЩѓЩЏЩ„Щ‘Щђ Щ‚ЩЏЩ€ЩЋШ§ЩЉЩЋ.|4- ШЄЩЋШ№ЩЋЩ€Щ‘ЩЋШ°Щ’ ШЁЩђШ§Щ„Щ„Щ‡Щђ Щ…ЩђЩ†Щ’ Ш·ЩЋЩ€ЩЋШ§Ш±ЩђЩ‚Щђ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ Щ€ЩЋШ¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ : Щ…ЩђЩ†Щ’ Щ…ЩЋШµЩЋШ§Ш¦ЩђШЁЩђЩ‡Щђ.",
+      "sourceHash": "72915472933b62a27a99f1492da61b44da51d6dbf1867f7c6e076ba20bed67ee",
+      "wordType": "koвЂplikdagi ot",
+      "uzbek": "yirtqich qushlar; tana aвЂ™zolari; butun kuch-quvvat; kunduzgi balo-ofatlar",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩЏ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩ’Ш±Щђ Ш§Щ„Ш¬Щ€ЩЋШ§Ш±ЩђШ­Щђ",
+          "arabicGloss": "ШЈЩЋЩЉЩ’ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЋЩЉЩ’Ш±Щђ Ш§Щ„ЩѓЩЋЩ€ЩЋШ§ШіЩђШ±Щђ Ш§Щ„Щ’Щ…ЩЏЩЃЩ’ШЄЩЋШ±ЩђШіЩЋШ©ЩђШЊ Щ€ЩЋЩ‡ЩђЩЉЩЋ Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Ш¬ЩЋЩ…ЩђЩЉШ№ЩЏЩ‡ЩЋШ§ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ„Щ‘ЩЋЩ€ЩЋШ§Ш­ЩђЩ…ЩђШЊ Щ…ЩђЩ†Щ’Щ‡ЩЋШ§ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ Щ€ЩЋШ¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ. ШЈ- Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ : Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†Щ’ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ ШЄЩЋШґЩ’Щ…ЩЋЩ„ЩЏ Ш§Щ„ШЁЩЏЩ€Щ…ЩЋ. ШЁ- Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ : Ш·ЩЋЩЉЩ’Ш±ЩЊ Щ…ЩђЩ†ЩЋ Ш±ЩЏШЄЩ’ШЁЩЋШ©Щђ Ш§Щ„Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ ШЄЩЋШґЩ’Щ…ЩЋЩ„ЩЏ Ш§Щ„ШµЩ‘ЩЋЩ‚Щ’Ш±ЩЋ Щ€ЩЋШ§Щ„Щ†Щ‘ЩЋШіЩ’Ш±ЩЋ.",
+          "uzbekMeaning": "oвЂljani tutib goвЂsht bilan oziqlanadigan qushlar вЂ” yirtqich qushlar; kunduzgi yirtqichlarga lochin va burgutlar, tungilariga boyoвЂgвЂlilar misol boвЂladi, ammo ular zamonaviy tasnifda bitta turkum emas",
+          "uzbekExample": "Lochin yirtqich qushlardan biridir.",
+          "register": "zoologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„ШҐЩђЩ†Щ’ШіЩЋШ§Щ†Щђ",
+          "arabicGloss": "ШЈЩЋШ№Щ’Ш¶ЩЋШ§Ш¤ЩЏЩ‡ЩЏ.",
+          "uzbekMeaning": "insonning tana aвЂ™zolari, xususan qoвЂl-oyoqlari",
+          "uzbekExample": "U barcha aвЂ™zolarini ehtiyot qildi.",
+          "register": "umumiy va klassik"
+        },
+        {
+          "index": 3,
+          "arabicExample": "ШЁЩђЩѓЩЏЩ„Щ‘Щђ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩђЩЉ",
+          "arabicGloss": "ШЁЩђЩѓЩЏЩ„Щ‘Щђ Щ‚ЩЏЩ€ЩЋШ§ЩЉЩЋ.",
+          "uzbekMeaning": "ШЁЩђЩѓЩЏЩ„Щ‘Щђ Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩђЩЉ birikmasida: butun borligвЂim, barcha kuch-quvvatim bilan",
+          "uzbekExample": "Men bu ishni butun kuch-quvvatim bilan qoвЂllab-quvvatlayman.",
+          "register": "koвЂchma"
+        },
+        {
+          "index": 4,
+          "arabicExample": "ШЄЩЋШ№ЩЋЩ€Щ‘ЩЋШ°Щ’ ШЁЩђШ§Щ„Щ„Щ‡Щђ Щ…ЩђЩ†Щ’ Ш·ЩЋЩ€ЩЋШ§Ш±ЩђЩ‚Щђ Ш§Щ„Щ„Щ‘ЩЋЩЉЩ’Щ„Щђ Щ€ЩЋШ¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­Щђ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ",
+          "arabicGloss": "Щ…ЩђЩ†Щ’ Щ…ЩЋШµЩЋШ§Ш¦ЩђШЁЩђЩ‡Щђ.",
+          "uzbekMeaning": "Ш¬ЩЋЩ€ЩЋШ§Ш±ЩђШ­ЩЏ Ш§Щ„Щ†Щ‘ЩЋЩ‡ЩЋШ§Ш±Щђ birikmasida: kunduz kuni yuz beradigan balo, ofat va kulfatlar",
+          "uzbekExample": "U tungi xavflar va kunduzgi ofatlardan Allohdan panoh soвЂradi.",
+          "register": "klassik va diniy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_four_sense_review",
+        "issues": [
+          "Yirtqich qushlar ekologik guruh sifatida berildi: boyoвЂgвЂlilar, lochinlar va burgutlar zamonaviy tasnifda bitta turkum emas",
+          "Tana aвЂ™zolari, butun kuch-quvvat va kunduzgi kulfat maвЂ™nolari bir-biriga qoвЂshilmadi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 393,
+      "id": 79517,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШґЩЋШ§ШЁЩђЩ„ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1- ШіЩЋЩ…ЩЋЩѓЩЏ Ш§Щ„ШґЩ‘ЩЋШ§ШЁЩђЩ„Щђ : Щ†ЩЋЩ€Щ’Ш№ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩђ Щ…ЩђЩ†Щ’ | ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊЩѓЩЋШЁЩђЩЉШ±ЩЏ Ш§Щ„Ш­ЩЋШ¬Щ’Щ…ЩђШЊ Щ„ЩЋШ­Щ’Щ…ЩЏЩ‡ЩЏ Щ„ЩЋШ°ЩђЩЉШ°ЩЊ.|2- ЩЃЩЋШЄЩ‰Щ‹ ШґЩЋШ§ШЁЩђЩ„ЩЊ : ЩЃЩЋШЄЩ‰Щ‹ ШєЩЋШ¶Щ‘ЩЊ Щ…ЩЏЩ…Щ’ШЄЩЋЩ„ЩђШ¦ЩЊ ЩЃЩЏШЄЩЏЩ€Щ‘ЩЋШ©Щ‹ Щ€ЩЋШµЩђШ­Щ‘ЩЋШ©Щ‹.",
+      "sourceHash": "e99a60a45db1de80a3586ab5ae3c1fd358531b0a7bb9599b9de4fa5fbb8ed052",
+      "wordType": "ot va sifat",
+      "uzbek": "shad baliq; navqiron va sogвЂlom yigit",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ШіЩЋЩ…ЩЋЩѓЩЏ Ш§Щ„ШґЩ‘ЩЋШ§ШЁЩђЩ„Щђ",
+          "arabicGloss": "Щ†ЩЋЩ€Щ’Ш№ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩђ Щ…ЩђЩ†Щ’ | ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊЩѓЩЋШЁЩђЩЉШ±ЩЏ Ш§Щ„Ш­ЩЋШ¬Щ’Щ…ЩђШЊ Щ„ЩЋШ­Щ’Щ…ЩЏЩ‡ЩЏ Щ„ЩЋШ°ЩђЩЉШ°ЩЊ.",
+          "uzbekMeaning": "Clupeidae seldlar oilasiga mansub yirik, goвЂshti mazali koвЂchmanchi baliq вЂ” shad, xususan allis shad (Alosa alosa)",
+          "uzbekExample": "Shad baliq koвЂpayish uchun dengizdan daryoga koвЂtariladi.",
+          "register": "ixtiologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "ЩЃЩЋШЄЩ‰Щ‹ ШґЩЋШ§ШЁЩђЩ„ЩЊ",
+          "arabicGloss": "ЩЃЩЋШЄЩ‰Щ‹ ШєЩЋШ¶Щ‘ЩЊ Щ…ЩЏЩ…Щ’ШЄЩЋЩ„ЩђШ¦ЩЊ ЩЃЩЏШЄЩЏЩ€Щ‘ЩЋШ©Щ‹ Щ€ЩЋШµЩђШ­Щ‘ЩЋШ©Щ‹.",
+          "uzbekMeaning": "navqiron, sogвЂlom va kuchga toвЂlgan yigit",
+          "uzbekExample": "U navqiron va sogвЂlom yigit edi.",
+          "register": "adabiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_fish_identification",
+        "issues": [
+          "Ш§Щ„ШµЩ‘ЩЋШ§ШЁЩЏЩ€ШєЩђЩЉЩ‘ЩЋШ§ШЄ bu oвЂrinda eski Clupeidae ifodasi; yirik koвЂchmanchi ШґЩЋШ§ШЁЩђЩ„ Alosa alosa shad baligвЂi bilan moslashtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 394,
+      "id": 79518,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЊ",
+      "root": "ШІЩ€Ш¬вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1- Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ :Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ.|2- Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШµЩЋШ§ШЁЩђШ№Щђ : Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„Щ„Щ‘ЩЋШЁЩЏЩ€Щ†ЩЋШ©Щђ.",
+      "sourceHash": "bb39da597f0b7934441735fd2472ad660c5472d911f9b182c2417deb96e76f11",
+      "wordType": "koвЂplikdagi ilmiy nom",
+      "uzbek": "amfipodalar; juft tuyoqlilar",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ",
+          "arabicGloss": "Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†Щ’ Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„Щ‚ЩђШґЩ’Ш±ЩђЩЉЩ‘ЩЋШ§ШЄЩђ.",
+          "uzbekMeaning": "Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ: qisqichbaqasimonlarning Amphipoda turkumi вЂ” amfipodalar",
+          "uzbekExample": "Amfipodalar koвЂpincha dengiz va chuchuk suvlarda yashaydi.",
+          "register": "zoologik tasnif"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШµЩЋШ§ШЁЩђШ№Щђ",
+          "arabicGloss": "Ш±ЩЏШЄЩ’ШЁЩЋШ©ЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Щ’Ш­ЩЋЩЉЩЋЩ€ЩЋШ§Щ†ЩЋШ§ШЄЩђ Ш§Щ„Щ„Щ‘ЩЋШЁЩЏЩ€Щ†ЩЋШ©Щђ.",
+          "uzbekMeaning": "Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШµЩЋШ§ШЁЩђШ№Щђ: oyogвЂidagi asosiy tayanch barmoqlar juft boвЂlgan sutemizuvchilar вЂ” juft tuyoqlilar (Artiodactyla)",
+          "uzbekExample": "Tuya, kiyik va qoramol juft tuyoqlilar guruhiga kiradi.",
+          "register": "zoologik tasnif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_two_taxonomic_mappings",
+        "issues": [
+          "Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШ±Щ’Ш¬ЩЏЩ„Щђ Amphipoda, Щ…ЩЏШІЩ’ШЇЩЋЩ€ЩђШ¬ЩЋШ§ШЄЩЏ Ш§Щ„ШЈЩЋШµЩЋШ§ШЁЩђШ№Щђ esa Artiodactyla ekani alohida tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 395,
+      "id": 79519,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1-  Ш°ЩЋЩѓЩЋШ±ЩЏ Ш§Щ„ШіЩ‘ЩЏЩ„ЩЋШ­Щ’ЩЃЩЋШ§Ш©Щђ.|2- ШґЩЋШ§ШЁЩ‘ЩЊ ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЊ : Ш№ЩЋШ±ЩђЩЉШ¶ЩЏ Ш§Щ„Щ’Щ…ЩЋЩЃЩ’Ш±ЩђЩ‚Щђ ЩѓЩЋШ«ЩђЩЉШ±ЩЏ Ш§Щ„ШґЩ‘ЩЋШ№ЩЋШ±Щђ.|3- ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЏ Ш§Щ„ШўШЁЩЋШ§Ш±Щђ : Щ…ЩЋЩ†Щ’ШЁЩЋШ№ЩЏ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђ ЩЃЩђЩЉЩ‡ЩЋШ§.|4- Щ…ЩЋШ§ ШЁЩђШ§Щ„ШЇЩ‘ЩЋШ§Ш±Щђ ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЊ : ШЈЩЋШ­ЩЋШЇЩЊ.",
+      "sourceHash": "232fe5d5978e5b0b39b666828ec859ec5754dbe4d14b1efc82ab34afdf5f8c86",
+      "wordType": "ot",
+      "uzbek": "erkak toshbaqa; qalin sochli yigit; quduq suv manbai; hech kim",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш°ЩЋЩѓЩЋШ±ЩЏ Ш§Щ„ШіЩ‘ЩЏЩ„ЩЋШ­Щ’ЩЃЩЋШ§Ш©Щђ.",
+          "uzbekMeaning": "erkak toshbaqa",
+          "uzbekExample": "Erkak toshbaqa suv boвЂyida turardi.",
+          "register": "zoologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "ШґЩЋШ§ШЁЩ‘ЩЊ ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЊ",
+          "arabicGloss": "Ш№ЩЋШ±ЩђЩЉШ¶ЩЏ Ш§Щ„Щ’Щ…ЩЋЩЃЩ’Ш±ЩђЩ‚Щђ ЩѓЩЋШ«ЩђЩЉШ±ЩЏ Ш§Щ„ШґЩ‘ЩЋШ№ЩЋШ±Щђ.",
+          "uzbekMeaning": "soch ajrimi keng va sochi qalin yigit",
+          "uzbekExample": "Qalin sochli yigit eshik oldida turardi.",
+          "register": "klassik tavsif"
+        },
+        {
+          "index": 3,
+          "arabicExample": "ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЏ Ш§Щ„ШўШЁЩЋШ§Ш±Щђ",
+          "arabicGloss": "Щ…ЩЋЩ†Щ’ШЁЩЋШ№ЩЏ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђ ЩЃЩђЩЉЩ‡ЩЋШ§.",
+          "uzbekMeaning": "ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЏ Ш§Щ„ШўШЁЩЋШ§Ш±Щђ birikmasida: quduqdagi suvning chiqish manbai, koвЂzi",
+          "uzbekExample": "Quduqning suv koвЂzi tozalanib, oqimi kuchaydi.",
+          "register": "klassik"
+        },
+        {
+          "index": 4,
+          "arabicExample": "Щ…ЩЋШ§ ШЁЩђШ§Щ„ШЇЩ‘ЩЋШ§Ш±Щђ ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЊ",
+          "arabicGloss": "ШЈЩЋШ­ЩЋШЇЩЊ.",
+          "uzbekMeaning": "inkor gapda: biror kishi, hech kim; Щ…ЩЋШ§ ШЁЩђШ§Щ„ШЇЩ‘ЩЋШ§Ш±Щђ ШєЩЋЩЉЩ’Щ„ЩЋЩ…ЩЊ вЂ” uyda hech kim yoвЂq",
+          "uzbekExample": "Uyda hech kim yoвЂq edi.",
+          "register": "klassik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_four_sense_review",
+        "issues": [
+          "Erkak toshbaqa, yigit tavsifi, quduq suv koвЂzi va inkor gapdagi hech kim maвЂ™nolari toвЂliq saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 396,
+      "id": 79520,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1-  Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±ЩђШ§Щ„Щ’Щ…ЩЏЩ‡ЩЋШ§Ш¬ЩђШ±ЩЋШ©ЩђШЊ ШёЩЋЩ‡Щ’Ш±ЩЏЩ‡ЩЏ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ Щ€ЩЋШЁЩЋШ·Щ’Щ†ЩЏЩ‡ЩЏ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏШЊ Щ…ЩЋЩѓЩ’ШіЩЏЩ€Щ‘ЩЊ ШЁЩђШ§Щ„Ш±Щ‘ЩђЩЉШґЩђ ШҐЩђЩ„ЩЋЩ‰ Щ†ЩЋШ­Щ’Щ€Щђ Ш«ЩЏЩ„ЩЏШ«ЩЋЩЉЩ’Щ‡Щђ ШЈЩЋЩ€Щ’ Ш«ЩЋЩ„Ш§ЩЋШ«ЩЋШ©Щђ ШЈЩЋШ±Щ’ШЁЩЋШ§Ш№ЩђЩ‡ЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш§Щ„ШєЩЋШ§ШЁЩЋШ©ЩђШЊ Щ€ЩЋШ№ЩЋЩ€Щ’ШЇЩЋШЄЩЏЩ‡ЩЏ ШЄЩЋЩѓЩЏЩ€Щ†ЩЏ Щ…ЩЋШ№ЩЋ ШЁЩђШЇЩЋШ§ЩЉЩЋШ©Щђ Ш§Щ„Ш±Щ‘ЩЋШЁЩђЩЉШ№ЩђШЊ ЩЉЩЋШ¶ЩЋШ№ЩЏ ШЁЩЋЩЉЩ’Ш¶ЩЋЩ‡ЩЏ ЩЃЩђЩЉ Ш№ЩЏШґЩ‘Щђ Ш·ЩЋШ§Ш¦ЩђШ±ЩЌ ШўШ®ЩЋШ±ЩЋ Щ€ЩЋЩ„Ш§ЩЋ ЩЉЩЋШ­Щ’Ш¶ЩЏЩ†ЩЏЩ‡ЩЏ.|2- Ш±ЩЋШ¬ЩЏЩ„ЩЊ Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩЊ : Ш¬ЩЋШЁЩЋШ§Щ†ЩЊШЊ ЩЉЩЏЩ‚ЩЋШ§Щ„ЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹: :Ш±ЩЋШ¬ЩЏЩ„ЩЊ Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩЋШ©ЩЊ : Щ…ЩђЩ‡Щ’Ш°ЩЋШ§Ш±ЩЊШЊ Щ…ЩђЩѓЩ’Ш«ЩЋШ§Ш±ЩЊШЊ ШЈЩЋЩЉЩђ Ш§Щ„Щ‘ЩЋШ°ЩђЩЉ ЩЉЩЋШЄЩЋЩѓЩЋЩ„Щ‘ЩЋЩ…ЩЏ ЩѓЩЋЩ„Ш§ЩЋЩ…Ш§Щ‹ Щ„Ш§ЩЋ ЩЉЩЏШЁЩЋШ§Щ„ЩЋЩ‰ ШЁЩђЩ‡Щђ.",
+      "sourceHash": "dc657635458055613eed5d1f341e9515bdace9b9dd524fcdd11e2a94e35cf88e",
+      "wordType": "ot va sifat",
+      "uzbek": "kakku; qoвЂrqoq yoki vaysaqi kishi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш·Щ‘ЩЏЩЉЩЏЩ€Ш±ЩђШ§Щ„Щ’Щ…ЩЏЩ‡ЩЋШ§Ш¬ЩђШ±ЩЋШ©ЩђШЊ ШёЩЋЩ‡Щ’Ш±ЩЏЩ‡ЩЏ Ш±ЩЋЩ…ЩЋШ§ШЇЩђЩЉЩ‘ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ Щ€ЩЋШЁЩЋШ·Щ’Щ†ЩЏЩ‡ЩЏ ШЈЩЋШЁЩ’ЩЉЩЋШ¶ЩЏШЊ Щ…ЩЋЩѓЩ’ШіЩЏЩ€Щ‘ЩЊ ШЁЩђШ§Щ„Ш±Щ‘ЩђЩЉШґЩђ ШҐЩђЩ„ЩЋЩ‰ Щ†ЩЋШ­Щ’Щ€Щђ Ш«ЩЏЩ„ЩЏШ«ЩЋЩЉЩ’Щ‡Щђ ШЈЩЋЩ€Щ’ Ш«ЩЋЩ„Ш§ЩЋШ«ЩЋШ©Щђ ШЈЩЋШ±Щ’ШЁЩЋШ§Ш№ЩђЩ‡ЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ ЩЃЩђЩЉ Ш§Щ„ШєЩЋШ§ШЁЩЋШ©ЩђШЊ Щ€ЩЋШ№ЩЋЩ€Щ’ШЇЩЋШЄЩЏЩ‡ЩЏ ШЄЩЋЩѓЩЏЩ€Щ†ЩЏ Щ…ЩЋШ№ЩЋ ШЁЩђШЇЩЋШ§ЩЉЩЋШ©Щђ Ш§Щ„Ш±Щ‘ЩЋШЁЩђЩЉШ№ЩђШЊ ЩЉЩЋШ¶ЩЋШ№ЩЏ ШЁЩЋЩЉЩ’Ш¶ЩЋЩ‡ЩЏ ЩЃЩђЩЉ Ш№ЩЏШґЩ‘Щђ Ш·ЩЋШ§Ш¦ЩђШ±ЩЌ ШўШ®ЩЋШ±ЩЋ Щ€ЩЋЩ„Ш§ЩЋ ЩЉЩЋШ­Щ’Ш¶ЩЏЩ†ЩЏЩ‡ЩЏ.",
+          "uzbekMeaning": "bahorda qaytib keladigan koвЂchmanchi, tuxumini boshqa qushlarning iniga qoвЂyadigan kulrang-oq qush вЂ” oddiy kakku (Cuculus canorus)",
+          "uzbekExample": "Kakku tuxumini boshqa qushning iniga qoвЂydi.",
+          "register": "ornitologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш±ЩЋШ¬ЩЏЩ„ЩЊ Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩЊ",
+          "arabicGloss": "Ш¬ЩЋШЁЩЋШ§Щ†ЩЊШЊ ЩЉЩЏЩ‚ЩЋШ§Щ„ЩЏ ШЈЩЋЩЉЩ’Ш¶Ш§Щ‹: :Ш±ЩЋШ¬ЩЏЩ„ЩЊ Щ€ЩЋЩ‚Щ’Щ€ЩЋШ§Щ‚ЩЋШ©ЩЊ : Щ…ЩђЩ‡Щ’Ш°ЩЋШ§Ш±ЩЊШЊ Щ…ЩђЩѓЩ’Ш«ЩЋШ§Ш±ЩЊШЊ ШЈЩЋЩЉЩђ Ш§Щ„Щ‘ЩЋШ°ЩђЩЉ ЩЉЩЋШЄЩЋЩѓЩЋЩ„Щ‘ЩЋЩ…ЩЏ ЩѓЩЋЩ„Ш§ЩЋЩ…Ш§Щ‹ Щ„Ш§ЩЋ ЩЉЩЏШЁЩЋШ§Щ„ЩЋЩ‰ ШЁЩђЩ‡Щђ.",
+          "uzbekMeaning": "koвЂchma maвЂ™noda qoвЂrqoq kishi; shuningdek behuda koвЂp gapiradigan vaysaqi odam",
+          "uzbekExample": "Bu soвЂz qoвЂrqoq yoki behuda koвЂp gapiradigan kishiga nisbatan aytiladi.",
+          "register": "koвЂchma va salbiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_bird_and_figurative_review",
+        "issues": [
+          "Boshqa qush iniga tuxum qoвЂyish belgisi oddiy kakkuga mos; qoвЂrqoq va vaysaqi odam maвЂ™nolari koвЂchma qoвЂllanish sifatida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 397,
+      "id": 79521,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШЄЩЏЩ€ШЄЩђЩЉЩЋШ§ШЎЩЏ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1.: ШµЩЋШЇЩЋЩЃЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЊ ШґЩЋШ§Ш¦ЩђЩѓЩЊШЊ ЩЃЩђЩЉ ШЇЩЋШ§Ш®ЩђЩ„Щ‡Щђ Щ…ЩЋШ§ШЇЩ‘ЩЋШ©ЩЊ ШЄЩЏШ¤Щ’ЩѓЩЋЩ„ЩЏ- ЩЉЩЋШЄЩЋЩЃЩЋШЄЩ‘ЩЋШЄЩЏ ЩѓЩЋШ§Щ„Ш±Щ‘ЩЋЩ…Щ’Щ„Щђ Щ€ЩЋЩЉЩЋШЄЩЋЩ„Ш§ЩЋШ­ЩЋЩ…ЩЏ ЩѓЩЋШ§Щ„ШЄЩ‘ЩЏЩ€ШЄЩђЩЉЩЋШ§ШЎЩђ.",
+      "sourceHash": "2f3e66b38bf024099f7567632520eee2427718394ac6748931163e0f91fe155a",
+      "wordType": "ot",
+      "uzbek": "dengiz tipratikani",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ШµЩЋШЇЩЋЩЃЩЊ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЊ ШґЩЋШ§Ш¦ЩђЩѓЩЊШЊ ЩЃЩђЩЉ ШЇЩЋШ§Ш®ЩђЩ„Щ‡Щђ Щ…ЩЋШ§ШЇЩ‘ЩЋШ©ЩЊ ШЄЩЏШ¤Щ’ЩѓЩЋЩ„ЩЏ- ЩЉЩЋШЄЩЋЩЃЩЋШЄЩ‘ЩЋШЄЩЏ ЩѓЩЋШ§Щ„Ш±Щ‘ЩЋЩ…Щ’Щ„Щђ Щ€ЩЋЩЉЩЋШЄЩЋЩ„Ш§ЩЋШ­ЩЋЩ…ЩЏ ЩѓЩЋШ§Щ„ШЄЩ‘ЩЏЩ€ШЄЩђЩЉЩЋШ§ШЎЩђ.",
+          "uzbekMeaning": "tanasi tikanli qattiq qobiq bilan qoplangan, ayrim ichki qismlari isteвЂ™mol qilinadigan dengiz jonivori вЂ” dengiz tipratikani (Echinoidea)",
+          "uzbekExample": "Dengiz tipratikani toshli dengiz tubida yashaydi.",
+          "register": "zoologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_taxonomic_check",
+        "issues": [
+          "Tikanli dengiz jonivori va yeyiladigan ichki qismi tavsifi Echinoidea вЂ” dengiz tipratikaniga mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 398,
+      "id": 79522,
+      "dictionarySource": "Ghoniy",
+      "arabic": "Ш·ЩЏЩ€Щ‘ЩЋШ§Щ„ЩЊ",
+      "root": "Ш·Щ€Щ„вЂЏ",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1.: Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊШЊ Ш°ЩЏЩ€ ШіЩЋШ§Щ‚ЩЋЩЉЩ’Щ†Щђ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЌ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЌ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЋШЊ Щ…ЩЏШіЩ’ШЄЩЋШ·ЩђЩЉЩ„Щђ Ш§Щ„ШґЩ‘ЩЋЩѓЩ’Щ„ЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ Ш№ЩЋЩ„ЩЋЩ‰ ШµЩЋЩЉЩ’ШЇЩђ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩђ.|2- Ш±ЩЋШ¬ЩЏЩ„ЩЊ Ш·ЩЏЩ€Щ‘ЩЋШ§Щ„ЩЊ : Ш·ЩЋЩ€ЩЉЩ„ЩЊ Ш¬ЩђШЇЩ‘Ш§Щ‹.",
+      "sourceHash": "3a5eb2b84d4b7f36b750c2cee2582d68a2ccd5e7972cd38422970031e35c719e",
+      "wordType": "ot va sifat",
+      "uzbek": "uzun oyoqli baliqxoвЂr suv qushi; juda uzun boвЂyli odam",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩЋШ§Ш¦ЩђЩЉЩ‘ЩЊШЊ Ш°ЩЏЩ€ ШіЩЋШ§Щ‚ЩЋЩЉЩ’Щ†Щђ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЋШЄЩЋЩЉЩ’Щ†ЩђШЊ Щ€ЩЋЩ…ЩђЩ†Щ’Щ‚ЩЋШ§Ш±ЩЌ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЌ ШЈЩЋШіЩ’Щ€ЩЋШЇЩЋШЊ Щ…ЩЏШіЩ’ШЄЩЋШ·ЩђЩЉЩ„Щђ Ш§Щ„ШґЩ‘ЩЋЩѓЩ’Щ„ЩђШЊ ЩЉЩЋШ№ЩђЩЉШґЩЏ Ш№ЩЋЩ„ЩЋЩ‰ ШµЩЋЩЉЩ’ШЇЩђ Ш§Щ„ШіЩ‘ЩЋЩ…ЩЋЩѓЩђ.",
+          "uzbekMeaning": "oyoqlari uzun, tumshugвЂi uzun va qora boвЂlib, baliq ovlab kun koвЂradigan suv qushi; arabcha nomi tuvval",
+          "uzbekExample": "Uzun oyoqli suv qushi sayoz joyda baliq ovladi.",
+          "register": "kam qoвЂllanadigan ornitologik nom"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш±ЩЋШ¬ЩЏЩ„ЩЊ Ш·ЩЏЩ€Щ‘ЩЋШ§Щ„ЩЊ",
+          "arabicGloss": "Ш·ЩЋЩ€ЩЉЩ„ЩЊ Ш¬ЩђШЇЩ‘Ш§Щ‹.",
+          "uzbekMeaning": "juda uzun boвЂyli odam",
+          "uzbekExample": "U juda uzun boвЂyli kishi edi.",
+          "register": "kuchaytirma sifat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_descriptively_without_forced_species",
+        "issues": [
+          "Suv qushi uchun aniq oilaviy yoki tur belgisi berilmagan; manbadagi uzun oyoq, qora uzun tumshuq va baliqxoвЂrlik tavsifi taxminsiz tarjima qilindi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 399,
+      "id": 79523,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШґЩђЩЃЩ’Щ†ЩђЩЉЩ†ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1.: Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш­ЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш°ЩЋЩ‡ЩЋШЁЩђЩЉЩ‘ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ ЩЉЩЋЩѓЩ’ШіЩЏЩ€ Ш№ЩЏЩ†ЩЏЩ‚ЩЋЩ‡ЩЏ Ш±ЩђЩЉШґЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊШЊ ШґЩЋШЁЩђЩЉЩ‡ЩЊ ШҐЩђЩ„ЩЋЩ‰ Ш­ЩЋШЇЩ‘ЩЌ Щ…Щ‘ЩЋШ§ ШЁЩђШ§Щ„Щ’Ш­ЩЋШ¬ЩЋЩ„ЩђШЊ ЩЉЩЋШіЩ’ШЁЩЋШ­ЩЏ ЩЃЩђЩЉ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђ.|2- Ш§Щ„ШґЩ‘ЩђЩЃЩ’Щ†ЩђЩЉЩ†ЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЏ : Ш¬ЩђЩ†Щ’ШіЩЏ ШЈЩЋШіЩ’Щ…ЩЋШ§ЩѓЩЌ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ШЊ ШєЩЏШ¶Щ’Ш±ЩЏЩ€ЩЃЩђЩЉЩ‘ЩЋШ©ШЊ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЋШ§ ЩѓЩЋШ«ЩђЩЉШ±ЩЋШ©ЩЊШЊ ЩѓЩЋШЁЩђЩЉШ±ЩЋШ©ЩЏ Ш§Щ„Ш­ЩЋШ¬Щ’Щ…Щђ Щ€ЩЋШ§Щ„ШІЩ‘ЩЋШ№ЩЋШ§Щ†ЩђЩЃЩђ Щ…ЩЏЩЃЩЋЩ„Щ’Ш·ЩЋШ­ЩЋШ©ЩЏ Ш§Щ„Щ’Щ…ЩЏЩ‚ЩЋШЇЩ‘ЩЋЩ…Щђ.",
+      "sourceHash": "7e77b9d958022891cc59202ab2c262c491b9ac5bd457b628611efd12c49bcc7a",
+      "wordType": "ot",
+      "uzbek": "kuluvchi musicha; dengiz skatlari yoki stingraylar",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш·ЩЋШ§Ш¦ЩђШ±ЩЊ Щ…ЩђЩ†Щ’ ЩЃЩЋШµЩђЩЉЩ„ЩЋШ©Щђ Ш§Щ„Ш­ЩЋЩ…ЩЋШ§Щ…ЩђЩЉЩ‘ЩЋШ§ШЄЩђШЊ Ш°ЩЋЩ‡ЩЋШЁЩђЩЉЩ‘ЩЏ Ш§Щ„Щ„Щ‘ЩЋЩ€Щ’Щ†ЩђШЊ ЩЉЩЋЩѓЩ’ШіЩЏЩ€ Ш№ЩЏЩ†ЩЏЩ‚ЩЋЩ‡ЩЏ Ш±ЩђЩЉШґЩЊ Ш·ЩЋЩ€ЩђЩЉЩ„ЩЊШЊ ШґЩЋШЁЩђЩЉЩ‡ЩЊ ШҐЩђЩ„ЩЋЩ‰ Ш­ЩЋШЇЩ‘ЩЌ Щ…Щ‘ЩЋШ§ ШЁЩђШ§Щ„Щ’Ш­ЩЋШ¬ЩЋЩ„ЩђШЊ ЩЉЩЋШіЩ’ШЁЩЋШ­ЩЏ ЩЃЩђЩЉ Ш§Щ„Щ’Щ…ЩЋШ§ШЎЩђ.",
+          "uzbekMeaning": "Columbidae oilasiga mansub mayda kaptarsimon qush вЂ” kuluvchi musicha (Spilopelia senegalensis)",
+          "uzbekExample": "Kuluvchi musicha yerda don terib yurdi.",
+          "register": "ornitologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш§Щ„ШґЩ‘ЩђЩЃЩ’Щ†ЩђЩЉЩ†ЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЏ",
+          "arabicGloss": "Ш¬ЩђЩ†Щ’ШіЩЏ ШЈЩЋШіЩ’Щ…ЩЋШ§ЩѓЩЌ ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©ШЊ ШєЩЏШ¶Щ’Ш±ЩЏЩ€ЩЃЩђЩЉЩ‘ЩЋШ©ШЊ ШЈЩЋЩ†Щ’Щ€ЩЋШ§Ш№ЩЏЩ‡ЩЋШ§ ЩѓЩЋШ«ЩђЩЉШ±ЩЋШ©ЩЊШЊ ЩѓЩЋШЁЩђЩЉШ±ЩЋШ©ЩЏ Ш§Щ„Ш­ЩЋШ¬Щ’Щ…Щђ Щ€ЩЋШ§Щ„ШІЩ‘ЩЋШ№ЩЋШ§Щ†ЩђЩЃЩђ Щ…ЩЏЩЃЩЋЩ„Щ’Ш·ЩЋШ­ЩЋШ©ЩЏ Ш§Щ„Щ’Щ…ЩЏЩ‚ЩЋШЇЩ‘ЩЋЩ…Щђ.",
+          "uzbekMeaning": "Ш§Щ„ШґЩ‘ЩђЩЃЩ’Щ†ЩђЩЉЩ†ЩЏ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЏ: tanasi yassi va qanotsimon koвЂkrak suzgichlari keng boвЂlgan togвЂayli dengiz baliqlari вЂ” skat yoki stingraylar",
+          "uzbekExample": "Stingray dengiz tubiga yaqin suzdi.",
+          "register": "ixtiologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_dictionary_and_taxonomic_correction",
+        "issues": [
+          "Arabcha lugвЂat tekshiruvida ШґЩђЩЃЩ’Щ†ЩђЩЉЩ† Spilopelia senegalensis вЂ” kuluvchi musicha ekani aniqlandi; manbadagi oltin pat va suvda suzish tavsifi xato boвЂlgani uchun olib tashlandi",
+          "Dengiz maвЂ™nosi Dasyatidae singari yassi togвЂayli skat va stingray baliqlariga mos"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 400,
+      "id": 79524,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ШҐЩђШіЩ’ЩЃЩЋЩ†Щ’Ш¬ЩЊ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "",
+      "morphology": "",
+      "arabicDefinition": "1.: Ш№ЩЋШЇЩЋШЇЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Ш§ШЄЩђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„Щ…Ш§Ш¦ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЋШЁШ§ШЄЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ„ЩЋЩ‡ЩЏ ШЈЩЋШґЩ’ЩѓШ§Щ„ЩЊ ШєЩЋЩЉЩ’Ш±ЩЏ Щ…ЩЏШЄЩЋЩ†Ш§ШіЩђЩ‚ЩЋШ©ЩЌШЊ Щ‚Ш§Ш¦ЩђЩ…ЩЊ Ш№Щ„Щ‰ Щ‡ЩЋЩЉЩ’ЩѓЩЋЩ„ЩЌ Щ„ЩђЩЉЩЃЩЉЩ‘ЩЌШЊ ЩЉЩЋШґЩЏШЇЩ‘ЩЏ Ш§Щ„ЩѓЩЏШЄЩ’Щ„ЩЋШ©ЩЋ Ш§Щ„Щ„Щ‘ЩЋШ­Щ’Щ…ЩђЩЉЩ‘ЩЋШ©ЩЋ Щ…ЩђЩ† Ш¬ЩђШіЩ’Щ…ЩђЩ‡Щђ.|2- Ш§ЩђШіЩ’ШЄЩЋШ®Щ’ШЇЩЋЩ…ЩЋШЄЩђ Ш§Щ„ШҐШіЩ’ЩЃЩЋЩ†Щ’Ш¬ЩЋ Щ„ЩђШЄЩЋЩ†Щ’ШёЩЉЩЃЩђ Ш§Щ„ШЈЩ€Ш§Щ†ЩђЩЉ Щ€ЩЋЩ…ЩЋШіЩ’Ш­Щђ Ш§Щ„ЩЃЩЏШіЩЋЩЉЩ’ЩЃЩђШіШ§ШЎЩђ : Щ…ЩђЩ†Щ’ Ш§Щ„Щ…Ш§ШЇЩ‘ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЋШ°Щ’ЩѓЩ€Ш±ЩЋШ©Щђ Щ†ЩЋЩЃЩ’ШіЩђЩ‡Ш§ Щ„Щ‡ Щ…ЩЋШіШ§Щ…Щ‘ЩЊШЊ Щ€ЩЋЩЉЩЏШіЩ’ШЄЩЋШ№Щ’Щ…ЩЋЩ„ЩЏ ЩЃЩЉ Ш§Щ„ШєЩЋШіЩ’Щ„Щђ Щ€ЩЋШ§Щ„ШЄЩ‘ЩЋЩ†Щ’ШёЩђЩЉЩЃЩђ. Щ€ЩЋЩ„ЩЋЩ‡ Щ‚ЩЏШЇЩ’Ш±ЩЋШ©ЩЊ Ш№Щ„Щ‰ Ш§Щ…Щ’ШЄЩђШµШ§ШµЩђ Ш§Щ„ШіЩ‘ЩЋЩ€Ш§Ш¦ЩђЩ„Щђ Щ€ЩЋШ§ШіЩ’ШЄЩђШ®Щ’Ш±Ш§Ш¬ЩђЩ‡Ш§ Ш№ЩђЩ†Щ’ШЇЩЋЩ…Ш§ ЩЉЩЏШ№Щ’ШµЩЋШ±ЩЏ.",
+      "sourceHash": "e12f099b1cef16c18fab3ba55ccbd6ed3672a16b05be5333d22b744477a4e825",
+      "wordType": "ot",
+      "uzbek": "dengiz gubkasi; yuvish va tozalash gubkasi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "Ш№ЩЋШЇЩЋШЇЩЊ Щ…ЩђЩ†ЩЋ Ш§Щ„Ш­ЩЋЩЉЩЋЩ€Ш§Щ†Ш§ШЄЩђ Ш§Щ„ШЁЩЋШ­Щ’Ш±ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„Щ…Ш§Ш¦ЩђЩЉЩ‘ЩЋШ©Щђ Ш§Щ„Щ†Щ‘ЩЋШЁШ§ШЄЩђЩЉЩ‘ЩЋШ©ЩђШЊ Щ„ЩЋЩ‡ЩЏ ШЈЩЋШґЩ’ЩѓШ§Щ„ЩЊ ШєЩЋЩЉЩ’Ш±ЩЏ Щ…ЩЏШЄЩЋЩ†Ш§ШіЩђЩ‚ЩЋШ©ЩЌШЊ Щ‚Ш§Ш¦ЩђЩ…ЩЊ Ш№Щ„Щ‰ Щ‡ЩЋЩЉЩ’ЩѓЩЋЩ„ЩЌ Щ„ЩђЩЉЩЃЩЉЩ‘ЩЌШЊ ЩЉЩЋШґЩЏШЇЩ‘ЩЏ Ш§Щ„ЩѓЩЏШЄЩ’Щ„ЩЋШ©ЩЋ Ш§Щ„Щ„Щ‘ЩЋШ­Щ’Щ…ЩђЩЉЩ‘ЩЋШ©ЩЋ Щ…ЩђЩ† Ш¬ЩђШіЩ’Щ…ЩђЩ‡Щђ.",
+          "uzbekMeaning": "Porifera tipiga mansub, tanasi koвЂp teshikli va suvni filtrlab oziqlanadigan sodda tuzilishli suv hayvoni вЂ” dengiz gubkasi",
+          "uzbekExample": "Dengiz gubkasi tanasidan suvni filtrlab oziqlanadi.",
+          "register": "zoologiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "Ш§ЩђШіЩ’ШЄЩЋШ®Щ’ШЇЩЋЩ…ЩЋШЄЩђ Ш§Щ„ШҐШіЩ’ЩЃЩЋЩ†Щ’Ш¬ЩЋ Щ„ЩђШЄЩЋЩ†Щ’ШёЩЉЩЃЩђ Ш§Щ„ШЈЩ€Ш§Щ†ЩђЩЉ Щ€ЩЋЩ…ЩЋШіЩ’Ш­Щђ Ш§Щ„ЩЃЩЏШіЩЋЩЉЩ’ЩЃЩђШіШ§ШЎЩђ",
+          "arabicGloss": "Щ…ЩђЩ†Щ’ Ш§Щ„Щ…Ш§ШЇЩ‘ЩЋШ©Щђ Ш§Щ„Щ’Щ…ЩЋШ°Щ’ЩѓЩ€Ш±ЩЋШ©Щђ Щ†ЩЋЩЃЩ’ШіЩђЩ‡Ш§ Щ„Щ‡ Щ…ЩЋШіШ§Щ…Щ‘ЩЊШЊ Щ€ЩЋЩЉЩЏШіЩ’ШЄЩЋШ№Щ’Щ…ЩЋЩ„ЩЏ ЩЃЩЉ Ш§Щ„ШєЩЋШіЩ’Щ„Щђ Щ€ЩЋШ§Щ„ШЄЩ‘ЩЋЩ†Щ’ШёЩђЩЉЩЃЩђ. Щ€ЩЋЩ„ЩЋЩ‡ Щ‚ЩЏШЇЩ’Ш±ЩЋШ©ЩЊ Ш№Щ„Щ‰ Ш§Щ…Щ’ШЄЩђШµШ§ШµЩђ Ш§Щ„ШіЩ‘ЩЋЩ€Ш§Ш¦ЩђЩ„Щђ Щ€ЩЋШ§ШіЩ’ШЄЩђШ®Щ’Ш±Ш§Ш¬ЩђЩ‡Ш§ Ш№ЩђЩ†Щ’ШЇЩЋЩ…Ш§ ЩЉЩЏШ№Щ’ШµЩЋШ±ЩЏ.",
+          "uzbekMeaning": "suyuqlikni shimib olib, siqilganda chiqaradigan gвЂovak tabiiy yoki sunвЂ™iy material вЂ” yuvish va tozalash gubkasi",
+          "uzbekExample": "U idishlarni gubka bilan yuvdi.",
+          "register": "umumiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_animal_material_distinction",
+        "issues": [
+          "Dengiz gubkasi oвЂsimlik emas, Porifera tipidagi hayvon; tozalash gubkasi esa tabiiy yoki sunвЂ™iy gвЂovak material sifatida alohida berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    }
+  ]
+}
+
