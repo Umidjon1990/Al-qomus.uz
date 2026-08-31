@@ -1,110 +1,302 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import {
+  BookOpenText,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Heart,
+  History,
+  Loader2,
+  MessageSquareQuote,
+  SearchX,
+  Trash2,
+  X,
+} from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ResultCard } from "@/components/ResultCard";
-import { getDictionaryEntries, getDictionarySources, DICTIONARY_SOURCES, searchExamples, ExampleResult } from "@/lib/api";
-import { SearchX, Loader2, Search, Book, Check, History, Heart, X, Trash2, ChevronDown, ChevronUp, Plus, ZoomIn, ZoomOut, WifiOff, MessageSquareQuote, Volume2, Sparkles } from "lucide-react";
-import { getSearchHistory, addToHistory, removeFromHistory, clearHistory, getFavorites, FavoriteEntry, HistoryEntry } from "@/lib/localStorage";
+import {
+  DICTIONARY_SOURCES,
+  getDictionaryEntries,
+  getDictionarySources,
+  searchExamples,
+} from "@/lib/api";
+import {
+  addToHistory,
+  clearHistory,
+  FavoriteEntry,
+  getFavorites,
+  getSearchHistory,
+  HistoryEntry,
+  removeFromHistory,
+} from "@/lib/localStorage";
 import { Button } from "@/components/ui/button";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  ARABIC_MARKS_SOURCE,
+  hasArabicLetters,
+  normalizeSearchTerm,
+  stripArabicMarks,
+} from "@shared/search";
 
-function WordOfTheDay() {
-  const { data: wordData, isLoading } = useQuery({
-    queryKey: ['word-of-day'],
-    queryFn: async () => {
-      const today = new Date();
-      const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-      const res = await fetch(`/api/dictionary/random?seed=${seed}`);
-      if (!res.ok) return null;
-      return res.json();
-    },
-    staleTime: 1000 * 60 * 60,
-  });
+interface SourcePanelProps {
+  selectedSources: string[];
+  toggleSource: (source: string) => void;
+  getSourceCount: (source: string) => number;
+  compact?: boolean;
+}
 
-  if (isLoading || !wordData) return null;
-
-  const meanings = wordData.meaningsJson ? JSON.parse(wordData.meaningsJson) : [];
-  const firstMeaning = meanings[0]?.uzbekMeaning || meanings[0]?.uzbek_meaning || wordData.uzbek || '';
+function SourcePanel({ selectedSources, toggleSource, getSourceCount, compact = false }: SourcePanelProps) {
+  if (compact) {
+    return (
+      <div className="flex gap-2 overflow-x-auto pb-1 lg:hidden" aria-label="Lug'at manbalari">
+        {DICTIONARY_SOURCES.map((source) => {
+          const selected = selectedSources.includes(source.id);
+          return (
+            <button
+              type="button"
+              key={source.id}
+              onClick={() => toggleSource(source.id)}
+              aria-pressed={selected}
+              className={`flex shrink-0 items-center gap-2 rounded-full border px-3.5 py-2 text-xs font-semibold transition ${
+                selected
+                  ? "border-primary bg-primary text-white"
+                  : "border-slate-200 bg-white text-slate-600 hover:border-primary/30"
+              }`}
+            >
+              {selected && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
+              {source.name}
+              <span className={selected ? "text-white/65" : "text-slate-400"}>{getSourceCount(source.id).toLocaleString()}</span>
+            </button>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-md mx-auto mt-6 mb-2">
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-5 pt-4 pb-2">
-          <div className="flex items-center gap-2 text-xs text-gray-400 mb-1">
-            <Sparkles className="h-3.5 w-3.5 text-orange-400" />
-            <span className="font-medium uppercase tracking-wider">Kunning so'zi</span>
-            <span className="ml-auto">{new Date().toLocaleDateString('uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-          </div>
-        </div>
-        <div className="px-5 pb-5 text-center">
-          <h3 className="text-3xl font-arabic text-orange-500 font-bold mb-1" dir="rtl" data-testid="text-word-of-day">
-            {wordData.arabic}
-          </h3>
-          {wordData.transliteration && (
-            <p className="text-sm text-gray-400 mb-2">[{wordData.transliteration}]</p>
-          )}
-          <p className="text-base text-gray-700 font-medium">{firstMeaning}</p>
-        </div>
+    <section className="rounded-2xl border border-slate-200 bg-white p-4">
+      <div className="mb-3 flex items-center gap-2 px-1">
+        <BookOpenText className="h-4 w-4 text-primary" aria-hidden="true" />
+        <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Lug'at manbalari</h2>
       </div>
-    </div>
+      <div className="space-y-1.5">
+        {DICTIONARY_SOURCES.map((source) => {
+          const selected = selectedSources.includes(source.id);
+          return (
+            <button
+              type="button"
+              key={source.id}
+              onClick={() => toggleSource(source.id)}
+              aria-pressed={selected}
+              className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                selected ? "bg-primary/8 text-primary" : "text-slate-600 hover:bg-slate-50"
+              }`}
+            >
+              <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-md border ${selected ? "border-primary bg-primary text-white" : "border-slate-300 bg-white"}`}>
+                {selected && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-semibold">{source.name}</span>
+                <span className="block truncate text-[11px] text-slate-400">{source.description}</span>
+              </span>
+              <span className="text-[11px] font-semibold text-slate-400">{getSourceCount(source.id).toLocaleString()}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+interface LibraryPanelProps {
+  activeTab: "history" | "favorites";
+  setActiveTab: (tab: "history" | "favorites") => void;
+  history: HistoryEntry[];
+  favorites: FavoriteEntry[];
+  onSearch: (term: string) => void;
+  onRemoveHistory: (term: string) => void;
+  onClearHistory: () => void;
+}
+
+function LibraryPanel({
+  activeTab,
+  setActiveTab,
+  history,
+  favorites,
+  onSearch,
+  onRemoveHistory,
+  onClearHistory,
+}: LibraryPanelProps) {
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-white p-4">
+      <div className="grid grid-cols-2 gap-1 rounded-xl bg-slate-100 p-1">
+        <button
+          type="button"
+          onClick={() => setActiveTab("history")}
+          className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2 text-xs font-semibold transition ${activeTab === "history" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"}`}
+        >
+          <History className="h-3.5 w-3.5" aria-hidden="true" />
+          Tarix ({history.length})
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab("favorites")}
+          className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2 text-xs font-semibold transition ${activeTab === "favorites" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"}`}
+        >
+          <Heart className="h-3.5 w-3.5" aria-hidden="true" />
+          Saqlangan ({favorites.length})
+        </button>
+      </div>
+
+      {activeTab === "history" ? (
+        <div className="mt-3">
+          {history.length > 0 ? (
+            <>
+              <div className="space-y-1">
+                {history.slice(0, 8).map((item) => (
+                  <div key={item.term} className="group flex items-center gap-1 rounded-lg hover:bg-slate-50">
+                    <button
+                      type="button"
+                      onClick={() => onSearch(item.term)}
+                      className="min-w-0 flex-1 truncate px-2.5 py-2 text-left text-sm font-medium text-slate-600 hover:text-primary"
+                    >
+                      {item.term}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onRemoveHistory(item.term)}
+                      className="grid h-8 w-8 place-items-center rounded-lg text-slate-300 opacity-0 transition hover:bg-red-50 hover:text-red-500 focus:opacity-100 group-hover:opacity-100"
+                      aria-label={`${item.term} so'rovini tarixdan o'chirish`}
+                    >
+                      <X className="h-3.5 w-3.5" aria-hidden="true" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={onClearHistory}
+                className="mt-2 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-medium text-slate-400 hover:bg-red-50 hover:text-red-600"
+              >
+                <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                Tarixni tozalash
+              </button>
+            </>
+          ) : (
+            <p className="px-2 py-6 text-center text-xs leading-5 text-slate-400">Qidiruvlar hali saqlanmagan</p>
+          )}
+        </div>
+      ) : (
+        <div className="mt-3 space-y-1">
+          {favorites.length > 0 ? (
+            favorites.slice(0, 8).map((favorite) => (
+              <button
+                type="button"
+                key={favorite.id}
+                onClick={() => onSearch(favorite.arabic)}
+                className="flex w-full items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-left hover:bg-primary/5"
+              >
+                <span className="min-w-0">
+                  <span className="block truncate font-arabic text-lg leading-7 text-slate-800" dir="rtl" lang="ar">{favorite.arabic}</span>
+                  <span className="block truncate text-xs text-slate-400">{favorite.uzbek || "—"}</span>
+                </span>
+                <Heart className="h-3.5 w-3.5 shrink-0 fill-rose-500 text-rose-500" aria-hidden="true" />
+              </button>
+            ))
+          ) : (
+            <p className="px-2 py-6 text-center text-xs leading-5 text-slate-400">Yurakcha bosilgan so'zlar shu yerda turadi</p>
+          )}
+        </div>
+      )}
+    </section>
   );
 }
 
 export default function DictionaryPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [selectedSources, setSelectedSources] = useState<string[]>(["Ghoniy"]);
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const [showExamples, setShowExamples] = useState(false);
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
-  const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
-  const [activeTab, setActiveTab] = useState<'history' | 'favorites'>('history');
-  const [zoomLevel, setZoomLevel] = useState<number>(() => {
-    const saved = localStorage.getItem('dictionary-zoom');
-    return saved ? parseInt(saved) : 100;
-  });
+  const initialQuery = React.useMemo(() => new URLSearchParams(window.location.search).get("q") || "", []);
+  const [searchTerm, setSearchTerm] = React.useState(initialQuery);
+  const [debouncedSearch, setDebouncedSearch] = React.useState(initialQuery.trim());
+  const [selectedSources, setSelectedSources] = React.useState<string[]>(["Ghoniy"]);
+  const [showExamples, setShowExamples] = React.useState(false);
+  const [history, setHistory] = React.useState<HistoryEntry[]>([]);
+  const [favorites, setFavorites] = React.useState<FavoriteEntry[]>([]);
+  const [activeTab, setActiveTab] = React.useState<"history" | "favorites">("history");
 
-  const handleZoomIn = () => {
-    const newZoom = Math.min(zoomLevel + 10, 150);
-    setZoomLevel(newZoom);
-    localStorage.setItem('dictionary-zoom', newZoom.toString());
-  };
-
-  const handleZoomOut = () => {
-    const newZoom = Math.max(zoomLevel - 10, 70);
-    setZoomLevel(newZoom);
-    localStorage.setItem('dictionary-zoom', newZoom.toString());
-  };
-
-  const resetZoom = () => {
-    setZoomLevel(100);
-    localStorage.setItem('dictionary-zoom', '100');
-  };
-
-  useEffect(() => {
+  React.useEffect(() => {
     setHistory(getSearchHistory());
     setFavorites(getFavorites());
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(searchTerm);
-      if (searchTerm.trim()) {
-        addToHistory(searchTerm.trim());
-        setHistory(getSearchHistory());
-      }
+  React.useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const nextSearch = searchTerm.normalize("NFC").trim();
+      setDebouncedSearch(nextSearch);
+      setShowExamples(false);
+
+      const url = new URL(window.location.href);
+      if (nextSearch) url.searchParams.set("q", nextSearch);
+      else url.searchParams.delete("q");
+      window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
     }, 300);
-    return () => clearTimeout(timer);
+
+    return () => window.clearTimeout(timer);
   }, [searchTerm]);
 
-  const handleHistoryClick = (term: string) => {
-    setSearchTerm(term);
+  const commitSearch = React.useCallback((term = searchTerm) => {
+    const normalized = term.trim();
+    if (!normalized) return;
+    setSearchTerm(normalized);
+    addToHistory(normalized);
+    setHistory(getSearchHistory());
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [searchTerm]);
+
+  const refreshFavorites = React.useCallback(() => setFavorites(getFavorites()), []);
+
+  const { data: sourcesData } = useQuery({
+    queryKey: ["dictionary-sources"],
+    queryFn: getDictionarySources,
+  });
+
+  const totalWords = sourcesData?.reduce((sum, source) => sum + source.count, 0) || 0;
+  const normalizedDebouncedSearch = React.useMemo(
+    () => normalizeSearchTerm(debouncedSearch),
+    [debouncedSearch],
+  );
+  const queryIsLongEnough = Array.from(normalizedDebouncedSearch).length >= 2;
+  const containsArabic = hasArabicLetters(debouncedSearch);
+
+  const {
+    data: entries = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["dictionary", normalizedDebouncedSearch, selectedSources],
+    queryFn: () => getDictionaryEntries(normalizedDebouncedSearch, selectedSources),
+    enabled: queryIsLongEnough && selectedSources.length > 0,
+  });
+
+  const { data: examplesData } = useQuery({
+    queryKey: ["examples", normalizedDebouncedSearch],
+    queryFn: () => searchExamples(normalizedDebouncedSearch, 20),
+    enabled: queryIsLongEnough && containsArabic && selectedSources.includes("Ghoniy"),
+  });
+
+  React.useEffect(() => {
+    if (activeTab === "favorites") refreshFavorites();
+  }, [activeTab, refreshFavorites]);
+
+  const toggleSource = (sourceId: string) => {
+    setSelectedSources((current) =>
+      current.includes(sourceId)
+        ? current.filter((source) => source !== sourceId)
+        : [...current, sourceId],
+    );
   };
+
+  const getSourceCount = (sourceId: string) =>
+    sourcesData?.find((source) => source.source === sourceId)?.count || 0;
 
   const handleRemoveHistory = (term: string) => {
     removeFromHistory(term);
@@ -116,401 +308,176 @@ export default function DictionaryPage() {
     setHistory([]);
   };
 
-  const refreshFavorites = () => {
-    setFavorites(getFavorites());
+  const handleRelatedSearch = (term: string) => {
+    commitSearch(term);
+    setSearchTerm(term);
   };
-
-  const { data: sourcesData } = useQuery({
-    queryKey: ['dictionary-sources'],
-    queryFn: getDictionarySources,
-  });
-
-  const totalWords = sourcesData?.reduce((sum, s) => sum + s.count, 0) || 0;
-
-  const { data: entries = [], isLoading } = useQuery({
-    queryKey: ['dictionary', debouncedSearch, selectedSources],
-    queryFn: () => getDictionaryEntries(debouncedSearch || undefined, selectedSources),
-    enabled: debouncedSearch.length > 0 && selectedSources.length > 0,
-  });
-
-  const { data: examplesData, isLoading: examplesLoading } = useQuery({
-    queryKey: ['examples', debouncedSearch],
-    queryFn: () => searchExamples(debouncedSearch, 20),
-    enabled: debouncedSearch.length >= 2 && selectedSources.includes('Ghoniy'),
-  });
 
   const highlightWord = (text: string, word: string) => {
     if (!word || !text) return text;
-    const normalizedWord = word.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
-    const regex = new RegExp(`(${normalizedWord.split('').join('[\u064B-\u0652\u0670\u0671]*')})`, 'gi');
-    const parts = text.split(regex);
-    return parts.map((part, i) => {
-      const normalizedPart = part.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
-      if (normalizedPart.toLowerCase() === normalizedWord.toLowerCase()) {
-        return <span key={i} className="bg-orange-200/60 text-orange-800 px-1 rounded">{part}</span>;
-      }
-      return part;
+    const normalizedWord = stripArabicMarks(word);
+    const escapedCharacters = Array.from(normalizedWord)
+      .map((character) => character.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+      .join(`${ARABIC_MARKS_SOURCE}*`);
+
+    if (!escapedCharacters) return text;
+    const regex = new RegExp(`(${escapedCharacters})`, "gi");
+    return text.split(regex).map((part, index) => {
+      const normalizedPart = stripArabicMarks(part);
+      return normalizedPart.toLowerCase() === normalizedWord.toLowerCase() ? (
+        <mark key={index} className="rounded bg-amber-100 px-1 text-amber-900">{part}</mark>
+      ) : part;
     });
-  };
-
-  const toggleSource = (sourceId: string) => {
-    setSelectedSources(prev => 
-      prev.includes(sourceId)
-        ? prev.filter(s => s !== sourceId)
-        : [...prev, sourceId]
-    );
-  };
-
-  const getSourceCount = (sourceId: string) => {
-    const found = sourcesData?.find(s => s.source === sourceId);
-    return found?.count || 0;
   };
 
   return (
     <Layout>
-      <Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} totalWords={totalWords} />
-      
-      <div className="container mx-auto px-4 py-6 -mt-6 relative z-30">
-        <div className="flex flex-wrap gap-2 mb-6 justify-center items-center">
-          <button
-            data-testid="btn-source-Ghoniy"
-            onClick={() => {
-              if (!selectedSources.includes('Ghoniy')) {
-                setSelectedSources(['Ghoniy']);
-              }
-            }}
-            className={`group flex items-center gap-2.5 px-4 py-2 rounded-full border transition-all duration-300 text-sm ${
-              selectedSources.includes('Ghoniy')
-                ? 'bg-gray-900 text-white border-gray-900 shadow-lg shadow-gray-900/20'
-                : 'bg-white text-gray-600 border-gray-200 hover:border-orange-300 hover:shadow-md'
-            }`}
-          >
-            <Book className="h-3.5 w-3.5" />
-            <span className="font-semibold">G'oniy (الغني)</span>
-            {selectedSources.includes('Ghoniy') && <Check className="h-3.5 w-3.5" />}
-            <span className={`text-xs px-2 py-0.5 rounded-full ${
-              selectedSources.includes('Ghoniy')
-                ? 'bg-white/15'
-                : 'bg-gray-100'
-            }`}>
-              {getSourceCount('Ghoniy').toLocaleString()}
-            </span>
-          </button>
+      <Hero
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onSubmit={() => commitSearch()}
+        totalWords={totalWords}
+      />
 
-          <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                className="flex items-center gap-2 h-auto py-2 px-3.5 rounded-full border border-dashed border-gray-300 hover:border-orange-300 text-sm"
-                data-testid="btn-more-sources"
-              >
-                <Plus className="h-3.5 w-3.5" />
-                <span>Boshqa lug'atlar</span>
-                {selectedSources.filter(s => s !== 'Ghoniy').length > 0 && (
-                  <span className="bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full">
-                    +{selectedSources.filter(s => s !== 'Ghoniy').length}
-                  </span>
-                )}
-                <ChevronDown className="h-3.5 w-3.5" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-72 p-3 rounded-xl" align="center">
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-gray-400 mb-2">Qo'shimcha lug'atlar:</p>
-                {DICTIONARY_SOURCES.filter(s => !s.isPrimary).map((source) => (
-                  <button
-                    key={source.id}
-                    data-testid={`btn-source-${source.id}`}
-                    onClick={() => toggleSource(source.id)}
-                    className={`w-full flex items-center justify-between p-3 rounded-xl border transition-all ${
-                      selectedSources.includes(source.id)
-                        ? 'bg-orange-50 border-orange-200'
-                        : 'bg-gray-50 border-transparent hover:bg-gray-100'
-                    }`}
-                  >
-                    <div className="flex flex-col items-start">
-                      <span className="font-medium text-sm">{source.name}</span>
-                      <span className="text-xs text-gray-400">{source.description}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs bg-white px-2 py-0.5 rounded-full border">
-                        {getSourceCount(source.id).toLocaleString()}
-                      </span>
-                      {selectedSources.includes(source.id) && (
-                        <Check className="h-3.5 w-3.5 text-orange-500" />
-                      )}
-                    </div>
-                  </button>
+      <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-7 lg:px-8">
+        <SourcePanel
+          compact
+          selectedSources={selectedSources}
+          toggleSource={toggleSource}
+          getSourceCount={getSourceCount}
+        />
+
+        <div className="mt-5 grid items-start gap-6 lg:mt-0 lg:grid-cols-[260px_minmax(0,1fr)]">
+          <aside className="sticky top-22 hidden space-y-4 lg:block">
+            <SourcePanel
+              selectedSources={selectedSources}
+              toggleSource={toggleSource}
+              getSourceCount={getSourceCount}
+            />
+            <LibraryPanel
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              history={history}
+              favorites={favorites}
+              onSearch={handleRelatedSearch}
+              onRemoveHistory={handleRemoveHistory}
+              onClearHistory={handleClearHistory}
+            />
+          </aside>
+
+          <div className="min-w-0">
+            {selectedSources.length === 0 ? (
+              <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-8 text-center">
+                <BookOpenText className="mx-auto h-7 w-7 text-amber-600" aria-hidden="true" />
+                <h2 className="mt-3 font-bold text-amber-950">Kamida bitta lug'at manbasini tanlang</h2>
+                <p className="mt-1 text-sm text-amber-700">Yuqoridagi manbalardan birini bosing.</p>
+              </div>
+            ) : !debouncedSearch ? (
+              <div className="lg:hidden">
+                <LibraryPanel
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                  history={history}
+                  favorites={favorites}
+                  onSearch={handleRelatedSearch}
+                  onRemoveHistory={handleRemoveHistory}
+                  onClearHistory={handleClearHistory}
+                />
+              </div>
+            ) : !queryIsLongEnough ? (
+              <div className="rounded-2xl border border-slate-200 bg-white px-5 py-12 text-center">
+                <SearchX className="mx-auto h-7 w-7 text-slate-300" aria-hidden="true" />
+                <p className="mt-3 text-sm font-semibold text-slate-600">Qidiruv uchun kamida 2 ta harf kiriting</p>
+              </div>
+            ) : isLoading ? (
+              <div className="space-y-4" aria-live="polite" aria-busy="true">
+                <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
+                  <Loader2 className="h-4 w-4 animate-spin text-primary" aria-hidden="true" />
+                  Lug'atlardan qidirilmoqda…
+                </div>
+                {[0, 1].map((item) => (
+                  <div key={item} className="h-64 animate-pulse rounded-2xl border border-slate-200 bg-white" />
                 ))}
               </div>
-            </PopoverContent>
-          </Popover>
-
-          {selectedSources.filter(s => s !== 'Ghoniy').map(sourceId => {
-            const source = DICTIONARY_SOURCES.find(s => s.id === sourceId);
-            if (!source) return null;
-            return (
-              <div
-                key={sourceId}
-                className="flex items-center gap-2 bg-orange-50 text-orange-700 px-3 py-1.5 rounded-full text-sm border border-orange-200"
-              >
-                <span>{source.name}</span>
-                <button
-                  onClick={() => toggleSource(sourceId)}
-                  className="hover:text-red-500 transition-colors"
-                  data-testid={`btn-remove-${sourceId}`}
-                >
-                  <X className="h-3.5 w-3.5" />
-                </button>
+            ) : isError ? (
+              <div className="rounded-2xl border border-red-200 bg-red-50 px-5 py-10 text-center" role="alert">
+                <h2 className="font-bold text-red-900">Qidiruvda vaqtinchalik xatolik yuz berdi</h2>
+                <p className="mt-1 text-sm text-red-600">Internetni tekshirib, so'rovni qayta kiriting.</p>
               </div>
-            );
-          })}
-        </div>
+            ) : (
+              <div>
+                <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Qidiruv natijasi</p>
+                    <h2 className="mt-1 text-lg font-bold text-slate-900">
+                      “{debouncedSearch}”
+                      <span className="ml-2 text-sm font-medium text-slate-400">{entries.length} ta natija</span>
+                    </h2>
+                  </div>
+                  <p className="text-xs text-slate-400">{selectedSources.join(" · ")}</p>
+                </div>
 
-        {selectedSources.length === 0 && (
-          <div className="text-center py-5 text-orange-600 bg-orange-50 rounded-xl mb-6 border border-orange-200 text-sm">
-            Kamida bitta lug'atni tanlang
-          </div>
-        )}
-        
-        {debouncedSearch && selectedSources.length > 0 && (
-          <div className="mb-6 text-gray-400 text-center text-sm" data-testid="search-result-count">
-            <span className="font-medium text-gray-700">"{debouncedSearch}"</span> bo'yicha {entries.length} ta natija topildi
-          </div>
-        )}
-        
-        {!debouncedSearch ? (
-          <div className="max-w-2xl mx-auto">
-            <WordOfTheDay />
-
-            <div className="flex gap-2 mb-4 justify-center mt-6">
-              <Button
-                variant={activeTab === 'history' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => { setActiveTab('history'); refreshFavorites(); }}
-                className={`rounded-full ${activeTab === 'history' ? 'bg-gray-900 hover:bg-gray-800' : ''}`}
-                data-testid="tab-history"
-              >
-                <History className="h-3.5 w-3.5 mr-1.5" />
-                Qidirilganlar ({history.length})
-              </Button>
-              <Button
-                variant={activeTab === 'favorites' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => { setActiveTab('favorites'); refreshFavorites(); }}
-                className={`rounded-full ${activeTab === 'favorites' ? 'bg-gray-900 hover:bg-gray-800' : ''}`}
-                data-testid="tab-favorites"
-              >
-                <Heart className="h-3.5 w-3.5 mr-1.5" />
-                Yoqtirilganlar ({favorites.length})
-              </Button>
-            </div>
-
-            {activeTab === 'history' && (
-              <div className="glass-card rounded-2xl p-5">
-                {history.length > 0 ? (
-                  <>
-                    <div className="flex justify-between items-center mb-3">
-                      <h4 className="text-xs font-medium text-gray-400 uppercase tracking-wider">Qidiruv tarixi</h4>
-                      <Button variant="ghost" size="sm" onClick={handleClearHistory} className="text-xs text-gray-400 hover:text-red-500 h-7">
-                        <Trash2 className="h-3 w-3 mr-1" />
-                        Tozalash
+                {examplesData && examplesData.examples.length > 0 && (
+                  <section className="mb-5 overflow-hidden rounded-2xl border border-slate-200 bg-white" aria-labelledby="examples-title">
+                    <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3.5 sm:px-5">
+                      <div className="flex items-center gap-2.5">
+                        <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary/10 text-primary">
+                          <MessageSquareQuote className="h-4.5 w-4.5" aria-hidden="true" />
+                        </span>
+                        <div>
+                          <h3 id="examples-title" className="text-sm font-bold text-slate-800">Gap ichida qo'llanishi</h3>
+                          <p className="text-xs text-slate-400">{examplesData.count} ta misol topildi</p>
+                        </div>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setShowExamples((current) => !current)}
+                        className="rounded-lg text-xs font-semibold text-slate-500 hover:text-primary"
+                        aria-expanded={showExamples}
+                      >
+                        {showExamples ? "Yopish" : "Barchasi"}
+                        {showExamples ? <ChevronUp className="ml-1 h-4 w-4" /> : <ChevronDown className="ml-1 h-4 w-4" />}
                       </Button>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      {history.map((item) => (
-                        <div key={item.term} className="flex items-center gap-1 bg-white border border-gray-200 px-3 py-1.5 rounded-full group hover:border-orange-300 transition-colors">
-                          <button
-                            onClick={() => handleHistoryClick(item.term)}
-                            className="text-sm text-gray-600 hover:text-orange-600 transition-colors"
-                            data-testid={`history-item-${item.term}`}
-                          >
-                            {item.term}
-                          </button>
-                          <button
-                            onClick={() => handleRemoveHistory(item.term)}
-                            className="text-gray-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
-                          >
-                            <X className="h-3 w-3" />
-                          </button>
+
+                    <div className={`space-y-2.5 px-4 py-4 sm:px-5 ${showExamples ? "max-h-[560px] overflow-y-auto" : ""}`}>
+                      {examplesData.examples.slice(0, showExamples ? examplesData.examples.length : 1).map((example, exampleIndex) => (
+                        <div key={`${example.entryId}-${exampleIndex}`} className="rounded-xl bg-[#f8f7f3] px-4 py-3.5">
+                          <p className="font-arabic text-right text-lg leading-9 text-slate-800" dir="rtl" lang="ar">
+                            {highlightWord(example.arabicExample, debouncedSearch)}
+                          </p>
+                          <p className="mt-1 border-t border-slate-200/70 pt-2 text-sm leading-6 text-slate-500">
+                            {example.uzbekExample || example.uzbekMeaning}
+                          </p>
                         </div>
                       ))}
                     </div>
-                  </>
-                ) : (
-                  <p className="text-center text-gray-400 text-sm py-6">Qidiruv tarixi bo'sh</p>
+                  </section>
                 )}
-              </div>
-            )}
 
-            {activeTab === 'favorites' && (
-              <div className="glass-card rounded-2xl p-5">
-                {favorites.length > 0 ? (
-                  <div className="space-y-2">
-                    {favorites.map((fav) => (
-                      <button
-                        key={fav.id}
-                        onClick={() => setSearchTerm(fav.arabic)}
-                        className="w-full flex items-center justify-between p-3 bg-white rounded-xl hover:bg-orange-50 transition-colors text-left border border-transparent hover:border-orange-200"
-                        data-testid={`favorite-item-${fav.id}`}
-                      >
-                        <div>
-                          <span className="font-arabic text-xl text-gray-800" dir="rtl">{fav.arabic}</span>
-                          {fav.uzbek && <span className="text-sm text-gray-400 ml-3">{fav.uzbek}</span>}
-                        </div>
-                        <Heart className="h-4 w-4 fill-red-500 text-red-500" />
-                      </button>
+                {entries.length > 0 ? (
+                  <div className="space-y-5">
+                    {entries.map((entry, index) => (
+                      <ResultCard key={entry.id} entry={entry} index={index} onSearch={handleRelatedSearch} />
                     ))}
                   </div>
                 ) : (
-                  <p className="text-center text-gray-400 text-sm py-6">
-                    Yoqtirilgan so'zlar yo'q. So'z yonidagi yurakchani bosing.
-                  </p>
+                  <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-5 py-16 text-center">
+                    <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-slate-100">
+                      <SearchX className="h-6 w-6 text-slate-400" aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-4 font-bold text-slate-800">Bu so'z topilmadi</h3>
+                    <p className="mx-auto mt-1 max-w-sm text-sm leading-6 text-slate-500">
+                      Yozilishini tekshiring yoki boshqa lug'at manbasini tanlab ko'ring.
+                    </p>
+                  </div>
                 )}
               </div>
             )}
           </div>
-        ) : isLoading ? (
-          <div className="text-center py-20">
-            <div className="inline-flex items-center gap-3 bg-white rounded-2xl shadow-lg px-6 py-4 border border-gray-100">
-              <Loader2 className="h-5 w-5 animate-spin text-orange-500" />
-              <p className="text-gray-500 font-medium text-sm">Qidirilmoqda...</p>
-            </div>
-          </div>
-        ) : (
-          <div className="max-w-4xl mx-auto">
-            {entries.length > 0 && (
-              <div className="flex justify-end items-center gap-2 mb-4 bg-white/80 backdrop-blur rounded-xl border border-gray-100 p-2">
-                <span className="text-xs text-gray-400 mr-2">Shrift:</span>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleZoomOut}
-                  disabled={zoomLevel <= 70}
-                  className="h-7 w-7 rounded-lg"
-                  data-testid="btn-zoom-out"
-                >
-                  <ZoomOut className="h-3.5 w-3.5" />
-                </Button>
-                <button
-                  onClick={resetZoom}
-                  className="text-xs font-medium min-w-[40px] text-center hover:text-orange-500 transition-colors"
-                  data-testid="btn-zoom-reset"
-                >
-                  {zoomLevel}%
-                </button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleZoomIn}
-                  disabled={zoomLevel >= 150}
-                  className="h-7 w-7 rounded-lg"
-                  data-testid="btn-zoom-in"
-                >
-                  <ZoomIn className="h-3.5 w-3.5" />
-                </Button>
-              </div>
-            )}
-            <div 
-              className="grid gap-5 origin-top" 
-              style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
-            >
-              {examplesData && examplesData.examples.length > 0 && (
-                <div className="mb-6 animate-fade-in-up" data-testid="examples-section">
-                  <div className="bg-white rounded-2xl border-2 border-orange-200 overflow-hidden shadow-sm">
-                    <div className="bg-gradient-to-r from-orange-500 to-amber-500 px-5 py-3 flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
-                        <MessageSquareQuote className="h-5 w-5 text-white" />
-                        <span className="font-bold text-white text-base">Matnlarda uchraydi</span>
-                        <span className="bg-white/20 text-white text-xs px-2.5 py-0.5 rounded-full font-medium">
-                          {examplesData.count} ta gap
-                        </span>
-                      </div>
-                      <Button
-                        onClick={() => setShowExamples(!showExamples)}
-                        variant="ghost"
-                        size="sm"
-                        className="text-white hover:bg-white/20 h-8 px-2"
-                        data-testid="btn-toggle-examples"
-                      >
-                        {showExamples ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                      </Button>
-                    </div>
-
-                    {!showExamples && (
-                      <div className="px-5 py-4">
-                        <div className="bg-orange-50 rounded-xl p-4 border border-orange-100" dir="rtl">
-                          <div className="font-arabic text-lg text-right leading-loose">
-                            {highlightWord(examplesData.examples[0].arabicExample, debouncedSearch)}
-                          </div>
-                          <div className="text-sm text-gray-500 mt-2 pt-2 border-t border-orange-200/50 text-right" dir="ltr">
-                            <span className="text-left inline-block">{examplesData.examples[0].uzbekExample || examplesData.examples[0].uzbekMeaning}</span>
-                          </div>
-                          <div className="flex items-center gap-2 mt-2 text-right" dir="ltr">
-                            <span className="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-arabic">{examplesData.examples[0].arabic}</span>
-                          </div>
-                        </div>
-                        {examplesData.count > 1 && (
-                          <button
-                            onClick={() => setShowExamples(true)}
-                            className="w-full mt-3 text-sm text-orange-500 hover:text-orange-600 font-medium transition-colors"
-                            data-testid="btn-show-all-examples"
-                          >
-                            Barchasi ({examplesData.count} ta gap) →
-                          </button>
-                        )}
-                      </div>
-                    )}
-
-                    {showExamples && (
-                      <div className="px-5 py-4 max-h-[600px] overflow-y-auto">
-                        <p className="text-sm text-gray-400 mb-3">
-                          "<span className="font-bold text-orange-500 font-arabic">{debouncedSearch}</span>" so'zi ishtirok etgan gaplar:
-                        </p>
-                        <div className="space-y-3">
-                          {examplesData.examples.map((example, idx) => (
-                            <div 
-                              key={`${example.entryId}-${idx}`} 
-                              className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-orange-200 hover:shadow-sm transition-all"
-                              data-testid={`example-item-${idx}`}
-                            >
-                              <div className="font-arabic text-lg text-right leading-loose mb-2" dir="rtl">
-                                {highlightWord(example.arabicExample, debouncedSearch)}
-                              </div>
-                              <div className="text-sm text-gray-500 border-t border-dashed border-gray-200 pt-2 mt-2">
-                                {example.uzbekExample || example.uzbekMeaning}
-                              </div>
-                              <div className="flex items-center gap-2 mt-2">
-                                <span className="text-xs bg-orange-50 text-orange-500 px-2.5 py-0.5 rounded-full border border-orange-100 font-arabic">
-                                  {example.arabic}
-                                </span>
-                                <span className="text-xs text-gray-300">#{idx + 1}</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {entries.length > 0 ? (
-                entries.map((entry, index) => (
-                  <ResultCard key={entry.id} entry={entry} index={index} />
-                ))
-              ) : (
-                <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-gray-200">
-                  <div className="bg-gray-100 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <SearchX className="h-7 w-7 text-gray-400" />
-                  </div>
-                  <h3 className="text-base font-medium text-gray-700">Hech narsa topilmadi</h3>
-                  <p className="text-gray-400 mt-1 text-sm">So'z yozilishini tekshirib ko'ring yoki boshqa so'z izlang.</p>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </Layout>
   );

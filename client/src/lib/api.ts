@@ -25,17 +25,20 @@ export interface DictionaryStats {
 
 // Available dictionary sources - G'oniy is the primary/default
 export const DICTIONARY_SOURCES = [
-  { id: 'Ghoniy', name: 'G\'oniy (الغني)', description: 'Harakatli arabcha izohli lug\'at', isPrimary: true },
+  { id: 'Ghoniy', name: 'G\'oniy (Ш§Щ„ШєЩ†ЩЉ)', description: 'Harakatli arabcha izohli lug\'at', isPrimary: true },
   { id: 'Muasir', name: 'Muasir', description: 'Arabcha-O\'zbekcha lug\'at', isPrimary: false },
-  { id: 'Roid', name: 'Roid (الرائد)', description: 'Arabcha-Arabcha lug\'at', isPrimary: false },
+  { id: 'Roid', name: 'Roid (Ш§Щ„Ш±Ш§Ш¦ШЇ)', description: 'Arabcha-Arabcha lug\'at', isPrimary: false },
 ] as const;
 
 import { searchOffline, isOfflineReady } from './offlineDb';
+import { normalizeSearchTerm } from '@shared/search';
+import { adminFetch } from './adminAuth';
 
 // API Functions
 export async function getDictionaryEntries(search?: string, sources?: string[]): Promise<DictionaryEntry[]> {
   const params = new URLSearchParams();
-  if (search) params.set('search', search);
+  const normalizedSearch = search ? normalizeSearchTerm(search) : '';
+  if (normalizedSearch) params.set('search', normalizedSearch);
   if (sources && sources.length > 0) params.set('sources', sources.join(','));
   
   const url = params.toString() ? `/api/dictionary?${params.toString()}` : '/api/dictionary';
@@ -51,9 +54,9 @@ export async function getDictionaryEntries(search?: string, sources?: string[]):
     
     return data;
   } catch (error) {
-    if (search && await isOfflineReady()) {
-      console.log('Using offline search for:', search);
-      return searchOffline(search, sources || ['Ghoniy']);
+    if (normalizedSearch && await isOfflineReady()) {
+      console.log('Using offline search for:', normalizedSearch);
+      return searchOffline(normalizedSearch, sources || ['Ghoniy']);
     }
     throw error;
   }
@@ -72,7 +75,7 @@ export async function getDictionaryEntry(id: number): Promise<DictionaryEntry> {
 }
 
 export async function createDictionaryEntry(entry: Partial<DictionaryEntry>): Promise<DictionaryEntry> {
-  const response = await fetch('/api/dictionary', {
+  const response = await adminFetch('/api/dictionary', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(entry),
@@ -82,7 +85,7 @@ export async function createDictionaryEntry(entry: Partial<DictionaryEntry>): Pr
 }
 
 export async function updateDictionaryEntry(id: number, entry: Partial<DictionaryEntry>): Promise<DictionaryEntry> {
-  const response = await fetch(`/api/dictionary/${id}`, {
+  const response = await adminFetch(`/api/dictionary/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(entry),
@@ -92,7 +95,7 @@ export async function updateDictionaryEntry(id: number, entry: Partial<Dictionar
 }
 
 export async function deleteDictionaryEntry(id: number): Promise<void> {
-  const response = await fetch(`/api/dictionary/${id}`, {
+  const response = await adminFetch(`/api/dictionary/${id}`, {
     method: 'DELETE',
   });
   if (!response.ok) throw new Error('Failed to delete entry');
@@ -115,7 +118,7 @@ export interface ExampleSearchResponse {
 
 export async function searchExamples(word: string, limit: number = 30): Promise<ExampleSearchResponse> {
   const params = new URLSearchParams();
-  params.set('word', word);
+  params.set('word', normalizeSearchTerm(word));
   params.set('limit', limit.toString());
   
   const response = await fetch(`/api/dictionary/examples?${params.toString()}`);
@@ -124,7 +127,7 @@ export async function searchExamples(word: string, limit: number = 30): Promise<
 }
 
 export async function importEntries(entries: any[], dictionarySource: string = "Muasir"): Promise<{ count: number; entries: DictionaryEntry[]; dictionarySource: string }> {
-  const response = await fetch('/api/dictionary/import', {
+  const response = await adminFetch('/api/dictionary/import', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ entries, dictionarySource }),
@@ -134,7 +137,7 @@ export async function importEntries(entries: any[], dictionarySource: string = "
 }
 
 export async function translateEntry(id: number): Promise<DictionaryEntry> {
-  const response = await fetch(`/api/dictionary/${id}/translate`, {
+  const response = await adminFetch(`/api/dictionary/${id}/translate`, {
     method: 'POST',
   });
   if (!response.ok) throw new Error('Failed to translate entry');
@@ -142,7 +145,7 @@ export async function translateEntry(id: number): Promise<DictionaryEntry> {
 }
 
 export async function batchTranslate(): Promise<{ message: string; count: number }> {
-  const response = await fetch('/api/dictionary/batch-translate', {
+  const response = await adminFetch('/api/dictionary/batch-translate', {
     method: 'POST',
   });
   if (!response.ok) throw new Error('Failed to batch translate');
@@ -166,4 +169,5 @@ export async function getRelatedWords(id: number): Promise<DictionaryEntry[]> {
   if (!response.ok) throw new Error('Failed to fetch related words');
   return response.json();
 }
+
 

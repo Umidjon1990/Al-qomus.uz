@@ -4,14 +4,15 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import DictionaryPage from "@/pages/DictionaryPage";
-import QuizPage from "@/pages/QuizPage";
-import AdminPage from "@/pages/AdminPage";
-import TelegramAdminPage from "@/pages/TelegramAdminPage";
-import LoginPage from "@/pages/LoginPage";
-import AboutPage from "@/pages/AboutPage";
-import NotFound from "@/pages/not-found";
 import { AuthProvider, useAuth } from "@/lib/auth";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
+
+const QuizPage = lazy(() => import("@/pages/QuizPage"));
+const AdminPage = lazy(() => import("@/pages/AdminPage"));
+const TelegramAdminPage = lazy(() => import("@/pages/TelegramAdminPage"));
+const LoginPage = lazy(() => import("@/pages/LoginPage"));
+const AboutPage = lazy(() => import("@/pages/AboutPage"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 // Protected Route Component
 function ProtectedRoute({ component: Component, adminOnly = false }: { component: React.ComponentType, adminOnly?: boolean }) {
@@ -57,7 +58,15 @@ function App() {
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Suspense
+            fallback={
+              <div className="grid min-h-screen place-items-center bg-background text-sm font-medium text-slate-500">
+                Sahifa yuklanmoqda…
+              </div>
+            }
+          >
+            <Router />
+          </Suspense>
         </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>

@@ -1,0 +1,3516 @@
+{
+  "package": "ghoniy-approved-batch-000101-000200",
+  "dictionarySource": "Ghoniy",
+  "status": "approved_with_hold_for_staged_apply",
+  "productionReady": false,
+  "stagedApplyReady": true,
+  "productionApplied": false,
+  "generatedAt": "2026-08-29",
+  "safeguards": {
+    "sourceHashRequiredAtApply": true,
+    "revisionBackupRequired": true,
+    "transactionalApplyRequired": true,
+    "rollbackRequired": true,
+    "heldEntriesMustBeExcluded": true
+  },
+  "totals": {
+    "entries": 100,
+    "senses": 176,
+    "applyEligibleEntries": 99,
+    "heldEntries": 1
+  },
+  "heldEntries": [
+    {
+      "id": 79237,
+      "arabic": "تِلْقاءٌ",
+      "reason": "exact_source_duplicate",
+      "duplicateOf": 79236,
+      "note": "Bosh so‘z, arabcha ta’rif va ma’nolar ID 79236 bilan aynan bir xil."
+    }
+  ],
+  "entries": [
+    {
+      "sequenceIndex": 101,
+      "id": 79224,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قُشَعْرِيرَةٌ",
+      "root": "قشعر‏",
+      "grammarLabel": "اِسْمٌ مِن اِقْشَعَرَّ",
+      "morphology": "",
+      "arabicDefinition": "( اِسْمٌ مِن اِقْشَعَرَّ).|1- أَخَذَتْهُ قُشَعْرِيرَةٌ : رِعْدَةٌ تَدُلُّ عَلَى بِدَايَةِ أَعْرَاضِ الْحُمَّى.|2- أَحَسَّ بِقُشَعْرِيرَةٍ : بِارْتِجَافٍ، اِقْشِعْرَارٍ- ولَمْ تَتَمَالَكِ الانْتِفَاضَ من قُشَعْرِيرَةٍ طَفَتْ بِقُوَّةٍ عَلَى جِلْدِهَا. (أحمد التوفيق).",
+      "sourceHash": "1acaaa108d3c1136bee39522210bd28571c5afb8e9cac28709dc975b70247620",
+      "wordType": "ot",
+      "uzbek": "et uvishishi, titroq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَخَذَتْهُ قُشَعْرِيرَةٌ",
+          "arabicGloss": "رِعْدَةٌ تَدُلُّ عَلَى بِدَايَةِ أَعْرَاضِ الْحُمَّى.",
+          "uzbekMeaning": "isitma boshlanishini bildirishi mumkin bo‘lgan sovuq qotish va titroq",
+          "uzbekExample": "Uni et uvishishi va titroq tutdi; bu isitma boshlanishining belgisi edi.",
+          "register": "tibbiyot"
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَحَسَّ بِقُشَعْرِيرَةٍ",
+          "arabicGloss": "بِارْتِجَافٍ، اِقْشِعْرَارٍ- ولَمْ تَتَمَالَكِ الانْتِفَاضَ من قُشَعْرِيرَةٍ طَفَتْ بِقُوَّةٍ عَلَى جِلْدِهَا. (أحمد التوفيق).",
+          "uzbekMeaning": "sovuq, qo‘rquv yoki kuchli hissiyotdan badan jimirlab, et uvishishi",
+          "uzbekExample": "U badanida kuchli paydo bo‘lgan jimirlashdan o‘zini titrashdan to‘xtata olmadi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_medical_wording_note",
+        "issues": [
+          "قشعريرة birinchi ma’noda isitma boshlanishini bildirishi mumkin bo‘lgan titroq, ikkinchi ma’noda umumiy et uvishishi sifatida ajratildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 102,
+      "id": 79226,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جَزَّ",
+      "root": "جزز‏",
+      "grammarLabel": "فعل: ثلاثي لازم",
+      "morphology": "جَزَّ، يَجُزُّ، مصدر جُزُوزٌ",
+      "arabicDefinition": "( فعل: ثلاثي لازم).| جَزَّ، يَجُزُّ، مصدر جُزُوزٌ|- جَزَّ التَّمْرُ : يَبِسَ.",
+      "sourceHash": "30be13b422ba955c53b21471409fd75a49e47c1572072a6cf6a10b55197f0f98",
+      "wordType": "fe’l",
+      "uzbek": "xurmo qurimoq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "جَزَّ التَّمْرُ",
+          "arabicGloss": "يَبِسَ.",
+          "uzbekMeaning": "xurmo mevasi qurib qolmoq",
+          "uzbekExample": "Xurmo quridi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 103,
+      "id": 79227,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَشَلَ",
+      "root": "نشل‏",
+      "grammarLabel": "فعل: ثلاثي لازم",
+      "morphology": "",
+      "arabicDefinition": "( فعل: ثلاثي لازم).| يَنْشُلُ، مصدر نُشُولٌ- نَشَلَ الْحَيَوَانُ : قَلَّ لَحْمُهُ.",
+      "sourceHash": "455a005f14566bd825de7006d9269002241cf7fa33b593aa92ad074250f3049b",
+      "wordType": "fe’l",
+      "uzbek": "ozib ketmoq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَنْشُلُ، مصدر نُشُولٌ- نَشَلَ الْحَيَوَانُ",
+          "arabicGloss": "قَلَّ لَحْمُهُ.",
+          "uzbekMeaning": "hayvonning eti kamayib, ozg‘in bo‘lib qolmoq",
+          "uzbekExample": "Hayvon ozib, eti kamaydi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 104,
+      "id": 79228,
+      "dictionarySource": "Ghoniy",
+      "arabic": "تَحَيُّنٌ",
+      "root": "حين‏",
+      "grammarLabel": "مصدر تَحَيَّنَ",
+      "morphology": "",
+      "arabicDefinition": "( مصدر تَحَيَّنَ).|-تَحَيُّنُ الفُرْصَةِ : تَرَقُّبُهَا .",
+      "sourceHash": "0abd11159bac783167d01a510e095a1de045ee315362840d8ded8732c5db73f4",
+      "wordType": "masdar",
+      "uzbek": "qulay fursatni poylash",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تَحَيُّنُ الفُرْصَةِ",
+          "arabicGloss": "تَرَقُّبُهَا .",
+          "uzbekMeaning": "qulay fursat kelishini kuzatib, uni poylash",
+          "uzbekExample": "U qulay fursatni poyladi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 105,
+      "id": 79229,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جَبْرٌ",
+      "root": "جبر‏",
+      "grammarLabel": "مصدر جَبَرَ",
+      "morphology": "",
+      "arabicDefinition": "( مصدر جَبَرَ).|1- مُخْتَصٌّ بِجَبْرِ العِظَامِ : إِصْلاَحِهَا، إِعَادَتِهَا إِلَى وَضْعِهَا السَّلِيمِ.|2- مُتَمَيِّزٌ فيِ عِلْمِ الجَبْرِ : فَرْعٌ مِنَ الرِّيَاضِيَّاتِ يَقُومُ عَلَى إِحْلاَلِ الرُّمُوزِ مَحَلَّ الأَعْدَادِ المجْهُولَةِ أَوِ الْمَعْلُومَةِ.",
+      "sourceHash": "494a1bc64cf9f77eb92c5941391e3b40e30c4e4672b1c83a9e6adc6c763f0cce",
+      "wordType": "ot va masdar",
+      "uzbek": "1. suyakni joyiga solish; 2. algebra",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مُخْتَصٌّ بِجَبْرِ العِظَامِ",
+          "arabicGloss": "إِصْلاَحِهَا، إِعَادَتِهَا إِلَى وَضْعِهَا السَّلِيمِ.",
+          "uzbekMeaning": "singan yoki chiqqan suyakni tuzatib, to‘g‘ri holatiga keltirish",
+          "uzbekExample": "U suyaklarni joyiga solish bo‘yicha mutaxassis.",
+          "register": "tibbiyot"
+        },
+        {
+          "index": 2,
+          "arabicExample": "مُتَمَيِّزٌ فيِ عِلْمِ الجَبْرِ",
+          "arabicGloss": "فَرْعٌ مِنَ الرِّيَاضِيَّاتِ يَقُومُ عَلَى إِحْلاَلِ الرُّمُوزِ مَحَلَّ الأَعْدَادِ المجْهُولَةِ أَوِ الْمَعْلُومَةِ.",
+          "uzbekMeaning": "algebra — sonlar va boshqa miqdorlarni harflar hamda belgilar bilan ifodalab, ular orasidagi munosabatlarni o‘rganadigan matematika sohasi",
+          "uzbekExample": "U algebra fanida kuchli.",
+          "register": "matematika",
+          "reviewStatus": "source_definition_clarified"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_definition_clarification",
+        "issues": [
+          "Algebra noma’lum yoki ma’lum sonlar o‘rniga belgi qo‘yish bilangina cheklanmaydi; miqdorlar va ularning munosabatlarini belgilar orqali o‘rganadigan soha sifatida aniqlashtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 106,
+      "id": 79230,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مُسَطَّرٌ",
+      "root": "سطر‏",
+      "grammarLabel": "مفعول مِن سَطَّرَ",
+      "morphology": "",
+      "arabicDefinition": "( مفعول مِن سَطَّرَ).|1- كَلاَمٌ مُسَطَّرٌ : مَكْتُوبٌ.|2- شِيكٌ مُسَطَّرٌ : مَشْطُوبٌ عَلَيْهِ، لاَ يُمْكِنُ تَسَلُّمُهُ مُبَاشَرَةً، أَيْ يُصْرَفُ مِنْ حِسَابٍ إِلَى حِسَابِ الْمُسْتَفِيدِ.",
+      "sourceHash": "db0e3545a2c0622e74d558ce1748c69c0acb7c83a1a966dc0a33a70718603faf",
+      "wordType": "majhul sifatdosh",
+      "uzbek": "1. yozilgan; 2. chiziq tortilgan chek",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَلاَمٌ مُسَطَّرٌ",
+          "arabicGloss": "مَكْتُوبٌ.",
+          "uzbekMeaning": "satrga tushirilgan, yozib qo‘yilgan",
+          "uzbekExample": "Bu yozib qo‘yilgan so‘zlardir."
+        },
+        {
+          "index": 2,
+          "arabicExample": "شِيكٌ مُسَطَّرٌ",
+          "arabicGloss": "مَشْطُوبٌ عَلَيْهِ، لاَ يُمْكِنُ تَسَلُّمُهُ مُبَاشَرَةً، أَيْ يُصْرَفُ مِنْ حِسَابٍ إِلَى حِسَابِ الْمُسْتَفِيدِ.",
+          "uzbekMeaning": "chiziq tortilgan chek — naqd pul qilib bevosita olinmay, mablag‘i oluvchining hisobiga o‘tkaziladigan chek",
+          "uzbekExample": "Chiziq tortilgan chek mablag‘i oluvchining bank hisobiga o‘tkazildi.",
+          "register": "bank ishi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 107,
+      "id": 79231,
+      "dictionarySource": "Ghoniy",
+      "arabic": "اِسْتِمْهالٌ",
+      "root": "مهل‏",
+      "grammarLabel": "اِسْتَمْهَلَ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْتَمْهَلَ).|-قَبِلَ اِسْتِمْهالَهُ : قَبِلَ إِعْطاءَهُ مُهْلَةً.",
+      "sourceHash": "fbc67696167b199c9a669d8e1f37d545194eeeec2335c287d2aaef304e5fb220",
+      "wordType": "masdar",
+      "uzbek": "muhlat so‘rash",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قَبِلَ اِسْتِمْهالَهُ",
+          "arabicGloss": "قَبِلَ إِعْطاءَهُ مُهْلَةً.",
+          "uzbekMeaning": "bir ishni bajarish uchun qo‘shimcha vaqt yoki muhlat so‘rash",
+          "uzbekExample": "Uning qo‘shimcha muhlat so‘rashini qabul qildi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 108,
+      "id": 79232,
+      "dictionarySource": "Ghoniy",
+      "arabic": "شُورَى",
+      "root": "شور‏",
+      "grammarLabel": "اِسْمٌ بِمَعْنَى التَّشَاوُرُ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ بِمَعْنَى التَّشَاوُرُ).|1- جَعَلَ الأَمْرَ بَيْنَهُمْ شُورَى : أَيْ جَعَلَ الأَمْرَ للتَّشَاوُرِ وَالاِسْتِمَاعِ إِلَى جَمِيعِ الآرَاءِ مِنْ أَجْلِ الاتِّفَاقِ عَلَى رَأْيٍ- كَانَ الْحُكْمُ شُورَى بَيْنَ النَّاسِ فِي صَدْرِ الإسْلاَمِ.|2- مَجْلِسُ الشُّورَى : مَجْلِسُ التَّشَاوُرِ وَالتَّدَاوُلِ فِي شُؤُونِ البِلاَدِ وَقَضَايَاها.",
+      "sourceHash": "e669fb7b0a7e3ad89062be636c69c9601db7971c184d917fc1013e26c0a2759e",
+      "wordType": "ot",
+      "uzbek": "1. o‘zaro maslahat; 2. maslahat kengashi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "جَعَلَ الأَمْرَ بَيْنَهُمْ شُورَى",
+          "arabicGloss": "أَيْ جَعَلَ الأَمْرَ للتَّشَاوُرِ وَالاِسْتِمَاعِ إِلَى جَمِيعِ الآرَاءِ مِنْ أَجْلِ الاتِّفَاقِ عَلَى رَأْيٍ- كَانَ الْحُكْمُ شُورَى بَيْنَ النَّاسِ فِي صَدْرِ الإسْلاَمِ.",
+          "uzbekMeaning": "barcha fikrlarni tinglab, umumiy qarorga kelish uchun o‘zaro maslahatlashish",
+          "uzbekExample": "U ishni ularning o‘zaro maslahatiga qo‘ydi; ilk islom davrida boshqaruv maslahatlasha turib olib borilgan."
+        },
+        {
+          "index": 2,
+          "arabicExample": "مَجْلِسُ الشُّورَى",
+          "arabicGloss": "مَجْلِسُ التَّشَاوُرِ وَالتَّدَاوُلِ فِي شُؤُونِ البِلاَدِ وَقَضَايَاها.",
+          "uzbekMeaning": "mamlakat ishlari va masalalarini muhokama qiladigan maslahat kengashi",
+          "uzbekExample": "Maslahat kengashi mamlakat masalalarini muhokama qildi.",
+          "register": "siyosiy-huquqiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 109,
+      "id": 79233,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَحْشَاءُ",
+      "root": "فحش‏",
+      "grammarLabel": "اِسْمٌ لِلْفَاحِشَةِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ لِلْفَاحِشَةِ).|-نَهَاهُ عَنِ الْفَحْشَاءِ : عَنِ الزِّنَى وَكُلِّ مَا يَشْتَدُّ قُبْحُهُ مِنَ الذُّنُوبِ. العنكبوت آية 45إِنَّ الصَّلاَةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ (قرآن) :لاَ يَكُونُ الْمَرْءُ لَبِيباً حَتَّى يَكُونَ نَبِيلَ الرَّأْيِ طَاهِرَ الثَّوْبِ مِنَ الْفَحْشَاءِ. (الجاحظ).",
+      "sourceHash": "c018c84a46bde054aa657e6239e998f1d6dcb74091ae608443c6d6a58e6d57c7",
+      "wordType": "ot",
+      "uzbek": "o‘ta uyatsiz va qabih ish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَهَاهُ عَنِ الْفَحْشَاءِ",
+          "arabicGloss": "عَنِ الزِّنَى وَكُلِّ مَا يَشْتَدُّ قُبْحُهُ مِنَ الذُّنُوبِ. العنكبوت آية 45إِنَّ الصَّلاَةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ (قرآن) :لاَ يَكُونُ الْمَرْءُ لَبِيباً حَتَّى يَكُونَ نَبِيلَ الرَّأْيِ طَاهِرَ الثَّوْبِ مِنَ الْفَحْشَاءِ. (الجاحظ).",
+          "uzbekMeaning": "zino va qabihligi haddan oshgan boshqa gunohlar; o‘ta uyatsiz va yaramas ish",
+          "uzbekExample": "U uni o‘ta uyatsiz va qabih ishlardan qaytardi; namoz uyatsiz va yomon ishlardan qaytaradi.",
+          "register": "diniy va axloqiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 110,
+      "id": 79234,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ذَفافٌ",
+      "root": "ذفف‏",
+      "grammarLabel": "اِسْمٌ مِنَ الذَّفِّ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِنَ الذَّفِّ).|-ما ذاقَ ذَفافاً : شَيْئاً.",
+      "sourceHash": "454f47fea21c5cc85a907e524ecea4bf0c2192f32f9ab402be77139082fcff75",
+      "wordType": "ot",
+      "uzbek": "biror narsa, zarracha",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ما ذاقَ ذَفافاً",
+          "arabicGloss": "شَيْئاً.",
+          "uzbekMeaning": "inkor gapida: biror narsa yoki zarracha",
+          "uzbekExample": "U biror narsa ham tatib ko‘rmadi.",
+          "register": "kamyob ibora"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "Qohira Arab tili akademiyasi ما ذاق ذفافا iborasida ذفاف so‘zi biror narsa ma’nosida kelishini tasdiqlaydi; kamyoblik belgisi qo‘shildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 111,
+      "id": 79235,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَمْحَةٌ",
+      "root": "لمح‏",
+      "grammarLabel": "اِسْمٌ مِنَ اللَّمْحِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِنَ اللَّمْحِ).|1- رَأَيْتُهُ فِي لَمْحَةِ الْبَرْقِ : فِي قَدْرِ لَمْحَةِ الْبَرْقِ، نَظْرَة سَرِيعَة جِدّاً.|2- فِيهِ لَمْحَةٌ مِن أُمِّهِ : شَبَهٌ.",
+      "sourceHash": "f2044678b56c8aa721a2037dee9d62d85aea3ffd99acb1f2ba665b9bffcd97a6",
+      "wordType": "ot",
+      "uzbek": "1. bir lahza; 2. o‘xshashlik alomati",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَأَيْتُهُ فِي لَمْحَةِ الْبَرْقِ",
+          "arabicGloss": "فِي قَدْرِ لَمْحَةِ الْبَرْقِ، نَظْرَة سَرِيعَة جِدّاً.",
+          "uzbekMeaning": "chaqmoq chaqnashidek juda qisqa lahza yoki tez nigoh",
+          "uzbekExample": "Uni chaqmoq chaqnashidek bir lahzada ko‘rdim."
+        },
+        {
+          "index": 2,
+          "arabicExample": "فِيهِ لَمْحَةٌ مِن أُمِّهِ",
+          "arabicGloss": "شَبَهٌ.",
+          "uzbekMeaning": "kimdir yoki nimagadir o‘xshashlikning kichik belgisi",
+          "uzbekExample": "Unda onasiga o‘xshash bir belgi bor."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 112,
+      "id": 79236,
+      "dictionarySource": "Ghoniy",
+      "arabic": "تِلْقاءٌ",
+      "root": "لقي‏",
+      "grammarLabel": "اِسْمٌ مِنَ اللِّقاءِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِنَ اللِّقاءِ).|1- جَلَسَ تِلْقاءَهُ : مُقابِلاً لَهُ، تُجاهَهُ.|2- قامَ بِمَهامِّهِ مِنْ تِلْقاءِ نَفْسِهِ : دونَ أَنْ يَتَلَقَّى أَوامِرَ مِنْ أَحَدٍ، أَيْ بِحُرِّيَّةٍ وَإِرادَةٍ. يونس آية 15 قُلْ ما يَكونُ لِي أَنْ أُبَدِّلَهُ مِنْ تِلْقاءِ | نَفْسِي . (قرآن).",
+      "sourceHash": "e9f42871d605a0cee00445d9f4c12d617eece3016fa1fda53ee84d3ad1898624",
+      "wordType": "ot va ravish",
+      "uzbek": "1. ro‘parasida; 2. o‘z ixtiyori bilan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "جَلَسَ تِلْقاءَهُ",
+          "arabicGloss": "مُقابِلاً لَهُ، تُجاهَهُ.",
+          "uzbekMeaning": "birovning ro‘parasida yoki qarshisida",
+          "uzbekExample": "U uning ro‘parasida o‘tirdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "قامَ بِمَهامِّهِ مِنْ تِلْقاءِ نَفْسِهِ",
+          "arabicGloss": "دونَ أَنْ يَتَلَقَّى أَوامِرَ مِنْ أَحَدٍ، أَيْ بِحُرِّيَّةٍ وَإِرادَةٍ. يونس آية 15 قُلْ ما يَكونُ لِي أَنْ أُبَدِّلَهُ مِنْ تِلْقاءِ | نَفْسِي . (قرآن).",
+          "uzbekMeaning": "hech kimdan buyruq olmasdan, o‘z ixtiyori va tashabbusi bilan",
+          "uzbekExample": "U vazifalarini o‘z tashabbusi bilan bajardi; uni o‘z ixtiyorim bilan o‘zgartirishga haqqim yo‘q.",
+          "register": "umumiy va Qur’on, Yunus surasi 15-oyat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 113,
+      "id": 79237,
+      "dictionarySource": "Ghoniy",
+      "arabic": "تِلْقاءٌ",
+      "root": "لقي‏",
+      "grammarLabel": "اِسْمٌ مِنَ اللِّقاءِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِنَ اللِّقاءِ).|1- جَلَسَ تِلْقاءَهُ : مُقابِلاً لَهُ، تُجاهَهُ.|2- قامَ بِمَهامِّهِ مِنْ تِلْقاءِ نَفْسِهِ : دونَ أَنْ يَتَلَقَّى أَوامِرَ مِنْ أَحَدٍ، أَيْ بِحُرِّيَّةٍ وَإِرادَةٍ. يونس آية 15 قُلْ ما يَكونُ لِي أَنْ أُبَدِّلَهُ مِنْ تِلْقاءِ نَفْسِي . (قرآن).",
+      "sourceHash": "a5f2aa6a7dde91e429076c9453fe8cc7b020bf5f340ebb4a6c58e5ad3bf52b41",
+      "wordType": "ot va ravish",
+      "uzbek": "1. ro‘parasida; 2. o‘z ixtiyori bilan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "جَلَسَ تِلْقاءَهُ",
+          "arabicGloss": "مُقابِلاً لَهُ، تُجاهَهُ.",
+          "uzbekMeaning": "birovning ro‘parasida yoki qarshisida",
+          "uzbekExample": "U uning ro‘parasida o‘tirdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "قامَ بِمَهامِّهِ مِنْ تِلْقاءِ نَفْسِهِ",
+          "arabicGloss": "دونَ أَنْ يَتَلَقَّى أَوامِرَ مِنْ أَحَدٍ، أَيْ بِحُرِّيَّةٍ وَإِرادَةٍ. يونس آية 15 قُلْ ما يَكونُ لِي أَنْ أُبَدِّلَهُ مِنْ تِلْقاءِ نَفْسِي . (قرآن).",
+          "uzbekMeaning": "hech kimdan buyruq olmasdan, o‘z ixtiyori va tashabbusi bilan",
+          "uzbekExample": "U vazifalarini o‘z tashabbusi bilan bajardi; uni o‘z ixtiyorim bilan o‘zgartirishga haqqim yo‘q.",
+          "register": "umumiy va Qur’on, Yunus surasi 15-oyat"
+        }
+      ],
+      "applyStatus": "held",
+      "hold": {
+        "reason": "exact_source_duplicate",
+        "duplicateOf": 79236,
+        "note": "Bosh so‘z, arabcha ta’rif va ma’nolar ID 79236 bilan aynan bir xil."
+      },
+      "approval": {
+        "decision": "approved_with_exact_source_duplicate_hold",
+        "issues": [
+          "ID 79237 bosh so‘z, arabcha ta’rif va ma’nolar bo‘yicha ID 79236 ning aynan takrori; tarjima tasdiqlandi, ammo alohida nashr yozuvi sifatida qo‘llash birlashtirish qarorigacha to‘xtatiladi"
+        ],
+        "reviewedAt": "2026-08-29"
+      },
+      "notes": "ID 79237 maqolasi ID 79236 bilan arabcha bosh so‘z va ta’rif bo‘yicha aynan bir xil. Tarjima yo‘qotilmasligi uchun tayyorlandi, lekin nashrda takror yozuvni saqlash yoki birlashtirish alohida hal qilinadi."
+    },
+    {
+      "sequenceIndex": 114,
+      "id": 79238,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَهْبَنَةٌ",
+      "root": "رهب‏",
+      "grammarLabel": "اِسْمٌ مِنْ مَعْنَى الرَّاهِبِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِنْ مَعْنَى الرَّاهِبِ).| طَريقَةُ الرُّهْبانِ وَاتِّخاذُها.",
+      "sourceHash": "0b02ab20ed1d10fa085635cc5815b072263ed670a7c2a0454f6ccb651e3ef53e",
+      "wordType": "ot",
+      "uzbek": "rohiblik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "طَريقَةُ الرُّهْبانِ وَاتِّخاذُها.",
+          "uzbekMeaning": "rohiblar hayot tarzini qabul qilish va rohiblik yo‘lini tutish",
+          "uzbekExample": "U rohiblik hayot tarzini qabul qildi.",
+          "register": "dinshunoslik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 115,
+      "id": 79239,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نُهْبَةٌ",
+      "root": "نهب‏",
+      "grammarLabel": "اِسْمٌ مِنْ نَهَبَ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِنْ نَهَبَ).|-وَزَّعُوا النُّهْبَةَ : الْغَنِيمَة الَّتِي نُهِبَتْ، الشَّيْء الْمَنْهُوب وَمَا تَمَّ الِاسْتِيلاءُ عَلَيْهِ مِنْ مَالٍ أَوْ مَحْصُولٍ .",
+      "sourceHash": "fb15630f8edccc2a255cd04f6bde8824d41012719176774c101ebecafbfd5dd6",
+      "wordType": "ot",
+      "uzbek": "talangan o‘lja",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَزَّعُوا النُّهْبَةَ",
+          "arabicGloss": "الْغَنِيمَة الَّتِي نُهِبَتْ، الشَّيْء الْمَنْهُوب وَمَا تَمَّ الِاسْتِيلاءُ عَلَيْهِ مِنْ مَالٍ أَوْ مَحْصُولٍ .",
+          "uzbekMeaning": "talab yoki bosib olinib qo‘lga kiritilgan mol, hosil yoki boshqa o‘lja",
+          "uzbekExample": "Ular talangan o‘ljani taqsimladilar."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 116,
+      "id": 79240,
+      "dictionarySource": "Ghoniy",
+      "arabic": "تَقْوَى",
+      "root": "وقي‏",
+      "grammarLabel": "اِسْمٌ مِن اتَّقَى",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِن اتَّقَى).|1- كانَ رَجُلاً وَرِعاً شَديدَ التَّقْوَى : شَديدَ التَّنَسُّكِ وَالعِبَادَةِ وَمَخافَةِ اللَّهِ وَاحْتِرَامِ الشَّرِيعَةِ.|2. لاَفَرْقَ بَيْنَ عَرَبِيٍّ وَأَعْجَمِيٍّ إِلاَّ بِالتَّقْوَى . (حديث).",
+      "sourceHash": "293d9666ffe69580d41a393c4607d6fe186ef006aca8f520bfa01fd1d8339731",
+      "wordType": "ot",
+      "uzbek": "1. Allohdan qo‘rqib gunohdan saqlanish; 2. inson ustunligining taqvo mezoni",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كانَ رَجُلاً وَرِعاً شَديدَ التَّقْوَى",
+          "arabicGloss": "شَديدَ التَّنَسُّكِ وَالعِبَادَةِ وَمَخافَةِ اللَّهِ وَاحْتِرَامِ الشَّرِيعَةِ.",
+          "uzbekMeaning": "Allohdan qo‘rqib, Uning buyruqlariga rioya qilish va gunohlardan saqlanish",
+          "uzbekExample": "U parhezkor, ibodatga berilgan va taqvosi kuchli kishi edi.",
+          "register": "diniy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "لاَفَرْقَ بَيْنَ عَرَبِيٍّ وَأَعْجَمِيٍّ إِلاَّ بِالتَّقْوَى . (حديث).",
+          "uzbekMeaning": "insonning nasab yoki millat bilan emas, taqvo bilan fazilatli bo‘lishi",
+          "uzbekExample": "Arabning ajamdan ustunligi faqat taqvo bilandir.",
+          "register": "hadis mazmuni"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_religious_terminology_note",
+        "issues": [
+          "Taqvo faqat qo‘rquv deb toraytirilmadi; Allohning buyruqlariga rioya qilib gunohdan saqlanish mazmuni to‘liq berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 117,
+      "id": 79241,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رِيٌّ",
+      "root": "روي‏",
+      "grammarLabel": "اِسْمٌ مِن ارْتَوَى الشَّجَرُ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِن ارْتَوَى الشَّجَرُ).|1- يَعيشُ في رِيٍّ : في حُسْنِ حالٍ ونِعْمَةٍ.|2- رِيُّ الشَّجَرِ : اِرْتِواؤُها.",
+      "sourceHash": "9b2824906a8760a213bfce4c366a5e1a6a7f43fab06bc5bbf57933b557461b40",
+      "wordType": "ot",
+      "uzbek": "1. farovonlik; 2. sug‘orish va suvga to‘yish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَعيشُ في رِيٍّ",
+          "arabicGloss": "في حُسْنِ حالٍ ونِعْمَةٍ.",
+          "uzbekMeaning": "yaxshi holat, ne’mat va farovonlikda yashash",
+          "uzbekExample": "U farovon va yaxshi sharoitda yashaydi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "رِيُّ الشَّجَرِ",
+          "arabicGloss": "اِرْتِواؤُها.",
+          "uzbekMeaning": "daraxtlarni sug‘orish va ularning suvga to‘yishi",
+          "uzbekExample": "Daraxtlar sug‘orilib, suvga to‘ydi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 118,
+      "id": 79242,
+      "dictionarySource": "Ghoniy",
+      "arabic": "سُقْيَا",
+      "root": "سقي‏",
+      "grammarLabel": "اِسْمٌ مِن السَّقْيِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمٌ مِن السَّقْيِ).|-سُقْيَا رَحْمَةٍ لاَ سُقْيَا عَذَابٍ : دُعَاءٌ، أي اِسْقِنَا غَيْثاً فِيهِ نَفْعٌ بِلاَ ضَرَرٍ.",
+      "sourceHash": "d448b81604bccaddb2775239868079b60b0582e69dff489e46f1bd96a8b8d1bd",
+      "wordType": "ot va duo",
+      "uzbek": "zararsiz, manfaatli yomg‘ir so‘rab qilingan duo",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سُقْيَا رَحْمَةٍ لاَ سُقْيَا عَذَابٍ",
+          "arabicGloss": "دُعَاءٌ، أي اِسْقِنَا غَيْثاً فِيهِ نَفْعٌ بِلاَ ضَرَرٍ.",
+          "uzbekMeaning": "rahmat yomg‘iri bo‘lsin, azob yomg‘iri bo‘lmasin, degan duo; zarar keltirmaydigan manfaatli yomg‘ir so‘rash",
+          "uzbekExample": "Ey Alloh, bizga zararli emas, foydali rahmat yomg‘irini yog‘dir.",
+          "register": "duo"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 119,
+      "id": 79243,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَنَّةٌ",
+      "root": "رنن‏",
+      "grammarLabel": "اِسْمُ الْمَرَّةِ مِنَ رَنَّ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ الْمَرَّةِ مِنَ رَنَّ).|1- رَنَّةُ القَّوْسِ : طَنينُها.|2- في صَوْتِها رَنَّةٌ : صَوْتٌ فيهِ حُزْنٌ عِنْدَ الغِنَاءِ أَوِ البُكاءِ.|3- سَمِعْتُ رَنَّتَها مِنْ بَعيدٍ : الصَّيْحَةُ ذاتُ الصَّوْتِ الْمُرْتَفِعِ.",
+      "sourceHash": "ec753c2a1d1d6287e0d75b50fb7428d4bcc6f4e7e2b7b498b350d942b0bf2963",
+      "wordType": "ot",
+      "uzbek": "1. jarang; 2. mungli ohang; 3. baland nido",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَنَّةُ القَّوْسِ",
+          "arabicGloss": "طَنينُها.",
+          "uzbekMeaning": "kamon tori yoki boshqa narsaning jaranglab chiqqan tovushi",
+          "uzbekExample": "Kamon torining jarangi eshitildi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "في صَوْتِها رَنَّةٌ",
+          "arabicGloss": "صَوْتٌ فيهِ حُزْنٌ عِنْدَ الغِنَاءِ أَوِ البُكاءِ.",
+          "uzbekMeaning": "qo‘shiq yoki yig‘idagi mungli ohang",
+          "uzbekExample": "Uning ovozida mungli ohang bor edi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "سَمِعْتُ رَنَّتَها مِنْ بَعيدٍ",
+          "arabicGloss": "الصَّيْحَةُ ذاتُ الصَّوْتِ الْمُرْتَفِعِ.",
+          "uzbekMeaning": "uzoqdan eshitiladigan baland nido yoki qichqiriq",
+          "uzbekExample": "Uning baland nidosini uzoqdan eshitdim."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 120,
+      "id": 79244,
+      "dictionarySource": "Ghoniy",
+      "arabic": "دَوْرَةٌ",
+      "root": "دور‏",
+      "grammarLabel": "اِسْمُ الْمَرَّةِ مِنْ دارَ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ الْمَرَّةِ مِنْ دارَ).|1- الدَّوْرَةٌ الدَّمَويَّةُ : جَرَيانُ الدَّمِ في حَرَكَتِهِ الدَّائِمَةِ في الجِسْمِ مِنَ الأَوْرِدَةِ إلى الشَّرَايِينِ وِمِنَ الشَّرايينِ إلى الأَوْرِدَةِ.|2- دَوْرَةُ الحَياةِ : مُخْتَلِفُ الْمَراحِلِ الَّتِي يَمُرُّ بِها الكائِنُ الحَيُّ مِنْ إِنْتاجِهِ إلى إِعادَةِ إِنْتاجِهِ.|3- دَوْرَةُ المِياهِ : المِرْحاضُ أَوِ الحَمَّامُ.|4- دَوْرَةُ البَرْلَمانِ، مَجْلِسُ الشَّعْبِ :الفَتْرَةُ الَّتِي يَحَدِّدُها قَانونُهُ لانْعِقادِ جَلَساتِ أَعْضائِهِ.|5- الدَّوْرَةُ الزِّراعِيَّةُ : جَعْلُ قِطْعَةِ أَرْضٍ تَتَعاقَبُ في زِراعَةِ مَحْصولٍ مُعَيَّنٍ أَوْ مَجْموعَةِ مَحاصيلَ وَفْقَ نِظامٍ تُراعَى فيهِ الحَرارَةُ أَوِ البُرودَةُ.|6- الدَّوْرَةُ الرِّياضِيَّةُ : مُبارَياتٌ بَيْن وَحَداتٍ رِياضِيَّةٍ.",
+      "sourceHash": "4ca397c20c0444d7ccc78ad635b6ac3a2a2b8e24a988135c8a9b940989acdf98",
+      "wordType": "ot",
+      "uzbek": "1. qon aylanishi; 2. hayot sikli; 3. hojatxona; 4. parlament sessiyasi; 5. almashlab ekish; 6. sport turniri",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "الدَّوْرَةٌ الدَّمَويَّةُ",
+          "arabicGloss": "جَرَيانُ الدَّمِ في حَرَكَتِهِ الدَّائِمَةِ في الجِسْمِ مِنَ الأَوْرِدَةِ إلى الشَّرَايِينِ وِمِنَ الشَّرايينِ إلى الأَوْرِدَةِ.",
+          "uzbekMeaning": "qon aylanishi — yurak haydaydigan qonning arteriyalar orqali tana va o‘pkaga borib, kapillyarlardan o‘tib, venalar orqali yurakka qaytib keladigan uzluksiz harakati",
+          "uzbekExample": "Qon yurakdan arteriyalar orqali chiqib, kapillyarlardan o‘tadi va venalar orqali yurakka qaytadi.",
+          "register": "tibbiyot",
+          "reviewStatus": "source_science_corrected"
+        },
+        {
+          "index": 2,
+          "arabicExample": "دَوْرَةُ الحَياةِ",
+          "arabicGloss": "مُخْتَلِفُ الْمَراحِلِ الَّتِي يَمُرُّ بِها الكائِنُ الحَيُّ مِنْ إِنْتاجِهِ إلى إِعادَةِ إِنْتاجِهِ.",
+          "uzbekMeaning": "hayot sikli — tirik mavjudot paydo bo‘lishidan ko‘payib, yangi avlod hosil qilishigacha o‘tadigan bosqichlar majmui",
+          "uzbekExample": "Tirik mavjudot hayot siklining turli bosqichlaridan o‘tadi.",
+          "register": "biologiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "دَوْرَةُ المِياهِ",
+          "arabicGloss": "المِرْحاضُ أَوِ الحَمَّامُ.",
+          "uzbekMeaning": "hojatxona yoki sanuzel",
+          "uzbekExample": "Hojatxona shu yo‘lakning oxirida."
+        },
+        {
+          "index": 4,
+          "arabicExample": "دَوْرَةُ البَرْلَمانِ، مَجْلِسُ الشَّعْبِ",
+          "arabicGloss": "الفَتْرَةُ الَّتِي يَحَدِّدُها قَانونُهُ لانْعِقادِ جَلَساتِ أَعْضائِهِ.",
+          "uzbekMeaning": "parlament yoki xalq kengashi a’zolari majlis o‘tkazishi uchun qonunda belgilangan davr — sessiya",
+          "uzbekExample": "Parlamentning navbatdagi sessiyasi boshlandi.",
+          "register": "siyosiy-huquqiy"
+        },
+        {
+          "index": 5,
+          "arabicExample": "الدَّوْرَةُ الزِّراعِيَّةُ",
+          "arabicGloss": "جَعْلُ قِطْعَةِ أَرْضٍ تَتَعاقَبُ في زِراعَةِ مَحْصولٍ مُعَيَّنٍ أَوْ مَجْموعَةِ مَحاصيلَ وَفْقَ نِظامٍ تُراعَى فيهِ الحَرارَةُ أَوِ البُرودَةُ.",
+          "uzbekMeaning": "almashlab ekish — bir yer maydonida ekinlarni belgilangan tartibda navbatlab yetishtirish tizimi",
+          "uzbekExample": "Xo‘jalik tuproq unumdorligini saqlash uchun almashlab ekish tizimini qo‘lladi.",
+          "register": "qishloq xo‘jaligi"
+        },
+        {
+          "index": 6,
+          "arabicExample": "الدَّوْرَةُ الرِّياضِيَّةُ",
+          "arabicGloss": "مُبارَياتٌ بَيْن وَحَداتٍ رِياضِيَّةٍ.",
+          "uzbekMeaning": "sport jamoalari yoki sportchilar o‘rtasida o‘tkaziladigan musobaqalar turkumi — turnir",
+          "uzbekExample": "Jamoalar sport turnirida qatnashdilar."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check_and_source_repair",
+        "issues": [
+          "Qon aylanishi manbada venadan arteriyaga va arteriyadan venaga deb noto‘liq berilgan; NIH va MedlinePlus asosida yurak, arteriya, kapillyar va venalar ishtirokidagi uzluksiz aylanish sifatida tuzatildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      },
+      "notes": "Birinchi banddagi venadan arteriyaga va arteriyadan venaga degan soddalashtirilgan ta’rif kapillyarlar hamda yurakning rolini ko‘rsatadigan ilmiy ta’rif bilan almashtirildi."
+    },
+    {
+      "sequenceIndex": 121,
+      "id": 79245,
+      "dictionarySource": "Ghoniy",
+      "arabic": "بَتَّةٌ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "اِسْمُ الْمَرَّةِ مِنْ: بَتٌّ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ الْمَرَّةِ مِنْ: بَتٌّ).|-الخَمْرُ لَنْ أشْرَبَهُ البَتَّةَ : قَطْعاً، نِهَائِيّاً، قَرَارٌ لاَ رِجْعَةَ فِيه- هَذَا عَمَلٌ لَنْ أَقومَ بِهِ البَتَّةَ.",
+      "sourceHash": "39c92c22a6364a2365be55743ed605e633c6b416506446ebecf217cd5f4c2109",
+      "wordType": "ravish",
+      "uzbek": "aslo, mutlaqo",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "الخَمْرُ لَنْ أشْرَبَهُ البَتَّةَ",
+          "arabicGloss": "قَطْعاً، نِهَائِيّاً، قَرَارٌ لاَ رِجْعَةَ فِيه- هَذَا عَمَلٌ لَنْ أَقومَ بِهِ البَتَّةَ.",
+          "uzbekMeaning": "qat’iyan, mutlaqo, aslo; qaytib ko‘rilmaydigan tarzda",
+          "uzbekExample": "Men sharobni aslo ichmayman; bu ishni mutlaqo qilmayman."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 122,
+      "id": 79246,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جَارُورٌ",
+      "root": "جرر‏",
+      "grammarLabel": "اِسْمُ أَدَاةٍ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ أَدَاةٍ).|1- وَضَعَ أَلْعاَبَهُ فِي الجَارُورِ : صُنْدُوقٌ صَغِيرٌ يُفْتَحُ بِالجَرِّ.|2.: النَّهْرُ يَشُقُّهُ السَّيْلُ.|3.: الجَدْوَلُ الصَّغِير.",
+      "sourceHash": "6438f2495afa9f05edd59405b5f09346e58987c3cc2673ef4a80a9f3f669bb6b",
+      "wordType": "ot",
+      "uzbek": "1. tortma; 2. sel o‘ygan o‘zan; 3. kichik ariq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَضَعَ أَلْعاَبَهُ فِي الجَارُورِ",
+          "arabicGloss": "صُنْدُوقٌ صَغِيرٌ يُفْتَحُ بِالجَرِّ.",
+          "uzbekMeaning": "tortib ochiladigan kichik quti yoki mebel tortmasi",
+          "uzbekExample": "U o‘yinchoqlarini tortmaga soldi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "النَّهْرُ يَشُقُّهُ السَّيْلُ.",
+          "uzbekMeaning": "sel suvi o‘yib hosil qilgan daryocha yoki o‘zan",
+          "uzbekExample": "Sel yerda yangi o‘zan hosil qildi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "",
+          "arabicGloss": "الجَدْوَلُ الصَّغِير.",
+          "uzbekMeaning": "kichik ariq yoki jilg‘a",
+          "uzbekExample": "Daladan kichik ariq oqib o‘tadi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 123,
+      "id": 79247,
+      "dictionarySource": "Ghoniy",
+      "arabic": "تِلِفونٌ",
+      "root": "لفن‏",
+      "grammarLabel": "اِسْمُ أَداةٍ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ أَداةٍ).|-رَنَّ جَرَسُ التِّلِفونِ فَرَفَعَ السَّمَّاعَةَ : جِهازٌ يَنْقُلُ الْمُكالَماتِ التِّلِفونِيَّةِ السِّلْكِيَّةِ واللاَّسِلْكِيَّةِ. ن. الهاتِف.",
+      "sourceHash": "472dfa3ea874015a09e8b177486118317fdd4056a68e314b3b111ca32cc01040",
+      "wordType": "ot",
+      "uzbek": "telefon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَنَّ جَرَسُ التِّلِفونِ فَرَفَعَ السَّمَّاعَةَ",
+          "arabicGloss": "جِهازٌ يَنْقُلُ الْمُكالَماتِ التِّلِفونِيَّةِ السِّلْكِيَّةِ واللاَّسِلْكِيَّةِ. ن. الهاتِف.",
+          "uzbekMeaning": "simli yoki simsiz aloqa orqali ovozli suhbatni uzatadigan qurilma — telefon",
+          "uzbekExample": "Telefon jiringladi va u go‘shakni ko‘tardi.",
+          "reviewStatus": "source_term_modernized"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_technical_wording_revision",
+        "issues": [
+          "Telefon faqat eski simli go‘shakli qurilma bilan cheklanmay, simli yoki simsiz ovozli aloqa qurilmasi sifatida berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 124,
+      "id": 79248,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جُنَابٌ",
+      "root": "جنب‏",
+      "grammarLabel": "اِسْمُ دَاءِ ذاَتِ الجَنْبِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ دَاءِ ذاَتِ الجَنْبِ).|-أُصِيبَ بِدَاءِ الجُنَابِ : اِلْتِهَابٌ فِي الغِلاَفِ الْمُحيِطِ بِالرِّئَةِ يُحْدِثُ سُعالاً وَضَيْقاً فِي التَّنَفُّسِ.",
+      "sourceHash": "bdd1d062aac28f745ca5cb863ae94593d550b2990e20b41915096fac044a536c",
+      "wordType": "ot",
+      "uzbek": "plevrit",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أُصِيبَ بِدَاءِ الجُنَابِ",
+          "arabicGloss": "اِلْتِهَابٌ فِي الغِلاَفِ الْمُحيِطِ بِالرِّئَةِ يُحْدِثُ سُعالاً وَضَيْقاً فِي التَّنَفُّسِ.",
+          "uzbekMeaning": "plevrit — o‘pka tashqi yuzasi va ko‘krak qafasi ichini qoplaydigan plevraning yallig‘lanishi; nafas olganda yoki yo‘talganda kuchayadigan o‘tkir ko‘krak og‘rig‘i, ba’zan yo‘tal va nafas qisishini keltiradi",
+          "uzbekExample": "Bemorda plevrit sabab chuqur nafas olganda kuchayadigan ko‘krak og‘rig‘i paydo bo‘ldi.",
+          "register": "tibbiyot",
+          "reviewStatus": "source_medical_definition_corrected"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check_and_source_repair",
+        "issues": [
+          "Plevrit manbadagi faqat o‘pkani o‘ragan qavat degan soddalashtirishdan tozalandi; NIH va MedlinePlus asosida plevraning yallig‘lanishi hamda asosiy belgisi nafas bilan kuchayadigan ko‘krak og‘rig‘i ekani aniqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 125,
+      "id": 79249,
+      "dictionarySource": "Ghoniy",
+      "arabic": "حَذارِ",
+      "root": "حذر‏",
+      "grammarLabel": "اِسْمُ فِعْلٍ بِمَعْنَى اِحْذَرْ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ فِعْلٍ بِمَعْنَى اِحْذَرْ).| حَذارِ يا أَوْلادُ مِنَ اللَّعِبِ بِالنَّارِ : اِحْذَرُوا، اِنْتَبِهوا مِنْ..- حَذارِيكَ الخُروجَ لَيْلاً.",
+      "sourceHash": "7c3436d89011a80e2e17d0cf3a77f2a6236a9f84a2f62dada268b25817a8a47e",
+      "wordType": "buyruq ma’nosidagi fe’l-ot",
+      "uzbek": "ehtiyot bo‘l, saqlan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَذارِ يا أَوْلادُ مِنَ اللَّعِبِ بِالنَّارِ",
+          "arabicGloss": "اِحْذَرُوا، اِنْتَبِهوا مِنْ..- حَذارِيكَ الخُروجَ لَيْلاً.",
+          "uzbekMeaning": "ehtiyot bo‘l, saqlan, ogoh bo‘l",
+          "uzbekExample": "Bolalar, olov bilan o‘ynashdan ehtiyot bo‘ling; kechasi tashqariga chiqishdan saqlan."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 126,
+      "id": 79250,
+      "dictionarySource": "Ghoniy",
+      "arabic": "حَيَّ",
+      "root": "حيي‏",
+      "grammarLabel": "اِسْمُ فِعْلٍ لِلأَمْرِ بِمَعْنَى أقْبِلْ، عَجِّلْ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ فِعْلٍ لِلأَمْرِ بِمَعْنَى أقْبِلْ، عَجِّلْ).|-حَيَّ عَلَى الصَّلاَةِ : قُمْ لِلصَّلاَةِ، أَقْبِلْ عَلَيْهَا، هَلُمَّ- حَيَّ عَلَى الفَلاَحِ :-حَيَّ عَلَى العَمَلِ.",
+      "sourceHash": "6102307cf0aa9f7eba5e30533b2705bb2a1dc353b7dedd0687d8b7efd1c461df",
+      "wordType": "buyruq ma’nosidagi fe’l-ot",
+      "uzbek": "kel, shoshil, kirish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَيَّ عَلَى الصَّلاَةِ",
+          "arabicGloss": "قُمْ لِلصَّلاَةِ، أَقْبِلْ عَلَيْهَا، هَلُمَّ- حَيَّ عَلَى الفَلاَحِ :-حَيَّ عَلَى العَمَلِ.",
+          "uzbekMeaning": "kel, shoshil, bir ishga yuzlanib kirish",
+          "uzbekExample": "Namozga keling; najotga keling; ishga kirishing.",
+          "register": "umumiy va azon iborasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 127,
+      "id": 79251,
+      "dictionarySource": "Ghoniy",
+      "arabic": "أوَّهْ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "اِسْمُ فِعلٍ لِلْمُضَارِعِ بِمَعْنَى أتَوَجَّعُ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ فِعلٍ لِلْمُضَارِعِ بِمَعْنَى أتَوَجَّعُ).|-أوَّهْ مِنْ حُكْمِ الظَّالِمِينَ : أَوَّهْ مَبْنِيٌّ عَلَى السُّكُونِ وَفَاعِلُهُ ضَمِيرٌ مُسْتَتِرٌ فِيهِ وُجُوباً تَقْدِيرُهُ أنَا.",
+      "sourceHash": "cef7eb268f99f29763925ae56060891b7e6947cb4a7a484a74041e3b97c0c6d5",
+      "wordType": "undov-fe’l",
+      "uzbek": "oh, azob chekaman",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أوَّهْ مِنْ حُكْمِ الظَّالِمِينَ",
+          "arabicGloss": "أَوَّهْ مَبْنِيٌّ عَلَى السُّكُونِ وَفَاعِلُهُ ضَمِيرٌ مُسْتَتِرٌ فِيهِ وُجُوباً تَقْدِيرُهُ أنَا.",
+          "uzbekMeaning": "og‘riq, iztirob yoki afsusni bildiradigan «oh» undovi; «azob chekaman» ma’nosida",
+          "uzbekExample": "Zolimlarning hukmidan oh chekaman.",
+          "register": "grammatik atama"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_grammar_note",
+        "issues": [
+          "أوّه undov bo‘lsa-da, arab grammatik an’anasida hozirgi zamon fe’li ma’nosidagi fe’l-ot sifatida izohlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 128,
+      "id": 79252,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قِيلٌ",
+      "root": "قول‏",
+      "grammarLabel": "اِسْمُ قَالَ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ قَالَ).|-دَعْكَ مِنَ القِيلِ وَالقَالِ : مَا يَقُولُهُ النَّاسُ هَبَاءً.",
+      "sourceHash": "b8714da897592bfddf1bf7d43d28e1e88bec3ccc2ab28dc0adad1613966b8ab1",
+      "wordType": "ot",
+      "uzbek": "mish-mish va behuda gap",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "دَعْكَ مِنَ القِيلِ وَالقَالِ",
+          "arabicGloss": "مَا يَقُولُهُ النَّاسُ هَبَاءً.",
+          "uzbekMeaning": "odamlar aytadigan behuda gap, mish-mish",
+          "uzbekExample": "Mish-mish va behuda gaplarni qo‘y."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 129,
+      "id": 79253,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جُدَرِيٌّ",
+      "root": "جدر‏",
+      "grammarLabel": "اِسْمُ مَرَضٍ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ مَرَضٍ).|-أَصَابَ جِسْمَهُ الجُدَرِيُّ : مَرَضٌ يَظْهَرُ عَلَى الجِسْمِ فِي شَكْلِ بُثُورٍ حُمْرٍ تَتَقَيَّحُ بِسُرْعَةٍ، وَهُوَ شَدِيدُ العَدْوَى.",
+      "sourceHash": "450a531dfa4e52cc74e45c8089ee91361b061e19e6e62e47bd2da64417e0a6b4",
+      "wordType": "kasallik oti",
+      "uzbek": "chinchechak",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَصَابَ جِسْمَهُ الجُدَرِيُّ",
+          "arabicGloss": "مَرَضٌ يَظْهَرُ عَلَى الجِسْمِ فِي شَكْلِ بُثُورٍ حُمْرٍ تَتَقَيَّحُ بِسُرْعَةٍ، وَهُوَ شَدِيدُ العَدْوَى.",
+          "uzbekMeaning": "chinchechak — variola virusi keltirib chiqaradigan, isitma va keyinchalik yiringlab qobiq bog‘laydigan toshmalar bilan kechgan o‘ta yuqumli kasallik; JSST uni 1980-yilda dunyoda yo‘q qilingan deb e’lon qilgan",
+          "uzbekExample": "Chinchechak tarixda og‘ir yuqumli kasallik bo‘lgan, ammo hozir tabiiy tarqalishi yo‘q qilingan.",
+          "register": "tibbiyot va tarix",
+          "reviewStatus": "source_medical_context_modernized"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check_and_context_modernization",
+        "issues": [
+          "JSST ma’lumotiga ko‘ra chinchechak variola virusi sababli yuzaga kelgan va 1980-yilda dunyoda yo‘q qilingan deb e’lon qilingan; maqola tarixiy kasallik sifatida yangilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 130,
+      "id": 79254,
+      "dictionarySource": "Ghoniy",
+      "arabic": "دَرَكٌ",
+      "root": "درك‏",
+      "grammarLabel": "اِسْمُ مَصْدَرٍ مِنَ الإدْرَاكِ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ مَصْدَرٍ مِنَ الإدْرَاكِ).|1- حَاوَلَ الدَّرَكَ بِهِ : اللَّحَاقَ بِهِ.|2- بَلَغَ الدَّرَكَ الأسْفَلَ : أسْفَلَ سَافِلِينَ، أقْصَى حَدٍّ- يَرَى بِأُمِّ عَيْنِهِ الدَّرَكَ الَّذِي انْحَدَرَتْ إلَيْهِ الأَخْلاَقُ :-بَلَغَ الغَوَّاصُ دَرَكَ البَحْرِ.|3- اِسْتَدْعَاهُ رِجَالُ الدَّرَكِ : قُوَّاتُ الشُّرْطَةِ العَسْكَرِيَّةِ تُحَافِظُ عَلَى الأمْنِ العَامِّ، وَبِالأخَصِّ فِي الطُّرُقِ وَالبَوَادِي.",
+      "sourceHash": "2642180cd29ac5e06618eb898cc113dda4b83dbae50ec048c6a11c1ab8b012c4",
+      "wordType": "ot",
+      "uzbek": "1. yetib olish; 2. eng quyi daraja yoki chuqurlik; 3. jandarmeriya",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَاوَلَ الدَّرَكَ بِهِ",
+          "arabicGloss": "اللَّحَاقَ بِهِ.",
+          "uzbekMeaning": "birovga yetib olish yoki quvib yetish",
+          "uzbekExample": "U unga yetib olishga urindi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "بَلَغَ الدَّرَكَ الأسْفَلَ",
+          "arabicGloss": "أسْفَلَ سَافِلِينَ، أقْصَى حَدٍّ- يَرَى بِأُمِّ عَيْنِهِ الدَّرَكَ الَّذِي انْحَدَرَتْ إلَيْهِ الأَخْلاَقُ :-بَلَغَ الغَوَّاصُ دَرَكَ البَحْرِ.",
+          "uzbekMeaning": "eng quyi daraja, tub yoki chuqurlik",
+          "uzbekExample": "U eng quyi darajaga tushdi; axloq qanday tubanlikka tushganini o‘z ko‘zi bilan ko‘rdi; g‘avvos dengiz tubiga yetdi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "اِسْتَدْعَاهُ رِجَالُ الدَّرَكِ",
+          "arabicGloss": "قُوَّاتُ الشُّرْطَةِ العَسْكَرِيَّةِ تُحَافِظُ عَلَى الأمْنِ العَامِّ، وَبِالأخَصِّ فِي الطُّرُقِ وَالبَوَادِي.",
+          "uzbekMeaning": "jandarmeriya — ayniqsa yo‘llar va qishloq hududlarida jamoat xavfsizligini saqlaydigan harbiylashtirilgan politsiya kuchlari",
+          "uzbekExample": "Uni jandarmeriya xodimlari chaqirtirdilar.",
+          "register": "tarixiy-ma’muriy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 131,
+      "id": 79255,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مِيتَةٌ",
+      "root": "موت‏",
+      "grammarLabel": "اِسْمُ هَيْئَةٍ مِنْ مَاتَ",
+      "morphology": "",
+      "arabicDefinition": "(اِسْمُ هَيْئَةٍ مِنْ مَاتَ).|-مَاتَ الرَّجُلُ مِيتَةً رَضِيَّةً : أَيْ جَاءَ مَوْتُهُ فِي حَالَةٍ رَضِيَّةٍ- ماتَ مِيتَةَ الأَبْطالِ.",
+      "sourceHash": "e6257af0060eff8f8be565aea1fffbf783070cc925855fe85bfc1bb9cbc4bacd",
+      "wordType": "holat oti",
+      "uzbek": "o‘lim holati yoki tarzi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَاتَ الرَّجُلُ مِيتَةً رَضِيَّةً",
+          "arabicGloss": "أَيْ جَاءَ مَوْتُهُ فِي حَالَةٍ رَضِيَّةٍ- ماتَ مِيتَةَ الأَبْطالِ.",
+          "uzbekMeaning": "kishining qanday holat yoki tarzda vafot etishi",
+          "uzbekExample": "U yaxshi holatda vafot etdi; qahramonlarcha o‘ldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 132,
+      "id": 79256,
+      "dictionarySource": "Ghoniy",
+      "arabic": "كَيَّةٌ",
+      "root": "كوي‏",
+      "grammarLabel": "اسْمُ الْمَرَّةِ مِنْ كَوَى",
+      "morphology": "",
+      "arabicDefinition": "(اسْمُ الْمَرَّةِ مِنْ كَوَى).|1- كَوَاهُ كَيَّةً وَاحِدَةً : حَرْقَة الجِلْدِ بِحَدِيدَةٍ مُحَمَّاةٍ.|2- ما تَزَالُ الكَيَّةُ تُؤْلِمُهُ : مَوْضِعُ الكَيِّ عِنْدَمَا يُكْوَى الْمَرْءُ بِحَدِيدَةٍ مُحَمَّاةٍ.",
+      "sourceHash": "3f16c1c5a4a531aa8cdc7331ed387817febf0e84a5d9655456514d259bc9164e",
+      "wordType": "ot",
+      "uzbek": "1. bir marta kuydirib davolash; 2. kuydirilgan joy",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَوَاهُ كَيَّةً وَاحِدَةً",
+          "arabicGloss": "حَرْقَة الجِلْدِ بِحَدِيدَةٍ مُحَمَّاةٍ.",
+          "uzbekMeaning": "qizdirilgan temir bilan terini bir marta kuydirish — kauterizatsiya",
+          "uzbekExample": "Uning terisini qizdirilgan temir bilan bir marta kuydirdilar.",
+          "register": "tarixiy tibbiyot"
+        },
+        {
+          "index": 2,
+          "arabicExample": "ما تَزَالُ الكَيَّةُ تُؤْلِمُهُ",
+          "arabicGloss": "مَوْضِعُ الكَيِّ عِنْدَمَا يُكْوَى الْمَرْءُ بِحَدِيدَةٍ مُحَمَّاةٍ.",
+          "uzbekMeaning": "qizdirilgan temir bilan kuydirilgan teri joyi",
+          "uzbekExample": "Kuydirilgan joy hanuz og‘riq berardi.",
+          "register": "tarixiy tibbiyot"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_historical_medical_note",
+        "issues": [
+          "Qizdirilgan temir bilan kuydirish zamonaviy tibbiy tavsiya sifatida emas, tarixiy tibbiyot atamasi sifatida belgilandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 133,
+      "id": 79257,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَدْوَةٌ",
+      "root": "ندو‏",
+      "grammarLabel": "اسْمُ الْمَرَّةِ مِنْ نَدَا",
+      "morphology": "",
+      "arabicDefinition": "(اسْمُ الْمَرَّةِ مِنْ نَدَا).|1- نَدْوَةُ الْجَمَاعَةِ : اِجْتِمَاعُهُمْ.|2- دَارُ النَّدْوَةِ : الدَّارُ الَّتِي يَجْتَمِعُ فِيهَا القَوْمُ.|3- شَارَكَ فِي نَدْوَةٍ عِلْمِيَّةٍ : فِي لِقَاءٍ، فِي مُجْتَمَعٍ لِلْمُحَاوَرَةِ العِلْمِيَّةِ- نَدْوَةٌ ثَقَافِيَّةٌ.|4- نَدْوَةٌ دَوْلِيَّةٌ : مُؤْتَمَرٌ يَجْتَمِعُ فِيهِ نُخْبَةٌ مِنَ العُلَمَاءِ أَوِ الْخُبَرَاءِ.|5- نَدْوَةٌ صَحَفِيَّةٌ : لِقَاءٌ بَيْنَ صَحَفِيِّينَ وَشَخْصِيَّةٍ مَسْؤُولَةٍ لِلتَّحَدُّثِ وَالاسْتِفْسَارِ عَنْ مَوْضُوعٍ مَّا.",
+      "sourceHash": "996dc0cd45c70cf97ea82a4367c48bb40ba96043b1824e046b7bb54114e05d37",
+      "wordType": "ot",
+      "uzbek": "1. yig‘in; 2. yig‘ilish uyi; 3. ilmiy yoki madaniy seminar; 4. xalqaro anjuman; 5. matbuot anjumani",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَدْوَةُ الْجَمَاعَةِ",
+          "arabicGloss": "اِجْتِمَاعُهُمْ.",
+          "uzbekMeaning": "bir guruh kishining yig‘ilishi yoki yig‘ini",
+          "uzbekExample": "Guruhning yig‘ini bo‘lib o‘tdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "دَارُ النَّدْوَةِ",
+          "arabicGloss": "الدَّارُ الَّتِي يَجْتَمِعُ فِيهَا القَوْمُ.",
+          "uzbekMeaning": "Dor an-Nadva — qavm maslahat va muhokama uchun yig‘iladigan uy",
+          "uzbekExample": "Qavm Dor an-Nadvada yig‘ildi.",
+          "register": "tarixiy"
+        },
+        {
+          "index": 3,
+          "arabicExample": "شَارَكَ فِي نَدْوَةٍ عِلْمِيَّةٍ",
+          "arabicGloss": "فِي لِقَاءٍ، فِي مُجْتَمَعٍ لِلْمُحَاوَرَةِ العِلْمِيَّةِ- نَدْوَةٌ ثَقَافِيَّةٌ.",
+          "uzbekMeaning": "ilmiy yoki madaniy masalani muhokama qilish uchun o‘tkaziladigan seminar yoki davra suhbati",
+          "uzbekExample": "U ilmiy seminarda qatnashdi; madaniy davra suhbati o‘tkazildi."
+        },
+        {
+          "index": 4,
+          "arabicExample": "نَدْوَةٌ دَوْلِيَّةٌ",
+          "arabicGloss": "مُؤْتَمَرٌ يَجْتَمِعُ فِيهِ نُخْبَةٌ مِنَ العُلَمَاءِ أَوِ الْخُبَرَاءِ.",
+          "uzbekMeaning": "olimlar yoki mutaxassislar qatnashadigan xalqaro anjuman",
+          "uzbekExample": "Xalqaro anjumanda turli mamlakat olimlari yig‘ildi."
+        },
+        {
+          "index": 5,
+          "arabicExample": "نَدْوَةٌ صَحَفِيَّةٌ",
+          "arabicGloss": "لِقَاءٌ بَيْنَ صَحَفِيِّينَ وَشَخْصِيَّةٍ مَسْؤُولَةٍ لِلتَّحَدُّثِ وَالاسْتِفْسَارِ عَنْ مَوْضُوعٍ مَّا.",
+          "uzbekMeaning": "jurnalistlar bilan mas’ul shaxs o‘rtasida savol-javob va axborot berish uchun o‘tkaziladigan matbuot anjumani",
+          "uzbekExample": "Mas’ul shaxs jurnalistlar bilan matbuot anjumani o‘tkazdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 134,
+      "id": 79258,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَرْصَنَةٌ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "اسْم مِنْ قُرْصَانٍ",
+      "morphology": "",
+      "arabicDefinition": "(اسْم مِنْ قُرْصَانٍ).|1- نَشِطَتِ القَرْصَنَةُ عَلَى الشَّوَاطِئِ قَدِيماً : التَّعَرُّضُ لِلسُّفُنِ وَحَجْزُهَا عَلَى يَدِ القَرَاصِنَةِ.|2- تَعَرَّضَتِ الطَّائِرَةُ لِلْقَرْصَنَةِ : تَحْوِيلُ اتِّجَاهِهَا عَلَى يَدِ قَرَاصِنَةٍ (مُخْتَطِفِينَ).",
+      "sourceHash": "9c3555214f974e32abfc74777b8c360e91506150db65945537730f895d70b683",
+      "wordType": "ot",
+      "uzbek": "1. dengiz qaroqchiligi; 2. havo kemasini olib qochish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَشِطَتِ القَرْصَنَةُ عَلَى الشَّوَاطِئِ قَدِيماً",
+          "arabicGloss": "التَّعَرُّضُ لِلسُّفُنِ وَحَجْزُهَا عَلَى يَدِ القَرَاصِنَةِ.",
+          "uzbekMeaning": "kemalarga hujum qilib, ularni yoki yukini kuch bilan egallash — dengiz qaroqchiligi",
+          "uzbekExample": "Qadimda sohillarda dengiz qaroqchiligi kuchaydi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "تَعَرَّضَتِ الطَّائِرَةُ لِلْقَرْصَنَةِ",
+          "arabicGloss": "تَحْوِيلُ اتِّجَاهِهَا عَلَى يَدِ قَرَاصِنَةٍ (مُخْتَطِفِينَ).",
+          "uzbekMeaning": "samolyotni bosib olib, uning yo‘nalishini majburan o‘zgartirish — havo kemasini olib qochish",
+          "uzbekExample": "Samolyot olib qochishga urinishga uchradi.",
+          "register": "huquq va aviatsiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 135,
+      "id": 79259,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَارَّةٌ",
+      "root": "مرر‏",
+      "grammarLabel": "اسم جمع مَارُّونَ",
+      "morphology": "",
+      "arabicDefinition": "(اسم جمع مَارُّونَ).|-يُرَاقِبُ الْمَارَّةَ مِنَ الشُّرْفَةِ : أَيِ السَّائِرِينَ، العَابِرِينَ.",
+      "sourceHash": "24b7f41a1ac57101873756d8f5c30fe1b1537f70dee5f9fa045df40adb47dadd",
+      "wordType": "jamlovchi ot",
+      "uzbek": "yo‘lovchilar, o‘tkinchilar",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يُرَاقِبُ الْمَارَّةَ مِنَ الشُّرْفَةِ",
+          "arabicGloss": "أَيِ السَّائِرِينَ، العَابِرِينَ.",
+          "uzbekMeaning": "yo‘lda ketayotgan yoki bir joydan o‘tib borayotgan kishilar — yo‘lovchilar, o‘tkinchilar",
+          "uzbekExample": "U ayvondan o‘tkinchilarni kuzatardi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 136,
+      "id": 79260,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَدَاعٌ",
+      "root": "ودع‏",
+      "grammarLabel": "الِاسْمُ مِنْ وَدَّعَ",
+      "morphology": "",
+      "arabicDefinition": "(الِاسْمُ مِنْ وَدَّعَ).|1- مَا أَقْسَى لَحْظَةَ الوَدَاعِ : اللَّحْظَةُ الَّتِي يُوَدِّعُ فِيهَا الْمَرْءُ أَهْلَهُ وَأَصْحَابَهُ.|2- أَقَامُوا حَفْلَةَ وَدَاعٍ عَلَى شَرَفِهِ : أَيِ الْحَفْلُ الَّذِي يُقَامُ لِتَوْدِيعِ مَنْ يُغَادِرُ بَلَداً أَوْ عَمَلاً.|3- طَلَعَ البَدْرُ عَلَيْنَا مِنْ ثَنِيَّاتِ الوَدَاعِ : مَوْضِعٌ بِالمَدِينَةِ الْمُنَوَّرَةِ لِأَنَّ مَنْ سَافَرَ إِلَى مَكَّةَ كَانَ يُوَدَّعُ عِنْدَهُ.",
+      "sourceHash": "dd8951214eaad33c1676e7b00583de6ed823d45f15ca8c1e02d4334c5842769d",
+      "wordType": "ot",
+      "uzbek": "1. xayrlashuv; 2. kuzatuv marosimi; 3. Madinadagi Saniyyat al-Vado‘ joyi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَا أَقْسَى لَحْظَةَ الوَدَاعِ",
+          "arabicGloss": "اللَّحْظَةُ الَّتِي يُوَدِّعُ فِيهَا الْمَرْءُ أَهْلَهُ وَأَصْحَابَهُ.",
+          "uzbekMeaning": "oila, do‘st yoki boshqa kishilar bilan xayrlashish lahzasi",
+          "uzbekExample": "Xayrlashuv lahzasi naqadar og‘ir."
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَقَامُوا حَفْلَةَ وَدَاعٍ عَلَى شَرَفِهِ",
+          "arabicGloss": "أَيِ الْحَفْلُ الَّذِي يُقَامُ لِتَوْدِيعِ مَنْ يُغَادِرُ بَلَداً أَوْ عَمَلاً.",
+          "uzbekMeaning": "mamlakat yoki ish joyidan ketayotgan kishini kuzatish uchun o‘tkaziladigan xayrlashuv marosimi",
+          "uzbekExample": "Uning sharafiga xayrlashuv marosimi o‘tkazdilar."
+        },
+        {
+          "index": 3,
+          "arabicExample": "طَلَعَ البَدْرُ عَلَيْنَا مِنْ ثَنِيَّاتِ الوَدَاعِ",
+          "arabicGloss": "مَوْضِعٌ بِالمَدِينَةِ الْمُنَوَّرَةِ لِأَنَّ مَنْ سَافَرَ إِلَى مَكَّةَ كَانَ يُوَدَّعُ عِنْدَهُ.",
+          "uzbekMeaning": "Saniyyat al-Vado‘ — Madinai Munavvaradagi tarixiy joy; Makka tomonga safarga chiqqanlar shu yerda kuzatilgan",
+          "uzbekExample": "«To‘lin oy Saniyyat al-Vado‘ tomondan ustimizga chiqdi» degan iborada shu joy nazarda tutiladi.",
+          "register": "islom tarixi va toponim"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_toponym_note",
+        "issues": [
+          "ثنيات الوداع tarixiy joy nomi Saniyyat al-Vado‘ shaklida transliteratsiya va izoh bilan berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 137,
+      "id": 79261,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ذَمَّةٌ",
+      "root": "ذمم‏",
+      "grammarLabel": "الْمَرَّةُ مِنَ الذّمِّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنَ الذّمِّ).|-بِئْرٌ ذَمَّةٌ : قَلِيلَةُ الْمَاءِ. فأتَيْنَا عَلَى بِئْرٍ ذَمَّةٍ فَنَزَلْنا فِيهَا (حديث).",
+      "sourceHash": "418fdcd78e247de053b0119af81562f04c31dd0c99c12dd831283a461f202f3a",
+      "wordType": "sifat",
+      "uzbek": "suvi oz quduq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "بِئْرٌ ذَمَّةٌ",
+          "arabicGloss": "قَلِيلَةُ الْمَاءِ. فأتَيْنَا عَلَى بِئْرٍ ذَمَّةٍ فَنَزَلْنا فِيهَا (حديث).",
+          "uzbekMeaning": "suvi juda oz bo‘lgan quduq",
+          "uzbekExample": "Biz suvi oz bir quduqqa yetib kelib, uning yonida to‘xtadik.",
+          "register": "kamyob va hadisdagi qo‘llanish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_homograph_check",
+        "issues": [
+          "Qohira Arab tili akademiyasi ذَمَّة ning quduqqa nisbatan suvi oz ma’nosini tasdiqlaydi; u majburiyat ma’nosidagi ذِمَّة dan harakat bilan ajratildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      },
+      "notes": "Bu ذَمَّة shakli «zimma, majburiyat» ma’nosidagi ذِمَّة dan boshqa so‘zdir."
+    },
+    {
+      "sequenceIndex": 138,
+      "id": 79262,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَبْعَةٌ",
+      "root": "نبع‏",
+      "grammarLabel": "الْمَرَّةُ مِنَ النَّبْعِ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنَ النَّبْعِ).|-مِثْلُ نَبْعَةٍ انْبَثَقَتْ هَادِرَةً : دَفْقَةٍ...",
+      "sourceHash": "184ddec44589d045a869368d21c47c40051af9a748eb27a363cb1c62b2d94289",
+      "wordType": "ot",
+      "uzbek": "bir bor otilib chiqish, kuchli oqim",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مِثْلُ نَبْعَةٍ انْبَثَقَتْ هَادِرَةً",
+          "arabicGloss": "دَفْقَةٍ...",
+          "uzbekMeaning": "suv yoki boshqa suyuqlikning bir bor kuch bilan otilib chiqishi, kuchli oqim",
+          "uzbekExample": "U gumburlab otilib chiqqan kuchli suv oqimiga o‘xshardi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 139,
+      "id": 79263,
+      "dictionarySource": "Ghoniy",
+      "arabic": "زَأْمَةٌ",
+      "root": "زأم‏",
+      "grammarLabel": "الْمَرَّةُ مِنَ زَأَمَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنَ زَأَمَ).|1- زَأَمَ لِي زَأْمَةً : طَرَحَ لِي كَلِمَةً لا أَدْرِي أَحَقٌّ هِيَ أَمْ باطِلٌ.|2- سَمِعَ زَأْمَةً : صَوْتاً شَديداً- ما سَمِعْتُ لَهُ زَأْمَةً.|3- أَخَذَ مِنَ الطَّعامِ زَأْمَتَهُ :حاجَتهُ.|4- بِهِ زَأْمَةٌ : شِدَّةُ الأَكْلِ والشُّرْبِ.",
+      "sourceHash": "de162bab2fc8b293aba7aceb2f82bf417bff85bbbec4006d7ff36bf6ab5b68e3",
+      "wordType": "ot",
+      "uzbek": "1. rost-yolg‘onligi noma’lum gap; 2. qattiq tovush; 3. ovqatga ehtiyoj miqdori; 4. ochko‘zlik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "زَأَمَ لِي زَأْمَةً",
+          "arabicGloss": "طَرَحَ لِي كَلِمَةً لا أَدْرِي أَحَقٌّ هِيَ أَمْ باطِلٌ.",
+          "uzbekMeaning": "rost yoki yolg‘onligi noma’lum tarzda tashlangan gap",
+          "uzbekExample": "U menga rostmi-yolg‘onmi bilmaydigan bir gap tashladi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "سَمِعَ زَأْمَةً",
+          "arabicGloss": "صَوْتاً شَديداً- ما سَمِعْتُ لَهُ زَأْمَةً.",
+          "uzbekMeaning": "qattiq tovush yoki nido",
+          "uzbekExample": "U qattiq tovush eshitdi; men undan hech bir tovush eshitmadim."
+        },
+        {
+          "index": 3,
+          "arabicExample": "أَخَذَ مِنَ الطَّعامِ زَأْمَتَهُ",
+          "arabicGloss": "حاجَتهُ.",
+          "uzbekMeaning": "ovqatdan kishiga kerak bo‘lgan miqdor, ehtiyoji",
+          "uzbekExample": "U ovqatdan ehtiyojicha oldi."
+        },
+        {
+          "index": 4,
+          "arabicExample": "بِهِ زَأْمَةٌ",
+          "arabicGloss": "شِدَّةُ الأَكْلِ والشُّرْبِ.",
+          "uzbekMeaning": "yeb-ichishga haddan tashqari berilish yoki ochko‘zlik",
+          "uzbekExample": "Unda yeb-ichishga kuchli berilish bor."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "To‘rtta kamyob ma’no Qohira Arab tili akademiyasining زأم ildizi maqolasi bilan alohida tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 140,
+      "id": 79264,
+      "dictionarySource": "Ghoniy",
+      "arabic": "بَصْقَةٌ",
+      "root": "بصق‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ بَصَقَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ بَصَقَ).|-أَلْقَى بَصْقَةً : طَرَحَها، ما يَلْفِظهُ الإِنْسانُ مِنْ فَمِهِ مِنْ مُخاطٍ أَوْ لُعابٍ.",
+      "sourceHash": "536956c85d615236a3dbf18b7f6f4f7c127f55fc346d83304edddcdb16aa0e0e",
+      "wordType": "ot",
+      "uzbek": "bir marta tuflash, tufuk",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَلْقَى بَصْقَةً",
+          "arabicGloss": "طَرَحَها، ما يَلْفِظهُ الإِنْسانُ مِنْ فَمِهِ مِنْ مُخاطٍ أَوْ لُعابٍ.",
+          "uzbekMeaning": "og‘izdan chiqarib tashlangan so‘lak yoki balg‘am; bir marta tuflash",
+          "uzbekExample": "U yerga tufladi.",
+          "register": "anatomiya va umumiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 141,
+      "id": 79265,
+      "dictionarySource": "Ghoniy",
+      "arabic": "حَسْوَةٌ",
+      "root": "حسو‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ حَسَا",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ حَسَا).| تَجَرَّعَ حَسْوَةً :جُرْعَةً.",
+      "sourceHash": "742759c9f5ba133a6d6eb70769548b5d37a10b963bacb0a4f5d68321b279aa4a",
+      "wordType": "ot",
+      "uzbek": "bir qultum",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تَجَرَّعَ حَسْوَةً",
+          "arabicGloss": "جُرْعَةً.",
+          "uzbekMeaning": "ichimlikdan bir marta ichiladigan miqdor — bir qultum",
+          "uzbekExample": "U ichimlikdan bir qultum ichdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 142,
+      "id": 79266,
+      "dictionarySource": "Ghoniy",
+      "arabic": "دَفْعَةٌ",
+      "root": "دفع‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ دَفَعَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ دَفَعَ).|1- تَوَصَّلَ بِالدَّفْعَةِ الأُولَى مِنَ البِضَاعَةِ : الحِصَّة، الجُزْء.|2- قَدَّمَ دَفْعَةً مِنَ الحِسَابِ : أيْ حِصَّةً مِنَ الْمَالِ، قِسْطاً- الدَّفْعَةُ الثَّانِيَةُ مِنَ الدَّيْنِ.",
+      "sourceHash": "fead4160588ab77aca0f6b93b3a9dbde48032a56338d1df16d05e486efe5b871",
+      "wordType": "ot",
+      "uzbek": "1. tovar partiyasi; 2. to‘lov qismi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تَوَصَّلَ بِالدَّفْعَةِ الأُولَى مِنَ البِضَاعَةِ",
+          "arabicGloss": "الحِصَّة، الجُزْء.",
+          "uzbekMeaning": "bir yo‘la yetkazilgan tovarning qismi yoki partiyasi",
+          "uzbekExample": "Unga tovarning birinchi partiyasi yetib keldi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "قَدَّمَ دَفْعَةً مِنَ الحِسَابِ",
+          "arabicGloss": "أيْ حِصَّةً مِنَ الْمَالِ، قِسْطاً- الدَّفْعَةُ الثَّانِيَةُ مِنَ الدَّيْنِ.",
+          "uzbekMeaning": "to‘lanadigan pulning bir qismi, bo‘lib to‘lash badali",
+          "uzbekExample": "U hisobning bir qismini to‘ladi; qarzning ikkinchi badalini berdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 143,
+      "id": 79267,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَدَّةٌ",
+      "root": "ردد‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ رَدَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ رَدَّ).|1- لَهُ رَدَّةٌ : رُجُوعٌ، عَطْفَةٌ.|2- بِهِ رَدَّةٌ : عَيْبٌ أوْ قُبْحٌ مَعَ شَيْءٍ مِنَ الجَمَالِ.",
+      "sourceHash": "e575f12830c6ec92c544494deb8592f49c2ca72db918684b8d64dabb90113cf5",
+      "wordType": "ot",
+      "uzbek": "1. qaytish; 2. husn bilan aralash nuqson",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "لَهُ رَدَّةٌ",
+          "arabicGloss": "رُجُوعٌ، عَطْفَةٌ.",
+          "uzbekMeaning": "bir bor qaytish, ortga burilish yoki mehr bilan yuzlanish",
+          "uzbekExample": "U yana qaytib, mehr bilan yuzlandi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "بِهِ رَدَّةٌ",
+          "arabicGloss": "عَيْبٌ أوْ قُبْحٌ مَعَ شَيْءٍ مِنَ الجَمَالِ.",
+          "uzbekMeaning": "go‘zallik bilan aralashib kelgan nuqson yoki xunuklik",
+          "uzbekExample": "Unda husn bilan aralash bir nuqson bor edi.",
+          "register": "kamyob qo‘llanish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_rare_sense_note",
+        "issues": [
+          "Ikkinchi ma’no kamyob bo‘lib, husn bilan aralash nuqson tushunchasi ravon o‘zbekcha bilan saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 144,
+      "id": 79268,
+      "dictionarySource": "Ghoniy",
+      "arabic": "زَأْرَةٌ",
+      "root": "زأر‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ زَأَرَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ زَأَرَ).|-زَأَرَ الأَسَدُ زَأْرَةً : صَيْحَةً مِنَ الصَّدْرِ.",
+      "sourceHash": "3539c31c1725af4200e31bf99759b15eb52efe388b8a1c73403cb9212e40580f",
+      "wordType": "ot",
+      "uzbek": "bir bor o‘kirish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "زَأَرَ الأَسَدُ زَأْرَةً",
+          "arabicGloss": "صَيْحَةً مِنَ الصَّدْرِ.",
+          "uzbekMeaning": "arslonning ko‘ksidan chiqqan bir bor kuchli o‘kirigi",
+          "uzbekExample": "Arslon bir bor qattiq o‘kirdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 145,
+      "id": 79269,
+      "dictionarySource": "Ghoniy",
+      "arabic": "سَقْطَةٌ",
+      "root": "سقط‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ سَقَطَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ سَقَطَ).|-وَقَعَ فِي سَقْطَةٍ : فِي زَلَّةِ، فِي عَثْرَةٍ.",
+      "sourceHash": "caaa4514ac59ca7607cd724b5ffd12a9fe8735a05575fd6be0b9a258ff38fe67",
+      "wordType": "ot",
+      "uzbek": "xato, qoqilish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَقَعَ فِي سَقْطَةٍ",
+          "arabicGloss": "فِي زَلَّةِ، فِي عَثْرَةٍ.",
+          "uzbekMeaning": "xato, yanglishish yoki qoqilish",
+          "uzbekExample": "U jiddiy xatoga yo‘l qo‘ydi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 146,
+      "id": 79270,
+      "dictionarySource": "Ghoniy",
+      "arabic": "سَوْرَةٌ",
+      "root": "سور‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ سارَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ سارَ).|1- اِسْتَبَدَّتْ بِهِ سَوْرَةُ الغَضَبِ : شِدَّةُ الغَضَبِ.|2- لَمْ يَجِدْ إِلاَّ كَهْفاً لِيَحْتَمِيَ بِهِ مِنْ سَوْرَةِ البَرْدِ : مِنْ شِدَّتِهِ.|3- أَيَخافُ النَّاسُ مِنْ سَوْرَةِ السُّلْطانِ ‍‍ : مِنْ سَطْوَتِهِ، مِنْ جامِ غَضَبِهِ.|4- سَوْرَةُ الخَمْرِ : حِدَّتُها وَأَثَرُها.",
+      "sourceHash": "f81547795a68873b424f3dec44fb284722209be6fb04f6c44b349a652e12bf24",
+      "wordType": "ot",
+      "uzbek": "1. g‘azab avji; 2. sovuq shiddati; 3. hukmdor qahri; 4. sharobning o‘tkirligi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "اِسْتَبَدَّتْ بِهِ سَوْرَةُ الغَضَبِ",
+          "arabicGloss": "شِدَّةُ الغَضَبِ.",
+          "uzbekMeaning": "g‘azabning kuchli avj olishi va jo‘shishi",
+          "uzbekExample": "Uni qattiq g‘azab tutdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "لَمْ يَجِدْ إِلاَّ كَهْفاً لِيَحْتَمِيَ بِهِ مِنْ سَوْرَةِ البَرْدِ",
+          "arabicGloss": "مِنْ شِدَّتِهِ.",
+          "uzbekMeaning": "sovuqning qattiqligi va shiddati",
+          "uzbekExample": "U sovuq shiddatidan pana topish uchun faqat g‘orni topdi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "أَيَخافُ النَّاسُ مِنْ سَوْرَةِ السُّلْطانِ ‍‍",
+          "arabicGloss": "مِنْ سَطْوَتِهِ، مِنْ جامِ غَضَبِهِ.",
+          "uzbekMeaning": "hukmdorning qahr-g‘azabi, kuchi va tajovuzi",
+          "uzbekExample": "Odamlar hukmdorning qahridan qo‘rqadilarmi?"
+        },
+        {
+          "index": 4,
+          "arabicExample": "سَوْرَةُ الخَمْرِ",
+          "arabicGloss": "حِدَّتُها وَأَثَرُها.",
+          "uzbekMeaning": "sharobning o‘tkirligi va kuchli ta’siri",
+          "uzbekExample": "Sharobning o‘tkirligi tez sezildi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check_and_source_grammar_repair",
+        "issues": [
+          "Manbadagi سار dan bir martalik ot degan belgi noto‘g‘ri; Qohira Arab tili akademiyasi سَوْر ildizida sovuq, ichimlik va g‘azabning shiddati, o‘tkirligi hamda jo‘shishi ma’nolarini tasdiqlaydi"
+        ],
+        "reviewedAt": "2026-08-29"
+      },
+      "notes": "Manbada «سار dan bir martalik ot» deb berilgan grammatik belgi xato; so‘z سَوْر ildizidagi shiddat, o‘tkirlik va jo‘shish ma’nosiga mansub."
+    },
+    {
+      "sequenceIndex": 147,
+      "id": 79271,
+      "dictionarySource": "Ghoniy",
+      "arabic": "شَكَّةٌ",
+      "root": "شكك‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ شَكَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ شَكَّ).|-أَصَابَتْهُ شَكَّةٌ : أَلَمٌ حَادٌّ مُفَاجِئٌ يُصِيبُ أَحَدَ أَجْزَاءِ الجِسْمِ . الْقَلْبُ أَوِ الرَّأْسُ أَوِ الصَّدْرُ.",
+      "sourceHash": "a09f4c11525d56e59294ba000530f78502d5c0b515f6e05a2c64075b315727da",
+      "wordType": "ot",
+      "uzbek": "to‘satdan sanchib og‘rish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَصَابَتْهُ شَكَّةٌ",
+          "arabicGloss": "أَلَمٌ حَادٌّ مُفَاجِئٌ يُصِيبُ أَحَدَ أَجْزَاءِ الجِسْمِ . الْقَلْبُ أَوِ الرَّأْسُ أَوِ الصَّدْرُ.",
+          "uzbekMeaning": "yurak, bosh, ko‘krak yoki tananing boshqa qismida to‘satdan paydo bo‘ladigan o‘tkir sanchiq",
+          "uzbekExample": "Uning ko‘kragida to‘satdan o‘tkir sanchiq paydo bo‘ldi.",
+          "register": "tibbiy belgi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_medical_scope_note",
+        "issues": [
+          "شكة kasallik tashxisi emas, tananing bir qismidagi to‘satdan paydo bo‘ladigan o‘tkir sanchiq belgisi sifatida berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 148,
+      "id": 79272,
+      "dictionarySource": "Ghoniy",
+      "arabic": "شَهْقَةٌ",
+      "root": "شهق‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ شَهَقَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ شَهَقَ).|1- وَأَخِيراً شَهِقَ شَهْقَةَ الْمَوْتِ : آخِر حَشْرَجَةٍ.|2- صَدَرَتْ عَنْهُ شَهْقَةٌ :صَيْحَةٌ.",
+      "sourceHash": "f01db970c483d0fa592565d0d04582fca2ee9c6fb6587fcd3df2d29f3968a650",
+      "wordType": "ot",
+      "uzbek": "1. so‘nggi nafas; 2. bir bor qichqirish yoki hansirab nafas olish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَأَخِيراً شَهِقَ شَهْقَةَ الْمَوْتِ",
+          "arabicGloss": "آخِر حَشْرَجَةٍ.",
+          "uzbekMeaning": "o‘lim oldidagi so‘nggi xirillagan yoki uzilib chiqqan nafas",
+          "uzbekExample": "Nihoyat, u so‘nggi nafasini oldi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "صَدَرَتْ عَنْهُ شَهْقَةٌ",
+          "arabicGloss": "صَيْحَةٌ.",
+          "uzbekMeaning": "bir bor keskin nafas tortish yoki qichqiriq",
+          "uzbekExample": "Undan keskin bir nido chiqdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 149,
+      "id": 79273,
+      "dictionarySource": "Ghoniy",
+      "arabic": "صَوْغَةٌ",
+      "root": "صوغ‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ صَاغَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ صَاغَ).|-هُوَ صَوْغَةُ أَخِيهِ : أَيْ صَوْغُهُ، عَلَى شَاكِلَتِهِ.",
+      "sourceHash": "95b71560ece53a0a422bf13e9691d50300d7bca6b52e4012fa2511de2fa2f84c",
+      "wordType": "ot",
+      "uzbek": "bir qolipdagi o‘xshash nusxa",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ صَوْغَةُ أَخِيهِ",
+          "arabicGloss": "أَيْ صَوْغُهُ، عَلَى شَاكِلَتِهِ.",
+          "uzbekMeaning": "birov bilan bir qolipda yaratilgandek juda o‘xshash kishi",
+          "uzbekExample": "U akasining xuddi bir qolipdan chiqqan nusxasidek."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 150,
+      "id": 79274,
+      "dictionarySource": "Ghoniy",
+      "arabic": "صَرْعَةٌ",
+      "root": "صرع‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ صَرَعَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ صَرَعَ).|1- اِنْتَشَرَتْ صَرْعَةٌ جَدِيدَةٌ بَيْنَ النَّاسِ : ظَاهِرَةٌ، حَالَةٌ، نَموذَجٌ، أُسْلُوبٌ فِي اللِّبَاسِ.|2- عَلَى كُلِّ صَرْعَةٍ : عَلَى كُلِّ حَالٍ.",
+      "sourceHash": "19e4a0bb081214d8ba1a4104ec5510b443b97b92f389d139eb11a0f4c3d37c8c",
+      "wordType": "ot",
+      "uzbek": "1. urfga aylangan yangi oqim; 2. har qanday holatda",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "اِنْتَشَرَتْ صَرْعَةٌ جَدِيدَةٌ بَيْنَ النَّاسِ",
+          "arabicGloss": "ظَاهِرَةٌ، حَالَةٌ، نَموذَجٌ، أُسْلُوبٌ فِي اللِّبَاسِ.",
+          "uzbekMeaning": "odamlar orasida tez tarqalgan yangi urf, moda yoki qiziqish oqimi",
+          "uzbekExample": "Odamlar orasida yangi kiyinish urfi tarqaldi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَلَى كُلِّ صَرْعَةٍ",
+          "arabicGloss": "عَلَى كُلِّ حَالٍ.",
+          "uzbekMeaning": "har qanday holatda, nima bo‘lganda ham",
+          "uzbekExample": "Har qanday holatda ham ish davom etadi.",
+          "register": "ibora"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 151,
+      "id": 79275,
+      "dictionarySource": "Ghoniy",
+      "arabic": "صَنْعَةٌ",
+      "root": "صنع‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ صَنَعَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ صَنَعَ).|1- هَذَا مِنْ صَنْعَتِهِ : مِنْ عَمَلِهِ، أَيْ مِنْ عَمَلِ الصَّانِعِ.|2- هَذِهِ صَنْعَتُهُ : هَذِهِ حِرْفَتُهُ.|3- عَمَلٌ فِيهِ كَثِيرٌ مِنَ الصَّنْعَةِ :كَثِيرٌ مِنَ التَّكَلُّفِ.",
+      "sourceHash": "55337f6e2997108df16c53432db7ddeb2a09ca07000086e6bf37f6f5a5b1fb92",
+      "wordType": "ot",
+      "uzbek": "1. yasagan ish; 2. hunar; 3. sun’iylik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هَذَا مِنْ صَنْعَتِهِ",
+          "arabicGloss": "مِنْ عَمَلِهِ، أَيْ مِنْ عَمَلِ الصَّانِعِ.",
+          "uzbekMeaning": "usta yoki boshqa kishining qo‘li bilan yasalgan ish yoki buyum",
+          "uzbekExample": "Bu uning o‘z qo‘li bilan qilgan ishi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "هَذِهِ صَنْعَتُهُ",
+          "arabicGloss": "هَذِهِ حِرْفَتُهُ.",
+          "uzbekMeaning": "kishi muntazam shug‘ullanadigan kasb yoki hunar",
+          "uzbekExample": "Bu uning hunari."
+        },
+        {
+          "index": 3,
+          "arabicExample": "عَمَلٌ فِيهِ كَثِيرٌ مِنَ الصَّنْعَةِ",
+          "arabicGloss": "كَثِيرٌ مِنَ التَّكَلُّفِ.",
+          "uzbekMeaning": "ishda tabiiylikni kamaytiradigan ortiqcha bezak, zo‘rma-zo‘rakilik yoki sun’iylik",
+          "uzbekExample": "Bu asarda ortiqcha sun’iylik ko‘p."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 152,
+      "id": 79276,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ضَجْعَةٌ",
+      "root": "ضجع‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ ضَجَعَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ ضَجَعَ).|1- يَعِيشُ فِي ضَجْعَةٍ : فِي خَفْضٍ مِنَ العَيْشِ، فِي دَعَةٍ.|2- ضَجَعَ ضَجْعَتَهُ الأَخِيرَةَ : رَقْدَتَهُ الأَخِيرَةَ، أَيْ مَاتَ- ثَارَ كَمَا يَثُورُ الوَحْشُ مِنْ ضَجْعَتِهِ. (ص. م. الرافعي).",
+      "sourceHash": "610fd32619e469e2020170903c7dd86c5577be7b4345041197739d3d3a6733f4",
+      "wordType": "ot",
+      "uzbek": "1. osoyishta turmush; 2. yotish yoki so‘nggi uyqu",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَعِيشُ فِي ضَجْعَةٍ",
+          "arabicGloss": "فِي خَفْضٍ مِنَ العَيْشِ، فِي دَعَةٍ.",
+          "uzbekMeaning": "rohat, farovonlik va osoyishtalikdagi turmush",
+          "uzbekExample": "U rohat va osoyishtalikda yashaydi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "ضَجَعَ ضَجْعَتَهُ الأَخِيرَةَ",
+          "arabicGloss": "رَقْدَتَهُ الأَخِيرَةَ، أَيْ مَاتَ- ثَارَ كَمَا يَثُورُ الوَحْشُ مِنْ ضَجْعَتِهِ. (ص. م. الرافعي).",
+          "uzbekMeaning": "bir bor yotish yoki yotgan joy; «so‘nggi yotish» iborasida vafot etish",
+          "uzbekExample": "U so‘nggi uyquga ketdi; yovvoyi hayvon yotgan joyidan sapchib turgandek qo‘zg‘aldi.",
+          "register": "umumiy va ko‘chma"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_polysemy_note",
+        "issues": [
+          "Ikkinchi bandda oddiy yotish joyi, hayvonning yotgan joyi va so‘nggi yotish — vafot etish qo‘llanishlari bir ma’no doirasida to‘liq berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 153,
+      "id": 79277,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ضَلَّةٌ",
+      "root": "ضلل‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ ضَلَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ ضَلَّ) - هُوَ فِي ضَلَّةٍ : فِي حَيْرَةٍ.",
+      "sourceHash": "464116e974b01532c109b88196db0118e023f822738a9587045826c8dc4616d3",
+      "wordType": "ot",
+      "uzbek": "hayrat va ikkilanish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ فِي ضَلَّةٍ",
+          "arabicGloss": "فِي حَيْرَةٍ.",
+          "uzbekMeaning": "yo‘l topolmay qolish, hayrat va ikkilanish holati",
+          "uzbekExample": "U nima qilishni bilmay hayron qoldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 154,
+      "id": 79278,
+      "dictionarySource": "Ghoniy",
+      "arabic": "طَرْحَةٌ",
+      "root": "طرح‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ طَرَحَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ طَرَحَ).|1- طَرْحَةُ العَرُوسِ : طَيْلَسَانٌ، كِسَاءٌ تُلْقِيهِ عَلَى كَتِفَيْهَا وَرَأْسِهَا.|2- طَرْحَةُ الْمَشَايِخِ أَوِ العُلَمَاءِ : ثَوْبٌ أَخْضَرُ يَلْبَسُونَهُ.",
+      "sourceHash": "d06993e5ade97ba1423274abf1feb99f559d3a3bc6de36312d8989c1dc19a9c3",
+      "wordType": "ot",
+      "uzbek": "1. kelin yopinchiqi; 2. shayx yoki olimlarning yashil kiyimi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "طَرْحَةُ العَرُوسِ",
+          "arabicGloss": "طَيْلَسَانٌ، كِسَاءٌ تُلْقِيهِ عَلَى كَتِفَيْهَا وَرَأْسِهَا.",
+          "uzbekMeaning": "kelinning boshi va yelkasiga tashlaydigan yopinchiq yoki fata",
+          "uzbekExample": "Kelin boshiga va yelkasiga oq yopinchiq tashladi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "طَرْحَةُ الْمَشَايِخِ أَوِ العُلَمَاءِ",
+          "arabicGloss": "ثَوْبٌ أَخْضَرُ يَلْبَسُونَهُ.",
+          "uzbekMeaning": "ayrim shayx yoki olimlar kiyadigan yashil ustki mato",
+          "uzbekExample": "Shayx yashil ustki mato kiygan edi.",
+          "register": "tarixiy kiyim atamasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 155,
+      "id": 79279,
+      "dictionarySource": "Ghoniy",
+      "arabic": "طَلَّةٌ",
+      "root": "طلل‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ طَلَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ طَلَّ).|1- أَرْضٌ طَلَّةٌ : بَلَّهَا الطَّلُّ.|2- رَائِحَةٌ طَلَّةٌ : لَذِيذَةٌ، شَهِيَّةٌ.|3- هِيَ طَلَّتُهُ : اِمْرَأَتُهُ.",
+      "sourceHash": "cb8e863c352ab4e2a216cc8f8490f9e6e3fa68f9ea4c3fa8f210c5c2fc7a0e50",
+      "wordType": "sifat va ot",
+      "uzbek": "1. shabnam bilan namlangan; 2. yoqimli hid; 3. xotin",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَرْضٌ طَلَّةٌ",
+          "arabicGloss": "بَلَّهَا الطَّلُّ.",
+          "uzbekMeaning": "shabnam yoki mayda yomg‘ir bilan namlangan yer",
+          "uzbekExample": "Yer shabnam bilan namlandi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَائِحَةٌ طَلَّةٌ",
+          "arabicGloss": "لَذِيذَةٌ، شَهِيَّةٌ.",
+          "uzbekMeaning": "yoqimli va ishtaha ochadigan hid",
+          "uzbekExample": "Taomdan yoqimli hid kelardi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "هِيَ طَلَّتُهُ",
+          "arabicGloss": "اِمْرَأَتُهُ.",
+          "uzbekMeaning": "uning xotini",
+          "uzbekExample": "U uning xotinidir.",
+          "register": "kamyob qo‘llanish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "Shabnam tekkan yer, yoqimli hid va xotin ma’nolari zamonaviy hamda klassik arab lug‘at manbalari bilan tekshirildi; uchinchi ma’noga kamyoblik belgisi qo‘yildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 156,
+      "id": 79280,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَطْسَةٌ",
+      "root": "عطس‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ عَطَسَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ عَطَسَ).|1- أَتَتْهُ العَطْسَةُ : اِنْدِفَاعُ الْهَوَاءِ مِنَ الأَنْفِ بِشِدَّةٍ فَيُسْمَعُ لَهُ صَوْتٌ قَوِيٌّ مُرْتَفِعٌ.|2- هُوَ عَطْسَةُ رَفِيقِهِ : أَيْ يُشْبِهُهُ خَلْقاً وَخُلُقاً.",
+      "sourceHash": "10e6334c03b690a22240a174f113394058f3810a14afa3be364ab3356a2f2138",
+      "wordType": "ot",
+      "uzbek": "1. bir marta aksirish; 2. aynan o‘xshash kishi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَتَتْهُ العَطْسَةُ",
+          "arabicGloss": "اِنْدِفَاعُ الْهَوَاءِ مِنَ الأَنْفِ بِشِدَّةٍ فَيُسْمَعُ لَهُ صَوْتٌ قَوِيٌّ مُرْتَفِعٌ.",
+          "uzbekMeaning": "burun va og‘izdan havoning tovush bilan keskin chiqishi — bir marta aksirish",
+          "uzbekExample": "U bir marta qattiq aksirdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "هُوَ عَطْسَةُ رَفِيقِهِ",
+          "arabicGloss": "أَيْ يُشْبِهُهُ خَلْقاً وَخُلُقاً.",
+          "uzbekMeaning": "tashqi qiyofasi va fe’l-atvori bilan sherigiga juda o‘xshash kishi",
+          "uzbekExample": "U qiyofasi va xulqi bilan sherigining aynan o‘zi.",
+          "register": "ko‘chma va kamyob"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_figurative_note",
+        "issues": [
+          "Ikkinchi ma’no so‘zma-so‘z aksa emas, sherigiga qiyofa va xulqda aynan o‘xshash kishi haqidagi ko‘chma ibora sifatida tarjima qilindi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 157,
+      "id": 79281,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَمْلَةٌ",
+      "root": "عمل‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ عَمِلَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ عَمِلَ).|-أَتَى عَمْلَةً يُعَاقِبُ عَلَيْهَا الْقَانُونُ : عَمَلاً سَيِّئاً وَمُنْكَراً، فَعْلَةٌ مُنْكَرَةٌ كَالسَّرِقَةِ أَوِ الْخِيَانَةِ.",
+      "sourceHash": "63c5fa6ceb889dee0e554d6a0d7a453ea1f46f5a9be96249ad4aed65be79fdc5",
+      "wordType": "ot",
+      "uzbek": "qabih qilmish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَتَى عَمْلَةً يُعَاقِبُ عَلَيْهَا الْقَانُونُ",
+          "arabicGloss": "عَمَلاً سَيِّئاً وَمُنْكَراً، فَعْلَةٌ مُنْكَرَةٌ كَالسَّرِقَةِ أَوِ الْخِيَانَةِ.",
+          "uzbekMeaning": "o‘g‘rilik yoki xiyonat kabi qonun jazolaydigan yomon va qabih qilmish",
+          "uzbekExample": "U qonun jazolaydigan qabih qilmish sodir etdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 158,
+      "id": 79282,
+      "dictionarySource": "Ghoniy",
+      "arabic": "غَفْوَةٌ",
+      "root": "غفو‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ غَفَا",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ غَفَا).|1- أَخَذَتْهُ غَفْوَةٌ : نَوْمَةٌ خَفِيفَةٌ، إِغْفَاءةٌ.|2- اِخْتَبَأَ الصَّائِدُ فِي الغَفْوَةِ : فِي الْحُفْرَةِ الَّتِي يَكْمُنُ فِيهَا وَهُوَ يَتَرَبَّصُ بِصَيْدِهِ.",
+      "sourceHash": "ef1662ddcdc320841a4e04ba2c57eec0ef8b737f1ae98c59a6c94965be2e43b6",
+      "wordType": "ot",
+      "uzbek": "1. mizg‘ish; 2. ovchi bekinadigan chuqur",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَخَذَتْهُ غَفْوَةٌ",
+          "arabicGloss": "نَوْمَةٌ خَفِيفَةٌ، إِغْفَاءةٌ.",
+          "uzbekMeaning": "qisqa va yengil uyqu, mizg‘ish",
+          "uzbekExample": "U bir oz mizg‘ib oldi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "اِخْتَبَأَ الصَّائِدُ فِي الغَفْوَةِ",
+          "arabicGloss": "فِي الْحُفْرَةِ الَّتِي يَكْمُنُ فِيهَا وَهُوَ يَتَرَبَّصُ بِصَيْدِهِ.",
+          "uzbekMeaning": "ovchi o‘ljani poylab bekinadigan chuqur yoki pana",
+          "uzbekExample": "Ovchi o‘ljani poylab chuqurda bekinib yotdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 159,
+      "id": 79283,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَيْئَةٌ",
+      "root": "فيأ‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ فَاءَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ فَاءَ).|1- فَاءَ إِلَى اللَّهِ فَيْئَةً حَسَنَةً : تَابَ تَوْبَةً حَسَنَةً بِمَعْنَى الرّجْعَةِ.|2- جَاءَ بَعْدَ فَيْئَةٍ : بَعْدَ حِينٍ.",
+      "sourceHash": "ce8973fdd5ba67b61738a40b8fbd5f2c760813eb212a3546107ef2516661828e",
+      "wordType": "ot",
+      "uzbek": "1. yaxshi tavba va qaytish; 2. bir muddat",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَاءَ إِلَى اللَّهِ فَيْئَةً حَسَنَةً",
+          "arabicGloss": "تَابَ تَوْبَةً حَسَنَةً بِمَعْنَى الرّجْعَةِ.",
+          "uzbekMeaning": "Allohga yaxshi tavba bilan qaytish",
+          "uzbekExample": "U Allohga chin tavba bilan qaytdi.",
+          "register": "diniy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "جَاءَ بَعْدَ فَيْئَةٍ",
+          "arabicGloss": "بَعْدَ حِينٍ.",
+          "uzbekMeaning": "bir muddat yoki fursat",
+          "uzbekExample": "U bir muddatdan keyin keldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 160,
+      "id": 79284,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَتْحَةٌ",
+      "root": "فتح‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ فَتَحَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ فَتَحَ).|1- عَلاَمَةُ الْفَتْحَةِ : عَلاَمَةُ النَّصْبِ وَيُرْمَزُ لَهَا هَكَذَا (ـَ).| فَوْقَ الْحَرْفِ.",
+      "sourceHash": "726525b67c255f495ecf94e69e97c6687c82f0e4015aa35d3cbe527bf5fede93",
+      "wordType": "ot",
+      "uzbek": "fatha harakati",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "عَلاَمَةُ الْفَتْحَةِ",
+          "arabicGloss": "عَلاَمَةُ النَّصْبِ وَيُرْمَزُ لَهَا هَكَذَا (ـَ).| فَوْقَ الْحَرْفِ.",
+          "uzbekMeaning": "fatha — arab yozuvida harf ustiga qo‘yilib, qisqa a unlisini bildiradigan harakat; grammatikada ko‘pincha nasb alomati",
+          "uzbekExample": "Bu harf ustiga fatha belgisi qo‘yildi.",
+          "register": "arab tili fonetikasi va grammatikasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_grammar_note",
+        "issues": [
+          "Fatha qisqa a unlisini bildiradigan harakat va grammatikada ko‘pincha nasb alomati ekani bir-biridan ajratib tushuntirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 161,
+      "id": 79285,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَتْلَةٌ",
+      "root": "فتل‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ فَتَلَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ فَتَلَ).|1-  وِعَاءُ حَبِّ السَّمُرِ وَالسَّلَمِ خَاصَّةً، وَذَلِكَ فِي أَوَّلِ طُلُوعِهِ.|2-  مَا يَكُونُ مَفْتُولاً مِنْ وَرَقِ الشَّجَرِ.|3-  قِطْعَةٌ مِنْ خَيْطِ القُطْنِ وَالْحَرِيرِ.|4-  شِدَّةُ عَصَبِ الذِّرَاعِ.|5-  سَحَاةٌ فِي شَقِّ النَّوَاةِ.|6- مَا أَغْنَى عَنْهُ فَتْلَةً : أَيْ شَيْئاً.",
+      "sourceHash": "cb852aa9c1189e24c9ceddd0f672bb907b7827813ba5e388716420e1824806bc",
+      "wordType": "ot",
+      "uzbek": "1. samur va salam urug‘i qobig‘i; 2. buralgan barg; 3. ip tolasi; 4. bilak pay-mushagining baquvvatligi; 5. danak yorig‘idagi yupqa po‘st; 6. zarracha",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "وِعَاءُ حَبِّ السَّمُرِ وَالسَّلَمِ خَاصَّةً، وَذَلِكَ فِي أَوَّلِ طُلُوعِهِ.",
+          "uzbekMeaning": "samur va salam akatsiyasi urug‘i endi paydo bo‘lganida uni o‘rab turadigan qobiq",
+          "uzbekExample": "Samur va salam urug‘ining ilk qobig‘i paydo bo‘ldi.",
+          "register": "botanika"
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "مَا يَكُونُ مَفْتُولاً مِنْ وَرَقِ الشَّجَرِ.",
+          "uzbekMeaning": "yoyilmay, tabiatan buralib o‘sadigan daraxt bargi",
+          "uzbekExample": "Daraxtning bargi buralib o‘sgan edi.",
+          "register": "botanika"
+        },
+        {
+          "index": 3,
+          "arabicExample": "",
+          "arabicGloss": "قِطْعَةٌ مِنْ خَيْطِ القُطْنِ وَالْحَرِيرِ.",
+          "uzbekMeaning": "paxta, ipak yoki boshqa ipning bir parchasi yoki tolasi",
+          "uzbekExample": "U ipak ipidan bir tola oldi."
+        },
+        {
+          "index": 4,
+          "arabicExample": "",
+          "arabicGloss": "شِدَّةُ عَصَبِ الذِّرَاعِ.",
+          "uzbekMeaning": "bilak payi va mushagining tarangligi hamda baquvvatligi",
+          "uzbekExample": "Uning bilak paylari va mushaklari baquvvat edi.",
+          "register": "anatomiya"
+        },
+        {
+          "index": 5,
+          "arabicExample": "",
+          "arabicGloss": "سَحَاةٌ فِي شَقِّ النَّوَاةِ.",
+          "uzbekMeaning": "danak yorig‘ida bo‘ladigan yupqa po‘st",
+          "uzbekExample": "Danak yorig‘ida yupqa po‘st bor edi."
+        },
+        {
+          "index": 6,
+          "arabicExample": "مَا أَغْنَى عَنْهُ فَتْلَةً",
+          "arabicGloss": "أَيْ شَيْئاً.",
+          "uzbekMeaning": "inkor gapida: biror narsa yoki zarracha",
+          "uzbekExample": "Bu unga zarracha ham foyda bermadi.",
+          "register": "kamyob ibora"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "O‘simlik qobig‘i, buralgan barg, ip tolasi, bilak pay-mushagi, danak yorig‘idagi yupqa po‘st va inkor gapidagi zarracha ma’nolari Qohira Arab tili akademiyasi bilan birma-bir tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 162,
+      "id": 79286,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَكَّةٌ",
+      "root": "فكك‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ فَكَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ فَكَّ).|-فَكَّةُ نُقُودٍ : صَرْفُها.",
+      "sourceHash": "99b33cc581e05aeb15324b54be30dc95dadb49931cb6eb0e365451beb68af9c3",
+      "wordType": "ot",
+      "uzbek": "mayda pulga almashtirish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَكَّةُ نُقُودٍ",
+          "arabicGloss": "صَرْفُها.",
+          "uzbekMeaning": "pulni mayda qiymatdagi pullarga almashtirish",
+          "uzbekExample": "U pulni mayda pulga almashtirdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 163,
+      "id": 79287,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَوْمَةٌ",
+      "root": "قوم‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ قَامَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ قَامَ).|1- قَوْمَةُ الإِنْسَانِ : قَامَتُهُ.|2-  مَا بَيْنَ الرَّكْعَتَيْنِ مِنْ قِيَامٍ.|3-  أَحَدُ أَجْزَاءِ صَلاَةِ اللَّيْلِ عِنْدَ الرُّهْبَانِ.",
+      "sourceHash": "7149dca4bff75d9d0d44f8870c9d959248feb7720d13e0ff8d2c7082e6ed4167",
+      "wordType": "ot",
+      "uzbek": "1. qomat; 2. ikki rakat orasidagi tik turish; 3. rohiblar tungi ibodatining qismi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قَوْمَةُ الإِنْسَانِ",
+          "arabicGloss": "قَامَتُهُ.",
+          "uzbekMeaning": "insonning bo‘y-basti va qomati",
+          "uzbekExample": "Uning qomati tik edi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "مَا بَيْنَ الرَّكْعَتَيْنِ مِنْ قِيَامٍ.",
+          "uzbekMeaning": "ikki rakat orasida tik turish holati",
+          "uzbekExample": "U ikki rakat orasida tik turdi.",
+          "register": "ibodat atamasi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "",
+          "arabicGloss": "أَحَدُ أَجْزَاءِ صَلاَةِ اللَّيْلِ عِنْدَ الرُّهْبَانِ.",
+          "uzbekMeaning": "rohiblarning tungi ibodatidagi tik turib bajariladigan qismlardan biri",
+          "uzbekExample": "Rohib tungi ibodatning tik turish qismini bajardi.",
+          "register": "xristian ibodati"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_religious_scope_note",
+        "issues": [
+          "Ikkinchi ma’no umumiy namozdagi tik turish, uchinchi ma’no rohiblarning tungi ibodatidagi alohida qism sifatida ajratildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 164,
+      "id": 79288,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَبْسَةٌ",
+      "root": "قبس‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ قَبَسَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ قَبَسَ).|-قَبْسَةٌ مِنْ نَارٍ : شُعْلَةٌ.",
+      "sourceHash": "f8a05dbbaabab2ae13a5defa37148f05be40f0706910024da5dfd9bf6c41da84",
+      "wordType": "ot",
+      "uzbek": "olovdan bir alanga",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قَبْسَةٌ مِنْ نَارٍ",
+          "arabicGloss": "شُعْلَةٌ.",
+          "uzbekMeaning": "olovdan olingan bir alanga yoki cho‘g‘",
+          "uzbekExample": "U olovdan bir alanga oldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 165,
+      "id": 79289,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَعْدَةٌ",
+      "root": "قعد‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ قَعَدَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ قَعَدَ).|1- كَانَ فِي قَعْدَةٍ مُرِيحَةٍ : فِي جَلْسَةٍ.|2- ذُو القِعْدَةِ : الشَّهْرُ الْحَادِي عَشَرَ مِنَ الشُّهُورِ القَمَرِيَّةِ مِنَ السَّنَةِ الْهِجْرِيَّةِ عَدَدُ أَيَّامِهِ 29 يَوْماً أَو 30 يَوْماً، يَأْتِي بَعْدَ شَوَّال، وَيَلِيهِ ذُو الْحِجَّةِ، سُمِيَّ بِذَلِكَ لأَنَّ العَرَبَ كَانُوا يَقْعُدُونَ فِيهِ عَنِ السَّفَرِ وَالغَزْوِ.",
+      "sourceHash": "f5f662ddc23a50281e98f7e15c184f11301b6ba367afcede824da968da3869ca",
+      "wordType": "ot",
+      "uzbek": "1. o‘tirish holati; 2. Zulqa’da oyi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَانَ فِي قَعْدَةٍ مُرِيحَةٍ",
+          "arabicGloss": "فِي جَلْسَةٍ.",
+          "uzbekMeaning": "bir bor o‘tirish yoki o‘tirish holati",
+          "uzbekExample": "U qulay holatda o‘tirgan edi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "ذُو القِعْدَةِ",
+          "arabicGloss": "الشَّهْرُ الْحَادِي عَشَرَ مِنَ الشُّهُورِ القَمَرِيَّةِ مِنَ السَّنَةِ الْهِجْرِيَّةِ عَدَدُ أَيَّامِهِ 29 يَوْماً أَو 30 يَوْماً، يَأْتِي بَعْدَ شَوَّال، وَيَلِيهِ ذُو الْحِجَّةِ، سُمِيَّ بِذَلِكَ لأَنَّ العَرَبَ كَانُوا يَقْعُدُونَ فِيهِ عَنِ السَّفَرِ وَالغَزْوِ.",
+          "uzbekMeaning": "Zulqa’da — hijriy-qamariy yilning Shavvoldan keyin, Zulhijjadan oldin keladigan o‘n birinchi oyi; 29 yoki 30 kun",
+          "uzbekExample": "Zulqa’da hijriy yilning o‘n birinchi oyidir.",
+          "register": "islomiy taqvim"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 166,
+      "id": 79290,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَفْزَةٌ",
+      "root": "قفز‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ قَفَزَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ قَفَزَ).|-حَقَّقَ قَفْزَةً نَوْعِيَّةً : وَثْبَةً.",
+      "sourceHash": "3d11c2fbc2b1dcc2b63f1e6b7ee9b8a7411112080787ad0a4a44d0e8efd238f6",
+      "wordType": "ot",
+      "uzbek": "sakrash, keskin yuksalish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَقَّقَ قَفْزَةً نَوْعِيَّةً",
+          "arabicGloss": "وَثْبَةً.",
+          "uzbekMeaning": "bir bor sakrash; ko‘chma ma’noda sifat jihatidan keskin yuksalish",
+          "uzbekExample": "Ular sifat jihatidan katta sakrashga erishdilar."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 167,
+      "id": 79291,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَثْمَةٌ",
+      "root": "لثم‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لَثَمَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لَثَمَ).|-وَضَعَ لَثْمَةً عَلَى خَدِّهَا : قُبْلَةً.",
+      "sourceHash": "63def2258aac655316e2a5937d6395d4d1a8795517483bdf782143a2a563c4bc",
+      "wordType": "ot",
+      "uzbek": "bir bo‘sa",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَضَعَ لَثْمَةً عَلَى خَدِّهَا",
+          "arabicGloss": "قُبْلَةً.",
+          "uzbekMeaning": "bir marta o‘pish, bir bo‘sa",
+          "uzbekExample": "U uning yuzidan o‘pdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 168,
+      "id": 79292,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَجَّةٌ",
+      "root": "لجج‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لَجَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لَجَّ).|-سَادَتِ اللَّجَّةُ بَيْنَهُمْ : الْجَلَبَةُ وَالصَّخَبُ وَاخْتِلاَطُ الأَصْوَاتِ.",
+      "sourceHash": "e272546bc57dd945e77873de7fd7ddd7903260534b6e29212b3962dca8474bfa",
+      "wordType": "ot",
+      "uzbek": "shovqin-suron",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سَادَتِ اللَّجَّةُ بَيْنَهُمْ",
+          "arabicGloss": "الْجَلَبَةُ وَالصَّخَبُ وَاخْتِلاَطُ الأَصْوَاتِ.",
+          "uzbekMeaning": "ovozlar aralashib ketgan shovqin-suron va g‘ala-g‘ovur",
+          "uzbekExample": "Ular orasida shovqin-suron boshlandi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 169,
+      "id": 79293,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَدْغَةٌ",
+      "root": "لدغ‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لَدَغَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لَدَغَ).|-تَرَكَتْ لَدْغَةُ الْحَيَّةِ أَثَراً فِي جِسْمِهِ : لَسْعَتُهَا.",
+      "sourceHash": "c406049c0f0988b8c1d2fd64d6fe941c31535be6550fbe1ef29be5de02529398",
+      "wordType": "ot",
+      "uzbek": "bir marta chaqish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تَرَكَتْ لَدْغَةُ الْحَيَّةِ أَثَراً فِي جِسْمِهِ",
+          "arabicGloss": "لَسْعَتُهَا.",
+          "uzbekMeaning": "ilon yoki zaharli jonzotning bir marta chaqishi",
+          "uzbekExample": "Ilon chaqishi uning badanida iz qoldirdi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 170,
+      "id": 79294,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَهْفَةٌ",
+      "root": "لهف‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لَهِفَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لَهِفَ).|-يَالَهْفَةُ :، :يَا لَهْفَتَاهُ : كَلِمَةٌ للِتَّحَسُّرِ عَلَى مَا مَضَى.",
+      "sourceHash": "2ddb45683db680e11c4e66772b5974ebb26de33d21a0a4a7ebb76289bc6d9f38",
+      "wordType": "ot va undov",
+      "uzbek": "armon va afsus",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَالَهْفَةُ",
+          "arabicGloss": "، :يَا لَهْفَتَاهُ : كَلِمَةٌ للِتَّحَسُّرِ عَلَى مَا مَضَى.",
+          "uzbekMeaning": "o‘tib ketgan narsa uchun kuchli afsus va armonni bildiradigan undov",
+          "uzbekExample": "Eh, armon! O‘tgan kunlar qaytmaydi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 171,
+      "id": 79295,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَوْعَةٌ",
+      "root": "لوع‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لاَعَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لاَعَ).|-فِي قَلْبِهِ لَوْعَةٌ : حُرْقَةُ الْحُزْنِ وَالْحُبِّ الشَّدِيدِ- بِهِ لَوْعَةُ الْحُبِّ :-رَآى لَوْعَتِي فَقَبِلَ رَجَائِي. (أ. أمين).",
+      "sourceHash": "73d1c454a406db1f725824fd19745d063bc3f0dbb44870ca253f00558bb7c98f",
+      "wordType": "ot",
+      "uzbek": "sevgi yoki qayg‘u iztirobi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فِي قَلْبِهِ لَوْعَةٌ",
+          "arabicGloss": "حُرْقَةُ الْحُزْنِ وَالْحُبِّ الشَّدِيدِ- بِهِ لَوْعَةُ الْحُبِّ :-رَآى لَوْعَتِي فَقَبِلَ رَجَائِي. (أ. أمين).",
+          "uzbekMeaning": "kuchli sevgi yoki qayg‘udan qalbni kuydiradigan iztirob",
+          "uzbekExample": "Uning qalbida sevgi iztirobi bor edi; u iztirobimni ko‘rib, iltimosimni qabul qildi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 172,
+      "id": 79296,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لَوْمَةٌ",
+      "root": "لوم‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لاَمَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لاَمَ).|-لاَ يَخْشَى لَوْمَةَ لاَئِمٍ :مَا يُلاَمُ عَلَيْهِ.المائدة آية 54 وَلاَ يَخَافُونَ لَوْمَةَ لاَئِمٍ (قرآن).",
+      "sourceHash": "a8029480eeac5e4c8592d08c474dd9ec98e9f79f389be6add7db33f005b249f6",
+      "wordType": "ot",
+      "uzbek": "bir bor malomat qilish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "لاَ يَخْشَى لَوْمَةَ لاَئِمٍ",
+          "arabicGloss": "مَا يُلاَمُ عَلَيْهِ.المائدة آية 54 وَلاَ يَخَافُونَ لَوْمَةَ لاَئِمٍ (قرآن).",
+          "uzbekMeaning": "birovning malomati, tanbehi yoki ayblashi",
+          "uzbekExample": "Ular malomat qiluvchining malomatidan qo‘rqmaydilar.",
+          "register": "umumiy va Qur’on, Moida surasi 54-oyat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 173,
+      "id": 79297,
+      "dictionarySource": "Ghoniy",
+      "arabic": "لِينَةٌ",
+      "root": "لين‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ لاَنَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ لاَنَ).|-اِتَّكَأَ عَلَى اللِّينَةِ : وِسَادَةٌ يُتَوَسَّدُ بِهَا.",
+      "sourceHash": "5adee16898f4d3c907a89c0833dec9d4e4b1e88ae4bfa075188b1e1980e50ae6",
+      "wordType": "ot",
+      "uzbek": "yumshoq yostiq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "اِتَّكَأَ عَلَى اللِّينَةِ",
+          "arabicGloss": "وِسَادَةٌ يُتَوَسَّدُ بِهَا.",
+          "uzbekMeaning": "bosh qo‘yib suyaniladigan yumshoq yostiq",
+          "uzbekExample": "U yumshoq yostiqqa suyandi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 174,
+      "id": 79298,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَخْطَةٌ",
+      "root": "مخط‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ مَخَطَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ مَخَطَ).| ما يَقْذِفُهُ الرَّجُلُ مِنَ الْمُخَاطِ دَفْعَةً وَاحِدَةً.",
+      "sourceHash": "323dc76f91037e2c01612efa11af1dd38c1196f944514c730bc0d891dd6a98eb",
+      "wordType": "ot",
+      "uzbek": "bir marta chiqarilgan burun shillig‘i",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "ما يَقْذِفُهُ الرَّجُلُ مِنَ الْمُخَاطِ دَفْعَةً وَاحِدَةً.",
+          "uzbekMeaning": "burundan bir yo‘la chiqarib tashlangan shilliq",
+          "uzbekExample": "U burnidagi shilliqni bir yo‘la chiqarib tashladi.",
+          "register": "anatomiya va umumiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 175,
+      "id": 79299,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَسْحَةٌ",
+      "root": "مسح‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ مَسَحَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ مَسَحَ).|-عَلَيْهَا مَسْحَةٌ مِنَ الجَمَالِ : أَثَرٌ ظَاهِرٌ- إِنَّ مَسْحَةً مِنَ الحُزْنِ كَانَتْ تَسُودُ فِي كُلِّ عِبَارَةٍ مِنْ عِبَارَاتِهِ.",
+      "sourceHash": "1aa5d83fc40c8c100683f0049c845cb62ea8165f04d1401673ccdd370a634603",
+      "wordType": "ot",
+      "uzbek": "sezilarli tus yoki alomat",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "عَلَيْهَا مَسْحَةٌ مِنَ الجَمَالِ",
+          "arabicGloss": "أَثَرٌ ظَاهِرٌ- إِنَّ مَسْحَةً مِنَ الحُزْنِ كَانَتْ تَسُودُ فِي كُلِّ عِبَارَةٍ مِنْ عِبَارَاتِهِ.",
+          "uzbekMeaning": "yuz, holat yoki nutqda sezilib turadigan yengil tus va alomat",
+          "uzbekExample": "Unda go‘zallik alomati bor edi; uning har bir gapida mungli bir tus sezilardi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 176,
+      "id": 79300,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَسْكَةٌ",
+      "root": "مسك‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ مَسَكَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ مَسَكَ).|1- مَسَكَهُ مَسْكَةً : قَبَضَهُ قَبْضَةً.|2- مَسْكَةُ الطَّنْجَرَةِ : مَا يُمْسَكُ بِهَا.|3- مَسْكَةُ البَابِ : مِقْبَضُهُ.",
+      "sourceHash": "f6e82794c5c812a86d542fd1b5fc666423b7a2f0130ea08d7e395017854a78e7",
+      "wordType": "ot",
+      "uzbek": "1. bir bor ushlash; 2. qozon dastasi; 3. eshik tutqichi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَسَكَهُ مَسْكَةً",
+          "arabicGloss": "قَبَضَهُ قَبْضَةً.",
+          "uzbekMeaning": "bir bor ushlash yoki changallash",
+          "uzbekExample": "U uni bir changallab ushladi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "مَسْكَةُ الطَّنْجَرَةِ",
+          "arabicGloss": "مَا يُمْسَكُ بِهَا.",
+          "uzbekMeaning": "qozonni ushlash uchun mo‘ljallangan dasta",
+          "uzbekExample": "U qozon dastasidan ushladi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "مَسْكَةُ البَابِ",
+          "arabicGloss": "مِقْبَضُهُ.",
+          "uzbekMeaning": "eshikni ochib-yopish uchun mo‘ljallangan tutqich",
+          "uzbekExample": "U eshik tutqichini buradi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 177,
+      "id": 79301,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَوْحَةٌ",
+      "root": "نوح‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَاحَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَاحَ).|-اِشْتَدَّتْ نَوْحَتُهَا : البُكَاءُ عَلَى الْمَيِّتِ مَعَ جَزَعٍ وَأَنِينٍ.",
+      "sourceHash": "89b54aafe1ee55a5136d7ecb4fdc36eb50f71213b647db9ea4b96e342b37d1aa",
+      "wordType": "ot",
+      "uzbek": "marhumga fig‘on bilan yig‘lash",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "اِشْتَدَّتْ نَوْحَتُهَا",
+          "arabicGloss": "البُكَاءُ عَلَى الْمَيِّتِ مَعَ جَزَعٍ وَأَنِينٍ.",
+          "uzbekMeaning": "marhum uchun qayg‘u, fig‘on va ingroq bilan qattiq yig‘lash",
+          "uzbekExample": "Uning marhum uchun fig‘on bilan yig‘lashi kuchaydi.",
+          "register": "marosim atamasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 178,
+      "id": 79302,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَوْعَةٌ",
+      "root": "نوع‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَاعَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَاعَ).|-فِي السُّوقِ نَوْعَةٌ : فَاكِهَةٌ رَطْبَةٌ طَرِيَّةٌ.",
+      "sourceHash": "b1db01bf37f5cf115efd4e108653ed4eaf20331b305635724c3dd17bd839beee",
+      "wordType": "ot",
+      "uzbek": "yangi va sersuv meva",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فِي السُّوقِ نَوْعَةٌ",
+          "arabicGloss": "فَاكِهَةٌ رَطْبَةٌ طَرِيَّةٌ.",
+          "uzbekMeaning": "yangi uzilgan, sersuv va yumshoq meva",
+          "uzbekExample": "Bozorda yangi uzilgan sersuv mevalar bor."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_rare_sense_note",
+        "issues": [
+          "نَوْعَة bu maqolada tur yoki nav emas, yangi uzilgan sersuv-yumshoq meva ma’nosida kelgan"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 179,
+      "id": 79303,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَوْلَةٌ",
+      "root": "نول‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَالَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَالَ).|1- كَانَتْ تِلْكَ نَوْلَتُهُ : مَا يَنَالُهُ الإِنْسَانُ مِنْ خَيْرٍ، مِنْ عَطَاءٍ- مَا أَصَبْتُ مِنْهُ نَوْلَةً.|2- نَاوَلَتْهُ نَوْلَةً : قُبْلَةً- أَصَابَ مِنْ خَدِّهَا نَوْلَةً.",
+      "sourceHash": "27b748b7c49dcc0959b80215dac511a0b8876fae2265b2b60f53716e93df9d0e",
+      "wordType": "ot",
+      "uzbek": "1. nasib etgan yaxshilik yoki hadya; 2. bo‘sa",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَانَتْ تِلْكَ نَوْلَتُهُ",
+          "arabicGloss": "مَا يَنَالُهُ الإِنْسَانُ مِنْ خَيْرٍ، مِنْ عَطَاءٍ- مَا أَصَبْتُ مِنْهُ نَوْلَةً.",
+          "uzbekMeaning": "kishiga nasib etgan yaxshilik, ulush yoki hadya",
+          "uzbekExample": "Bu uning nasibasi edi; men undan hech bir yaxshilik olmadim."
+        },
+        {
+          "index": 2,
+          "arabicExample": "نَاوَلَتْهُ نَوْلَةً",
+          "arabicGloss": "قُبْلَةً- أَصَابَ مِنْ خَدِّهَا نَوْلَةً.",
+          "uzbekMeaning": "bir bo‘sa",
+          "uzbekExample": "U unga bir bo‘sa berdi; uning yuzidan bir bo‘sa oldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 180,
+      "id": 79304,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَوْهَةٌ",
+      "root": "نوه‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَاهَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَاهَ).|-تَنَاوَلَ نَوْهَةً دَسِمَةً : أَكْلَةً، وَجْبَةً.",
+      "sourceHash": "0bc23e5fb454080e326473f7b6c1fdb98efc0089662e7b5f436c890505fa4a9a",
+      "wordType": "ot",
+      "uzbek": "to‘yimli ovqat yoki bir mahal taom",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تَنَاوَلَ نَوْهَةً دَسِمَةً",
+          "arabicGloss": "أَكْلَةً، وَجْبَةً.",
+          "uzbekMeaning": "bir mahal yeyiladigan, odatda to‘yimli ovqat",
+          "uzbekExample": "U to‘yimli bir mahal ovqat yedi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_rare_sense_note",
+        "issues": [
+          "نَوْهَة kamyob so‘z bo‘lib, bir mahal yeyiladigan to‘yimli ovqat ma’nosida saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 181,
+      "id": 79305,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَخْمَةٌ",
+      "root": "نخم‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَخَمَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَخَمَ).|-رَمَى بِنَخْمَتِهِ : مَا يَلْفِظُهُ الْمَرْءُ مِنْ بَلْغَمٍ مِنْ أَنْفِهِ أَوْ صَدْرِهِ.",
+      "sourceHash": "a874ac94face3aae0b797b0b546a07cf68d754d43441ab88dd846923a03dc6f2",
+      "wordType": "ot",
+      "uzbek": "balg‘am tupumi; bir marta balg‘am chiqarish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَمَى بِنَخْمَتِهِ",
+          "arabicGloss": "مَا يَلْفِظُهُ الْمَرْءُ مِنْ بَلْغَمٍ مِنْ أَنْفِهِ أَوْ صَدْرِهِ.",
+          "uzbekMeaning": "burun yoki ko‘krakdan chiqarilgan balg‘am tupumi; bir marta balg‘am chiqarish",
+          "uzbekExample": "U balg‘am tupumini chiqarib tashladi.",
+          "register": "tibbiyot va umumiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [
+          "Avvalgi tarjimada faqat jarayon berilgan edi; arabcha ta’rifdagi balg‘am tupumi ma’nosi ham tiklandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 182,
+      "id": 79306,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَزَّةٌ",
+      "root": "نزز‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَزَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَزَّ).|1- أَخْفَى نَزَّتَهُ : شَهْوَتَهُ- قَتَلَتْهُ نَزَّتُهُ.|2- أَرْضٌ نَزَّةٌ : أَيْ يَسِيلُ فِيهَا مَاءٌ.|3- نَاقَةٌ نَزَّةٌ : نَشِيطَةٌ، خَفِيفَةٌ.",
+      "sourceHash": "3f78922d1f6fe7f0be00dad770b514410f7cba42a5d37b7e81ada327667f57b0",
+      "wordType": "ot va sifat",
+      "uzbek": "1. shahvat; 2. suvi oqib turadigan yer; 3. chaqqon, yengil tuya",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَخْفَى نَزَّتَهُ",
+          "arabicGloss": "شَهْوَتَهُ- قَتَلَتْهُ نَزَّتُهُ.",
+          "uzbekMeaning": "shahvat, jinsiy istak",
+          "uzbekExample": "U shahvatini yashirdi; shahvati uni halok qildi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَرْضٌ نَزَّةٌ",
+          "arabicGloss": "أَيْ يَسِيلُ فِيهَا مَاءٌ.",
+          "uzbekMeaning": "ichidan yoki ustidan suv oqib turadigan yer",
+          "uzbekExample": "Bu yerda suv oqib turadi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "نَاقَةٌ نَزَّةٌ",
+          "arabicGloss": "نَشِيطَةٌ، خَفِيفَةٌ.",
+          "uzbekMeaning": "chaqqon va yengil tuya",
+          "uzbekExample": "Bu chaqqon, yengil tuya edi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 183,
+      "id": 79307,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَصْبَةٌ",
+      "root": "نصب‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَصَبَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَصَبَ).|1-  وَاحِدَةُ النَّصْبِ لِمَا يُغْرَسُ مِنْ صِغَارِ الشَّجَرِ.|2- عَلاَمَةُ النَّصْبَةِ : عَلاَمَةُ النَّصْبَ، الفَتْحَةِ.",
+      "sourceHash": "9c73266e731c27c8ff769a64b7994fe9edd1220ba26902ca8c872b680687f162",
+      "wordType": "ot",
+      "uzbek": "1. nihol, ko‘chat; 2. nasb belgisi — fatha",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "وَاحِدَةُ النَّصْبِ لِمَا يُغْرَسُ مِنْ صِغَارِ الشَّجَرِ.",
+          "uzbekMeaning": "ekish uchun mo‘ljallangan yosh daraxtlardan bittasi; nihol yoki ko‘chat",
+          "uzbekExample": "U bog‘ga bitta nihol ekdi.",
+          "register": "bog‘dorchilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَلاَمَةُ النَّصْبَةِ",
+          "arabicGloss": "عَلاَمَةُ النَّصْبَ، الفَتْحَةِ.",
+          "uzbekMeaning": "arab grammatikasida nasb holatini ko‘rsatuvchi belgi — fatha",
+          "uzbekExample": "Bu so‘zning oxiriga nasb belgisi sifatida fatha qo‘yildi.",
+          "register": "arab tili grammatikasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_semantic_correction",
+        "issues": [
+          "Birinchi ma’no ekish harakati emas, ekiladigan yosh daraxtning bittasi — nihol yoki ko‘chat",
+          "Ikkinchi ma’no arab grammatikasidagi nasb belgisi — fatha sifatida aniqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 184,
+      "id": 79308,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَفْرَةٌ",
+      "root": "نفر‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَفَرَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَفَرَ).|1- نَفْرَةٌ مِنَ الرِّجَالِ :جَمَاعَةٌ مِنْهُمْ لِمَا دُونَ العَشَرَةِ.|2- هُمْ فِي نَفْرَةٍ : مُسْرِعُونَ إِلَى قِتَالٍ وَنَحْوِهِ.|3- نَفْرَةُ الْحُجَّاجِ : أَيْ هُمْ نَافِرُونَ مِنْ مِنىً إِلَى مَكَّةَ.|4- نَفْرَةُ الرَّجُلِ : أُسْرَتُهُ وَقَوْمُهُ يَغْضَبُونَ لِغَضَبِهِ وَيَتَعَصَّبُونَ لَهُ.",
+      "sourceHash": "5a0c696fdb93f564052cfc4dab92773995087f9828e3a50f68d3bbfec1214670",
+      "wordType": "ot",
+      "uzbek": "1. o‘n kishidan kam erkaklar guruhi; 2. jangga shoshilish; 3. hojilarning Minodan Makkaga yo‘l olishi; 4. kishining tarafini oluvchi oilasi va qavmi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَفْرَةٌ مِنَ الرِّجَالِ",
+          "arabicGloss": "جَمَاعَةٌ مِنْهُمْ لِمَا دُونَ العَشَرَةِ.",
+          "uzbekMeaning": "o‘n kishidan kam bo‘lgan erkaklar guruhi",
+          "uzbekExample": "Ular o‘n kishiga yetmaydigan erkaklar guruhi edi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "هُمْ فِي نَفْرَةٍ",
+          "arabicGloss": "مُسْرِعُونَ إِلَى قِتَالٍ وَنَحْوِهِ.",
+          "uzbekMeaning": "jangga yoki shunga o‘xshash ishga shoshilib borish holati",
+          "uzbekExample": "Ular jangga shoshilib borayotgan edilar."
+        },
+        {
+          "index": 3,
+          "arabicExample": "نَفْرَةُ الْحُجَّاجِ",
+          "arabicGloss": "أَيْ هُمْ نَافِرُونَ مِنْ مِنىً إِلَى مَكَّةَ.",
+          "uzbekMeaning": "hojilarning Minodan Makkaga yo‘l olishi",
+          "uzbekExample": "Hojilar Minodan Makkaga yo‘l oldilar.",
+          "register": "haj atamasi"
+        },
+        {
+          "index": 4,
+          "arabicExample": "نَفْرَةُ الرَّجُلِ",
+          "arabicGloss": "أُسْرَتُهُ وَقَوْمُهُ يَغْضَبُونَ لِغَضَبِهِ وَيَتَعَصَّبُونَ لَهُ.",
+          "uzbekMeaning": "kishining g‘azabiga sherik bo‘lib, uning tarafini oladigan oilasi va qavmi",
+          "uzbekExample": "Uning oilasi va qavmi g‘azabiga sherik bo‘lib, tarafini oldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 185,
+      "id": 79309,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَكْهَةٌ",
+      "root": "نكه‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ نَكَهَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ نَكَهَ).|-نَكْهَةُ الْفَمِ : رَائِحَتُهُ- نَكْهَةُ الطَّعَامِ :-قَهْوَةٌ لَهَا نَكْهَةٌ خَاصَّةٌ.",
+      "sourceHash": "9ed6e93a0d73fe7eb5320ee299cfaf912d22ccd53bab510677e8b9dbd2749b39",
+      "wordType": "ot",
+      "uzbek": "og‘iz hidi; taom yoki ichimlikning o‘ziga xos ta’mi va hidi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَكْهَةُ الْفَمِ",
+          "arabicGloss": "رَائِحَتُهُ- نَكْهَةُ الطَّعَامِ :-قَهْوَةٌ لَهَا نَكْهَةٌ خَاصَّةٌ.",
+          "uzbekMeaning": "og‘izdan keladigan hid; taom yoki ichimlikning o‘ziga xos ta’mi va hidi",
+          "uzbekExample": "Og‘izning hidi sezildi; bu qahvaning o‘ziga xos ta’mi bor."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_combined_source_note",
+        "issues": [
+          "Manbada og‘iz hidi va taom-qahvaning o‘ziga xos ta’mi bitta tuzilmaviy ma’noda birga berilgan; ikkalasi ham saqlandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 186,
+      "id": 79310,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَدْأَةٌ",
+      "root": "هدأ‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ هَدَأَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ هَدَأَ).|1- فِي هَدْأَةِ اللَّيْلِ :فِي طَائِفَةٍ مِنْهُ.|2- اِخْتَلَى فِي هَدْأَةٍ : فِي سُكُوتٍ وَسُكُونٍ عَنِ الْحَرَكَاتِ.",
+      "sourceHash": "ca925a9fe18b6125518986357d7a5e3011448cac4b48e12639585531f83df83a",
+      "wordType": "ot",
+      "uzbek": "1. tunning bir qismi; 2. jimjitlik va harakatsizlik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فِي هَدْأَةِ اللَّيْلِ",
+          "arabicGloss": "فِي طَائِفَةٍ مِنْهُ.",
+          "uzbekMeaning": "tunning bir qismi yoki payti",
+          "uzbekExample": "Bu voqea tunning bir qismida yuz berdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "اِخْتَلَى فِي هَدْأَةٍ",
+          "arabicGloss": "فِي سُكُوتٍ وَسُكُونٍ عَنِ الْحَرَكَاتِ.",
+          "uzbekMeaning": "jimjitlik, sokinlik va harakatning to‘xtagan holati",
+          "uzbekExample": "U jimjit va sokin joyda yolg‘iz qoldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 187,
+      "id": 79311,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَدْيَةٌ",
+      "root": "هدي‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ هَدَى",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ هَدَى).|1- تِلْكَ هَدْيَتُهُ :طَرِيقَتُهُ، سِيرَتُهُ.|2- هَدْيَةُ الأَمْرِ : جِهَتُهُ.",
+      "sourceHash": "895d3a4458e25091da8921a9030c37217b40aeec6ab01abfb5c8d3ce8d85cd10",
+      "wordType": "ot",
+      "uzbek": "1. yo‘l tutish usuli va xulq-atvor; 2. ishning yo‘nalishi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تِلْكَ هَدْيَتُهُ",
+          "arabicGloss": "طَرِيقَتُهُ، سِيرَتُهُ.",
+          "uzbekMeaning": "kishining yo‘l tutish usuli, yurish-turishi va xulq-atvori",
+          "uzbekExample": "Bu uning odatiy yo‘l tutishi va xulq-atvori edi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "هَدْيَةُ الأَمْرِ",
+          "arabicGloss": "جِهَتُهُ.",
+          "uzbekMeaning": "ishning yo‘nalishi yoki boradigan tomoni",
+          "uzbekExample": "Ishning yo‘nalishi ma’lum bo‘ldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 188,
+      "id": 79312,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَدَّةٌ",
+      "root": "هدد‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ هَدَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ هَدَّ).|-هَدَّةُ الْبِنَاءِ : صَوْتُ وُقُوعِهِ.",
+      "sourceHash": "9cea65d70c14b678b2faf140ff0216ad2c0a7f64e233804e93a36cebb8a39495",
+      "wordType": "ot",
+      "uzbek": "bino qulaganda chiqadigan tovush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هَدَّةُ الْبِنَاءِ",
+          "arabicGloss": "صَوْتُ وُقُوعِهِ.",
+          "uzbekMeaning": "bino yoki inshoot qulaganda chiqadigan kuchli tovush",
+          "uzbekExample": "Bino qulaganida kuchli gumburlash eshitildi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_semantic_correction",
+        "issues": [
+          "Avvalgi tarjimadagi qulash hodisasi o‘rniga manbadagi aniq ma’no — bino qulashining tovushi berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 189,
+      "id": 79313,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَمْرَةٌ",
+      "root": "همر‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ هَمَرَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ هَمَرَ).|1- هَمْرَةُ مَطَرٍ : دُفْعَةٌ أُولَى مِنْهُ.|2- هَمْرَةُ السِّحْرِ : خَرَزَتُهُ.|3- هَمَرَهُ بِهَمْرَةٍ :بِدَمْدَمَةٍ، بِغَضَبٍ.",
+      "sourceHash": "b43f35371be09608d8a4c8e77a34c6d7db4de860cec63d23eaeb696710a76619",
+      "wordType": "ot",
+      "uzbek": "1. yomg‘irning dastlabki kuchli yog‘ishi; 2. sehr munchoqi; 3. g‘azabli g‘o‘ldirash",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هَمْرَةُ مَطَرٍ",
+          "arabicGloss": "دُفْعَةٌ أُولَى مِنْهُ.",
+          "uzbekMeaning": "yomg‘irning dastlabki kuchli yog‘ish bosqichi",
+          "uzbekExample": "Yomg‘ir dastlab bir kuchli quyib o‘tdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "هَمْرَةُ السِّحْرِ",
+          "arabicGloss": "خَرَزَتُهُ.",
+          "uzbekMeaning": "sehr-joduda ishlatiladigan munchoq yoki tumor",
+          "uzbekExample": "U sehr munchoqni tumor sifatida saqlardi.",
+          "register": "qadimiy e’tiqod atamasi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "هَمَرَهُ بِهَمْرَةٍ",
+          "arabicGloss": "بِدَمْدَمَةٍ، بِغَضَبٍ.",
+          "uzbekMeaning": "g‘azab bilan g‘o‘ldirash yoki ming‘irlash",
+          "uzbekExample": "Unga g‘azab bilan g‘o‘ldiradi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "Yomg‘irning dastlabki kuchli yog‘ishi, sehr munchoqi va g‘azabli g‘o‘ldirash ma’nolari arab lug‘atlari bilan solishtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 190,
+      "id": 79314,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَخْفَةٌ",
+      "root": "وخف‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ وَخَفَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ وَخَفَ).|-وَضَعَ اللَّبَنَ فِي الوَخْفَةِ : الوِعَاءُ مِنْ جِلْدٍ.",
+      "sourceHash": "7e4d6119e2a0c1cfabff3ce8bf0f53c27de7edc8012a6d7545999a6a06140d17",
+      "wordType": "ot",
+      "uzbek": "teridan yasalgan idish",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَضَعَ اللَّبَنَ فِي الوَخْفَةِ",
+          "arabicGloss": "الوِعَاءُ مِنْ جِلْدٍ.",
+          "uzbekMeaning": "sut va boshqa suyuqliklar solinadigan, teridan yasalgan idish",
+          "uzbekExample": "U sutni teri idishga soldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 191,
+      "id": 79315,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَشْمَةٌ",
+      "root": "وشم‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ وَشَمَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ وَشَمَ).|-عَلَى وَجْهِهَا وَشْمَةٌ : العَلاَمَةُ الَّتِي تُرْسَمُ بِغَرْزِ الإِبْرَةِ فِي جِلْدِ الوَجْهِ وَذَرِّ الشَّحْمِ عَلَيْهِ.",
+      "sourceHash": "db471e64e80c0d36b53f0ffc34e405a213eb9465a835fd27e068bd01e6e3781c",
+      "wordType": "ot",
+      "uzbek": "tatuirovka belgisi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "عَلَى وَجْهِهَا وَشْمَةٌ",
+          "arabicGloss": "العَلاَمَةُ الَّتِي تُرْسَمُ بِغَرْزِ الإِبْرَةِ فِي جِلْدِ الوَجْهِ وَذَرِّ الشَّحْمِ عَلَيْهِ.",
+          "uzbekMeaning": "teriga igna sanchib chiziladigan doimiy belgi yoki tatuirovka",
+          "uzbekExample": "Uning yuzida tatuirovka belgisi bor edi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 192,
+      "id": 79316,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَعْقَةٌ",
+      "root": "وعق‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ وَعَقَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ وَعَقَ).|1- فِي فِعْلِهِ وَعْقَةٌ :سُوءُ الْخُلُقِ.|2- أَظْهَرَ وَعْقَةً : شَرَاسَةً.|3- رَجُلٌ وَعْقَةٌ :نَزِقٌ، لَئِيمُ الْخُلُقِ، نَكِدٌ.",
+      "sourceHash": "8e1878e9981bea5a6a54c55a6c3f829b5deb144a144fcf2c9edce2e39e481add",
+      "wordType": "ot va sifat",
+      "uzbek": "1. badxulqlik; 2. tajovuzkorlik; 3. jizzaki, badfe’l va odamovi kishi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فِي فِعْلِهِ وَعْقَةٌ",
+          "arabicGloss": "سُوءُ الْخُلُقِ.",
+          "uzbekMeaning": "xatti-harakatdagi badxulqlik va qo‘pol fe’l",
+          "uzbekExample": "Uning xatti-harakatida badxulqlik bor edi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَظْهَرَ وَعْقَةً",
+          "arabicGloss": "شَرَاسَةً.",
+          "uzbekMeaning": "tajovuzkorlik, yovvoyilik va shafqatsiz muomala",
+          "uzbekExample": "U tajovuzkorligini namoyon qildi."
+        },
+        {
+          "index": 3,
+          "arabicExample": "رَجُلٌ وَعْقَةٌ",
+          "arabicGloss": "نَزِقٌ، لَئِيمُ الْخُلُقِ، نَكِدٌ.",
+          "uzbekMeaning": "jizzaki, badfe’l, pastkash va odamovi erkak",
+          "uzbekExample": "U jizzaki, badfe’l va odamovi kishi edi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "Badxulqlik, tajovuzkorlik va jizzaki-badfe’l kishi ma’nolari Qohira Arab tili akademiyasi bilan tekshirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 193,
+      "id": 79317,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَقْدَةٌ",
+      "root": "وقد‏",
+      "grammarLabel": "الْمَرَّةُ مِنْ وَقَدَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِنْ وَقَدَ).|-وَقْدَةُ السَّمَرِ : نَارُهُ الْمُشْتَعِلَةُ.",
+      "sourceHash": "bd0dc311067b75d7510bf4293d1ee07696b653f3bb0d8160b0b89b1e59c3dbe2",
+      "wordType": "ot",
+      "uzbek": "tungi gurungning yonib turgan gulxani",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَقْدَةُ السَّمَرِ",
+          "arabicGloss": "نَارُهُ الْمُشْتَعِلَةُ.",
+          "uzbekMeaning": "tungi suhbat yoki gurung uchun yoqilgan, yonib turgan olov",
+          "uzbekExample": "Tungi gurungning gulxani yonib turardi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 194,
+      "id": 79318,
+      "dictionarySource": "Ghoniy",
+      "arabic": "شَدَّةٌ",
+      "root": "شدد‏",
+      "grammarLabel": "الْمَرَّةُ مِن شَدَّ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ مِن شَدَّ).|1- قَامُوا بِشَدَّةٍ :بِحَمْلَةٍ، بِهَجْمَةٍ فِي الحَرْبِ.|2- عَلى الحَرْفِ شَدَّةٌ : سِينٌ مُصَغَّرَةٌ ( ـّ ) تُوضَعُ فَوْقَ الحَرْفِ لِتضْعِيفِهِ: كَّـ.",
+      "sourceHash": "833bb9027bfab8e9c2473ba2f49f5f4fad09447a7c100950bf248f94abb109c8",
+      "wordType": "ot",
+      "uzbek": "1. jangdagi hujum; 2. undoshni ikkilantiruvchi shadda belgisi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قَامُوا بِشَدَّةٍ",
+          "arabicGloss": "بِحَمْلَةٍ، بِهَجْمَةٍ فِي الحَرْبِ.",
+          "uzbekMeaning": "jangda qilinadigan hamla yoki hujum",
+          "uzbekExample": "Ular jangda hujumga o‘tdilar.",
+          "register": "harbiy atama"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَلى الحَرْفِ شَدَّةٌ",
+          "arabicGloss": "سِينٌ مُصَغَّرَةٌ ( ـّ ) تُوضَعُ فَوْقَ الحَرْفِ لِتضْعِيفِهِ: كَّـ.",
+          "uzbekMeaning": "arab yozuvida undoshni ikkilantirib o‘qishni ko‘rsatish uchun harf ustiga qo‘yiladigan kichik sin shaklidagi belgi (ـّ)",
+          "uzbekExample": "Bu harf ustiga shadda belgisi qo‘yilgan.",
+          "register": "arab yozuvi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_orthography_note",
+        "issues": [
+          "Shadda belgisi undoshni ikkilantirib o‘qishni ko‘rsatishi aniq ifodalandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 195,
+      "id": 79319,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَسْخَةٌ",
+      "root": "فسخ‏",
+      "grammarLabel": "الْمَرَّةُ منْ فَسَخَ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّةُ منْ فَسَخَ).|1- شَابٌّ فَسْخَةٌ : ضَعِيفُ الرَّأْيِ والعَقْلِ والعَزْمِ والبَدَنِ.|2-  قِطْعَةٌ مِمَّا فُسِخَ.",
+      "sourceHash": "eef74227854217938896f20292d4fe1fa70522eec8707f62abd8c81905082fcd",
+      "wordType": "ot va sifat",
+      "uzbek": "1. fikri, aqli, irodasi va jismi zaif yigit; 2. ajratib yoki bo‘lib olingan parcha",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَابٌّ فَسْخَةٌ",
+          "arabicGloss": "ضَعِيفُ الرَّأْيِ والعَقْلِ والعَزْمِ والبَدَنِ.",
+          "uzbekMeaning": "fikri, aqli, irodasi va jismi zaif yigit",
+          "uzbekExample": "U fikri, irodasi va jismi zaif yigit edi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "قِطْعَةٌ مِمَّا فُسِخَ.",
+          "uzbekMeaning": "ajratilgan, yechilgan yoki bo‘lib olingan narsaning bir parchasi",
+          "uzbekExample": "U ajratib olingan narsadan bir parcha oldi."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_external_check",
+        "issues": [
+          "Zaif yigit va ajratilgan narsaning bir parchasi ma’nolari G‘oniy maqolasi bilan qayta solishtirildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 196,
+      "id": 79320,
+      "dictionarySource": "Ghoniy",
+      "arabic": "حَيْضَةٌ",
+      "root": "حيض‏",
+      "grammarLabel": "الْمَرَّة من حَاضَ يَحِيضُ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَرَّة من حَاضَ يَحِيضُ).",
+      "sourceHash": "c714d73cc17365cb8b19f1772649b665deea59732a762ab6d56462a6e1b9d06a",
+      "wordType": "ot",
+      "uzbek": "bir hayz davri",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "(الْمَرَّة من حَاضَ يَحِيضُ).",
+          "uzbekMeaning": "bir marta hayz ko‘rish yoki bir hayz davri",
+          "uzbekExample": "Bu bir hayz davriga tegishli holat edi.",
+          "register": "tibbiyot va fiqh",
+          "structureRecovery": "sense_created_from_morphological_definition"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_parser_remediation",
+        "issues": [
+          "Manbada faqat morfologik ta’rif borligi sababli tuzilma ajratuvchi ma’no yaratmagan; bir hayz davri ma’nosi qo‘lda tiklandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 197,
+      "id": 79321,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جَنَائِزِيٌّ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "الْمَنْسُوبُ إِلَى الْجِنَازَةِ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَنْسُوبُ إِلَى الْجِنَازَةِ).|-لَحْنٌ جَنَائِزِيٌّ : لَحْنُ الْمَآتِمِ.",
+      "sourceHash": "134a9aa1cd82d7fb35cfbfa31bba7d5c7e6d66e60639459a19c92f3c58b88a69",
+      "wordType": "sifat",
+      "uzbek": "dafn yoki motam marosimiga oid",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "لَحْنٌ جَنَائِزِيٌّ",
+          "arabicGloss": "لَحْنُ الْمَآتِمِ.",
+          "uzbekMeaning": "dafn yoki motam marosimiga xos kuy",
+          "uzbekExample": "Motam marosimiga xos kuy yangradi.",
+          "register": "musiqa va marosim"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 198,
+      "id": 79322,
+      "dictionarySource": "Ghoniy",
+      "arabic": "إلِكْتُرونِيٌّ",
+      "root": "aniqlanmagan",
+      "grammarLabel": "الْمَنْسُوبُ إِلَى الإلِكْتُرُونِ",
+      "morphology": "",
+      "arabicDefinition": "(الْمَنْسُوبُ إِلَى الإلِكْتُرُونِ).|1- بَدَأَ يَنْتَشِرُ العَقْلُ الإلِكْتُرُونِيُّ فِي كُلِّ الْمَكَاتِبِ : آلَةُ الحَاسُوبِ تَعْتمِدُ عَلَى مَادَّةِ الإلِكْترُونِ لإِجْرَاءِ أدَقِّ الَعَمَلِيّاتِ الحِسَابِيَّةِ وَبِأَسْرَعِ وَقْتٍ مُمْكِنٍ. وَيُسَمَّى أيْضاً كمبيوتر.|2- عِلْمُ الإلِكْترونِيَّاتِ :عِلْمٌ يَهْتَمُّ بِتَرْكِيبِ الإِلِكْترونِيَّاتِ وَاسْتِخْدَامِهَا وَتنَاوُلِهَا، وَهُوَ فَرْعٌ مِنَ فُروعِ الفِيزِيَاءِ.",
+      "sourceHash": "32a877a57e977f3f20b5276fbb099f4b0c13bb8e26205aa2a24631156c210ec8",
+      "wordType": "sifat",
+      "uzbek": "1. elektron texnologiyaga oid; kompyuter; 2. elektronika ilmi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "بَدَأَ يَنْتَشِرُ العَقْلُ الإلِكْتُرُونِيُّ فِي كُلِّ الْمَكَاتِبِ",
+          "arabicGloss": "آلَةُ الحَاسُوبِ تَعْتمِدُ عَلَى مَادَّةِ الإلِكْترُونِ لإِجْرَاءِ أدَقِّ الَعَمَلِيّاتِ الحِسَابِيَّةِ وَبِأَسْرَعِ وَقْتٍ مُمْكِنٍ. وَيُسَمَّى أيْضاً كمبيوتر.",
+          "uzbekMeaning": "elektronlar yordamida tez va aniq hisoblash amallarini bajaradigan elektron hisoblash mashinasiga, ya’ni kompyuterga oid",
+          "uzbekExample": "Elektron hisoblash mashinalari barcha idoralarda tarqala boshladi.",
+          "register": "texnika; tarixiy ifoda"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عِلْمُ الإلِكْترونِيَّاتِ",
+          "arabicGloss": "عِلْمٌ يَهْتَمُّ بِتَرْكِيبِ الإِلِكْترونِيَّاتِ وَاسْتِخْدَامِهَا وَتنَاوُلِهَا، وَهُوَ فَرْعٌ مِنَ فُروعِ الفِيزِيَاءِ.",
+          "uzbekMeaning": "elektron qurilmalar va qismlarning tuzilishi, ishlatilishi hamda ishlashini o‘rganuvchi fizika sohasi — elektronika",
+          "uzbekExample": "Elektronika fizikaning muhim sohalaridan biridir.",
+          "register": "fizika"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_historical_scope_note",
+        "issues": [
+          "Manbadagi eskirgan «elektron aql» ifodasi ma’no doirasi buzilmasdan zamonaviy «elektron hisoblash mashinasi, kompyuter» shaklida berildi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 199,
+      "id": 79323,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رُوحِيٌّ",
+      "root": "روح‏",
+      "grammarLabel": "الْمَنْسوبُ إلى الرُّوحِ والْمُخْتَصُّ بِها",
+      "morphology": "",
+      "arabicDefinition": "(الْمَنْسوبُ إلى الرُّوحِ والْمُخْتَصُّ بِها).|1- حَياةٌ روحِيَّةٌ : حَيَاةٌ مُرْتَبِطَةٌ بِما هُوَ ذِهْنِيٌّ، بَعيدَةٌ عنْ كُلِّ مَا هُوَ مادِّيٌّ وحِسِّيٌّ.|2- السُّلْطَةُ الرُّوحِيَّةُ : السُّلْطَةُ الدِّينِيَّةُ.|3- الْمَشْروباتُ الرُّوحِيَّةُ : الْمَشْروباتُ الكُحولِيَّةُ.",
+      "sourceHash": "db12e015bc45a3ed927fd80d181f2b6aa8f4931514f8cfb3d4e0326feceec902",
+      "wordType": "sifat",
+      "uzbek": "1. ruhiy va ma’naviy; 2. diniy; 3. alkogolli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَياةٌ روحِيَّةٌ",
+          "arabicGloss": "حَيَاةٌ مُرْتَبِطَةٌ بِما هُوَ ذِهْنِيٌّ، بَعيدَةٌ عنْ كُلِّ مَا هُوَ مادِّيٌّ وحِسِّيٌّ.",
+          "uzbekMeaning": "moddiy va hissiy narsalardan yiroq, aqliy hamda ma’naviy hayotga oid",
+          "uzbekExample": "U moddiylikdan yiroq ruhiy hayot kechirdi."
+        },
+        {
+          "index": 2,
+          "arabicExample": "السُّلْطَةُ الرُّوحِيَّةُ",
+          "arabicGloss": "السُّلْطَةُ الدِّينِيَّةُ.",
+          "uzbekMeaning": "diniy yoki ruhoniy hokimiyatga oid",
+          "uzbekExample": "Bu diniy hokimiyatga tegishli masala edi.",
+          "register": "din va boshqaruv"
+        },
+        {
+          "index": 3,
+          "arabicExample": "الْمَشْروباتُ الرُّوحِيَّةُ",
+          "arabicGloss": "الْمَشْروباتُ الكُحولِيَّةُ.",
+          "uzbekMeaning": "alkogolli ichimliklarga oid; spirtli",
+          "uzbekExample": "Spirtli ichimliklar savdosi cheklangan."
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-29"
+      }
+    },
+    {
+      "sequenceIndex": 200,
+      "id": 79324,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جِنَائِيٌّ",
+      "root": "جني‏",
+      "grammarLabel": "الْمُخَتَصُّ بِالجِنَايَةِ",
+      "morphology": "",
+      "arabicDefinition": "(الْمُخَتَصُّ بِالجِنَايَةِ).|1- حَكَمَتْ عَلَيْهِ الْمَحْكَمَةُ الجِنَائِيَّةُ : الْمَحْكَمَةُ الْمُخْتَصَّةُ بِالجِنَايَاتِ.|2- القَانُونُ الجِنَائِيُّ : قَانُونُ العُقُوبَاتِ وَالجُنَحِ.",
+      "sourceHash": "42ffd6f4e8b4d9cb42b6989db811f48c9c36ca3d0c9fb8a4aaa85df268ccfc1d",
+      "wordType": "sifat",
+      "uzbek": "jinoyatga oid; jinoiy",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَكَمَتْ عَلَيْهِ الْمَحْكَمَةُ الجِنَائِيَّةُ",
+          "arabicGloss": "الْمَحْكَمَةُ الْمُخْتَصَّةُ بِالجِنَايَاتِ.",
+          "uzbekMeaning": "jinoyat ishlarini ko‘rishga vakolatli sudga oid; jinoiy",
+          "uzbekExample": "Jinoyat sudi unga hukm chiqardi.",
+          "register": "huquq"
+        },
+        {
+          "index": 2,
+          "arabicExample": "القَانُونُ الجِنَائِيُّ",
+          "arabicGloss": "قَانُونُ العُقُوبَاتِ وَالجُنَحِ.",
+          "uzbekMeaning": "jinoyat, jazo va huquqbuzarliklarga oid qonun; jinoyat qonuni",
+          "uzbekExample": "Jinoyat qonuni jinoyatlar va ularga beriladigan jazolarni belgilaydi.",
+          "register": "huquq"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_legal_terminology_note",
+        "issues": [
+          "Jinoyat sudi va jinoyat qonuni ma’nolari zamonaviy o‘zbek huquqiy terminlari bilan ifodalandi"
+        ],
+        "reviewedAt": "2026-08-29"
+      }
+    }
+  ]
+}
+

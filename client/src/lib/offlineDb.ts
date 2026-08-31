@@ -1,4 +1,10 @@
-import { DictionaryEntry } from './api';
+import type { DictionaryEntry } from './api';
+import {
+  hasArabicLetters,
+  normalizeArabicForSearch,
+  normalizeSearchTerm,
+  normalizeUzbekForSearch,
+} from '@shared/search';
 
 const DB_NAME = 'al-qomus-offline';
 const DB_VERSION = 1;
@@ -70,8 +76,8 @@ export async function searchOffline(
   sources: string[] = ['Ghoniy']
 ): Promise<DictionaryEntry[]> {
   const database = await openDatabase();
-  const normalizedSearch = searchTerm.toLowerCase().replace(/[\u064B-\u0652\u0670\u0671]/g, '');
-  const isArabic = /[\u0600-\u06FF]/.test(searchTerm);
+  const normalizedSearch = normalizeSearchTerm(searchTerm);
+  const isArabic = hasArabicLetters(searchTerm);
 
   return new Promise((resolve, reject) => {
     const transaction = database.transaction([STORE_NAME], 'readonly');
@@ -94,10 +100,10 @@ export async function searchOffline(
         let matches = false;
         
         if (isArabic) {
-          const arabicNormalized = (entry.arabic || '').replace(/[\u064B-\u0652\u0670\u0671]/g, '');
+          const arabicNormalized = normalizeArabicForSearch(entry.arabic || '');
           matches = arabicNormalized.includes(normalizedSearch);
         } else {
-          matches = (entry.uzbek || '').toLowerCase().includes(normalizedSearch);
+          matches = normalizeUzbekForSearch(entry.uzbek || '').includes(normalizedSearch);
         }
 
         if (matches) {
@@ -108,8 +114,8 @@ export async function searchOffline(
       } else {
         if (isArabic) {
           results.sort((a, b) => {
-            const aArabic = (a.arabic || '').replace(/[\u064B-\u0652\u0670\u0671]/g, '');
-            const bArabic = (b.arabic || '').replace(/[\u064B-\u0652\u0670\u0671]/g, '');
+            const aArabic = normalizeArabicForSearch(a.arabic || '');
+            const bArabic = normalizeArabicForSearch(b.arabic || '');
             
             const aExact = aArabic === normalizedSearch;
             const bExact = bArabic === normalizedSearch;
@@ -125,8 +131,8 @@ export async function searchOffline(
           });
         } else {
           results.sort((a, b) => {
-            const aUzbek = (a.uzbek || '').toLowerCase();
-            const bUzbek = (b.uzbek || '').toLowerCase();
+            const aUzbek = normalizeUzbekForSearch(a.uzbek || '');
+            const bUzbek = normalizeUzbekForSearch(b.uzbek || '');
             
             const aExact = aUzbek === normalizedSearch;
             const bExact = bUzbek === normalizedSearch;

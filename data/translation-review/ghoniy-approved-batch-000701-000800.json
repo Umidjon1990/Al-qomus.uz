@@ -1,0 +1,3860 @@
+{
+  "package": "ghoniy-approved-batch-000701-000800",
+  "dictionarySource": "Ghoniy",
+  "status": "approved_for_staged_apply",
+  "productionReady": true,
+  "stagedApplyReady": true,
+  "productionApplied": false,
+  "generatedAt": "2026-08-31",
+  "safeguards": {
+    "sourceHashRequiredAtApply": true,
+    "revisionBackupRequired": true,
+    "transactionalApplyRequired": true,
+    "rollbackRequired": true,
+    "heldEntriesMustBeExcluded": false
+  },
+  "totals": {
+    "entries": 100,
+    "senses": 200,
+    "applyEligibleEntries": 100,
+    "heldEntries": 0
+  },
+  "heldEntries": [],
+  "entries": [
+    {
+      "sequenceIndex": 701,
+      "id": 79826,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَمِيزٌ",
+      "root": "همز‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-رَجُلٌ هَمِيزُ الْفُؤَادِ : ذَكِيٌّ.",
+      "sourceHash": "e728f5a42f0b4697681f0eb59fdc6398ae27fde9d7176737c4f46c7b08b8e658",
+      "wordType": "sifat",
+      "uzbek": "aql-zakovati o‘tkir, zukko",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَجُلٌ هَمِيزُ الْفُؤَادِ",
+          "arabicGloss": "ذَكِيٌّ.",
+          "uzbekMeaning": "kishi haqida: aql-zakovati o‘tkir, zukko",
+          "uzbekExample": "U aql-zakovati o‘tkir, zukko kishi edi.",
+          "register": "ijobiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_adjective_review",
+        "issues": [
+          "Mavjud «aqlli, zukkolik» birikmasidagi ot shakli sifat ma’nosiga moslashtirildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 702,
+      "id": 79827,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَرِيكٌ",
+      "root": "عرك‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-رَمْلٌ عَرِيكٌ : مُتَدَاخِلٌ بَعْضُهُ فِي بَعْضٍ.",
+      "sourceHash": "45e5cd85f23d8ff3e3b07c68abf0e310685daad0b7f463bebba108fbc3b546b2",
+      "wordType": "sifat",
+      "uzbek": "zarralari bir-biriga kirishib ketgan qum",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَمْلٌ عَرِيكٌ",
+          "arabicGloss": "مُتَدَاخِلٌ بَعْضُهُ فِي بَعْضٍ.",
+          "uzbekMeaning": "qum haqida: qismlari yoki zarralari bir-biriga kirishib, zich aralashib ketgan",
+          "uzbekExample": "Qum zarralari bir-biriga kirishib ketgan edi.",
+          "register": "tabiat tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_sand_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 703,
+      "id": 79828,
+      "dictionarySource": "Ghoniy",
+      "arabic": "حَسِيسٌ",
+      "root": "حسس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-سَمِعَ حَسِيساً خَلْفَ البَابِ : صَوْتاً خَفِيّاً.",
+      "sourceHash": "df87466b283bbbc63a85afaa05bc66b1a4893ebb78e459d73e9b29e5b7d82b1c",
+      "wordType": "ot",
+      "uzbek": "sekin, bilinar-bilinmas tovush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سَمِعَ حَسِيساً خَلْفَ البَابِ",
+          "arabicGloss": "صَوْتاً خَفِيّاً.",
+          "uzbekMeaning": "sekin eshitiladigan, bilinar-bilinmas tovush",
+          "uzbekExample": "U eshik ortidan bilinar-bilinmas tovush eshitdi.",
+          "register": "tovush tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_sound_review",
+        "issues": [
+          "حَسِيسٌ bu yerda sifat emas, eshitilgan bilinar-bilinmas tovushni bildiruvchi ot"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 704,
+      "id": 79829,
+      "dictionarySource": "Ghoniy",
+      "arabic": "سَمِيكٌ",
+      "root": "سمك‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-سَمِيكُ الحَجْمِ :ثَخِينٌ، غَلِيظٌ.",
+      "sourceHash": "3580824076eda4d552f2308c7f467228dd074ef48731e89112d7b4b217631212",
+      "wordType": "sifat",
+      "uzbek": "qalin, yo‘g‘on",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سَمِيكُ الحَجْمِ",
+          "arabicGloss": "ثَخِينٌ، غَلِيظٌ.",
+          "uzbekMeaning": "hajmi yoki kesimi qalin, yo‘g‘on",
+          "uzbekExample": "U qalin va yo‘g‘on hajmli edi.",
+          "register": "hajm tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 705,
+      "id": 79830,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَسِيقٌ",
+      "root": "فسق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-شَابٌّ فَسِيقٌ : كَثِيرُ الفِسْقِ.",
+      "sourceHash": "7c657fe19c043008c16569d5c4223c698843f32facd18f6cb76f482c935b7df2",
+      "wordType": "sifat",
+      "uzbek": "ko‘p fisq-fujur qiladigan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَابٌّ فَسِيقٌ",
+          "arabicGloss": "كَثِيرُ الفِسْقِ.",
+          "uzbekMeaning": "ko‘p fisq-fujur va gunoh ish qiladigan, itoatsizlikda davom etadigan",
+          "uzbekExample": "U ko‘p fisq-fujur qiladigan yigit edi.",
+          "register": "diniy va salbiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_intensive_form_review",
+        "issues": [
+          "كَثِيرُ الفِسْقِ oddiy «gunohkor»dan kuchliroq: fisq-fujurni ko‘p qiluvchi ma’nosi saqlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 706,
+      "id": 79831,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَدِيدٌ",
+      "root": "ودد‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-شَابٌّ وَدِيدٌ : مُحِبٌّ.",
+      "sourceHash": "f93b8d16b746eb5ef0f01f293663d227ca5921c25f5a9fc6d9edcb9bacb8265b",
+      "wordType": "sifat",
+      "uzbek": "sevuvchi, mehr-muhabbatli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَابٌّ وَدِيدٌ",
+          "arabicGloss": "مُحِبٌّ.",
+          "uzbekMeaning": "boshqalarni sevuvchi, mehr-muhabbatli",
+          "uzbekExample": "U mehr-muhabbatli yigit edi.",
+          "register": "ijobiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 707,
+      "id": 79832,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَرِيقٌ",
+      "root": "ورق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-شَجَرٌ وَرِيقٌ : أَيْ وَرَقُهُ ظَاهِرٌ، وَارِقٌ.",
+      "sourceHash": "0ab73202e0d9686f634fe07bb1bb1faee51ed0b0181779267424390afcbc94e9",
+      "wordType": "sifat",
+      "uzbek": "barglari ko‘rinib turgan, serbarg",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَجَرٌ وَرِيقٌ",
+          "arabicGloss": "أَيْ وَرَقُهُ ظَاهِرٌ، وَارِقٌ.",
+          "uzbekMeaning": "daraxt haqida: barglari ko‘rinib turgan, barg yozgan yoki serbarg",
+          "uzbekExample": "Daraxt barg yozib, serbarg bo‘lib turardi.",
+          "register": "botanika"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_botanical_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 708,
+      "id": 79833,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَشِيطٌ",
+      "root": "مشط‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-شَعْرٌ مَشِيطٌ : شَعْرٌ مَمْشُوطٌ، مُسَرَّحٌ.",
+      "sourceHash": "2eb24454c2b2dbb3f4b8751f1dfa1c6829dd1058ae3f0d769477518c72e798c9",
+      "wordType": "sifat",
+      "uzbek": "taralgan va tartibga keltirilgan soch",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَعْرٌ مَشِيطٌ",
+          "arabicGloss": "شَعْرٌ مَمْشُوطٌ، مُسَرَّحٌ.",
+          "uzbekMeaning": "soch haqida: taroq bilan taralgan va tartibga keltirilgan",
+          "uzbekExample": "Uning sochi taralib, tartibga keltirilgan edi.",
+          "register": "tashqi ko‘rinish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_hair_context_review",
+        "issues": [
+          "Mavjud «tarashgan soch» o‘zbekcha tabiiy birikma emas; «taralgan va tartibga keltirilgan» bilan tuzatildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 709,
+      "id": 79834,
+      "dictionarySource": "Ghoniy",
+      "arabic": "خَتِينٌ",
+      "root": "ختن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-صَبِيٌّ خَتِينٌ : مَنْ قُطِعَتْ قُلْفَتُهُ.",
+      "sourceHash": "ab3eaee13e9ddb2d00c33d04b1d1b785d41d13c335d7b0b47e000e115a1678af",
+      "wordType": "sifat",
+      "uzbek": "sunnat qilingan bola",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "صَبِيٌّ خَتِينٌ",
+          "arabicGloss": "مَنْ قُطِعَتْ قُلْفَتُهُ.",
+          "uzbekMeaning": "o‘g‘il bola yoki erkak haqida: olatining sunnat terisi kesilgan, sunnat qilingan",
+          "uzbekExample": "Bola sunnat qilingan edi.",
+          "register": "tibbiy va diniy-maishiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_precise_anatomical_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 710,
+      "id": 79835,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَجِيعٌ",
+      "root": "وجع‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-ضَرْبٌ وَجِيعٌ : مُوجِعٌ، مُؤْلِمُ.",
+      "sourceHash": "d0183f15614b5cbb29fa9d9dd80b697e746cfdbee5c18a4de2ec980f1234ba02",
+      "wordType": "sifat",
+      "uzbek": "og‘riq beradigan, og‘riqli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ضَرْبٌ وَجِيعٌ",
+          "arabicGloss": "مُوجِعٌ، مُؤْلِمُ.",
+          "uzbekMeaning": "zarba yoki ta’sir haqida: qattiq og‘riq beradigan, og‘riqli",
+          "uzbekExample": "U og‘riq beradigan zarba oldi.",
+          "register": "jismoniy ta’sir"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_blow_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 711,
+      "id": 79836,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَزِيرٌ",
+      "root": "نزر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-طَعَامٌ نَزِيرٌ : قَلِيلٌ جِدّاً- عَطَاءٌ نَزِيرٌ.",
+      "sourceHash": "1737e93b2e14ca1092a8415a48d985ed0e55b40374841be56cb4914924309b57",
+      "wordType": "sifat",
+      "uzbek": "juda oz, arzimas darajada kam",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "طَعَامٌ نَزِيرٌ",
+          "arabicGloss": "قَلِيلٌ جِدّاً- عَطَاءٌ نَزِيرٌ.",
+          "uzbekMeaning": "miqdori juda oz yoki arzimas darajada kam",
+          "uzbekExample": "Taom juda oz, berilgan narsa ham arzimas darajada kam edi.",
+          "register": "miqdor tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_quantity_context_review",
+        "issues": [
+          "Taom va beriladigan narsa misollari bitta «juda oz» ma’nosida saqlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 712,
+      "id": 79837,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَجِيجٌ",
+      "root": "عجج‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-عَجيجُ الوَلَدِ : صُياحُهُ- وَلَيْسَ عَجِيجُهَا هَذَا الَّذِي تَسْمَعُ إِلاَّ مَظْهَراً مِنْ مَظَاهِرِ الْغَيْظِ.",
+      "sourceHash": "26173a7403065525e4c2a5e94e605feb7f9e6157ad839dbc783a7c5dc4244fa5",
+      "wordType": "ot",
+      "uzbek": "baland qichqiriq va shovqin",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "عَجيجُ الوَلَدِ",
+          "arabicGloss": "صُياحُهُ- وَلَيْسَ عَجِيجُهَا هَذَا الَّذِي تَسْمَعُ إِلاَّ مَظْهَراً مِنْ مَظَاهِرِ الْغَيْظِ.",
+          "uzbekMeaning": "baland qichqiriq, baqiriq-chaqiriq yoki shovqin",
+          "uzbekExample": "Bolaning ajiji — uning qichqirig‘i. Siz eshitayotgan bu shovqin uning g‘azabi namoyon bo‘lishidan boshqa narsa emas.",
+          "register": "tovush va hissiyot"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_example_review",
+        "issues": [
+          "G‘azabning namoyon bo‘lishi alohida lug‘aviy ma’no emas, shovqinni tavsiflovchi manba misolidir"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 713,
+      "id": 79838,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَصِيمٌ",
+      "root": "قصم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-فَأْسٌ فَصِيمٌ : ضَخْمَةٌ.",
+      "sourceHash": "07909431dc446f681a39fcb1b13f84cc95912bdff04ceb87d8821617e65aa8ce",
+      "wordType": "sifat",
+      "uzbek": "katta, ulkan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَأْسٌ فَصِيمٌ",
+          "arabicGloss": "ضَخْمَةٌ.",
+          "uzbekMeaning": "bolta haqida: katta va ulkan",
+          "uzbekExample": "U katta bolta ko‘tardi.",
+          "register": "hajm tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_axe_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 714,
+      "id": 79839,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَبيزٌ",
+      "root": "ربز‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-فَنَّانٌ رَبِيزٌ : ماهِرٌ، بارِعٌ فِي فَنِّهِ.",
+      "sourceHash": "c82c6f786b928837faa909c51317de719a4546399acd27775a6fd6ff111fbc6a",
+      "wordType": "sifat",
+      "uzbek": "o‘z san’atida mohir va mahoratli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَنَّانٌ رَبِيزٌ",
+          "arabicGloss": "ماهِرٌ، بارِعٌ فِي فَنِّهِ.",
+          "uzbekMeaning": "san’atkor haqida: o‘z san’atida mohir, mahoratli va ustasi farang",
+          "uzbekExample": "U o‘z san’atida mohir ijodkor edi.",
+          "register": "kasbiy ijobiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_artist_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 715,
+      "id": 79840,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَزِيجٌ",
+      "root": "هزج‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-فِي هَزِيجٍ مِنَ اللَّيْلِ : فِي طائِفَةٍ مِنْهُ. ن. هَزِيعٌ.",
+      "sourceHash": "cd8a246eb9613c10809f5568ce17652904ffcdf5c55d463d9ed82b2bc88c1f57",
+      "wordType": "ot",
+      "uzbek": "kechaning bir bo‘lagi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فِي هَزِيجٍ مِنَ اللَّيْلِ",
+          "arabicGloss": "فِي طائِفَةٍ مِنْهُ. ن. هَزِيعٌ.",
+          "uzbekMeaning": "kechaning bir bo‘lagi yoki ma’lum qismi",
+          "uzbekExample": "Bu voqea kechaning bir qismida sodir bo‘ldi.",
+          "register": "vaqt ifodasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_cross_reference_review",
+        "issues": [
+          "Manbadagi «ن. هَزِيعٌ» shu ma’nodagi boshqa yozuvga havola; yangi ma’no sifatida ajratilmadi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 716,
+      "id": 79841,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَطِينٌ",
+      "root": "قطن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-قَطِينُ الدَّارِ : سَاكِنُهَا، القَاطِنُ فِيهَا.",
+      "sourceHash": "8fc25f0fa84e3cc62b572a3311f7ebffab73d545de9df1bce684d54b546bf929",
+      "wordType": "ot",
+      "uzbek": "uyda yashovchi, istiqomat qiluvchi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قَطِينُ الدَّارِ",
+          "arabicGloss": "سَاكِنُهَا، القَاطِنُ فِيهَا.",
+          "uzbekMeaning": "uyda yoki biror joyda yashovchi, u yerda istiqomat qiluvchi kishi",
+          "uzbekExample": "U shu uyning yashovchisi edi.",
+          "register": "shaxs nomi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_review",
+        "issues": [
+          "قَطِينُ الدَّارِ uyda yashovchi shaxsni bildiradi; so‘z turkumi otga tuzatildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 717,
+      "id": 79842,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَدِيفٌ",
+      "root": "ندف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-قُطْنٌ نَدِيفٌ : مَنْدُوفٌ.",
+      "sourceHash": "05cc6ebd6202b7f4670807acc83bce3a4b1f90209b1a7ebe373938637b074bdb",
+      "wordType": "sifat",
+      "uzbek": "titilgan, savalangan paxta",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قُطْنٌ نَدِيفٌ",
+          "arabicGloss": "مَنْدُوفٌ.",
+          "uzbekMeaning": "paxta haqida: tolalari ajratilib titilgan yoki savalangan",
+          "uzbekExample": "Titilgan paxta yumshoq va g‘ovak bo‘lib turardi.",
+          "register": "to‘qimachilik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_textile_review",
+        "issues": [
+          "مَنْدُوفٌ «toza, sof» emas, tolalari titilgan yoki savalangan paxtadir"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 718,
+      "id": 79843,
+      "dictionarySource": "Ghoniy",
+      "arabic": "شَفِيقٌ",
+      "root": "شفق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-كَانَ شَفِيقاً بِهِ :مُشْفِقاً، رَؤُوفاً بِهِ، شَفُوقاً.",
+      "sourceHash": "b88629a9abea65e0255bb615bb8fdbac171cbcc3c80903f7c88e804602fd3001",
+      "wordType": "sifat",
+      "uzbek": "mehribon, rahmdil va g‘amxo‘r",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَانَ شَفِيقاً بِهِ",
+          "arabicGloss": "مُشْفِقاً، رَؤُوفاً بِهِ، شَفُوقاً.",
+          "uzbekMeaning": "biror kishiga mehribon, rahmdil va g‘amxo‘r munosabatda bo‘ladigan",
+          "uzbekExample": "U unga mehribon va g‘amxo‘r edi.",
+          "register": "ijobiy insoniy sifat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 719,
+      "id": 79844,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَرِيءٌ",
+      "root": "هرأ‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-لَحْمٌ هَرِيءٌ : لَحْمٌ أُجِيدَ إِنْضَاجُهُ فَتَهَرَّأَ حَتَّى سَقَطَ عَنِ الْعَظْمِ.",
+      "sourceHash": "df91dd826c7432e6008516b390dd3fade98fe003e5b14a0d7b7757040fe8bded",
+      "wordType": "sifat",
+      "uzbek": "yumshab, suyakdan ajraladigan darajada pishgan go‘sht",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "لَحْمٌ هَرِيءٌ",
+          "arabicGloss": "لَحْمٌ أُجِيدَ إِنْضَاجُهُ فَتَهَرَّأَ حَتَّى سَقَطَ عَنِ الْعَظْمِ.",
+          "uzbekMeaning": "go‘sht haqida: yaxshi pishib, juda yumshagan va suyakdan o‘zi ajraladigan holga kelgan",
+          "uzbekExample": "Go‘sht juda yaxshi pishib, suyakdan ajralib tushdi.",
+          "register": "pazandachilik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_culinary_process_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 720,
+      "id": 79845,
+      "dictionarySource": "Ghoniy",
+      "arabic": "صَهِيرٌ",
+      "root": "صهر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-مَعْدِنٌ صَهِيرٌ : مُذَابٌ.",
+      "sourceHash": "6f0048923bffbd2e86ddc6f3922bf08be1eab683164d4d3e039e5c5403f87dae",
+      "wordType": "sifat",
+      "uzbek": "eritilgan metall",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَعْدِنٌ صَهِيرٌ",
+          "arabicGloss": "مُذَابٌ.",
+          "uzbekMeaning": "metall haqida: issiqlik ta’sirida eritilib, suyuq holga keltirilgan",
+          "uzbekExample": "Eritilgan metall qolipga quyildi.",
+          "register": "metallurgiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_metallurgy_context_review",
+        "issues": [
+          "«Suyuq holatga kelgan» umumiy ma’no emas; manba aynan eritilgan metallni bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 721,
+      "id": 79846,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ذَهِيبٌ",
+      "root": "ذهب‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-مَعْدِنُ ذَهيبٌ : مُمَوَّهٌ بِالذَّهَبِ.",
+      "sourceHash": "404e1db6ae7e9652eb269d91a31c2ae2dd99d2545c6dcaed1d1fc80baa248d4f",
+      "wordType": "sifat",
+      "uzbek": "oltin suvi yuritilgan metall",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَعْدِنُ ذَهيبٌ",
+          "arabicGloss": "مُمَوَّهٌ بِالذَّهَبِ.",
+          "uzbekMeaning": "metall haqida: yuzasiga oltin suvi yuritilgan yoki oltin bilan qoplangan",
+          "uzbekExample": "Metall buyumga oltin suvi yuritilgan edi.",
+          "register": "metallga ishlov berish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_gilding_review",
+        "issues": [
+          "Manba oltin tusni emas, metall yuzasiga oltin suvi yuritilganini bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 722,
+      "id": 79847,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَميضٌ",
+      "root": "رمض‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-نَصْلٌ رَميضٌ : حادٌّ- صَنَعَ نِصالاً رَميضَةً.",
+      "sourceHash": "43eb6b878bb57261112c9a3065210cea05470739502dc2b17d11237b89f81886",
+      "wordType": "sifat",
+      "uzbek": "o‘tkir tig‘",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَصْلٌ رَميضٌ",
+          "arabicGloss": "حادٌّ- صَنَعَ نِصالاً رَميضَةً.",
+          "uzbekMeaning": "tig‘ yoki pichoq haqida: yaxshi charxlangan, o‘tkir",
+          "uzbekExample": "U o‘tkir tig‘lar yasadi.",
+          "register": "qurol-asbob tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_blade_context_review",
+        "issues": [
+          "«O‘tkir qilinadigan» alohida ma’no emas; ikkinchi ibora o‘tkir tig‘lar yasash haqidagi misol"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 723,
+      "id": 79848,
+      "dictionarySource": "Ghoniy",
+      "arabic": "خَدِيمٌ",
+      "root": "خدم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-هُوَ خَدِيمُهُ : عَامِلٌ تَحْتَ تَصَرُّفهِ، يَشْتَغِلُ بِأمْرِهِ .",
+      "sourceHash": "5313b56ef52cbbcc25980e4e989103058bd0d1b347358103be906d2f5208bf36",
+      "wordType": "ot",
+      "uzbek": "xizmatkor, birovning topshirig‘i bilan ishlovchi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ خَدِيمُهُ",
+          "arabicGloss": "عَامِلٌ تَحْتَ تَصَرُّفهِ، يَشْتَغِلُ بِأمْرِهِ .",
+          "uzbekMeaning": "biror kishining ixtiyori yoki boshqaruvi ostida uning topshirig‘ini bajarib ishlovchi xizmatkor",
+          "uzbekExample": "U uning xizmatkori bo‘lib, topshiriqlarini bajarardi.",
+          "register": "shaxs va kasb nomi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_review",
+        "issues": [
+          "خَدِيمٌ bu ta’rifda sifat emas, xizmat qiluvchi shaxs nomi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 724,
+      "id": 79849,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَشِيقٌ",
+      "root": "عشق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-هُوَ عَشِيقُهَا : كَثِيرُ العِشْقِ لَهَا.",
+      "sourceHash": "9044caf1986690d2f83c6a95e4beb309c7ae8bcdd6e05d37fb294047b2d0e2d9",
+      "wordType": "ot",
+      "uzbek": "oshiq, qattiq sevuvchi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ عَشِيقُهَا",
+          "arabicGloss": "كَثِيرُ العِشْقِ لَهَا.",
+          "uzbekMeaning": "biror kishini qattiq sevadigan oshiq yoki ma’shuq",
+          "uzbekExample": "U unga qattiq oshiq edi.",
+          "register": "insoniy munosabat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_review",
+        "issues": [
+          "عَشِيقُهَا munosabatdagi shaxsni bildiradi; ot sifatida berildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 725,
+      "id": 79850,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَغيدٌ",
+      "root": "رغد‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-هُوَ في عَيْشٍ رَغيدٍ : في عَيْشٍ مُريحٍ، هَنيءٍ، مُتَّسِعٍ- يا لَهُ مِنْ عَيْشٍ رَغيدٍ !.",
+      "sourceHash": "b21cfa18b0470db6f49f380bc7d09c46d7cc17f42e6301ab7b98fc75bf6a52ed",
+      "wordType": "sifat",
+      "uzbek": "farovon, rohatli va keng hayot",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ في عَيْشٍ رَغيدٍ",
+          "arabicGloss": "في عَيْشٍ مُريحٍ، هَنيءٍ، مُتَّسِعٍ- يا لَهُ مِنْ عَيْشٍ رَغيدٍ !.",
+          "uzbekMeaning": "turmush yoki hayot haqida: farovon, rohatli, ko‘ngildagidek va imkoniyati keng",
+          "uzbekExample": "U farovon va rohatli hayot kechirdi.",
+          "register": "turmush tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lifestyle_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 726,
+      "id": 79851,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَفيهٌ",
+      "root": "رفهٍ‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-هُوَ في عَيْشٍ رَفيهٍ : في عَيْشٍ رَغيدٍ، فيهِ ما لَذَّ وَطابَ.",
+      "sourceHash": "08cc2e5233b6f6b70a8059b1d00b8543ae941bd5640fd2ff03c9c568c216d082",
+      "wordType": "sifat",
+      "uzbek": "farovon va ne’matlarga boy hayot",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ في عَيْشٍ رَفيهٍ",
+          "arabicGloss": "في عَيْشٍ رَغيدٍ، فيهِ ما لَذَّ وَطابَ.",
+          "uzbekMeaning": "hayot yoki turmush haqida: farovon, ne’matlarga boy, unda lazzatli va yaxshi narsalar mavjud",
+          "uzbekExample": "U farovon va ne’matlarga boy hayot kechirardi.",
+          "register": "turmush tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lifestyle_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 727,
+      "id": 79852,
+      "dictionarySource": "Ghoniy",
+      "arabic": "أَثِيلٌ",
+      "root": "أثل‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-هُوَ مِنْ أُسْرَةٍ مَجْدُهَا مَجْدٌ أَثِيلٌ : مُتَأصِّل فِي الشَّرَفِ.",
+      "sourceHash": "8e5874a6f613205c1f7ab3e8c54e2f53d7b73e334741780f56a31beeab5a9aa7",
+      "wordType": "sifat",
+      "uzbek": "ildizi chuqur, qadimiy va mustahkam",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ مِنْ أُسْرَةٍ مَجْدُهَا مَجْدٌ أَثِيلٌ",
+          "arabicGloss": "مُتَأصِّل فِي الشَّرَفِ.",
+          "uzbekMeaning": "sharaf, obro‘ yoki ulug‘lik haqida: ildizi chuqur, qadimdan qaror topgan va mustahkam",
+          "uzbekExample": "U sharafi qadimdan mustahkam qaror topgan oiladan edi.",
+          "register": "nasab va obro‘ tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_honor_context_review",
+        "issues": [
+          "«Aslzoda» shaxs ma’nosiga siljiydi; manbada oilaning sharafi qadimiy va ildizli ekani aytilgan"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 728,
+      "id": 79853,
+      "dictionarySource": "Ghoniy",
+      "arabic": "كَئِيبٌ",
+      "root": "كأب‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَجَدْتُهُ كَئِيباً : حَزِيناً، مُنْكَسِرَ النَّفْسِ، مُغْتَمّاً.",
+      "sourceHash": "7f930b03b998af84ce594bcea0e43bfbf77e54fc83f022424d5f8c59a577b55b",
+      "wordType": "sifat",
+      "uzbek": "g‘amgin, dili siniq va tushkun",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَجَدْتُهُ كَئِيباً",
+          "arabicGloss": "حَزِيناً، مُنْكَسِرَ النَّفْسِ، مُغْتَمّاً.",
+          "uzbekMeaning": "g‘amga botgan, dili siniq va ruhiy tushkun holatda",
+          "uzbekExample": "Men uni g‘amgin va tushkun holatda ko‘rdim.",
+          "register": "ruhiy holat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 729,
+      "id": 79854,
+      "dictionarySource": "Ghoniy",
+      "arabic": "خَطِيفٌ",
+      "root": "خطف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدٌ خَطِيفٌ : سَرِيعُ الْمَشْيِ.",
+      "sourceHash": "c921a412f63641b90f3e5f53ece95a3f441adba2f2bedc6e790514269dc23fe1",
+      "wordType": "sifat",
+      "uzbek": "tez yuradigan bola",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ خَطِيفٌ",
+          "arabicGloss": "سَرِيعُ الْمَشْيِ.",
+          "uzbekMeaning": "bola haqida: tez yuradigan",
+          "uzbekExample": "Bola tez yurardi.",
+          "register": "harakat tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_motion_context_review",
+        "issues": [
+          "Manba umumiy chaqqonlikni emas, aynan tez yurishni bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 730,
+      "id": 79855,
+      "dictionarySource": "Ghoniy",
+      "arabic": "خَمِيجٌ",
+      "root": "خمج‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدٌ خَمِيجٌ : سَيِّئُ الذِّكْرِ.",
+      "sourceHash": "b9f922f2da9538980c8c3ce3bd9b73840b75af91b2ee2775fdc6dc056d8665e7",
+      "wordType": "sifat",
+      "uzbek": "yomon nom chiqargan, badnom",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ خَمِيجٌ",
+          "arabicGloss": "سَيِّئُ الذِّكْرِ.",
+          "uzbekMeaning": "odamlar orasida yomon nom chiqargan, badnom yoki obro‘siz",
+          "uzbekExample": "U yomon nom chiqargan bola edi.",
+          "register": "salbiy ijtimoiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 731,
+      "id": 79856,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَميسٌ",
+      "root": "رمس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدٌ رَميسٌ : أَيْ رُمِيَ بِحَجَرٍ.",
+      "sourceHash": "ebed8f344a580a71d585e8a55fdeb7d039229b579cb6ef2002d5493f9081d4d1",
+      "wordType": "sifat",
+      "uzbek": "tosh otilib urilgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ رَميسٌ",
+          "arabicGloss": "أَيْ رُمِيَ بِحَجَرٍ.",
+          "uzbekMeaning": "kishi haqida: otilgan tosh tekkan yoki tosh bilan urilgan",
+          "uzbekExample": "Bolaga otilgan tosh tegdi.",
+          "register": "jarohatlanish tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_passive_form_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 732,
+      "id": 79857,
+      "dictionarySource": "Ghoniy",
+      "arabic": "غَبِينٌ",
+      "root": "غبن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدٌ غَبِينٌ : ضَعِيفُ الرَّأْيِ.",
+      "sourceHash": "d0f2a09c4b20b3a40285791ce3aafba4d65fc5ca74757cef311a4cf9422bf73b",
+      "wordType": "sifat",
+      "uzbek": "fikri va mulohazasi zaif",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ غَبِينٌ",
+          "arabicGloss": "ضَعِيفُ الرَّأْيِ.",
+          "uzbekMeaning": "fikri, mulohazasi yoki qaror chiqarish qobiliyati zaif",
+          "uzbekExample": "Bolaning fikri va mulohazasi zaif edi.",
+          "register": "salbiy aqliy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_judgment_review",
+        "issues": [
+          "«Noto‘g‘ri qaror qiluvchi» manbadan kelib chiqadigan majburiy ma’no emas; ضَعِيفُ الرَّأْيِ fikr-mulohaza zaifligini bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 733,
+      "id": 79858,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَغِيلٌ",
+      "root": "نغل‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدٌ نَغِيلٌ : وَلَدٌ فَاسِدُ النَّسَبِ، وَلَدٌ مِنْ زِنىً.",
+      "sourceHash": "8f1037f6295c55f2f07a05aa6bd265d9c1b66c823deff4e6e16c9642c40db529",
+      "wordType": "sifat",
+      "uzbek": "nikohsiz munosabatdan tug‘ilgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ نَغِيلٌ",
+          "arabicGloss": "وَلَدٌ فَاسِدُ النَّسَبِ، وَلَدٌ مِنْ زِنىً.",
+          "uzbekMeaning": "nikohdan tashqari jinsiy munosabat natijasida tug‘ilgan; tarixiy manbalarda kamsituvchi sifat sifatida ishlatilgan",
+          "uzbekExample": "Eski manbada bu sifat nikohsiz munosabatdan tug‘ilgan bolaga nisbatan qo‘llangan.",
+          "register": "tarixiy va kamsituvchi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_historical_stigma_label",
+        "issues": [
+          "«Nasabi buzilgan» kamsituvchi va noaniq; bevosita ta’rif neytral shaklda, tarixiy qo‘llanish yorlig‘i bilan berildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 734,
+      "id": 79859,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَمِيقٌ",
+      "root": "ومق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدٌ وَمِيقٌ : مَحْبُوبٌ.",
+      "sourceHash": "76040c2525310dd82cba904fb88d575854108f21cd9b32ef54989ceca9405db3",
+      "wordType": "sifat",
+      "uzbek": "sevimli, suyukli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ وَمِيقٌ",
+          "arabicGloss": "مَحْبُوبٌ.",
+          "uzbekMeaning": "boshqalar tomonidan seviladigan, sevimli va suyukli",
+          "uzbekExample": "U oilasining sevimli farzandi edi.",
+          "register": "ijobiy insoniy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_beloved_meaning_review",
+        "issues": [
+          "مَحْبُوبٌ «sevimli, suyukli» degani; umumiy «yoqimli» ma’nosi olib tashlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 735,
+      "id": 79860,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَعيشٌ",
+      "root": "رعش‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-وَلَدُ رَعيشٌ : مُرْتَعِدٌ، مُرْتَجِفٌ.",
+      "sourceHash": "88c7a70a64ded127082f8f9f79372b3be123862fe9078d14e0e30e6ba6d49c73",
+      "wordType": "sifat",
+      "uzbek": "titrayotgan, qaltirayotgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدُ رَعيشٌ",
+          "arabicGloss": "مُرْتَعِدٌ، مُرْتَجِفٌ.",
+          "uzbekMeaning": "qo‘rquv, sovuq yoki boshqa sababdan titrayotgan, qaltirayotgan",
+          "uzbekExample": "Bola titrab-qaltirab turardi.",
+          "register": "jismoniy holat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 736,
+      "id": 79861,
+      "dictionarySource": "Ghoniy",
+      "arabic": "تَعِيسٌ",
+      "root": "تعس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-يَا لَهُ مِنْ رَجُلٍ تَعِيسٍ : شَقِيٍّ، تَعِسٍ.",
+      "sourceHash": "91b678e503ff75dfba5f5928cbc68dc6a5679859ad27619b2c4b2be353076dba",
+      "wordType": "sifat",
+      "uzbek": "baxtsiz, badbaxt",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَا لَهُ مِنْ رَجُلٍ تَعِيسٍ",
+          "arabicGloss": "شَقِيٍّ، تَعِسٍ.",
+          "uzbekMeaning": "baxtdan yiroq, baxtsiz yoki badbaxt",
+          "uzbekExample": "U naqadar baxtsiz kishi edi.",
+          "register": "salbiy inson holati"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_misery_review",
+        "issues": [
+          "«Omadsiz»dan ko‘ra manbadagi شَقِيٌّ kuchliroq baxtsizlik va badbaxtlikni bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 737,
+      "id": 79862,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَطِيرٌ",
+      "root": "طير‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-يَوْمٌ مَطِيرٌ : أَيْ مُمْطِرٌ- يَوْم مِنْ أَيَّامِ الزَّمْهَرِيرِ عَاصِفٌ قَارِسٌ مَطِيرٌ.",
+      "sourceHash": "76bcb38ec07ded4885cc8d1c1ff7a13e252b729a7a10ce03304cc6800055f87b",
+      "wordType": "sifat",
+      "uzbek": "yomg‘irli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَوْمٌ مَطِيرٌ",
+          "arabicGloss": "أَيْ مُمْطِرٌ- يَوْم مِنْ أَيَّامِ الزَّمْهَرِيرِ عَاصِفٌ قَارِسٌ مَطِيرٌ.",
+          "uzbekMeaning": "kun yoki ob-havo haqida: yomg‘ir yog‘adigan, seryomg‘ir",
+          "uzbekExample": "Qahraton kun bo‘ronli, ayozli va yomg‘irli edi.",
+          "register": "ob-havo"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_weather_example_review",
+        "issues": [
+          "Sovuq va shamolli bo‘lishi مَطِيرٌ ma’nosi emas, manba misolidagi kunning boshqa sifatlaridir"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 738,
+      "id": 79863,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَجِيمٌ",
+      "root": "وجم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-يَوْمٌ وَجِيمٌ : شَدِيدُ الْحَرِّ.",
+      "sourceHash": "ddae087138413616ea377dac926d063c8ede3352e21d01843969c9f2487b018d",
+      "wordType": "sifat",
+      "uzbek": "juda issiq kun",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَوْمٌ وَجِيمٌ",
+          "arabicGloss": "شَدِيدُ الْحَرِّ.",
+          "uzbekMeaning": "kun yoki ob-havo haqida: issig‘i juda kuchli",
+          "uzbekExample": "Kun juda issiq edi.",
+          "register": "ob-havo"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 739,
+      "id": 79864,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَحِيمٌ",
+      "root": "وحم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|-يَوْمٌ وَحِيمٌ : شَدِيدُ الْحَرِّ.",
+      "sourceHash": "80a68357e01fef017c0ad10f5a3c6739910250878c8fd32817e9c6a6996646c0",
+      "wordType": "sifat",
+      "uzbek": "juda issiq kun",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "يَوْمٌ وَحِيمٌ",
+          "arabicGloss": "شَدِيدُ الْحَرِّ.",
+          "uzbekMeaning": "kun yoki ob-havo haqida: issig‘i juda kuchli",
+          "uzbekExample": "Bu kunning issig‘i juda kuchli edi.",
+          "register": "ob-havo"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 740,
+      "id": 79865,
+      "dictionarySource": "Ghoniy",
+      "arabic": "غَرِيسٌ",
+      "root": "غرس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).| مَا أُثْبِتَ فِي الأَرْضِ مِنْ شَجَرٍ أَوْ نَبَاتٍ.",
+      "sourceHash": "f374509730cb16d8a6fcbb61f39f1d11231ece3a0d3e777c9460a78f416d73a0",
+      "wordType": "ot",
+      "uzbek": "yerga ekilgan daraxt yoki o‘simlik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "مَا أُثْبِتَ فِي الأَرْضِ مِنْ شَجَرٍ أَوْ نَبَاتٍ.",
+          "uzbekMeaning": "yerga ekilgan yoki o‘tqazilgan daraxt yoxud boshqa o‘simlik",
+          "uzbekExample": "Yerga o‘tqazilgan daraxt va o‘simliklar parvarish qilindi.",
+          "register": "botanika va dehqonchilik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_review",
+        "issues": [
+          "Ta’rif ekilgan daraxt yoki o‘simlikning o‘zini bildiradi; so‘z turkumi otga tuzatildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 741,
+      "id": 79866,
+      "dictionarySource": "Ghoniy",
+      "arabic": "دَبِيغٌ",
+      "root": "دبغ‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).| جِلْدٌ مَدْبُوغٌ.",
+      "sourceHash": "a4b02660479ce8ef04065e1fa04e47538556e95be29b78e4da162c6a1db82e5a",
+      "wordType": "ot",
+      "uzbek": "oshlangan teri",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "",
+          "arabicGloss": "جِلْدٌ مَدْبُوغٌ.",
+          "uzbekMeaning": "maxsus ishlov berib oshlangan teri",
+          "uzbekExample": "Oshlangan teridan buyum tayyorlandi.",
+          "register": "teri ishlab chiqarish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_tanning_review",
+        "issues": [
+          "Teri sanoatidagi aniq o‘zbekcha «oshlangan teri» atamasi tanlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 742,
+      "id": 79867,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَزِيجٌ",
+      "root": "مزج‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1-  مَزِيجٌ مِنْ عَصِيرِ الفَوَاكِهِ : الْمَمْزُوجُ مِنْهَا، مَا مُزِجَ مِنَ السَّوَائِلِ.|2- حَدِيثٌ مَزِيجٌ بِالْهَزْلِ : فِي ثَنَايَاه هَزْلٌ، مَمْزُوجٌ.",
+      "sourceHash": "65bc201b55fafebb74f5bde917c4e337a4b0444efb324738b054506be5e28475",
+      "wordType": "ot va sifat",
+      "uzbek": "aralashma; boshqa narsa aralashgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَزِيجٌ مِنْ عَصِيرِ الفَوَاكِهِ",
+          "arabicGloss": "الْمَمْزُوجُ مِنْهَا، مَا مُزِجَ مِنَ السَّوَائِلِ.",
+          "uzbekMeaning": "ikki yoki undan ortiq suyuqlik qo‘shilishidan hosil bo‘lgan aralashma",
+          "uzbekExample": "Ichimlik turli meva sharbatlari aralashmasidan tayyorlandi.",
+          "register": "modda va ichimlik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "حَدِيثٌ مَزِيجٌ بِالْهَزْلِ",
+          "arabicGloss": "فِي ثَنَايَاه هَزْلٌ، مَمْزُوجٌ.",
+          "uzbekMeaning": "gap yoki suhbat haqida: orasiga hazil qo‘shilgan, hazil aralash",
+          "uzbekExample": "Uning gapida hazil ham bor edi.",
+          "register": "nutq tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_two_sense_review",
+        "issues": [
+          "Birinchi ma’no suyuqliklar aralashmasi bo‘lgan ot, ikkinchisi hazil aralash nutqni bildiruvchi sifat"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 743,
+      "id": 79868,
+      "dictionarySource": "Ghoniy",
+      "arabic": "حَصِينٌ",
+      "root": "حصن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- اِخْتَبَأَ فِي مَكَانٍ حَصِينٍ : مَنِيعٍ.|2- كَنْزٌ حَصِينٌ : فِي مَكَانٍ مَنِيعٍ مُحْكَمٍ.",
+      "sourceHash": "6fe9801e7afcc4de7925179edbcb6213b5587374617c066f865ef02e206fd770",
+      "wordType": "sifat",
+      "uzbek": "daxlsiz, mustahkam himoyalangan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "اِخْتَبَأَ فِي مَكَانٍ حَصِينٍ",
+          "arabicGloss": "مَنِيعٍ.",
+          "uzbekMeaning": "joy haqida: kirish qiyin bo‘lgan, daxlsiz va mustahkam himoyalangan",
+          "uzbekExample": "U mustahkam himoyalangan joyga yashirindi.",
+          "register": "mudofaa va joy tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "كَنْزٌ حَصِينٌ",
+          "arabicGloss": "فِي مَكَانٍ مَنِيعٍ مُحْكَمٍ.",
+          "uzbekMeaning": "xazina yoki qimmatbaho narsa haqida: mahkam, puxta himoyalangan joyda saqlanadigan",
+          "uzbekExample": "Xazina mahkam himoyalangan joyda saqlanardi.",
+          "register": "xavfsizlik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_security_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 744,
+      "id": 79869,
+      "dictionarySource": "Ghoniy",
+      "arabic": "طَفِيفٌ",
+      "root": "طفف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- اِرْتَكَبَ خَطَأً طَفِيفاً : بَسِيطاً.|2- سَلَّمَهُ مَبْلَغاً طَفِيفاً : قَلِيلاً جِدًّا.|3- أَمْرٌ طَفِيفٌ : خَسِيسٌ، حَقِيرٌ.",
+      "sourceHash": "4ef82c94e2020955835fa1e555de57d76d23c86f6927b59b4d796d2dd09d5fa3",
+      "wordType": "sifat",
+      "uzbek": "kichik; juda oz; arzimas",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "اِرْتَكَبَ خَطَأً طَفِيفاً",
+          "arabicGloss": "بَسِيطاً.",
+          "uzbekMeaning": "xato yoki kamchilik haqida: kichik, yengil va jiddiy bo‘lmagan",
+          "uzbekExample": "U kichik xatoga yo‘l qo‘ydi.",
+          "register": "daraja tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "سَلَّمَهُ مَبْلَغاً طَفِيفاً",
+          "arabicGloss": "قَلِيلاً جِدًّا.",
+          "uzbekMeaning": "pul yoki miqdor haqida: juda oz",
+          "uzbekExample": "Unga juda oz pul berdi.",
+          "register": "miqdor tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "أَمْرٌ طَفِيفٌ",
+          "arabicGloss": "خَسِيسٌ، حَقِيرٌ.",
+          "uzbekMeaning": "ish yoki narsa haqida: qadrsiz, arzimas va e’tiborga noloyiq",
+          "uzbekExample": "Bu arzimas ish deb baholandi.",
+          "register": "salbiy baho"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_three_sense_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 745,
+      "id": 79870,
+      "dictionarySource": "Ghoniy",
+      "arabic": "خَضِيرٌ",
+      "root": "خضر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- أَرْضٌ خَضِيٌر : أَرْضُ العُشْبِ الأَخْضَرِ.|2- بَقْلٌ خَضِيرٌ : ذُو خُضْرَةٍ.",
+      "sourceHash": "b91df5aa4d14588b5d91bbb43343a97e0b65e5e402c5d7bca2bca3cf6777ded8",
+      "wordType": "sifat",
+      "uzbek": "yam-yashil yer; ko‘m-ko‘k o‘t-o‘lan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَرْضٌ خَضِيٌر",
+          "arabicGloss": "أَرْضُ العُشْبِ الأَخْضَرِ.",
+          "uzbekMeaning": "yer haqida: yashil o‘t-o‘lan bilan qoplangan, yam-yashil",
+          "uzbekExample": "Yer yam-yashil o‘t-o‘lan bilan qoplangan edi.",
+          "register": "tabiat tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "بَقْلٌ خَضِيرٌ",
+          "arabicGloss": "ذُو خُضْرَةٍ.",
+          "uzbekMeaning": "o‘t-o‘lan yoki ko‘kat haqida: yashil, ko‘m-ko‘k",
+          "uzbekExample": "Daladagi o‘t-o‘lan ko‘m-ko‘k edi.",
+          "register": "botanika"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_botanical_review",
+        "issues": [
+          "Manbada «o‘tloq» va «sabzavot» otlari emas, yer hamda o‘t-o‘lanning yashillik sifati berilgan"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 746,
+      "id": 79871,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَوِيصٌ",
+      "root": "عوص‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- أَمْرٌ عَوِيصٌ :شَائِكٌ، صَعْبٌ.|2- أَتَى بِكَلاَمٍ عَوِيصٍ : كَلاَمٌ يَصْعُبُ فَهْمُهُ- قَضَايَا عَوِيصَةٌ :-وَاجَهَ مَسْأَلَةً عَوِيصَةً.",
+      "sourceHash": "a1ea434f1d70d0ae94c66ef29e235b20feb0e8c546cf4c46d4cb6f317c95e312",
+      "wordType": "sifat",
+      "uzbek": "chigal va qiyin; tushunish mushkul",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَمْرٌ عَوِيصٌ",
+          "arabicGloss": "شَائِكٌ، صَعْبٌ.",
+          "uzbekMeaning": "ish yoki masala haqida: chigal, og‘ir va yechimi qiyin",
+          "uzbekExample": "U chigal va qiyin masalaga duch keldi.",
+          "register": "murakkablik tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَتَى بِكَلاَمٍ عَوِيصٍ",
+          "arabicGloss": "كَلاَمٌ يَصْعُبُ فَهْمُهُ- قَضَايَا عَوِيصَةٌ :-وَاجَهَ مَسْأَلَةً عَوِيصَةً.",
+          "uzbekMeaning": "gap yoki fikr haqida: mazmunini anglash qiyin, tushunarsiz darajada murakkab",
+          "uzbekExample": "U tushunish mushkul bo‘lgan gap aytdi.",
+          "register": "nutq va matn tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_complexity_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 747,
+      "id": 79872,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَرِيءٌ",
+      "root": "فرأ‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- أَمْرٌ فَرِيءٌ : مُخْتَلَقٌ.|2- عَمَلٌ فَرِيءٌ : عَظِيمٌ.",
+      "sourceHash": "a1e22151fdf00fc34b5c636b0b95e49b46cadfd37641d218ac594fa00840c492",
+      "wordType": "sifat",
+      "uzbek": "uydirma; ulkan va buyuk",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "أَمْرٌ فَرِيءٌ",
+          "arabicGloss": "مُخْتَلَقٌ.",
+          "uzbekMeaning": "gap, da’vo yoki ish haqida: to‘qib chiqarilgan, uydirma",
+          "uzbekExample": "Bu to‘qib chiqarilgan gap edi.",
+          "register": "salbiy baho"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَمَلٌ فَرِيءٌ",
+          "arabicGloss": "عَظِيمٌ.",
+          "uzbekMeaning": "ish yoki amalga nisbatan: ulkan, buyuk",
+          "uzbekExample": "U ulkan ishni amalga oshirdi.",
+          "register": "ijobiy baho"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_contrasting_sense_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 748,
+      "id": 79873,
+      "dictionarySource": "Ghoniy",
+      "arabic": "هَشِيمٌ",
+      "root": "هشم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- تَمْتَلِئُ الْحُقُولُ بِالْهَشِيمِ فِي الصَّيْفِ : يَابِسُ النَّبَاتِ وَالشَّجَرِ- وَجَدَتِ النَّارُ فِي الْهَشِيمِ مَرْتَعاً لِتَمْتَدَّ إِلَى كُلِّ الْحُقُولِ الْمُجَاوِرَةِ.|2.الكهف آية 45فَأَصْبَحَ هَشِيماً تَذْرُوهُ الرِّيَاحُ (قرآن) : الْمَهْشُومُ الْمُتَكَسِّرُ.|3- وَلَدٌ هَشِيمٌ : ضَعِيفُ الْبَدَنِ.",
+      "sourceHash": "b421f0ac5b50fae5d0f4730d6bcf22fd62f48377fa7221e278bd457d9f648a7e",
+      "wordType": "ot va sifat",
+      "uzbek": "qurigan o‘simlik qoldig‘i; uvulib singan; nimjon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "تَمْتَلِئُ الْحُقُولُ بِالْهَشِيمِ فِي الصَّيْفِ",
+          "arabicGloss": "يَابِسُ النَّبَاتِ وَالشَّجَرِ- وَجَدَتِ النَّارُ فِي الْهَشِيمِ مَرْتَعاً لِتَمْتَدَّ إِلَى كُلِّ الْحُقُولِ الْمُجَاوِرَةِ.",
+          "uzbekMeaning": "qurib qolgan o‘t-o‘lan, daraxt shoxlari va o‘simlik qoldiqlari",
+          "uzbekExample": "Yozda dalalar qurigan o‘simlik qoldiqlariga to‘ladi; olov ular orqali qo‘shni dalalarga yoyildi.",
+          "register": "botanika va yong‘in xavfi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "الكهف آية 45فَأَصْبَحَ هَشِيماً تَذْرُوهُ الرِّيَاحُ (قرآن)",
+          "arabicGloss": "الْمَهْشُومُ الْمُتَكَسِّرُ.",
+          "uzbekMeaning": "qurib, sinib-uvulib ketgan o‘simlik yoki narsa",
+          "uzbekExample": "U shamollar sovuradigan quruq xas-xashakka aylandi. (Qur’on, Kahf surasi, 18:45)",
+          "register": "umumiy va diniy"
+        },
+        {
+          "index": 3,
+          "arabicExample": "وَلَدٌ هَشِيمٌ",
+          "arabicGloss": "ضَعِيفُ الْبَدَنِ.",
+          "uzbekMeaning": "bola haqida: jismi zaif, nimjon",
+          "uzbekExample": "U jismi zaif, nimjon bola edi.",
+          "register": "jismoniy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_quran_and_three_sense_review",
+        "issues": [
+          "Kahf surasi 18:45 misoli shamol sovuradigan, sinib-uvulgan quruq o‘simlik qoldig‘i ma’nosida tarjima qilindi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 749,
+      "id": 79874,
+      "dictionarySource": "Ghoniy",
+      "arabic": "يَنِيعٌ",
+      "root": "ينع‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- ثَمَرٌ يَنِيعٌ : نَاضِجٌ وَحَانَ قِطَافُهُ.|2- وَلَدٌ يَنِيعٌ : بَلَغَ سِنَّ النُّضْجِ وَصَارَ غَايَةً فِي الْكَمَالِ وَالنَّظَافَةِ.",
+      "sourceHash": "70a4378b3df9513b6ab15c7488ceabc036f59fc8c4ee7d1944a4d53d746cbf16",
+      "wordType": "sifat",
+      "uzbek": "pishib terimga kelgan; kamolga yetgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ثَمَرٌ يَنِيعٌ",
+          "arabicGloss": "نَاضِجٌ وَحَانَ قِطَافُهُ.",
+          "uzbekMeaning": "meva haqida: to‘liq pishgan va terib olish vaqti kelgan",
+          "uzbekExample": "Meva pishib, terimga kelgan edi.",
+          "register": "bog‘dorchilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "وَلَدٌ يَنِيعٌ",
+          "arabicGloss": "بَلَغَ سِنَّ النُّضْجِ وَصَارَ غَايَةً فِي الْكَمَالِ وَالنَّظَافَةِ.",
+          "uzbekMeaning": "bola yoki yosh kishi haqida: yetuklik yoshiga yetgan, kamol va pokizalikda yuqori darajaga chiqqan",
+          "uzbekExample": "U kamolga yetgan, ozoda va barkamol yigit bo‘ldi.",
+          "register": "inson kamoloti"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_maturity_review",
+        "issues": [
+          "Mevaning terim vaqti kelgani hamda inson ma’nosidagi pokizalik tafsiloti tiklandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 750,
+      "id": 79875,
+      "dictionarySource": "Ghoniy",
+      "arabic": "زَهيدٌ",
+      "root": "زهد‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- ثَمَنٌ زَهِيدٌ : ثَمَنٌ رَخيصٌ جِدّاً، ضَئيلٌ، تافِهٌ- اِشْتَرَى حِذاءً بِثَمَنٍ زَهيدٍ :-أَثْمانٌ زَهيدَةٌ :-لَمْ يَحْصُلْ إِلاَّ عَلَى مَبْلَغٍ زَهيدٍ.|2- رَجُلٌ زَهيدٌ : حَقيرٌ، لَئيمٌ.",
+      "sourceHash": "32e94529935e421eb2ed7f26f5aba044bfd1ec7d391e17f53cf5966e6b309118",
+      "wordType": "sifat",
+      "uzbek": "juda arzon yoki oz; haqir va pastkash",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ثَمَنٌ زَهِيدٌ",
+          "arabicGloss": "ثَمَنٌ رَخيصٌ جِدّاً، ضَئيلٌ، تافِهٌ- اِشْتَرَى حِذاءً بِثَمَنٍ زَهيدٍ :-أَثْمانٌ زَهيدَةٌ :-لَمْ يَحْصُلْ إِلاَّ عَلَى مَبْلَغٍ زَهيدٍ.",
+          "uzbekMeaning": "narx haqida: juda arzon; pul yoki miqdor haqida: juda oz va arzimas",
+          "uzbekExample": "U poyabzalni juda arzon narxda sotib oldi, o‘zi esa ozgina pul oldi.",
+          "register": "narx va miqdor"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَجُلٌ زَهيدٌ",
+          "arabicGloss": "حَقيرٌ، لَئيمٌ.",
+          "uzbekMeaning": "kishi haqida: haqir, qadrsiz yoki pastkash",
+          "uzbekExample": "Manbada u haqir va pastkash kishi deb ta’riflangan.",
+          "register": "salbiy va kamsituvchi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_price_and_person_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 751,
+      "id": 79876,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ضَرِيجٌ",
+      "root": "ضرج‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- ثَوْبٌ ضَرِيجٌ : مَصْبُوغٌ بِحُمْرَةٍ.|2- بَطَلٌ ضَرِيجٌ : قَوِيٌّ، شَدِيدٌ.",
+      "sourceHash": "bf3f7a95823e3298eb8009b3a465c553ce34048fc2d37e837dfb0aa8a272c140",
+      "wordType": "sifat",
+      "uzbek": "qizilga bo‘yalgan; kuchli va shiddatli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ثَوْبٌ ضَرِيجٌ",
+          "arabicGloss": "مَصْبُوغٌ بِحُمْرَةٍ.",
+          "uzbekMeaning": "mato yoki kiyim haqida: qizil rangga bo‘yalgan",
+          "uzbekExample": "Mato qizil rangga bo‘yalgan edi.",
+          "register": "to‘qimachilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "بَطَلٌ ضَرِيجٌ",
+          "arabicGloss": "قَوِيٌّ، شَدِيدٌ.",
+          "uzbekMeaning": "qahramon yoki jangchi haqida: baquvvat, kuchli va shiddatli",
+          "uzbekExample": "U kuchli va shiddatli qahramon edi.",
+          "register": "qahramonlik tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_hero_context_review",
+        "issues": [
+          "Ikkinchi ma’nodagi شَدِيدٌ qahramonning kuchi va shiddatiga tegishli, umumiy «qattiq» emas"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 752,
+      "id": 79877,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ضَفِيرٌ",
+      "root": "ضفر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- جَعَلَتْ شَعْرَهَا ضَفِيراً : مَنْسُوجاً، مَضْفُوراً.|2- ضَفِيرُ البَحْرِ : سَاحِلُهُ، شَطُّهُ.",
+      "sourceHash": "f9367470ed5a6c9d5976fa5b87df1c895d3a105c5408c92b76548ef579a8f990",
+      "wordType": "sifat va ot",
+      "uzbek": "o‘rib qo‘yilgan soch; dengiz sohili",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "جَعَلَتْ شَعْرَهَا ضَفِيراً",
+          "arabicGloss": "مَنْسُوجاً، مَضْفُوراً.",
+          "uzbekMeaning": "soch haqida: tolalari bir-biriga o‘rilib, kokil qilingan",
+          "uzbekExample": "U sochini o‘rib qo‘ydi.",
+          "register": "soch turmagi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "ضَفِيرُ البَحْرِ",
+          "arabicGloss": "سَاحِلُهُ، شَطُّهُ.",
+          "uzbekMeaning": "dengizning sohili yoki qirg‘og‘i",
+          "uzbekExample": "Ular dengiz sohiliga yetib bordilar.",
+          "register": "geografiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 753,
+      "id": 79878,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَزينٌ",
+      "root": "رزن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- جَلَسَ رَزِيناً فِي مَقْعَدِهِ : سَاكِناً، ثَابِتاً.|2- عَرَفْتُهُ شَابّاً رَزِيناً : وَقُوراً، حَلِيماً.|3- عَرَفْتُهُ رَزِينَ الرَّأْيِ : أصِيلَ الرَّأْيِ.",
+      "sourceHash": "75a73ddace29b6a6d1525c39ff7b3e44715c505d58d149504e661741a6ebdd5c",
+      "wordType": "sifat",
+      "uzbek": "tinch va qimirlamas; vazmin; fikri puxta",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "جَلَسَ رَزِيناً فِي مَقْعَدِهِ",
+          "arabicGloss": "سَاكِناً، ثَابِتاً.",
+          "uzbekMeaning": "o‘tirish yoki turish holatida: tinch, qimirlamas va barqaror",
+          "uzbekExample": "U o‘rindig‘ida tinch va qimirlamay o‘tirdi.",
+          "register": "jismoniy holat"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَرَفْتُهُ شَابّاً رَزِيناً",
+          "arabicGloss": "وَقُوراً، حَلِيماً.",
+          "uzbekMeaning": "kishi haqida: vazmin, bosiq va muloyim",
+          "uzbekExample": "Men uni vazmin va bosiq yigit sifatida tanirdim.",
+          "register": "ijobiy insoniy sifat"
+        },
+        {
+          "index": 3,
+          "arabicExample": "عَرَفْتُهُ رَزِينَ الرَّأْيِ",
+          "arabicGloss": "أصِيلَ الرَّأْيِ.",
+          "uzbekMeaning": "fikr va mulohaza haqida: puxta, asosli va teran",
+          "uzbekExample": "Men uning fikrini puxta va asosli deb bilardim.",
+          "register": "tafakkur tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_three_context_review",
+        "issues": [
+          "Uchinchi ma’no umumiy donolik emas, fikrning puxtaligi va asosliligidir"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 754,
+      "id": 79879,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَتِيدٌ",
+      "root": "عتد‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- حَارِسٌ عَتِيدٌ : حَاضِرٌ.ق آية 18مَا يَلْفِظُ مِنْ قَوْلٍ إِلاَّ لَدَيْهِ رَقِيبٌ عَتِيدٌ (قرآن).|2- مَوْقِفٌ عَتِيدٌ : صَلْبٌ شَدِيدٌ.|3- رَجُلٌ عَتِيدٌ : مُهَيَّأٌ للِشَّدَائِدِ.",
+      "sourceHash": "c6a4a2a77f22d3805d3ad559e24658aea0745510bd2697e6c560b0ce21511425",
+      "wordType": "sifat",
+      "uzbek": "hozir va tayyor; sobit; qiyinchilikka shay",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَارِسٌ عَتِيدٌ",
+          "arabicGloss": "حَاضِرٌ.ق آية 18مَا يَلْفِظُ مِنْ قَوْلٍ إِلاَّ لَدَيْهِ رَقِيبٌ عَتِيدٌ (قرآن).",
+          "uzbekMeaning": "kuzatuvchi yoki qo‘riqchi haqida: hozir bo‘lgan va tayyor turgan",
+          "uzbekExample": "U biror so‘z aytmasinki, uning oldida hoziru nozir kuzatuvchi bo‘lmasin. (Qur’on, Qof surasi, 50:18)",
+          "register": "umumiy va diniy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "مَوْقِفٌ عَتِيدٌ",
+          "arabicGloss": "صَلْبٌ شَدِيدٌ.",
+          "uzbekMeaning": "mavqe yoki tutum haqida: sobit, mustahkam va qat’iy",
+          "uzbekExample": "Uning tutgan mavqeyi qat’iy va mustahkam edi.",
+          "register": "mavqe tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "رَجُلٌ عَتِيدٌ",
+          "arabicGloss": "مُهَيَّأٌ للِشَّدَائِدِ.",
+          "uzbekMeaning": "kishi haqida: qiyinchilik va og‘ir sinovlarga oldindan shaylangan, tayyor",
+          "uzbekExample": "U qiyinchiliklarga tayyor kishi edi.",
+          "register": "inson tayyorgarligi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_quran_and_three_sense_review",
+        "issues": [
+          "Qof surasi 50:18 misoli hoziru nozir va tayyor kuzatuvchi ma’nosida berildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 755,
+      "id": 79880,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَسِيرٌ",
+      "root": "عسر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- حَاسَبَهُ حِسَاباً عَسِيراً : شَدِيداً.|2- يَعِيشُ وَضْعاً عَسِيراً : صَعْباً، شَاقّاً. | الفرقان آية 26وَكَانَ يَوْماً عَلَى الكَافِرِينَ عَسِيراً (قرآن) :وَاجَهَتْهُ مَسْأَلَةٌ عَسِيرَةٌ :-إِنَّ مِنَ العَسِيرِ أَنْ أَتَصَوَّرَ الْجَمَالَ غَيْرَ مُقْتَرِنٍ بِالفَضِيلَةِ. (توفيق الحكيم).",
+      "sourceHash": "635d5222ee72ff480dfe2519918fe56e9a40ea97dda5272c56c6a590f5c809c5",
+      "wordType": "sifat",
+      "uzbek": "qattiq; qiyin va mashaqqatli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَاسَبَهُ حِسَاباً عَسِيراً",
+          "arabicGloss": "شَدِيداً.",
+          "uzbekMeaning": "hisob-kitob yoki tekshiruv haqida: qattiq, shafqatsiz va sinchkov",
+          "uzbekExample": "U undan qattiq hisob so‘radi.",
+          "register": "hisob va baholash"
+        },
+        {
+          "index": 2,
+          "arabicExample": "يَعِيشُ وَضْعاً عَسِيراً",
+          "arabicGloss": "صَعْباً، شَاقّاً. | الفرقان آية 26وَكَانَ يَوْماً عَلَى الكَافِرِينَ عَسِيراً (قرآن) :وَاجَهَتْهُ مَسْأَلَةٌ عَسِيرَةٌ :-إِنَّ مِنَ العَسِيرِ أَنْ أَتَصَوَّرَ الْجَمَالَ غَيْرَ مُقْتَرِنٍ بِالفَضِيلَةِ. (توفيق الحكيم).",
+          "uzbekMeaning": "vaziyat, kun, masala yoki ish haqida: qiyin, mushkul va mashaqqatli",
+          "uzbekExample": "U qiyin vaziyatda yashamoqda. U kun kofirlar uchun og‘ir kundir. (Qur’on, Furqon surasi, 25:26)",
+          "register": "umumiy va diniy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_source_count_and_quran_review",
+        "issues": [
+          "Mavjud tarjimada uch ma’no ko‘rsatilgan, manba tuzilmasida esa ikkita: qattiq hisob va qiyin-mashaqqatli holat",
+          "Furqon surasi 25:26 misoli ikkinchi ma’noda saqlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 756,
+      "id": 79881,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَجِينٌ",
+      "root": "عجن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- حَضَّرَتِ الْعَجِينَ لِتُهَيِّءَ خُبْزَهَا : الدَّقِيقُ الْمَعْجُونُ بِالْمَاءِ- الخَمِيرُ الَّذِي يُخَمِّرُ الْعَجِينَ كُلَّهُ.|2- هُوَ عَجِينُ يَدِي : أَيْ أَنَا الَّذِي كَوَّنْتُهُ وَصَنَعْتُهُ، وَأَنَا خَبِيرٌ بِهِ.",
+      "sourceHash": "209e3062899e80de140be456c205eeea6a325d78beff4f4112d72d36f169feae",
+      "wordType": "ot",
+      "uzbek": "xamir; o‘zi shakllantirgan kishi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَضَّرَتِ الْعَجِينَ لِتُهَيِّءَ خُبْزَهَا",
+          "arabicGloss": "الدَّقِيقُ الْمَعْجُونُ بِالْمَاءِ- الخَمِيرُ الَّذِي يُخَمِّرُ الْعَجِينَ كُلَّهُ.",
+          "uzbekMeaning": "un yoki unga o‘xshash mahsulotni suv bilan qorishdan hosil bo‘ladigan xamir",
+          "uzbekExample": "U non yopish uchun xamir tayyorladi; xamirturush esa butun xamirni ko‘pirtirdi.",
+          "register": "pazandachilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "هُوَ عَجِينُ يَدِي",
+          "arabicGloss": "أَيْ أَنَا الَّذِي كَوَّنْتُهُ وَصَنَعْتُهُ، وَأَنَا خَبِيرٌ بِهِ.",
+          "uzbekMeaning": "«u mening qo‘limning xamiri» iborasida: uni men tarbiyalab yoki shakllantirganman va yaxshi bilaman",
+          "uzbekExample": "U mening qo‘limning xamiri: uni men shakllantirganman va juda yaxshi bilaman.",
+          "register": "majoziy ibora"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_idiom_review",
+        "issues": [
+          "Ikkinchi ma’no shunchaki «o‘zim tayyorlagan narsa» emas; insonni o‘zi shakllantirib, yaxshi bilishini anglatuvchi majoziy ibora"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 757,
+      "id": 79882,
+      "dictionarySource": "Ghoniy",
+      "arabic": "خَصِيبٌ",
+      "root": "خصب‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- حَقْلٌ خَصِيبٌ : كَثِيرُ النَّبَاتِ وَالْعُشْبِ- فَلَمْ يَزَلْ يَدِبُّ حَتَّى أَتَى مَرجاً خَصِيباً كَثِيرَ الْمَاءِ وَالْكَلإِ :(ابن المقفع).|2- رَجُلٌ خَصِيبٌ : كَثِيرُ الْخَيْرِ.",
+      "sourceHash": "974255f5e51517725cfae7adb99406202718edda55570e64eac7de3c7d7e21dc",
+      "wordType": "sifat",
+      "uzbek": "serhosil; yaxshiligi ko‘p",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "حَقْلٌ خَصِيبٌ",
+          "arabicGloss": "كَثِيرُ النَّبَاتِ وَالْعُشْبِ- فَلَمْ يَزَلْ يَدِبُّ حَتَّى أَتَى مَرجاً خَصِيباً كَثِيرَ الْمَاءِ وَالْكَلإِ :(ابن المقفع).",
+          "uzbekMeaning": "dala, yer yoki yaylov haqida: o‘t-o‘lani va o‘simligi ko‘p, serhosil",
+          "uzbekExample": "U suv va o‘t-o‘lani ko‘p serhosil yaylovga yetib keldi.",
+          "register": "dehqonchilik va chorvachilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَجُلٌ خَصِيبٌ",
+          "arabicGloss": "كَثِيرُ الْخَيْرِ.",
+          "uzbekMeaning": "kishi haqida: yaxshiligi va ehsoni ko‘p",
+          "uzbekExample": "U yaxshiligi ko‘p inson edi.",
+          "register": "ijobiy insoniy sifat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_fertility_and_goodness_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 758,
+      "id": 79883,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَطِيرٌ",
+      "root": "فطر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- خُبْزٌ فَطِيرٌ : خُبْزٌ تَمَّ طَهْيُهُ قَبْلَ اِخْتِمَارِهِ.|2- عَجِينٌ فَطِيرٌ : لَمْ يَخْتَمِرْ بَعْدُ.|3- رَأْيٌ فَطِيرٌ : رَأْيٌ بِلاَ تَفْكِيرٍ أَوْ رَوِيَّةٍ.",
+      "sourceHash": "a3a90b4e63559d6c4a5ba4a2767f541720d42573ad58db0bc224b701ee265f75",
+      "wordType": "sifat",
+      "uzbek": "achitilmagan; yetilmagan fikr",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "خُبْزٌ فَطِيرٌ",
+          "arabicGloss": "خُبْزٌ تَمَّ طَهْيُهُ قَبْلَ اِخْتِمَارِهِ.",
+          "uzbekMeaning": "non haqida: xamiri achib ulgurmasdan pishirilgan",
+          "uzbekExample": "Non xamiri achib ulgurmasdan pishirildi.",
+          "register": "pazandachilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَجِينٌ فَطِيرٌ",
+          "arabicGloss": "لَمْ يَخْتَمِرْ بَعْدُ.",
+          "uzbekMeaning": "xamir haqida: hali achimagan, ko‘tarilmagan",
+          "uzbekExample": "Xamir hali achimagan edi.",
+          "register": "pazandachilik"
+        },
+        {
+          "index": 3,
+          "arabicExample": "رَأْيٌ فَطِيرٌ",
+          "arabicGloss": "رَأْيٌ بِلاَ تَفْكِيرٍ أَوْ رَوِيَّةٍ.",
+          "uzbekMeaning": "fikr haqida: yetarlicha o‘ylab ko‘rilmagan, xom va shoshma-shosharlik bilan bildirilgan",
+          "uzbekExample": "U yetarlicha o‘ylanmagan xom fikr bildirdi.",
+          "register": "majoziy tafakkur tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_fermentation_review",
+        "issues": [
+          "فَطِيرٌ «xamirturushsiz» bo‘lishi shart emas; manba xamirning hali achib ulgurmaganini aytadi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 759,
+      "id": 79884,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَجِيعٌ",
+      "root": "نجع‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- دَوَاءٌ نَجِيعٌ : نَافِعٌ.|2- طَعَامٌ نَجِيعٌ : نَافِعٌ لِلْبَدَنِ.|3- مَاءٌ نَجِيعٌ : هَنِيءٌ، مَرِيءٌ.",
+      "sourceHash": "ff01f30057d29c7a5a0f43e7ca2c2431972da8d21ea5baa6a3f3a7c0860129ca",
+      "wordType": "sifat",
+      "uzbek": "samarali; tanaga foydali; yoqimli va singimli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "دَوَاءٌ نَجِيعٌ",
+          "arabicGloss": "نَافِعٌ.",
+          "uzbekMeaning": "dori haqida: foyda beradigan, samarali",
+          "uzbekExample": "Bu samarali dori bemorga foyda berdi.",
+          "register": "tibbiy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "طَعَامٌ نَجِيعٌ",
+          "arabicGloss": "نَافِعٌ لِلْبَدَنِ.",
+          "uzbekMeaning": "taom haqida: tana uchun foydali va to‘yimli",
+          "uzbekExample": "Bu taom tana uchun foydali edi.",
+          "register": "ovqatlanish"
+        },
+        {
+          "index": 3,
+          "arabicExample": "مَاءٌ نَجِيعٌ",
+          "arabicGloss": "هَنِيءٌ، مَرِيءٌ.",
+          "uzbekMeaning": "suv haqida: ichishga yoqimli, tomoqdan oson o‘tadigan va singimli",
+          "uzbekExample": "Suv ichishga yoqimli va singimli edi.",
+          "register": "ichimlik tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_three_benefit_contexts_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 760,
+      "id": 79885,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ذَرِعٌ",
+      "root": "ذرع‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَجُلٌ ذَرِعٌ : طَويلُ اللِّسانِ بِالشَّرِّ.|2- مُسافِرٌ ذَرِعٌ : يَسيرُ لَيْلاً وَنَهاراً.",
+      "sourceHash": "c858d86f0672c60ece294a43e8f1023b0588b2badadb95eabf7258f837f71185",
+      "wordType": "sifat",
+      "uzbek": "yomonlikda tili uzun; kecha-kunduz yo‘l yuradigan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَجُلٌ ذَرِعٌ",
+          "arabicGloss": "طَويلُ اللِّسانِ بِالشَّرِّ.",
+          "uzbekMeaning": "kishi haqida: yomon va haqoratli so‘zlarni ko‘p gapiradigan, yomonlikda tili uzun",
+          "uzbekExample": "U yomonlikda tili uzun kishi edi.",
+          "register": "salbiy nutq tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "مُسافِرٌ ذَرِعٌ",
+          "arabicGloss": "يَسيرُ لَيْلاً وَنَهاراً.",
+          "uzbekMeaning": "musofir haqida: kecha-yu kunduz yo‘l yuradigan, yo‘l bosishda davomli",
+          "uzbekExample": "Musofir kecha-yu kunduz yo‘l yurardi.",
+          "register": "safar tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_speech_and_travel_review",
+        "issues": [
+          "طَويلُ اللِّسانِ بِالشَّرِّ oddiy «yomon so‘zli»dan kuchliroq, yomonlik va haqoratda tili uzunlikni bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 761,
+      "id": 79886,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَزِيبٌ",
+      "root": "عزب‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَجُلٌ عَزِيبٌ : بَعِيدٌ عَنْ أَهْلِهِ وَمَالِهِ.|2- شَابٌّ عَزِيبٌ : غَيْرُ مُتَزَوِّجٍ.",
+      "sourceHash": "301ae491687cc8bfde164ad1a275b8654d6303b35d5dc90e8a2cc17f826f3e17",
+      "wordType": "sifat",
+      "uzbek": "oila va mol-mulkidan uzoqda; uylanmagan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَجُلٌ عَزِيبٌ",
+          "arabicGloss": "بَعِيدٌ عَنْ أَهْلِهِ وَمَالِهِ.",
+          "uzbekMeaning": "kishi haqida: oilasi va mol-mulkidan uzoqda yashayotgan",
+          "uzbekExample": "U oilasi va mol-mulkidan uzoqda yashardi.",
+          "register": "yashash holati"
+        },
+        {
+          "index": 2,
+          "arabicExample": "شَابٌّ عَزِيبٌ",
+          "arabicGloss": "غَيْرُ مُتَزَوِّجٍ.",
+          "uzbekMeaning": "yigit yoki erkak haqida: uylanmagan, turmush qurmagan",
+          "uzbekExample": "U hali uylanmagan yigit edi.",
+          "register": "oilaviy holat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_two_state_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 762,
+      "id": 79887,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَقِيرٌ",
+      "root": "عقر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَجُلٌ عَقِيرٌ : لاَ يُولَدُ لَهُ وَلَدٌ.|2- وَقَفَ عَقِيراً : لَمْ يَسْتَطِعْ أَنْ يَتَقَدَّمَ أَوْ يَتَأَخَّرَ لِخَوْفٍ.",
+      "sourceHash": "5053a0b76f5095015a8a02cdc938e7c024a774912a8159fed8c86df8b2947e2c",
+      "wordType": "sifat",
+      "uzbek": "farzand ko‘rmaydigan; qo‘rquvdan qotib qolgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَجُلٌ عَقِيرٌ",
+          "arabicGloss": "لاَ يُولَدُ لَهُ وَلَدٌ.",
+          "uzbekMeaning": "erkak haqida: biologik jihatdan farzand ko‘ra olmaydigan, bepusht",
+          "uzbekExample": "U farzand ko‘ra olmaydigan erkak edi.",
+          "register": "tibbiy va ehtiyotkor qo‘llanadigan"
+        },
+        {
+          "index": 2,
+          "arabicExample": "وَقَفَ عَقِيراً",
+          "arabicGloss": "لَمْ يَسْتَطِعْ أَنْ يَتَقَدَّمَ أَوْ يَتَأَخَّرَ لِخَوْفٍ.",
+          "uzbekMeaning": "qo‘rquvdan oldinga ham, orqaga ham yura olmay, qotib qolgan",
+          "uzbekExample": "U qo‘rquvdan oldinga ham, orqaga ham siljiy olmay qotib qoldi.",
+          "register": "ruhiy va jismoniy holat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_neutral_medical_wording",
+        "issues": [
+          "Farzandsizlik umumiy holat emas, manbada erkakning farzand ko‘ra olmasligi sifatida ta’riflangan"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 763,
+      "id": 79888,
+      "dictionarySource": "Ghoniy",
+      "arabic": "كَظِيمٌ",
+      "root": "كظم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَجُلٌ كَظِيمٌ لِغَيْظِهِ : كَاظِمٌ، أَيْ مُمْسِكٌ عَلَى مَا فِي نَفْسِهِ عِنْدَ الغَيْظِ. 2 :وَجَدَهُ كَظِيماً : مَهْمُوماً مِنْ شِدَّةِ الْحُزْنِ. | يوسف آية 82وَابْيَضَّتْ عَيْنَاهُ مِنَ الْحُزْنِ فَهُوَ كَظِيمٌ (قرآن).|3- كَظِيمُ البَابِ : مَا يُغْلَقُ بِهِ البَابُ.|4- إِنَّهَا لَكَظِيمُ الْخَلْخَالِ : لاَ يُسْمَعُ لَهُ صَوْتٌ لامْتِلاَئِهِ.",
+      "sourceHash": "290c9806b64c942d0489d1257e168b79f747cff6b7e1859be249a5dcec028af9",
+      "wordType": "sifat va ot",
+      "uzbek": "g‘azabini yutgan; qayg‘uga botgan; eshik tambasi; xalxali jim",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَجُلٌ كَظِيمٌ لِغَيْظِهِ",
+          "arabicGloss": "كَاظِمٌ، أَيْ مُمْسِكٌ عَلَى مَا فِي نَفْسِهِ عِنْدَ الغَيْظِ",
+          "uzbekMeaning": "g‘azablanganida ichidagi tuyg‘uni oshkor etmay, g‘azabini bosib turadigan",
+          "uzbekExample": "U g‘azabini ichiga yutib, o‘zini tutdi.",
+          "register": "inson hissiyoti"
+        },
+        {
+          "index": 2,
+          "arabicExample": "وَجَدَهُ كَظِيماً",
+          "arabicGloss": "مَهْمُوماً مِنْ شِدَّةِ الْحُزْنِ. | يوسف آية 82وَابْيَضَّتْ عَيْنَاهُ مِنَ الْحُزْنِ فَهُوَ كَظِيمٌ (قرآن).",
+          "uzbekMeaning": "qattiq qayg‘udan dili siqilgan, g‘amga botgan",
+          "uzbekExample": "G‘amdan uning ko‘zlari oqarib ketdi va u qayg‘usini ichiga yutdi. (Qur’on, Yusuf surasi, 12:84)",
+          "register": "ruhiy holat va diniy"
+        },
+        {
+          "index": 3,
+          "arabicExample": "كَظِيمُ البَابِ",
+          "arabicGloss": "مَا يُغْلَقُ بِهِ البَابُ.",
+          "uzbekMeaning": "eshikni yopib turadigan tamba, ilgak yoki boshqa moslama",
+          "uzbekExample": "U eshik tambasini yopdi.",
+          "register": "uy-ro‘zg‘or buyumi"
+        },
+        {
+          "index": 4,
+          "arabicExample": "إِنَّهَا لَكَظِيمُ الْخَلْخَالِ",
+          "arabicGloss": "لاَ يُسْمَعُ لَهُ صَوْتٌ لامْتِلاَئِهِ.",
+          "uzbekMeaning": "oyog‘i to‘laligi sabab xalxali zich turib, tovush chiqarmaydigan ayolga nisbatan ishlatiladigan tavsif",
+          "uzbekExample": "Uning xalxali zich turgani uchun tovush chiqarmas edi.",
+          "register": "tarixiy va neytral jismoniy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_parser_quran_and_four_sense_review",
+        "issues": [
+          "Manbadagi «2 :» nostandart ajratgich sabab birinchi ma’noga qo‘shilib ketgan edi; parser tuzatilib to‘rtta ma’no tiklandi",
+          "Manba oyatni Yusuf 12:82 deb ko‘rsatgan, ammo «وَابْيَضَّتْ عَيْنَاهُ...» Yusuf surasi 12:84 oyatidir",
+          "To‘rtinchi ma’no ayolning to‘laligini tarixiy tarzda tavsiflaydi; neytral ifoda tanlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 764,
+      "id": 79889,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَضِيرٌ",
+      "root": "نضر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَجُلٌ نَضِيرٌ : ذُو نَضَارَةٍ، جَمِيلٌ- نَضِيرُ الوَجْهِ.|2- مَرْجٌ نَضِيرٌ : أَخْضَرُ زَاهٍ.|3-  نَبَاتٌ مِنْ فَصِيلَةِ النَّرْجِسِيَّاتِ، مِنَ النَّبَاتَاتِ البَصَلِيَّةِ، مُعْظَمُهَا بَرِّيٌّ، وَبَعْضُهَا تَزْيِينِيٌّ.",
+      "sourceHash": "48415cf49123a87523ee0cffef8cf8eab84f979d659cb9e2a7bcf15dfa1b3ff2",
+      "wordType": "sifat va ot",
+      "uzbek": "yuzidan nur yog‘ilgan; yam-yashil; piyozboshli o‘simlik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَجُلٌ نَضِيرٌ",
+          "arabicGloss": "ذُو نَضَارَةٍ، جَمِيلٌ- نَضِيرُ الوَجْهِ.",
+          "uzbekMeaning": "kishi yoki yuz haqida: tarovatli, chiroyli va yuzidan nur yog‘ilib turadigan",
+          "uzbekExample": "U tarovatli va chiroyli, yuzi nurli kishi edi.",
+          "register": "ijobiy tashqi ko‘rinish"
+        },
+        {
+          "index": 2,
+          "arabicExample": "مَرْجٌ نَضِيرٌ",
+          "arabicGloss": "أَخْضَرُ زَاهٍ.",
+          "uzbekMeaning": "o‘tloq yoki o‘simlik haqida: yashnab turgan, yam-yashil",
+          "uzbekExample": "O‘tloq yam-yashil bo‘lib yashnab turardi.",
+          "register": "botanika"
+        },
+        {
+          "index": 3,
+          "arabicExample": "",
+          "arabicGloss": "نَبَاتٌ مِنْ فَصِيلَةِ النَّرْجِسِيَّاتِ، مِنَ النَّبَاتَاتِ البَصَلِيَّةِ، مُعْظَمُهَا بَرِّيٌّ، وَبَعْضُهَا تَزْيِينِيٌّ.",
+          "uzbekMeaning": "nargislar oilasiga mansub piyozboshli o‘simlik; turlarining ko‘pi yovvoyi, ayrimlari manzarali",
+          "uzbekExample": "Bu piyozboshli o‘simlikning ayrim turlari bezak uchun yetishtiriladi.",
+          "register": "botanika"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_botanical_and_three_sense_review",
+        "issues": [
+          "Uchinchi ma’noda muayyan nargis turi deb toraytirilmadi; manbadagi nargislar oilasiga mansub piyozboshli o‘simlik ta’rifi saqlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 765,
+      "id": 79890,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَزِيزٌ",
+      "root": "رزز‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَزيزُ الرَّعْدِ : أَزيزُ، دَويُّ، صَوْتُ الرَّعْدِ.|2- سَمِعَ رَزِيزاً : أَزيزاً، صَوْتاً.",
+      "sourceHash": "253c7a969b11ff563a1e86b96e0a842c96084abc816a62df9c515091e9fc3036",
+      "wordType": "ot",
+      "uzbek": "momaqaldiroq gumburi; g‘uvillagan tovush",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَزيزُ الرَّعْدِ",
+          "arabicGloss": "أَزيزُ، دَويُّ، صَوْتُ الرَّعْدِ.",
+          "uzbekMeaning": "momaqaldiroqning gumburlagan, guldiragan tovushi",
+          "uzbekExample": "Momaqaldiroqning gumburi eshitildi.",
+          "register": "tabiat tovushi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "سَمِعَ رَزِيزاً",
+          "arabicGloss": "أَزيزاً، صَوْتاً.",
+          "uzbekMeaning": "g‘uvillash, guvillagan yoki davomli tovush",
+          "uzbekExample": "U g‘uvillagan tovush eshitdi.",
+          "register": "tovush"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_sound_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 766,
+      "id": 79891,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَشيحٌ",
+      "root": "رشح‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- رَشيحُ الأَرْضِ : ما علَى وَجْهِها مِنْ نَباتٍ.|2- رَشيحُ الجَسَدِ : عَرَقُهُ.",
+      "sourceHash": "1dfba1735ba478fdac0001b28a69acdffa7c2c61ee03dc9135b17d80a6911844",
+      "wordType": "ot",
+      "uzbek": "yer yuzidagi o‘simlik; badan teri",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "رَشيحُ الأَرْضِ",
+          "arabicGloss": "ما علَى وَجْهِها مِنْ نَباتٍ.",
+          "uzbekMeaning": "yer yuzasida o‘sib turgan o‘simlik va ko‘katlar",
+          "uzbekExample": "Yer yuzidagi o‘simliklar yam-yashil edi.",
+          "register": "botanika"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَشيحُ الجَسَدِ",
+          "arabicGloss": "عَرَقُهُ.",
+          "uzbekMeaning": "badandan ajralib chiqadigan ter",
+          "uzbekExample": "Issiqda uning badanidan ter chiqdi.",
+          "register": "fiziologiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_sweat_typo_review",
+        "issues": [
+          "Mavjud «tananing teri» yozuvi terini «skin» bilan chalkashtirgan; arabcha عَرَقُهُ badan terini bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 767,
+      "id": 79892,
+      "dictionarySource": "Ghoniy",
+      "arabic": "غَثِيثٌ",
+      "root": "غثث‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- سَالَ الْجُرْحُ بِالغَثِيثِ : بِالصَّدِيدِ، بِالقَيْحِ.|2- وَلَدٌ غَثِيثٌ : مَهْزُولٌ، ضَعِيفٌ.|3- رَجُلٌ غَثِيثٌ : لاَ خَيْرَ فِيهِ.|4- عَاشَرْتُهُ عَلَى غَثِيثَةٍ فِيهِ : عَلَى فَسَادِ عَقْلٍ فِيهِ.",
+      "sourceHash": "86aa35eee98f03f586d549cf3c591cec99f4f1f9a827dbe90b042f5bb6d1036e",
+      "wordType": "ot va sifat",
+      "uzbek": "yiring; ozg‘in va nimjon; yaxshiligi yo‘q; aqli nosog‘lom",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سَالَ الْجُرْحُ بِالغَثِيثِ",
+          "arabicGloss": "بِالصَّدِيدِ، بِالقَيْحِ.",
+          "uzbekMeaning": "yaradan oqadigan yiring yoki yiringli suyuqlik",
+          "uzbekExample": "Yaradan yiring oqdi.",
+          "register": "tibbiy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "وَلَدٌ غَثِيثٌ",
+          "arabicGloss": "مَهْزُولٌ، ضَعِيفٌ.",
+          "uzbekMeaning": "bola haqida: juda ozg‘in, jismi zaif va nimjon",
+          "uzbekExample": "U ozg‘in va nimjon bola edi.",
+          "register": "jismoniy tavsif"
+        },
+        {
+          "index": 3,
+          "arabicExample": "رَجُلٌ غَثِيثٌ",
+          "arabicGloss": "لاَ خَيْرَ فِيهِ.",
+          "uzbekMeaning": "kishi haqida: unda yaxshilik yo‘q deb salbiy baholangan",
+          "uzbekExample": "Manbada u yaxshiligi yo‘q kishi deb ta’riflangan.",
+          "register": "salbiy baho"
+        },
+        {
+          "index": 4,
+          "arabicExample": "عَاشَرْتُهُ عَلَى غَثِيثَةٍ فِيهِ",
+          "arabicGloss": "عَلَى فَسَادِ عَقْلٍ فِيهِ.",
+          "uzbekMeaning": "aql va fikrlashdagi nosog‘lomlik yoki buzilish",
+          "uzbekExample": "Men uning fikrlashidagi nosog‘lomlikka qaramay u bilan muomala qildim.",
+          "register": "tarixiy va ehtiyotkor qo‘llanadigan"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_neutral_mental_health_wording",
+        "issues": [
+          "Birinchi ma’no yara holati emas, yaradan oqadigan yiringning o‘zi",
+          "To‘rtinchi ma’no kamsituvchi tashxisga aylantirilmay, tarixiy aqliy nosog‘lomlik ta’rifi sifatida berildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 768,
+      "id": 79893,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَتِيقٌ",
+      "root": "فتق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- سَيْفٌ فَتِيقٌ : حَادٌّ.|2- رَجُلٌ فَتِيقٌ : حَادُّ اللِّسَانِ.|3- صُبْحٌ فَتِيقٌ : مُشْرِقٌ.",
+      "sourceHash": "0ec39d4d52507673d59715cba0c3759db2598713b7482a66cd5540cecad64291",
+      "wordType": "sifat",
+      "uzbek": "o‘tkir qilich; tili o‘tkir; yorug‘ tong",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سَيْفٌ فَتِيقٌ",
+          "arabicGloss": "حَادٌّ.",
+          "uzbekMeaning": "qilich yoki tig‘ haqida: o‘tkir",
+          "uzbekExample": "Qilichning tig‘i o‘tkir edi.",
+          "register": "qurol tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَجُلٌ فَتِيقٌ",
+          "arabicGloss": "حَادُّ اللِّسَانِ.",
+          "uzbekMeaning": "kishi haqida: tili o‘tkir, keskin gapiradigan",
+          "uzbekExample": "U tili o‘tkir kishi edi.",
+          "register": "majoziy nutq tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "صُبْحٌ فَتِيقٌ",
+          "arabicGloss": "مُشْرِقٌ.",
+          "uzbekMeaning": "tong haqida: yorishgan, charog‘on",
+          "uzbekExample": "Tong yorishib, charog‘on bo‘ldi.",
+          "register": "vaqt va yorug‘lik tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_three_context_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 769,
+      "id": 79894,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَهيفٌ",
+      "root": "رهف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- سِكِّينٌ رَهيفٌ :حادٌّ.|2- رَهيفُ الإِحْساسِ : رَقيقُهُ، مُرْهَفُ الإِحْساسِ- طَبْعٌ رَهيفٌ.",
+      "sourceHash": "722485614b3bb1d597daa9f35b9c9c42cdc62b7d558f8faa0cd6c0e652ec44ec",
+      "wordType": "sifat",
+      "uzbek": "o‘tkir; his-tuyg‘usi nozik va sezgir",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "سِكِّينٌ رَهيفٌ",
+          "arabicGloss": "حادٌّ.",
+          "uzbekMeaning": "pichoq yoki tig‘ haqida: juda o‘tkir",
+          "uzbekExample": "Pichoqning tig‘i juda o‘tkir edi.",
+          "register": "asbob tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَهيفُ الإِحْساسِ",
+          "arabicGloss": "رَقيقُهُ، مُرْهَفُ الإِحْساسِ- طَبْعٌ رَهيفٌ.",
+          "uzbekMeaning": "his-tuyg‘u yoki tabiat haqida: nozik, ta’sirchan va sezgir",
+          "uzbekExample": "Uning his-tuyg‘usi nozik va sezgir edi.",
+          "register": "ruhiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_blade_and_sensitivity_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 770,
+      "id": 79895,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ضَرِيعٌ",
+      "root": "ضرع‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- شَاةٌ ضَرِيعٌ : حَسَنَةُ الضَّرْعِ.|2-  نَبَاتُ العَوْسَجِ الشَّائِكِ. الغاشية آية 6 لَيْسَ لَهُمْ طَعَامٌ إِلاَّ مِنْ ضَرِيعٍ، لاَ يُسْمِنُ وَلاَ يُغْنِي مِنْ جُوعٍ . (قرآن).",
+      "sourceHash": "add39962a7d200a4cc7e873553d87adae6c27b7dddad31a2a3e987a09101b7e4",
+      "wordType": "sifat va ot",
+      "uzbek": "yelini yaxshi rivojlangan sovliq; Dari’ tikanli o‘simligi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَاةٌ ضَرِيعٌ",
+          "arabicGloss": "حَسَنَةُ الضَّرْعِ.",
+          "uzbekMeaning": "sovliq yoki urg‘ochi echki haqida: yelini yaxshi rivojlangan",
+          "uzbekExample": "Sovliqning yelini yaxshi rivojlangan edi.",
+          "register": "chorvachilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "نَبَاتُ العَوْسَجِ الشَّائِكِ. الغاشية آية 6 لَيْسَ لَهُمْ طَعَامٌ إِلاَّ مِنْ ضَرِيعٍ، لاَ يُسْمِنُ وَلاَ يُغْنِي مِنْ جُوعٍ . (قرآن).",
+          "uzbekMeaning": "Dari’ — manbada tikanli yovvoyi o‘simlik sifatida izohlangan va Qur’onda do‘zax ahlining taomi sifatida zikr qilingan",
+          "uzbekExample": "Ular uchun Dari’dan boshqa taom yo‘qdir; u semirtirmaydi ham, ochlikdan qutqarmaydi ham. (Qur’on, G‘oshiya surasi, 88:6–7)",
+          "register": "botanika va diniy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_livestock_and_quran_review",
+        "issues": [
+          "شَاةٌ sigir emas; sovliq yoki urg‘ochi echkini bildiradi",
+          "G‘oshiya 88:6–7 misoli Dari’ning diniy kontekstini to‘liq ochadi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 771,
+      "id": 79896,
+      "dictionarySource": "Ghoniy",
+      "arabic": "دَهينٌ",
+      "root": "دهن‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- شَعْرٌ دَهينٌ : مَدْهونٌ- لِحْيَةٌ دَهينٌ :-جِلْدٌ دَهينٌ.|2- وَلَدٌ دَهينٌ : ضَعيفٌ- أَمْرٌ دَهينٌ :-وَظَنَّ بِنا ظَنّاً دَهيناً.",
+      "sourceHash": "b70ebce0c840c89efbb2306f381ea4ab0f735c90c131ee803195fd5455ebca69",
+      "wordType": "sifat",
+      "uzbek": "moy surtilgan; zaif va sust",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "شَعْرٌ دَهينٌ",
+          "arabicGloss": "مَدْهونٌ- لِحْيَةٌ دَهينٌ :-جِلْدٌ دَهينٌ.",
+          "uzbekMeaning": "soch, soqol yoki teri haqida: moy surtilgan, yog‘langan",
+          "uzbekExample": "Uning sochi, soqoli va terisiga moy surtilgan edi.",
+          "register": "tashqi ko‘rinish va parvarish"
+        },
+        {
+          "index": 2,
+          "arabicExample": "وَلَدٌ دَهينٌ",
+          "arabicGloss": "ضَعيفٌ- أَمْرٌ دَهينٌ :-وَظَنَّ بِنا ظَنّاً دَهيناً.",
+          "uzbekMeaning": "bola, ish, gumon yoki fikr haqida: zaif, sust va ishonchli asosga ega bo‘lmagan",
+          "uzbekExample": "Bola zaif, ish sust, uning biz haqimizdagi gumoni esa asossiz edi.",
+          "register": "jismoniy va majoziy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_source_count_review",
+        "issues": [
+          "Mavjud tarjima uch ma’no bergan, manbada ikkitadir; bola, ish va gumondagi zaiflik bitta ko‘chma ma’noga birlashtirildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 772,
+      "id": 79897,
+      "dictionarySource": "Ghoniy",
+      "arabic": "صَمِيمٌ",
+      "root": "صمم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- صَمِيمُ الْبَرْدِ : أَشَدُّهُ، قُوَّتُهُ- صَمِيمُ الْحَرِّ.|2- صَمِيمُ الْعُضْوِ : الْعَظْمُ الَّذِي بِهِ قِوَامُهُ.|3- مِنْ صَمِيمِ قَلْبِهِ : مِنْ عُمْقِهِ وَخَالِصِهِ، مِنْ سُوَيْدَائِهِ.|4- أَصَابَهُ فِي الصَّمِيمِ : فِي وَسَطِ الشَّيْءِ، فِي عُمْقِهِ- مَسَّهُ فِي الصَّمِيمِ.|5- لَمْ يَخْرُجْ عَنْ صَمِيمِ الْمَوْضُوعِ : عَنْ صُلْبِهِ وَجَوْهَرِهِ.|6- وَطَنِيٌّ صَمِيمٌ : خَالِصٌ.",
+      "sourceHash": "8d8996a66e50834a8bf46316e326017c46beab09082bfc9fd25eebdc48647a75",
+      "wordType": "ot va sifat",
+      "uzbek": "eng kuchli daraja; tayanch suyak; tub; markaz; mohiyat; chin",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "صَمِيمُ الْبَرْدِ",
+          "arabicGloss": "أَشَدُّهُ، قُوَّتُهُ- صَمِيمُ الْحَرِّ.",
+          "uzbekMeaning": "sovuq yoki issiqning eng kuchli, avjiga chiqqan darajasi",
+          "uzbekExample": "U qahraton sovuqning va jazirama issiqning avjini ko‘rdi.",
+          "register": "daraja va ob-havo"
+        },
+        {
+          "index": 2,
+          "arabicExample": "صَمِيمُ الْعُضْوِ",
+          "arabicGloss": "الْعَظْمُ الَّذِي بِهِ قِوَامُهُ.",
+          "uzbekMeaning": "a’zoni tik va barqaror tutib turadigan asosiy tayanch suyak",
+          "uzbekExample": "Bu suyak a’zoning asosiy tayanchi hisoblanadi.",
+          "register": "anatomiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "مِنْ صَمِيمِ قَلْبِهِ",
+          "arabicGloss": "مِنْ عُمْقِهِ وَخَالِصِهِ، مِنْ سُوَيْدَائِهِ.",
+          "uzbekMeaning": "qalbning eng tubi, chuquri va eng xolis joyi",
+          "uzbekExample": "U qalbining tubidan samimiy tilak bildirdi.",
+          "register": "majoziy hissiyot"
+        },
+        {
+          "index": 4,
+          "arabicExample": "أَصَابَهُ فِي الصَّمِيمِ",
+          "arabicGloss": "فِي وَسَطِ الشَّيْءِ، فِي عُمْقِهِ- مَسَّهُ فِي الصَّمِيمِ.",
+          "uzbekMeaning": "biror narsaning o‘rtasi, markazi yoki eng chuqur joyi",
+          "uzbekExample": "Bu zarba uning eng nozik va markaziy joyiga tegdi.",
+          "register": "makon va majoziy"
+        },
+        {
+          "index": 5,
+          "arabicExample": "لَمْ يَخْرُجْ عَنْ صَمِيمِ الْمَوْضُوعِ",
+          "arabicGloss": "عَنْ صُلْبِهِ وَجَوْهَرِهِ.",
+          "uzbekMeaning": "mavzu yoki masalaning o‘zagi, asosiy mazmuni va mohiyati",
+          "uzbekExample": "U mavzuning mohiyatidan chetga chiqmadi.",
+          "register": "ilmiy va nutqiy"
+        },
+        {
+          "index": 6,
+          "arabicExample": "وَطَنِيٌّ صَمِيمٌ",
+          "arabicGloss": "خَالِصٌ.",
+          "uzbekMeaning": "vatanparvar yoki mansublik haqida: chin, sof va samimiy",
+          "uzbekExample": "U chin vatanparvar edi.",
+          "register": "ijobiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_six_sense_review",
+        "issues": [
+          "Oltinchi ma’nodagi وَطَنِيٌّ صَمِيمٌ tabiiy o‘zbekchada «chin vatanparvar» bo‘ladi, «sof haqiqiy milliy» emas"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 773,
+      "id": 79898,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ضَرِيسٌ",
+      "root": "ضرس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- ضَرِيسُ الظَّهْرِ :فِقَارُهُ.|2- فَقِيرٌ ضَرِيسٌ : جَائِعٌ جِدّاً.|3- بِئْرٌ ضَرِيسٌ : مَبْنِيَةٌ بِالْحِجَارَةِ.",
+      "sourceHash": "f0db9d04f5b92a27ba115a1544ee9bc2d02434b0ee6e21cde6d6348e8e3287c7",
+      "wordType": "ot va sifat",
+      "uzbek": "umurtqalar; juda och; tosh terilgan quduq",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ضَرِيسُ الظَّهْرِ",
+          "arabicGloss": "فِقَارُهُ.",
+          "uzbekMeaning": "orqaning umurtqa suyaklari",
+          "uzbekExample": "Orqa umurtqalari gavdani tik tutadi.",
+          "register": "anatomiya"
+        },
+        {
+          "index": 2,
+          "arabicExample": "فَقِيرٌ ضَرِيسٌ",
+          "arabicGloss": "جَائِعٌ جِدّاً.",
+          "uzbekMeaning": "kambag‘al kishi haqida: juda och",
+          "uzbekExample": "U juda och qolgan kambag‘al edi.",
+          "register": "inson holati"
+        },
+        {
+          "index": 3,
+          "arabicExample": "بِئْرٌ ضَرِيسٌ",
+          "arabicGloss": "مَبْنِيَةٌ بِالْحِجَارَةِ.",
+          "uzbekMeaning": "quduq haqida: devori tosh bilan terib mustahkamlangan",
+          "uzbekExample": "Quduq devori tosh bilan terilgan edi.",
+          "register": "qurilish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_anatomy_review",
+        "issues": [
+          "ضَرِيسُ الظَّهْرِ «umurtqaga oid» sifat emas, orqa umurtqalari degan ot ma’nosi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 774,
+      "id": 79899,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَخِيمٌ",
+      "root": "وخم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- طَعَامٌ وَخِيمٌ :وَبِيءٌ.|2- أَرْضٌ وَخِيمَةٌ : وَبِيئَةٌ.|3- بَيْتٌ وَخِيمٌ : غَيْرُ مُلاَئِمٍ لِلسَّكَنِ.|4- خَطَأٌ وَخِيمٌ : فَادِحٌ- اِرْتَكَبَ أَخْطَاءً وَخِيمَةً.|5- عَمَلٌ وَخِيمُ العَاقِبَةِ : مُضِرٌّ، رَدِيءٌ، ضَارٌّ.",
+      "sourceHash": "b9c16e9c578965f01909f7e739b3d5f2f3872d94abbc07698f0d9afd57971993",
+      "wordType": "sifat",
+      "uzbek": "zararli; nosog‘lom; yashashga yaroqsiz; og‘ir; oqibati yomon",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "طَعَامٌ وَخِيمٌ",
+          "arabicGloss": "وَبِيءٌ.",
+          "uzbekMeaning": "taom haqida: sog‘liq uchun zararli, og‘ir yoki yomon ta’sirli",
+          "uzbekExample": "Zararli taom uning sog‘lig‘iga yomon ta’sir qildi.",
+          "register": "oziq-ovqat xavfsizligi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَرْضٌ وَخِيمَةٌ",
+          "arabicGloss": "وَبِيئَةٌ.",
+          "uzbekMeaning": "yer yoki hudud haqida: havosi-suvi nosog‘lom, kasallik tarqalish xavfi bor",
+          "uzbekExample": "Bu hudud sog‘liq uchun nosog‘lom edi.",
+          "register": "sog‘liq va geografiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "بَيْتٌ وَخِيمٌ",
+          "arabicGloss": "غَيْرُ مُلاَئِمٍ لِلسَّكَنِ.",
+          "uzbekMeaning": "uy haqida: yashash uchun noqulay yoki yaroqsiz",
+          "uzbekExample": "Uy yashash uchun yaroqsiz edi.",
+          "register": "turar joy"
+        },
+        {
+          "index": 4,
+          "arabicExample": "خَطَأٌ وَخِيمٌ",
+          "arabicGloss": "فَادِحٌ- اِرْتَكَبَ أَخْطَاءً وَخِيمَةً.",
+          "uzbekMeaning": "xato haqida: juda jiddiy, og‘ir va katta zarar keltiradigan",
+          "uzbekExample": "U og‘ir xatoga yo‘l qo‘ydi.",
+          "register": "salbiy baho"
+        },
+        {
+          "index": 5,
+          "arabicExample": "عَمَلٌ وَخِيمُ العَاقِبَةِ",
+          "arabicGloss": "مُضِرٌّ، رَدِيءٌ، ضَارٌّ.",
+          "uzbekMeaning": "ish yoki harakat haqida: oqibati zararli, yomon va xavfli",
+          "uzbekExample": "Bu ishning oqibati zararli bo‘ldi.",
+          "register": "oqibat tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_five_risk_contexts_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 775,
+      "id": 79900,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَميزٌ",
+      "root": "رمز‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- طِفْلٌ رَميزٌ : كَثيرُ الحَرَكَةِ.|2- أَميرٌ رَميزٌ : مُكَرَّمٌ، مُعَظَّمٌ، مُبَجَّلٌ.|3- وَلَدٌ رَميزٌ :رَزينٌ، عاقِلٌ.|4- نَسَبٌ رَميزٌ : أَصيلٌ.",
+      "sourceHash": "06070ae17f1ff5393e91b77598be6cf7b611e673eb7c104730989369e8ac35ae",
+      "wordType": "sifat",
+      "uzbek": "serharakat; e’zozlangan; vazmin va aqlli; nasabi asl",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "طِفْلٌ رَميزٌ",
+          "arabicGloss": "كَثيرُ الحَرَكَةِ.",
+          "uzbekMeaning": "bola haqida: juda serharakat",
+          "uzbekExample": "Bola juda serharakat edi.",
+          "register": "bolalar xulqi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَميرٌ رَميزٌ",
+          "arabicGloss": "مُكَرَّمٌ، مُعَظَّمٌ، مُبَجَّلٌ.",
+          "uzbekMeaning": "amir yoki rahbar haqida: e’zozlangan, ulug‘langan va hurmatli",
+          "uzbekExample": "Amir e’zozlangan va hurmatli edi.",
+          "register": "ijtimoiy maqom"
+        },
+        {
+          "index": 3,
+          "arabicExample": "وَلَدٌ رَميزٌ",
+          "arabicGloss": "رَزينٌ، عاقِلٌ.",
+          "uzbekMeaning": "bola yoki yigit haqida: vazmin va aqlli",
+          "uzbekExample": "U vazmin va aqlli bola edi.",
+          "register": "ijobiy insoniy sifat"
+        },
+        {
+          "index": 4,
+          "arabicExample": "نَسَبٌ رَميزٌ",
+          "arabicGloss": "أَصيلٌ.",
+          "uzbekMeaning": "nasab haqida: asl, qadimiy va sharafli",
+          "uzbekExample": "Uning nasabi asl va sharafli edi.",
+          "register": "nasab tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lineage_review",
+        "issues": [
+          "To‘rtinchi ma’no shaxsning aslzodaligi emas, nasabning aslligi va sharafliligi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 776,
+      "id": 79901,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَقِيرٌ",
+      "root": "وقر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- عَظْمٌ وَقِيرٌ : مَصْدُوعٌ، مَشْقُوقٌ.|2- وَقِيرُ الصَّخْرَةِ : النُّقْرَةُ، الْحُفْرَةُ العَظِيمَةُ فِيهَا تَمْسِكُ الْمَاءَ.|3- وَقِيرُ الغَنَمِ : القَطِيعُ مِنْهُ وَمَنْ مَعَهُ.|4- رَجُلٌ وَقِيرٌ : أَثْقَلَهُ الدَّيْنُ.|5- وَلَدٌ وَقِيرٌ : ذَلِيلٌ، مُهَانٌ.",
+      "sourceHash": "3ee30407c0c23a2dba015b429f609a1368384096a8067027b89c250db4550c68",
+      "wordType": "ot va sifat",
+      "uzbek": "darz ketgan suyak; qoyatosh chuquri; qo‘y suruvi; qarzga botgan; xo‘rlangan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "عَظْمٌ وَقِيرٌ",
+          "arabicGloss": "مَصْدُوعٌ، مَشْقُوقٌ.",
+          "uzbekMeaning": "suyak haqida: yorilgan yoki darz ketgan",
+          "uzbekExample": "Suyak darz ketgan edi.",
+          "register": "tibbiy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "وَقِيرُ الصَّخْرَةِ",
+          "arabicGloss": "النُّقْرَةُ، الْحُفْرَةُ العَظِيمَةُ فِيهَا تَمْسِكُ الْمَاءَ.",
+          "uzbekMeaning": "qoyatoshdagi suv to‘planib turadigan katta o‘yiq yoki chuqur",
+          "uzbekExample": "Qoyatoshning katta o‘yig‘ida suv to‘planib turardi.",
+          "register": "geografiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "وَقِيرُ الغَنَمِ",
+          "arabicGloss": "القَطِيعُ مِنْهُ وَمَنْ مَعَهُ.",
+          "uzbekMeaning": "qo‘ylar suruvi va unga qo‘shilib yurganlar",
+          "uzbekExample": "Qo‘ylar suruvi yaylovga chiqdi.",
+          "register": "chorvachilik"
+        },
+        {
+          "index": 4,
+          "arabicExample": "رَجُلٌ وَقِيرٌ",
+          "arabicGloss": "أَثْقَلَهُ الدَّيْنُ.",
+          "uzbekMeaning": "kishi haqida: qarz og‘irligidan ezilgan, qarzga botgan",
+          "uzbekExample": "U qarz og‘irligidan ezilgan edi.",
+          "register": "moliyaviy holat"
+        },
+        {
+          "index": 5,
+          "arabicExample": "وَلَدٌ وَقِيرٌ",
+          "arabicGloss": "ذَلِيلٌ، مُهَانٌ.",
+          "uzbekMeaning": "bola yoki kishi haqida: xo‘rlangan, tahqirlangan",
+          "uzbekExample": "Bola xo‘rlangan va tahqirlangan edi.",
+          "register": "salbiy ijtimoiy holat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_five_sense_review",
+        "issues": [
+          "Ikkinchi ma’no har qanday chuqur emas, qoyatoshda suvni ushlab qoladigan katta o‘yiq"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 777,
+      "id": 79902,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَبِيرٌ",
+      "root": "عبر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- فَاحَ عَبِيرٌ : أَخْلاَطٌ مِنَ الطِّيبِ.|2- قَوْمٌ عَبِيرٌ : كَثِيرُونَ.|3- سَهْمٌ عَبِيرٌ : كَثِيرُ الرِّيشِ.",
+      "sourceHash": "ebcb1526a6689a4014f3d5345b77429b372215a44b3a5c32af5371152d4be08d",
+      "wordType": "ot va sifat",
+      "uzbek": "xushbo‘y moddalar aralashmasi; juda ko‘p; pati ko‘p o‘q",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَاحَ عَبِيرٌ",
+          "arabicGloss": "أَخْلاَطٌ مِنَ الطِّيبِ.",
+          "uzbekMeaning": "turli xushbo‘y moddalar qo‘shilishidan tayyorlangan aralashma va undan taraladigan xushbo‘y hid",
+          "uzbekExample": "Xushbo‘y moddalar aralashmasining hidi taraldi.",
+          "register": "atirchilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "قَوْمٌ عَبِيرٌ",
+          "arabicGloss": "كَثِيرُونَ.",
+          "uzbekMeaning": "jamoa yoki kishilar haqida: soni juda ko‘p",
+          "uzbekExample": "Ular juda ko‘p sonli jamoa edi.",
+          "register": "miqdor tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "سَهْمٌ عَبِيرٌ",
+          "arabicGloss": "كَثِيرُ الرِّيشِ.",
+          "uzbekMeaning": "o‘q haqida: orqa qismiga ko‘p pat o‘rnatilgan",
+          "uzbekExample": "O‘qning orqa qismiga ko‘p pat o‘rnatilgan edi.",
+          "register": "qurol tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_perfume_blend_review",
+        "issues": [
+          "Birinchi ma’no shunchaki xushbo‘y hid emas, xushbo‘y moddalar aralashmasi va undan taraladigan hid"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 778,
+      "id": 79903,
+      "dictionarySource": "Ghoniy",
+      "arabic": "فَشِيشٌ",
+      "root": "فشش‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- فَشِيشُ الكُرَةِ :صَوْتُ الْهَوَاءِ الْخَارِجِ مِنْهَا.|2- فَشِيشُ الْحَيَّةِ :صَوْتُ جِلْدِهَا.",
+      "sourceHash": "a7566485fc13e9dd1e88cd18d172f7aa828f015bea38f448dfeff5bedb4fe395",
+      "wordType": "ot",
+      "uzbek": "to‘pdan havo chiqish tovushi; ilon terisi shitiri",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَشِيشُ الكُرَةِ",
+          "arabicGloss": "صَوْتُ الْهَوَاءِ الْخَارِجِ مِنْهَا.",
+          "uzbekMeaning": "to‘p yoki puflangan buyumdan havo chiqayotganda paydo bo‘ladigan tovush",
+          "uzbekExample": "To‘pdan havo chiqish tovushi eshitildi.",
+          "register": "tovush"
+        },
+        {
+          "index": 2,
+          "arabicExample": "فَشِيشُ الْحَيَّةِ",
+          "arabicGloss": "صَوْتُ جِلْدِهَا.",
+          "uzbekMeaning": "ilon harakatlanganda terisi yoki tangachalaridan chiqadigan shitirlash tovushi",
+          "uzbekExample": "Ilon terisining shitirlashi eshitildi.",
+          "register": "hayvon tovushi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_sound_source_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 779,
+      "id": 79904,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَسِيفٌ",
+      "root": "نسف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- فَضَحَ نَسِيفَهُ : سِرَّهُ.|2- كَلاَمٌ نَسِيفٌ : خَفِيٌّ.|3- دَقِيقٌ نَسِيفٌ : مُغَرْبَلٌ.",
+      "sourceHash": "c2317947a559f5195b1915a6ab74ecd0833f6acf538e8ca0ef2aa3d67b0dfbbe",
+      "wordType": "ot va sifat",
+      "uzbek": "sir; past ovozli gap; elangan un",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "فَضَحَ نَسِيفَهُ",
+          "arabicGloss": "سِرَّهُ.",
+          "uzbekMeaning": "yashirin saqlanadigan sir",
+          "uzbekExample": "U uning sirini fosh qildi.",
+          "register": "maxfiylik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "كَلاَمٌ نَسِيفٌ",
+          "arabicGloss": "خَفِيٌّ.",
+          "uzbekMeaning": "gap yoki ovoz haqida: past, pinhona va boshqalarga aniq eshitilmaydigan",
+          "uzbekExample": "U past va pinhona ovozda gapirdi.",
+          "register": "nutq tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "دَقِيقٌ نَسِيفٌ",
+          "arabicGloss": "مُغَرْبَلٌ.",
+          "uzbekMeaning": "un haqida: elakdan o‘tkazilgan, elangan",
+          "uzbekExample": "Elangan undan xamir qorildi.",
+          "register": "pazandachilik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_secret_noun_review",
+        "issues": [
+          "فَضَحَ نَسِيفَهُ iborasida نَسِيف sirli sifat emas, fosh qilingan sirning o‘zi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 780,
+      "id": 79905,
+      "dictionarySource": "Ghoniy",
+      "arabic": "سَخِيفٌ",
+      "root": "سخف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- قَدَّمَ رَأْياً سَخِيفاً : تَافِهاً ضَعِيفاً لاَ قِيمَةَ لَهُ.|2- رَجُلٌ سَخِيفٌ : تَافِهٌ، أَبْلَهُ، مَعْتُوهٌ- هُوَ سَخِيفُ العَقْلِ.|3- يَكْتُبُ بِأُسْلُوبٍ سَخِيفٍ : ضَعِيفٍ، هَزِيلٍ، تَرَاكِيبُهُ مُهَلْهَلَةٌ.",
+      "sourceHash": "dc2316710c94444d47268ae2557190e18c09ba236e431d91ff5a0b5cdc1b4a3c",
+      "wordType": "sifat",
+      "uzbek": "sayoz va qadrsiz; fikri zaif; uslubi bo‘sh",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "قَدَّمَ رَأْياً سَخِيفاً",
+          "arabicGloss": "تَافِهاً ضَعِيفاً لاَ قِيمَةَ لَهُ.",
+          "uzbekMeaning": "fikr yoki taklif haqida: sayoz, zaif, arzimas va qiymatsiz",
+          "uzbekExample": "U sayoz va qiymatsiz fikr bildirdi.",
+          "register": "salbiy baho"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَجُلٌ سَخِيفٌ",
+          "arabicGloss": "تَافِهٌ، أَبْلَهُ، مَعْتُوهٌ- هُوَ سَخِيفُ العَقْلِ.",
+          "uzbekMeaning": "kishi yoki aql haqida: fikrlashi sayoz, mulohazasi zaif va bema’ni ish tutadigan",
+          "uzbekExample": "Manbada u fikrlashi sayoz kishi sifatida tasvirlangan.",
+          "register": "salbiy va ehtiyotkor qo‘llanadigan"
+        },
+        {
+          "index": 3,
+          "arabicExample": "يَكْتُبُ بِأُسْلُوبٍ سَخِيفٍ",
+          "arabicGloss": "ضَعِيفٍ، هَزِيلٍ، تَرَاكِيبُهُ مُهَلْهَلَةٌ.",
+          "uzbekMeaning": "yozuv uslubi haqida: zaif, bo‘sh va gap tuzilmalari pala-partish",
+          "uzbekExample": "U bo‘sh, tuzilmalari pala-partish uslubda yozadi.",
+          "register": "adabiy tanqid"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_neutral_cognitive_wording",
+        "issues": [
+          "Ikkinchi ma’no kamsituvchi zamonaviy yorliqqa aylantirilmadi; fikrlash sayozligi va mulohaza zaifligi sifatida izohlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 781,
+      "id": 79906,
+      "dictionarySource": "Ghoniy",
+      "arabic": "شَهِيرٌ",
+      "root": "شهر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- كَاتِبٌ شَهِيرٌ : مَعْرُوفٌ بَيْنَ النَّاسِ، ذَائِعُ الصِّيتِ، لَهُ شُهْرَةٌ- شَهِيرَاتُ النِّسَاءِ.|2- شَهِيرَةُ : اِسْمُ عَلَمٍ لِلْإِنَاثِ.",
+      "sourceHash": "a89608dc7a8e9fa6f8917af7c78e70a8dc5ffb6a64eb4812eb116aa53e2225b3",
+      "wordType": "sifat va atoqli ot",
+      "uzbek": "mashhur, dong‘i ketgan; Shahira ayol ismi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَاتِبٌ شَهِيرٌ",
+          "arabicGloss": "مَعْرُوفٌ بَيْنَ النَّاسِ، ذَائِعُ الصِّيتِ، لَهُ شُهْرَةٌ- شَهِيرَاتُ النِّسَاءِ.",
+          "uzbekMeaning": "odamlar orasida mashhur, taniqli va dong‘i ketgan",
+          "uzbekExample": "U odamlar orasida mashhur yozuvchi edi.",
+          "register": "ijtimoiy maqom"
+        },
+        {
+          "index": 2,
+          "arabicExample": "شَهِيرَةُ",
+          "arabicGloss": "اِسْمُ عَلَمٍ لِلْإِنَاثِ.",
+          "uzbekMeaning": "Shahira — ayollarga qo‘yiladigan atoqli ism",
+          "uzbekExample": "Shahira ayol ismi sifatida qo‘llanadi.",
+          "register": "atoqli ot"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_adjective_and_name_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 782,
+      "id": 79907,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَظِيمٌ",
+      "root": "نظم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- كَلاَمٌ نَظِيمٌ : أَيْ مَنْظُومٌ شِعْراً.|2- عِقْدٌ نَظِيمٌ : مَنْظُومٌ.",
+      "sourceHash": "ed4a0f14aa3e7204105729a22019032fb2dc8351df5943fbe68e8b64aa0ef585",
+      "wordType": "sifat",
+      "uzbek": "nazmga solingan; ipga terilgan",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَلاَمٌ نَظِيمٌ",
+          "arabicGloss": "أَيْ مَنْظُومٌ شِعْراً.",
+          "uzbekMeaning": "so‘z yoki matn haqida: she’riy vaznda nazmga solingan",
+          "uzbekExample": "Bu so‘zlar she’riy shaklda nazmga solingan edi.",
+          "register": "adabiyot"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عِقْدٌ نَظِيمٌ",
+          "arabicGloss": "مَنْظُومٌ.",
+          "uzbekMeaning": "marjon yoki munchoq haqida: donalari ipga birin-ketin terilgan",
+          "uzbekExample": "Marjon donalari ipga terilgan edi.",
+          "register": "zargarlik va buyum tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_poetry_and_necklace_review",
+        "issues": [
+          "Ikkinchi ma’no umumiy «tartiblangan» emas, marjon donalarining ipga terilganini bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 783,
+      "id": 79908,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَجِيزٌ",
+      "root": "وجز‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- كَلاَمٌ وَجِيزٌ : مُقْتَصَرٌ، مُخْتَصَرٌ- عِبَارَةٌ وَجِيزَةٌ.|2- حَضَرَ مُنْذُ فَتْرَةٍ وَجِيزَةٍ : مُنْذُ فَتْرَةٍ قَلِيلَةٍ.",
+      "sourceHash": "067d56ea0a9eacaf2bedca5e008e84f2f1cdf0eeb9153ed5bfeba7e5385d3019",
+      "wordType": "sifat",
+      "uzbek": "qisqa va lo‘nda; qisqa muddatli",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "كَلاَمٌ وَجِيزٌ",
+          "arabicGloss": "مُقْتَصَرٌ، مُخْتَصَرٌ- عِبَارَةٌ وَجِيزَةٌ.",
+          "uzbekMeaning": "gap, ibora yoki matn haqida: qisqa, ixcham va lo‘nda",
+          "uzbekExample": "U qisqa va lo‘nda gapirdi.",
+          "register": "nutq va matn tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "حَضَرَ مُنْذُ فَتْرَةٍ وَجِيزَةٍ",
+          "arabicGloss": "مُنْذُ فَتْرَةٍ قَلِيلَةٍ.",
+          "uzbekMeaning": "vaqt yoki muddat haqida: qisqa, oz",
+          "uzbekExample": "U bundan qisqa vaqt oldin kelgan edi.",
+          "register": "vaqt tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_brevity_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 784,
+      "id": 79909,
+      "dictionarySource": "Ghoniy",
+      "arabic": "غَمِيرٌ",
+      "root": "غمر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- مَاءٌ غَمِيرٌ : كَثِيرٌ.|2- نَبْتٌ غَمِيرٌ : نَبْتٌ يَخْرُجُ مِنْ أَصْلِ النَّبْتِ.",
+      "sourceHash": "4991e213e02ece431ce7476cb4277d405f26f6be3ced6f7019729ba6ac6a9fc9",
+      "wordType": "sifat va ot",
+      "uzbek": "mo‘l suv; o‘simlik tubidan chiqqan yangi novda",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَاءٌ غَمِيرٌ",
+          "arabicGloss": "كَثِيرٌ.",
+          "uzbekMeaning": "suv haqida: miqdori ko‘p, mo‘l",
+          "uzbekExample": "Bu yerda suv mo‘l edi.",
+          "register": "miqdor tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "نَبْتٌ غَمِيرٌ",
+          "arabicGloss": "نَبْتٌ يَخْرُجُ مِنْ أَصْلِ النَّبْتِ.",
+          "uzbekMeaning": "o‘simlikning tubi yoki ildiz bo‘g‘zidan o‘sib chiqqan yangi novda yoki bachki",
+          "uzbekExample": "O‘simlik tubidan yangi bachki o‘sib chiqdi.",
+          "register": "botanika"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_botanical_shoot_review",
+        "issues": [
+          "Ikkinchi ma’nodagi takroriy «ildizidan chiqqan o‘simlik» o‘rniga botanik jihatdan aniq «tubdan chiqqan yangi novda yoki bachki» berildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 785,
+      "id": 79910,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَمِيرٌ",
+      "root": "نمر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- مَاءٌ نَمِيٌر : مَاءٌ نَافِعٌ عَذْبٌ.|2- شَرَفٌ نَمِيرٌ : شَرَفٌ زَاكٍ- لَهُ حَسَبٌ نَمِيرٌ.",
+      "sourceHash": "fbde82c42a76ad7e59397bef24c58bf4b3fbac1233812a4feb643842a1452366",
+      "wordType": "sifat",
+      "uzbek": "chuchuk va foydali suv; pok va yuksak sharaf",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَاءٌ نَمِيٌر",
+          "arabicGloss": "مَاءٌ نَافِعٌ عَذْبٌ.",
+          "uzbekMeaning": "suv haqida: chuchuk, ichishga yoqimli va foydali",
+          "uzbekExample": "Ular chuchuk va ichishga foydali suv topdilar.",
+          "register": "ichimlik suvi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "شَرَفٌ نَمِيرٌ",
+          "arabicGloss": "شَرَفٌ زَاكٍ- لَهُ حَسَبٌ نَمِيرٌ.",
+          "uzbekMeaning": "sharaf, obro‘ yoki nasab haqida: pok, yuksak va e’tiborli",
+          "uzbekExample": "Uning sharafi yuksak, nasabi esa e’tiborli edi.",
+          "register": "obro‘ va nasab tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_water_and_honor_review",
+        "issues": [
+          "عَذْبٌ suvning «toza»ligini emas, chuchuk va ichishga yoqimliligini bildiradi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 786,
+      "id": 79911,
+      "dictionarySource": "Ghoniy",
+      "arabic": "مَدِيدٌ",
+      "root": "مدد",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- مَدِيدُ الدَّوَابِّ : العَلَفُ.|2- رَجُلٌ مَدِيدُ القَامَةِ : طَوِيلُ القَامَةِ- قَامَةٌ مَدِيدَةٌ.|3- تَمَنَّى لَهُ عُمْراً مَدِيداً : طَوِيلاً.|4- حِبَالٌ مَدِيدَةٌ :مَمْدُودَةٌ.|5- البَحْرُ الْمَدِيدُ : بَحْرٌ مِنْ بُحُورِ الشِّعْرِ العَرَبِيِّ وَيَتَأَلَّفُ مِنْ سِتَّةِ أَجْزَاءٍ: | فَاعِلاَتُنْ فَاعِلُنْ فَاعِلاَتُنْ ... ... فَاعِلاَتُنْ فَاعِلُنْ فَاعِلاَتُنْ",
+      "sourceHash": "f1d5026ee6dda6d205ec6e9a8bbe78baeb6524cc3752a9094a6d6b0b6ee97314",
+      "wordType": "ot va sifat",
+      "uzbek": "yem-xashak; uzun bo‘yli; uzoq; cho‘zilgan; madid vazni",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَدِيدُ الدَّوَابِّ",
+          "arabicGloss": "العَلَفُ.",
+          "uzbekMeaning": "uy hayvonlariga beriladigan yem-xashak",
+          "uzbekExample": "U hayvonlarga yem-xashak berdi.",
+          "register": "chorvachilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "رَجُلٌ مَدِيدُ القَامَةِ",
+          "arabicGloss": "طَوِيلُ القَامَةِ- قَامَةٌ مَدِيدَةٌ.",
+          "uzbekMeaning": "kishi yoki qomat haqida: uzun, baland bo‘yli",
+          "uzbekExample": "U uzun bo‘yli kishi edi.",
+          "register": "jismoniy tavsif"
+        },
+        {
+          "index": 3,
+          "arabicExample": "تَمَنَّى لَهُ عُمْراً مَدِيداً",
+          "arabicGloss": "طَوِيلاً.",
+          "uzbekMeaning": "umr yoki vaqt haqida: uzoq davom etadigan",
+          "uzbekExample": "U unga uzoq umr tiladi.",
+          "register": "vaqt tavsifi"
+        },
+        {
+          "index": 4,
+          "arabicExample": "حِبَالٌ مَدِيدَةٌ",
+          "arabicGloss": "مَمْدُودَةٌ.",
+          "uzbekMeaning": "arqon yoki cho‘ziq buyum haqida: uzunasiga yoyilgan, cho‘zilgan",
+          "uzbekExample": "Arqonlar uzunasiga cho‘zib qo‘yilgan edi.",
+          "register": "buyum tavsifi"
+        },
+        {
+          "index": 5,
+          "arabicExample": "البَحْرُ الْمَدِيدُ",
+          "arabicGloss": "بَحْرٌ مِنْ بُحُورِ الشِّعْرِ العَرَبِيِّ وَيَتَأَلَّفُ مِنْ سِتَّةِ أَجْزَاءٍ: | فَاعِلاَتُنْ فَاعِلُنْ فَاعِلاَتُنْ ... ... فَاعِلاَتُنْ فَاعِلُنْ فَاعِلاَتُنْ",
+          "uzbekMeaning": "al-Bahr al-madid — arab aruzidagi she’riy vaznlardan biri; olti rukni «فَاعِلَاتُنْ فَاعِلُنْ فَاعِلَاتُنْ ... فَاعِلَاتُنْ فَاعِلُنْ فَاعِلَاتُنْ» tartibida keladi",
+          "uzbekExample": "Shoir baytni madid vaznida yozdi.",
+          "register": "aruz ilmi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_five_sense_and_prosody_review",
+        "issues": [
+          "Madid bahrining manbada berilgan olti ruknli qolipi to‘liq saqlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 787,
+      "id": 79912,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ظَليفٌ",
+      "root": "ظلف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- مَكانٌ ظَليفٌ :خَشِنٌ.|2- أَرْضٌ ظَليفَةٌ : شَديدَةٌ، صُلْبَةٌ، غَليظَةٌ.|3- رَجُلٌ ظَليفٌ : سَيِّءُ الحالِ.|4- ذَهَبَ بِهِ ظَليفاً : مَجَّاناً، أَي بِغَيْرِ ثَمَنٍ.|5- ذَهَبَ دَمُهُ ظَليفاً : هَدَراً.|6- هِيَ ظَليفَةُ النَّفْسِ : عَزيزَةُ النَّفْسِ.|7- أَخَذَ الشَّيْءَ بِظَليفَتِهِ : بِأَسْرِهِ، أَي لم يَتْرُكْ مِنْهُ شَيْئاً.",
+      "sourceHash": "87f4757ced6b00409c4d38663e878939f537afccaaaa4005be004159a2b4ce7b",
+      "wordType": "sifat va ravishsimon ibora",
+      "uzbek": "dag‘al; qattiq yer; ahvoli yomon; tekin; tovonsiz; oriyatli; butunlay",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَكانٌ ظَليفٌ",
+          "arabicGloss": "خَشِنٌ.",
+          "uzbekMeaning": "joy haqida: yuzasi qo‘pol va dag‘al",
+          "uzbekExample": "Bu joyning yuzasi qo‘pol va dag‘al edi.",
+          "register": "joy tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَرْضٌ ظَليفَةٌ",
+          "arabicGloss": "شَديدَةٌ، صُلْبَةٌ، غَليظَةٌ.",
+          "uzbekMeaning": "yer haqida: juda qattiq, zich va dag‘al",
+          "uzbekExample": "Yer juda qattiq va zich edi.",
+          "register": "tuproq tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "رَجُلٌ ظَليفٌ",
+          "arabicGloss": "سَيِّءُ الحالِ.",
+          "uzbekMeaning": "kishi haqida: ahvoli yomon, og‘ir sharoitda",
+          "uzbekExample": "U yomon ahvolda edi.",
+          "register": "inson holati"
+        },
+        {
+          "index": 4,
+          "arabicExample": "ذَهَبَ بِهِ ظَليفاً",
+          "arabicGloss": "مَجَّاناً، أَي بِغَيْرِ ثَمَنٍ.",
+          "uzbekMeaning": "haq yoki narx to‘lamasdan, tekin",
+          "uzbekExample": "U uni hech qanday haq to‘lamay olib ketdi.",
+          "register": "savdo va haq"
+        },
+        {
+          "index": 5,
+          "arabicExample": "ذَهَبَ دَمُهُ ظَليفاً",
+          "arabicGloss": "هَدَراً.",
+          "uzbekMeaning": "«qoni zoye ketdi» iborasida: qasos yoki tovon olinmay, behuda ketgan",
+          "uzbekExample": "Uning qoni uchun qasos ham, tovon ham olinmadi.",
+          "register": "tarixiy huquqiy ibora"
+        },
+        {
+          "index": 6,
+          "arabicExample": "هِيَ ظَليفَةُ النَّفْسِ",
+          "arabicGloss": "عَزيزَةُ النَّفْسِ.",
+          "uzbekMeaning": "kishi haqida: o‘z qadr-qimmatini saqlaydigan, oriyatli va izzat-nafsli",
+          "uzbekExample": "U oriyatli va o‘z qadrini biladigan ayol edi.",
+          "register": "ijobiy insoniy sifat"
+        },
+        {
+          "index": 7,
+          "arabicExample": "أَخَذَ الشَّيْءَ بِظَليفَتِهِ",
+          "arabicGloss": "بِأَسْرِهِ، أَي لم يَتْرُكْ مِنْهُ شَيْئاً.",
+          "uzbekMeaning": "biror narsani hech bir qismini qoldirmay, butunlay va to‘lig‘icha olish",
+          "uzbekExample": "U narsaning hech bir qismini qoldirmay, hammasini oldi.",
+          "register": "ravishsimon ibora"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_seven_sense_and_idiom_review",
+        "issues": [
+          "«Qoni ظَليفاً ketdi» oddiy «behuda» emas, qasos yoki tovon olinmay zoye ketishni bildiradi",
+          "Yettinchi ma’no narsaning biror qismini qoldirmay to‘lig‘icha olishdir"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 788,
+      "id": 79913,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ظَليلٌ",
+      "root": "ظلل‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- مَكانٌ ظَليلٌ : مَكانٌ بِهِ ظِلٌّ كَثيفٌ دائِمٌ.|2- ظِلُّ ظَليلٌ : ظِلٌّ كَثيفٌ دائِمٌ- واحَةٌ يَحوطُها ماءٌ غَزيرٌ وَظِلٌّ ظَليلٌ.|3- اِسْتَقَرَّ طولَ النَّهارِ في الظَّليلَةِ : في الرَّوْضَةِ كَثيفَةِ الأَشْجارِ- غابَةٌ ظَليلَةٌ.",
+      "sourceHash": "50e21614c2a91d1027881bab93a324fcfb4a9039225e20a9da06ade5a2fabf6d",
+      "wordType": "sifat va ot",
+      "uzbek": "quyuq soyali joy; qalin soya; daraxtzor sayilgoh",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "مَكانٌ ظَليلٌ",
+          "arabicGloss": "مَكانٌ بِهِ ظِلٌّ كَثيفٌ دائِمٌ.",
+          "uzbekMeaning": "joy haqida: quyuq va doimiy soyasi bor, salqin",
+          "uzbekExample": "U quyuq soyali joyda dam oldi.",
+          "register": "joy tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "ظِلُّ ظَليلٌ",
+          "arabicGloss": "ظِلٌّ كَثيفٌ دائِمٌ- واحَةٌ يَحوطُها ماءٌ غَزيرٌ وَظِلٌّ ظَليلٌ.",
+          "uzbekMeaning": "soya haqida: quyuq, keng va uzoq saqlanadigan",
+          "uzbekExample": "Voha mo‘l suv va quyuq soya bilan o‘ralgan edi.",
+          "register": "tabiat tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "اِسْتَقَرَّ طولَ النَّهارِ في الظَّليلَةِ",
+          "arabicGloss": "في الرَّوْضَةِ كَثيفَةِ الأَشْجارِ- غابَةٌ ظَليلَةٌ.",
+          "uzbekMeaning": "daraxtlari qalin o‘sgan sayilgoh, bog‘ yoki o‘rmon",
+          "uzbekExample": "U kun bo‘yi daraxtlari qalin sayilgohda qoldi.",
+          "register": "geografiya va tabiat"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_shade_and_grove_review",
+        "issues": [
+          "Birinchi ma’no soyali joy, ikkinchisi soyaning o‘zi, uchinchisi qalin daraxtzor sayilgoh sifatida ajratildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 789,
+      "id": 79914,
+      "dictionarySource": "Ghoniy",
+      "arabic": "زَليلٌ",
+      "root": "زلل‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- ماءٌ زَليلٌ : عَذْبٌ، صافٍ.|2-  نَوْعٌ مِنَ الحَلْوَى يُتَّخَذُ مِنَ الطَّحِينِ والماءِ والعَسَلِ.",
+      "sourceHash": "f9c21b1899c9cb890491ca341e90369a1db843049171f71d94cf27cebc33bd52",
+      "wordType": "sifat va ot",
+      "uzbek": "chuchuk va tiniq suv; un, suv va asalli shirinlik",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "ماءٌ زَليلٌ",
+          "arabicGloss": "عَذْبٌ، صافٍ.",
+          "uzbekMeaning": "suv haqida: chuchuk va tiniq",
+          "uzbekExample": "Suv chuchuk va tiniq edi.",
+          "register": "ichimlik suvi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "",
+          "arabicGloss": "نَوْعٌ مِنَ الحَلْوَى يُتَّخَذُ مِنَ الطَّحِينِ والماءِ والعَسَلِ.",
+          "uzbekMeaning": "un, suv va asal qo‘shib tayyorlanadigan shirinlik turi",
+          "uzbekExample": "Shirinlik un, suv va asaldan tayyorlandi.",
+          "register": "pazandachilik"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_water_and_confection_review",
+        "issues": [
+          "Shirinlikning un, suv va asaldan tayyorlanishi tiklandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 790,
+      "id": 79915,
+      "dictionarySource": "Ghoniy",
+      "arabic": "قَضِيضٌ",
+      "root": "قضض‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- نَامَ عَلَى الْقَضِيضِ : عَلَى صِغَارِ الْحَصَى.|2- جَاءوا بِقَضِّهِمْ وَقَضِيضِهِمْ : أَيْ جَمِيعِهِمْ.",
+      "sourceHash": "e188e855252a49b0ea0310ab9819dc23e656b411d65499614bab607020788339",
+      "wordType": "ot va ibora",
+      "uzbek": "mayda shag‘al; birortasi qolmay, barchasi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَامَ عَلَى الْقَضِيضِ",
+          "arabicGloss": "عَلَى صِغَارِ الْحَصَى.",
+          "uzbekMeaning": "mayda tosh va shag‘al",
+          "uzbekExample": "U mayda shag‘al ustida uxladi.",
+          "register": "tabiat va yer qoplami"
+        },
+        {
+          "index": 2,
+          "arabicExample": "جَاءوا بِقَضِّهِمْ وَقَضِيضِهِمْ",
+          "arabicGloss": "أَيْ جَمِيعِهِمْ.",
+          "uzbekMeaning": "«qaddi-qadidi bilan keldi» iborasida: birortasi qolmay, hammasi birgalikda",
+          "uzbekExample": "Ularning birortasi qolmay, hammasi keldi.",
+          "register": "turg‘un ibora"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_noun_and_idiom_review",
+        "issues": [
+          "Birinchi ma’no «toshlar ustida yotgan» holat emas, mayda tosh va shag‘alning o‘zi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 791,
+      "id": 79916,
+      "dictionarySource": "Ghoniy",
+      "arabic": "صَرِيمٌ",
+      "root": "صرم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- نَبَاتٌ صَرِيمٌ : مَا قُطِعَ مِنْهُ.|2- شَجَرٌ صَرِيمٌ : مَا جُمِعَ ثَمَرُهُ.|3- صَرِيمٌ مِنَ اللَّيْلِ : قِطْعَةٌ مِنْهُ.",
+      "sourceHash": "7a3e1bb59494fd11ade70306cd90d09465140f07ac1e6dc70b98a55e4bacfbd8",
+      "wordType": "sifat va ot",
+      "uzbek": "kesilgan o‘simlik; mevasi terilgan daraxt; tun bo‘lagi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَبَاتٌ صَرِيمٌ",
+          "arabicGloss": "مَا قُطِعَ مِنْهُ.",
+          "uzbekMeaning": "o‘simlik haqida: kesib olingan qismi",
+          "uzbekExample": "O‘simlikning bir qismi kesib olindi.",
+          "register": "botanika va dehqonchilik"
+        },
+        {
+          "index": 2,
+          "arabicExample": "شَجَرٌ صَرِيمٌ",
+          "arabicGloss": "مَا جُمِعَ ثَمَرُهُ.",
+          "uzbekMeaning": "daraxt haqida: mevasi terib olingan",
+          "uzbekExample": "Daraxtning mevalari terib olingan edi.",
+          "register": "bog‘dorchilik"
+        },
+        {
+          "index": 3,
+          "arabicExample": "صَرِيمٌ مِنَ اللَّيْلِ",
+          "arabicGloss": "قِطْعَةٌ مِنْهُ.",
+          "uzbekMeaning": "tunning bir bo‘lagi yoki qismi",
+          "uzbekExample": "U tunning bir qismida yo‘lga chiqdi.",
+          "register": "vaqt ifodasi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_three_sense_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 792,
+      "id": 79917,
+      "dictionarySource": "Ghoniy",
+      "arabic": "يَبِيسٌ",
+      "root": "يبس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- نَبَاتٌ يَبِيسٌ : يَابِسٌ.|2- يَبِيسُ الْمَاءِ : الْعَرَقُ الْجَافُّ.|3- رَجُلٌ يَبِيسٌ : لاَ خَيْرَ فِيهِ- اِمْرَأَةٌ يَبِيسٌ.",
+      "sourceHash": "30590a8163bb36d134ec5f25dc334c9a1dff9ce6fac9ee8908644aaa8eb0942b",
+      "wordType": "sifat va ot",
+      "uzbek": "qurigan o‘simlik; qurib qolgan ter; yaxshiligi yo‘q",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَبَاتٌ يَبِيسٌ",
+          "arabicGloss": "يَابِسٌ.",
+          "uzbekMeaning": "o‘simlik haqida: namini yo‘qotgan, qurigan",
+          "uzbekExample": "O‘simlik qurib qolgan edi.",
+          "register": "botanika"
+        },
+        {
+          "index": 2,
+          "arabicExample": "يَبِيسُ الْمَاءِ",
+          "arabicGloss": "الْعَرَقُ الْجَافُّ.",
+          "uzbekMeaning": "badanda qurib qolgan ter",
+          "uzbekExample": "Badanidagi ter qurib qolgan edi.",
+          "register": "fiziologiya"
+        },
+        {
+          "index": 3,
+          "arabicExample": "رَجُلٌ يَبِيسٌ",
+          "arabicGloss": "لاَ خَيْرَ فِيهِ- اِمْرَأَةٌ يَبِيسٌ.",
+          "uzbekMeaning": "erkak yoki ayol haqida: unda yaxshilik yo‘q deb salbiy baholangan",
+          "uzbekExample": "Manbada bu sifat yaxshiligi yo‘q kishiga nisbatan qo‘llangan.",
+          "register": "salbiy va tarixiy baho"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_dried_sweat_review",
+        "issues": [
+          "يَبِيسُ الْمَاءِ bu ta’rifda «qurigan suv» emas, keyingi izohga ko‘ra badanda qurigan ter"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 793,
+      "id": 79918,
+      "dictionarySource": "Ghoniy",
+      "arabic": "نَزِيفٌ",
+      "root": "نزف‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- نَزِيفُ الدَّمِ : خُرُوجُهُ غَزِيراً مِنَ الأَنْفِ أَوِ الفَمِ أَوْ نَحْوِهِمَا بِسَبَبِ مَرَضٍ أَوْ جُرْحٍ.|2- تَعَرَّضَ لِنَزِيفٍ دَاخِلِيٍّ : نَزِيفٌ في الدِّمَاغِ أَوفي غَيْرِهِ مِنْ أَعْضَاءِ الْجَسَدِ.",
+      "sourceHash": "f77b51282db93f8007f5366ae07fdece02ad4bcfa430544f493030d856874a47",
+      "wordType": "ot",
+      "uzbek": "ko‘p qon ketishi; ichki qon ketishi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "نَزِيفُ الدَّمِ",
+          "arabicGloss": "خُرُوجُهُ غَزِيراً مِنَ الأَنْفِ أَوِ الفَمِ أَوْ نَحْوِهِمَا بِسَبَبِ مَرَضٍ أَوْ جُرْحٍ.",
+          "uzbekMeaning": "kasallik yoki jarohat sabab burun, og‘iz yoki boshqa joydan qonning ko‘p oqishi",
+          "uzbekExample": "Jarohat sabab ko‘p qon ketdi.",
+          "register": "tibbiy"
+        },
+        {
+          "index": 2,
+          "arabicExample": "تَعَرَّضَ لِنَزِيفٍ دَاخِلِيٍّ",
+          "arabicGloss": "نَزِيفٌ في الدِّمَاغِ أَوفي غَيْرِهِ مِنْ أَعْضَاءِ الْجَسَدِ.",
+          "uzbekMeaning": "miya yoki tananing boshqa a’zosi ichida yuz beradigan ichki qon ketishi",
+          "uzbekExample": "Bemorda ichki qon ketishi aniqlandi.",
+          "register": "tibbiy"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_medical_review",
+        "issues": [
+          "نَزِيفٌ bu ta’riflarda sifat emas, qon ketishi hodisasini bildiruvchi ot"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 794,
+      "id": 79919,
+      "dictionarySource": "Ghoniy",
+      "arabic": "أَنِيسٌ",
+      "root": "أنس‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- هُوَ أنِيسُ وَحْدَتِي :الْمَأنُوسُ بِهِ.|2- القِطَّةُ حَيَوَانٌ أنِيسٌ : ألِيفٌ.|3- أنيسُ، ة :اِسْمُ عَلَمٍ لِلْمُذَكَّرِ، أوِ الْمُؤنث.",
+      "sourceHash": "59d2616a631e2a02ee61fb2969425421c24cc141c7b236802e1e6d4a2b567103",
+      "wordType": "ot, sifat va atoqli ot",
+      "uzbek": "yolg‘izlikdagi hamroh; qo‘lga o‘rgangan; Anis yoki Anisa ismi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ أنِيسُ وَحْدَتِي",
+          "arabicGloss": "الْمَأنُوسُ بِهِ.",
+          "uzbekMeaning": "yolg‘izlikni ketkazadigan, yonida o‘tirish yoqimli bo‘lgan hamroh",
+          "uzbekExample": "U mening yolg‘izligimdagi yaqin hamrohim edi.",
+          "register": "insoniy munosabat"
+        },
+        {
+          "index": 2,
+          "arabicExample": "القِطَّةُ حَيَوَانٌ أنِيسٌ",
+          "arabicGloss": "ألِيفٌ.",
+          "uzbekMeaning": "hayvon haqida: odamga o‘rgangan, yovvoyi bo‘lmagan va yuvosh",
+          "uzbekExample": "Mushuk odamga o‘rgangan yuvosh hayvondir.",
+          "register": "hayvon tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "أنيسُ، ة",
+          "arabicGloss": "اِسْمُ عَلَمٍ لِلْمُذَكَّرِ، أوِ الْمُؤنث.",
+          "uzbekMeaning": "Anis — erkaklarga, Anisa — ayollarga qo‘yiladigan atoqli ism",
+          "uzbekExample": "Anis va Anisa shaxs ismlari sifatida qo‘llanadi.",
+          "register": "atoqli ot"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_companion_tame_and_name_review",
+        "issues": [
+          "Birinchi ma’no umumiy do‘stonalik emas, yolg‘izlikni ketkazadigan hamroh",
+          "Ikkinchi ma’no «uy hayvoniga xos muloyim» emas, odamga o‘rgangan va yuvosh hayvon"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 795,
+      "id": 79920,
+      "dictionarySource": "Ghoniy",
+      "arabic": "جَسِيمٌ",
+      "root": "جسم‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- هُوَ جَسِيمُ البَدَنِ : البَدِينُ، الضَّخْمُ، الغَلِيظُ.|2- طَلَبَ مِنْهُ مَبْلَغاً جَسِيماً :ضَخْماً.|3- إِنَّهُ لأَمْرٌ جَسِيمٌ : خَطِيرٌ، فَادِحٌ- خَطَأٌ جَسِيمٌ :-لَحِقَتْهُ أَضْرَارٌ جَسِيمَةٌ.",
+      "sourceHash": "1a01ebcff61d3460a5aa4c1f741ce834b722ed3c8af4604492132e7ecc075b57",
+      "wordType": "sifat",
+      "uzbek": "yirik gavdali; juda katta; jiddiy va og‘ir",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ جَسِيمُ البَدَنِ",
+          "arabicGloss": "البَدِينُ، الضَّخْمُ، الغَلِيظُ.",
+          "uzbekMeaning": "kishi yoki tana haqida: yirik gavdali, katta va yo‘g‘on",
+          "uzbekExample": "U yirik gavdali kishi edi.",
+          "register": "neytral jismoniy tavsif"
+        },
+        {
+          "index": 2,
+          "arabicExample": "طَلَبَ مِنْهُ مَبْلَغاً جَسِيماً",
+          "arabicGloss": "ضَخْماً.",
+          "uzbekMeaning": "pul yoki miqdor haqida: juda katta",
+          "uzbekExample": "U undan juda katta pul miqdorini so‘radi.",
+          "register": "miqdor tavsifi"
+        },
+        {
+          "index": 3,
+          "arabicExample": "إِنَّهُ لأَمْرٌ جَسِيمٌ",
+          "arabicGloss": "خَطِيرٌ، فَادِحٌ- خَطَأٌ جَسِيمٌ :-لَحِقَتْهُ أَضْرَارٌ جَسِيمَةٌ.",
+          "uzbekMeaning": "ish, xato yoki zarar haqida: jiddiy, og‘ir va katta",
+          "uzbekExample": "Bu jiddiy ish edi; og‘ir xato katta zarar keltirdi.",
+          "register": "salbiy oqibat tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_with_neutral_body_description",
+        "issues": [
+          "Birinchi ma’noda semizlik majburiy belgi emas; yirik va yo‘g‘on gavda neytral tarzda berildi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 796,
+      "id": 79921,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَرِيقٌ",
+      "root": "عرق‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- هُوَ عَرِيقُ النَّسَبِ : مِنْ أَصْلٍ مَعْرُوفٍ لاَ غُبَارَ عَلَيْهِ، أَصِيلٌ- شَعْبٌ عَرِيقٌ فِي الْمَجْدِ وَالسُّؤْدُدِ.|2- عَرِيقٌ فِي القِدَمِ : قَدِيمٌ جِدّاً.",
+      "sourceHash": "cb12457cc7c42724c6f5c2705194bf1d16130f91c44dc4826de14f978b59d634",
+      "wordType": "sifat",
+      "uzbek": "nasabi asl va qadimiy; juda qadimdan mavjud",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ عَرِيقُ النَّسَبِ",
+          "arabicGloss": "مِنْ أَصْلٍ مَعْرُوفٍ لاَ غُبَارَ عَلَيْهِ، أَصِيلٌ- شَعْبٌ عَرِيقٌ فِي الْمَجْدِ وَالسُّؤْدُدِ.",
+          "uzbekMeaning": "nasab, xalq yoki obro‘ haqida: asl ildizi ma’lum, qadimdan sharaf va ulug‘likka ega",
+          "uzbekExample": "U nasabi asl oiladan, xalqi esa qadimiy sharaf va ulug‘lik egasi edi.",
+          "register": "nasab va tarix"
+        },
+        {
+          "index": 2,
+          "arabicExample": "عَرِيقٌ فِي القِدَمِ",
+          "arabicGloss": "قَدِيمٌ جِدّاً.",
+          "uzbekMeaning": "vaqt yoki tarix haqida: ildizi juda qadimga boradigan, juda qadimiy",
+          "uzbekExample": "Bu an’ana juda qadimdan mavjud.",
+          "register": "tarixiy tavsif"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_lineage_and_antiquity_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 797,
+      "id": 79922,
+      "dictionarySource": "Ghoniy",
+      "arabic": "رَطيبٌ",
+      "root": "رطب‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- هُوَ في عَيْشٍ رَطيبٍ : في عَيْش هَنِيءٍ، مَيْسورٍ، مُريحٍ.|2- غُصْنٌ رَطيبٌ : لَيِّنٌ ناعِمٌ- رِيشٌ رَطِيبٌ.",
+      "sourceHash": "10d78a554174c55d72a70b6011de30a34f8d7ba143633b3e873b8f040251b400",
+      "wordType": "sifat",
+      "uzbek": "rohatli va farovon; yangi, nam va mayin",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "هُوَ في عَيْشٍ رَطيبٍ",
+          "arabicGloss": "في عَيْش هَنِيءٍ، مَيْسورٍ، مُريحٍ.",
+          "uzbekMeaning": "hayot yoki turmush haqida: rohatli, farovon va qulay",
+          "uzbekExample": "U rohatli va farovon hayot kechirardi.",
+          "register": "turmush tavsifi"
+        },
+        {
+          "index": 2,
+          "arabicExample": "غُصْنٌ رَطيبٌ",
+          "arabicGloss": "لَيِّنٌ ناعِمٌ- رِيشٌ رَطِيبٌ.",
+          "uzbekMeaning": "novda yoki pat haqida: yangi, nami bor, egiluvchan va mayin",
+          "uzbekExample": "Yangi novda nam va egiluvchan, pat esa mayin edi.",
+          "register": "botanika va buyum tavsifi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_freshness_review",
+        "issues": [
+          "Ikkinchi ma’noda yumshoqlik bilan birga yangi, nam va egiluvchanlik ham saqlandi"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 798,
+      "id": 79923,
+      "dictionarySource": "Ghoniy",
+      "arabic": "عَفِيرٌ",
+      "root": "عفر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- وَجْهٌ عَفِيرٌ : مُعَفَّرٌ، مُمَرَّغٌ فِي التُّرَابِ.|2- خُبْزٌ عَفِيرٌ : بِلاَ أُدْمٍ.",
+      "sourceHash": "276f5b433dabd94950cbca2e45de7b38acac4f536e2b827a02f2d0afcbf67087",
+      "wordType": "sifat",
+      "uzbek": "tuproqqa belangan yuz; nonxurushsiz quruq non",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَجْهٌ عَفِيرٌ",
+          "arabicGloss": "مُعَفَّرٌ، مُمَرَّغٌ فِي التُّرَابِ.",
+          "uzbekMeaning": "yuz haqida: tuproqqa belangan yoki tuproqqa surkalgan",
+          "uzbekExample": "Uning yuzi tuproqqa belangan edi.",
+          "register": "tashqi holat"
+        },
+        {
+          "index": 2,
+          "arabicExample": "خُبْزٌ عَفِيرٌ",
+          "arabicGloss": "بِلاَ أُدْمٍ.",
+          "uzbekMeaning": "non haqida: yoniga nonxurush, qayla yoki boshqa qo‘shimcha qo‘yilmagan quruq non",
+          "uzbekExample": "U nonxurushsiz quruq non yedi.",
+          "register": "ovqatlanish"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_food_context_review",
+        "issues": [
+          "بِلاَ أُدْمٍ faqat «yog‘siz» degani emas; nonxurush, qayla yoki qo‘shimchasiz quruq non"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 799,
+      "id": 79924,
+      "dictionarySource": "Ghoniy",
+      "arabic": "وَقِيدٌ",
+      "root": "وقد‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- وَقِيدُ النَّارِ : مَا تُشْعَلُ بِهِ النَّارُ كَالْحَطَبِ وَغَيْرِهِ.|2- أَشْعَلَ سِيجَارَتَهُ بِوَقِيدَةٍ : بِثِقَابٍ، بِعُودِ ثِقَابٍ، بِعُودِ الكِبْرِيتِ.",
+      "sourceHash": "edefbf60e66c302815fd43b12520d1905a81ed9e6686bcfd648253fa22c4e589",
+      "wordType": "ot",
+      "uzbek": "yoqilg‘i; gugurt cho‘pi",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَقِيدُ النَّارِ",
+          "arabicGloss": "مَا تُشْعَلُ بِهِ النَّارُ كَالْحَطَبِ وَغَيْرِهِ.",
+          "uzbekMeaning": "olovni yoqish yoki yondirib turish uchun ishlatiladigan o‘tin va boshqa yoqilg‘i",
+          "uzbekExample": "U olov yoqish uchun o‘tin tayyorladi.",
+          "register": "yoqilg‘i"
+        },
+        {
+          "index": 2,
+          "arabicExample": "أَشْعَلَ سِيجَارَتَهُ بِوَقِيدَةٍ",
+          "arabicGloss": "بِثِقَابٍ، بِعُودِ ثِقَابٍ، بِعُودِ الكِبْرِيتِ.",
+          "uzbekMeaning": "olov yoqadigan gugurt cho‘pi",
+          "uzbekExample": "U sigaretini gugurt cho‘pi bilan yoqdi.",
+          "register": "uy-ro‘zg‘or buyumi"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_word_type_and_fuel_review",
+        "issues": [],
+        "reviewedAt": "2026-08-31"
+      }
+    },
+    {
+      "sequenceIndex": 800,
+      "id": 79925,
+      "dictionarySource": "Ghoniy",
+      "arabic": "ذَكيرٌ",
+      "root": "ذكر‏",
+      "grammarLabel": "صِيغَةُ فَعِيل",
+      "morphology": "",
+      "arabicDefinition": "(صِيغَةُ فَعِيل).|1- وَلَدٌ ذَكيرٌ : جَيِّدُ الذِّكْرِ والحِفْظِ.|2- حَديدٌ ذَكيرٌ : مِنْ مَعْدِنٍ جَيِّدٍ، ذَكَرٌ.",
+      "sourceHash": "5342d64182a549964105622b1be03d5e7fbdded1b2b3b026794694316b0c2504",
+      "wordType": "sifat",
+      "uzbek": "xotirasi kuchli; yuqori navli va qattiq temir",
+      "meanings": [
+        {
+          "index": 1,
+          "arabicExample": "وَلَدٌ ذَكيرٌ",
+          "arabicGloss": "جَيِّدُ الذِّكْرِ والحِفْظِ.",
+          "uzbekMeaning": "bola yoki kishi haqida: eslab qolishi va yodlashi yaxshi, xotirasi kuchli",
+          "uzbekExample": "Bolaning xotirasi kuchli, yodlash qobiliyati yaxshi edi.",
+          "register": "aqliy qobiliyat"
+        },
+        {
+          "index": 2,
+          "arabicExample": "حَديدٌ ذَكيرٌ",
+          "arabicGloss": "مِنْ مَعْدِنٍ جَيِّدٍ، ذَكَرٌ.",
+          "uzbekMeaning": "temir haqida: yaxshi ma’danli, yuqori navli, qattiq va mustahkam",
+          "uzbekExample": "Asbob yuqori navli, qattiq temirdan yasaldi.",
+          "register": "metallurgiya"
+        }
+      ],
+      "applyStatus": "eligible",
+      "approval": {
+        "decision": "approved_after_memory_and_metallurgy_review",
+        "issues": [
+          "Ikkinchi ma’no umumiy metall emas, yaxshi ma’danli, yuqori navli va qattiq temirga tegishli"
+        ],
+        "reviewedAt": "2026-08-31"
+      }
+    }
+  ]
+}
+
+
