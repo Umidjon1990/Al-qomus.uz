@@ -180,3 +180,14 @@
   0% { filter: hue-rotate(0deg); }
   100% { filter: hue-rotate(360deg); }
 }
+
+/* Resize dictionary text without scaling card geometry or touch targets. */
+.dictionary-results { --dictionary-scale: 1; overflow-wrap: anywhere; }
+.dictionary-headword { font-size: calc(2rem * var(--dictionary-scale)); }
+.dictionary-translation, .dictionary-body { font-size: calc(1rem * var(--dictionary-scale)); }
+.dictionary-body .font-arabic { font-size: calc(1.25rem * var(--dictionary-scale)); }
+.dictionary-body details[open] > summary { color: #c2410c; }
+input[type="search"]::-webkit-search-cancel-button { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
