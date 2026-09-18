@@ -1,285 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import { DictionaryEntry, getRelatedWords } from "@/lib/api";
-import { Book, Globe, Copy, Share2, Info, ChevronDown, ChevronUp, Link2, Heart, Loader2 } from "lucide-react";
-import { isFavorite, toggleFavorite } from "@/lib/localStorage";
-import { Button } from "@/components/ui/button";
-import { DefinitionFormatter } from "./DefinitionFormatter";
-import { toast } from "@/hooks/use-toast";
+import React, { useEffect, useState } from 'react';
+import { Copy, Heart } from 'lucide-react';
+import { DictionaryEntry } from '@/lib/api';
+import { isFavorite, toggleFavorite } from '@/lib/localStorage';
+import { DefinitionFormatter } from './DefinitionFormatter';
+import { toast } from '@/hooks/use-toast';
 
-interface ResultCardProps {
-  entry: DictionaryEntry;
-  index: number;
+function parseList(value?: string | null): any[] {
+  try { const parsed = JSON.parse(value || '[]'); return Array.isArray(parsed) ? parsed : []; }
+  catch { return []; }
 }
 
-export function ResultCard({ entry, index }: ResultCardProps) {
-  const [showRelated, setShowRelated] = useState(false);
+export function ResultCard({ entry }: { entry: DictionaryEntry; index?: number }) {
   const [liked, setLiked] = useState(false);
-  
-  useEffect(() => {
-    setLiked(isFavorite(entry.id));
-  }, [entry.id]);
-  
-  const { data: relatedWords = [], isLoading: isLoadingRelated } = useQuery({
-    queryKey: ['related', entry.id],
-    queryFn: () => getRelatedWords(entry.id),
-    enabled: showRelated,
-  });
-
-  const handleToggleFavorite = () => {
-    const isNowFavorite = toggleFavorite({
-      id: entry.id,
-      arabic: entry.arabic,
-      uzbek: entry.uzbek,
-    });
-    setLiked(isNowFavorite);
-    toast({
-      title: isNowFavorite ? "Yoqtirilganlarga qo'shildi" : "Yoqtirilganlardan olib tashlandi",
-    });
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(`${entry.arabic} - ${entry.uzbek}`);
-    toast({
-      title: "Nusxalandi",
-      description: "So'z va tarjimasi nusxalandi",
-    });
-  };
-
-  const examples = entry.examplesJson ? JSON.parse(entry.examplesJson) : [];
-  const structuredMeanings = entry.meaningsJson ? JSON.parse(entry.meaningsJson) : [];
-
-  const extractWordTypeFromDefinition = (definition: string | null | undefined) => {
-    if (!definition) return { wordType: null, cleanDefinition: definition };
-    const match = definition.match(/^\s*\(([^)]+)\)\s*[.|]?\s*/);
-    if (match) {
-      return {
-        wordType: match[1].trim(),
-        cleanDefinition: definition.slice(match[0].length).trim()
-      };
-    }
-    return { wordType: null, cleanDefinition: definition };
-  };
-
-  const { wordType: extractedWordType, cleanDefinition } = extractWordTypeFromDefinition(entry.arabicDefinition);
-  
-  const displayType = entry.wordType 
-    ? entry.wordType 
-    : (extractedWordType || (entry.type && entry.type !== 'aniqlanmagan' && entry.type.length > 4 ? entry.type : null));
-  
-  const isGhoniyRoot = entry.dictionarySource === 'Ghoniy' && entry.type && entry.type.length <= 4;
-
-  const meaningColors = [
-    { bg: 'bg-orange-50', border: 'border-orange-200', badge: 'bg-orange-500', text: 'text-orange-900' },
-    { bg: 'bg-amber-50', border: 'border-amber-200', badge: 'bg-amber-500', text: 'text-amber-900' },
-    { bg: 'bg-yellow-50', border: 'border-yellow-200', badge: 'bg-yellow-600', text: 'text-yellow-900' },
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.08 }}
-    >
-      <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-orange-200 overflow-hidden group" data-testid={`card-product-${entry.id}`}>
-        <div className="px-6 pt-6 pb-4 bg-gradient-to-r from-gray-50 to-orange-50/20">
-          <div className="flex justify-between items-start">
-            <div className="flex-1">
-              <div className="flex items-baseline gap-3 mb-2">
-                <h2 className="text-3xl md:text-4xl font-arabic text-gray-900 leading-relaxed" dir="rtl" data-testid={`text-arabic-${entry.id}`}>
-                  {entry.arabic}
-                </h2>
-              </div>
-              
-              <div className="flex flex-wrap items-center gap-2 mt-2">
-                {(entry.root || isGhoniyRoot) && (
-                  <div className="inline-flex items-center gap-1.5 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
-                    <span className="text-xs text-gray-500 font-medium">ildiz:</span>
-                    <span className="text-base font-arabic text-gray-800 font-bold" dir="rtl">
-                      {entry.root || entry.type}
-                    </span>
-                  </div>
-                )}
-                
-                {displayType && (
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200">
-                    {displayType}
-                  </span>
-                )}
-              </div>
-              
-              {entry.transliteration && (
-                <p className="text-sm font-medium text-orange-600 mt-2">
-                  {entry.transliteration}
-                </p>
-              )}
-            </div>
-            <div className="flex items-center gap-1.5 ml-3">
-              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
-                entry.dictionarySource === 'Roid' 
-                  ? 'bg-gray-100 text-gray-600 border border-gray-200'
-                  : entry.dictionarySource === 'Muasir'
-                    ? 'bg-blue-50 text-blue-600 border border-blue-200'
-                    : 'bg-orange-50 text-orange-600 border border-orange-200'
-              }`} data-testid={`badge-source-${entry.id}`}>
-                {entry.dictionarySource}
-              </span>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={handleToggleFavorite} 
-                className="h-9 w-9 rounded-full"
-                data-testid={`btn-favorite-${entry.id}`}
-              >
-                <Heart className={`h-5 w-5 transition-all ${liked ? 'fill-red-500 text-red-500 scale-110' : 'text-gray-300'}`} />
-              </Button>
-              <Button variant="ghost" size="icon" onClick={copyToClipboard} className="h-9 w-9 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                <Copy className="h-4 w-4 text-gray-400" />
-              </Button>
-            </div>
+  useEffect(() => { setLiked(isFavorite(entry.id)); }, [entry.id]);
+  const meanings = parseList(entry.meaningsJson);
+  const examples = parseList(entry.examplesJson);
+  const word = entry.arabicVocalized || entry.arabic;
+  const root = entry.root || (entry.dictionarySource === 'Ghoniy' && entry.type?.replace(/[\u200e\u200f]/g, '').length <= 4 ? entry.type : '');
+  const type = entry.wordType || entry.arabicDefinition?.match(/^\s*\(([^)]+)\)/)?.[1];
+  const firstMeaning = meanings[0]?.uzbekMeaning || meanings[0]?.uzbek_meaning || entry.uzbek;
+  const senseExamples = meanings.filter(m => m.arabicExample || m.arabic_example).map(m => ({ arabic: m.arabicExample || m.arabic_example, uzbek: m.uzbekExample || m.uzbek_example }));
+  const allExamples = [...senseExamples, ...examples];
+  const definition = entry.arabicDefinitionVocalized || entry.arabicDefinition;
+  return <article className="bg-white rounded-xl border border-gray-200 overflow-hidden" data-testid={`card-product-${entry.id}`}>
+    <div className="p-4 sm:p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <h2 className="font-arabic dictionary-headword text-gray-900 break-words leading-relaxed" dir="rtl" data-testid={`text-arabic-${entry.id}`}>{word}</h2>
+          <p className="dictionary-translation text-gray-800 mt-1 leading-relaxed">{firstMeaning || 'O‘zbekcha tarjima hali kiritilmagan'}</p>
+          {meanings[0]?.confidence && meanings[0].confidence < 0.8 && <span className="text-xs text-amber-700">Taxminiy tarjima</span>}
+          <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs text-gray-500">
+            <span>{entry.dictionarySource}</span>
+            {root && <span>Ildiz: <b dir="rtl" className="font-arabic text-base">{root}</b></span>}
+            {type && <span>{type}</span>}
+            {entry.transliteration && <span>{entry.transliteration}</span>}
           </div>
         </div>
-
-        <div className="px-6 py-5">
-          {structuredMeanings.length > 0 ? (
-            <div className="mb-5 space-y-2.5">
-              <div className="flex items-center gap-2 mb-3">
-                <Globe className="h-4 w-4 text-orange-500" />
-                <span className="text-xs font-semibold text-orange-600 uppercase tracking-wider">O'zbekcha tarjima ({structuredMeanings.length} ma'no)</span>
-              </div>
-              {structuredMeanings.map((meaning: any, idx: number) => {
-                const color = meaningColors[idx % 3];
-                return (
-                  <div 
-                    key={idx}
-                    className={`p-4 rounded-xl border ${color.bg} ${color.border}`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold text-white shrink-0 ${color.badge}`}>
-                        {meaning.index || idx + 1}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <h3 className={`text-base font-bold ${color.text}`}>
-                          {meaning.uzbekMeaning || meaning.uzbek_meaning}
-                        </h3>
-                        
-                        {(meaning.arabicExample || meaning.arabic_example) && (
-                          <div className="mt-2 pt-2 border-t border-current/10">
-                            <p className="text-sm font-arabic text-gray-600" dir="rtl">
-                              {meaning.arabicExample || meaning.arabic_example}
-                            </p>
-                            {(meaning.uzbekExample || meaning.uzbek_example) && (
-                              <p className="text-sm text-gray-500 italic mt-1">
-                                ↳ {meaning.uzbekExample || meaning.uzbek_example}
-                              </p>
-                            )}
-                          </div>
-                        )}
-                        
-                        {meaning.confidence && meaning.confidence < 0.8 && (
-                          <span className="inline-flex items-center px-2 py-0.5 mt-2 text-xs rounded-full bg-orange-50 text-orange-600 border border-orange-200">
-                            Taxminiy tarjima
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="mb-5 p-4 bg-orange-50 rounded-xl border border-orange-200">
-              <div className="flex items-center gap-2 mb-1">
-                <Globe className="h-4 w-4 text-orange-500" />
-                <span className="text-xs font-semibold text-orange-600 uppercase tracking-wider">O'zbekcha tarjima</span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900">
-                {entry.uzbek || <span className="text-gray-400 italic text-sm font-normal">Tarjima qilinmagan</span>}
-              </h3>
-            </div>
-          )}
-
-          {entry.arabicDefinition && (
-            <div className="mb-5 bg-gray-50 p-4 rounded-xl border border-gray-200">
-              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-1">
-                <Info className="h-3 w-3" />
-                Arabcha izohi
-              </h4>
-              <DefinitionFormatter definition={cleanDefinition || entry.arabicDefinition} />
-            </div>
-          )}
-
-          {examples.length > 0 && (
-            <div className="space-y-3 bg-gray-50 p-4 rounded-xl border border-gray-200">
-              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
-                <Book className="h-3.5 w-3.5" />
-                Misollar
-              </h4>
-              <div className="space-y-2.5">
-                {examples.map((ex: any, idx: number) => (
-                  <div key={idx} className="grid md:grid-cols-2 gap-2 md:gap-6 text-sm md:text-base border-b border-gray-200 last:border-0 pb-2 last:pb-0">
-                    <p className="font-arabic text-right text-gray-700 text-base" dir="rtl">{ex.arabic}</p>
-                    <p className="text-gray-500 italic">{ex.uzbek}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="mt-4 pt-3 border-t border-gray-100 space-y-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setShowRelated(!showRelated)}
-              className="w-full justify-between text-gray-400 hover:text-orange-500 rounded-xl"
-              data-testid={`button-related-${entry.id}`}
-            >
-              <span className="flex items-center gap-2">
-                <Link2 className="h-4 w-4" />
-                O'xshash so'zlar
-              </span>
-              {showRelated ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-            </Button>
-            
-            <AnimatePresence>
-              {showRelated && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  <div className="mt-2 space-y-2">
-                    {isLoadingRelated ? (
-                      <div className="flex items-center justify-center gap-2 py-3 text-sm text-gray-400">
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Yuklanmoqda...
-                      </div>
-                    ) : relatedWords.length > 0 ? (
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                        {relatedWords.slice(0, 12).map((related) => (
-                          <div
-                            key={related.id}
-                            className="p-2.5 bg-gray-50 rounded-xl border border-gray-100 hover:border-orange-200 hover:bg-orange-50/30 transition-all cursor-pointer"
-                            data-testid={`related-word-${related.id}`}
-                          >
-                            <p className="font-arabic text-lg text-gray-800" dir="rtl">{related.arabic}</p>
-                            <p className="text-xs text-gray-400 truncate">{related.uzbek || "—"}</p>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-sm text-gray-400 text-center py-3">O'xshash so'zlar topilmadi</p>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+        <div className="flex shrink-0 flex-col sm:flex-row">
+          <button aria-label={liked ? 'Saqlanganlardan olib tashlash' : 'So‘zni saqlash'} aria-pressed={liked} className="p-3 rounded-lg hover:bg-orange-50" onClick={() => setLiked(toggleFavorite({ id: entry.id, arabic: entry.arabic, uzbek: entry.uzbek }))}>
+            <Heart className={`h-5 w-5 ${liked ? 'fill-orange-500 text-orange-500' : 'text-gray-500'}`} />
+          </button>
+          <button aria-label="So‘z va tarjimani nusxalash" className="p-3 rounded-lg hover:bg-orange-50 text-gray-500" onClick={async () => {
+            try { await navigator.clipboard.writeText(`${word} — ${firstMeaning || ''}`); toast({ title: 'Nusxalandi' }); }
+            catch { toast({ title: 'Nusxalab bo‘lmadi', description: 'Matnni belgilab nusxalang.', variant: 'destructive' }); }
+          }}><Copy className="h-5 w-5" /></button>
         </div>
       </div>
-    </motion.div>
-  );
+    </div>
+    <div className="dictionary-body border-t border-gray-100 divide-y divide-gray-100">
+      {meanings.length > 1 && <details className="px-4 sm:px-5"><summary className="cursor-pointer py-3 text-sm font-medium text-gray-700">Barcha ma’nolar ({meanings.length})</summary>
+        <ol className="list-decimal pl-5 pb-4 space-y-3">{meanings.map((m, i) => <li key={i}>{m.uzbekMeaning || m.uzbek_meaning}{m.confidence && m.confidence < 0.8 && <span className="block text-xs text-amber-700">Taxminiy tarjima</span>}</li>)}</ol>
+      </details>}
+      {allExamples.length > 0 && <details className="px-4 sm:px-5"><summary className="cursor-pointer py-3 text-sm font-medium text-gray-700">Misollar ({allExamples.length})</summary>
+        <div className="space-y-4 pb-4">{allExamples.map((ex, i) => <div key={i}><p className="font-arabic leading-loose" dir="rtl">{ex.arabic}</p>{ex.uzbek && <p className="text-gray-600 mt-1">{ex.uzbek}</p>}</div>)}</div>
+      </details>}
+      {definition && <details className="px-4 sm:px-5"><summary className="cursor-pointer py-3 text-sm font-medium text-gray-700">Arabcha izoh · {entry.dictionarySource}</summary><div className="pb-4"><DefinitionFormatter definition={definition} /></div></details>}
+    </div>
+  </article>;
 }
