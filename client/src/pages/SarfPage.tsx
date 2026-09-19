@@ -56,7 +56,7 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
  async function copy(){if(!v)return;const text=[`${v.past} — ${v.present}`,v.meaning,title,...persons.map((p,i)=>forms[i]?`${p}\t${forms[i]}${second?'\t'+second[i]:''}`:'').filter(Boolean)].join('\n');try{await navigator.clipboard.writeText(text);setNotice('Jadval nusxalandi.');}catch{setNotice('Nusxalash bajarilmadi. Brauzerning chop etish tugmasidan foydalaning.');}}
  return <Layout><div className="sarf-page max-w-4xl mx-auto px-3 sm:px-4 pb-6">
   <style>{`@media print { body * { visibility: hidden; } .sarf-result, .sarf-result * { visibility: visible; } .sarf-result { position: absolute; left: 0; top: 0; width: 100%; } .no-print, .no-print * { display: none !important; } table { break-inside: auto; } tr { break-inside: avoid; } }`}</style>
-  <div className="no-print sticky top-12 z-40 -mx-3 sm:-mx-4 border-b border-gray-200 bg-white px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
+  <div className="no-print sticky top-10 z-40 -mx-3 sm:-mx-4 border-b border-gray-200 bg-white px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
    <div className="flex items-center justify-between gap-2 mb-2"><h1 className="text-sm font-semibold text-gray-800">Sarf — fe’l tuslash</h1><Link href="/" className="text-xs text-teal-700 py-1">Lug‘atga qaytish</Link></div>
    {!params?.id?<form role="search" onSubmit={e=>{e.preventDefault();setQ(search.trim());inputRef.current?.blur();}} className="relative flex items-center rounded-xl border-2 border-teal-500 bg-white shadow-sm focus-within:ring-2 focus-within:ring-teal-200">
     <Search aria-hidden="true" className="absolute left-3 h-5 w-5 text-teal-600"/>

@@ -9,7 +9,7 @@ interface HeroProps {
 
 export function Hero({ searchTerm, setSearchTerm, totalWords }: HeroProps) {
   return (
-    <section className="sticky top-12 z-40 border-b border-gray-200 bg-white shadow-sm">
+    <section className="sticky top-10 z-40 border-b border-gray-200 bg-white shadow-sm">
       <div className="max-w-4xl mx-auto px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between gap-3 mb-2">
           <h1 className="text-sm font-semibold text-gray-700">Arabcha–o‘zbekcha lug‘at</h1>

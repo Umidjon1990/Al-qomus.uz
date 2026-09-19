@@ -13,8 +13,8 @@ export function Layout({children}:{children:React.ReactNode}){
  const [location]=useLocation();const {user,isAdmin,logout}=useAuth();
  return <div className="app-shell min-h-screen flex flex-col font-sans">
   <header className="app-header sticky top-0 z-50">
-   <div className="mx-auto max-w-5xl px-4 h-12 flex items-center justify-between">
-    <Link href="/" aria-label="Al-Qomus bosh sahifa" className="flex items-center gap-2.5"><span className="brand-mark"><BookOpen size={18}/></span><span className="text-[15px] font-bold tracking-wide">AL-QOMUS<span className="text-emerald-300">.UZ</span></span></Link>
+   <div className="mx-auto max-w-5xl px-4 h-10 flex items-center justify-between">
+    <Link href="/" aria-label="Al-Qomus bosh sahifa" className="flex items-center gap-2.5"><span className="brand-mark"><BookOpen size={15}/></span><span className="text-[13px] font-bold tracking-wide">AL-QOMUS<span className="text-emerald-300">.UZ</span></span></Link>
     <span className="text-[10px] tracking-widest text-slate-300">ARABCHA · O‘ZBEKCHA</span>
    </div>
   </header>
