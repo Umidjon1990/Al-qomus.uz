@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+  const isSarf = location === "/sarf" || location.startsWith("/sarf/");
   const [isOpen, setIsOpen] = React.useState(false);
   const { user, logout, isAdmin } = useAuth();
 
@@ -48,8 +49,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
-            <NavLink href="/">Lug'at</NavLink>
-            <Link href="/sarf" className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700">SARF</Link>
+            {isSarf ? <Link href="/" className="rounded-lg bg-orange-600 px-4 py-3 text-sm font-semibold text-white hover:bg-orange-700">Lug‘at</Link> : <NavLink href="/">Lug'at</NavLink>}
+            <Link href="/sarf" className={isSarf ? "text-sm font-semibold text-orange-600" : "rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700"}>SARF</Link>
             <NavLink href="/about">Loyiha haqida</NavLink>
             
             {isAdmin && (
@@ -99,7 +100,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </nav>
 
           <div className="md:hidden flex items-center gap-2">
-            <Link href="/sarf" className="rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white">SARF</Link>
+            <Link href={isSarf ? "/" : "/sarf"} className="inline-flex min-h-11 items-center rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white">{isSarf ? 'Lug‘at' : 'SARF'}</Link>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Menyuni ochish" className="h-11 w-11">
