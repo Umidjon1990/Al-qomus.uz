@@ -17,14 +17,29 @@ export async function sarfCatalog():Promise<ExpandedVerb[]> {
   cache=attachMeanings(rows,morphology);expires=Date.now()+300000;return cache;
  })();try{return await pending;}finally{pending=null;}
 }
-const reverseCache=new Map<string,{ids:number[];exact:boolean}>();
+type ReverseResult={ids:number[];exact:boolean;matches:Record<string,string[]>};
+const reverseCache=new Map<string,ReverseResult>();
+const reversePending=new Map<string,Promise<ReverseResult>>();
+async function lookupForms(query:string):Promise<ReverseResult>{
+ const key=canonical(query);const cached=reverseCache.get(key);if(cached)return cached;
+ const pending=reversePending.get(key);if(pending)return pending;
+ const request=sarfProcess<ReverseResult>('lookup',{query});reversePending.set(key,request);
+ try {const result=await request;if(reverseCache.size>=200)reverseCache.delete(reverseCache.keys().next().value!);reverseCache.set(key,result);return result;}
+ finally {reversePending.delete(key);}
+}
+export async function dictionaryVerbForms(query:string){
+ const q=query.trim().replace(/^(?:لَمْ|لَنْ|لَا|لم|لن|لا)\s+/, '');
+ if(q.length>80||!plain(q)||!/^[ء-يً-ْ]+$/.test(q))return {verbs:[],truncated:false};
+ const [result,all]=await Promise.all([lookupForms(q),sarfCatalog()]);
+ const ids=new Set(result.ids);
+ return {verbs:all.filter(v=>ids.has(v.id)).map(v=>({...v,matchedForms:result.matches[String(v.id)]||[]})),truncated:result.ids.length>200};
+}
 export async function searchSarf(query:string):Promise<SarfSearch>{
  query=query.replace(/^(?:لَمْ|لَنْ|لَا|لم|لن|لا)\s+/, '');
  const all=await sarfCatalog();const q=plain(query);const exact=canonical(query);
  let reverse=false;let ids:number[]=[];
  if(q&&/^[ء-يً-ْ]+$/.test(query)){
-  let result=reverseCache.get(exact);
-  if(!result){result=await sarfProcess<{ids:number[];exact:boolean}>('lookup',{query});if(reverseCache.size>=200)reverseCache.delete(reverseCache.keys().next().value!);reverseCache.set(exact,result);}
+  const result=await lookupForms(query);
   ids=result.ids;reverse=ids.length>0&&!all.some(v=>canonical(v.past)===exact||canonical(v.present)===exact);
  }
  const idSet=new Set(ids);

@@ -8,4 +8,9 @@ def compatible(a,b):
     x=re.findall('[ء-ي][ً-ْ]*',canonical(a));y=re.findall('[ء-ي][ً-ْ]*',canonical(b))
     return len(x)==len(y) and all(p[0]==t[0] and all(mark in t for mark in p[1:]) for p,t in zip(x,y))
 ids=exact or list(dict.fromkeys(r[1] for r in con.execute('SELECT vocalized,id FROM forms WHERE plain=?',(plain(q),)) if compatible(q,r[0])))[:201]
-print(json.dumps({'ids':ids,'exact':bool(exact)}))
+matches={}
+for vocalized,id in con.execute('SELECT vocalized,id FROM forms WHERE plain=?',(plain(q),)):
+    if id in ids and compatible(q,vocalized) and (not exact or vocalized==canonical(q)):
+        words=matches.setdefault(str(id),[])
+        if vocalized not in words and len(words)<20:words.append(vocalized)
+print(json.dumps({'ids':ids,'exact':bool(exact),'matches':matches},ensure_ascii=False))

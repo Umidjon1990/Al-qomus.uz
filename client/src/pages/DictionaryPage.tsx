@@ -1,3 +1,5 @@
+import { Link } from 'wouter';
+import type { ExpandedVerb } from '@shared/sarf-expanded';
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
@@ -87,6 +89,13 @@ export default function DictionaryPage() {
     enabled: debouncedSearch.length > 0 && selectedSources.length > 0,
   });
 
+  const {data: formData, isError: formsError, isFetching: formsLoading} = useQuery({
+    queryKey:['dictionary-verb-forms',debouncedSearch],
+    queryFn:async()=>{const r=await fetch('/api/dictionary/verb-forms?q='+encodeURIComponent(debouncedSearch));if(!r.ok)throw new Error('Fe’l tahlili yuklanmadi');return r.json() as Promise<{verbs:(ExpandedVerb&{matchedForms:string[]})[];truncated:boolean}>;},
+    enabled: /[ء-ي]/.test(debouncedSearch) && debouncedSearch.length<=80 && selectedSources.length>0,
+  });
+  const formVariants=(formData?.verbs||[]).filter(v=>v.meanings.some(m=>selectedSources.includes(m.source))||(!v.entryIds.length&&selectedSources.length===DICTIONARY_SOURCES.length));
+
   const { data: examplesData } = useQuery({
     queryKey: ['examples', debouncedSearch],
     queryFn: () => searchExamples(debouncedSearch, 20),
@@ -139,7 +148,7 @@ export default function DictionaryPage() {
 
         {debouncedSearch && selectedSources.length > 0 && (
           <div className="mb-6 text-gray-400 text-center text-sm" data-testid="search-result-count">
-            <span className="font-medium text-gray-700">"{debouncedSearch}"</span> bo'yicha {entries.length >= 50 ? 'Dastlabki 50' : entries.length} ta natija
+            <span className="font-medium text-gray-700">"{debouncedSearch}"</span> bo'yicha {entries.length >= 50 ? 'Dastlabki 50' : entries.length} ta lug‘at yozuvi{formVariants.length>0?` · ${formVariants.length} ta fe’l varianti`:''}
           </div>
         )}
 
@@ -236,7 +245,7 @@ export default function DictionaryPage() {
           </div>
         ) : isError ? (
           <div role="alert" className="max-w-4xl mx-auto p-6 rounded-xl border border-orange-200 bg-orange-50">Lug‘atni yuklab bo‘lmadi. Internet aloqasini tekshirib, qayta urinib ko‘ring.</div>
-        ) : isLoading ? (
+        ) : isLoading || formsLoading ? (
           <div className="text-center py-20">
             <div className="inline-flex items-center gap-3 bg-white rounded-2xl shadow-lg px-6 py-4 border border-gray-100">
               <Loader2 className="h-5 w-5 animate-spin text-orange-500" />
@@ -281,6 +290,20 @@ export default function DictionaryPage() {
               className="grid gap-4 dictionary-results"
               style={{ '--dictionary-scale': zoomLevel / 100 } as React.CSSProperties}
             >
+              {formVariants.length>0 && <section className="mb-5 space-y-3" aria-label="Fe’lning asl shakllari">
+                <h2 className="text-base font-semibold">Fe’lning asl shakllari</h2>
+                <p className="text-sm text-gray-600">Bir yozilish bir nechta fe’lga mos kelishi mumkin. Ma’nosiga qarab tanlang.</p>
+                {formVariants.map(v=><article key={v.id} className="rounded-xl border border-orange-200 bg-white p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div><p className="text-xs text-gray-500">Qidirilgan shakl</p><p dir="rtl" className="text-2xl leading-relaxed">{v.matchedForms.join(' / ')||debouncedSearch}</p></div>
+                    <div><p className="text-xs text-gray-500">Lug‘atdagi shakli · moziy — muzori’</p><p dir="rtl" className="text-2xl leading-relaxed">{v.past} — {v.present}</p></div>
+                  </div>
+                  <p className="mt-2 text-sm">{v.meanings.find(m=>selectedSources.includes(m.source))?.text||v.meaning||'Tarjima hali bog‘lanmagan'}</p>
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm"><span className="text-gray-500">{v.kind} · {v.transitive?'O‘timli':'O‘timsiz'} · Ildiz: <span dir="rtl">{v.root}</span></span><Link href={'/sarf/'+v.id} className="inline-flex min-h-11 items-center rounded-lg bg-orange-600 px-4 text-white">Tuslanishini ko‘rish</Link></div>
+                </article>)}
+                {formData?.truncated&&<p className="text-sm text-gray-600">Variantlar ko‘p. Qidiruvni harakatlar bilan aniqlashtiring.</p>}
+              </section>}
+              {formsError&&<p className="mb-4 text-sm text-gray-600">Fe’l tahlili vaqtincha yuklanmadi. Qidiruvni qayta urinib ko‘ring.</p>}
               {entries.length > 0 ? (
                 Array.from(groups.entries()).map(([word, records]) => (
                   <section key={word} aria-label={`${word} lug‘at yozuvlari`} className="space-y-2">
@@ -291,7 +314,7 @@ export default function DictionaryPage() {
                     </details>}
                   </section>
                 ))
-              ) : (
+              ) : formVariants.length ? null : (
                 <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-gray-200">
                   <div className="bg-gray-100 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <SearchX className="h-7 w-7 text-gray-400" />

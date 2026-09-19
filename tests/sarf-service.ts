@@ -8,3 +8,14 @@ for(const past of ['كتب','كَتبَ','<script>','كَتَبَ; touch /tmp/ba
 await assert.rejects(()=>manualSarf({past:'أَكْرَمَ',root:'كرم',futureType:'فتحة',triliteral:true,transitive:true}));
 const found=await sarfProcess<{ids:number[]}>('lookup',{query:'قُلْتُ'});assert(found.ids.includes(-10095));
 console.log('Real Node/Python protocol, manual validation, hollow correction and reverse lookup passed.');
+
+const written=await sarfProcess<{ids:number[];matches:Record<string,string[]>}>('lookup',{query:'كَتَبْتُ'});
+assert(written.ids.includes(-10136));assert(!written.ids.includes(-1552));
+assert.deepEqual(written.matches['-10136'],['كَتَبْتُ']);
+const ambiguous=await sarfProcess<{ids:number[];matches:Record<string,string[]>}>('lookup',{query:'كتبت'});
+assert(ambiguous.ids.includes(-10136));assert(ambiguous.ids.includes(-1552));
+assert(ambiguous.matches['-10136'].includes('كَتَبْتُ'));
+const attain=await sarfProcess<{ids:number[];matches:Record<string,string[]>}>('lookup',{query:'يَنَالُونَ'});
+assert.deepEqual(attain.ids,[-20002]);assert.deepEqual(attain.matches['-20002'],['يَنَالُونَ']);
+const absent=await sarfProcess<{ids:number[]}>('lookup',{query:'zzzz'});assert.deepEqual(absent.ids,[]);
+console.log('Inflected dictionary lookup: vocalization, ambiguity, canonical forms and absent queries passed.');

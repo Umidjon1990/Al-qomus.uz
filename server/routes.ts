@@ -1,4 +1,4 @@
-import { searchSarf, sarfDetail, manualSarf } from './sarf';
+import { searchSarf, sarfDetail, manualSarf, dictionaryVerbForms } from './sarf';
 import { extractSarf, conjugate } from '@shared/sarf';
 import type { Express } from "express";
 import { createServer, type Server } from "http";
@@ -13,6 +13,13 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  app.get('/api/dictionary/verb-forms', async (req,res)=>{
+    const q=typeof req.query.q==='string'?req.query.q.trim():'';
+    if(q.length>80)return res.status(400).json({error:'Qidiruv juda uzun'});
+    try {res.json(await dictionaryVerbForms(q));}
+    catch {res.status(503).json({error:'Fe’l shakllarini yuklab bo‘lmadi'});}
+  });
+
   app.get('/api/sarf', async (req, res) => {
     try { const q=typeof req.query.q === 'string' ? req.query.q.trim() : ''; if(q.length>80)return res.status(400).json({error:'Qidiruv juda uzun'}); res.json(await searchSarf(q)); }
     catch { res.status(503).json({error:'Sarf ma’lumotlarini yuklab bo‘lmadi'}); }
