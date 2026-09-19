@@ -52,7 +52,7 @@ export async function sarfDetail(id:number):Promise<SarfDetail|{candidates:Expan
 export async function manualSarf(input:unknown):Promise<SarfDetail>{
  const d=input as Record<string,unknown>;
  if(!d||typeof d.past!=='string'||d.past.length>30||!fullyVocalized(d.past)||typeof d.root!=='string'||!/^[ءأإؤئبتثجحخدذرزسشصضطظعغفقكلمنهوي]{3,4}$/.test(d.root)||!['فتحة','ضمة','كسرة'].includes(String(d.futureType))||typeof d.transitive!=='boolean'||typeof d.triliteral!=='boolean')throw Error('Moziy, ildiz va muzori’ harakatini to‘liq kiriting');
- const result=await sarfProcess<Morphology&{tables:SarfDetail['tables']}>('engine',d);
+ const result=await sarfProcess<Morphology&{tables:SarfDetail['tables']}>('engine',{past:d.past,root:d.root,futureType:d.futureType,triliteral:d.triliteral,transitive:d.transitive});
  const {tables,...metadata}=result;
  const verb:ExpandedVerb={...metadata,id:0,root:d.root,transitive:d.transitive,triliteral:d.triliteral,futureType:String(d.futureType),meaning:'',meanings:[],entryIds:[],masdar:'',source:'Kiritilgan ma’lumot',manual:true};
  // Never silently accept an engine correction to supplied vocalization.
