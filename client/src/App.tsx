@@ -1,3 +1,4 @@
+import SarfPage from "@/pages/SarfPage";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -37,6 +38,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={DictionaryPage} />
+      <Route path="/sarf/:id" component={SarfPage} />
+      <Route path="/sarf" component={SarfPage} />
       <Route path="/quiz" component={QuizPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/login" component={LoginPage} />
