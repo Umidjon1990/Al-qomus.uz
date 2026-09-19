@@ -1,3 +1,5 @@
+import { searchSarf } from './sarf';
+import { extractSarf, conjugate } from '@shared/sarf';
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
@@ -11,6 +13,18 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  app.get('/api/sarf', async (req, res) => {
+    try { const q=typeof req.query.q === 'string' ? req.query.q.trim() : ''; if(q.length>80)return res.status(400).json({error:'Qidiruv juda uzun'}); res.json(await searchSarf(q)); }
+    catch { res.status(503).json({error:'Sarf ma’lumotlarini yuklab bo‘lmadi'}); }
+  });
+  app.get('/api/sarf/:id', async (req, res) => {
+    const id=Number(req.params.id);if(!Number.isSafeInteger(id)||id<1)return res.status(400).json({error:'Noto‘g‘ri raqam'});
+    try { const entry=await storage.getDictionaryEntry(id); const verb=entry && extractSarf(entry);
+      if(!verb)return res.status(422).json({error:'Bu yozuvning turi yoki grammatik ma’lumotlari hozircha tuslash uchun tayyor emas.'});
+      res.json({verb,tables:conjugate(verb)});
+    } catch {res.status(503).json({error:'Tuslashni yuklab bo‘lmadi'});}
+  });
+
   // Health check endpoint - Railway avtomatik restart qiladi agar ishlamasa
   app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
