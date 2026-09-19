@@ -11,11 +11,13 @@ db=sqlite3.connect(dbfile)
 db.execute('PRAGMA journal_mode=OFF')
 db.execute('PRAGMA synchronous=OFF')
 db.execute('CREATE TABLE forms (vocalized TEXT, plain TEXT, id INTEGER)')
-catalog=[]; rejected=[];seen=set();start=time.time()
+catalog=[]; rejected=[];seen=set();start=time.time();input_count=0;supplement_count=0
 source=BASE.parent/'data/sarf/arramooz-verbs.tsv'
 supplement=source.with_name('supplement.tsv')
 with source.open() as f, supplement.open() as extra:
     for row in itertools.chain(csv.DictReader(f,delimiter='\t'),csv.DictReader(extra,delimiter='\t')):
+        input_count+=1
+        if int(row['id'])>=20000:supplement_count+=1
         try:
             root=row['root']; transitive=row['transitive']=='1';tri=row['triliteral']=='1'
             result=generate(row['past'],row['futureType'],root,tri,transitive)
@@ -33,7 +35,7 @@ with source.open() as f, supplement.open() as extra:
 db.execute('CREATE INDEX vocalized_lookup ON forms(vocalized)')
 db.execute('CREATE INDEX plain_lookup ON forms(plain)')
 db.commit()
-summary={'input':13942,'supplements':1,'duplicates':13943-len(catalog)-len(rejected),'accepted':len(catalog),'rejected':len(rejected),'forms':db.execute('select count(*) from forms').fetchone()[0],'sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'seconds':round(time.time()-start,2)}
+summary={'input':input_count-supplement_count,'supplements':supplement_count,'duplicates':input_count-len(catalog)-len(rejected),'accepted':len(catalog),'rejected':len(rejected),'forms':db.execute('select count(*) from forms').fetchone()[0],'sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'seconds':round(time.time()-start,2)}
 (OUT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,separators=(',',':')))
 (OUT/'audit.json').write_text(json.dumps(dict(summary=summary,rejected=rejected),ensure_ascii=False,indent=2))
 print(json.dumps(summary,ensure_ascii=False))

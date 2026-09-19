@@ -102,3 +102,12 @@ transitivity, invalid-input and reverse-lookup checks.
 قَالَ senses, checks vocalization conflicts and nominal inflections.
 `tests/sarf-audit.ts`: original 3,080 sound-entry regressions.
 Build audit lists every excluded row and reason in `generated/audit.json`.
+
+## Reviewed نَالَ supplement
+
+Supplement 20002 adds نَالَ يَنَالُ (root نيل, transitive), with the
+attainment/reaching sense and lexical masdars نَيْل and مَنَال. It is kept
+separate from Arramooz's يَنُولُ and يَنِيلُ variants. The Uzbek gloss is
+editorial; existing yanulu dictionary entry IDs are not reused.
+Reference checked 2026-09-19: https://en.wiktionary.org/wiki/نال
+Imperatives: نَلْ، نَالَا، نَالُوا، نَالِي، نَالَا، نَلْنَ.

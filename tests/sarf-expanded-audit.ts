@@ -13,6 +13,10 @@ for(const line of readFileSync('dictionary_backup.sql','utf8').split('\n')){
 const morphology:Morphology[]=JSON.parse(readFileSync('sarf/generated/catalog.json','utf8'));
 const all=attachMeanings(entries,morphology);
 assert(all.length>13000);
+const attain=all.find(v=>v.id===-20002);assert(attain);
+assert.equal(attain.present,'يَنَالُ');assert(attain.meaning.includes('erishmoq'));
+assert(!attain.entryIds.includes(81671));
+assert(all.some(v=>v.past==='نَالَ'&&v.present==='يَنُولُ'&&v.entryIds.includes(81671)));
 const qal=all.filter(v=>v.past==='قَالَ');assert(qal.length>=2);
 const speak=qal.find(v=>v.present==='يَقُولُ');const nap=qal.find(v=>v.present==='يَقِيلُ');assert(speak);assert(nap);
 assert(speak.entryIds.includes(23624));assert(!speak.entryIds.includes(23758));assert(nap.entryIds.includes(23758));assert(!nap.entryIds.includes(23624));

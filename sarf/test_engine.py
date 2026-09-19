@@ -42,6 +42,14 @@ class MorphologyTests(unittest.TestCase):
             with self.subTest(past=past):
                 t=generate(past,future,root,tri,True)['tables']
                 for got,want in [(t['active'][1][0],present),(t['active'][0][12],ana),(t['command'][0][6],amr),(t['passive'][0][0],passive)]:self.assertIn(canonical(got),[canonical(want), 'اُمْدُدْ'] if past=='مَدَّ' and want=='مُدَّ' else [canonical(want)])
+    def test_nala_fatha_variant(self):
+        t=generate('نَالَ','فتحة','نيل',True,True)['tables']
+        self.assertEqual(t['active'][1][0],'يَنَالُ')
+        self.assertEqual(t['active'][0][12],'نِلْتُ')
+        self.assertEqual(t['passive'][0][0],'نِيلَ')
+        self.assertEqual([t['command'][0][i] for i in range(6,12)],['نَلْ','نَالَا','نَالُوا','نَالِي','نَالَا','نَلْنَ'])
+        self.assertEqual([t['command'][1][i] for i in range(6,12)],['لَا تَنَلْ','لَا تَنَالَا','لَا تَنَالُوا','لَا تَنَالِي','لَا تَنَالَا','لَا تَنَلْنَ'])
+
     def test_weak_moods_and_emphasis(self):
         t=generate('رَمَى','كسرة','رمي',True,True)['tables']
         self.assertEqual(t['active'][2][0],'يَرْمِيَ');self.assertEqual(t['active'][3][0],'يَرْمِ')
