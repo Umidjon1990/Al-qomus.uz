@@ -1,4 +1,4 @@
-import { searchSarf } from './sarf';
+import { searchSarf, sarfDetail, manualSarf } from './sarf';
 import { extractSarf, conjugate } from '@shared/sarf';
 import type { Express } from "express";
 import { createServer, type Server } from "http";
@@ -17,11 +17,22 @@ export async function registerRoutes(
     try { const q=typeof req.query.q === 'string' ? req.query.q.trim() : ''; if(q.length>80)return res.status(400).json({error:'Qidiruv juda uzun'}); res.json(await searchSarf(q)); }
     catch { res.status(503).json({error:'Sarf ma’lumotlarini yuklab bo‘lmadi'}); }
   });
+  app.post('/api/sarf/manual', async (req, res) => {
+    try { res.json(await manualSarf(req.body)); }
+    catch { res.status(422).json({error:'Moziyni harakatlari bilan, ildiz va muzori’ harakatini tekshirib kiriting. Bu vazn hali qo‘llanmasligi ham mumkin.'}); }
+  });
   app.get('/api/sarf/:id', async (req, res) => {
-    const id=Number(req.params.id);if(!Number.isSafeInteger(id)||id<1)return res.status(400).json({error:'Noto‘g‘ri raqam'});
-    try { const entry=await storage.getDictionaryEntry(id); const verb=entry && extractSarf(entry);
-      if(!verb)return res.status(422).json({error:'Bu yozuvning turi yoki grammatik ma’lumotlari hozircha tuslash uchun tayyor emas.'});
-      res.json({verb,tables:conjugate(verb)});
+    const id=Number(req.params.id);if(!Number.isSafeInteger(id)||id===0)return res.status(400).json({error:'Noto‘g‘ri raqam'});
+    try { const result=await sarfDetail(id);
+      if(result)return res.json(result);
+      // Existing sound-verb dictionary links retain their independently tested fallback.
+      const entry=id>0?await storage.getDictionaryEntry(id):null;const verb=entry&&extractSarf(entry);
+      if(verb){
+        const result=await manualSarf({past:verb.past,root:verb.root,futureType:({'َ':'فتحة','ُ':'ضمة','ِ':'كسرة'} as Record<string,string>)[verb.presentVowel],triliteral:verb.form==='I',transitive:verb.transitive});
+        result.verb={...result.verb,id,manual:false,meaning:verb.meaning,source:verb.source,masdar:verb.masdar,meanings:[{id,source:verb.source,text:verb.meaning,masdar:verb.masdar}],entryIds:[id]};
+        return res.json(result);
+      }
+      return res.status(422).json({error:'Bu yozuvni grammatik katalogga ishonchli bog‘lab bo‘lmadi. SARF qidiruvida moziy yoki muzori’ni kiriting.'});
     } catch {res.status(503).json({error:'Tuslashni yuklab bo‘lmadi'});}
   });
 

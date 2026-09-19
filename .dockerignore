@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+*.sql
+*.sqlite
+*.tar.gz
+.env*
+sarf/generated
+**/__pycache__
