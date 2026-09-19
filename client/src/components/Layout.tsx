@@ -36,13 +36,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
-      <header className="sticky top-0 z-50 w-full border-b border-gray-200/60 bg-white/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200/60 bg-white">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-md shadow-orange-500/20">
+            <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-md shadow-orange-500/20">
               <BookOpen className="h-5 w-5 text-white" />
             </div>
-            <span className="text-lg font-bold tracking-tight text-gray-900">
+            <span className="text-sm sm:text-lg font-bold tracking-tight text-gray-900">
               AL-QOMUS<span className="text-orange-500">.UZ</span>
             </span>
           </Link>
@@ -102,7 +102,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <Link href="/sarf" className="rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white">SARF</Link>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Button variant="ghost" size="icon" aria-label="Menyuni ochish" className="h-11 w-11">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
