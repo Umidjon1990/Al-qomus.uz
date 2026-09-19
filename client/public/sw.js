@@ -1,4 +1,4 @@
-const CACHE_NAME = 'al-qomus-v2';
+const CACHE_NAME = 'al-qomus-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -41,6 +41,17 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   
+  if (event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).then(response => {
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy)));
+      }
+      return response;
+    }).catch(async () => (await caches.match(event.request)) || (await caches.match('/index.html')) || Response.error()));
+    return;
+  }
+
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(
       fetch(event.request).catch(() => {
