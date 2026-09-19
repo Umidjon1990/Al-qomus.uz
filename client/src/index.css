@@ -36,17 +36,17 @@
 }
 
 :root {
-  --background: 0 0% 97%;
-  --foreground: 0 0% 9%;
+  --background: 165 23% 97%;
+  --foreground: 215 42% 17%;
 
-  --primary: 24 95% 53%;
+  --primary: 173 80% 27%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 0 0% 12%;
+  --secondary: 215 42% 17%;
   --secondary-foreground: 0 0% 100%;
 
-  --accent: 24 30% 95%;
-  --accent-foreground: 24 95% 40%;
+  --accent: 166 45% 94%;
+  --accent-foreground: 173 80% 25%;
 
   --muted: 0 0% 92%;
   --muted-foreground: 0 0% 45%;
@@ -56,7 +56,7 @@
 
   --border: 0 0% 88%;
   --input: 0 0% 88%;
-  --ring: 24 95% 53%;
+  --ring: 173 80% 27%;
 
   --radius: 0.5rem;
 }
@@ -65,7 +65,7 @@
   --background: 0 0% 5%;
   --foreground: 0 0% 92%;
 
-  --primary: 24 95% 53%;
+  --primary: 173 80% 27%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 0 0% 15%;
@@ -82,7 +82,7 @@
 
   --border: 0 0% 18%;
   --input: 0 0% 18%;
-  --ring: 24 95% 53%;
+  --ring: 173 80% 27%;
 }
 
 @layer base {
@@ -191,3 +191,24 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Mobile application shell; safe areas keep content above iOS home indicator. */
+.app-shell { background: #f2f7f6; color:#192e42; padding-bottom:calc(94px + env(safe-area-inset-bottom,0px)); }
+.app-header { background:#142d3d; color:white; border-bottom:1px solid #244657; box-shadow:0 3px 15px #102e3914; }
+.brand-mark { display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:10px; color:#d5fff0; background:linear-gradient(145deg,#259b87,#126459); box-shadow:inset 0 1px 1px #ffffff70,0 3px 0 #0c493f; }
+.app-bottom { position:fixed; bottom:0; left:0; right:0; z-index:60; padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px)); background:#fff; border-top:1px solid #dceae6; box-shadow:0 -7px 26px #142d3d0c; border-radius:24px 24px 0 0; }
+.app-tab { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; min-height:66px; color:#62747c; border-radius:16px; transition:background .18s; }
+.app-tab.is-active { background:#eaf7f2; color:#0d665a; }
+.app-tab:focus-visible { outline:2px solid #0f766e; outline-offset:2px; }
+.tab-label { font-size:10px; font-weight:600; white-space:nowrap; }
+.app-icon { display:inline-flex; align-items:center; justify-content:center; width:38px; height:36px; border-radius:12px; color:white; position:relative; background:linear-gradient(145deg,#53cda8,#16806c); box-shadow:inset 0 1px 2px #ffffffb0,inset -2px -2px 3px #00000014,0 3px 0 #116350,0 5px 8px #163f4020; }
+.app-icon svg { filter:drop-shadow(0 2px 1px #00000026); }
+.app-icon.blue { background:linear-gradient(145deg,#69b8f1,#3678c8); box-shadow:inset 0 1px 2px #ffffffb0,0 3px 0 #255995,0 5px 8px #163f4020; }
+.app-icon.violet { background:linear-gradient(145deg,#b6a5ee,#7865ba); box-shadow:inset 0 1px 2px #ffffffb0,0 3px 0 #57458f,0 5px 8px #163f4020; }
+.app-icon.aqua { background:linear-gradient(145deg,#5dc5cd,#238c9e); box-shadow:inset 0 1px 2px #ffffffb0,0 3px 0 #176575,0 5px 8px #163f4020; }
+.app-shell main article { border-radius:20px; border-color:#dce8e4; box-shadow:0 3px 14px #142d3d04; }
+.app-shell main input[type=search] { font-size:18px; }
+.app-shell main table { background:white; }
+.app-shell main thead { background:#eaf4f1; }
+@media(min-width:640px){.tab-label{font-size:12px}.app-bottom nav{gap:12px}}
+@media print {.app-header,.app-bottom{display:none!important}.app-shell{padding-bottom:0;background:white}}

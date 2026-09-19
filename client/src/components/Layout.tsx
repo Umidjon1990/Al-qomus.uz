@@ -1,173 +1,29 @@
-import React from "react";
-import { Link, useLocation } from "wouter";
-import { BookOpen, Search, Edit3, Menu, LogIn, LogOut, User, MessageSquare, Bell } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useAuth } from "@/lib/auth";
-import { useQuery } from "@tanstack/react-query";
-import { Badge } from "@/components/ui/badge";
+import React from 'react';
+import { Link, useLocation } from 'wouter';
+import { BookOpen, Languages, Info, MessagesSquare, LogOut } from 'lucide-react';
+import { useAuth } from '@/lib/auth';
 
-export function Layout({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
-  const isSarf = location === "/sarf" || location.startsWith("/sarf/");
-  const [isOpen, setIsOpen] = React.useState(false);
-  const { user, logout, isAdmin } = useAuth();
-
-  const { data: telegramStats } = useQuery({
-    queryKey: ["telegram-stats"],
-    queryFn: async () => {
-      const res = await fetch("/api/telegram/stats");
-      if (!res.ok) return null;
-      return res.json();
-    },
-    enabled: isAdmin,
-    refetchInterval: 30000,
-  });
-
-  const newMessagesCount = telegramStats?.newMessages || 0;
-
-  const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-    const isActive = location === href;
-    return (
-      <Link href={href} className={`text-sm font-medium transition-colors hover:text-orange-500 ${isActive ? "text-orange-500" : "text-gray-500"}`}>
-        {children}
-      </Link>
-    );
-  };
-
-  return (
-    <div className="min-h-screen flex flex-col bg-background font-sans">
-      <header className="sticky top-0 z-50 w-full border-b border-gray-200/60 bg-white">
-        <div className="container mx-auto px-4 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-md shadow-orange-500/20">
-              <BookOpen className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-sm sm:text-lg font-bold tracking-tight text-gray-900">
-              AL-QOMUS<span className="text-orange-500">.UZ</span>
-            </span>
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-6">
-            {isSarf ? <Link href="/" className="rounded-lg bg-orange-600 px-4 py-3 text-sm font-semibold text-white hover:bg-orange-700">Lug‘at</Link> : <NavLink href="/">Lug'at</NavLink>}
-            <Link href="/sarf" className={isSarf ? "text-sm font-semibold text-orange-600" : "rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700"}>SARF</Link>
-            <NavLink href="/about">Loyiha haqida</NavLink>
-            
-            {isAdmin && (
-              <>
-                <NavLink href="/admin">
-                   <span className="flex items-center gap-1">
-                     <Edit3 className="h-3 w-3" />
-                     Lug'at
-                   </span>
-                </NavLink>
-                <NavLink href="/admin/telegram">
-                   <span className="flex items-center gap-1">
-                     <MessageSquare className="h-3 w-3" />
-                     Telegram
-                   </span>
-                </NavLink>
-                <Link href="/admin/telegram" data-testid="link-notifications">
-                  <Button variant="ghost" size="icon" className="relative h-9 w-9">
-                    <Bell className="h-4 w-4 text-gray-500" />
-                    {newMessagesCount > 0 && (
-                      <Badge 
-                        variant="destructive" 
-                        className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-orange-500"
-                        data-testid="badge-new-messages"
-                      >
-                        {newMessagesCount > 9 ? "9+" : newMessagesCount}
-                      </Badge>
-                    )}
-                  </Button>
-                </Link>
-              </>
-            )}
-
-            {user && (
-              <>
-                <div className="h-4 w-px bg-gray-200 mx-1"></div>
-                <span className="text-xs text-gray-400 flex items-center gap-1.5">
-                  <User className="h-3.5 w-3.5" />
-                  {user.username}
-                </span>
-                <Button variant="ghost" size="sm" onClick={logout} className="text-gray-400 hover:text-red-500 h-8 text-xs">
-                  <LogOut className="h-3.5 w-3.5 mr-1" />
-                  Chiqish
-                </Button>
-              </>
-            )}
-          </nav>
-
-          <div className="md:hidden flex items-center gap-2">
-            <Link href={isSarf ? "/" : "/sarf"} className="inline-flex min-h-11 items-center rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white">{isSarf ? 'Lug‘at' : 'SARF'}</Link>
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Menyuni ochish" className="h-11 w-11">
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="bg-white">
-                <div className="flex flex-col gap-5 mt-8">
-                  <Link href="/" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
-                    Lug'at
-                  </Link>
-                  <Link href="/sarf" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800">Sarf — fe’l tuslash</Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
-                    Loyiha haqida
-                  </Link>
-                  
-                  {isAdmin && (
-                    <>
-                      <div className="h-px bg-gray-100"></div>
-                      <Link href="/admin" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-orange-500">
-                        <Edit3 className="h-4 w-4" />
-                        Lug'at Tahriri
-                      </Link>
-                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-orange-500">
-                        <MessageSquare className="h-4 w-4" />
-                        Telegram
-                      </Link>
-                      <Link href="/admin/telegram" onClick={() => setIsOpen(false)} className="text-base font-medium flex items-center gap-2 text-gray-600">
-                        <Bell className="h-4 w-4" />
-                        Murojaatlar
-                        {newMessagesCount > 0 && (
-                          <Badge className="bg-orange-500 text-white ml-1">
-                            {newMessagesCount}
-                          </Badge>
-                        )}
-                      </Link>
-                    </>
-                  )}
-
-                  {user && (
-                    <>
-                      <div className="h-px bg-gray-100"></div>
-                      <Button variant="ghost" className="justify-start px-0 text-base font-medium text-red-500 hover:text-red-600" onClick={() => {
-                        logout();
-                        setIsOpen(false);
-                      }}>
-                        <LogOut className="h-4 w-4 mr-2" />
-                        Chiqish ({user.username})
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
-      </header>
-
-      <main className="flex-1">
-        {children}
-      </main>
-
-      <footer className="border-t border-gray-100 bg-gray-50 py-6">
-        <div className="container mx-auto px-4 text-center text-gray-400 text-xs">
-          <p>&copy; {new Date().getFullYear()} AL-QOMUS.UZ — Professional Arabcha-O'zbekcha lug'at</p>
-        </div>
-      </footer>
-    </div>
-  );
+const destinations=[
+  {href:'/',label:'Lug‘at',Icon:BookOpen,tone:'mint'},
+  {href:'/sarf',label:'Sarf',Icon:Languages,tone:'blue'},
+  {href:'/about',label:'Loyiha haqida',Icon:Info,tone:'violet'},
+  {href:'/contact',label:'Biz bilan aloqa',Icon:MessagesSquare,tone:'aqua'},
+];
+export function Layout({children}:{children:React.ReactNode}){
+ const [location]=useLocation();const {user,isAdmin,logout}=useAuth();
+ return <div className="app-shell min-h-screen flex flex-col font-sans">
+  <header className="app-header sticky top-0 z-50">
+   <div className="mx-auto max-w-5xl px-4 h-12 flex items-center justify-between">
+    <Link href="/" aria-label="Al-Qomus bosh sahifa" className="flex items-center gap-2.5"><span className="brand-mark"><BookOpen size={18}/></span><span className="text-[15px] font-bold tracking-wide">AL-QOMUS<span className="text-emerald-300">.UZ</span></span></Link>
+    <span className="text-[10px] tracking-widest text-slate-300">ARABCHA · O‘ZBEKCHA</span>
+   </div>
+  </header>
+  {user&&<div className="no-print mx-auto max-w-5xl flex flex-wrap items-center gap-4 px-4 py-2 text-xs">{isAdmin&&<><Link href="/admin">Lug‘at tahriri</Link><Link href="/admin/telegram">Telegram · Murojaatlar</Link></>}<button onClick={logout} className="flex items-center gap-1"><LogOut size={14}/> Chiqish ({user.username})</button></div>}
+  <main className="flex-1">{children}</main>
+  <footer className="app-bottom no-print">
+   <nav aria-label="Asosiy navigatsiya" className="mx-auto grid max-w-xl grid-cols-4 px-2">
+    {destinations.map(({href,label,Icon,tone})=>{const active=href==='/'?location==='/':location===href||location.startsWith(href+'/');return <Link key={href} href={href} aria-current={active?'page':undefined} className={'app-tab '+(active?'is-active':'')}><span className={'app-icon '+tone}><Icon size={23} strokeWidth={1.8}/></span><span className="tab-label">{label}</span></Link>;})}
+   </nav>
+  </footer>
+ </div>;
 }

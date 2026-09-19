@@ -1,3 +1,4 @@
+import ContactPage from '@/pages/ContactPage';
 import SarfPage from "@/pages/SarfPage";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
@@ -38,6 +39,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={DictionaryPage} />
+      <Route path="/contact" component={ContactPage} />
       <Route path="/sarf/:id" component={SarfPage} />
       <Route path="/sarf" component={SarfPage} />
       <Route path="/quiz" component={QuizPage} />

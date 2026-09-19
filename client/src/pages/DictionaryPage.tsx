@@ -111,7 +111,7 @@ export default function DictionaryPage() {
     return parts.map((part, i) => {
       const normalizedPart = part.replace(/[\u064B-\u0652\u0670\u0671]/g, '');
       if (normalizedPart.toLowerCase() === normalizedWord.toLowerCase()) {
-        return <span key={i} className="bg-orange-200/60 text-orange-800 px-1 rounded">{part}</span>;
+        return <span key={i} className="bg-teal-200/60 text-teal-800 px-1 rounded">{part}</span>;
       }
       return part;
     });
@@ -140,11 +140,11 @@ export default function DictionaryPage() {
             <option value="all">Barcha lug‘atlar</option>
             {DICTIONARY_SOURCES.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
           </select>
-          <button className="ml-auto text-sm text-gray-600 hover:text-orange-600 py-2" onClick={() => { setSearchTerm(''); setActiveTab('favorites'); refreshFavorites(); }}>♡ Saqlanganlar ({favorites.length})</button>
+          <button className="ml-auto text-sm text-gray-600 hover:text-teal-600 py-2" onClick={() => { setSearchTerm(''); setActiveTab('favorites'); refreshFavorites(); }}>♡ Saqlanganlar ({favorites.length})</button>
         </div>
 
         {selectedSources.length === 0 && (
-          <div className="text-center py-5 text-orange-600 bg-orange-50 rounded-xl mb-6 border border-orange-200 text-sm">
+          <div className="text-center py-5 text-teal-600 bg-teal-50 rounded-xl mb-6 border border-teal-200 text-sm">
             Kamida bitta lug'atni tanlang
           </div>
         )}
@@ -195,10 +195,10 @@ export default function DictionaryPage() {
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {history.map((item) => (
-                        <div key={item.term} className="flex items-center gap-1 bg-white border border-gray-200 px-3 py-1.5 rounded-full group hover:border-orange-300 transition-colors">
+                        <div key={item.term} className="flex items-center gap-1 bg-white border border-gray-200 px-3 py-1.5 rounded-full group hover:border-teal-300 transition-colors">
                           <button
                             onClick={() => handleHistoryClick(item.term)}
-                            className="text-sm text-gray-600 hover:text-orange-600 transition-colors"
+                            className="text-sm text-gray-600 hover:text-teal-600 transition-colors"
                             data-testid={`history-item-${item.term}`}
                           >
                             {item.term}
@@ -227,7 +227,7 @@ export default function DictionaryPage() {
                       <button
                         key={fav.id}
                         onClick={() => setSearchTerm(fav.arabic)}
-                        className="w-full flex items-center justify-between p-3 bg-white rounded-xl hover:bg-orange-50 transition-colors text-left border border-transparent hover:border-orange-200"
+                        className="w-full flex items-center justify-between p-3 bg-white rounded-xl hover:bg-teal-50 transition-colors text-left border border-transparent hover:border-teal-200"
                         data-testid={`favorite-item-${fav.id}`}
                       >
                         <div>
@@ -247,11 +247,11 @@ export default function DictionaryPage() {
             )}
           </div>
         ) : isError ? (
-          <div role="alert" className="max-w-4xl mx-auto p-6 rounded-xl border border-orange-200 bg-orange-50">Lug‘atni yuklab bo‘lmadi. Internet aloqasini tekshirib, qayta urinib ko‘ring.</div>
+          <div role="alert" className="max-w-4xl mx-auto p-6 rounded-xl border border-teal-200 bg-teal-50">Lug‘atni yuklab bo‘lmadi. Internet aloqasini tekshirib, qayta urinib ko‘ring.</div>
         ) : isLoading || formsLoading ? (
           <div className="text-center py-20">
             <div className="inline-flex items-center gap-3 bg-white rounded-2xl shadow-lg px-6 py-4 border border-gray-100">
-              <Loader2 className="h-5 w-5 animate-spin text-orange-500" />
+              <Loader2 className="h-5 w-5 animate-spin text-teal-500" />
               <p className="text-gray-500 font-medium text-sm">Qidirilmoqda...</p>
             </div>
           </div>
@@ -272,7 +272,7 @@ export default function DictionaryPage() {
                 </Button>
                 <button
                   onClick={resetZoom}
-                  className="text-xs font-medium min-w-[40px] text-center hover:text-orange-500 transition-colors"
+                  className="text-xs font-medium min-w-[40px] text-center hover:text-teal-500 transition-colors"
                   data-testid="btn-zoom-reset"
                 >
                   {zoomLevel}%
@@ -296,13 +296,13 @@ export default function DictionaryPage() {
               {formVariants.length>0 && <section className="mb-5 space-y-3" aria-label="Fe’lning asl shakllari">
                 <h2 className="text-base font-semibold">Fe’lning asl shakllari</h2>
                 <p className="text-sm text-gray-600">Bir yozilish bir nechta fe’lga mos kelishi mumkin. Ma’nosiga qarab tanlang.</p>
-                {formVariants.map(v=><article key={v.id} className="rounded-xl border border-orange-200 bg-white p-4">
+                {formVariants.map(v=><article key={v.id} className="rounded-xl border border-teal-200 bg-white p-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div><p className="text-xs text-gray-500">Qidirilgan shakl</p><p dir="rtl" className="text-2xl leading-relaxed">{v.matchedForms.join(' / ')||debouncedSearch}</p></div>
                     <div><p className="text-xs text-gray-500">Lug‘atdagi shakli · moziy — muzori’</p><p dir="rtl" className="text-2xl leading-relaxed">{v.past} — {v.present}</p></div>
                   </div>
                   <p className="mt-2 text-sm">{v.meanings.find(m=>selectedSources.includes(m.source))?.text||v.meaning||'Tarjima hali bog‘lanmagan'}</p>
-                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm"><span className="text-gray-500">{v.kind} · {v.transitive?'O‘timli':'O‘timsiz'} · Ildiz: <span dir="rtl">{v.root}</span></span><Link href={'/sarf/'+v.id} className="inline-flex min-h-11 items-center rounded-lg bg-orange-600 px-4 text-white">Tuslanishini ko‘rish</Link></div>
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm"><span className="text-gray-500">{v.kind} · {v.transitive?'O‘timli':'O‘timsiz'} · Ildiz: <span dir="rtl">{v.root}</span></span><Link href={'/sarf/'+v.id} className="inline-flex min-h-11 items-center rounded-lg bg-teal-600 px-4 text-white">Tuslanishini ko‘rish</Link></div>
                 </article>)}
                 {formData?.truncated&&<p className="text-sm text-gray-600">Variantlar ko‘p. Qidiruvni harakatlar bilan aniqlashtiring.</p>}
               </section>}
@@ -328,7 +328,7 @@ export default function DictionaryPage() {
               )}
               {examplesData && examplesData.examples.length > 0 && (
                 <div className="mb-6 animate-fade-in-up" data-testid="examples-section">
-                  <div className="bg-white rounded-2xl border-2 border-orange-200 overflow-hidden shadow-sm">
+                  <div className="bg-white rounded-2xl border-2 border-teal-200 overflow-hidden shadow-sm">
                     <div className="bg-gray-700 px-5 py-3 flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
                         <MessageSquareQuote className="h-5 w-5 text-white" />
@@ -351,13 +351,13 @@ export default function DictionaryPage() {
                     {showExamples && (
                       <div className="px-5 py-4 max-h-[600px] overflow-y-auto">
                         <p className="text-sm text-gray-400 mb-3">
-                          "<span className="font-bold text-orange-500 font-arabic">{debouncedSearch}</span>" so'zi ishtirok etgan gaplar:
+                          "<span className="font-bold text-teal-500 font-arabic">{debouncedSearch}</span>" so'zi ishtirok etgan gaplar:
                         </p>
                         <div className="space-y-3">
                           {examplesData.examples.map((example, idx) => (
                             <div
                               key={`${example.entryId}-${idx}`}
-                              className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-orange-200 hover:shadow-sm transition-all"
+                              className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-teal-200 hover:shadow-sm transition-all"
                               data-testid={`example-item-${idx}`}
                             >
                               <div className="font-arabic text-lg text-right leading-loose mb-2" dir="rtl">
@@ -367,7 +367,7 @@ export default function DictionaryPage() {
                                 {example.uzbekExample || example.uzbekMeaning}
                               </div>
                               <div className="flex items-center gap-2 mt-2">
-                                <span className="text-xs bg-orange-50 text-orange-500 px-2.5 py-0.5 rounded-full border border-orange-100 font-arabic">
+                                <span className="text-xs bg-teal-50 text-teal-500 px-2.5 py-0.5 rounded-full border border-teal-100 font-arabic">
                                   {example.arabic}
                                 </span>
                                 <span className="text-xs text-gray-300">#{idx + 1}</span>

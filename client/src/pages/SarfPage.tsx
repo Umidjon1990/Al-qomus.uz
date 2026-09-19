@@ -11,7 +11,7 @@ const btn=(on:boolean)=>`px-3 py-2 rounded-lg text-sm border ${on?'bg-gray-900 t
 const arabic='font-arabic text-xl sm:text-2xl px-2 py-2 sm:p-3 leading-loose';
 const transitivity=(v:ExpandedVerb)=>v.transitive?'O‘timli variant':'O‘timsiz variant';
 function Choices({verbs,onChoose}:{verbs:ExpandedVerb[];onChoose:(v:ExpandedVerb)=>void}) {
- return <div className="space-y-3">{verbs.map(v=><button key={v.id} onClick={()=>onChoose(v)} className="block w-full text-left border rounded-xl bg-white p-3 sm:p-4 hover:border-orange-400">
+ return <div className="space-y-3">{verbs.map(v=><button key={v.id} onClick={()=>onChoose(v)} className="block w-full text-left border rounded-xl bg-white p-3 sm:p-4 hover:border-teal-400">
   <div className="font-arabic text-2xl leading-loose" dir="rtl">{v.past} — {v.present}</div><p className="line-clamp-2 text-sm sm:text-base">{v.meaning||'O‘zbekcha tarjima hali bog‘lanmagan'}</p>
   <p className="text-sm text-gray-500 mt-2">{formNames[v.form]||v.form} · {v.kind} · {transitivity(v)} · Ildiz: {v.root}</p>
  </button>)}</div>;
@@ -56,22 +56,22 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
  async function copy(){if(!v)return;const text=[`${v.past} — ${v.present}`,v.meaning,title,...persons.map((p,i)=>forms[i]?`${p}\t${forms[i]}${second?'\t'+second[i]:''}`:'').filter(Boolean)].join('\n');try{await navigator.clipboard.writeText(text);setNotice('Jadval nusxalandi.');}catch{setNotice('Nusxalash bajarilmadi. Brauzerning chop etish tugmasidan foydalaning.');}}
  return <Layout><div className="sarf-page max-w-4xl mx-auto px-3 sm:px-4 pb-6">
   <style>{`@media print { body * { visibility: hidden; } .sarf-result, .sarf-result * { visibility: visible; } .sarf-result { position: absolute; left: 0; top: 0; width: 100%; } .no-print, .no-print * { display: none !important; } table { break-inside: auto; } tr { break-inside: avoid; } }`}</style>
-  <div className="no-print sticky top-14 z-40 -mx-3 sm:-mx-4 border-b border-gray-200 bg-white px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
-   <div className="flex items-center justify-between gap-2 mb-2"><h1 className="text-sm font-semibold text-gray-800">Sarf — fe’l tuslash</h1><Link href="/" className="text-xs text-orange-700 py-1">Lug‘atga qaytish</Link></div>
-   {!params?.id?<form role="search" onSubmit={e=>{e.preventDefault();setQ(search.trim());inputRef.current?.blur();}} className="relative flex items-center rounded-xl border-2 border-orange-500 bg-white shadow-sm focus-within:ring-2 focus-within:ring-orange-200">
-    <Search aria-hidden="true" className="absolute left-3 h-5 w-5 text-orange-600"/>
+  <div className="no-print sticky top-12 z-40 -mx-3 sm:-mx-4 border-b border-gray-200 bg-white px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
+   <div className="flex items-center justify-between gap-2 mb-2"><h1 className="text-sm font-semibold text-gray-800">Sarf — fe’l tuslash</h1><Link href="/" className="text-xs text-teal-700 py-1">Lug‘atga qaytish</Link></div>
+   {!params?.id?<form role="search" onSubmit={e=>{e.preventDefault();setQ(search.trim());inputRef.current?.blur();}} className="relative flex items-center rounded-xl border-2 border-teal-500 bg-white shadow-sm focus-within:ring-2 focus-within:ring-teal-200">
+    <Search aria-hidden="true" className="absolute left-3 h-5 w-5 text-teal-600"/>
     <input ref={inputRef} type="search" enterKeyHint="search" autoComplete="off" aria-label="Sarf uchun fe’l qidirish" dir="auto" value={search} onChange={e=>changeSearch(e.target.value)} placeholder="Fe’l yozing…" className="w-full h-12 bg-white text-gray-950 placeholder:text-gray-500 rounded-xl pl-10 pr-11 text-lg outline-none"/>
     {search&&<button type="button" aria-label="Sarf qidiruvini tozalash" onClick={()=>{reset();inputRef.current?.focus();}} className="absolute right-0 p-3 text-gray-600"><X className="h-5 w-5"/></button>}
-   </form>:<button onClick={reset} className="w-full text-left rounded-xl border-2 border-orange-500 bg-white px-3 py-3 text-sm text-orange-800">← Boshqa fe’l qidirish</button>}
+   </form>:<button onClick={reset} className="w-full text-left rounded-xl border-2 border-teal-500 bg-white px-3 py-3 text-sm text-teal-800">← Boshqa fe’l qidirish</button>}
   </div>
   {!params?.id&&<div className="no-print pt-3">
    {!search.trim()&&!manual&&!chosen&&<div className="mb-3"><p className="text-sm text-gray-500 mb-2">Fe’lni yozing — tarjima va tuslanishi chiqadi.</p><div className="flex gap-2">{['كَتَبَ','قَالَ','رَمَى'].map(w=><button key={w} onClick={()=>changeSearch(w)} className="font-arabic text-xl px-4 py-2 border rounded-lg bg-white">{w}</button>)}</div></div>}
-   {q&&search.trim()===q&&list.data?.spellingSuggestion&&<p role="status" className="text-sm text-orange-900 bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 mb-2">«{q}» o‘rniga quyidagi yozilish topildi. Fe’l oxiridagi ا va ى farqiga e’tibor bering.</p>}
+   {q&&search.trim()===q&&list.data?.spellingSuggestion&&<p role="status" className="text-sm text-teal-900 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 mb-2">«{q}» o‘rniga quyidagi yozilish topildi. Fe’l oxiridagi ا va ى farqiga e’tibor bering.</p>}
    {q&&list.isLoading&&<p role="status">Fe’llar yuklanmoqda…</p>}
    {q&&list.isError&&<p role="alert">{(list.error as Error).message} <button className="underline" onClick={()=>list.refetch()}>Qayta urinish</button></p>}
    {q&&search.trim()===q&&list.data&&!selectedId&&!manual&&<>
     <p className="text-sm text-gray-500 mb-3">{list.data.count} ta natija. Mos ma’noni tanlang. {list.data.count>60&&'Dastlabki 60 tasi ko‘rsatilmoqda.'}</p>
-    {list.data.reverse&&<p className="mb-3 text-orange-800">Tuslangan shakldan topilgan fe’llar:</p>}
+    {list.data.reverse&&<p className="mb-3 text-teal-800">Tuslangan shakldan topilgan fe’llar:</p>}
     {list.data.count===0&&<p className="p-4 bg-white border rounded-xl mb-3">Mos fe’l topilmadi. Harakatlarni tekshiring yoki quyidagi formula sinoviga moziy va grammatik ma’lumotlarni kiriting.</p>}
     <Choices verbs={list.data.verbs} onChoose={choose}/>
    </>}
@@ -88,12 +88,12 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
     <h2 className="font-arabic text-2xl sm:text-3xl leading-relaxed" dir="rtl">{v.past} — {v.present}</h2>
     <p className="text-base mt-1 line-clamp-2">{v.meaning?.split(';')[0]||'O‘zbekcha tarjima hali bog‘lanmagan.'}</p>
     <p className="mt-1 text-xs text-gray-500">{formNames[v.form]||v.form} · {v.kind}</p>
-    <details key={v.id} className="mt-2"><summary className="cursor-pointer text-sm text-orange-700 py-1">Barcha ma’nolar va fe’l haqida</summary>
+    <details key={v.id} className="mt-2"><summary className="cursor-pointer text-sm text-teal-700 py-1">Barcha ma’nolar va fe’l haqida</summary>
      <p className="mt-2">{v.meaning||'Tarjima hali bog‘lanmagan.'}</p><p className="mt-2 text-sm">{transitivity(v)} · Ildiz: <span dir="rtl">{v.root}</span></p>
      {v.meanings?.length>1&&v.meanings.map(m=><div key={m.id} className="border-t mt-2 pt-2"><p className="text-xs text-gray-500">{m.source}</p><p>{m.text||'Tarjima kiritilmagan'}</p></div>)}
      {v.masdar&&<p className="mt-2">Masdar: <span className="font-arabic text-xl" dir="rtl">{v.masdar}</span></p>}
     </details>
-    {v.manual&&<p className="text-xs text-orange-800 mt-2">Formula sinovi: kiritilgan grammatik ma’lumotlarga asoslangan.</p>}
+    {v.manual&&<p className="text-xs text-teal-800 mt-2">Formula sinovi: kiritilgan grammatik ma’lumotlarga asoslangan.</p>}
    </div>
    <h3 className="sr-only">Tuslanishi</h3>
    <label className="no-print sm:hidden flex items-center gap-3 mb-2 text-sm font-medium">Shakl<select aria-label="Tuslanish shakli" value={section} onChange={e=>setSection(e.target.value)} className="min-w-0 flex-1 bg-white border border-gray-300 rounded-lg px-3 py-3">{tabs.map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label>
@@ -114,7 +114,7 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
    <p className="no-print text-xs mt-2"><a className="underline" href="https://github.com/linuxscout/qutrub">Qutrub</a> · <a className="underline" href="https://github.com/linuxscout/arramooz">Arramooz</a> · <a className="underline" href="https://github.com/Umidjon1990/Al-qomus.uz/tree/main/sarf">Kod va manbalar</a></p>
   </div>}
   {!params?.id&&<div className="no-print mt-3">   <button className="text-sm underline my-4" onClick={()=>setManualOpen(!manualOpen)} aria-expanded={manualOpen}>Lug‘atda topilmagan fe’lni formula bilan sinash</button>
-   {manualOpen&&<form onSubmit={submitManual} className="bg-orange-50 border rounded-xl p-4 mb-5 space-y-3">
+   {manualOpen&&<form onSubmit={submitManual} className="bg-teal-50 border rounded-xl p-4 mb-5 space-y-3">
     <p className="text-sm">Moziyni to‘liq harakatlang. Ildiz, muzori’ harakati va o‘timlilikni o‘zingiz belgilaysiz; natija shu ma’lumotlarga bog‘liq. Fe’lning lug‘atda mavjudligi bu sinov orqali tasdiqlanmaydi.</p>
     <div className="grid sm:grid-cols-2 gap-3"><label>Moziy<input required aria-label="Formula uchun moziy" value={manualPast} onChange={e=>setManualPast(e.target.value)} dir="rtl" placeholder="كَتَبَ" className="block w-full border rounded p-2 text-xl"/></label>
     <label>Ildiz<input required aria-label="Fe’l ildizi" value={root} onChange={e=>setRoot(e.target.value)} dir="rtl" placeholder="كتب" className="block w-full border rounded p-2 text-xl"/></label></div>
