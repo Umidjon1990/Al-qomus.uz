@@ -1,3 +1,5 @@
+import { sarfCatalog } from './sarf';
+import { plain } from '@shared/sarf';
 import { 
   type User, 
   type InsertUser,
@@ -121,10 +123,10 @@ export class DatabaseStorage implements IStorage {
       const isArabicSearch = /[\u0600-\u06FF]/.test(search);
       
       if (isArabicSearch) {
-        // Arabic search - search in Arabic field only
-        conditions.push(
-          sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`
-        );
+        const headMatch = sql`regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${'%' + normalizedSearch + '%'}`;
+        // Keep ordinary dictionary search working if the supplementary catalog is unavailable.
+        const presentIds = await sarfCatalog().then(rows => rows.filter(v => plain(v.present) === plain(search)).map(v => v.id)).catch(() => [] as number[]);
+        conditions.push(presentIds.length ? or(headMatch, inArray(dictionaryEntries.id, presentIds)) : headMatch);
       } else {
         // Uzbek/Latin search - search only in uzbek field (main translation)
         // This prevents showing unrelated results from examples

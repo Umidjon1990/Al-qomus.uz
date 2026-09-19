@@ -49,6 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/">Lug'at</NavLink>
+            <NavLink href="/sarf">Sarf</NavLink>
             <NavLink href="/about">Loyiha haqida</NavLink>
             
             {isAdmin && (
@@ -109,6 +110,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <Link href="/" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
                     Lug'at
                   </Link>
+                  <Link href="/sarf" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800">Sarf — fe’l tuslash</Link>
                   <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-medium text-gray-800 hover:text-orange-500 transition-colors">
                     Loyiha haqida
                   </Link>

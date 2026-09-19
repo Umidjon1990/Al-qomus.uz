@@ -1,3 +1,5 @@
+import { Link } from 'wouter';
+import { extractSarf } from '@shared/sarf';
 import React, { useEffect, useState } from 'react';
 import { Copy, Heart } from 'lucide-react';
 import { DictionaryEntry } from '@/lib/api';
@@ -21,6 +23,7 @@ export function ResultCard({ entry }: { entry: DictionaryEntry; index?: number }
   const firstMeaning = meanings[0]?.uzbekMeaning || meanings[0]?.uzbek_meaning || entry.uzbek;
   const senseExamples = meanings.filter(m => m.arabicExample || m.arabic_example).map(m => ({ arabic: m.arabicExample || m.arabic_example, uzbek: m.uzbekExample || m.uzbek_example }));
   const allExamples = [...senseExamples, ...examples];
+  const sarf = extractSarf(entry);
   const definition = entry.arabicDefinitionVocalized || entry.arabicDefinition;
   return <article className="bg-white rounded-xl border border-gray-200 overflow-hidden" data-testid={`card-product-${entry.id}`}>
     <div className="p-4 sm:p-5">
@@ -47,6 +50,7 @@ export function ResultCard({ entry }: { entry: DictionaryEntry; index?: number }
         </div>
       </div>
     </div>
+    {sarf && <div className="px-4 sm:px-5 pb-4"><p className="font-arabic text-xl mb-2" dir="rtl">{sarf.past} — {sarf.present}</p><Link href={`/sarf/${entry.id}`} className="inline-block rounded-lg bg-orange-600 text-white px-4 py-2 text-sm">To‘liq tuslash</Link></div>}
     <div className="dictionary-body border-t border-gray-100 divide-y divide-gray-100">
       {meanings.length > 1 && <details className="px-4 sm:px-5"><summary className="cursor-pointer py-3 text-sm font-medium text-gray-700">Barcha ma’nolar ({meanings.length})</summary>
         <ol className="list-decimal pl-5 pb-4 space-y-3">{meanings.map((m, i) => <li key={i}>{m.uzbekMeaning || m.uzbek_meaning}{m.confidence && m.confidence < 0.8 && <span className="block text-xs text-amber-700">Taxminiy tarjima</span>}</li>)}</ol>
