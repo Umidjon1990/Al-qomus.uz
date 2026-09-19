@@ -118,7 +118,10 @@ export default function DictionaryPage() {
   };
 
   const groups = new Map<string, typeof entries>();
-  for (const entry of entries) {
+  // Keep Ghoniy first, including cached/offline results; preserve relevance within each source.
+  const sourcePriority=(source:string)=>source==='Ghoniy'?0:source==='Muasir'?1:source==='Roid'?2:3;
+  const orderedEntries=entries.slice().sort((a,b)=>sourcePriority(a.dictionarySource)-sourcePriority(b.dictionarySource));
+  for (const entry of orderedEntries) {
     // Group only identical vocalization; preserve every source and sense by ID.
     const key = (entry.arabicVocalized || entry.arabic).normalize('NFC').trim();
     groups.set(key, [...(groups.get(key) || []), entry]);

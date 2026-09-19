@@ -152,6 +152,7 @@ export class DatabaseStorage implements IStorage {
           return await db.select().from(dictionaryEntries)
             .where(whereClause)
             .orderBy(
+              sql`CASE ${dictionaryEntries.dictionarySource} WHEN 'Ghoniy' THEN 0 WHEN 'Muasir' THEN 1 WHEN 'Roid' THEN 2 ELSE 3 END`,
               sql`CASE 
                 WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch} THEN 0
                 WHEN regexp_replace(${dictionaryEntries.arabic}, '[\u064B-\u0652\u0670\u0671]', '', 'g') ILIKE ${normalizedSearch + '%'} THEN 1
@@ -165,6 +166,7 @@ export class DatabaseStorage implements IStorage {
           return await db.select().from(dictionaryEntries)
             .where(whereClause)
             .orderBy(
+              sql`CASE ${dictionaryEntries.dictionarySource} WHEN 'Ghoniy' THEN 0 WHEN 'Muasir' THEN 1 WHEN 'Roid' THEN 2 ELSE 3 END`,
               sql`CASE 
                 WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch} THEN 0
                 WHEN ${dictionaryEntries.uzbek} ILIKE ${normalizedSearch + '%'} THEN 1
