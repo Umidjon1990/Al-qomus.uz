@@ -66,6 +66,7 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
   </div>
   {!params?.id&&<div className="no-print pt-3">
    {!search.trim()&&!manual&&!chosen&&<div className="mb-3"><p className="text-sm text-gray-500 mb-2">Fe’lni yozing — tarjima va tuslanishi chiqadi.</p><div className="flex gap-2">{['كَتَبَ','قَالَ','رَمَى'].map(w=><button key={w} onClick={()=>changeSearch(w)} className="font-arabic text-xl px-4 py-2 border rounded-lg bg-white">{w}</button>)}</div></div>}
+   {q&&search.trim()===q&&list.data?.spellingSuggestion&&<p role="status" className="text-sm text-orange-900 bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 mb-2">«{q}» o‘rniga quyidagi yozilish topildi. Fe’l oxiridagi ا va ى farqiga e’tibor bering.</p>}
    {q&&list.isLoading&&<p role="status">Fe’llar yuklanmoqda…</p>}
    {q&&list.isError&&<p role="alert">{(list.error as Error).message} <button className="underline" onClick={()=>list.refetch()}>Qayta urinish</button></p>}
    {q&&search.trim()===q&&list.data&&!selectedId&&!manual&&<>

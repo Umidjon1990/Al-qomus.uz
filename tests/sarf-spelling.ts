@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { suggestFinalAlif } from '../shared/sarf-spelling';
+import type { Morphology } from '../shared/sarf-expanded';
+const verbs:Morphology[]=JSON.parse(readFileSync('sarf/generated/catalog.json','utf8'));
+for(const q of ['شكى','شَكَى'])assert(suggestFinalAlif(q,verbs,[]).some(v=>v.past==='شَكَا'&&v.present==='يَشْكُو'));
+assert.equal(suggestFinalAlif('شكا',verbs,[]).length,0);
+assert.equal(suggestFinalAlif('دعا',verbs,[]).length,0);
+assert.equal(suggestFinalAlif('شكى',verbs,[-1]).length,0);
+assert.equal(suggestFinalAlif('شِكَى',verbs,[]).length,0);
+assert.equal(suggestFinalAlif('كتب',verbs,[]).length,0);
+console.log('Final-alif suggestions preserve exact matches, analyses and supplied vowels.');

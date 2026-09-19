@@ -15,7 +15,7 @@ export interface ExpandedTables {
  nominals:{subject:string|null;object:string|null;subjectLabel:string;note:string};
 }
 export interface SarfDetail {verb:ExpandedVerb;tables:ExpandedTables;matched?:{label:string;person:number;word:string}[]}
-export interface SarfSearch {total:number;count:number;verbs:ExpandedVerb[];reverse:boolean;truncated?:boolean}
+export interface SarfSearch {total:number;count:number;verbs:ExpandedVerb[];reverse:boolean;spellingSuggestion?:boolean;truncated?:boolean}
 export const formNames:Record<string,string> = {'I':'Sulosiy mujarrad','II':'Fa‘‘ala','III':'Fā‘ala','IV':'Af‘ala','V':'Tafa‘‘ala','VI':'Tafā‘ala','VII':'Infa‘ala','VIII':'Ifta‘ala','IX':'If‘alla','X':'Istaf‘ala','Q-I':'Ruboiy mujarrad','Q-II':'Tafa‘lala','Q-derived':'Ruboiy mazid',derived:'Mazid (kam qo‘llanadigan vazn)'};
 export const canonical=(s:string)=>s.normalize('NFC').replace(/([ً-ِْ])ّ/g,'ّ$1').replace(/([تن])ْ\1/g,'$1ّ').trim();
 const graphemes=(s:string)=>canonical(s).match(/[ء-ي][ً-ْ]*/g)||[];

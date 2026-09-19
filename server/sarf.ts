@@ -1,3 +1,4 @@
+import { suggestFinalAlif } from '@shared/sarf-spelling';
 import { attachMeanings } from './sarf-catalog';
 import { readFileSync } from 'node:fs';
 import { db } from './db';
@@ -33,9 +34,11 @@ export async function searchSarf(query:string):Promise<SarfSearch>{
  const exacts=matches.filter(v=>canonical(v.past)===exact||canonical(v.present)===exact);
  if(exacts.length)matches=exacts;
  else if(reverse&&ids.length)matches=matches.filter(v=>idSet.has(v.id));
+ const suggestions=suggestFinalAlif(query,all,ids);
+ if(suggestions.length){matches=suggestions;reverse=false;}
  const rank=(v:ExpandedVerb)=>(canonical(v.past)===exact||canonical(v.present)===exact?0:idSet.has(v.id)?1:plain(v.past)===q||plain(v.present)===q?2:3)+(v.meaning?0:0.5);
  matches.sort((a,b)=>rank(a)-rank(b)||Math.abs(a.id)-Math.abs(b.id));
- return {total:all.length,count:matches.length,verbs:matches.slice(0,60),reverse,truncated:ids.length>200};
+ return {total:all.length,count:matches.length,verbs:matches.slice(0,60),reverse,spellingSuggestion:suggestions.length>0,truncated:ids.length>200};
 }
 const detailCache=new Map<number,SarfDetail>();
 export async function sarfDetail(id:number):Promise<SarfDetail|{candidates:ExpandedVerb[]}|null>{
