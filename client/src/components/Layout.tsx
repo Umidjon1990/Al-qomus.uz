@@ -49,7 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/">Lug'at</NavLink>
-            <NavLink href="/sarf">Sarf</NavLink>
+            <Link href="/sarf" className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700">SARF</Link>
             <NavLink href="/about">Loyiha haqida</NavLink>
             
             {isAdmin && (
@@ -98,7 +98,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
             )}
           </nav>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <Link href="/sarf" className="rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white">SARF</Link>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-9 w-9">
