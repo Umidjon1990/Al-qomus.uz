@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+process.env.DATABASE_URL ||= 'postgresql://test:test@127.0.0.1:1/test';
+const {manualSarf}=await import('../server/sarf');
+const {sarfProcess}=await import('../server/sarf-process');
+const result=await manualSarf({past:'خَافَ',root:'خوف',futureType:'فتحة',triliteral:true,transitive:false});
+assert.equal(result.tables.command[0][6],'خَفْ');assert(result.verb.manual);assert.equal(result.verb.meaning,'');assert(!('tables' in result.verb));
+for(const past of ['كتب','كَتبَ','<script>','كَتَبَ; touch /tmp/bad'])await assert.rejects(()=>manualSarf({past,root:'كتب',futureType:'ضمة',triliteral:true,transitive:true}));
+await assert.rejects(()=>manualSarf({past:'أَكْرَمَ',root:'كرم',futureType:'فتحة',triliteral:true,transitive:true}));
+const found=await sarfProcess<{ids:number[]}>('lookup',{query:'قُلْتُ'});assert(found.ids.includes(-10095));
+console.log('Real Node/Python protocol, manual validation, hollow correction and reverse lookup passed.');
