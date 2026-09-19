@@ -121,7 +121,10 @@ def generate(past, future_type, root='', triliteral=False, transitive=False):
     if (VerbClass(past,transitive,MARKS[future_type]).vlength==3)!=triliteral: raise ValueError('Sulosiy mujarrad belgisi vaznga mos emas')
     raw=conjugate(past,future_type,transitive=transitive,display_format='DICT')
     if not isinstance(raw,dict): raise ValueError('Bu vazn qo‘llanmaydi')
-    def col(key): return [canonical(raw.get(key,{}).get(p,'')) for p in PERSONS]
+    def col(key):
+        words=[canonical(raw.get(key,{}).get(p,'')) for p in PERSONS]
+        # Qutrub omits the final sukun in the -tum suffix; retain full vocalization.
+        return [w+'ْ' if w.endswith('م') else w for w in words]
     active=[col(k) for k in [C.TensePast,C.TenseFuture,C.TenseSubjunctiveFuture,C.TenseJussiveFuture]]
     passive=[col(k) for k in [C.TensePassivePast,C.TensePassiveFuture,C.TensePassiveSubjunctiveFuture,C.TensePassiveJussiveFuture]] if transitive else None
     if any(not w for column in active for w in column): raise ValueError('To‘liq jadval olinmadi')

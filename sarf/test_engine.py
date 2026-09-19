@@ -50,6 +50,7 @@ class MorphologyTests(unittest.TestCase):
         self.assertEqual(t['emphasis']['active'][0][6],'تَكْتُبَنَّ');self.assertEqual(t['emphasis']['active'][1][6],'تَكْتُبَنْ')
         for i in [1,4,5,7,10,11]:self.assertEqual(t['emphasis']['active'][1][i],'')
         self.assertEqual(t['command'][1][9],'لَا تَكْتُبِي')
+        self.assertEqual(t['active'][0][8],'كَتَبْتُمْ')
     def test_nominals(self):
         for p,r,f,tri,s,o in [('قَالَ','قول','ضمة',True,'قَائِلٌ','مَقُولٌ'),('بَاعَ','بيع','كسرة',True,'بَائِعٌ','مَبِيعٌ'),('رَضِيَ','رضو','فتحة',True,'رَاضٍ','مَرْضِيٌّ'),('أَقَامَ','قوم','فتحة',False,'مُقِيمٌ','مُقَامٌ'),('تَعَلَّمَ','علم','فتحة',False,'مُتَعَلِّمٌ','مُتَعَلَّمٌ')]:
             n=generate(p,f,r,tri,True)['tables']['nominals'];self.assertEqual(canonical(n['subject']),canonical(s));self.assertEqual(canonical(n['object']),canonical(o))
@@ -61,7 +62,7 @@ class MorphologyTests(unittest.TestCase):
     def test_reverse_lookup(self):
         catalog=json.loads((Path(__file__).parent/'generated/catalog.json').read_text())
         kataba=next(v['id'] for v in catalog if v['past']=='كَتَبَ' and v['present']=='يَكْتُبُ')
-        for q,want in [('كَتَبْتُ',True),('يَكْتُبُ',True),('كَتِبْتُ',False)]:
+        for q,want in [('كَتَبْتُ',True),('كَتَبْتُمْ',True),('يَكْتُبُ',True),('كَتِبْتُ',False)]:
             result=subprocess.run([sys.executable,str(Path(__file__).parent/'lookup.py')],input=json.dumps({'query':q}),text=True,capture_output=True,check=True)
             self.assertEqual(kataba in json.loads(result.stdout)['ids'],want)
 
