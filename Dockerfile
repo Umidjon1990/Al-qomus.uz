@@ -11,7 +11,7 @@ RUN /opt/sarf/bin/python sarf/build.py && npm run check && node --import tsx scr
 FROM node:22-bookworm-slim
 WORKDIR /app
 ENV NODE_ENV=production PYTHON=/opt/sarf/bin/python
-RUN apt-get update && apt-get install -y --no-install-recommends python3 fonts-dejavu-core libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz-subset0 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends python3 fonts-dejavu-core fonts-hosny-amiri fonts-liberation2 libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz-subset0 && rm -rf /var/lib/apt/lists/*
 COPY --from=build /opt/sarf /opt/sarf
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
