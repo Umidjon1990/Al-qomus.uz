@@ -1,3 +1,4 @@
+import { buildSarfBook } from '@shared/sarf-book';
 import { exportText, type SarfExport } from '@shared/sarf-export';
 import { copySarfText } from '@/lib/sarf-export';
 import React, { useEffect, useRef, useState } from 'react';
@@ -69,14 +70,14 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
  const latestExport=useRef(exportKey);latestExport.current=exportKey;
  useEffect(()=>{setPdfUrl('');setCopyFallback('');setNotice('');},[exportKey]);
  async function copy(){if(!exportData)return;const text=exportText(exportData);if(await copySarfText(text)){setCopyFallback('');setNotice('Jadval nusxalandi.');}else{setCopyFallback(text);setNotice('Brauzer avtomatik nusxalashga ruxsat bermadi. Quyidagi matnni belgilab, nusxalang.');}}
- async function downloadPdf(){if(!exportData||pdfBusy)return;setPdfBusy(true);setNotice('');try{
-  const r=await fetch('/api/sarf/export/pdf',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(exportData)});
+ async function downloadPdf(){if(!data||pdfBusy)return;setPdfBusy(true);setNotice('');try{
+  const r=await fetch('/api/sarf/export/pdf',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildSarfBook(data))});
   if(!r.ok)throw new Error('PDF tayyorlanmadi. Qayta urinib ko‘ring.');
   const blob=await r.blob();if(!blob.type.includes('application/pdf'))throw new Error('PDF javobi noto‘g‘ri.');
   if(latestExport.current!==exportKey)return;
   const url=URL.createObjectURL(blob);setPdfUrl(url);
   const a=document.createElement('a');a.href=url;a.download='Al-Qomus-Sarf.pdf';document.body.appendChild(a);a.click();a.remove();
-  setNotice('PDF tayyor. Yuklash boshlanmasa, quyidagi havolani bosing.');
+  setNotice('Barcha shakllar PDFi tayyor. Yuklash boshlanmasa, quyidagi havolani bosing.');
  }catch(e){setNotice((e as Error).message);}finally{setPdfBusy(false);}}
  return <Layout><div className="sarf-page max-w-4xl mx-auto px-3 sm:px-4 pb-6">
   <style>{`@media print { body * { visibility: hidden; } .sarf-result, .sarf-result * { visibility: visible; } .sarf-result { position: absolute; left: 0; top: 0; width: 100%; } .no-print, .no-print * { display: none !important; } table { break-inside: auto; } tr { break-inside: avoid; } }`}</style>
@@ -135,7 +136,7 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
    </>:<div className="overflow-x-auto border rounded-xl bg-white"><table className="w-full text-center"><thead className="bg-gray-50"><tr><th className="p-3">Zamir</th><th className="p-3">{title} {!commandOnly&&voice==='passive'?'— majhul':''}</th>{second&&<th className="p-3">Nahiy</th>}</tr></thead><tbody>{persons.map((p,i)=>commandOnly&&(i<6||i>11)?null:<tr key={p} className="border-t"><td className={arabic} dir="rtl">{p}</td><td className={arabic} dir="rtl">{forms[i]||'—'}</td>{second&&<td className={arabic} dir="rtl">{second[i]}</td>}</tr>)}</tbody></table></div>}
    <div className="no-print my-4">
     <p className="mb-2 text-xs text-gray-500">Hozir tanlangan jadval: {exportTitle}</p>
-    <div className="flex flex-wrap gap-2"><button disabled={!exportData?.rows.length} className={btn(false)} onClick={copy}>Jadvalni nusxalash</button><button disabled={pdfBusy||!exportData?.rows.length} className={btn(true)} onClick={downloadPdf}>{pdfBusy?'PDF tayyorlanmoqda…':'PDF yuklab olish'}</button></div>
+    <p className="text-xs text-gray-500">PDFga ushbu fe’lning barcha mavjud shakllari kiritiladi.</p><div className="flex flex-wrap gap-2"><button disabled={!exportData?.rows.length} className={btn(false)} onClick={copy}>Jadvalni nusxalash</button><button disabled={pdfBusy||!data} className={btn(true)} onClick={downloadPdf}>{pdfBusy?'PDF tayyorlanmoqda…':'Barcha shakllar — PDF'}</button></div>
     {notice&&<p role="status" className="mt-2 text-sm">{notice}</p>}
     {pdfUrl&&<a className="mt-2 inline-block underline text-teal-700 py-2" href={pdfUrl} download="Al-Qomus-Sarf.pdf" target="_blank" rel="noopener noreferrer">Tayyor PDFni ochish / yuklash</a>}
     {copyFallback&&<label className="block text-sm mt-3">Nusxalash uchun matn<textarea aria-label="Nusxalash uchun jadval" readOnly value={copyFallback} onFocus={e=>{e.currentTarget.select();e.currentTarget.setSelectionRange(0,e.currentTarget.value.length);}} className="block w-full h-64 mt-2 p-3 border rounded-xl bg-white text-base" dir="auto"/></label>}
