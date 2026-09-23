@@ -36,10 +36,10 @@ def make_pdf(d):
  html='''<!doctype html><html lang="uz"><meta charset="utf-8"><title>Al-Qomus — Sarf</title><style>
  @page {font-family:"Times New Roman","Liberation Serif",serif;size:A4;margin:17mm 11mm 15mm;@top-left{content:"AL-QOMUS.UZ";color:#142d3d;font-size:10pt;font-weight:bold;}@top-right{content:"SARF / FE’L TUSLASH";color:#0f766e;font-size:8pt;}@bottom-left{content:"www.al-qomus.uz";font-size:8pt;color:#52656e;}@bottom-right{content:counter(page) " / " counter(pages);font-size:8pt;color:#52656e;}}
  body{font-family:"Times New Roman","Liberation Serif","Amiri",serif;color:#142d3d;font-size:9pt;line-height:1.2;margin:0;}
- .intro{border-top:2px solid #0f766e;padding-top:3pt;margin-bottom:6pt;}h1{font-family:"Amiri","Times New Roman",serif;font-size:20pt;line-height:normal;color:#0f766e;font-weight:normal;margin:0 0 3pt;text-align:right;}
+ .intro{border-top:2px solid #0f766e;padding-top:3pt;margin-bottom:6pt;}h1{font-family:"Noto Naskh Arabic","DejaVu Sans",sans-serif;font-size:20pt;line-height:normal;color:#0f766e;font-weight:normal;margin:0 0 3pt;text-align:right;}
  p{margin:0 0 3pt;overflow-wrap:anywhere;}.meta,.notes{font-size:8pt;color:#52656e;}.notes{margin-top:5pt;}
  section{margin:0 0 7pt;}table{border-collapse:collapse;width:100%;table-layout:fixed;}thead{display:table-header-group;}tr{break-inside:avoid;}th{text-align:center;background:#0f766e;color:white;font-size:9pt;line-height:1.2;font-weight:normal;padding:3pt 2pt;border:0.4pt solid #c5dcd5;direction:ltr;}thead tr+tr th{background:#eaf5f1;color:#142d3d;}
- td{vertical-align:middle;border:0.4pt solid #c5dcd5;text-align:center;padding:0.3pt 2pt;overflow-wrap:anywhere;}tbody tr:nth-child(even){background:#f1f7f4;}td.ar{font-family:"Amiri","Times New Roman",serif;font-size:12.5pt;line-height:normal;direction:rtl;}td.latin{font-size:9pt;direction:ltr;line-height:1.2;}
+ td{vertical-align:middle;border:0.4pt solid #c5dcd5;text-align:center;padding:0.8pt 2pt;overflow-wrap:anywhere;}tbody tr:nth-child(even){background:#f1f7f4;}td.ar{font-family:"Noto Naskh Arabic","DejaVu Sans",sans-serif;font-size:14pt;line-height:normal;direction:rtl;}td.latin{font-size:9pt;direction:ltr;line-height:1.2;}
  </style><body>'''
  html+='<div class="intro"><h1 dir="rtl">'+safe(d['past']+' — '+d['present'])+'</h1><p>'+safe(d['meaning'] or 'Tarjima hali bog‘lanmagan.')+'</p><p class="meta">'+safe(d['classification'])+' · Manba: '+safe(d['source'])+'</p></div>'
  blocks=grouped(sections)
