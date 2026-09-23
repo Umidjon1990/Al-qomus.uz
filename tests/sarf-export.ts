@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
 import {sarfExportSchema,exportText} from '../shared/sarf-export';
 import {copySarfText} from '../client/src/lib/sarf-export';
 import {sarfProcess} from '../server/sarf-process';
@@ -16,6 +15,8 @@ async function main(){
  navigator.clipboard.writeText=async()=>{throw Error('denied');};
  assert(await copySarfText('كَتَبَ'));assert(legacy);assert.equal(removed,1);
  document.execCommand=()=>false;assert.equal(await copySarfText('كَتَبَ'),false);assert.equal(removed,2);
+ navigator.clipboard.writeText=()=>new Promise(()=>{});
+ assert.equal(await copySarfText('كَتَبَ'),false);assert.equal(removed,3);
  const result=await sarfProcess<{pdf:string}>('export_pdf',d);
  assert(Buffer.from(result.pdf,'base64').subarray(0,5).equals(Buffer.from('%PDF-')));
  console.log('Export schema, Arabic text, clipboard success/fallback/failure, PDF subprocess: passed');
