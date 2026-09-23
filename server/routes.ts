@@ -1,3 +1,5 @@
+import { sarfExportSchema } from '@shared/sarf-export';
+import { sarfProcess } from './sarf-process';
 import { searchSarf, sarfDetail, manualSarf, dictionaryVerbForms } from './sarf';
 import { extractSarf, conjugate } from '@shared/sarf';
 import type { Express } from "express";
@@ -18,6 +20,18 @@ export async function registerRoutes(
     if(q.length>80)return res.status(400).json({error:'Qidiruv juda uzun'});
     try {res.json(await dictionaryVerbForms(q));}
     catch {res.status(503).json({error:'Fe’l shakllarini yuklab bo‘lmadi'});}
+  });
+
+  app.post('/api/sarf/export/pdf', async (req,res)=>{
+    const parsed=sarfExportSchema.safeParse(req.body);
+    if(!parsed.success)return res.status(400).json({error:'PDF uchun jadval ma’lumotlari noto‘g‘ri.'});
+    try {
+      const result=await sarfProcess<{pdf:string}>('export_pdf',parsed.data);
+      res.setHeader('Content-Type','application/pdf');
+      res.setHeader('Content-Disposition','attachment; filename="Al-Qomus-Sarf.pdf"');
+      res.setHeader('Cache-Control','no-store');
+      res.send(Buffer.from(result.pdf,'base64'));
+    }catch{res.status(503).json({error:'PDF tayyorlanmadi. Qayta urinib ko‘ring.'});}
   });
 
   app.get('/api/sarf', async (req, res) => {

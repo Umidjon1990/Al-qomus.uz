@@ -1,3 +1,5 @@
+import { exportText, type SarfExport } from '@shared/sarf-export';
+import { copySarfText } from '@/lib/sarf-export';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
@@ -19,6 +21,8 @@ function Choices({verbs,onChoose}:{verbs:ExpandedVerb[];onChoose:(v:ExpandedVerb
 async function response<T>(url:string,options?:RequestInit):Promise<T>{const r=await fetch(url,options);const value=await r.json();if(!r.ok)throw Error(value.error||'Ma’lumot yuklanmadi');return value;}
 
 export default function SarfPage({params}:{params?:{id?:string}}) {
+ const [pdfBusy,setPdfBusy]=useState(false);const [pdfUrl,setPdfUrl]=useState('');const [copyFallback,setCopyFallback]=useState('');
+ useEffect(()=>()=>{if(pdfUrl)URL.revokeObjectURL(pdfUrl);},[pdfUrl]);
  const resultRef=useRef<HTMLDivElement>(null);
  const inputRef=useRef<HTMLInputElement>(null);
  const [,navigate]=useLocation();const [search,setSearch]=useState('');const [q,setQ]=useState('');const [chosen,setChosen]=useState<string>();
@@ -53,7 +57,27 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
  const tabs=[['past','Moziy'],['present','Muzori’'],['command','Amr va nahiy'],['lam','Lomi amr'],['nominals','Foil va maf’ul'],['negative','Inkor'],['emphasis','Ta’kidli muzori’'],['emphatic-command','Ta’kidli amr']];
  const noun=data?.tables.nominals[nounType];const nounRows=noun?declineNoun(noun):[];
  async function submitManual(e:React.FormEvent){e.preventDefault();setManualBusy(true);setManualError('');try{setManual(await response<SarfDetail>('/api/sarf/manual',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({past:manualPast.trim(),root:root.trim(),futureType,triliteral,transitive})}));setChosen(undefined);setManualOpen(false);}catch(e){setManualError((e as Error).message);}finally{setManualBusy(false);}}
- async function copy(){if(!v)return;const text=[`${v.past} — ${v.present}`,v.meaning,title,...persons.map((p,i)=>forms[i]?`${p}\t${forms[i]}${second?'\t'+second[i]:''}`:'').filter(Boolean)].join('\n');try{await navigator.clipboard.writeText(text);setNotice('Jadval nusxalandi.');}catch{setNotice('Nusxalash bajarilmadi. Brauzerning chop etish tugmasidan foydalaning.');}}
+ const exportTitle=section==='nominals'?(nounType==='subject'?data?.tables.nominals.subjectLabel||'Ismi foil':'Ismi maf’ul'):
+  [title,commandOnly?'':voice==='passive'?'Majhul':'Ma’lum',section==='present'?['','Raf’','Nasb','Jazm'][mood]:'',section==='emphatic-command'?(emphasis?'Xafifa':'Saqila'):''].filter(Boolean).join(' · ');
+ const exportData:SarfExport|undefined=v?{
+  past:v.past,present:v.present,meaning:v.meaning||'',classification:[formNames[v.form]||v.form,v.kind,transitivity(v)].join(' · '),title:exportTitle,source:v.source,
+  headers:section==='nominals'?['Shakl','Raf’','Nasb','Jarr']:['Zamir',title,...(second?['Nahiy']:[])],
+  rows:section==='nominals'?nounRows.map(r=>[r.label,...r.forms.map(w=>w||'—')]):persons.flatMap((p,i)=>commandOnly&&(i<6||i>11)?[]:[[p,forms[i]||'—',...(second?[second[i]||'—']:[])]]),
+  note:section==='nominals'?'Ot shakllari: noaniq holatdagi jins, son va i’rob. Solim ko‘plik shaxs bildiruvchi qo‘llanishga tegishli.':'Tanlangan grammatik shakl. «—» belgisi ushbu shakl berilmaganini bildiradi.'
+ }:undefined;
+ const exportKey=JSON.stringify(exportData);
+ const latestExport=useRef(exportKey);latestExport.current=exportKey;
+ useEffect(()=>{setPdfUrl('');setCopyFallback('');setNotice('');},[exportKey]);
+ async function copy(){if(!exportData)return;const text=exportText(exportData);if(await copySarfText(text)){setCopyFallback('');setNotice('Jadval nusxalandi.');}else{setCopyFallback(text);setNotice('Brauzer avtomatik nusxalashga ruxsat bermadi. Quyidagi matnni belgilab, nusxalang.');}}
+ async function downloadPdf(){if(!exportData||pdfBusy)return;setPdfBusy(true);setNotice('');try{
+  const r=await fetch('/api/sarf/export/pdf',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(exportData)});
+  if(!r.ok)throw new Error('PDF tayyorlanmadi. Qayta urinib ko‘ring.');
+  const blob=await r.blob();if(!blob.type.includes('application/pdf'))throw new Error('PDF javobi noto‘g‘ri.');
+  if(latestExport.current!==exportKey)return;
+  const url=URL.createObjectURL(blob);setPdfUrl(url);
+  const a=document.createElement('a');a.href=url;a.download='Al-Qomus-Sarf.pdf';document.body.appendChild(a);a.click();a.remove();
+  setNotice('PDF tayyor. Yuklash boshlanmasa, quyidagi havolani bosing.');
+ }catch(e){setNotice((e as Error).message);}finally{setPdfBusy(false);}}
  return <Layout><div className="sarf-page max-w-4xl mx-auto px-3 sm:px-4 pb-6">
   <style>{`@media print { body * { visibility: hidden; } .sarf-result, .sarf-result * { visibility: visible; } .sarf-result { position: absolute; left: 0; top: 0; width: 100%; } .no-print, .no-print * { display: none !important; } table { break-inside: auto; } tr { break-inside: avoid; } }`}</style>
   <div className="no-print sticky top-10 z-40 -mx-3 sm:-mx-4 border-b border-gray-200 bg-white px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
@@ -109,7 +133,13 @@ export default function SarfPage({params}:{params?:{id?:string}}) {
     {nounRows.length>0?<div className="overflow-x-auto border rounded-xl bg-white"><table className="w-full text-center"><thead><tr>{['Shakl','Raf’','Nasb','Jarr'].map(x=><th key={x} className="p-3">{x}</th>)}</tr></thead><tbody>{nounRows.map(row=><tr key={row.label} className="border-t"><td className="text-sm p-3">{row.label}</td>{row.forms.map((word,i)=><td key={i} className={arabic} dir="rtl">{word||'—'}</td>)}</tr>)}</tbody></table></div>:<p className="text-sm">Bu ot shakli uchun tekshirilgan qoida yoki lug‘aviy ma’lumot hozircha yetarli emas.</p>}
     <p className="text-sm text-gray-600 mt-3">Otlar zamirlar bo‘yicha tuslanmaydi. Jadval noaniq holatdagi jins, son va i’robni ko‘rsatadi. Solim ko‘plik shaxs bildiruvchi qo‘llanishga tegishli; siniq ko‘plik va lug‘aviy sifatlar alohida tekshiriladi.</p>
    </>:<div className="overflow-x-auto border rounded-xl bg-white"><table className="w-full text-center"><thead className="bg-gray-50"><tr><th className="p-3">Zamir</th><th className="p-3">{title} {!commandOnly&&voice==='passive'?'— majhul':''}</th>{second&&<th className="p-3">Nahiy</th>}</tr></thead><tbody>{persons.map((p,i)=>commandOnly&&(i<6||i>11)?null:<tr key={p} className="border-t"><td className={arabic} dir="rtl">{p}</td><td className={arabic} dir="rtl">{forms[i]||'—'}</td>{second&&<td className={arabic} dir="rtl">{second[i]}</td>}</tr>)}</tbody></table></div>}
-   <div className="no-print flex gap-3 my-4">{section!=='nominals'&&<button className={btn(false)} onClick={copy}>Jadvalni nusxalash</button>}<button className={btn(false)} onClick={()=>window.print()}>Chop etish / PDF</button></div>{notice&&<p role="status" className="no-print text-sm">{notice}</p>}
+   <div className="no-print my-4">
+    <p className="mb-2 text-xs text-gray-500">Hozir tanlangan jadval: {exportTitle}</p>
+    <div className="flex flex-wrap gap-2"><button disabled={!exportData?.rows.length} className={btn(false)} onClick={copy}>Jadvalni nusxalash</button><button disabled={pdfBusy||!exportData?.rows.length} className={btn(true)} onClick={downloadPdf}>{pdfBusy?'PDF tayyorlanmoqda…':'PDF yuklab olish'}</button></div>
+    {notice&&<p role="status" className="mt-2 text-sm">{notice}</p>}
+    {pdfUrl&&<a className="mt-2 inline-block underline text-teal-700 py-2" href={pdfUrl} download="Al-Qomus-Sarf.pdf" target="_blank" rel="noopener noreferrer">Tayyor PDFni ochish / yuklash</a>}
+    {copyFallback&&<label className="block text-sm mt-3">Nusxalash uchun matn<textarea aria-label="Nusxalash uchun jadval" readOnly value={copyFallback} onFocus={e=>{e.currentTarget.select();e.currentTarget.setSelectionRange(0,e.currentTarget.value.length);}} className="block w-full h-64 mt-2 p-3 border rounded-xl bg-white text-base" dir="auto"/></label>}
+   </div>
    <p className="text-xs text-gray-500 mt-3">Ma’no manbasi: {v.source}. Sarf: Qutrub qoidalari va Al-qomus qo‘shimchalari. Grammatik variantlar avtomatik bog‘langan; barcha yozuvlar alohida ilmiy tahrirdan o‘tmagan.</p>
    <p className="no-print text-xs mt-2"><a className="underline" href="https://github.com/linuxscout/qutrub">Qutrub</a> · <a className="underline" href="https://github.com/linuxscout/arramooz">Arramooz</a> · <a className="underline" href="https://github.com/Umidjon1990/Al-qomus.uz/tree/main/sarf">Kod va manbalar</a></p>
   </div>}
