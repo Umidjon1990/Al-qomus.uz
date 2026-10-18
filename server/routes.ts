@@ -1,3 +1,4 @@
+import { registerAdminAuth } from './admin-auth';
 import { sarfPdfSchema } from '@shared/sarf-export';
 import { sarfProcess } from './sarf-process';
 import { searchSarf, sarfDetail, manualSarf, dictionaryVerbForms } from './sarf';
@@ -15,6 +16,8 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  registerAdminAuth(app);
+
   app.get('/api/dictionary/verb-forms', async (req,res)=>{
     const q=typeof req.query.q==='string'?req.query.q.trim():'';
     if(q.length>80)return res.status(400).json({error:'Qidiruv juda uzun'});
@@ -60,28 +63,6 @@ export async function registerRoutes(
   // Health check endpoint - Railway avtomatik restart qiladi agar ishlamasa
   app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
-  });
-
-  // Admin login - requires environment variables (no default credentials)
-  app.post("/api/auth/login", async (req, res) => {
-    try {
-      const { username, password } = req.body;
-      const adminUsername = process.env.ADMIN_USERNAME;
-      const adminPassword = process.env.ADMIN_PASSWORD;
-      
-      if (!adminUsername || !adminPassword) {
-        res.status(500).json({ error: 'Admin sozlanmagan' });
-        return;
-      }
-      
-      if (username === adminUsername && password === adminPassword) {
-        res.json({ success: true, role: 'admin' });
-      } else {
-        res.status(401).json({ error: 'Login yoki parol noto\'g\'ri' });
-      }
-    } catch (error) {
-      res.status(500).json({ error: 'Server xatosi' });
-    }
   });
 
   // Get statistics (MUST be before /:id route)
@@ -802,3 +783,4 @@ export async function registerRoutes(
 
   return httpServer;
 }
+

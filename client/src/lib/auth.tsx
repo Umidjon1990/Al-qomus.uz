@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useLocation } from "wouter";
 import { toast } from "@/hooks/use-toast";
 
@@ -19,6 +19,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    let active = true;
+    fetch('/api/auth/me', { credentials: 'same-origin' }).then(r => r.ok ? r.json() : null).then(data => { if (active && data?.isAdmin) setUser({ username: 'Admin', role: 'admin' }); }).catch(() => {});
+    return () => { active = false; };
+  }, []);
 
   const login = async (username: string, password: string) => {
     try {
@@ -55,6 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = () => {
+    void fetch('/api/auth/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     setUser(null);
     setLocation("/");
     toast({
@@ -76,3 +83,4 @@ export function useAuth() {
   }
   return context;
 }
+
