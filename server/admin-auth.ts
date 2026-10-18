@@ -58,7 +58,7 @@ export function registerAdminAuth(app: Express) {
     let item = attempts.get(id);
     if (!item || item.until <= now) { item = { count: 0, until: now + 900000 }; attempts.set(id, item); }
     if (++item.count > 10) { res.setHeader('Retry-After', String(Math.ceil((item.until - now) / 1000))); return res.status(429).json({ error: 'Urinishlar ko‘paydi. Keyinroq urinib ko‘ring.' }); }
-    if (attempts.size > 10000) for (const [name, value] of attempts) if (value.until <= now) attempts.delete(name);
+    if (attempts.size > 10000) for (const [name, value] of Array.from(attempts.entries())) if (value.until <= now) attempts.delete(name);
     const username = process.env.ADMIN_USERNAME, password = process.env.ADMIN_PASSWORD;
     if (!username || !password) return res.status(503).json({ error: 'Admin sozlanmagan' });
     if (typeof req.body?.username !== 'string' || typeof req.body?.password !== 'string' || req.body.username.length > 256 || req.body.password.length > 1024 || !equal(req.body.username, username) || !equal(req.body.password, password)) return res.status(401).json({ error: 'Login yoki parol noto‘g‘ri' });
