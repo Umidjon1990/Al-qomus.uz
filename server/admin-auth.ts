@@ -35,7 +35,7 @@ function cookie(req: Request) {
 }
 export function requireAdmin(req: Request, res: Response, next: NextFunction) {
   res.setHeader('Cache-Control', 'private, no-store');
-  if (!validAdminToken(cookie(req))) return res.status(401).json({ error: 'Admin sifatida qayta kiring' });
+  if (!req.platformEditor && !validAdminToken(cookie(req))) return res.status(401).json({ error: 'Admin sifatida qayta kiring' });
   next();
 }
 export function registerAdminAuth(app: Express) {
@@ -65,7 +65,7 @@ export function registerAdminAuth(app: Express) {
     res.cookie(cookieName, issueAdminToken(), { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'lax', maxAge: ttl * 1000, path: '/' });
     res.json({ success: true, role: 'admin' });
   });
-  app.get('/api/auth/me', (req, res) => { res.setHeader('Cache-Control', 'no-store'); res.json({ isAdmin: validAdminToken(cookie(req)) }); });
+  app.get('/api/auth/me', (req, res) => { res.setHeader('Cache-Control', 'no-store'); res.json({ isAdmin: !!req.platformEditor || validAdminToken(cookie(req)) }); });
   app.post('/api/auth/logout', (_req, res) => { res.clearCookie(cookieName, { path: '/', httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'lax' }); res.json({ success: true }); });
   app.use('/api/telegram', requireAdmin);
   app.use('/api/dictionary', (req, res, next) => ['GET', 'HEAD', 'OPTIONS'].includes(req.method) ? next() : requireAdmin(req, res, next));
