@@ -1,3 +1,4 @@
+import {createEditorSource} from './platform-editor-source';
 import { registerAdminAuth } from './admin-auth';
 import { sarfPdfSchema } from '@shared/sarf-export';
 import { sarfProcess } from './sarf-process';
@@ -16,6 +17,8 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  const editor=createEditorSource(app,{provider:'qomus',editorPath:'/admin',resolve:async actor=>actor.id});
+  app.use(editor.middleware);editor.routes();
   registerAdminAuth(app);
 
   app.get('/api/dictionary/verb-forms', async (req,res)=>{
